@@ -43,3 +43,9 @@ The newest version of each part is at the top level. `work/` holds the history.
 - **Keys, logs and crash reports.** Tools that need a pak key read it from an environment variable or ask for it.
 
 See `THIRD_PARTY_NOTICES.md` for the code included here that is based on other projects.
+
+## License
+
+MIT (see `LICENSE`). Code based on other projects keeps those projects' terms, listed in `THIRD_PARTY_NOTICES.md`.
+FINAL FANTASY VII and its assets belong to Square Enix. This repo doesn't contain them and isn't affiliated with Square
+Enix.
