@@ -17,7 +17,7 @@ and game containers.
 | `EndProject/Source/` | Edits to the End project's modules: the ENDEditor anim graph nodes for the game's End nodes, and the EndDataObject fixes. |
 | `EndProject/Config/`, `EndProject/Mods/`, `EndProject/Saved/RebirthSkelCompat/` | The End project's edited config files, mod plugin descriptors, and the editor data the tools export (data objects, moves, surveys). |
 | `GameMods/ue4ss/Mods/` | The game-side mods as installed: RebirthSkelCompat's compat, skins and customization JSONs and README; the Lua mods (SephirothForms with ForceGrabs and MeteorStrike, RebirthLiveLink, RebirthFPSBoost, CutsceneTrace, AutoUsmapDump). |
-| `Tools/` | The PC-side tools: character and form builders (Bizarro, Safer, Galian Beast, Chaos, Dirge, Young Sephiroth, Remake, Crisis Core, Dissidia NT, Cloud moveset), the Remake importer and materials, the setup packers, voice tools, title screen and frame-gen scripts. |
+| `Tools/` | The PC-side tools: character and form builders (Bizarro, Safer, Galian Beast, Chaos, Dirge, Young Sephiroth, Remake, Crisis Core, Dissidia NT, Cloud moveset), the Remake importer and materials, the setup packers, voice tools, title screen and frame-gen scripts. `Tools/RebuiltSurface/` also has the rebuilt **RM_Surface** material itself, ready to copy into an End project with the textures it uses (see its `README.txt`). |
 | `work/` | The whole development archive, one folder per task or version, as it was worked on. It includes every DLL version (`cacs*`, `skelcompat*`), editor plugin versions (`plugin*`, `endeditor*`, `kawaii*`), the IoStore / zen package reader and writer (`iostore`, `cs`, `tools`), the CharaSpec and data-table codecs, the SEAD sound bank maker and HCA encoder, the Niagara and Cascade converters (`nconv`, `remakefx`, `kh3fx`), the material and shader tools, Kawaii presets, and the merge build for FullyPlayableCreateACharacterSystemExperience (`merge1027`). |
 
 The newest version of each part is at the top level. `work/` holds the history.
@@ -36,6 +36,8 @@ The newest version of each part is at the top level. `work/` holds the history.
 
 - **Game files:** models, textures, animations, audio, paks, containers, or data extracted from FINAL FANTASY VII
   REBIRTH, REMAKE, Crisis Core, Kingdom Hearts or Dissidia NT. The tools read these from your own copy of the game.
+  The one exception is the rebuilt RM_Surface's own requirements in `Tools/RebuiltSurface/`: the game's 13 small
+  solid-colour default textures its parameters use and its blue noise texture, so the material opens as it is.
 - **Engine changes:** edits to the Unreal Engine source live in the community engine's fork. Epic's license only
   allows engine source in forks of its own repository.
 - **Third-party code:** UE4SS, ooz, retoc, UAssetGUI, Cethleann, PyCriCodecs, dlssg-to-fsr3 / FidelityFX, the
@@ -47,5 +49,5 @@ See `THIRD_PARTY_NOTICES.md` for the code included here that is based on other p
 ## License
 
 MIT (see `LICENSE`). Code based on other projects keeps those projects' terms, listed in `THIRD_PARTY_NOTICES.md`.
-FINAL FANTASY VII and its assets belong to Square Enix. This repo doesn't contain them and isn't affiliated with Square
-Enix.
+FINAL FANTASY VII and its assets belong to Square Enix, including the RM_Surface textures above (the MIT license doesn't
+cover them). Apart from those, this repo doesn't contain them. It isn't affiliated with Square Enix and isn't sold.

@@ -32,6 +32,22 @@ Cooking
   permutation have to come from the game's own base pass, which is the next step. Instances of the game's
   RMI_Surface_* that only change parameter values and textures (the usual way) work in game as before.
 
+The built material (no build needed)
+  This folder has the built RM_Surface and everything it uses, in the folders they go in:
+    Content\Renderer\Material\RM_Surface.uasset    the material      -> <End project>\Content\Renderer\Material\
+    Content\Renderer\Texture\  (13 textures)        its parameters' default textures (the game's own small solid-colour
+                                                    ones, cooked)     -> <End project>\Content\Renderer\Texture\
+    Engine\Content\EngineResources\SpatiotemporalBlueNoiseVolumeSource   the game's blue noise texture its code samples
+                                                    (cooked)          -> <engine>\Engine\Content\EngineResources\
+  Close the End editor first. If the game's cooked RM_Surface (RM_Surface.uasset with an RM_Surface.uexp) is in
+  Content\Renderer\Material, move both out of Content (keep them to go back), then copy RM_Surface.uasset in. Textures
+  you already have can stay. <engine> is the engine the End editor runs from (its log, Saved\Logs\End.log, names it on
+  the "Base Directory" line).
+  It also needs, from this repo: the RebirthMaterialPreview plugin (EndProject\Plugins; its Rebirth Surface, Hair and Eye
+  output nodes are in the graph, and it compiles the cooked instances), RebirthSafeLoad and EndProject\Config (the
+  editor loads the cooked textures with them). The engine's own DefaultBuffer comes with the community engine.
+  The first time the editor opens it, the shaders compile for a few minutes.
+
 How to build it
   Close the End editor, run run_build_rebuilt_surface.cmd. It rebuilds the plugin, moves the game's cooked RM_Surface into
   C:\FF7R2UProj\_mod_backups, opens the editor once to build the material and compile the game's 104 permutations of
