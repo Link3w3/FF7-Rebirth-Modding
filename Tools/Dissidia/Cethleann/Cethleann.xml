@@ -1,0 +1,3541 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cethleann</name>
+    </assembly>
+    <members>
+        <member name="T:Cethleann.Archive.BTIF">
+            <summary>
+                PKGINFO BTIF section parser.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.BTIF.#ctor(System.Span{System.Byte})">
+            <summary>
+                initialize with stream data
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Archive.BTIF.Header">
+            <summary>
+                BTIF Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.BTIF.Entries">
+            <summary>
+                lsof file entries
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.BTIF.UnknownBuffer">
+            <summary>
+                Unknown byte buffer at the end of the stream
+            </summary>
+        </member>
+        <member name="T:Cethleann.Archive.DATA0">
+            <summary>
+                DATA0 is a list of information for which to read DATA1 with.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.DATA0.#ctor(System.String)">
+            <summary>
+                Reads a DATA0 file list from a path
+            </summary>
+            <param name="path">File path to read</param>
+        </member>
+        <member name="M:Cethleann.Archive.DATA0.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+                Reads a DATA0 file list from a stream
+            </summary>
+            <param name="stream">Binary Read-capable Stream of DATA0</param>
+            <param name="leaveOpen">If true, won't dispose <paramref name="stream" /></param>
+        </member>
+        <member name="P:Cethleann.Archive.DATA0.Entries">
+            <summary>
+                lsof <seealso cref="T:Cethleann.Structure.Archive.DATA0Entry" />
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.DATA0.ReadEntry(System.IO.Stream,System.Int32)">
+            <summary>
+                Reads a file index from DATA1
+            </summary>
+            <param name="data1">Binary Read-capable Stream of DATA1</param>
+            <param name="index">Entry Index to read</param>
+            <returns>memory stream of uncompressed bytes</returns>
+        </member>
+        <member name="M:Cethleann.Archive.DATA0.ReadEntry(System.IO.Stream,Cethleann.Structure.Archive.DATA0Entry)">
+            <summary>
+                Reads a file entry from DATA1
+            </summary>
+            <param name="data1">Binary Read-capable Stream of DATA1</param>
+            <param name="entry">Entry to read</param>
+            <returns>memory stream of uncompressed bytes</returns>
+        </member>
+        <member name="T:Cethleann.Archive.INFO0">
+            <summary>
+                INFO0 is a list of information for which to read the patch RomFS with.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.INFO0.#ctor(System.String)">
+            <summary>
+                Reads a INFO0 file list from a path
+            </summary>
+            <param name="path">File path to read</param>
+        </member>
+        <member name="M:Cethleann.Archive.INFO0.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+                Reads a INFO0 file list from a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="leaveOpen"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:Cethleann.Archive.INFO0.Entries">
+            <summary>
+                Entries found in the INFO0
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.INFO0.ReadEntry(System.String,System.Int32)">
+            <summary>
+                Attempts to read a Patch ROMFS entry
+            </summary>
+            <param name="romfs"></param>
+            <param name="index"></param>
+            <returns></returns>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:Cethleann.Archive.INFO0.GetPath(System.Int32)">
+            <summary>
+                Gets the path from Patch containers.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.INFO0.ReadEntry(System.String,Cethleann.Structure.Archive.INFO0Entry)">
+            <summary>
+                Attempts to read a Patch ROMFS entry
+            </summary>
+            <param name="entryPath"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.INFO1">
+            <summary>
+                INFO1 is a list of information of base files deleted with this patch.
+                Usually this means that the files are contained in a DLC.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.INFO1.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+                Reads a INFO1 file list from a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="leaveOpen"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Cethleann.Archive.INFO1.#ctor(System.String)">
+            <summary>
+                Reads a INFO1 file list from a path
+            </summary>
+            <param name="path">File path to read</param>
+        </member>
+        <member name="P:Cethleann.Archive.INFO1.Entries">
+            <summary>
+                Entries found in the INFO1
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.INFO1.ReadEntry(System.String,System.Int32)">
+            <summary>
+                Attempts to read a Patch ROMFS entry
+            </summary>
+            <param name="romfs"></param>
+            <param name="index"></param>
+            <returns></returns>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:Cethleann.Archive.INFO1.GetPath(System.Int32)">
+            <summary>
+                Gets the path from Patch containers.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.INFO1.ReadEntry(System.String,Cethleann.Structure.Archive.INFO1Entry)">
+            <summary>
+                Attempts to read a Patch ROMFS entry
+            </summary>
+            <param name="entryPath"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.LINKARCHIVE">
+            <summary>
+                Nioh-like ARCHIVE bin
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKARCHIVE.#ctor(System.IO.Stream)">
+            <summary>
+                Initialize from stream
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Archive.LINKARCHIVE.Entries">
+            <summary>
+                Entries found in the archive
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKARCHIVE.Header">
+            <summary>
+                Archive header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKARCHIVE.DataStream">
+            <summary>
+                Underlying data stream
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKARCHIVE.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Archive.LINKARCHIVE.ReadEntry(Cethleann.Structure.Archive.LFMArchiveEntry)">
+            <summary>
+                Read an entry from the data stream
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.LINKDATA">
+            <summary>
+                LINKDATA_*.BIN Parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKDATA.#ctor(System.IO.Stream)">
+            <summary>
+                Parse from Binary Stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="P:Cethleann.Archive.LINKDATA.DataStream">
+            <summary>
+                Underlying Data Stream
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKDATA.Entries">
+            <summary>
+                Lsof LINKDATA entries
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKDATA.Header">
+            <summary>
+                Linkdata Header
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKDATA.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Archive.LINKDATA.ReadEntry(Cethleann.Structure.Archive.LINKDATAEntry)">
+            <summary>
+                Read file entry
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.LINKNAME">
+            <summary>
+                lfm_order_*.bin archive files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKNAME.#ctor(System.Span{System.Byte})">
+            <summary>
+                Read from span
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Archive.LINKNAME.SourceName">
+            <summary>
+                Source file name
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKNAME.Names">
+            <summary>
+                Lsof names for the files
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKNAME.Entries">
+            <summary>
+                LFM Order entry list
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.LINKNAME.Header">
+            <summary>
+                LFM Order Header
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.LINKNAME.GetName(System.Int32)">
+            <summary>
+                Get a filename for an id.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.PAK">
+            <summary>
+                Atelier PAK files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+                Initialize with a path
+            </summary>
+            <param name="path"></param>
+            <param name="a18">set to true if the PAKs are from Atelier Sophie or a newer Atelier</param>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.#ctor(System.IO.Stream,System.Boolean,System.Boolean)">
+            <summary>
+                Initialize with a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="a18">set to true if the PAKs are from Atelier Sophie or a newer Atelier</param>
+        </member>
+        <member name="P:Cethleann.Archive.PAK.Header">
+            <summary>
+                Header of the PAK file
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PAK.Entries">
+            <summary>
+                Entries found in the PAK
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PAK.Is64Bit">
+            <summary>
+                Is the file 64-bit? Atelier games at and after Sophie are.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PAK.BaseStream">
+            <summary>
+                The underlying file stream
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Archive.PAK.Finalize">
+            <summary>
+                Disposes
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.TryGetEntry(System.String,Cethleann.Structure.Archive.PAKEntry@)">
+            <summary>
+                Gets an entry from it's filepath.
+            </summary>
+            <param name="path"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.ReadEntry(Cethleann.Structure.Archive.PAKEntry)">
+            <summary>
+                Read entry via entry struct
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.PAK.Recode(System.Span{System.Byte},System.Byte[])">
+            <summary>
+                Crypt rotate the data blob
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+        </member>
+        <member name="T:Cethleann.Archive.PKGINFO">
+            <summary>
+                Package Info parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PKGINFO.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with buffer data
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Archive.PKGINFO.Resource">
+            <summary>
+                underlying RESPACK resource
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PKGINFO.InfoTable">
+            <summary>
+                Binary Table Information? Lol idk.
+            </summary>
+        </member>
+        <member name="T:Cethleann.Archive.PKGTBL">
+            <summary>
+                ID Table parser for both versions
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PKGTBL.#ctor(System.Span{System.Byte},System.String,Cethleann.Structure.Archive.IDTableFlags,System.Byte[],System.UInt64,System.UInt64)">
+            <summary>
+                Initialize table with decryption constants
+            </summary>
+            <param name="data"></param>
+            <param name="game"></param>
+            <param name="flags"></param>
+            <param name="truth"></param>
+            <param name="multiplier"></param>
+            <param name="divisor"></param>
+        </member>
+        <member name="P:Cethleann.Archive.PKGTBL.PackageInfo">
+            <summary>
+                Loaded PKGINFO
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PKGTBL.Entries">
+            <summary>
+                File ID table entries
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PKGTBL.Header">
+            <summary>
+                Header of the file
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.PKGTBL.Buffer">
+            <summary>
+                Raw table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.PKGTBL.Read(System.Span{System.Byte},System.String,Cethleann.Structure.Archive.IDTableEntry,System.Byte[],System.UInt64,System.UInt64)">
+            <summary>
+                Read a file with decryption constants using an id table entry
+            </summary>
+            <param name="file"></param>
+            <param name="game"></param>
+            <param name="entry"></param>
+            <param name="truth"></param>
+            <param name="multiplier"></param>
+            <param name="divisor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.PKGTBL.Read(System.Span{System.Byte},System.String,System.UInt32,System.UInt32,Cethleann.Structure.Archive.IDTableFlags,System.Byte[],System.UInt64,System.UInt64)">
+            <summary>
+                Read a file with decryption constants
+            </summary>
+            <param name="file"></param>
+            <param name="game"></param>
+            <param name="compressedSize"></param>
+            <param name="size"></param>
+            <param name="flags"></param>
+            <param name="truth"></param>
+            <param name="multiplier"></param>
+            <param name="divisor"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.RDB">
+            <summary>
+                First seen in DoA6, but it's used across the company.
+                It looks like it's the go-to format for KTGL Version 2 / "NewSoftEngine"
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.#ctor(System.Span{System.Byte},System.String,System.String)">
+            <summary>
+                Initialize with buffer and basic info about the FS
+            </summary>
+            <param name="buffer"></param>
+            <param name="name"></param>
+            <param name="directory"></param>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.RDBDirectory">
+            <summary>
+                Directory that holds this RDB file
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.Directory">
+            <summary>
+                Absolute path to external data directory
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.DataDirectory">
+            <summary>
+                External data directory
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.Name">
+            <summary>
+                Name of this  archive
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.Header">
+            <summary>
+                RDB Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.Entries">
+            <summary>
+                List of RDB entries found in this file
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.KTIDToEntryId">
+            <summary>
+                KTID to Entry ID map
+            </summary>
+        </member>
+        <member name="P:Cethleann.Archive.RDB.NameDatabase">
+            <summary>
+                Name Database for this RDB
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Dispose">
+            <summary>
+                Clean up streams
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.GetEntry(System.Int32)">
+            <summary>
+                Gets RDB Info Entry
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.GetBinPath(System.Int32)">
+            <summary>
+                Gets a bin path for a given index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.GetExternalPath(Cethleann.Structure.KTID.KTIDReference,System.String)">
+            <summary>
+                Gets an external file path for a given index
+            </summary>
+            <param name="fileId"></param>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.ReadEntry(System.Int32)">
+            <summary>
+                Reads a file by the given index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Finalize">
+            <summary>
+                Disposes
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Hash(System.Span{System.Byte},System.Int32,System.Int32)">
+            <summary>
+                Hash filename
+            </summary>
+            <param name="text"></param>
+            <param name="iv"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Hash(System.String,System.String,System.String)">
+            <summary>
+                Hash filename given formatting
+            </summary>
+            <param name="text"></param>
+            <param name="ext"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Hash(System.Span{System.Byte},System.String,System.String)">
+            <summary>
+                Hash filename given formatting
+            </summary>
+            <param name="text"></param>
+            <param name="ext"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.Hash(System.String)">
+            <summary>
+                Hash filenames
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Archive.RDB.StripName(System.String)">
+            <summary>
+                Strips formatting from a string
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Archive.TinyDATA0">
+            <summary>
+                DATA0 is a list of information for which to read DATA1 with.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Archive.TinyDATA0.#ctor(System.String)">
+            <summary>
+                Reads a DATA0 file list from a path
+            </summary>
+            <param name="path">File path to read</param>
+        </member>
+        <member name="M:Cethleann.Archive.TinyDATA0.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+                Reads a DATA0 file list from a stream
+            </summary>
+            <param name="stream">Binary Read-capable Stream of DATA0</param>
+            <param name="leaveOpen">If true, won't dispose <paramref name="stream" /></param>
+        </member>
+        <member name="T:Cethleann.Audio.GCADPCMSound">
+            <summary>
+                Parser for NGCDSP ADPCM Streams
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.GCADPCMSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize from buffer
+            </summary>
+            <param name="blob"></param>
+        </member>
+        <member name="P:Cethleann.Audio.GCADPCMSound.Header">
+            <summary>
+                GCADPCM Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.GCADPCMSound.Table">
+            <summary>
+                GCADPCM Info Tables
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.GCADPCMSound.AudioBuffers">
+            <summary>
+                Full sound buffers
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.GCADPCMSound.FullBuffer">
+            <summary>
+                Full sound buffer
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.GCADPCMSound.Base">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Audio.GCADPCMSound.ReconstructAsIndividual">
+            <summary>
+                Rebuild multi streams as individual streams
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Audio.GCADPCMSound.ReconstructWave(System.Boolean)">
+            <summary>
+                Reconstructs stream to a WAV
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Audio.ISoundResourceSection">
+            <summary>
+                Section helper
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.ISoundResourceSection.Base">
+            <summary>
+                Underlying entry
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.ISoundResourceSection.FullBuffer">
+            <summary>
+                Full Data Stream
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.KoeiWaveBank">
+            <summary>
+                WHD File parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.KoeiWaveBank.#ctor(System.Span{System.Byte},System.Boolean)">
+            <summary>
+                Parse with buffer data
+            </summary>
+            <param name="buffer"></param>
+            <param name="alternateNames"></param>
+        </member>
+        <member name="P:Cethleann.Audio.KoeiWaveBank.Resource">
+            <summary>
+                Underlying RTRPK PAK
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KoeiWaveBank.WBH">
+            <summary>
+                WAVE Header data
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KoeiWaveBank.WBD">
+            <summary>
+                WAVE Stream data
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.KOVSSound">
+            <summary>
+                Initialize and decrypt a KOVS stream
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.KOVSSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize KOVS data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Audio.KOVSSound.Header">
+            <summary>
+                KOVS Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KOVSSound.Stream">
+            <summary>
+                Audio Stream
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.KTSSSound">
+            <summary>
+                KTSS Sound Sample, or KOVS Encrypted Sound Sample
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.KTSSSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize from a buffer.
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Audio.KTSSSound.Header">
+            <summary>
+                KTSS
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KTSSSound.CodecHeader">
+            <summary>
+                KTSS Codec Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KTSSSound.ChannelFamily">
+            <summary>
+                Channel info
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KTSSSound.Packets">
+            <summary>
+                Codec packets
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.KTSSSound.FullBuffer">
+            <summary>
+                Full sound buffer
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.MSADPCMSound">
+            <summary>
+                Parser for MS ADPCM Streams
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.MSADPCMSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize from buffer
+            </summary>
+            <param name="blob"></param>
+        </member>
+        <member name="P:Cethleann.Audio.MSADPCMSound.Header">
+            <summary>
+                ADPCM Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.MSADPCMSound.Info">
+            <summary>
+                ADPCM Setup Info
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.MSADPCMSound.AudioBuffers">
+            <summary>
+                Full sound buffers
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.MSADPCMSound.FullBuffer">
+            <summary>
+                Full sound buffer
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.MSADPCMSound.Base">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Audio.MSADPCMSound.ReconstructAsIndividual">
+            <summary>
+                Rebuild multi streams as individual streams
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Audio.MSADPCMSound.ReconstructWave(System.Boolean)">
+            <summary>
+                Reconstructs stream to a WAV
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Audio.NamedSounds">
+            <summary>
+                Parser for General ADPCM Streams
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.NamedSounds.#ctor(System.Span{System.Byte},Cethleann.Structure.DataPlatform)">
+            <summary>
+                Initialize from a blob
+            </summary>
+            <param name="blob"></param>
+            <param name="platform"></param>
+        </member>
+        <member name="P:Cethleann.Audio.NamedSounds.Header">
+            <summary>
+                ADPCM Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.NamedSounds.Sections">
+            <summary>
+                Usually 1.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.NamedSounds.Filenames">
+            <summary>
+                Filenames (if any)
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.NamedSounds.Base">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Audio.NamedSounds.FullBuffer">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Audio.OGGSound">
+            <summary>
+                KTSS/KOVS Container found in KTSS containers
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.OGGSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize from a blob
+            </summary>
+            <param name="blob"></param>
+        </member>
+        <member name="P:Cethleann.Audio.OGGSound.Header">
+            <summary>
+                KTSS/KOVS container header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.OGGSound.Data">
+            <summary>
+                KTSS/KOVS Sound blob
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.OGGSound.Base">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Audio.OGGSound.FullBuffer">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Audio.SoundContainer">
+            <summary>
+                Parser for KTSC files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.SoundContainer.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with blob data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Audio.SoundContainer.Header">
+            <summary>
+                KTSR Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.SoundContainer.Identifiers">
+            <summary>
+                ?
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.SoundContainer.Pointers">
+            <summary>
+                ?
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.SoundContainer.KTSR">
+            <summary>
+                Underlying KTSR
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.SoundResource">
+            <summary>
+                Implements KTSR
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.SoundResource.#ctor(System.IO.Stream,Cethleann.Structure.DataPlatform)">
+            <summary>
+                Initialize a KTSR from a Stream
+            </summary>
+            <param name="stream"></param>
+            <param name="platform"></param>
+        </member>
+        <member name="M:Cethleann.Audio.SoundResource.#ctor(System.Span{System.Byte},Cethleann.Structure.DataPlatform)">
+            <summary>
+                Initialize a KTSR from a Span buffer
+            </summary>
+            <param name="buffer"></param>
+            <param name="platform"></param>
+        </member>
+        <member name="P:Cethleann.Audio.SoundResource.Platform">
+            <summary>
+                Used for platform-specific codecs
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.SoundResource.Header">
+            <summary>
+                KTSR Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.SoundResource.Entries">
+            <summary>
+                Sound resources found in the KTSR container.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.SoundResource.DecodeSection(System.Span{System.Byte},Cethleann.Structure.DataPlatform)">
+            <summary>
+                Decodes KTSR Section
+            </summary>
+            <param name="buffer"></param>
+            <param name="platform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Audio.UnknownSound">
+            <summary>
+                Unknown Blob shim
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.UnknownSound.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a blob
+            </summary>
+            <param name="blob"></param>
+        </member>
+        <member name="P:Cethleann.Audio.UnknownSound.Data">
+            <summary>
+                Data blob
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.UnknownSound.Base">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Audio.UnknownSound.FullBuffer">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Audio.WaveBankData">
+            <summary>
+                Wave Bank Data
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WaveBankData.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Audio.WaveBankData.Data">
+            <summary>
+                Very Large, Very Chonky WAVE stream
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WaveBankData.Header">
+            <summary>
+                Underlying header
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WaveBankData.ReconstructWave(Cethleann.Structure.Resource.Audio.WHD.WBHEntry,System.Boolean)">
+            <summary>
+                Reconstruct a stream from WBH data.
+            </summary>
+            <param name="entry"></param>
+            <param name="convertToPcm"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Audio.WaveBankHeader">
+            <summary>
+                Wave Bank Headers
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WaveBankHeader.#ctor(System.Span{System.Byte},System.Boolean)">
+            <summary>
+                Initialize with buffer data
+            </summary>
+            <param name="buffer"></param>
+            <param name="alternateNames"></param>
+        </member>
+        <member name="P:Cethleann.Audio.WaveBankHeader.Header">
+            <summary>
+                Underlying header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WaveBankHeader.Soundbank">
+            <summary>
+                Specific soundbank
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.WBH.HDDB">
+            <summary>
+                HDDB File Name Table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WBH.HDDB.#ctor">
+            <summary>
+                Default initializer
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WBH.HDDB.#ctor(System.Span{System.Byte},System.Int32)">
+            <summary>
+                Initialize with buffer and count
+            </summary>
+            <param name="buffer"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.HDDB.Header">
+            <summary>
+                Underlying Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.HDDB.Name">
+            <summary>
+                Filename
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.HDDB.Entries">
+            <summary>
+                Lsof tags
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.WBH.IWBHSoundbank">
+            <summary>
+                Abstract interface for WBH soundbanks
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.IWBHSoundbank.Entries">
+            <summary>
+                Get audio stream info entries
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.IWBHSoundbank.Names">
+            <summary>
+                Get audio stream names
+            </summary>
+        </member>
+        <member name="T:Cethleann.Audio.WBH.KWB2">
+            <summary>
+                KWB2 MSADPCM Soundbank
+            </summary>
+        </member>
+        <member name="F:Cethleann.Audio.WBH.KWB2.KWBEntries">
+            <summary>
+                KWB2 Entries
+            </summary>
+        </member>
+        <member name="M:Cethleann.Audio.WBH.KWB2.#ctor(System.Span{System.Byte},System.Boolean)">
+            <summary>
+                Initialize with buffer data.
+            </summary>
+            <param name="data"></param>
+            <param name="alternateNames"></param>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.NameDatabase">
+            <summary>
+                Filename database
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.Header">
+            <summary>
+                Underlying header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.NameIndex">
+            <summary>
+                Used to lookup names
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.SecondaryNameIndex">
+            <summary>
+                Used to lookup names
+            </summary>
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.Entries">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Audio.WBH.KWB2.Names">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Compression.DzCompression">
+            <summary>
+                Compression helper class for TN's fork of KTGL
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.DzCompression.Decompress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Decompresses a .dz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.DzCompression.Compress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Compresses a stream into a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.LINKDATAEncryption">
+            <summary>
+            Implements P5S PC LINKDATA file encryption/decryption.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.LINKDATAEncryption.Encrypt(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Encrypts a P5S PC LINKDATA file.
+            </summary>
+            <param name="data">The data to encrypt.</param>
+            <param name="id">The ID of the LINKDATA file.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.LINKDATAEncryption.Decrypt(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Decrypts a P5S PC LINKDATA file.
+            </summary>
+            <param name="data">The data to decrypt.</param>
+            <param name="id">The ID of the LINKDATA file.</param>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.Mersenne">
+            <summary>
+            Implements a Mersenne-ish PRNG.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Mersenne.#ctor(System.UInt32)">
+            <summary>
+            Initializes a generator object using the provided seed value.
+            </summary>
+            <param name="seed">Value to initialize with.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Mersenne.Init(System.UInt32)">
+            <summary>
+            Initializes the generator using a provided seed value.
+            </summary>
+            <param name="seed">Value to initialize with.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Mersenne.Next">
+            <summary>
+            Generates and returns a value from the current generator state.
+            </summary>
+            <returns>Next generator state.</returns>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.RDBEncryption">
+            <summary>
+            Implements P5S PC RDB encryption/decryption.
+            Only used on ZLib compressed data.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.RDBEncryption.Encrypt(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Encrypts a P5S PC RDB ZLib compressed file.
+            </summary>
+            <param name="data">The compressed data to encrypt.</param>
+            <param name="ktid">The KTID of the RDB file.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.RDBEncryption.Decrypt(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Decrypts a P5S PC RDB ZLib compressed file.
+            </summary>
+            <param name="data">The compressed data to decrypt.</param>
+            <param name="ktid">The KTID of the RDB file.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.RDBEncryption.DeriveKey(System.UInt32)">
+            <summary>
+            Derives an RDB encryption key from a provided seed value.
+            </summary>
+            <param name="seed">Value to derive from.</param>
+            <returns>The derived key.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.RDBEncryption.DecryptRDBBlockSize(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Decrypts the first 4 bytes of the provided RDB ZLib compressed data block.
+            The returned value is used to initialize the decryption process.
+            </summary>
+            <param name="data">The block to decrypt from.</param>
+            <param name="key">The key to use.</param>
+            <returns>The initial block size.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.RDBEncryption.DecryptRDBBlock(System.Span{System.Byte},System.UInt32)">
+            <summary>
+            Decrypts an RDB ZLib compressed block using the provided key.
+            The next block size is also decrypted and returned.
+            </summary>
+            <param name="data">The block to decrypt.</param>
+            <param name="key">The key to use.</param>
+            <returns>The next block size.</returns>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.XORShift32">
+            <summary>
+            Implements a XORShift32 PRNG.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.XORShift32.#ctor(System.UInt32)">
+            <summary>
+            Initializes a XORShift32 PRNG object with the provided seed.
+            </summary>
+            <param name="seed">A (non-zero) seed value.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.XORShift32.Init(System.UInt32)">
+            <summary>
+            Initializes the XORShift32 PRNG object with the provided seed.
+            </summary>
+            <param name="seed">A (non-zero) seed value.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.XORShift32.Next(System.UInt32)">
+            <summary>
+            Calculates and returns the next generator state.
+            </summary>
+            <param name="cycles">The number of cycles to perform.</param>
+            <returns>New generator state.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.XORShift32.Get(System.UInt32,System.UInt32)">
+            <summary>
+            Performs XORShift32 cycles on a given seed.
+            </summary>
+            <param name="seed">The initial state.</param>
+            <param name="cycles">The number of XORShift32 cycles to perform.</param>
+            <returns>The state after all cycles.</returns>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.SRSTEncryption">
+            <summary>
+            Implements P5S PC SRST file encryption/decryption.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.SRSTEncryption.Encrypt(System.Span{System.Byte})">
+            <summary>
+            Encrypts a P5S PC SRST file.
+            The key length should be at offset 0x30 (relative to SRST header).
+            The key itself should follow from offset 0x31 and on.
+            If the key isn't present, no encryption is performed.
+            </summary>
+            <param name="data">The SRST file to encrypt.</param>
+            <returns>True if encryption has been performed, false otherwise.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.SRSTEncryption.Decrypt(System.Span{System.Byte})">
+            <summary>
+            Decrypts a P5S PC SRST file.
+            The key length should be at offset 0x30 (relative to SRST header).
+            The key itself should follow from offset 0x31 and on.
+            If the key isn't present, no decryption is performed.
+            </summary>
+            <param name="data">The SRST file to decrypt.</param>
+            <returns>True if decryption has been performed, false otherwise.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.SRSTEncryption.Crypt(System.Span{System.Byte},System.Boolean)">
+            <summary>
+            (En/De)crypts a P5S PC SRST file.
+            </summary>
+            <param name="data">The SRST file to decrypt.</param>
+            <param name="decrypt">True to decrypt, otherwise encrypt.</param>
+            <returns>True if (en/de)cryption has been performed, false otherwise.</returns>
+        </member>
+        <member name="T:Cethleann.Compression.P5SPC.Blowfish">
+            <summary>
+            Implements a basic Blowfish cipher.
+            Only ECB mode is supported.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.#ctor(System.Byte[])">
+            <summary>
+            Initializes the cipher with the given key.
+            </summary>
+            <param name="bfKey">Key to initialize with.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.SetupKey(System.Byte[])">
+            <summary>
+            Transforms PBox and SBoxes according to provided key.
+            </summary>
+            <param name="bfKey">Transform key.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.Encipher">
+            <summary>
+            Executes the Blowfish cipher process.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.Decipher">
+            <summary>
+            Executes the Blowfish cipher process in reverse order.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.Round(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Performs a single Blowfish cipher round.
+            </summary>
+            <param name="lV">Left value.</param>
+            <param name="rV">Right value.</param>
+            <param name="pIdx">PBox index.</param>
+            <returns>Round result.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.DecryptECB(System.Span{System.Byte})">
+            <summary>
+            Decrypts a provided data block in ECB mode.
+            The data length must be 64 bit aligned.
+            </summary>
+            <param name="t">The data to decrypt.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.EncryptECB(System.Span{System.Byte})">
+            <summary>
+            Encrypts a provided data block in ECB mode.
+            The data length must be 64 bit aligned.
+            </summary>
+            <param name="t">The data to encrypt.</param>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.SetupP">
+            <summary>
+            Returns the standard Blowfish PBox array.
+            </summary>
+            <returns>PBox array.</returns>
+        </member>
+        <member name="M:Cethleann.Compression.P5SPC.Blowfish.SetupS">
+            <summary>
+            Returns the standard Blowfish SBox arrays.
+            </summary>
+            <returns>SBox arrays.</returns>
+        </member>
+        <member name="T:Cethleann.Compression.Stream8000Compression">
+            <summary>
+                Compression helper class for TN's fork of KTGL
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.Stream8000Compression.Decompress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Decompresses a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.Stream8000Compression.Compress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Compresses a stream into a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Compression.StreamCompression">
+            <summary>
+                Decompress Standard KTGL streams
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.StreamCompression.Decompress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Decompresses a Gz stream
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.StreamCompression.Compress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Compresses a stream into a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Compression.TableCompression">
+            <summary>
+                Compression helper class for KTGL.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.TableCompression.Compress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Compresses a stream into a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.TableCompression.Decompress(System.Span{System.Byte},Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Decompresses a .gz stream.
+            </summary>
+            <param name="data"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.TableCompression.Decompress(System.IO.Stream,Cethleann.Compression.CompressionOptions)">
+            <summary>
+                Wrapper for Stream based buffers
+            </summary>
+            <param name="stream"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Compression.XOREncryption">
+            <summary>
+                Encryption helper for TN games.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Compression.XOREncryption.Xor(System.UInt32,System.Byte[],System.UInt64,System.UInt64)">
+            <summary>
+                Mutate given key truth with parameters
+            </summary>
+            <param name="length"></param>
+            <param name="truth"></param>
+            <param name="multiplier"></param>
+            <param name="divisor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Compression.XOREncryption.Crypt(System.Span{System.Byte},System.Span{System.Byte})">
+            <summary>
+                En/decrypt data
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Extensions">
+            <summary>
+                Series of helper for FETH.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Extensions.ToFourCC(System.Int32,System.Boolean)">
+            <summary>
+                Converts an integer to a FourCC
+            </summary>
+            <param name="value"></param>
+            <param name="onlyAlphaNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.ToFourCC(Cethleann.Structure.DataType,System.Boolean)">
+            <summary>
+                Converts a DataType to a FourCC
+            </summary>
+            <param name="value"></param>
+            <param name="onlyAlphaNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.ToVersion(System.Int32)">
+            <summary>
+                Converts a version tag to a number.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.ToVersionI(System.Int32)">
+            <summary>
+                Converts a version tag to a number.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.ToVersionA(System.Int32)">
+            <summary>
+                Converts a version tag to a number.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.GetExtension(Cethleann.Structure.DataType)">
+            <summary>
+                Returns determined string extension for this magic.
+            </summary>
+            <param name="magic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsKnown(Cethleann.Structure.DataType)">
+            <summary>
+                True if the magic values are known
+            </summary>
+            <param name="magic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsKnown(System.Span{System.Byte})">
+            <summary>
+                True if the magic values are known
+            </summary>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.Matches(System.Span{System.Byte},Cethleann.Structure.DataType)">
+            <summary>
+                True if the magic value matches the first 4 bytes of the span.
+            </summary>
+            <param name="span"></param>
+            <param name="magic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.Matches(Cethleann.Structure.DataType,System.Span{System.Byte})">
+            <summary>
+                True if the magic value matches the first 4 bytes of the span.
+            </summary>
+            <param name="magic"></param>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.GetDataType(System.Span{System.Byte})">
+            <summary>
+                Gets <seealso cref="T:Cethleann.Structure.DataType" /> from a Span.
+            </summary>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsDataTable(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a DataTable
+            </summary>
+            H:\Datamining\FireEmblemTH\Cethleann\DragonLib\DataTypeHelper.cs
+            <param name="buffer">data to test</param>
+            <returns>true if the header is predictable</returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsBundle(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a valid bundle.
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsSliceBundle(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a valid bundle.
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsPointerBundle(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a valid bundle.
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsByteBundle(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a valid bundle.
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Extensions.IsDDSBundle(System.Span{System.Byte})">
+            <summary>
+                Guesses if the stream is a valid dds bundle.
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Graphics.G1Animation">
+            <summary>
+                Parser for G1A Files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1Animation.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Animation.Section">
+            <summary>
+                GResource
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Animation.Header">
+            <summary>
+                Underlying Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Animation.Splines">
+            <summary>
+                Animation Spline Track Data
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.G1L">
+            <summary>
+                Parser for G1L Files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1L.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with Span buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1L.Header">
+            <summary>
+                Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1L.Buffer">
+            <summary>
+                Data
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.G1Model">
+            <summary>
+                G1Model is the main model format
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1Model.#ctor">
+            <summary>
+                Initialize with no data.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1Model.#ctor(System.Span{System.Byte},System.Boolean,System.Boolean)">
+            <summary>
+                Parse G1M from the provided data buffer
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="parse"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Model.SectionRoot">
+            <summary>
+                Raw data for each section
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Model.Sections">
+            <summary>
+                Sections found in this model.
+                Look for <seealso cref="T:Cethleann.Graphics.G1ModelSection.G1MGeometry" /> for Geometry.
+                Look for <seealso cref="T:Cethleann.Graphics.G1ModelSection.G1MSkeleton" /> for Skeleton.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1Model.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1Model.Section">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Graphics.G1Model.WriteFromRoot">
+            <summary>
+                Write to G1M span using just SectionsRoot
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Graphics.G1Model.GetSection``1">
+            <summary>
+                Gets a specific section from the G1M model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Graphics.G1Model.GetSections``1">
+            <summary>
+                Gets a specific section from the G1M model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1Extra">
+            <summary>
+                Extra Section of G1M models
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1Extra.#ctor(System.Span{System.Byte},System.Boolean,Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Extra data found in G1M models.
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1Extra.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1Extra.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MFormat">
+            <summary>
+                F Section of G1M models
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MFormat.#ctor(System.Span{System.Byte},System.Boolean,Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Model format Data
+                Pay Respects.
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MFormat.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MFormat.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGeometry">
+            <summary>
+                Geometry Section of G1M models
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MGeometry.#ctor(System.Span{System.Byte},System.Boolean,Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Model Geometry
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGeometry.Header">
+            <summary>
+                Header info (bounding box)
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGeometry.SubSections">
+            <summary>
+                List of geometry sections
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGeometry.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGeometry.Section">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MGeometry.GetSection``1">
+            <summary>
+                Gets a geometry component
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MGeometry.GetSections``1">
+            <summary>
+                Gets all geometry components matching
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGBone">
+            <summary>
+                Parses mesh bones
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGBone.Bones">
+            <summary>
+                Bone map
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGBone.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGBone.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGIndexBuffer">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGIndexBuffer.Buffers">
+            <summary>
+                List of vertex buffer strides
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGIndexBuffer.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGIndexBuffer.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMaterial">
+            <summary>
+                Parses material data
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMaterial.Materials">
+            <summary>
+                Material data found in this section
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMaterial.Section">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMaterial.Type">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMesh">
+            <summary>
+                Parses submesh groups
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMesh.Meshes">
+            <summary>
+                List of meshes with the related data.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMesh.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGMesh.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGShaderParam">
+            <summary>
+                Parses shader variable data
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGShaderParam.ParamGroups">
+            <summary>
+                Two dimensional list of param values.
+                I think count usually matches the number of materials.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGShaderParam.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGShaderParam.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSocket">
+            <summary>
+                "Lattice" is an assumption.
+                Just a list of float data, used for bones maybe?
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSocket.Sockets">
+            <summary>
+                Sockets
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSocket.Section">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSocket.Type">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSubMesh">
+            <summary>
+                Parses submesh data
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSubMesh.SubMeshes">
+            <summary>
+                Assembles a series of faces into a polygon.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSubMesh.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGSubMesh.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexAttribute">
+            <summary>
+                VertexBuffer Stride information
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexAttribute.Attributes">
+            <summary>
+                Describes vertex strides
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexAttribute.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexAttribute.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexBuffer">
+            <summary>
+                Copies raw vertex buffers.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexBuffer.Buffers">
+            <summary>
+                List of vertex buffer strides
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexBuffer.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.G1MGVertexBuffer.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MGSection.IG1MGSection">
+            <summary>
+                Base Wrapper for G1MG Sections
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.IG1MGSection.Type">
+            <summary>
+                Type of this section
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MGSection.IG1MGSection.Section">
+            <summary>
+                Section header
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MMatrix">
+            <summary>
+                Matrix Section of G1M models
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MMatrix.#ctor(System.Span{System.Byte},System.Boolean,Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Model Matrix Data
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MMatrix.Matrices">
+            <summary>
+                List of matrices found in the file.
+                They're all weird.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MMatrix.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MMatrix.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MSkeleton">
+            <summary>
+                Skeleton Section of G1M models
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MSkeleton.#ctor(System.Span{System.Byte},System.Boolean,Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Model Skeleton Data.
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MSkeleton.Header">
+            <summary>
+                Format Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MSkeleton.BoneIndices">
+            <summary>
+                Bone Remap Index
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MSkeleton.Bones">
+            <summary>
+                lsof bones
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MSkeleton.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MSkeleton.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1ModelSection.G1MStub">
+            <summary>
+                Stub G1M Section
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1ModelSection.G1MStub.#ctor(System.Span{System.Byte},Cethleann.Structure.Resource.ResourceSectionHeader)">
+            <summary>
+                Initialize with memory block
+            </summary>
+            <param name="dataBlock"></param>
+            <param name="sectionHeader"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MStub.Data">
+            <summary>
+                Memory Buffer for this section
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MStub.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1ModelSection.G1MStub.Section">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Graphics.G1TextureGroup">
+            <summary>
+                G1TextureGroup is a bundle of textures.
+                This is how all textures are encoded.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G1TextureGroup.#ctor(System.Span{System.Byte},System.Boolean,System.Boolean)">
+            <summary>
+                Parse G1T from the provided data buffer
+            </summary>
+            <param name="data"></param>
+            <param name="ignoreVersion"></param>
+            <param name="metaOnly">only parse metadata</param>
+        </member>
+        <member name="P:Cethleann.Graphics.G1TextureGroup.Header">
+            <summary>
+                G1TG Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1TextureGroup.Textures">
+            <summary>
+                List of textures found in this bundle
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G1TextureGroup.SupportedVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.Graphics.G1TextureGroup.Section">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.Graphics.G1TextureGroup.UnpackWHM(Cethleann.Structure.Resource.Texture.TextureDataHeader,System.Func{System.Byte,Cethleann.Structure.Resource.Texture.TextureType})">
+            <summary>
+                Unpacks Width, Height, Mip Count, and DXGI Format from a G1T data header.
+            </summary>
+            <param name="header"></param>
+            <param name="rewriteTextureType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Graphics.G2Animation">
+            <summary>
+                Parser for G2A Files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.G2Animation.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.G2Animation.Section">
+            <summary>
+                GResource
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G2Animation.Header">
+            <summary>
+                Underlying Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G2Animation.Unknown1">
+            <summary>
+                V50 + Only!
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G2Animation.Splines">
+            <summary>
+                Animation Spline Track Data
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.G2Animation.QuantizedData">
+            <summary>
+                Animation Interpolation Data
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.IKTGLSection">
+            <summary>
+                Boiler interface for G1 Sections.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.IKTGLSection.SupportedVersion">
+            <summary>
+                Version implemented by this class
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.IKTGLSection.Section">
+            <summary>
+                Section header for this section
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.KSLT">
+            <summary>
+                KSLT parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.KSLT.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with byte data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.KSLT.Header">
+            <summary>
+                KSLT Header data
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.KSLT.Matrices">
+            <summary>
+                Matrix section
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.KSLT.Pointers">
+            <summary>
+                Image pointers
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.KSLT.Names">
+            <summary>
+                Image names
+            </summary>
+        </member>
+        <member name="P:Cethleann.Graphics.KSLT.Entries">
+            <summary>
+                Images
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.KTIDTextureSet">
+            <summary>
+                KTID / KTIDSOBJDB Texture Set File
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.KTIDTextureSet.#ctor(System.Span{System.Byte})">
+            <summary>
+                Parse from Buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.KTIDTextureSet.Textures">
+            <summary>
+                List of KTID References
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.MDLK">
+            <summary>
+                Decomposes a MDLK buffer to individual files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.MDLK.#ctor(System.Span{System.Byte})">
+            <summary>
+                Decomposes a MDLK buffer to individual files
+            </summary>
+            <param name="buffer"></param>
+            <exception cref="T:System.IO.InvalidDataException"></exception>
+        </member>
+        <member name="P:Cethleann.Graphics.MDLK.Entries">
+            <summary>
+                Usually models.
+            </summary>
+        </member>
+        <member name="T:Cethleann.Graphics.PackedResource">
+            <summary>
+                Generic reader for KTGLSections
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.PackedResource.#ctor">
+            <summary>
+                Initialize with no data
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.PackedResource.#ctor(System.Span{System.Byte},System.Int32)">
+            <summary>
+                Initialize with a count
+            </summary>
+            <param name="data"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.PackedResource.Sections">
+            <summary>
+                lsof sections in the file.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.PackedResource.WriteWithHeader``1(``0,Cethleann.Structure.DataType,System.Int32)">
+            <summary>
+                Create a file with the given parameters
+            </summary>
+            <param name="header"></param>
+            <param name="target"></param>
+            <param name="version"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Graphics.SCEN">
+            <summary>
+                SCEN Container
+            </summary>
+        </member>
+        <member name="M:Cethleann.Graphics.SCEN.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with databuffer
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Graphics.SCEN.Entries">
+            <summary>
+                lsof data entries
+            </summary>
+        </member>
+        <member name="T:Cethleann.KTID.KTIDExtensions">
+            <summary>
+                KTID Extensions
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.KTIDExtensions.Dereference(Cethleann.Structure.KTID.KTIDReference,Cethleann.KTID.OBJDB)">
+            <summary>
+                Load a referenced KTID structure.
+            </summary>
+            <param name="instance"></param>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.KTID.KTIDExtensions.Dereference(Cethleann.Structure.KTID.KTIDReference,Cethleann.ManagedFS.Nyotengu)">
+            <summary>
+                Load a referenced KTID file
+            </summary>
+            <param name="instance"></param>
+            <param name="nyotengu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.KTID.KTIDExtensions.GetName(Cethleann.Structure.KTID.KTIDReference,Cethleann.KTID.RDBINFO,System.Collections.Generic.Dictionary{Cethleann.Structure.KTID.KTIDReference,System.String}[])">
+            <summary>
+                Attempt to retrieve a KTID file
+            </summary>
+            <param name="instance"></param>
+            <param name="ndb"></param>
+            <param name="nameLists"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.KTID.NDB">
+            <summary>
+                Parser for RDB NAME databases (NDB)
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.NDB.#ctor">
+            <summary>
+                Initialize with no data (for compatability)
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.NDB.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with stream data
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.KTID.NDB.Header">
+            <summary>
+                NDB Header
+            </summary>
+        </member>
+        <member name="T:Cethleann.KTID.OBJDB">
+            <summary>
+                KTID System Object Database
+            </summary>
+        </member>
+        <member name="T:Cethleann.KTID.OBJDB.PropertyCallbackDelegate">
+            <summary>
+                Callback for Property loaders
+            </summary>
+            <param name="buffer"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:Cethleann.KTID.OBJDB.PropertyTypeMap">
+            <summary>
+                Property Loaders
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDB.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with buffer, and with an optional Name Database
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.KTID.OBJDB.Header">
+            <summary>
+                KIDSOBJDB header
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.OBJDB.Entries">
+            <summary>
+                Entries in the database
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDB.CreateDelegate``1">
+            <summary>
+                Helper function to create primitive readers
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.KTID.OBJDBStructure">
+            <summary>
+                Wrapper for tuple to provide some extra helpers
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDBStructure.#ctor(Cethleann.Structure.KTID.OBJDBRecord,System.Collections.Generic.Dictionary{Cethleann.Structure.KTID.OBJDBProperty,System.Object[]})">
+            <summary>
+                Initialize
+            </summary>
+            <param name="record"></param>
+            <param name="properties"></param>
+        </member>
+        <member name="P:Cethleann.KTID.OBJDBStructure.Record">
+            <summary>
+                Proxy for Item1
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.OBJDBStructure.Properties">
+            <summary>
+                Proxy for Item2
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDBStructure.GetProperty(System.String)">
+            <summary>
+                Get property values by name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDBStructure.GetProperties(System.String[])">
+            <summary>
+                Get multple properties by name
+            </summary>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDBStructure.GetProperty(Cethleann.Structure.KTID.KTIDReference)">
+            <summary>
+                Get property values by KTID
+            </summary>
+            <param name="ktid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.KTID.OBJDBStructure.GetProperties(Cethleann.Structure.KTID.KTIDReference[])">
+            <summary>
+                Get multple properties by KTIDs
+            </summary>
+            <param name="ktids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.KTID.RDBINFO">
+            <summary>
+                Parser for RDB INFO lists (NDB)
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.RDBINFO.#ctor">
+            <summary>
+                Initialize with no data (for compatability)
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.RDBINFO.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with stream data
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.KTID.RDBINFO.Entries">
+            <summary>
+                Lsof entries with strings
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.RDBINFO.NameMap">
+            <summary>
+                Hashes mapped to strings
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.RDBINFO.HashMap">
+            <summary>
+                Hashes of both names and typeinfos.
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.RDBINFO.ExtMap">
+            <summary>
+                Type infos hashes mapped to guessed extensions
+            </summary>
+        </member>
+        <member name="P:Cethleann.KTID.RDBINFO.IsEmpty">
+            <summary>
+                Wild if true.
+            </summary>
+        </member>
+        <member name="M:Cethleann.KTID.RDBINFO.Union(Cethleann.KTID.RDBINFO)">
+            <summary>
+                Merges one RDBINFO with another.
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Flayn">
+            <summary>
+                Management class for DATA0 and INFO0 files.
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase)">
+            <summary>
+                Loads data
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.Options">
+            <summary>
+                Nyotengu specific Options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.Data">
+            <summary>
+                Game data
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.Patch">
+            <summary>
+                Patch data
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.Patterns">
+            <summary>
+                LINKIDX/LINKDATA patterns
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.PatchRomFS">
+            <summary>
+                Root directory of the Patch rom:/
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.RootEntryCount">
+            <summary>
+                Maximum number of entries found in the base container
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.DataEntryCount">
+            <summary>
+                Maximum number of entries found in the DLC containers
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.PatchEntryCount">
+            <summary>
+                Maximum number of entries found in the latest patch container.
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.FileList">
+            <summary>
+                Loaded FileList.csv
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.GameId">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Flayn.EntryCount">
+            <summary>
+                Maximum number of entries found in both containers and patches
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.Dispose">
+            <summary>
+                Cleans managed data
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.ReadEntry(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.AddDataFS(System.String)">
+            <summary>
+                Adds a DATA container, usually base games
+            </summary>
+            <param name="path"></param>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.Finalize">
+            <summary>
+                Cleanup
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.AddInfoFSInternal(System.String,System.String)">
+            <summary>
+                Adds a patch container.
+            </summary>
+            <param name="info0Path"></param>
+            <param name="info1Path"></param>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Flayn.LoadPatterns(System.String)">
+            <summary>
+                Load LINKDATA filename patterns
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="T:Cethleann.ManagedFS.IManagedFS">
+            <summary>
+                Generic FS Interface
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.IManagedFS.EntryCount">
+            <summary>
+                Maximum number of entries found in both containers and patches
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.IManagedFS.GameId">
+            <summary>
+                Game ID of the game.
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.IManagedFS.ReadEntry(System.Int32)">
+            <summary>
+                Reads an entry from the first valid (non-zero) storage.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.IManagedFS.LoadFileList(System.String,System.String)">
+            <summary>
+                Loads a predefined filelist mapping file ids to names
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.IManagedFS.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <summary>
+                Attempts to get a valid filename/filepath.
+            </summary>
+            <param name="index"></param>
+            <param name="ext"></param>
+            <param name="dataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.IManagedFS.AddDataFS(System.String)">
+            <summary>
+                Adds a container
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Leonhart">
+            <summary>
+                Management class for DATA0 and INFO0 files.
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase)">
+            <summary>
+                Loads data
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Leonhart.Data">
+            <summary>
+                Game data
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Leonhart.FileList">
+            <summary>
+                Loaded FileList.csv
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Leonhart.GameId">
+            <summary>
+                Game ID of the game.
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Leonhart.EntryCount">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.Dispose">
+            <summary>
+                Cleans managed data
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.ReadEntry(System.Int32)">
+            <summary>
+                Reads an entry from the first valid (non-zero) storage.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <summary>
+                Attempts to get a valid filename/filepath.
+            </summary>
+            <param name="index"></param>
+            <param name="ext"></param>
+            <param name="dataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.AddDataFS(System.String)">
+            <summary>
+                Adds a LINKDATA container, usually base games
+            </summary>
+            <param name="path"></param>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Leonhart.Finalize">
+            <summary>
+                Cleanup
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.ManagedFSHelper">
+            <summary>
+                Helper Class for ManagedFS
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetFileList(System.String,System.Int32)">
+            <summary>
+                Parse a CSV with N fields
+            </summary>
+            <param name="loc"></param>
+            <param name="fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetFileList(System.String)">
+            <summary>
+                Parse a CSV
+            </summary>
+            <param name="loc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetFileList(System.Span{System.Byte})">
+            <summary>
+                Parse a CSV
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetFileList(System.Span{System.Byte},System.Int32)">
+            <summary>
+                Parse a CSV
+            </summary>
+            <param name="buffer"></param>
+            <param name="fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetFileListLocation(System.String,System.String,System.String)">
+            <summary>
+                Get a filelist location via string
+            </summary>
+            <param name="filename"></param>
+            <param name="type"></param>
+            <param name="system"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetSimpleFileList(System.String,System.String,System.String)">
+            <summary>
+                Get and parse a key/value CSV
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <param name="system"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.ManagedFSHelper.GetNamedFileList(System.String,System.String,System.String)">
+            <summary>
+                Get a simple namespace/key/value CSV
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <param name="system"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Mitsunari">
+            <summary>
+                Nioh archive_*.bin file management
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase)">
+            <summary>
+                Loads data
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Mitsunari.Data">
+            <summary>
+                Underlying LINKARCHIVEs
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Mitsunari.FileList">
+            <summary>
+                Loaded FileList.csv
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Mitsunari.EntryCount">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Mitsunari.GameId">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.ReadEntry(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.AddDataFS(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Mitsunari.Finalize">
+            <summary>
+                Cleanup
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Nyotengu">
+            <summary>
+                RDB Manager
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase)">
+            <summary>
+                Loads data
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Nyotengu.Options">
+            <summary>
+                Nyotengu specific Options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Nyotengu.RDBs">
+            <summary>
+                List of RDBs loaded
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Nyotengu.FileList">
+            <summary>
+                Loaded FileList.csv
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Nyotengu.EntryCount">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Nyotengu.GameId">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.ReadEntry(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.AddDataFS(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.ReadEntry(Cethleann.Structure.KTID.KTIDReference)">
+            <summary>
+                Read entry via KTID
+            </summary>
+            <param name="ktid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.LoadKTIDFileListShared(System.String,System.String)">
+            <summary>
+                Read a KTID File list with RDBShared
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.LoadKTIDFileList(System.String,System.String)">
+            <summary>
+                Read a KTID File list
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.LoadKTIDFileListEx(System.String,System.String)">
+            <summary>
+                Read a KTID file list preserving the namespace
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.LoadExtList(System.String)">
+            <summary>
+                Load typeid extension list
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.Finalize">
+            <summary>
+                Disposes
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.SaveGeneratedFileList(System.String,System.String)">
+            <summary>
+                Save filelist to disk
+            </summary>
+            <param name="filename"></param>
+            <param name="game"></param>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Nyotengu.SaveGeneratedFileList(System.Collections.Generic.Dictionary{Cethleann.Structure.KTID.KTIDReference,System.ValueTuple{System.String,System.String}},System.String,System.String)">
+            <summary>
+                Save filelist to disk
+            </summary>
+            <param name="filelist"></param>
+            <param name="filename"></param>
+            <param name="game"></param>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.Default.FlaynOptions">
+            <summary>
+                Flayn specific options implementation
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.Default.FlaynOptions.TinyFlayn">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.Default.NyotenguOptions">
+            <summary>
+                Nyotengu specific options implementation
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.Default.NyotenguOptions.NyotenguPrefixFilenames">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.Default.ReisalinOptions">
+            <summary>
+                Reisalin specific options implementation
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.Default.ReisalinOptions.ReisalinA17">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.Default.ReisalinOptions.ReisalinKeyFix">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.IFlaynOptions">
+            <summary>
+                Nyotengu specific options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.IFlaynOptions.TinyFlayn">
+            <summary>
+                Alternate format
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.IManagedFSOptions">
+            <summary>
+                Generic ManagedFS Options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.IManagedFSOptions.Platform">
+            <summary>
+                Platform the game is from
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.IManagedFSOptions.GameId">
+            <summary>
+                Game being loaded
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.IManagedFSOptionsBase">
+            <summary>
+                Empty stub interface
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.INyotenguOptions">
+            <summary>
+                Nyotengu specific options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.INyotenguOptions.NyotenguPrefixFilenames">
+            <summary>
+                Debug Filenames
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Options.IReisalinOptions">
+            <summary>
+                Reisalin specific options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.IReisalinOptions.ReisalinA17">
+            <summary>
+                Parse older, 32-bit Atelier PAKs
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Options.IReisalinOptions.ReisalinKeyFix">
+            <summary>
+                Parse older, 32-bit Atelier PAKs
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Reisalin">
+            <summary>
+                Manages PAK files
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase)">
+            <summary>
+                Loads data
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Reisalin.Options">
+            <summary>
+                Reisalin specific options
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Reisalin.PAKs">
+            <summary>
+                Lsof PAKs mounted
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Reisalin.EntryCount">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Reisalin.GameId">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.ReadEntry(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.AddDataFS(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Reisalin.Finalize">
+            <summary>
+                Disposes
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Support.YshtolaDissidiaSettings">
+            <summary>
+                Settings specific to NT
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Support.YshtolaDissidiaSettings.#ctor">
+            <summary>
+                Initialize with default values
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Support.YshtolaSettings">
+            <summary>
+                Abstract base settings
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Support.YshtolaSettings.TableNames">
+            <summary>
+                ID Table name
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Support.YshtolaSettings.XorTruth">
+            <summary>
+                Key truth
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Support.YshtolaSettings.Multiplier">
+            <summary>
+                Key multiplier constant
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Support.YshtolaSettings.Divisor">
+            <summary>
+                Key divisor constant
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Support.YshtolaVenusVacationSettings">
+            <summary>
+                Settings specific to XVV
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Support.YshtolaVenusVacationSettings.#ctor">
+            <summary>
+                Initialize with default settings
+            </summary>
+        </member>
+        <member name="T:Cethleann.ManagedFS.Yshtola">
+            <summary>
+                Manages TN files
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.#ctor(Cethleann.ManagedFS.Options.IManagedFSOptionsBase,Cethleann.ManagedFS.Support.YshtolaSettings)">
+            <summary>
+                Initialize with standard data.
+            </summary>
+            <param name="options"></param>
+            <param name="settings"></param>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.FileList">
+            <summary>
+                File List for hashes
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.Settings">
+            <summary>
+                Settings to use for decryption and loading.
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.Tables">
+            <summary>
+                ID Table
+            </summary>
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.Root">
+            <summary>
+                Root directory, the one that contains COMMON.
+            </summary>
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.EntryCount">
+            <inheritdoc />
+        </member>
+        <member name="P:Cethleann.ManagedFS.Yshtola.GameId">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.ReadEntry(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.LoadFileList(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.GetFilename(System.Int32,System.String,Cethleann.Structure.DataType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cethleann.ManagedFS.Yshtola.AddDataFS(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Cethleann.Pack.BPK">
+            <summary>
+                Binary Pack
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.BPK.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Pack.BPK.Pointers">
+            <summary>
+                List of pointers defined by the BPK
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.BPK.Header">
+            <summary>
+                Underlying Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.BPK.Entries">
+            <summary>
+                Data Streams found in the BPK
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.Bundle">
+            <summary>
+                Koei Engine Bundle, apparently because DataTable is too boring.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.Bundle.#ctor">
+            <summary>
+                Initialize with no data
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.Bundle.#ctor(System.Span{System.Byte})">
+            <summary>
+                Split file into individual chunks
+            </summary>
+            <param name="data"></param>
+            <exception cref="T:System.IO.InvalidDataException"></exception>
+        </member>
+        <member name="P:Cethleann.Pack.Bundle.Entries">
+            <summary>
+                lsof data blobs
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.Bundle.Write">
+            <summary>
+                Writes bundle data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Pack.Bundle.Validate(System.Span{System.Byte})">
+            <summary>
+                Checks if the stream makes sense to be a bundle
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Pack.ByteBundle">
+            <summary>
+                Koei Engine Byte Bundle, apparently because Pointer Bundle is too boring.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.ByteBundle.#ctor">
+            <summary>
+                Initialize with no data
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.ByteBundle.#ctor(System.Span{System.Byte})">
+            <summary>
+                Split file into individual chunks
+            </summary>
+            <param name="data"></param>
+            <exception cref="T:System.IO.InvalidDataException"></exception>
+        </member>
+        <member name="P:Cethleann.Pack.ByteBundle.Entries">
+            <summary>
+                lsof data blobs
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.ByteBundle.Write">
+            <summary>
+                Writes bundle data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Pack.ByteBundle.Validate(System.Span{System.Byte})">
+            <summary>
+                Checks if the stream makes sense to be a byte bundle
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Pack.Elixir">
+            <summary>
+                Gust Elixir parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.Elixir.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize from buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Pack.Elixir.Header">
+            <summary>
+                File Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.Elixir.Blobs">
+            <summary>
+                File Buffers
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.Elixir.Entries">
+            <summary>
+                File Meta Entries
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.GAPK">
+            <summary>
+                KTGL Animation Pack
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.GAPK.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Pack.GAPK.Header">
+            <summary>
+                GAPK Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GAPK.Blobs">
+            <summary>
+                GAPK Data Blobs
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GAPK.NameMap">
+            <summary>
+                Name Map for the files stored within
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.GMPK">
+            <summary>
+                KTGL Animation Pack
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.GMPK.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Pack.GMPK.Header">
+            <summary>
+                GMPK Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GMPK.Index">
+            <summary>
+                GMPK Index
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GMPK.Blobs">
+            <summary>
+                GMPK Data Blobs
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GMPK.NameMap">
+            <summary>
+                Name Map for the files stored within
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.GPKNameMap">
+            <summary>
+                GAPK/GMPK NameMap/MotionMap parser
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.GPKNameMap.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with binary data
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Pack.GPKNameMap.Name">
+            <summary>
+                GPK Name
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GPKNameMap.Header">
+            <summary>
+                NameMap Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GPKNameMap.Entries">
+            <summary>
+                NameMap Entries
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.GPKNameMap.Names">
+            <summary>
+                Assembled Names
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.PointerBundle">
+            <summary>
+                Koei Engine Pointer Bundle, apparently because Bundle is too boring.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.PointerBundle.#ctor">
+            <summary>
+                Initialize with no data
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.PointerBundle.#ctor(System.Span{System.Byte})">
+            <summary>
+                Split file into individual chunks
+            </summary>
+            <param name="data"></param>
+            <exception cref="T:System.IO.InvalidDataException"></exception>
+        </member>
+        <member name="P:Cethleann.Pack.PointerBundle.Entries">
+            <summary>
+                lsof data blobs
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.PointerBundle.Write">
+            <summary>
+                Writes bundle data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Pack.PointerBundle.Validate(System.Span{System.Byte})">
+            <summary>
+                Checks if the stream makes sense to be a pointer bundle
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Pack.RESPACK">
+            <summary>
+                Packed Resource files
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.RESPACK.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Pack.RESPACK.Pointers">
+            <summary>
+                List of pointers defined by the RESPACK
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.RESPACK.Header">
+            <summary>
+                Underlying Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.Pack.RESPACK.Entries">
+            <summary>
+                Data Streams found in the PAK
+            </summary>
+        </member>
+        <member name="T:Cethleann.Pack.SliceBundle">
+            <summary>
+                Koei Engine Slice Bundle, apparently because DataTable is too boring.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.SliceBundle.#ctor(System.Span{System.Byte})">
+            <summary>
+                Split file into individual chunks
+            </summary>
+            <param name="data"></param>
+            <exception cref="T:System.IO.InvalidDataException"></exception>
+        </member>
+        <member name="P:Cethleann.Pack.SliceBundle.Entries">
+            <summary>
+                lsof data blobs
+            </summary>
+        </member>
+        <member name="M:Cethleann.Pack.SliceBundle.Validate(System.Span{System.Byte})">
+            <summary>
+                Checks if the stream makes sense to be a bundle
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.SaveData.DFFNTSave">
+            <summary>
+                Parses Dissidia NT Free Save Data
+            </summary>
+        </member>
+        <member name="M:Cethleann.SaveData.DFFNTSave.#ctor(System.Span{System.Byte},System.Span{System.Byte})">
+            <summary>
+                Parse Dissidia Save Data
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+        </member>
+        <member name="P:Cethleann.SaveData.DFFNTSave.Header">
+            <summary>
+                Save Data Header
+            </summary>
+        </member>
+        <member name="P:Cethleann.SaveData.DFFNTSave.SaveData">
+            <summary>
+                JSON Save Data
+            </summary>
+        </member>
+        <member name="P:Cethleann.SaveData.DFFNTSave.TailByte">
+            <summary>
+                Last byte of the file.
+            </summary>
+        </member>
+        <member name="M:Cethleann.SaveData.DFFNTSave.Write">
+            <summary>
+                Write save data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.SaveData.DFFNTSave.Write(System.Span{System.Byte})">
+            <summary>
+                Write save data and encrypt.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Tables.DataTable">
+            <summary>
+                Main blob bundle of the game.
+                Can contain many things, from structures to art assets.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.DataTable.#ctor">
+            <summary>
+                Initialize with no data.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.DataTable.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a span.
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Tables.DataTable.Entries">
+            <summary>
+                Lsof Entries found in the table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.DataTable.Write">
+            <summary>
+                Writes a data buffer for this structure.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Tables.ECB">
+            <summary>
+                DFFNT ECB
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.ECB.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with given buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Tables.ECB.Header">
+            <summary>
+                The header.
+            </summary>
+        </member>
+        <member name="P:Cethleann.Tables.ECB.DynamicData">
+            <summary>
+                Dynamic Data Buffer, such as strings
+            </summary>
+        </member>
+        <member name="P:Cethleann.Tables.ECB.Entries">
+            <summary>
+                Lsof Entries found in the struct table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.ECB.Cast``1">
+            <summary>
+                Cast all entries to the specified struct type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Tables.ECB.Cast(System.Type)">
+            <summary>
+                Cast all entries to the specified struct type.
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Tables.StringTable">
+            <summary>
+                Main string bundle of the game.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.StringTable.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a span.
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Tables.StringTable.Entries">
+            <summary>
+                Lsof Entries found in the table
+            </summary>
+        </member>
+        <member name="T:Cethleann.Tables.StructTable">
+            <summary>
+                Parses a memory buffer by assuming it consists of fixed width structs.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.StructTable.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with given buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Tables.StructTable.Entries">
+            <summary>
+                Lsof Entries found in the struct table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.StructTable.Cast``1">
+            <summary>
+                Cast all entries to the specified struct type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Cethleann.Tables.StructTable.Cast(System.Type)">
+            <summary>
+                Cast all entries to the specified struct type.
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Tables.XL19">
+            <summary>
+                Text Localization files are used to collect text data.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.XL19.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with a span buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="P:Cethleann.Tables.XL19.Entries">
+            <summary>
+                List of string entries in this text blob
+            </summary>
+        </member>
+        <member name="T:Cethleann.Tables.XL20">
+            <summary>
+                Serialization files are used to collect struct data.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Tables.XL20.#ctor(System.Span{System.Byte},System.Type)">
+            <summary>
+                Initialize with a span buffer
+            </summary>
+            <param name="buffer"></param>
+            <param name="t"></param>
+        </member>
+        <member name="P:Cethleann.Tables.XL20.Entries">
+            <summary>
+                List of entries in this blob
+            </summary>
+        </member>
+        <member name="T:Cethleann.Text.Oid">
+            <summary>
+                Object ID / Bone ID list
+            </summary>
+        </member>
+        <member name="M:Cethleann.Text.Oid.#ctor(System.Span{System.Byte},System.Text.Encoding)">
+            <summary>
+                Initialize with buffer
+            </summary>
+            <param name="buffer"></param>
+            <param name="encoding"></param>
+        </member>
+        <member name="P:Cethleann.Text.Oid.Names">
+            <summary>
+                lsof string names
+            </summary>
+        </member>
+        <member name="M:Cethleann.Text.Oid.Write">
+            <summary>
+                Write to buffer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cethleann.Text.UTF8TBL">
+            <summary>
+                UTF-8 texture sheet character table
+            </summary>
+        </member>
+        <member name="M:Cethleann.Text.UTF8TBL.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Cethleann.Text.UTF8TBL.#ctor(System.Span{System.Byte})">
+            <summary>
+                Initialize with databuffer
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:Cethleann.Text.UTF8TBL.Characters">
+            <summary>
+                Chars found in the table.
+            </summary>
+        </member>
+        <member name="M:Cethleann.Text.UTF8TBL.Write">
+            <summary>
+                Write table to buffer
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,265 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "characters": [
+  "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_YOUNGSEPHIROTH",
+  "PC0000_00_Cloud_Standard_SEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_SEPHIROTH"
+ ],
+ "worn": false,
+ "enabled": true,
+ "name": "Young Sephiroth (Outfit)",
+ "description": "Sephiroth in Young Sephiroth's clothes and hair (PC0010_10 of Young_Sephiroth_Outfit_Transformed), on its skeleton in Sephiroth's skeleton family; its wing (PC0010_10_Wing) comes out in the winged forms.",
+ "model": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10.PC0010_10",
+ "skeleton": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_Skeleton.PC0010_10_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "voice": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10.uasset",
+   "size": 5054448,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 22,
+   "imports": [
+    "49ad6c58ecbdb808",
+    "2cccc75f20ab8c79",
+    "f0ee9e11f0ea5cf4",
+    "27cafccda81972d3",
+    "e84878c76de1d54f",
+    "db00af7aa9a0979e",
+    "e556949435d46fb8",
+    "eea4bbf556113638",
+    "6ff0ed52fc9bdab4",
+    "3f5cb8a9a77ada20",
+    "f719c2f739229419",
+    "838a5ab47c5d625c",
+    "c19b63314c12e92d",
+    "4cf626a9b65e7ff6"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_Skeleton",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_Skeleton.uasset",
+   "size": 88904,
+   "export_count": 52,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_YS_BNM",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_YS_BNM.uasset",
+   "size": 50148,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 13,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Material/CH049_001_Body",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Material/CH049_001_Body.uasset",
+   "size": 4141,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 21,
+   "imports": [
+    "86b41052bff55069",
+    "1d7cd2bc45556b48",
+    "a0d58b1113410e89",
+    "efadcbeb87c9d917",
+    "b620ee5845318ae2",
+    "7474287f38a08d2c",
+    "9fd680cafde2b4d9",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Material/CH049_001_Hair",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Material/CH049_001_Hair.uasset",
+   "size": 4292,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 19,
+   "imports": [
+    "86b41052bff55069",
+    "7674fc46b1162a44",
+    "3d1c9236f6197136",
+    "b4dc35246b4f2b33",
+    "31daf7c433e42e4f",
+    "7f780a18179733e3",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_A",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_A.uasset",
+   "size": 4011,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 20,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_A.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_C",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_C.uasset",
+   "size": 3862,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 6,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mg",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mg.uasset",
+   "size": 4011,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mr",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mr.uasset",
+   "size": 4011,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 4,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_N",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_N.uasset",
+   "size": 6838,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 8,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Body_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_A",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_A.uasset",
+   "size": 3939,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 7,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_A.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_C",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_C.uasset",
+   "size": 3790,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 15,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/CH049_001_Hair_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/tex_ch049_001_hair_MG",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/tex_ch049_001_hair_MG.uasset",
+   "size": 3839,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 5,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/tex_ch049_001_hair_N_DirectX",
+   "file": "Content/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Texture/tex_ch049_001_hair_N_DirectX.uasset",
+   "size": 6682,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 18,
+   "imports": [],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-22T19:19:59Z"
+}

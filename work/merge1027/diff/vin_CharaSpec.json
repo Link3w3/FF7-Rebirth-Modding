@@ -1,0 +1,710 @@
+{
+ "fields": [
+  "ContentsSoundAutoSE_Array",
+  "ContentSoundVoice_Array",
+  "ContentsEffect_Array",
+  "ContentsSoundSE_Array",
+  "OverrideAnimationSetString_Array",
+  "SoundVoisePack_Array",
+  "SoundVoisePackEnableStoryFlag_Array",
+  "OverrideWeaponSocketNames_Array",
+  "EquipmentCharaSpecList_Array",
+  "SharedCharaSpecList_Array",
+  "AnimationSetList_Array",
+  "End2AIList_Array",
+  "EquipmentDefaultHiddenList_Array",
+  "ContentsSoundFootAttributeSE",
+  "CharaID",
+  "NoBattleCharaSpec",
+  "ContentsModel",
+  "AnimationSetParentFolder",
+  "FootAttributeID",
+  "SoundCategoryId",
+  "ReserveCharaSpec",
+  "ScaleMax",
+  "RootMotionTranslationScale",
+  "AnimationPlayRate",
+  "ScaleMin",
+  "WeightType",
+  "PhysiqueSize",
+  "MoveType",
+  "IgnoreRagdollPhysics",
+  "GroundAnimationBattlePackIndex",
+  "GroundAnimationFieldPackIndex",
+  "FlyAnimationBattlePackIndex",
+  "FlyAnimationFieldPackIndex",
+  "EnableCollision"
+ ],
+ "added": [
+  "PC0011_10_Chaos"
+ ],
+ "removed": [],
+ "changed": {
+  "PC0000_00_Cloud_Standard": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_00_Cloud_Standard_NoBattle",
+    "PC0000_00_Cloud_Standard"
+   ],
+   "ContentsModel": [
+    "PC0000_00_Cloud_Standard",
+    "PC0011_00_Vincent_Standard"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_00_Cloud_Standard_Reserve",
+    "PC0000_00_Cloud_Standard"
+   ]
+  },
+  "PC0000_04_Cloud_ZackCostume": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_04_Cloud_ZackCostume_NoBattle",
+    "PC0000_04_Cloud_ZackCostume"
+   ],
+   "ContentsModel": [
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0011_00_Vincent_Standard"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_04_Cloud_ZackCostume_Reserve",
+    "PC0000_04_Cloud_ZackCostume"
+   ]
+  },
+  "PC0000_12_Cloud_ZackCostumeDirty": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle",
+    "PC0000_12_Cloud_ZackCostumeDirty"
+   ],
+   "ContentsModel": [
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0011_00_Vincent_Standard"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve",
+    "PC0000_12_Cloud_ZackCostumeDirty"
+   ]
+  },
+  "PC0000_18_Cloud_ZackCostumeAge21": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle",
+    "PC0000_18_Cloud_ZackCostumeAge21"
+   ],
+   "ContentsModel": [
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0011_00_Vincent_Standard"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve",
+    "PC0000_18_Cloud_ZackCostumeAge21"
+   ]
+  },
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21"
+   ],
+   "ContentsModel": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0011_00_Vincent_Standard"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21"
+   ]
+  },
+  "PC0000_23_Cloud_ZackCostumeWet": {
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack",
+     "EB2160_VincentValentine_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0000_00_Cloud",
+     "SE_EB2160_00_VincentValentine_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     "Battle07",
+     "Neutral20",
+     "Battle08",
+     "Facial07"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0000_23_Cloud_ZackCostumeWet",
+    "PC0011_00_Vincent_Standard"
+   ]
+  },
+  "PC0009_03_Zack_StandardWet": {
+   "ContentSoundVoice_Array": [
+    [],
+    [
+     "VO_PC0009_00_Zack"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [],
+    [
+     "PC0009_Zack_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_PC0009_00_Zack_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     "Neutral00",
+     null,
+     null,
+     "Facial00"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     null,
+     "Facial00",
+     null,
+     null,
+     null,
+     null,
+     null,
+     "Battle00_Comp"
+    ]
+   ]
+  },
+  "PC0010_01_Sephiroth_StandardWet": {
+   "ContentSoundVoice_Array": [
+    [],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [],
+    [
+     "PC0010_Sephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     "Neutral00",
+     null,
+     null,
+     "Facial00"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     null,
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     null,
+     null,
+     "Battle00_Comp"
+    ]
+   ]
+  },
+  "EN0000_33_SecuritySoldier_StandardWet": {
+   "ContentsEffect_Array": [
+    [],
+    [
+     "EN0000_SecuritySoldier_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_EN0000_SecuritySoldier"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     null,
+     "Neutral00_Gun",
+     "Neutral00",
+     "Facial00"
+    ],
+    [
+     "Battle00_Gun",
+     "Battle00",
+     "Neutral00_Gun",
+     "Neutral00",
+     "Facial00"
+    ]
+   ]
+  },
+  "WE0000_00_Cloud_BusterSword": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_00_Cloud_BusterSword",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_05_Cloud_NailBat": {
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_05_NailBat"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_05_Cloud_NailBat",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_11_Cloud_END2Weapon1": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_11_Cloud_END2Weapon1_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_11_Cloud_END2Weapon1",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_12_Cloud_END2Weapon2": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_12_Cloud_END2Weapon2_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_12_Cloud_END2Weapon2",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_13_Cloud_END2Weapon3": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_13_Cloud_END2Weapon3_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_13_Cloud_END2Weapon3",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_14_Cloud_END2Weapon4": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_14_Cloud_END2Weapon4_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_14_Cloud_END2Weapon4",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_15_Cloud_END2Weapon5": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_15_Cloud_END2Weapon5_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_15_Cloud_END2Weapon5",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_16_Cloud_END2Weapon6": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_16_Cloud_END2Weapon6_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_16_Cloud_END2Weapon6",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  },
+  "WE0000_17_Cloud_Umbrella": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_17_Cloud_Umbrella_Effect__Pack"
+    ],
+    []
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_17_Cloud_Umbrella"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0011_00_Vincent_Quiksilver"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_17_Cloud_Umbrella",
+    "WE0011_00_Vincent_Quiksilver"
+   ]
+  }
+ }
+}

@@ -1,0 +1,45 @@
+Material EndMaterial_Hair
+  PIN BaseColor              <- MaterialExpressionComponentMask_2[0]
+  PIN Metallic               <- MaterialExpressionConstant_1[0]
+  PIN Specular               <- MaterialExpressionMaterialFunctionCall_5[0]
+  PIN Roughness              <- MaterialExpressionComponentMask_5[0]
+  PIN Normal                 <- MaterialExpressionStaticSwitchParameter_0[0]
+  PIN OpacityMask            <- MaterialExpressionStaticSwitchParameter_4[0]
+  PIN AmbientOcclusion       <- MaterialExpressionCustom_2[0]
+  MaterialExpressionMaterialFunctionCall_0 (MaterialFunctionCall) {"function": "NormalizeNormalRGB"}
+      NormalRGB        <- MaterialExpressionComponentMask_0[0]
+  MaterialExpressionMaterialFunctionCall_1 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_3[0]
+  MaterialExpressionMaterialFunctionCall_5 (MaterialFunctionCall) {"function": "EncodeReflectance"}
+      Reflectance      <- MaterialExpressionConstant_3[0]
+  MaterialExpressionStaticSwitchParameter_0 (StaticSwitchParameter) {"DefaultValue": true, "Definition": "STATIC_SWITCH_TRANSFORMED_NORMAL", "ParameterName": "TransformedNormal", "Group": "Static"}
+      A                <- MaterialExpressionCustom_0[0]
+      B                <- MaterialExpressionCustom_0[0]
+  MaterialExpressionStaticSwitchParameter_4 (StaticSwitchParameter) {"ParameterName": "Coverage", "Group": "Static"}
+      A                <- MaterialExpressionComponentMask_16[0]
+      B                <- MaterialExpressionConstant_0[0]
+  MaterialExpressionTextureSampleParameter2D_0 (TextureSampleParameter2D) {"ParameterName": "1:1:BentNormal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_2 (TextureSampleParameter2D) {"ParameterName": "0:1:Coverage", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_4 (TextureSampleParameter2D) {"ParameterName": "0:2:Metallic/Roughness/Variant", "Group": "Texture", "texture": "008000FF", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "1:0:Occlusion", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_6 (TextureSampleParameter2D) {"ParameterName": "0:0:Color", "Group": "Texture", "texture": "767676FF_sRGB"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_7 (TextureSampleParameter2D) {"ParameterName": "0:3:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  stripped expressions referred to: 12
+    MaterialExpressionComponentMask_0             <- used by MaterialExpressionMaterialFunctionCall_0.NormalRGB
+    MaterialExpressionComponentMask_16            <- used by MaterialExpressionStaticSwitchParameter_4.A
+    MaterialExpressionComponentMask_2             <- used by <pins>.BaseColor
+    MaterialExpressionComponentMask_3             <- used by MaterialExpressionMaterialFunctionCall_1.NormalRG
+    MaterialExpressionComponentMask_5             <- used by <pins>.Roughness
+    MaterialExpressionConstant_0                  <- used by MaterialExpressionStaticSwitchParameter_4.B
+    MaterialExpressionConstant_1                  <- used by <pins>.Metallic
+    MaterialExpressionConstant_3                  <- used by MaterialExpressionMaterialFunctionCall_5.Reflectance
+    MaterialExpressionCustom_0                    <- used by MaterialExpressionStaticSwitchParameter_0.A, MaterialExpressionStaticSwitchParameter_0.B
+    MaterialExpressionCustom_2                    <- used by <pins>.AmbientOcclusion
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionTextureSampleParameter2D_2.Coordinates, MaterialExpressionTextureSampleParameter2D_4.Coordinates, MaterialExpressionTextureSampleParameter2D_6.Coordinates, MaterialExpressionTextureSampleParameter2D_7.Coordinates
+    MaterialExpressionTextureCoordinate_3         <- used by MaterialExpressionTextureSampleParameter2D_0.Coordinates, MaterialExpressionTextureSampleParameter2D_5.Coordinates

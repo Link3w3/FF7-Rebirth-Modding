@@ -1,0 +1,1045 @@
+;
+; Input signature:
+;
+; Name                 Index   Mask Register SysValue  Format   Used
+; -------------------- ----- ------ -------- -------- ------- ------
+; TEXCOORD                10   xyzw        0     NONE   float   xyz 
+; TEXCOORD                11   xyzw        1     NONE   float   xyzw
+; TEXCOORD                 0   xyzw        2     NONE   float   xyzw
+; TEXCOORD                 1   xyzw        3     NONE   float       
+; CONSTANT_CONTEXT         0   xyz         4     NONE   float   xy  
+; SV_IsFrontFace           0      w        4    FFACE    uint       
+; CURRENT_CLIP_SPACE_POSITION     0   xyzw        5     NONE   float   xy w
+; PREVIOUS_CLIP_SPACE_POSITION     0   xyzw        6     NONE   float   xy w
+; SV_Position              0   xyzw        7      POS   float   xyz 
+;
+;
+; Output signature:
+;
+; Name                 Index   Mask Register SysValue  Format   Used
+; -------------------- ----- ------ -------- -------- ------- ------
+; SV_Target                0   xyzw        0   TARGET   float   xyzw
+; SV_Target                1   xyzw        1   TARGET   float   xyzw
+; SV_Target                2   xyzw        2   TARGET   float   xyzw
+; SV_Target                3   xyzw        3   TARGET   float   xyzw
+; SV_Target                4   xyzw        4   TARGET   float   xyzw
+; SV_Target                5   xyzw        5   TARGET   float   xyzw
+; SV_Target                6   xyzw        6   TARGET   float   xyzw
+;
+; shader debug name: 4c92b76f78810d82d5003fbf452fd3c5.pdb
+; shader hash: 4c92b76f78810d82d5003fbf452fd3c5
+;
+; Pipeline Runtime Information: 
+;
+;PSVRuntimeInfo:
+; Pixel Shader
+; DepthOutput=0
+; SampleFrequency=0
+; MinimumExpectedWaveLaneCount: 0
+; MaximumExpectedWaveLaneCount: 4294967295
+; UsesViewID: false
+; SigInputElements: 9
+; SigOutputElements: 7
+; SigPatchConstOrPrimElements: 0
+; SigInputVectors: 8
+; SigOutputVectors[0]: 7
+; SigOutputVectors[1]: 0
+; SigOutputVectors[2]: 0
+; SigOutputVectors[3]: 0
+; EntryFunctionName: MainPS
+;
+;
+; Input signature:
+;
+; Name                 Index             InterpMode DynIdx
+; -------------------- ----- ---------------------- ------
+; TEXCOORD                10                 linear       
+; TEXCOORD                11                 linear       
+; TEXCOORD                 0                 linear       
+; TEXCOORD                 1                 linear       
+; CONSTANT_CONTEXT         0        nointerpolation       
+; CURRENT_CLIP_SPACE_POSITION     0                 linear       
+; PREVIOUS_CLIP_SPACE_POSITION     0                 linear       
+; SV_Position              0          noperspective       
+; SV_IsFrontFace           0        nointerpolation       
+;
+; Output signature:
+;
+; Name                 Index             InterpMode DynIdx
+; -------------------- ----- ---------------------- ------
+; SV_Target                0                              
+; SV_Target                1                              
+; SV_Target                2                              
+; SV_Target                3                              
+; SV_Target                4                              
+; SV_Target                5                              
+; SV_Target                6                              
+;
+; Buffer Definitions:
+;
+; cbuffer View
+; {
+;
+;   struct View
+;   {
+;
+;       row_major float4x4 View_TranslatedWorldToClip;; Offset:    0
+;       row_major float4x4 View_WorldToOrthographicClip;; Offset:   64
+;       row_major float4x4 View_TranslatedWorldToOrthographicClip;; Offset:  128
+;       row_major float4x4 View_WorldToClip;          ; Offset:  192
+;       row_major float4x4 View_ClipToWorld;          ; Offset:  256
+;       row_major float4x4 View_TranslatedWorldToView;; Offset:  320
+;       row_major float4x4 View_ViewToTranslatedWorld;; Offset:  384
+;       row_major float4x4 View_TranslatedWorldToCameraView;; Offset:  448
+;       row_major float4x4 View_CameraViewToTranslatedWorld;; Offset:  512
+;       row_major float4x4 View_ViewToClip;           ; Offset:  576
+;       row_major float4x4 View_ViewToClipNoAA;       ; Offset:  640
+;       row_major float4x4 View_ClipToView;           ; Offset:  704
+;       row_major float4x4 View_ClipToTranslatedWorld;; Offset:  768
+;       row_major float4x4 View_SVPositionToTranslatedWorld;; Offset:  832
+;       row_major float4x4 View_ScreenToWorld;        ; Offset:  896
+;       row_major float4x4 View_ScreenToTranslatedWorld;; Offset:  960
+;       row_major float4x4 View_MobileMultiviewShadowTransform;; Offset: 1024
+;       float3 View_ViewForward;                      ; Offset: 1088
+;       float PrePadding_View_1100;                   ; Offset: 1100
+;       float3 View_ViewUp;                           ; Offset: 1104
+;       float PrePadding_View_1116;                   ; Offset: 1116
+;       float3 View_ViewRight;                        ; Offset: 1120
+;       float PrePadding_View_1132;                   ; Offset: 1132
+;       float3 View_HMDViewNoRollUp;                  ; Offset: 1136
+;       float PrePadding_View_1148;                   ; Offset: 1148
+;       float3 View_HMDViewNoRollRight;               ; Offset: 1152
+;       float PrePadding_View_1164;                   ; Offset: 1164
+;       float4 View_InvDeviceZToWorldZTransform;      ; Offset: 1168
+;       float4 View_ScreenPositionScaleBias;          ; Offset: 1184
+;       float3 View_WorldCameraOrigin;                ; Offset: 1200
+;       float PrePadding_View_1212;                   ; Offset: 1212
+;       float3 View_TranslatedWorldCameraOrigin;      ; Offset: 1216
+;       float PrePadding_View_1228;                   ; Offset: 1228
+;       float3 View_WorldViewOrigin;                  ; Offset: 1232
+;       float PrePadding_View_1244;                   ; Offset: 1244
+;       float3 View_PreViewTranslation;               ; Offset: 1248
+;       float PrePadding_View_1260;                   ; Offset: 1260
+;       row_major float4x4 View_PrevProjection;       ; Offset: 1264
+;       row_major float4x4 View_PrevViewProj;         ; Offset: 1328
+;       row_major float4x4 View_PrevViewRotationProj; ; Offset: 1392
+;       row_major float4x4 View_PrevViewToClip;       ; Offset: 1456
+;       row_major float4x4 View_PrevClipToView;       ; Offset: 1520
+;       row_major float4x4 View_PrevTranslatedWorldToClip;; Offset: 1584
+;       row_major float4x4 View_PrevWorldToOrthographicClip;; Offset: 1648
+;       row_major float4x4 View_PrevTranslatedWorldToOrthographicClip;; Offset: 1712
+;       row_major float4x4 View_PrevTranslatedWorldToView;; Offset: 1776
+;       row_major float4x4 View_PrevViewToTranslatedWorld;; Offset: 1840
+;       row_major float4x4 View_PrevTranslatedWorldToCameraView;; Offset: 1904
+;       row_major float4x4 View_PrevCameraViewToTranslatedWorld;; Offset: 1968
+;       float3 View_PrevWorldCameraOrigin;            ; Offset: 2032
+;       float PrePadding_View_2044;                   ; Offset: 2044
+;       float3 View_PrevWorldViewOrigin;              ; Offset: 2048
+;       float PrePadding_View_2060;                   ; Offset: 2060
+;       float3 View_PrevPreViewTranslation;           ; Offset: 2064
+;       float PrePadding_View_2076;                   ; Offset: 2076
+;       row_major float4x4 View_PrevInvViewProj;      ; Offset: 2080
+;       row_major float4x4 View_PrevScreenToTranslatedWorld;; Offset: 2144
+;       row_major float4x4 View_ClipToPrevClip;       ; Offset: 2208
+;       row_major float4x4 View_ClipToPrevClipWithoutTranslation;; Offset: 2272
+;       row_major float4x4 View_ProjectionToWorld;    ; Offset: 2336
+;       row_major float4x4 View_WorldToProjection;    ; Offset: 2400
+;       float4 View_TemporalAAJitter;                 ; Offset: 2464
+;       float4 View_TemporalSamplerBias;              ; Offset: 2480
+;       float4 View_GlobalClippingPlane;              ; Offset: 2496
+;       float2 View_FieldOfViewWideAngles;            ; Offset: 2512
+;       float2 View_PrevFieldOfViewWideAngles;        ; Offset: 2520
+;       float4 View_ViewRectMin;                      ; Offset: 2528
+;       float4 View_ViewSizeAndInvSize;               ; Offset: 2544
+;       float4 View_LightProbeSizeRatioAndInvSizeRatio;; Offset: 2560
+;       float4 View_BufferSizeAndInvSize;             ; Offset: 2576
+;       float4 View_BufferBilinearUVMinMax;           ; Offset: 2592
+;       float4 View_ScreenToViewSpace;                ; Offset: 2608
+;       int View_NumSceneColorMSAASamples;            ; Offset: 2624
+;       float View_PreExposure;                       ; Offset: 2628
+;       float View_OneOverPreExposure;                ; Offset: 2632
+;       float View_PreviousPreExposure;               ; Offset: 2636
+;       float View_PreviousOneOverPreExposure;        ; Offset: 2640
+;       float PrePadding_View_2644;                   ; Offset: 2644
+;       float PrePadding_View_2648;                   ; Offset: 2648
+;       float PrePadding_View_2652;                   ; Offset: 2652
+;       float4 View_DiffuseOverrideParameter;         ; Offset: 2656
+;       float4 View_SpecularOverrideParameter;        ; Offset: 2672
+;       float4 View_NormalOverrideParameter;          ; Offset: 2688
+;       float4 View_RoughnessOverrideParameter;       ; Offset: 2704
+;       float View_PrevFrameGameTime;                 ; Offset: 2720
+;       float View_PrevFrameRealTime;                 ; Offset: 2724
+;       float View_OutOfBoundsMask;                   ; Offset: 2728
+;       float PrePadding_View_2732;                   ; Offset: 2732
+;       float3 View_WorldCameraMovementSinceLastFrame;; Offset: 2736
+;       float View_CullingSign;                       ; Offset: 2748
+;       float View_NearPlane;                         ; Offset: 2752
+;       float View_AdaptiveTessellationFactor;        ; Offset: 2756
+;       float View_GameTime;                          ; Offset: 2760
+;       float View_RealTime;                          ; Offset: 2764
+;       float View_DeltaTime;                         ; Offset: 2768
+;       float View_EnvironmentTime;                   ; Offset: 2772
+;       float View_PreviousEnvironmentTime;           ; Offset: 2776
+;       float View_MaterialTextureMipBias;            ; Offset: 2780
+;       float View_MaterialTextureDerivativeMultiply; ; Offset: 2784
+;       uint View_Random;                             ; Offset: 2788
+;       uint View_FrameNumber;                        ; Offset: 2792
+;       uint View_StateFrameIndexMod8;                ; Offset: 2796
+;       uint View_StateFrameIndex;                    ; Offset: 2800
+;       uint View_StateFrameDelayIndex;               ; Offset: 2804
+;       uint View_DebugViewModeMask;                  ; Offset: 2808
+;       float View_CameraCut;                         ; Offset: 2812
+;       float View_UnlitViewmodeMask;                 ; Offset: 2816
+;       float PrePadding_View_2820;                   ; Offset: 2820
+;       float PrePadding_View_2824;                   ; Offset: 2824
+;       float PrePadding_View_2828;                   ; Offset: 2828
+;       float4 View_DirectionalLightColor;            ; Offset: 2832
+;       float3 View_DirectionalLightDirection;        ; Offset: 2848
+;       float PrePadding_View_2860;                   ; Offset: 2860
+;       float4 View_TranslucencyLightingVolumeMin[2]; ; Offset: 2864
+;       float4 View_TranslucencyLightingVolumeInvSize[2];; Offset: 2896
+;       float4 View_TranslucencyLightingVolumeDistance[2];; Offset: 2928
+;       float4 View_TemporalAAParams;                 ; Offset: 2960
+;       float4 View_CircleDOFParams;                  ; Offset: 2976
+;       uint View_ForceDrawAllVelocities;             ; Offset: 2992
+;       float View_DepthOfFieldIntensity;             ; Offset: 2996
+;       float View_DepthOfFieldFocalDistance;         ; Offset: 3000
+;       float View_DepthOfFieldFstop;                 ; Offset: 3004
+;       float View_LightModifierEnvironmentLight;     ; Offset: 3008
+;       float View_LightModifierDirectionalLight;     ; Offset: 3012
+;       float View_MotionBlurNormalizedToPixel;       ; Offset: 3016
+;       float View_bSubsurfacePostprocessEnabled;     ; Offset: 3020
+;       float4 View_GeneralPurposeTweak;              ; Offset: 3024
+;       float View_DemosaicVposOffset;                ; Offset: 3040
+;       float PrePadding_View_3044;                   ; Offset: 3044
+;       float PrePadding_View_3048;                   ; Offset: 3048
+;       float PrePadding_View_3052;                   ; Offset: 3052
+;       float3 View_IndirectLightingColorScale;       ; Offset: 3056
+;       float View_AtmosphericFogSunPower;            ; Offset: 3068
+;       float View_AtmosphericFogPower;               ; Offset: 3072
+;       float View_AtmosphericFogDensityScale;        ; Offset: 3076
+;       float View_AtmosphericFogDensityOffset;       ; Offset: 3080
+;       float View_AtmosphericFogGroundOffset;        ; Offset: 3084
+;       float View_AtmosphericFogDistanceScale;       ; Offset: 3088
+;       float View_AtmosphericFogAltitudeScale;       ; Offset: 3092
+;       float View_AtmosphericFogHeightScaleRayleigh; ; Offset: 3096
+;       float View_AtmosphericFogStartDistance;       ; Offset: 3100
+;       float View_AtmosphericFogDistanceOffset;      ; Offset: 3104
+;       float View_AtmosphericFogSunDiscScale;        ; Offset: 3108
+;       float PrePadding_View_3112;                   ; Offset: 3112
+;       float PrePadding_View_3116;                   ; Offset: 3116
+;       float4 View_AtmosphereLightDirection[2];      ; Offset: 3120
+;       float4 View_AtmosphereLightColor[2];          ; Offset: 3152
+;       float4 View_AtmosphereLightColorGlobalPostTransmittance[2];; Offset: 3184
+;       float4 View_AtmosphereLightDiscLuminance[2];  ; Offset: 3216
+;       float4 View_AtmosphereLightDiscCosHalfApexAngle[2];; Offset: 3248
+;       float4 View_SkyViewLutSizeAndInvSize;         ; Offset: 3280
+;       float3 View_SkyWorldCameraOrigin;             ; Offset: 3296
+;       float PrePadding_View_3308;                   ; Offset: 3308
+;       float4 View_SkyPlanetCenterAndViewHeight;     ; Offset: 3312
+;       row_major float4x4 View_SkyViewLutReferential;; Offset: 3328
+;       float4 View_SkyAtmosphereSkyLuminanceFactor;  ; Offset: 3392
+;       float View_SkyAtmospherePresentInScene;       ; Offset: 3408
+;       float View_SkyAtmosphereHeightFogContribution;; Offset: 3412
+;       float View_SkyAtmosphereBottomRadiusKm;       ; Offset: 3416
+;       float View_SkyAtmosphereTopRadiusKm;          ; Offset: 3420
+;       float4 View_SkyAtmosphereCameraAerialPerspectiveVolumeSizeAndInvSize;; Offset: 3424
+;       float View_SkyAtmosphereAerialPerspectiveStartDepthKm;; Offset: 3440
+;       float View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolution;; Offset: 3444
+;       float View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolutionInv;; Offset: 3448
+;       float View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKm;; Offset: 3452
+;       float View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKmInv;; Offset: 3456
+;       float View_SkyAtmosphereApplyCameraAerialPerspectiveVolume;; Offset: 3460
+;       uint View_AtmosphericFogRenderMask;           ; Offset: 3464
+;       uint View_AtmosphericFogInscatterAltitudeSampleNum;; Offset: 3468
+;       float4 View_EnvironmentLightFallbackContext;  ; Offset: 3472
+;       float4 View_FogContextDirectionalLightDirection;; Offset: 3488
+;       float4 View_FogContextDirectionalLightColor;  ; Offset: 3504
+;       float View_FogContextMediumIOR;               ; Offset: 3520
+;       uint View_NumberOfFogContext;                 ; Offset: 3524
+;       uint PrePadding_View_3528;                    ; Offset: 3528
+;       uint PrePadding_View_3532;                    ; Offset: 3532
+;       float4 View_FogContextHeightBasedContextAlbedo[4];; Offset: 3536
+;       float4 View_FogContextHeightBasedContextDensity[4];; Offset: 3600
+;       float4 View_FogContextTransmitContextAlbedo[4];; Offset: 3664
+;       float4 View_FogContextTransmitContextDensity[4];; Offset: 3728
+;       float4 View_FogContextRegionContext[4];       ; Offset: 3792
+;       float4 View_FogContextLightContext[4];        ; Offset: 3856
+;       float3 View_NormalCurvatureToRoughnessScaleBias;; Offset: 3920
+;       float View_RenderingReflectionCaptureMask;    ; Offset: 3932
+;       float View_RealTimeReflectionCapture;         ; Offset: 3936
+;       float View_RealTimeReflectionCapturePreExposure;; Offset: 3940
+;       float PrePadding_View_3944;                   ; Offset: 3944
+;       float PrePadding_View_3948;                   ; Offset: 3948
+;       float4 View_AmbientCubemapTint;               ; Offset: 3952
+;       float View_AmbientCubemapIntensity;           ; Offset: 3968
+;       float View_WetnessIntensity;                  ; Offset: 3972
+;       float View_SkyLightApplyPrecomputedBentNormalShadowingFlag;; Offset: 3976
+;       float View_SkyLightAffectReflectionFlag;      ; Offset: 3980
+;       float View_SkyLightAffectGlobalIlluminationFlag;; Offset: 3984
+;       float PrePadding_View_3988;                   ; Offset: 3988
+;       float PrePadding_View_3992;                   ; Offset: 3992
+;       float PrePadding_View_3996;                   ; Offset: 3996
+;       float4 View_SkyLightColor;                    ; Offset: 4000
+;       float4 View_MobileSkyIrradianceEnvironmentMap[7];; Offset: 4016
+;       float View_MobilePreviewMode;                 ; Offset: 4128
+;       float View_HMDEyePaddingOffset;               ; Offset: 4132
+;       float View_ReflectionCubemapMaxMip;           ; Offset: 4136
+;       float View_ShowDecalsMask;                    ; Offset: 4140
+;       uint View_DistanceFieldAOSpecularOcclusionMode;; Offset: 4144
+;       float View_IndirectCapsuleSelfShadowingIntensity;; Offset: 4148
+;       float PrePadding_View_4152;                   ; Offset: 4152
+;       float PrePadding_View_4156;                   ; Offset: 4156
+;       float3 View_ReflectionEnvironmentRoughnessMixingScaleBiasAndLargestWeight;; Offset: 4160
+;       int View_StereoPassIndex;                     ; Offset: 4172
+;       float4 View_GlobalVolumeCenterAndExtent[4];   ; Offset: 4176
+;       float4 View_GlobalVolumeWorldToUVAddAndMul[4];; Offset: 4240
+;       float View_GlobalVolumeDimension;             ; Offset: 4304
+;       float View_GlobalVolumeTexelSize;             ; Offset: 4308
+;       float View_MaxGlobalDistance;                 ; Offset: 4312
+;       float PrePadding_View_4316;                   ; Offset: 4316
+;       int2 View_CursorPosition;                     ; Offset: 4320
+;       float View_bCheckerboardSubsurfaceProfileRendering;; Offset: 4328
+;       float PrePadding_View_4332;                   ; Offset: 4332
+;       float3 View_PrecomputedLightVolumeGridZParams;; Offset: 4336
+;       float PrePadding_View_4348;                   ; Offset: 4348
+;       float3 View_PrecomputedLightVolumeGridSize;   ; Offset: 4352
+;       float PrePadding_View_4364;                   ; Offset: 4364
+;       int3 View_PrecomputedLightVolumeGridSizeInt;  ; Offset: 4368
+;       int PrePadding_View_4380;                     ; Offset: 4380
+;       float3 View_VolumetricFogGridSize;            ; Offset: 4384
+;       float PrePadding_View_4396;                   ; Offset: 4396
+;       float3 View_VolumetricFogGridSizeReciprocal;  ; Offset: 4400
+;       float PrePadding_View_4412;                   ; Offset: 4412
+;       float3 View_VolumetricFogGridZParameter;      ; Offset: 4416
+;       float PrePadding_View_4428;                   ; Offset: 4428
+;       float3 View_VolumetricFogGridZParameterReciprocal;; Offset: 4432
+;       float PrePadding_View_4444;                   ; Offset: 4444
+;       float3 View_VolumetricFogGridCoordinateSolver;; Offset: 4448
+;       float PrePadding_View_4460;                   ; Offset: 4460
+;       float3 View_VolumetricFogGridCoordinateMinimum;; Offset: 4464
+;       float PrePadding_View_4476;                   ; Offset: 4476
+;       float3 View_VolumetricFogGridCoordinateMaximum;; Offset: 4480
+;       float View_VolumetricFogMaxDistance;          ; Offset: 4492
+;       float3 View_VolumetricLightmapWorldToUVScale; ; Offset: 4496
+;       float PrePadding_View_4508;                   ; Offset: 4508
+;       float3 View_VolumetricLightmapWorldToUVAdd;   ; Offset: 4512
+;       float PrePadding_View_4524;                   ; Offset: 4524
+;       float3 View_VolumetricLightmapIndirectionTextureSize;; Offset: 4528
+;       float View_VolumetricLightmapBrickSize;       ; Offset: 4540
+;       float3 View_VolumetricLightmapBrickTexelSize; ; Offset: 4544
+;       float View_StereoIPD;                         ; Offset: 4556
+;       float View_IndirectLightingCacheShowFlag;     ; Offset: 4560
+;       float View_EyeToPixelSpreadAngle;             ; Offset: 4564
+;       float PrePadding_View_4568;                   ; Offset: 4568
+;       float PrePadding_View_4572;                   ; Offset: 4572
+;       row_major float4x4 View_WorldToVirtualTexture;; Offset: 4576
+;       float4 View_XRPassthroughCameraUVs[2];        ; Offset: 4640
+;       uint View_VirtualTextureFeedbackStride;       ; Offset: 4672
+;       uint PrePadding_View_4676;                    ; Offset: 4676
+;       uint PrePadding_View_4680;                    ; Offset: 4680
+;       uint PrePadding_View_4684;                    ; Offset: 4684
+;       float4 View_RuntimeVirtualTextureMipLevel;    ; Offset: 4688
+;       float2 View_RuntimeVirtualTexturePackHeight;  ; Offset: 4704
+;       float PrePadding_View_4712;                   ; Offset: 4712
+;       float PrePadding_View_4716;                   ; Offset: 4716
+;       float4 View_RuntimeVirtualTextureDebugParams; ; Offset: 4720
+;       int View_FarShadowStaticMeshLODBias;          ; Offset: 4736
+;       float View_MinRoughness;                      ; Offset: 4740
+;       float PrePadding_View_4744;                   ; Offset: 4744
+;       float PrePadding_View_4748;                   ; Offset: 4748
+;       float4 View_HairRenderInfo;                   ; Offset: 4752
+;       uint View_EnableSkyLight;                     ; Offset: 4768
+;       uint View_HairRenderInfoBits;                 ; Offset: 4772
+;       uint View_HairComponents;                     ; Offset: 4776
+;       uint View_DebugContext;                       ; Offset: 4780
+;       uint View_DebugTweak;                         ; Offset: 4784
+;   
+;   } View;                                           ; Offset:    0 Size:  4788
+;
+; }
+;
+; Resource bind info for View_PrimitiveSceneData
+; {
+;
+;   float4 $Element;                                  ; Offset:    0 Size:    16
+;
+; }
+;
+;
+; Resource Bindings:
+;
+; Name                                 Type  Format         Dim      ID      HLSL Bind  Count
+; ------------------------------ ---------- ------- ----------- ------- -------------- ------
+; View                              cbuffer      NA          NA     CB0            cb0     1
+; View_SharedAnisotropic4XWrappedSampler   sampler      NA          NA      S0             s0     1
+; View_PrimitiveSceneData           texture  struct         r/o      T0             t0     1
+; View_SpatiotemporalBlueNoiseVolumeTexture   texture     f32          3d      T1             t1     1
+; Material_Texture2D_0              texture     f32          2d      T2             t2     1
+; Material_Texture2D_2              texture     f32          2d      T3             t3     1
+; Material_Texture2D_3              texture     f32          2d      T4             t4     1
+; Material_Texture2D_4              texture     f32          2d      T5             t5     1
+; Material_Texture2D_5              texture     f32          2d      T6             t6     1
+; Material_Texture2D_13             texture     f32          2d      T7             t7     1
+; Material_Texture2D_14             texture     f32          2d      T8             t8     1
+;
+;
+; ViewId state:
+;
+; Number of inputs: 32, outputs: 28
+; Outputs dependent on ViewId: {  }
+; Inputs contributing to computation of Outputs:
+;   output 4 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 5 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 6 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 10 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 11 depends on inputs: { 17 }
+;   output 12 depends on inputs: { 8, 9 }
+;   output 13 depends on inputs: { 8, 9 }
+;   output 14 depends on inputs: { 8, 9 }
+;   output 15 depends on inputs: { 8, 9, 10, 11 }
+;   output 16 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 10, 11 }
+;   output 17 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 10, 11 }
+;   output 18 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 10, 11 }
+;   output 20 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 21 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 22 depends on inputs: { 0, 1, 2, 4, 5, 6, 7, 8, 9, 16, 28, 29, 30 }
+;   output 24 depends on inputs: { 20, 23, 24, 27 }
+;   output 25 depends on inputs: { 21, 23, 25, 27 }
+;
+target datalayout = "e-m:e-p:32:32-i1:32-i8:8-i16:16-i32:32-i64:64-f16:16-f32:32-f64:64-n8:16:32:64"
+target triple = "dxil-ms-dx"
+
+%dx.types.Handle = type { i8* }
+%dx.types.ResBind = type { i32, i32, i32, i8 }
+%dx.types.ResourceProperties = type { i32, i32 }
+%dx.types.CBufRet.f32 = type { float, float, float, float }
+%dx.types.CBufRet.i32 = type { i32, i32, i32, i32 }
+%dx.types.ResRet.f32 = type { float, float, float, float, i32 }
+%"class.StructuredBuffer<vector<float, 4> >" = type { <4 x float> }
+%"class.Texture3D<vector<float, 4> >" = type { <4 x float>, %"class.Texture3D<vector<float, 4> >::mips_type" }
+%"class.Texture3D<vector<float, 4> >::mips_type" = type { i32 }
+%"class.Texture2D<vector<float, 4> >" = type { <4 x float>, %"class.Texture2D<vector<float, 4> >::mips_type" }
+%"class.Texture2D<vector<float, 4> >::mips_type" = type { i32 }
+%View = type { %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <4 x float>, <4 x float>, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, <3 x float>, float, <3 x float>, float, <3 x float>, float, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, %class.matrix.float.4.4, <4 x float>, <4 x float>, <4 x float>, <2 x float>, <2 x float>, <4 x float>, <4 x float>, <4 x float>, <4 x float>, <4 x float>, <4 x float>, i32, float, float, float, float, float, float, float, <4 x float>, <4 x float>, <4 x float>, <4 x float>, float, float, float, float, <3 x float>, float, float, float, float, float, float, float, float, float, float, i32, i32, i32, i32, i32, i32, float, float, float, float, float, <4 x float>, <3 x float>, float, [2 x <4 x float>], [2 x <4 x float>], [2 x <4 x float>], <4 x float>, <4 x float>, i32, float, float, float, float, float, float, float, <4 x float>, float, float, float, float, <3 x float>, float, float, float, float, float, float, float, float, float, float, float, float, float, [2 x <4 x float>], [2 x <4 x float>], [2 x <4 x float>], [2 x <4 x float>], [2 x <4 x float>], <4 x float>, <3 x float>, float, <4 x float>, %class.matrix.float.4.4, <4 x float>, float, float, float, float, <4 x float>, float, float, float, float, float, float, i32, i32, <4 x float>, <4 x float>, <4 x float>, float, i32, i32, i32, [4 x <4 x float>], [4 x <4 x float>], [4 x <4 x float>], [4 x <4 x float>], [4 x <4 x float>], [4 x <4 x float>], <3 x float>, float, float, float, float, float, <4 x float>, float, float, float, float, float, float, float, float, <4 x float>, [7 x <4 x float>], float, float, float, float, i32, float, float, float, <3 x float>, i32, [4 x <4 x float>], [4 x <4 x float>], float, float, float, float, <2 x i32>, float, float, <3 x float>, float, <3 x float>, float, <3 x i32>, i32, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, <3 x float>, float, float, float, float, float, %class.matrix.float.4.4, [2 x <4 x float>], i32, i32, i32, i32, <4 x float>, <2 x float>, float, float, <4 x float>, i32, float, float, float, <4 x float>, i32, i32, i32, i32, i32 }
+%class.matrix.float.4.4 = type { [4 x <4 x float>] }
+%struct.SamplerState = type { i32 }
+
+define void @MainPS() {
+  %1 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 8, i32 8, i32 0, i8 0 }, i32 8, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %2 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 7, i32 7, i32 0, i8 0 }, i32 7, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %3 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 6, i32 6, i32 0, i8 0 }, i32 6, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %4 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 5, i32 5, i32 0, i8 0 }, i32 5, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %5 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 4, i32 4, i32 0, i8 0 }, i32 4, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %6 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 3, i32 3, i32 0, i8 0 }, i32 3, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %7 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 2, i32 2, i32 0, i8 0 }, i32 2, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %8 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 1, i32 1, i32 0, i8 0 }, i32 1, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %9 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind zeroinitializer, i32 0, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %10 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 0, i32 0, i32 0, i8 3 }, i32 0, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %11 = call %dx.types.Handle @dx.op.createHandleFromBinding(i32 217, %dx.types.ResBind { i32 0, i32 0, i32 0, i8 2 }, i32 0, i1 false)  ; CreateHandleFromBinding(bind,index,nonUniformIndex)
+  %12 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %11, %dx.types.ResourceProperties { i32 13, i32 4788 })  ; AnnotateHandle(res,props)  resource: CBuffer
+  %13 = call float @dx.op.loadInput.f32(i32 4, i32 7, i32 0, i8 0, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %14 = call float @dx.op.loadInput.f32(i32 4, i32 7, i32 0, i8 1, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %15 = call float @dx.op.loadInput.f32(i32 4, i32 7, i32 0, i8 2, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %16 = call float @dx.op.loadInput.f32(i32 4, i32 6, i32 0, i8 0, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %17 = call float @dx.op.loadInput.f32(i32 4, i32 6, i32 0, i8 1, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %18 = call float @dx.op.loadInput.f32(i32 4, i32 6, i32 0, i8 3, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %19 = call float @dx.op.loadInput.f32(i32 4, i32 5, i32 0, i8 0, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %20 = call float @dx.op.loadInput.f32(i32 4, i32 5, i32 0, i8 1, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %21 = call float @dx.op.loadInput.f32(i32 4, i32 5, i32 0, i8 3, i32 undef), !dx.precise !34  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %22 = call float @dx.op.loadInput.f32(i32 4, i32 4, i32 0, i8 0, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %23 = call float @dx.op.loadInput.f32(i32 4, i32 4, i32 0, i8 1, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %24 = call float @dx.op.loadInput.f32(i32 4, i32 2, i32 0, i8 0, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %25 = call float @dx.op.loadInput.f32(i32 4, i32 2, i32 0, i8 1, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %26 = call float @dx.op.loadInput.f32(i32 4, i32 2, i32 0, i8 2, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %27 = call float @dx.op.loadInput.f32(i32 4, i32 2, i32 0, i8 3, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %28 = call float @dx.op.loadInput.f32(i32 4, i32 1, i32 0, i8 0, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %29 = call float @dx.op.loadInput.f32(i32 4, i32 1, i32 0, i8 1, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %30 = call float @dx.op.loadInput.f32(i32 4, i32 1, i32 0, i8 2, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %31 = call float @dx.op.loadInput.f32(i32 4, i32 1, i32 0, i8 3, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %32 = call float @dx.op.loadInput.f32(i32 4, i32 0, i32 0, i8 0, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %33 = call float @dx.op.loadInput.f32(i32 4, i32 0, i32 0, i8 1, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %34 = call float @dx.op.loadInput.f32(i32 4, i32 0, i32 0, i8 2, i32 undef)  ; LoadInput(inputSigId,rowIndex,colIndex,gsVertexAxis)
+  %35 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 155)  ; CBufferLoadLegacy(handle,regIndex)
+  %36 = extractvalue %dx.types.CBufRet.f32 %35, 1
+  %37 = extractvalue %dx.types.CBufRet.f32 %35, 3
+  %38 = fmul fast float %34, %29
+  %39 = fmul fast float %33, %30
+  %40 = fsub fast float %38, %39
+  %41 = fmul fast float %32, %30
+  %42 = fmul fast float %34, %28
+  %43 = fsub fast float %41, %42
+  %44 = fmul fast float %33, %28
+  %45 = fmul fast float %32, %29
+  %46 = fsub fast float %44, %45
+  %47 = fmul fast float %40, %31
+  %48 = fmul fast float %43, %31
+  %49 = fmul fast float %46, %31
+  %50 = call float @dx.op.unary.f32(i32 26, float %22)  ; Round_ne(value)
+  %51 = fptoui float %50 to i32
+  %52 = call float @dx.op.unary.f32(i32 26, float %23)  ; Round_ne(value)
+  %53 = fptoui float %52 to i32
+  %54 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 52)  ; CBufferLoadLegacy(handle,regIndex)
+  %55 = extractvalue %dx.types.CBufRet.f32 %54, 0
+  %56 = extractvalue %dx.types.CBufRet.f32 %54, 1
+  %57 = extractvalue %dx.types.CBufRet.f32 %54, 2
+  %58 = extractvalue %dx.types.CBufRet.f32 %54, 3
+  %59 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 53)  ; CBufferLoadLegacy(handle,regIndex)
+  %60 = extractvalue %dx.types.CBufRet.f32 %59, 0
+  %61 = extractvalue %dx.types.CBufRet.f32 %59, 1
+  %62 = extractvalue %dx.types.CBufRet.f32 %59, 2
+  %63 = extractvalue %dx.types.CBufRet.f32 %59, 3
+  %64 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 54)  ; CBufferLoadLegacy(handle,regIndex)
+  %65 = extractvalue %dx.types.CBufRet.f32 %64, 0
+  %66 = extractvalue %dx.types.CBufRet.f32 %64, 1
+  %67 = extractvalue %dx.types.CBufRet.f32 %64, 2
+  %68 = extractvalue %dx.types.CBufRet.f32 %64, 3
+  %69 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 55)  ; CBufferLoadLegacy(handle,regIndex)
+  %70 = extractvalue %dx.types.CBufRet.f32 %69, 0
+  %71 = extractvalue %dx.types.CBufRet.f32 %69, 1
+  %72 = extractvalue %dx.types.CBufRet.f32 %69, 2
+  %73 = extractvalue %dx.types.CBufRet.f32 %69, 3
+  %74 = fmul fast float %55, %13
+  %75 = call float @dx.op.tertiary.f32(i32 46, float %14, float %60, float %74)  ; FMad(a,b,c)
+  %76 = call float @dx.op.tertiary.f32(i32 46, float %15, float %65, float %75)  ; FMad(a,b,c)
+  %77 = fadd fast float %76, %70
+  %78 = fmul fast float %56, %13
+  %79 = call float @dx.op.tertiary.f32(i32 46, float %14, float %61, float %78)  ; FMad(a,b,c)
+  %80 = call float @dx.op.tertiary.f32(i32 46, float %15, float %66, float %79)  ; FMad(a,b,c)
+  %81 = fadd fast float %80, %71
+  %82 = fmul fast float %57, %13
+  %83 = call float @dx.op.tertiary.f32(i32 46, float %14, float %62, float %82)  ; FMad(a,b,c)
+  %84 = call float @dx.op.tertiary.f32(i32 46, float %15, float %67, float %83)  ; FMad(a,b,c)
+  %85 = fadd fast float %84, %72
+  %86 = fmul fast float %58, %13
+  %87 = call float @dx.op.tertiary.f32(i32 46, float %14, float %63, float %86)  ; FMad(a,b,c)
+  %88 = call float @dx.op.tertiary.f32(i32 46, float %15, float %68, float %87)  ; FMad(a,b,c)
+  %89 = fadd fast float %88, %73
+  %90 = fdiv fast float %77, %89
+  %91 = fdiv fast float %81, %89
+  %92 = fdiv fast float %85, %89
+  %93 = call float @dx.op.dot3.f32(i32 55, float %90, float %91, float %92, float %90, float %91, float %92)  ; Dot3(ax,ay,az,bx,by,bz)
+  %94 = call float @dx.op.unary.f32(i32 25, float %93)  ; Rsqrt(value)
+  %95 = fmul fast float %90, %94
+  %96 = fsub fast float -0.000000e+00, %95
+  %97 = fmul fast float %91, %94
+  %98 = fsub fast float -0.000000e+00, %97
+  %99 = fmul fast float %92, %94
+  %100 = fsub fast float -0.000000e+00, %99
+  %101 = call %dx.types.CBufRet.i32 @dx.op.cbufferLoadLegacy.i32(i32 59, %dx.types.Handle %12, i32 175)  ; CBufferLoadLegacy(handle,regIndex)
+  %102 = extractvalue %dx.types.CBufRet.i32 %101, 0
+  %103 = and i32 %102, 7
+  %104 = add i32 %103, %51
+  %105 = fptosi float %13 to i32
+  %106 = fptosi float %14 to i32
+  %107 = and i32 %105, 127
+  %108 = and i32 %106, 127
+  %109 = and i32 %104, 63
+  %110 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %8, %dx.types.ResourceProperties { i32 4, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture3D<4xF32>
+  %111 = call %dx.types.ResRet.f32 @dx.op.textureLoad.f32(i32 66, %dx.types.Handle %110, i32 0, i32 %107, i32 %108, i32 %109, i32 undef, i32 undef, i32 undef)  ; TextureLoad(srv,mipLevelOrSampleCount,coord0,coord1,coord2,offset0,offset1,offset2)
+  %112 = extractvalue %dx.types.ResRet.f32 %111, 0
+  %113 = extractvalue %dx.types.ResRet.f32 %111, 1
+  %114 = extractvalue %dx.types.ResRet.f32 %111, 2
+  %115 = extractvalue %dx.types.ResRet.f32 %111, 3
+  %116 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %7, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %117 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %10, %dx.types.ResourceProperties { i32 14, i32 0 })  ; AnnotateHandle(res,props)  resource: SamplerState
+  %118 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %116, %dx.types.Handle %117, float %24, float %25, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %119 = extractvalue %dx.types.ResRet.f32 %118, 0
+  %120 = extractvalue %dx.types.ResRet.f32 %118, 1
+  %121 = extractvalue %dx.types.ResRet.f32 %118, 2
+  %122 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %6, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %123 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %122, %dx.types.Handle %117, float %24, float %25, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %124 = extractvalue %dx.types.ResRet.f32 %123, 0
+  %125 = extractvalue %dx.types.ResRet.f32 %123, 1
+  %126 = fmul fast float %124, 2.000000e+00
+  %127 = fmul fast float %125, 2.000000e+00
+  %128 = fadd fast float %126, -1.000000e+00
+  %129 = fadd fast float %127, -1.000000e+00
+  %130 = call float @dx.op.dot2.f32(i32 54, float %128, float %129, float %128, float %129)  ; Dot2(ax,ay,bx,by)
+  %131 = fsub fast float 1.000000e+00, %130
+  %132 = call float @dx.op.binary.f32(i32 35, float 0.000000e+00, float %131)  ; FMax(a,b)
+  %133 = call float @dx.op.unary.f32(i32 24, float %132)  ; Sqrt(value)
+  %134 = call float @dx.op.dot3.f32(i32 55, float %128, float %129, float %133, float %128, float %129, float %133)  ; Dot3(ax,ay,az,bx,by,bz)
+  %135 = call float @dx.op.unary.f32(i32 25, float %134)  ; Rsqrt(value)
+  %136 = fmul fast float %135, %128
+  %137 = fmul fast float %135, %129
+  %138 = fmul fast float %135, %133
+  %139 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %5, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %140 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %139, %dx.types.Handle %117, float %24, float %25, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %141 = extractvalue %dx.types.ResRet.f32 %140, 0
+  %142 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %4, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %143 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %142, %dx.types.Handle %117, float %24, float %25, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %144 = extractvalue %dx.types.ResRet.f32 %143, 0
+  %145 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %3, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %146 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %145, %dx.types.Handle %117, float %24, float %25, float undef, float undef, i32 0, i32 0, i32 undef, float %37, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %147 = extractvalue %dx.types.ResRet.f32 %146, 0
+  %148 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %2, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %149 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %148, %dx.types.Handle %117, float %26, float %27, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %150 = extractvalue %dx.types.ResRet.f32 %149, 0
+  %151 = fmul fast float %150, %144
+  %152 = call float @dx.op.binary.f32(i32 36, float %144, float %150)  ; FMin(a,b)
+  %153 = fsub fast float 1.000000e+00, %152
+  %154 = fadd fast float %153, %151
+  %155 = fmul fast float %154, %154
+  %156 = fmul fast float %155, %155
+  %157 = fmul fast float %156, %154
+  %158 = fsub fast float 1.000000e+00, %157
+  %159 = fmul fast float %158, %158
+  %160 = fsub fast float %151, %152
+  %161 = fmul fast float %158, %160
+  %162 = fmul fast float %159, %159
+  %163 = fmul fast float %162, %161
+  %164 = fadd fast float %163, %152
+  %165 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %1, %dx.types.ResourceProperties { i32 2, i32 1033 })  ; AnnotateHandle(res,props)  resource: Texture2D<4xF32>
+  %166 = call %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32 61, %dx.types.Handle %165, %dx.types.Handle %117, float %26, float %27, float undef, float undef, i32 0, i32 0, i32 undef, float %36, float undef)  ; SampleBias(srv,sampler,coord0,coord1,coord2,coord3,offset0,offset1,offset2,bias,clamp)
+  %167 = extractvalue %dx.types.ResRet.f32 %166, 0
+  %168 = extractvalue %dx.types.ResRet.f32 %166, 1
+  %169 = extractvalue %dx.types.ResRet.f32 %166, 2
+  %170 = fmul fast float %167, 2.000000e+00
+  %171 = fmul fast float %168, 2.000000e+00
+  %172 = fmul fast float %169, 2.000000e+00
+  %173 = fadd fast float %170, -1.000000e+00
+  %174 = fadd fast float %171, -1.000000e+00
+  %175 = fadd fast float %172, -1.000000e+00
+  %176 = call float @dx.op.dot3.f32(i32 55, float %173, float %174, float %175, float %173, float %174, float %175)  ; Dot3(ax,ay,az,bx,by,bz)
+  %177 = call float @dx.op.unary.f32(i32 25, float %176)  ; Rsqrt(value)
+  %178 = fmul fast float %173, %177
+  %179 = fmul fast float %174, %177
+  %180 = fmul fast float %175, %177
+  %181 = fmul fast float %32, %96
+  %182 = call float @dx.op.tertiary.f32(i32 46, float %33, float %98, float %181)  ; FMad(a,b,c)
+  %183 = call float @dx.op.tertiary.f32(i32 46, float %34, float %100, float %182)  ; FMad(a,b,c)
+  %184 = fmul fast float %47, %96
+  %185 = call float @dx.op.tertiary.f32(i32 46, float %48, float %98, float %184)  ; FMad(a,b,c)
+  %186 = call float @dx.op.tertiary.f32(i32 46, float %49, float %100, float %185)  ; FMad(a,b,c)
+  %187 = fmul fast float %28, %96
+  %188 = call float @dx.op.tertiary.f32(i32 46, float %29, float %98, float %187)  ; FMad(a,b,c)
+  %189 = call float @dx.op.tertiary.f32(i32 46, float %30, float %100, float %188)  ; FMad(a,b,c)
+  %190 = fsub fast float -0.000000e+00, %136
+  %191 = call float @dx.op.dot3.f32(i32 55, float %138, float 0.000000e+00, float %190, float %138, float 0.000000e+00, float %190)  ; Dot3(ax,ay,az,bx,by,bz)
+  %192 = call float @dx.op.unary.f32(i32 25, float %191)  ; Rsqrt(value)
+  %193 = fmul fast float %192, %138
+  %194 = fmul fast float %192, %190
+  %195 = fmul fast float %137, %194
+  %196 = fsub fast float -0.000000e+00, %195
+  %197 = fmul fast float %194, %136
+  %198 = fmul fast float %193, %138
+  %199 = fsub fast float %197, %198
+  %200 = fmul fast float %193, %137
+  %201 = call float @dx.op.dot3.f32(i32 55, float %196, float %199, float %200, float %196, float %199, float %200)  ; Dot3(ax,ay,az,bx,by,bz)
+  %202 = call float @dx.op.unary.f32(i32 25, float %201)  ; Rsqrt(value)
+  %203 = fmul fast float %202, %196
+  %204 = fmul fast float %199, %202
+  %205 = fmul fast float %200, %202
+  %206 = call float @dx.op.dot3.f32(i32 55, float %183, float %186, float %189, float %203, float %204, float %205)  ; Dot3(ax,ay,az,bx,by,bz)
+  %207 = call float @dx.op.unary.f32(i32 6, float %206)  ; FAbs(value)
+  %208 = fcmp fast olt float %207, 0x3FA99999A0000000
+  br i1 %208, label %209, label %221
+
+; <label>:209                                     ; preds = %0
+  %210 = fmul fast float %112, 2.000000e+00
+  %211 = fadd fast float %210, -1.000000e+00
+  %212 = fmul fast float %206, 2.000000e+01
+  %213 = fadd fast float %211, %212
+  %214 = fcmp fast ogt float %213, 0.000000e+00
+  %215 = fcmp fast olt float %213, 0.000000e+00
+  %216 = zext i1 %214 to i32
+  %217 = zext i1 %215 to i32
+  %218 = sub nsw i32 %216, %217
+  %219 = sitofp i32 %218 to float
+  %220 = fmul fast float %219, 0x3FA99999A0000000
+  br label %221
+
+; <label>:221                                     ; preds = %209, %0
+  %222 = phi float [ %220, %209 ], [ %206, %0 ]
+  %223 = fmul fast float %222, %203
+  %224 = fmul fast float %222, %204
+  %225 = fmul fast float %222, %205
+  %226 = fsub fast float %183, %223
+  %227 = fsub fast float %186, %224
+  %228 = fsub fast float %189, %225
+  %229 = call float @dx.op.dot3.f32(i32 55, float %226, float %227, float %228, float %226, float %227, float %228)  ; Dot3(ax,ay,az,bx,by,bz)
+  %230 = call float @dx.op.unary.f32(i32 25, float %229)  ; Rsqrt(value)
+  %231 = fmul fast float %226, %230
+  %232 = fmul fast float %227, %230
+  %233 = fmul fast float %228, %230
+  %234 = fmul fast float %178, %32
+  %235 = call float @dx.op.tertiary.f32(i32 46, float %179, float %47, float %234)  ; FMad(a,b,c)
+  %236 = call float @dx.op.tertiary.f32(i32 46, float %180, float %28, float %235)  ; FMad(a,b,c)
+  %237 = fmul fast float %178, %33
+  %238 = call float @dx.op.tertiary.f32(i32 46, float %179, float %48, float %237)  ; FMad(a,b,c)
+  %239 = call float @dx.op.tertiary.f32(i32 46, float %180, float %29, float %238)  ; FMad(a,b,c)
+  %240 = fmul fast float %178, %34
+  %241 = call float @dx.op.tertiary.f32(i32 46, float %179, float %49, float %240)  ; FMad(a,b,c)
+  %242 = call float @dx.op.tertiary.f32(i32 46, float %180, float %30, float %241)  ; FMad(a,b,c)
+  %243 = fmul fast float %236, 5.000000e-01
+  %244 = fmul fast float %239, 5.000000e-01
+  %245 = fmul fast float %242, 5.000000e-01
+  %246 = fadd fast float %243, 5.000000e-01
+  %247 = fadd fast float %244, 5.000000e-01
+  %248 = fadd fast float %245, 5.000000e-01
+  %249 = call float @dx.op.unary.f32(i32 7, float %246)  ; Saturate(value)
+  %250 = call float @dx.op.unary.f32(i32 7, float %247)  ; Saturate(value)
+  %251 = call float @dx.op.unary.f32(i32 7, float %248)  ; Saturate(value)
+  %252 = call float @dx.op.dot3.f32(i32 55, float %231, float %232, float %233, float %231, float %232, float %233)  ; Dot3(ax,ay,az,bx,by,bz)
+  %253 = call float @dx.op.unary.f32(i32 25, float %252)  ; Rsqrt(value)
+  %254 = fmul fast float %253, %231
+  %255 = fmul fast float %253, %232
+  %256 = fmul fast float %253, %233
+  %257 = fmul fast float %254, %32
+  %258 = call float @dx.op.tertiary.f32(i32 46, float %255, float %47, float %257)  ; FMad(a,b,c)
+  %259 = call float @dx.op.tertiary.f32(i32 46, float %256, float %28, float %258)  ; FMad(a,b,c)
+  %260 = fmul fast float %254, %33
+  %261 = call float @dx.op.tertiary.f32(i32 46, float %255, float %48, float %260)  ; FMad(a,b,c)
+  %262 = call float @dx.op.tertiary.f32(i32 46, float %256, float %29, float %261)  ; FMad(a,b,c)
+  %263 = fmul fast float %254, %34
+  %264 = call float @dx.op.tertiary.f32(i32 46, float %255, float %49, float %263)  ; FMad(a,b,c)
+  %265 = call float @dx.op.tertiary.f32(i32 46, float %256, float %30, float %264)  ; FMad(a,b,c)
+  %266 = call float @dx.op.dot3.f32(i32 55, float %259, float %262, float %265, float %259, float %262, float %265)  ; Dot3(ax,ay,az,bx,by,bz)
+  %267 = call float @dx.op.unary.f32(i32 25, float %266)  ; Rsqrt(value)
+  %268 = fmul fast float %267, %259
+  %269 = fmul fast float %267, %262
+  %270 = fmul fast float %267, %265
+  %271 = mul i32 %53, 28
+  %272 = add i32 %271, 27
+  %273 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %9, %dx.types.ResourceProperties { i32 12, i32 16 })  ; AnnotateHandle(res,props)  resource: StructuredBuffer<stride=16>
+  %274 = call %dx.types.ResRet.f32 @dx.op.rawBufferLoad.f32(i32 139, %dx.types.Handle %273, i32 %272, i32 0, i8 15, i32 4)  ; RawBufferLoad(srv,index,elementOffset,mask,alignment)
+  %275 = extractvalue %dx.types.ResRet.f32 %274, 3
+  %276 = fmul fast float %115, 0x3FEFE00000000000
+  %277 = fadd fast float %276, 1.953125e-03
+  %278 = fcmp fast ogt float %275, %277
+  br i1 %278, label %279, label %285
+
+; <label>:279                                     ; preds = %221
+  %280 = fmul fast float %112, 0x3FEFE00000000000
+  %281 = fadd fast float %280, 1.953125e-03
+  %282 = fcmp fast ogt float %147, %281
+  %283 = select i1 %282, float 1.000000e+00, float -1.000000e+00
+  %284 = fcmp olt float %283, 0.000000e+00
+  br label %285
+
+; <label>:285                                     ; preds = %279, %221
+  %286 = phi i1 [ true, %221 ], [ %284, %279 ]
+  call void @dx.op.discard(i32 82, i1 %286)  ; Discard(condition)
+  %287 = call float @dx.op.unary.f32(i32 7, float %119)  ; Saturate(value)
+  %288 = call float @dx.op.unary.f32(i32 7, float %120)  ; Saturate(value)
+  %289 = call float @dx.op.unary.f32(i32 7, float %121)  ; Saturate(value)
+  %290 = call float @dx.op.unary.f32(i32 7, float %141)  ; Saturate(value)
+  %291 = call float @dx.op.unary.f32(i32 7, float %164)  ; Saturate(value)
+  %292 = fmul fast float %290, %290
+  %293 = call float @dx.op.unary.f32(i32 85, float %268)  ; DerivFineX(value)
+  %294 = call float @dx.op.unary.f32(i32 85, float %269)  ; DerivFineX(value)
+  %295 = call float @dx.op.unary.f32(i32 85, float %270)  ; DerivFineX(value)
+  %296 = call float @dx.op.dot3.f32(i32 55, float %293, float %294, float %295, float %293, float %294, float %295)  ; Dot3(ax,ay,az,bx,by,bz)
+  %297 = call float @dx.op.unary.f32(i32 86, float %268)  ; DerivFineY(value)
+  %298 = call float @dx.op.unary.f32(i32 86, float %269)  ; DerivFineY(value)
+  %299 = call float @dx.op.unary.f32(i32 86, float %270)  ; DerivFineY(value)
+  %300 = call float @dx.op.dot3.f32(i32 55, float %297, float %298, float %299, float %297, float %298, float %299)  ; Dot3(ax,ay,az,bx,by,bz)
+  %301 = fadd fast float %300, %296
+  %302 = fmul fast float %301, 0x3FC45F3060000000
+  %303 = call float @dx.op.binary.f32(i32 36, float %302, float 0x3FC70A3D80000000)  ; FMin(a,b)
+  %304 = fadd fast float %303, %292
+  %305 = call float @dx.op.unary.f32(i32 7, float %304)  ; Saturate(value)
+  %306 = call float @dx.op.unary.f32(i32 24, float %305)  ; Sqrt(value)
+  %307 = call %dx.types.Handle @dx.op.annotateHandle(i32 216, %dx.types.Handle %9, %dx.types.ResourceProperties { i32 12, i32 16 })  ; AnnotateHandle(res,props)  resource: StructuredBuffer<stride=16>
+  %308 = call %dx.types.ResRet.f32 @dx.op.rawBufferLoad.f32(i32 139, %dx.types.Handle %307, i32 %272, i32 0, i8 15, i32 4)  ; RawBufferLoad(srv,index,elementOffset,mask,alignment)
+  %309 = extractvalue %dx.types.ResRet.f32 %308, 2
+  %310 = bitcast float %309 to i32
+  %311 = fmul fast float %112, 2.000000e+00
+  %312 = fadd fast float %311, -1.000000e+00
+  %313 = fcmp fast ogt float %312, 0.000000e+00
+  %314 = fcmp fast olt float %312, 0.000000e+00
+  %315 = zext i1 %313 to i32
+  %316 = zext i1 %314 to i32
+  %317 = sub nsw i32 %315, %316
+  %318 = sitofp i32 %317 to float
+  %319 = call float @dx.op.unary.f32(i32 6, float %312)  ; FAbs(value)
+  %320 = fsub fast float 1.000000e+00, %319
+  %321 = call float @dx.op.unary.f32(i32 24, float %320)  ; Sqrt(value)
+  %322 = fsub fast float 1.000000e+00, %321
+  %323 = fmul fast float %322, %318
+  %324 = fmul fast float %113, 2.000000e+00
+  %325 = fadd fast float %324, -1.000000e+00
+  %326 = fcmp fast ogt float %325, 0.000000e+00
+  %327 = fcmp fast olt float %325, 0.000000e+00
+  %328 = zext i1 %326 to i32
+  %329 = zext i1 %327 to i32
+  %330 = sub nsw i32 %328, %329
+  %331 = sitofp i32 %330 to float
+  %332 = call float @dx.op.unary.f32(i32 6, float %325)  ; FAbs(value)
+  %333 = fsub fast float 1.000000e+00, %332
+  %334 = call float @dx.op.unary.f32(i32 24, float %333)  ; Sqrt(value)
+  %335 = fsub fast float 1.000000e+00, %334
+  %336 = fmul fast float %335, %331
+  %337 = fmul fast float %114, 2.000000e+00
+  %338 = fadd fast float %337, -1.000000e+00
+  %339 = fcmp fast ogt float %338, 0.000000e+00
+  %340 = fcmp fast olt float %338, 0.000000e+00
+  %341 = zext i1 %339 to i32
+  %342 = zext i1 %340 to i32
+  %343 = sub nsw i32 %341, %342
+  %344 = sitofp i32 %343 to float
+  %345 = call float @dx.op.unary.f32(i32 6, float %338)  ; FAbs(value)
+  %346 = fsub fast float 1.000000e+00, %345
+  %347 = call float @dx.op.unary.f32(i32 24, float %346)  ; Sqrt(value)
+  %348 = fsub fast float 1.000000e+00, %347
+  %349 = fmul fast float %348, %344
+  %350 = fmul fast float %268, 5.000000e-01
+  %351 = fmul fast float %269, 5.000000e-01
+  %352 = fmul fast float %270, 5.000000e-01
+  %353 = fadd fast float %350, 5.000000e-01
+  %354 = fadd fast float %351, 5.000000e-01
+  %355 = fadd fast float %352, 5.000000e-01
+  %356 = call float @dx.op.unary.f32(i32 7, float %353)  ; Saturate(value)
+  %357 = call float @dx.op.unary.f32(i32 7, float %354)  ; Saturate(value)
+  %358 = call float @dx.op.unary.f32(i32 7, float %355)  ; Saturate(value)
+  %359 = fmul fast float %356, 2.000000e+00
+  %360 = fadd fast float %359, -1.000000e+00
+  %361 = call float @dx.op.unary.f32(i32 6, float %360)  ; FAbs(value)
+  %362 = fadd fast float %361, 0xBFEFEFFC00000000
+  %363 = fcmp fast olt float %362, 0.000000e+00
+  %364 = fmul fast float %323, 0x3F50040100000000
+  %365 = fadd fast float %356, %364
+  %366 = select i1 %363, float %365, float %356
+  %367 = call float @dx.op.unary.f32(i32 7, float %366)  ; Saturate(value)
+  %368 = fmul fast float %357, 2.000000e+00
+  %369 = fadd fast float %368, -1.000000e+00
+  %370 = call float @dx.op.unary.f32(i32 6, float %369)  ; FAbs(value)
+  %371 = fadd fast float %370, 0xBFEFEFFC00000000
+  %372 = fcmp fast olt float %371, 0.000000e+00
+  %373 = fmul fast float %336, 0x3F50040100000000
+  %374 = fadd fast float %357, %373
+  %375 = select i1 %372, float %374, float %357
+  %376 = call float @dx.op.unary.f32(i32 7, float %375)  ; Saturate(value)
+  %377 = fmul fast float %358, 2.000000e+00
+  %378 = fadd fast float %377, -1.000000e+00
+  %379 = call float @dx.op.unary.f32(i32 6, float %378)  ; FAbs(value)
+  %380 = fadd fast float %379, 0xBFEFEFFC00000000
+  %381 = fcmp fast olt float %380, 0.000000e+00
+  %382 = fmul fast float %349, 0x3F50040100000000
+  %383 = fadd fast float %358, %382
+  %384 = select i1 %381, float %383, float %358
+  %385 = call float @dx.op.unary.f32(i32 7, float %384)  ; Saturate(value)
+  %386 = shl i32 %310, 4
+  %387 = and i32 %386, 48
+  %388 = or i32 %387, 7
+  %389 = uitofp i32 %388 to float
+  %390 = fmul fast float %389, 0x3F70101020000000
+  %391 = fmul fast float %259, 5.000000e-01
+  %392 = fmul fast float %391, %267
+  %393 = fmul fast float %262, 5.000000e-01
+  %394 = fmul fast float %393, %267
+  %395 = fmul fast float %265, 5.000000e-01
+  %396 = fmul fast float %395, %267
+  %397 = fadd fast float %392, 5.000000e-01
+  %398 = fadd fast float %394, 5.000000e-01
+  %399 = fadd fast float %396, 5.000000e-01
+  %400 = call float @dx.op.unary.f32(i32 7, float %397)  ; Saturate(value)
+  %401 = call float @dx.op.unary.f32(i32 7, float %398)  ; Saturate(value)
+  %402 = call float @dx.op.unary.f32(i32 7, float %399)  ; Saturate(value)
+  %403 = fmul fast float %400, 2.000000e+00
+  %404 = fadd fast float %403, -1.000000e+00
+  %405 = call float @dx.op.unary.f32(i32 6, float %404)  ; FAbs(value)
+  %406 = fadd fast float %405, 0xBFEFBFBFC0000000
+  %407 = fcmp fast olt float %406, 0.000000e+00
+  %408 = fmul fast float %323, 0x3F70101020000000
+  %409 = fadd fast float %400, %408
+  %410 = select i1 %407, float %409, float %400
+  %411 = call float @dx.op.unary.f32(i32 7, float %410)  ; Saturate(value)
+  %412 = fmul fast float %401, 2.000000e+00
+  %413 = fadd fast float %412, -1.000000e+00
+  %414 = call float @dx.op.unary.f32(i32 6, float %413)  ; FAbs(value)
+  %415 = fadd fast float %414, 0xBFEFBFBFC0000000
+  %416 = fcmp fast olt float %415, 0.000000e+00
+  %417 = fmul fast float %336, 0x3F70101020000000
+  %418 = fadd fast float %401, %417
+  %419 = select i1 %416, float %418, float %401
+  %420 = call float @dx.op.unary.f32(i32 7, float %419)  ; Saturate(value)
+  %421 = fmul fast float %402, 2.000000e+00
+  %422 = fadd fast float %421, -1.000000e+00
+  %423 = call float @dx.op.unary.f32(i32 6, float %422)  ; FAbs(value)
+  %424 = fadd fast float %423, 0xBFEFBFBFC0000000
+  %425 = fcmp fast olt float %424, 0.000000e+00
+  %426 = fmul fast float %349, 0x3F70101020000000
+  %427 = fadd fast float %402, %426
+  %428 = select i1 %425, float %427, float %402
+  %429 = call float @dx.op.unary.f32(i32 7, float %428)  ; Saturate(value)
+  %430 = fcmp fast une float %21, 0.000000e+00
+  br i1 %430, label %431, label %457
+
+; <label>:431                                     ; preds = %285
+  %432 = call %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32 59, %dx.types.Handle %12, i32 154)  ; CBufferLoadLegacy(handle,regIndex)
+  %433 = extractvalue %dx.types.CBufRet.f32 %432, 0
+  %434 = extractvalue %dx.types.CBufRet.f32 %432, 1
+  %435 = extractvalue %dx.types.CBufRet.f32 %432, 2
+  %436 = extractvalue %dx.types.CBufRet.f32 %432, 3
+  %437 = fdiv fast float 1.000000e+00, %21
+  %438 = fmul fast float %437, %19
+  %439 = fmul fast float %437, %20
+  %440 = fdiv fast float 1.000000e+00, %18
+  %441 = fmul fast float %440, %16
+  %442 = fmul fast float %440, %17
+  %443 = fsub fast float %435, %433
+  %444 = fadd fast float %443, %438
+  %445 = fsub fast float %444, %441
+  %446 = fsub fast float %436, %434
+  %447 = fadd fast float %446, %439
+  %448 = fsub fast float %447, %442
+  %449 = call float @dx.op.binary.f32(i32 35, float %445, float -2.000000e+00)  ; FMax(a,b)
+  %450 = call float @dx.op.binary.f32(i32 35, float %448, float -2.000000e+00)  ; FMax(a,b)
+  %451 = call float @dx.op.binary.f32(i32 36, float %449, float 2.000000e+00)  ; FMin(a,b)
+  %452 = call float @dx.op.binary.f32(i32 36, float %450, float 2.000000e+00)  ; FMin(a,b)
+  %453 = fmul fast float %451, 0x3FCFFFA000000000
+  %454 = fmul fast float %452, 0x3FCFFFA000000000
+  %455 = fadd fast float %453, 0x3FE0001000000000
+  %456 = fadd fast float %454, 0x3FE0001000000000
+  br label %457
+
+; <label>:457                                     ; preds = %431, %285
+  %458 = phi float [ %455, %431 ], [ 0.000000e+00, %285 ]
+  %459 = phi float [ %456, %431 ], [ 0.000000e+00, %285 ]
+  call void @dx.op.storeOutput.f32(i32 5, i32 0, i32 0, i8 0, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 0, i32 0, i8 1, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 0, i32 0, i8 2, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 0, i32 0, i8 3, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 1, i32 0, i8 0, float %367)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 1, i32 0, i8 1, float %376)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 1, i32 0, i8 2, float %385)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 1, i32 0, i8 3, float 0x3FE5E9B660000000)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 2, i32 0, i8 0, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 2, i32 0, i8 1, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 2, i32 0, i8 2, float %306)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 2, i32 0, i8 3, float %390)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 3, i32 0, i8 0, float %287)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 3, i32 0, i8 1, float %288)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 3, i32 0, i8 2, float %289)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 3, i32 0, i8 3, float %291)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 4, i32 0, i8 0, float %249)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 4, i32 0, i8 1, float %250)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 4, i32 0, i8 2, float %251)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 4, i32 0, i8 3, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 5, i32 0, i8 0, float %411)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 5, i32 0, i8 1, float %420)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 5, i32 0, i8 2, float %429)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 5, i32 0, i8 3, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 6, i32 0, i8 0, float %458)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 6, i32 0, i8 1, float %459)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 6, i32 0, i8 2, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  call void @dx.op.storeOutput.f32(i32 5, i32 6, i32 0, i8 3, float 0.000000e+00)  ; StoreOutput(outputSigId,rowIndex,colIndex,value)
+  ret void
+}
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.loadInput.f32(i32, i32, i32, i8, i32) #0
+
+; Function Attrs: nounwind
+declare void @dx.op.storeOutput.f32(i32, i32, i32, i8, float) #1
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.unary.f32(i32, float) #0
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.binary.f32(i32, float, float) #0
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.dot3.f32(i32, float, float, float, float, float, float) #0
+
+; Function Attrs: nounwind readonly
+declare %dx.types.ResRet.f32 @dx.op.textureLoad.f32(i32, %dx.types.Handle, i32, i32, i32, i32, i32, i32, i32) #2
+
+; Function Attrs: nounwind readonly
+declare %dx.types.ResRet.f32 @dx.op.sampleBias.f32(i32, %dx.types.Handle, %dx.types.Handle, float, float, float, float, i32, i32, i32, float, float) #2
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.dot2.f32(i32, float, float, float, float) #0
+
+; Function Attrs: nounwind
+declare void @dx.op.discard(i32, i1) #1
+
+; Function Attrs: nounwind readonly
+declare %dx.types.ResRet.f32 @dx.op.rawBufferLoad.f32(i32, %dx.types.Handle, i32, i32, i8, i32) #2
+
+; Function Attrs: nounwind readonly
+declare %dx.types.CBufRet.i32 @dx.op.cbufferLoadLegacy.i32(i32, %dx.types.Handle, i32) #2
+
+; Function Attrs: nounwind readonly
+declare %dx.types.CBufRet.f32 @dx.op.cbufferLoadLegacy.f32(i32, %dx.types.Handle, i32) #2
+
+; Function Attrs: nounwind readnone
+declare float @dx.op.tertiary.f32(i32, float, float, float) #0
+
+; Function Attrs: nounwind readnone
+declare %dx.types.Handle @dx.op.annotateHandle(i32, %dx.types.Handle, %dx.types.ResourceProperties) #0
+
+; Function Attrs: nounwind readnone
+declare %dx.types.Handle @dx.op.createHandleFromBinding(i32, %dx.types.ResBind, i32, i1) #0
+
+attributes #0 = { nounwind readnone }
+attributes #1 = { nounwind }
+attributes #2 = { nounwind readonly }
+
+!llvm.ident = !{!0}
+!dx.version = !{!1}
+!dx.valver = !{!2}
+!dx.shaderModel = !{!3}
+!dx.resources = !{!4}
+!dx.viewIdState = !{!21}
+!dx.entryPoints = !{!22}
+
+!0 = !{!"dxc(private) 1.8.0.0 (private, 00000000)"}
+!1 = !{i32 1, i32 6}
+!2 = !{i32 1, i32 8}
+!3 = !{!"ps", i32 6, i32 6}
+!4 = !{!5, null, !17, !19}
+!5 = !{!6, !8, !10, !11, !12, !13, !14, !15, !16}
+!6 = !{i32 0, %"class.StructuredBuffer<vector<float, 4> >"* undef, !"", i32 0, i32 0, i32 1, i32 12, i32 0, !7}
+!7 = !{i32 1, i32 16}
+!8 = !{i32 1, %"class.Texture3D<vector<float, 4> >"* undef, !"", i32 0, i32 1, i32 1, i32 4, i32 0, !9}
+!9 = !{i32 0, i32 9}
+!10 = !{i32 2, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 2, i32 1, i32 2, i32 0, !9}
+!11 = !{i32 3, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 3, i32 1, i32 2, i32 0, !9}
+!12 = !{i32 4, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 4, i32 1, i32 2, i32 0, !9}
+!13 = !{i32 5, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 5, i32 1, i32 2, i32 0, !9}
+!14 = !{i32 6, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 6, i32 1, i32 2, i32 0, !9}
+!15 = !{i32 7, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 7, i32 1, i32 2, i32 0, !9}
+!16 = !{i32 8, %"class.Texture2D<vector<float, 4> >"* undef, !"", i32 0, i32 8, i32 1, i32 2, i32 0, !9}
+!17 = !{!18}
+!18 = !{i32 0, %View* undef, !"", i32 0, i32 0, i32 1, i32 4788, null}
+!19 = !{!20}
+!20 = !{i32 0, %struct.SamplerState* undef, !"", i32 0, i32 0, i32 1, i32 0, null}
+!21 = !{[34 x i32] [i32 32, i32 28, i32 7799920, i32 7799920, i32 7799920, i32 0, i32 7799920, i32 7799920, i32 7799920, i32 7799920, i32 7402608, i32 7402608, i32 491520, i32 491520, i32 0, i32 0, i32 0, i32 0, i32 7341168, i32 2048, i32 0, i32 0, i32 16777216, i32 33554432, i32 0, i32 50331648, i32 16777216, i32 33554432, i32 0, i32 50331648, i32 7341168, i32 7341168, i32 7341168, i32 0]}
+!22 = !{void ()* @MainPS, !"MainPS", !23, !4, !55}
+!23 = !{!24, !42, null}
+!24 = !{!25, !28, !31, !33, !35, !37, !39, !40, !41}
+!25 = !{i32 0, !"TEXCOORD", i8 9, i8 0, !26, i8 2, i32 1, i8 4, i32 0, i8 0, !27}
+!26 = !{i32 10}
+!27 = !{i32 3, i32 7}
+!28 = !{i32 1, !"TEXCOORD", i8 9, i8 0, !29, i8 2, i32 1, i8 4, i32 1, i8 0, !30}
+!29 = !{i32 11}
+!30 = !{i32 3, i32 15}
+!31 = !{i32 2, !"TEXCOORD", i8 9, i8 0, !32, i8 2, i32 1, i8 4, i32 2, i8 0, !30}
+!32 = !{i32 0}
+!33 = !{i32 3, !"TEXCOORD", i8 9, i8 0, !34, i8 2, i32 1, i8 4, i32 3, i8 0, null}
+!34 = !{i32 1}
+!35 = !{i32 4, !"CONSTANT_CONTEXT", i8 9, i8 0, !32, i8 1, i32 1, i8 3, i32 4, i8 0, !36}
+!36 = !{i32 3, i32 3}
+!37 = !{i32 5, !"CURRENT_CLIP_SPACE_POSITION", i8 9, i8 0, !32, i8 2, i32 1, i8 4, i32 5, i8 0, !38}
+!38 = !{i32 3, i32 11}
+!39 = !{i32 6, !"PREVIOUS_CLIP_SPACE_POSITION", i8 9, i8 0, !32, i8 2, i32 1, i8 4, i32 6, i8 0, !38}
+!40 = !{i32 7, !"SV_Position", i8 9, i8 3, !32, i8 4, i32 1, i8 4, i32 7, i8 0, !27}
+!41 = !{i32 8, !"SV_IsFrontFace", i8 5, i8 13, !32, i8 1, i32 1, i8 1, i32 4, i8 3, null}
+!42 = !{!43, !44, !45, !47, !49, !51, !53}
+!43 = !{i32 0, !"SV_Target", i8 9, i8 16, !32, i8 0, i32 1, i8 4, i32 0, i8 0, !30}
+!44 = !{i32 1, !"SV_Target", i8 9, i8 16, !34, i8 0, i32 1, i8 4, i32 1, i8 0, !30}
+!45 = !{i32 2, !"SV_Target", i8 9, i8 16, !46, i8 0, i32 1, i8 4, i32 2, i8 0, !30}
+!46 = !{i32 2}
+!47 = !{i32 3, !"SV_Target", i8 9, i8 16, !48, i8 0, i32 1, i8 4, i32 3, i8 0, !30}
+!48 = !{i32 3}
+!49 = !{i32 4, !"SV_Target", i8 9, i8 16, !50, i8 0, i32 1, i8 4, i32 4, i8 0, !30}
+!50 = !{i32 4}
+!51 = !{i32 5, !"SV_Target", i8 9, i8 16, !52, i8 0, i32 1, i8 4, i32 5, i8 0, !30}
+!52 = !{i32 5}
+!53 = !{i32 6, !"SV_Target", i8 9, i8 16, !54, i8 0, i32 1, i8 4, i32 6, i8 0, !30}
+!54 = !{i32 6}
+!55 = !{i32 0, i64 8388624, i32 5, !32}
+

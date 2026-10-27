@@ -1,0 +1,33 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "characters": [
+  "PC0000_00_Cloud_Standard",
+  "PC0000_08_Cloud_SoldierNoHelmet",
+  "PC0000_09_Cloud_CostaClothing",
+  "PC0000_10_Cloud_CostaClothing2",
+  "PC0000_04_Cloud_ZackCostume",
+  "PC0000_12_Cloud_ZackCostumeDirty",
+  "PC0000_18_Cloud_ZackCostumeAge21",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+  "PC0000_23_Cloud_ZackCostumeWet"
+ ],
+ "worn": false,
+ "enabled": true,
+ "name": "Young Sephiroth",
+ "description": "Young Sephiroth (PC0010_13, from YoungSephiroth_P), on his skeleton in Sephiroth's skeleton family keeping his own build and his smaller wing, speaking with Young Sephiroth's voice.",
+ "model": "/Game/Character/Player/PC0010_13_Young_Sephiroth/Model/PC0010_13.PC0010_13",
+ "skeleton": "/Game/Character/Player/PC0010_13_Young_Sephiroth/Model/PC0010_13_Skeleton.PC0010_13_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": true,
+ "proportion_bones": [
+  "R_Feather*"
+ ],
+ "voice": {
+  "bank": "/Game/Sound/Voice/{language}/Character/Player/VO_PC0010_13_YoungSephiroth",
+  "replaces": [
+   "/Game/Sound/Voice/{language}/Character/Player/VO_PC0010_00_Sephiroth"
+  ]
+ },
+ "packages": [],
+ "built": "2026-10-22T19:20:01Z"
+}

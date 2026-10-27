@@ -1,0 +1,158 @@
+{
+ "CERBERUS": {
+  "range": 3000.0,
+  "upgrades": [
+   {
+    "item": "key_dirge_cerberus_power",
+    "id": 3860,
+    "row": "P",
+    "levels": 5
+   },
+   {
+    "item": "key_dirge_cerberus_barrel",
+    "id": 3863,
+    "row": "R",
+    "range": [
+     1.2,
+     1.4,
+     1.6,
+     1.8,
+     2.0
+    ]
+   },
+   {
+    "item": "key_dirge_cerberus_trigger",
+    "id": 3861,
+    "interval": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   },
+   {
+    "item": "key_dirge_cerberus_magazine",
+    "id": 3862,
+    "clip": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "reload": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   }
+  ]
+ },
+ "HYDRA": {
+  "range": 2000.0,
+  "upgrades": [
+   {
+    "item": "key_dirge_hydra_power",
+    "id": 3864,
+    "row": "P",
+    "levels": 5
+   },
+   {
+    "item": "key_dirge_hydra_barrel",
+    "id": 3867,
+    "row": "R",
+    "range": [
+     1.2,
+     1.4,
+     1.6,
+     1.8,
+     2.0
+    ]
+   },
+   {
+    "item": "key_dirge_hydra_trigger",
+    "id": 3865,
+    "interval": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   },
+   {
+    "item": "key_dirge_hydra_magazine",
+    "id": 3866,
+    "clip": [
+     6,
+     12,
+     18,
+     24,
+     30
+    ],
+    "reload": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   }
+  ]
+ },
+ "GRIFFON": {
+  "range": 4500.0,
+  "upgrades": [
+   {
+    "item": "key_dirge_griffon_power",
+    "id": 3868,
+    "row": "P",
+    "levels": 5
+   },
+   {
+    "item": "key_dirge_griffon_barrel",
+    "id": 3871,
+    "row": "R",
+    "range": [
+     1.2,
+     1.4,
+     1.6,
+     1.8,
+     2.0
+    ]
+   },
+   {
+    "item": "key_dirge_griffon_trigger",
+    "id": 3869,
+    "interval": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   },
+   {
+    "item": "key_dirge_griffon_magazine",
+    "id": 3870,
+    "clip": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "reload": [
+     0.92,
+     0.84,
+     0.76,
+     0.68,
+     0.6
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "steps": [
+  "plugin",
+  "run",
+  "keys",
+  "setup",
+  "built_now",
+  "failed",
+  "adjust",
+  "described",
+  "done"
+ ],
+ "plugin": "1.20.1",
+ "run": "run 1: 0 move(s) built before, 0 left out",
+ "keys": "_talk_e: 41 frames at 30 fps (1.33 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_talk_l: 61 frames at 30 fps (2.00 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_talk_s: 41 frames at 30 fps (1.33 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_think_e: 101 frames at 30 fps (3.33 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_think_l: 161 frames at 30 fps (5.33 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_think_s: 53 frames at 30 fps (1.73 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_turn_l: 47 frames at 30 fps (1.53 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_turn_r: 47 frames at 30 fps (1.53 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_walk: 37 frames at 30 fps (1.20 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_walk2_s: 381 frames at 30 fps (12.67 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_walk_e: 121 frames at 30 fps (4.00 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_walk_s: 121 frames at 30 fps (4.00 s), 59 bone track(s)\n\n77 of 77 key animation(s) made in /Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot on PC0010_00_Skeleton.\n",
+ "setup": {
+  "data_object": "updated /Game/RebirthSkelCompat/CrisisCoreForm/CrisisCoreForm_Data",
+  "moves": 18,
+  "carriers": 8
+ },
+ "built_now": "18 move(s) in 4 s",
+ "failed": {},
+ "adjust": {
+  "Battle10/B_NAttack01_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_NAttack02_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_NAttack03_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_NAttack04_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_NPAttack01": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_SAttack09_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_AtkLimit01_0": {
+   "matched": 8,
+   "of": 8,
+   "placed": 0,
+   "attached": 4,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle10/B_AtkLimit01_1": {
+   "matched": 6,
+   "of": 6,
+   "placed": 0,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  }
+ },
+ "described": 18,
+ "done": 18
+}

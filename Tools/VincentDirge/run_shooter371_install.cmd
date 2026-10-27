@@ -1,0 +1,123 @@
+@echo off
+title Vincent as in Dirge of Cerberus, Create a Character System 3.7.1 - installing, please leave this window open
+rem Installs (close the game first; takes a minute or two, most of it the mod's build):
+rem   1. VincentDirge.json (the shooter's settings) into the compat folder: Hydra now fires a bullet that starts at the
+rem      gun's muzzle (Barret's row starts at a socket Vincent's gun does not have),
+rem   2. builds the Create a Character System game mod 3.7.1 (main.dll, installed into the game): the gun in his right
+rem      hand while the shooter is on, the bullets from its muzzle, Vincent's own gunshot (from the cutscene
+rem      EV_FOREE_0630), his Dirge of Cerberus stance, walk and run (aiming: the aim stance and the run forward, back,
+rem      left and right, facing where he aims), reloads on the move, and the controller hooks' summary in the log;
+rem      then packs CreateACharacterSystem-Setup-3.7.1.exe into Tools\Share.
+rem Everything it replaces is copied to Tools\_backup\shooter371 first; every file is checked (md5).
+rem Status: build\install371_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\install371_status.txt"
+set "STAGE=C:\FF7R2UProj\Tools\_stage\shooter371"
+set "GAME=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH"
+set "MODDIR=%GAME%\End\Binaries\Win64\ue4ss\Mods\RebirthSkelCompat"
+set "COMPAT=%MODDIR%\compat"
+set "SC=C:\FF7R2UProj\Tools\RebirthSkelCompat"
+set "BACKUP=C:\FF7R2UProj\Tools\_backup\shooter371"
+echo Vincent shooter / Create a Character System 3.7.1 install started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%COMPAT%" goto :nocompat
+if not exist "%SC%\build_dll.py" goto :nosource
+
+echo checking the files to install...>> "%STATUS%"
+call :md5 "%STAGE%\compat\VincentDirge.json" f48cb0e9fa9042d0ae64e9ad09130619 || goto :badstage
+call :md5 "%STAGE%\src\RebirthSkelCompat.cpp" 8b79e9a77d623342000dac5c8b36cf6d || goto :badstage
+call :md5 "%STAGE%\src\SkelCompatCore.hpp" a69bfa68e4dfa212e08330365640a156 || goto :badstage
+call :md5 "%STAGE%\mod\README.txt" ed49471ba7a13e25430990c73d9d1c99 || goto :badstage
+call :md5 "%SC%\build_dll.py" e3ff1c3bfce270d88e47239076c1fce2 || goto :oldbuild
+echo    all 4 as made, and the build script with /bigobj>> "%STATUS%"
+
+rem ---- 1. the shooter's settings
+echo 1/2 installing VincentDirge.json into the compat folder ^(the old one copied to Tools\_backup\shooter371\compat^)...>> "%STATUS%"
+if not exist "%BACKUP%\compat" mkdir "%BACKUP%\compat"
+if exist "%COMPAT%\VincentDirge.json" if not exist "%BACKUP%\compat\VincentDirge.json" copy /y "%COMPAT%\VincentDirge.json" "%BACKUP%\compat\VincentDirge.json" >nul
+copy /y "%STAGE%\compat\VincentDirge.json" "%COMPAT%\VincentDirge.json" >nul
+call :md5 "%COMPAT%\VincentDirge.json" f48cb0e9fa9042d0ae64e9ad09130619 || goto :badjson
+echo    VincentDirge.json installed and checked>> "%STATUS%"
+
+rem ---- 2. the game mod 3.7.1
+echo 2/2 building the Create a Character System game mod 3.7.1 ^(main.dll, installed into the game^)...>> "%STATUS%"
+if not exist "%BACKUP%\src" mkdir "%BACKUP%\src"
+if not exist "%BACKUP%\src\RebirthSkelCompat.cpp" copy /y "%SC%\src\RebirthSkelCompat.cpp" "%BACKUP%\src\RebirthSkelCompat.cpp" >nul
+if not exist "%BACKUP%\src\SkelCompatCore.hpp" copy /y "%SC%\src\SkelCompatCore.hpp" "%BACKUP%\src\SkelCompatCore.hpp" >nul
+if not exist "%BACKUP%\src\README.txt" copy /y "%SC%\mod\README.txt" "%BACKUP%\src\README.txt" >nul
+copy /y "%STAGE%\src\RebirthSkelCompat.cpp" "%SC%\src\RebirthSkelCompat.cpp" >nul
+copy /y "%STAGE%\src\SkelCompatCore.hpp" "%SC%\src\SkelCompatCore.hpp" >nul
+copy /y "%STAGE%\mod\README.txt" "%SC%\mod\README.txt" >nul
+call :md5 "%SC%\src\RebirthSkelCompat.cpp" 8b79e9a77d623342000dac5c8b36cf6d || goto :badsource
+call :md5 "%SC%\src\SkelCompatCore.hpp" a69bfa68e4dfa212e08330365640a156 || goto :badsource
+call :md5 "%SC%\mod\README.txt" ed49471ba7a13e25430990c73d9d1c99 || goto :badsource
+call :findpython
+%PY% "%SC%\build_dll.py" --install > "%~dp0build\install371_dll.log" 2>&1
+if errorlevel 1 goto :badbuild
+echo    game mod 3.7.1 built and installed>> "%STATUS%"
+set "LATEST="
+if exist "%SC%\build\latest.txt" set /p LATEST=<"%SC%\build\latest.txt"
+%PY% "C:\FF7R2UProj\Tools\CreateACharacterSystemSetup\make_setup.py" --stub "C:\FF7R2UProj\Tools\CreateACharacterSystemSetup\Setup.stub.exe" --main-dll "%LATEST%\main.dll" --readme "%SC%\mod\README.txt" --example "%SC%\mod\compat\example.json.txt" --source "%SC%\src\RebirthSkelCompat.cpp" --plugin "C:\FF7R2UProj\Plugins\RebirthSkelCompat" --out-dir "C:\FF7R2UProj\Tools\Share" > "%~dp0build\install371_setup.log" 2>&1
+if errorlevel 1 (
+  echo    the Setup was not packed ^(build\install371_setup.log^); the game mod is installed all the same>> "%STATUS%"
+) else (
+  echo    Setup packed ^(Tools\Share\CreateACharacterSystem-Setup-3.7.1.exe^)>> "%STATUS%"
+)
+echo ALL DONE: start the game. In battle Vincent holds his gun; R2 fire, L2 aim, R1 reload, L1 switch gun, R3 zoom while aiming; Square is his melee combo. After a fight send Sandalphon ue4ss\Mods\RebirthSkelCompat\RebirthSkelCompat.log>> "%STATUS%"
+goto :done
+
+:nocompat
+echo STOPPED: the Create a Character System's compat folder is not there; nothing was changed>> "%STATUS%"
+goto :done
+
+:nosource
+echo STOPPED: Tools\RebirthSkelCompat has no build_dll.py; nothing was changed>> "%STATUS%"
+goto :done
+
+:badstage
+echo STOPPED: a staged file in Tools\_stage\shooter371 is not the one made for this ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:oldbuild
+echo STOPPED: Tools\RebirthSkelCompat\build_dll.py is not the 3.7.0 one ^(with /bigobj^): run run_shooter_install.cmd first; nothing was changed>> "%STATUS%"
+goto :done
+
+:badjson
+echo FAILED: VincentDirge.json did not check out; putting the old one back from Tools\_backup\shooter371\compat>> "%STATUS%"
+if exist "%BACKUP%\compat\VincentDirge.json" copy /y "%BACKUP%\compat\VincentDirge.json" "%COMPAT%\VincentDirge.json" >nul
+goto :done
+
+:badsource
+echo FAILED: the 3.7.1 source did not copy into Tools\RebirthSkelCompat ^(see above^); 3.7.0 stays: run this again>> "%STATUS%"
+goto :done
+
+:badbuild
+echo FAILED: the game mod did not build ^(build\install371_dll.log^); VincentDirge.json is installed, 3.7.0 stays: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY set "PY=python"
+exit /b

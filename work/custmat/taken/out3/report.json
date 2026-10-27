@@ -1,0 +1,272 @@
+{
+ "carriers": {
+  "/Game/RebirthCustom/Taken/Taken_Standard_Wide_Detail": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7489565,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Taken/Taken_Fabric_Coverage_Wide_Detail": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26
+   ],
+   "size": 5591489,
+   "shaders": 296
+  }
+ },
+ "mis": {
+  "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyA": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Taken/Taken_Standard_Wide_Detail.Taken_Standard_Wide_Detail",
+   "textures": {
+    "Color": "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Metallic": "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Normal": "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "Roughness": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Detail": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "WideOcclusion": "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "DetailNormal": "/Game/Shader/KadeMats/Textures/clouds.clouds",
+    "Occlusion": "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "imports /Game/Shader/KadeMats/Textures/clouds.clouds",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "imports /Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "imports /Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "Color: texture -> /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Detail: texture -> /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "DetailNormal: texture -> /Game/Shader/KadeMats/Textures/clouds.clouds",
+    "Metallic: texture -> /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Normal: texture -> /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "Occlusion: /Game/Shader/KadeMats/Textures/Fractal3.Fractal3 (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "WideOcclusion: texture -> /Game/Shader/KadeMats/Textures/FlameTex.FlameTex"
+   ],
+   "size": 5637
+  },
+  "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyB": {
+   "source": "PC0010_00_BodyB",
+   "parent": "/Game/RebirthCustom/Taken/Taken_Fabric_Coverage_Wide_Detail.Taken_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Color": "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Normal": "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Roughness": "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "Occlusion": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Detail": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "Diffusion": "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "WideOcclusion": "/Game/Shader/KadeMats/Textures/clouds.clouds",
+    "DetailNormal": "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "imports /Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+    "imports /Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "imports /Game/Shader/KadeMats/Textures/clouds.clouds",
+    "Color: texture -> /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Detail: /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880 (new override)",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "DetailNormal: /Game/Shader/KadeMats/Textures/Fractal3.Fractal3 (new override)",
+    "Diffusion: /Game/Shader/KadeMats/Textures/FlameTex.FlameTex (new override)",
+    "Normal: texture -> /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Occlusion: /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "WideOcclusion: texture -> /Game/Shader/KadeMats/Textures/clouds.clouds"
+   ],
+   "size": 5730
+  },
+  "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_Hair": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Taken/Taken_Fabric_Coverage_Wide_Detail.Taken_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Color": "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Normal": "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Roughness": "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "Occlusion": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Detail": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "Diffusion": "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "WideOcclusion": "/Game/Shader/KadeMats/Textures/clouds.clouds",
+    "DetailNormal": "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+    "imports /Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+    "imports /Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "imports /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "imports /Game/Shader/KadeMats/Textures/clouds.clouds",
+    "Color: texture -> /Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+    "Detail: /Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880 (new override)",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "DetailNormal: /Game/Shader/KadeMats/Textures/Fractal3.Fractal3 (new override)",
+    "Diffusion: /Game/Shader/KadeMats/Textures/FlameTex.FlameTex (new override)",
+    "Normal: texture -> /Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+    "Occlusion: /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+    "WideOcclusion: texture -> /Game/Shader/KadeMats/Textures/clouds.clouds"
+   ],
+   "size": 5899
+  }
+ },
+ "plans": {
+  "/Game/RebirthCustom/Taken/Taken_Standard_Wide_Detail": {
+   "Texture2D_0": {
+    "slot": 0,
+    "parameter": "Color",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal"
+   },
+   "Texture2D_1": {
+    "slot": 1,
+    "parameter": "Metallic",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180"
+   },
+   "Texture2D_2": {
+    "slot": 2,
+    "parameter": "Normal",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180"
+   },
+   "Texture2D_3": {
+    "slot": 3,
+    "parameter": "Roughness",
+    "texture": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   },
+   "Texture2D_4": {
+    "slot": 7,
+    "parameter": "Detail",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880"
+   },
+   "Texture2D_5": {
+    "slot": 14,
+    "parameter": "WideOcclusion",
+    "texture": "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex"
+   },
+   "Texture2D_6": {
+    "slot": 16,
+    "parameter": "DetailNormal",
+    "texture": "/Game/Shader/KadeMats/Textures/clouds.clouds"
+   },
+   "Texture2D_7": {
+    "slot": 4,
+    "parameter": "Occlusion",
+    "texture": "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3"
+   },
+   "Texture2D_8": {
+    "slot": 7,
+    "parameter": "Detail",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880"
+   }
+  },
+  "/Game/RebirthCustom/Taken/Taken_Fabric_Coverage_Wide_Detail": {
+   "Texture2D_0": {
+    "slot": 0,
+    "parameter": "Color",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal"
+   },
+   "Texture2D_1": {
+    "slot": 2,
+    "parameter": "Normal",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180"
+   },
+   "Texture2D_2": {
+    "slot": 3,
+    "parameter": "Roughness",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180"
+   },
+   "Texture2D_3": {
+    "slot": 4,
+    "parameter": "Occlusion",
+    "texture": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   },
+   "Texture2D_4": {
+    "slot": 8,
+    "parameter": "Detail",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880"
+   },
+   "Texture2D_5": {
+    "slot": 9,
+    "parameter": "Diffusion",
+    "texture": "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex"
+   },
+   "Texture2D_6": {
+    "slot": 15,
+    "parameter": "WideOcclusion",
+    "texture": "/Game/Shader/KadeMats/Textures/clouds.clouds"
+   },
+   "Texture2D_7": {
+    "slot": 17,
+    "parameter": "DetailNormal",
+    "texture": "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3"
+   },
+   "Texture2D_8": {
+    "slot": 8,
+    "parameter": "Detail",
+    "texture": "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880"
+   }
+  }
+ },
+ "shaders": {
+  "/Game/RebirthCustom/Taken/Taken_Standard_Wide_Detail": {
+   "318": {
+    "types": [
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy"
+    ],
+    "size": 25546,
+    "sha1": "3226700771d1ff6c9e26cd062860bdac56948498"
+   },
+   "353": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "size": 25482,
+    "sha1": "f496a5368672d9c675c109d15b329315998df71f"
+   }
+  },
+  "/Game/RebirthCustom/Taken/Taken_Fabric_Coverage_Wide_Detail": {
+   "26": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "size": 25876,
+    "sha1": "ef2a9301d7fa0fcee43ab66169ec3506fcf185b8"
+   }
+  }
+ },
+ "textures": [
+  "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+  "/Game/Shader/KadeMats/Textures/Destiny2/1682a180.1682a180",
+  "/Game/Shader/KadeMats/Textures/Destiny2/8005b880.8005b880",
+  "/Game/Shader/KadeMats/Textures/Destiny2/8282a180.8282a180",
+  "/Game/Shader/KadeMats/Textures/Destiny2/Armor_Normal.Armor_Normal",
+  "/Game/Shader/KadeMats/Textures/FlameTex.FlameTex",
+  "/Game/Shader/KadeMats/Textures/Fractal3.Fractal3",
+  "/Game/Shader/KadeMats/Textures/clouds.clouds"
+ ],
+ "wear": {
+  "PC0010_00_BodyA": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyA",
+  "PC0010_00_Head": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyA",
+  "PC0010_00_Skin": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyA",
+  "PC0010_00_Eyelash": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyA",
+  "PC0010_00_BodyB": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_BodyB",
+  "PC0010_00_Eyebrow": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_Hair",
+  "PC0010_00_Hair": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_Hair",
+  "PC0010_00_HairCore": "/Game/RebirthCustom/Taken/MI_Taken_PC0010_00_Hair"
+ }
+}

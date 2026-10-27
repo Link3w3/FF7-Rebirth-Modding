@@ -1,0 +1,84 @@
+{
+    "jobs":  [
+                 {
+                     "replace":  true,
+                     "template":  "cloud",
+                     "out":  "C:\\FF7R2UProj\\Tools\\RebirthSkelCompat\\abp\\out",
+                     "container":  "CACS_AnimTemplateTest_P",
+                     "package":  "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation",
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/PC0010_00_Sephiroth_Test_Animation",
+                     "template":  "sephiroth",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/PC0011_00_Vincent_Test_Animation",
+                     "template":  "vincent",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/Monster_Test_Animation",
+                     "template":  "monster",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/barret_Test_Animation",
+                     "template":  "barret",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/tifa_Test_Animation",
+                     "template":  "tifa",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/aerith_Test_Animation",
+                     "template":  "aerith",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/redxiii_Test_Animation",
+                     "template":  "redxiii",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/yuffie_Test_Animation",
+                     "template":  "yuffie",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/caitsith_Test_Animation",
+                     "template":  "caitsith",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/moogle_Test_Animation",
+                     "template":  "moogle",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/zack_Test_Animation",
+                     "template":  "zack",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 },
+                 {
+                     "package":  "/Game/RebirthSkelCompat/AnimTemplateTest/cid_Test_Animation",
+                     "template":  "cid",
+                     "replace":  true,
+                     "skeleton":  "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+                 }
+             ]
+}

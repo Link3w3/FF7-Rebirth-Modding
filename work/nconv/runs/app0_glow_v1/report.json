@@ -1,0 +1,394 @@
+{
+ "package": "/Game/KH3/RebirthFX/FX_SO010_APP0_Glow",
+ "entry": {
+  "id": 146090310560352576,
+  "size": 269354,
+  "export_count": 48,
+  "export_bundle_count": 1,
+  "imports": [
+   4936453425946142082,
+   8281677798187324647,
+   13512702482601902590,
+   13908423657808587107,
+   18225002549081842299
+  ],
+  "load_order": 0
+ },
+ "report": {
+  "emitters": [
+   {
+    "name": "glw_I",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glw_01a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 68,
+      "external_functions": 2,
+      "parameters": 21,
+      "external_size": 132,
+      "literals": 48,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 70,
+      "external_functions": 2,
+      "parameters": 3,
+      "external_size": 20,
+      "literals": 36,
+      "data_interfaces": 2
+     }
+    ]
+   },
+   {
+    "name": "Key",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 74,
+      "external_functions": 2,
+      "parameters": 24,
+      "external_size": 144,
+      "literals": 52,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 73,
+      "external_functions": 2,
+      "parameters": 6,
+      "external_size": 32,
+      "literals": 36,
+      "data_interfaces": 2
+     }
+    ]
+   },
+   {
+    "name": "fls_L",
+    "enabled": true,
+    "renderers": [
+     "sprite ttx_fls_02a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 70,
+      "external_functions": 2,
+      "parameters": 21,
+      "external_size": 132,
+      "literals": 48,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 68,
+      "external_functions": 2,
+      "parameters": 3,
+      "external_size": 20,
+      "literals": 36,
+      "data_interfaces": 2
+     }
+    ]
+   },
+   {
+    "name": "glw_SS",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 73,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 136,
+      "literals": 48,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 71,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 24,
+      "literals": 36,
+      "data_interfaces": 3
+     }
+    ]
+   },
+   {
+    "name": "hrng000",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 73,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 136,
+      "literals": 52,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 70,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 24,
+      "literals": 36,
+      "data_interfaces": 3
+     }
+    ]
+   },
+   {
+    "name": "sho",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 80,
+      "external_functions": 4,
+      "parameters": 25,
+      "external_size": 156,
+      "literals": 52,
+      "data_interfaces": 4
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 77,
+      "external_functions": 4,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 36,
+      "data_interfaces": 4
+     }
+    ]
+   },
+   {
+    "name": "c_rsn02",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 88,
+      "external_functions": 5,
+      "parameters": 33,
+      "external_size": 188,
+      "literals": 52,
+      "data_interfaces": 5
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 81,
+      "external_functions": 5,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 36,
+      "data_interfaces": 5
+     }
+    ]
+   },
+   {
+    "name": "c_rsn",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 88,
+      "external_functions": 5,
+      "parameters": 33,
+      "external_size": 188,
+      "literals": 52,
+      "data_interfaces": 5
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 81,
+      "external_functions": 5,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 36,
+      "data_interfaces": 5
+     }
+    ]
+   },
+   {
+    "name": "c_cntcrs0",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_crs_03a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 313,
+      "external_functions": 3,
+      "parameters": 42,
+      "external_size": 296,
+      "literals": 92,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 289,
+      "external_functions": 3,
+      "parameters": 16,
+      "external_size": 124,
+      "literals": 84,
+      "data_interfaces": 3
+     }
+    ]
+   },
+   {
+    "name": "c_cntglw0",
+    "enabled": true,
+    "renderers": [
+     "NiagaraMeshRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 75,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 144,
+      "literals": 52,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 72,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 32,
+      "literals": 36,
+      "data_interfaces": 3
+     }
+    ]
+   },
+   {
+    "name": "c_cnt_dot1",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 331,
+      "external_functions": 2,
+      "parameters": 45,
+      "external_size": 296,
+      "literals": 100,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 307,
+      "external_functions": 2,
+      "parameters": 19,
+      "external_size": 132,
+      "literals": 88,
+      "data_interfaces": 2
+     }
+    ]
+   },
+   {
+    "name": "c_cnt_dot",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 326,
+      "external_functions": 3,
+      "parameters": 43,
+      "external_size": 280,
+      "literals": 100,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 307,
+      "external_functions": 2,
+      "parameters": 19,
+      "external_size": 132,
+      "literals": 88,
+      "data_interfaces": 2
+     }
+    ]
+   },
+   {
+    "name": "light0",
+    "enabled": true,
+    "renderers": [
+     "sprite skipped (no texture for None)",
+     "NiagaraLightRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 71,
+      "external_functions": 2,
+      "parameters": 23,
+      "external_size": 152,
+      "literals": 48,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 72,
+      "external_functions": 2,
+      "parameters": 5,
+      "external_size": 40,
+      "literals": 36,
+      "data_interfaces": 2
+     }
+    ]
+   }
+  ],
+  "system_scripts": [
+   {
+    "usage": "SystemSpawnScript",
+    "instructions": 209,
+    "external_functions": 0,
+    "parameters": 1,
+    "external_size": 4,
+    "literals": 24,
+    "data_interfaces": 0
+   },
+   {
+    "usage": "SystemUpdateScript",
+    "instructions": 1416,
+    "external_functions": 3,
+    "parameters": 82,
+    "external_size": 328,
+    "literals": 192,
+    "data_interfaces": 3
+   }
+  ],
+  "khcv": 40264
+ }
+}

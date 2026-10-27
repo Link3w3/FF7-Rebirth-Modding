@@ -1,0 +1,44 @@
+{
+ "steps": [
+  "run",
+  "scanned",
+  "sources",
+  "data_object",
+  "row",
+  "built_now",
+  "effect_parameters",
+  "compression",
+  "failed",
+  "build",
+  "checked",
+  "built_described",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "run": "run 1 with the plugin 1.12.4: 0 move(s) built before, 0 left out (they stopped the editor)",
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0000_00_Cloud_Standard",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "sources": "242 of 242 described",
+ "data_object": "loaded /Game/RebirthSkelCompat/EvilCloudBoss/DO_EvilCloudBoss",
+ "row": "176 moves (115 to build, 61 Cloud's as they are)",
+ "built_now": "115 move(s) in 19 s",
+ "effect_parameters": "20 move(s) with effect parameters of Cloud's effects left out (the plugin 1.12.4; they play with their own values)",
+ "compression": {
+  "ACL QuatDropW_Variable": 115
+ },
+ "failed": [],
+ "build": "115 of 115 built",
+ "checked": "115 package(s), all load back",
+ "built_described": 115,
+ "export_json": "Export Json: OK",
+ "validate": "Validate: OK",
+ "done": true
+}

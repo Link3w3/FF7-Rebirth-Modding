@@ -1,0 +1,40 @@
+Damage, the Safer form's hits (28):
+  PC0010_SF_NAtk_1_01          WingR  from PC0010_NAtk_1_01         power 180
+  PC0010_SF_NAtk_2_01          HandL  from PC0010_NAtk_2_01         power 180
+  PC0010_SF_NAtk_3_01          HandL  from PC0010_NAtk_3_01         power 300
+  PC0010_SF_NAtk_4_01          Lunge  from PC0010_NAtk_4_01         power 420
+  PC0010_SF_JAtk_1_01          WingR  from PC0010_JAtk_1_01         power 300
+  PC0010_SF_JAtk_2_01          HandL  from PC0010_JAtk_2_01         power 300
+  PC0010_SF_JAtk_3_01          HandL  from PC0010_JAtk_3_01         power 420
+  PC0010_SF_ChainChange01_01   WingR  from PC0010_ChainChange01_01  power 120
+  PC0010_SF_NPAtk_1_01         Around from PC0010_NPAtk_1_04        power 60
+  PC0010_SF_Satk_1_01          Lunge  from PC0010_Satk_1_01         power 600
+  PC0010_SF_Satk_2_01          WingR  from PC0010_Satk_2_01         power 180
+  PC0010_SF_Satk_6_01          Direct from PC0010_Satk_6_01         power 300
+  PC0010_SF_Satk_8_01          HandL  from PC0010_Satk_8_01         power 300
+  PC0010_SF_Satk_8_02          HandL  from PC0010_Satk_8_02         power 300
+  PC0010_SF_Satk_8_03          HandL  from PC0010_Satk_8_03         power 900
+  PC0010_SF_SAtk_9_01          Lunge  from PC0010_SAtk_9_01         power 180
+  PC0010_SF_SAtk_9_02          Lunge  from PC0010_SAtk_9_02         power 180
+  PC0010_SF_SAtk_9_03          HandL  from PC0010_SAtk_9_03         power 1200
+  PC0010_SF_PAtk_1_01          HandL  from PC0010_PAtk_1_01         power 60
+  PC0010_SF_PAtk_2_01          WingR  from PC0010_PAtk_2_01         power 60
+  PC0010_SF_Limit_1_01         Direct from PC0010_Limit_1_01        power 600
+  PC0010_SF_Limit_1_02         Direct from PC0010_Limit_1_02        power 600
+  PC0010_SF_Limit_1_03         Direct from PC0010_Limit_1_03        power 1200
+  PC0010_SF_Limit_1_04         Direct from PC0010_Limit_1_04        power 1800
+  PC0010_SF_Limit_1_05         Direct from PC0010_Limit_1_05        power 900
+  PC0010_SF_Limit_1_06         Direct from PC0010_Limit_1_06        power 900
+  PC0010_SF_Limit_1_07         Direct from PC0010_Limit_1_07        power 1800
+  PC0010_SF_Limit_1_08         Direct from PC0010_Limit_1_08        power 6600
+CharaSpec:
+  PC0000_00_Cloud_Standard: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_08_Cloud_SoldierNoHelmet: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_09_Cloud_CostaClothing: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_10_Cloud_CostaClothing2: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_04_Cloud_ZackCostume: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_12_Cloud_ZackCostumeDirty: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_18_Cloud_ZackCostumeAge21: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_19_Cloud_ZackCostumeDirtyAge21: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+  PC0000_23_Cloud_ZackCostumeWet: sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06']
+container: /work/safer1015/data1/FullyPlayableSephirothDataAssets_P (47 packages; changed: DataObject/Resident/BattleDamageSource.uasset, DataObject/Resident/CharaSpec.uasset)

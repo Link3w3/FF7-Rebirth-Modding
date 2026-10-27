@@ -1,0 +1,821 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Crisis Core Sephiroth",
+ "author": "",
+ "description": "Crisis Core Reunion's Sephiroth from the game's own files: his model on Rebirth Sephiroth's bones (the PC0010_00 skeleton's family) with Rebirth's face rig, Sephiroth's wing (shown in the winged forms), KawaiiPhysics hair and coat.",
+ "characters": [
+  "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_YOUNGSEPHIROTH",
+  "PC0000_00_Cloud_Standard_SEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_SEPHIROTH"
+ ],
+ "model": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16.PC0010_16",
+ "skeleton": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16_Skeleton.PC0010_16_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "own",
+ "weapon": "/Game/BluePrint/Character/Weapon/WE1021_16_CrisisCore_Masamune/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C",
+ "anim_blueprint": "",
+ "pack": "Battle10",
+ "sets": {
+  "Neutral00": "Neutral10"
+ },
+ "meshes": [],
+ "worn": false,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16.uasset",
+   "size": 3602407,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 44,
+   "imports": [
+    "e84878c76de1d54f",
+    "6ff0ed52fc9bdab4",
+    "ce713033b16253b6",
+    "28e885392102778e",
+    "609528dd9f3a1b57",
+    "0a8deafea1d1075f",
+    "639a755913c197f0",
+    "a19b5f6c2d3fd20d",
+    "8c7f456744269e73",
+    "49f1a317bdf303eb",
+    "e55c6b2ef391c615"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16_Skeleton",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Model/PC0010_16_Skeleton.uasset",
+   "size": 53412,
+   "export_count": 52,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_BodyA",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_BodyA.uasset",
+   "size": 5667,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 13,
+   "imports": [
+    "86b41052bff55069",
+    "2aae6c1399af446d",
+    "a40286f39d45f130",
+    "dbddf45d0d343a83",
+    "d610cb6624ab5274",
+    "b557e5b9b59d6c9e",
+    "b387f8237eefbb36",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_BodyB",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_BodyB.uasset",
+   "size": 5920,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 36,
+   "imports": [
+    "86b41052bff55069",
+    "34bb86cfb988edae",
+    "aff37a3df768daba",
+    "db9c907c35ef1324",
+    "3922013d9d1fa575",
+    "5ebc84dc17d80e40",
+    "3c40b5ef80cde265",
+    "f7c2e54d56b3ed85",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Eye",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Eye.uasset",
+   "size": 4913,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 38,
+   "imports": [
+    "86b41052bff55069",
+    "d31d4ae18fe04db6",
+    "1e14922a519f5007",
+    "f9abac785ceff158",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Eyelash",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Eyelash.uasset",
+   "size": 5468,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 41,
+   "imports": [
+    "86b41052bff55069",
+    "34bb86cfb988edae",
+    "e377d58233174506",
+    "69aebdca7e8ed8ec",
+    "6f95dc7cb9083f72",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Hair",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Hair.uasset",
+   "size": 5730,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 32,
+   "imports": [
+    "86b41052bff55069",
+    "5ac998971149269d",
+    "8937d1cf22604fc4",
+    "836bb1599907063a",
+    "36a299cdb35b339d",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Head",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Head.uasset",
+   "size": 5929,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 43,
+   "imports": [
+    "86b41052bff55069",
+    "27cafccda81972d3",
+    "e8d46686d2d43fd4",
+    "4fcd1fe13bcc3293",
+    "088aa601ad17cd45",
+    "9e8f583f243d23d2",
+    "79e0f247186eeb0f",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Mouth",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Mouth.uasset",
+   "size": 5477,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 40,
+   "imports": [
+    "86b41052bff55069",
+    "ed8db919c0b66477",
+    "11b5a08001256717",
+    "401a4527edf5f97a",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Skin",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Material/MI_PC0010_16_Skin.uasset",
+   "size": 5781,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 27,
+   "imports": [
+    "86b41052bff55069",
+    "ed8db919c0b66477",
+    "a40286f39d45f130",
+    "dbddf45d0d343a83",
+    "b557e5b9b59d6c9e",
+    "b387f8237eefbb36",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_C.uasset",
+   "size": 3958,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 12,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mg",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mg.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 5,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mr",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mr.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 7,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_N",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_N.uasset",
+   "size": 7025,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 9,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_O",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_O.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 10,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyA_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_A",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_A.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 11,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_A.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_C.uasset",
+   "size": 3958,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 6,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mg",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mg.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 30,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mr",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mr.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 22,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_N",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_N.uasset",
+   "size": 7025,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 29,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_O",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_O.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_BodyB_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eye_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eye_C.uasset",
+   "size": 3878,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 8,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eye_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_A",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_A.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 4,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_A.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_C.uasset",
+   "size": 3958,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 21,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Eyelash_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_A",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_A.uasset",
+   "size": 4124,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 16,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_A.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_C.uasset",
+   "size": 3922,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 17,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Hair_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_C.uasset",
+   "size": 3958,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mb",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mb.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 26,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mb.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mg",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mg.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 42,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_N",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_N.uasset",
+   "size": 7025,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 14,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_O",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_O.uasset",
+   "size": 4160,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 19,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Head_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Mouth_C",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_Mouth_C.uasset",
+   "size": 3778,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 39,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R010",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R010.uasset",
+   "size": 1184,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 37,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R045",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R045.uasset",
+   "size": 1184,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 31,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R050",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R050.uasset",
+   "size": 1184,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 28,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R060",
+   "file": "Content/Character/Player/PC0010_16_CrisisCore_Sephiroth/Texture/PC0010_16_R060.uasset",
+   "size": 1184,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 20,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16.uasset",
+   "size": 67018,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 35,
+   "imports": [
+    "abcaa49e47fa1a7f",
+    "8b22265fb9289afa",
+    "ee67279ab51b88e1"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Material/MI_WE001021_16",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Material/MI_WE001021_16.uasset",
+   "size": 5325,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 34,
+   "imports": [
+    "86b41052bff55069",
+    "5e3fbfcd2b419496",
+    "2a41e63f02bfdcff",
+    "7a92db0cccbf8d2c",
+    "5ddbeff86d79fc32",
+    "5384b7f9a0f2dea2",
+    "f9abac785ceff158",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_C",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_C.uasset",
+   "size": 2554,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 23,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_N",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_N.uasset",
+   "size": 4261,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 18,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_M",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_M.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 33,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_M.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_R",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_R.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 25,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_R.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_O",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_O.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 24,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Texture/WE001021_16_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16_Skeleton.uasset",
+   "size": 5329,
+   "export_count": 14,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_16_CrisisCore_Masamune/Model/WE001021_16_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 15,
+   "imports": [],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-27T08:39:21Z",
+ "built_with": "Create a Character System editor 1.21.0"
+}

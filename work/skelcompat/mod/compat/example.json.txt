@@ -1,0 +1,38 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "pairs": [
+    {
+      "receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+      ],
+      "method": "animations",
+      "adopt_paths": [],
+      "requires_paks": [ "SephirothOverCloud_P" ],
+      "enabled": true
+    },
+    {
+      "receiving_skeleton": "/Game/YourMod/Character/SK_YourCharacter_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton"
+      ],
+      "method": "mesh",
+      "receiving_meshes": [],
+      "fix_hierarchy": true,
+      "carry_sockets": true,
+      "enabled": false
+    }
+  ],
+  "families": [
+    {
+      "skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+        "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+        "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton"
+      ],
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "requires_paks": [],
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+"""Candidate UE 4.26/4.27 mesh material shader type names and vertex factory names, by their FHashedName."""
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cityhash import hashed_name
+
+POLICIES = ['FNoLightMapPolicy', 'FPrecomputedVolumetricLightmapLightingPolicy', 'FCachedVolumeIndirectLightingPolicy',
+            'FCachedPointIndirectLightingPolicy', 'FSimpleNoLightmapLightingPolicy', 'FSimpleLightmapOnlyLightingPolicy',
+            'FSimpleDirectionalLightLightingPolicy', 'FSimpleStationaryLightPrecomputedShadowsLightingPolicy',
+            'FSimpleStationaryLightSingleSampleShadowsLightingPolicy', 'FSimpleStationaryLightVolumetricLightmapShadowsLightingPolicy',
+            'TLightMapPolicyLQ', 'TLightMapPolicyHQ', 'TDistanceFieldShadowsAndLightMapPolicyHQ', 'FSelfShadowedTranslucencyPolicy',
+            'FSelfShadowedCachedPointIndirectLightingPolicy', 'FSelfShadowedVolumetricLightmapPolicy']
+NAMES = []
+for p in POLICIES:
+    NAMES += ['TBasePassVS' + p, 'TBasePassVS' + p + 'AtmosphericFog', 'TBasePassPS' + p, 'TBasePassPS' + p + 'Skylight',
+              'TBasePassHS' + p, 'TBasePassDS' + p]
+NAMES += '''TDepthOnlyVS<true> TDepthOnlyVS<false> FDepthOnlyPS TDepthOnlyPS<true> TDepthOnlyPS<false> FPositionOnlyDepthVS
+FVelocityVS FVelocityPS FVelocityHS FVelocityDS FHitProxyVS FHitProxyPS FHitProxyHS FHitProxyDS
+FAnisotropyVS FAnisotropyPS FDebugViewModeVS FDebugViewModePS FDebugViewModeHS FDebugViewModeDS FShaderComplexityAccumulatePS
+FLightmapGBufferVS FLightmapGBufferPS FVLMVoxelizationVS FVLMVoxelizationGS FVLMVoxelizationPS
+TLightMapDensityVSFNoLightMapPolicy TLightMapDensityPSFNoLightMapPolicy TLightMapDensityVSFDummyLightMapPolicy TLightMapDensityPSFDummyLightMapPolicy
+TLightMapDensityVSTLightMapPolicyHQ TLightMapDensityPSTLightMapPolicyHQ TLightMapDensityVSTLightMapPolicyLQ TLightMapDensityPSTLightMapPolicyLQ
+TDistortionMeshVS TDistortionMeshPS TDistortionMeshHS TDistortionMeshDS FConvertToUniformMeshVS FConvertToUniformMeshGS
+FMeshDecalsVS FMeshDecalsPS FMeshDecalsHS FMeshDecalsDS FRayTracingDynamicGeometryConverterCS FRuntimeVirtualTextureVS
+FSkyPassVS FSkyPassPS FCustomDepthVS? FOutputDepthVS
+TShadowDepthVSVertexShadowDepth_OutputDepth TShadowDepthVSVertexShadowDepth_OutputDepthPositionOnly
+TShadowDepthVSVertexShadowDepth_PerspectiveCorrect TShadowDepthVSVertexShadowDepth_PerspectiveCorrectPositionOnly
+TShadowDepthVSVertexShadowDepth_OnePassPointLight TShadowDepthVSVertexShadowDepth_OnePassPointLightPositionOnly
+TShadowDepthVSForGSVertexShadowDepth_OnePassPointLight TShadowDepthVSForGSVertexShadowDepth_OnePassPointLightPositionOnly
+TShadowDepthVSVertexShadowDepth_VirtualShadowMap TShadowDepthVSVertexShadowDepth_VirtualShadowMapPositionOnly
+TShadowDepthPSPixelShadowDepth_NonPerspectiveCorrect TShadowDepthPSPixelShadowDepth_PerspectiveCorrect TShadowDepthPSPixelShadowDepth_OnePassPointLight
+TShadowDepthPSPixelShadowDepth_VirtualShadowMap TOnePassPointShadowDepthGS
+TShadowDepthHSVertexShadowDepth_OutputDepth TShadowDepthDSVertexShadowDepth_OutputDepth TShadowDepthHSVertexShadowDepth_PerspectiveCorrect
+TShadowDepthDSVertexShadowDepth_PerspectiveCorrect TShadowDepthHSVertexShadowDepth_OnePassPointLight TShadowDepthDSVertexShadowDepth_OnePassPointLight
+TTranslucencyShadowDepthVS<TranslucencyShadowDepth_Standard> TTranslucencyShadowDepthVS<TranslucencyShadowDepth_PerspectiveCorrect>
+TTranslucencyShadowDepthPS<TranslucencyShadowDepth_Standard> TTranslucencyShadowDepthPS<TranslucencyShadowDepth_PerspectiveCorrect>
+FTranslucencyShadowDepthVS FTranslucencyShadowDepthPS FCustomDepthPS FSingleLayerWaterVS FHairMaterialVS FHairMaterialPS
+FLumenCardVS FLumenCardPS FMaterialPS FMaterialVS FNaniteMaterialVS FLandscapeGrassWeightVS FLandscapeGrassWeightPS
+FLandscapePhysicalMaterialVS FLandscapePhysicalMaterialPS FMobileDistortionVS FMobileDistortionPS'''.split()
+VFS = '''FLocalVertexFactory TGPUSkinVertexFactoryDefault TGPUSkinVertexFactoryUnlimited TGPUSkinMorphVertexFactoryDefault
+TGPUSkinMorphVertexFactoryUnlimited TGPUSkinAPEXClothVertexFactoryDefault TGPUSkinAPEXClothVertexFactoryUnlimited
+FGPUSkinPassthroughVertexFactory FInstancedStaticMeshVertexFactory FSplineMeshVertexFactory FLandscapeVertexFactory
+FLandscapeXYOffsetVertexFactory FLandscapeFixedGridVertexFactory FParticleSpriteVertexFactory FMeshParticleVertexFactory
+FParticleBeamTrailVertexFactory FNiagaraSpriteVertexFactory FNiagaraMeshVertexFactory FNiagaraRibbonVertexFactory
+FGeometryCacheVertexVertexFactory FHairStrandsVertexFactory FHairCardsVertexFactory FEmptyVertexFactory
+FGPUSkinPassthroughVertexFactoryDefault FGrassVertexFactory FHISMLocalVertexFactory FStaticMeshVertexFactory'''.split()
+
+TYPE_BY_HASH = {hashed_name(n): n for n in NAMES}
+VF_BY_HASH = {hashed_name(n): n for n in VFS}

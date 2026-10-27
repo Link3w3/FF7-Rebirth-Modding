@@ -1,0 +1,64 @@
+@echo off
+title Create a Character System editor 1.18 - installing and building the editor plugin, please leave this window open
+rem Create a Character System editor 1.18 (close the End editor first; the game can stay open):
+rem   1. copies the plugin's 1.18 sources into C:\FF7R2UProj\Plugins\RebirthSkelCompat: the AnimBlueprint Maker
+rem      (Window > Rebirth AnimBlueprint Maker, or right-click a Skeleton or Skeletal Mesh > Make a Rebirth
+rem      AnimBlueprint...: a character's AnimBlueprint for the game made from one of the game's own for its skeleton);
+rem      and its tool (make_cacs_abp.py, its lib and templates) into Tools\RebirthSkelCompat\abp, with README.md.
+rem      The old files go to C:\FF7R2UProj\_mod_backups\before_118_<time>\ (outside the Plugins folder);
+rem   2. builds the plugin (build_plugin.py: UnrealBuildTool, only the plugin module).
+rem Status: Tools\RebirthSkelCompat\build\plugin118_status.txt (the build's log: build\plugin118_build.log)
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\plugin118_status.txt"
+set "PLUGIN=C:\FF7R2UProj\Plugins\RebirthSkelCompat"
+set "BACKUPS=C:\FF7R2UProj\_mod_backups"
+set "STAGE=%~dp0stage118"
+echo Create a Character System editor 1.18 plugin build, started %DATE% %TIME%> "%STATUS%"
+tasklist /FI "IMAGENAME eq UE4Editor.exe" 2>nul | find /I "UE4Editor.exe" >nul
+if not errorlevel 1 (
+  echo REFUSED: close the End editor ^(UE4Editor.exe^) first, then run this again>> "%STATUS%"
+  goto :done
+)
+for %%F in (build_plugin.py install_plugin118.py) do (
+  if not exist "%~dp0%%F" (
+    echo FAILED: %%F is missing ^(tell Sandalphon^)>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%STAGE%\manifest.json" (
+  echo FAILED: stage118\manifest.json is missing ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+if not exist "%BACKUPS%" mkdir "%BACKUPS%"
+call :findpython
+echo 1/2 the 1.18 sources into the plugin, the AnimBlueprint Maker's tool into abp...>> "%STATUS%"
+%PY% "%~dp0install_plugin118.py" "%STAGE%" "%PLUGIN%" "%~dp0." "%BACKUPS%" >> "%STATUS%" 2>&1
+if errorlevel 1 (
+  echo FAILED: the files did not all go in ^(above^); the plugin was NOT built: tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+echo    the tool: >> "%STATUS%"
+%PY% "%~dp0abp\make_cacs_abp.py" --list >> "%STATUS%" 2>&1
+echo 2/2 building the plugin ^(a few minutes^)...>> "%STATUS%"
+type "%STATUS%"
+%PY% "%~dp0build_plugin.py" > "%~dp0build\plugin118_build.log" 2>&1
+if errorlevel 1 (
+  echo FAILED: the plugin did not build ^(build\plugin118_build.log^): tell Sandalphon. The editor still has the 1.17 plugin.>> "%STATUS%"
+  goto :done
+)
+echo DONE: start the editor. Window has Rebirth AnimBlueprint Maker; right-click a Skeleton or Skeletal Mesh for Make a Rebirth AnimBlueprint...>> "%STATUS%"
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python39\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python39\python.exe"
+if not defined PY set "PY=python"
+exit /b

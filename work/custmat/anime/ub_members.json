@@ -1,0 +1,1511 @@
+{
+"View": {
+"View_TranslatedWorldToClip": [
+0,
+"float4x4",
+null
+],
+"View_WorldToOrthographicClip": [
+64,
+"float4x4",
+null
+],
+"View_TranslatedWorldToOrthographicClip": [
+128,
+"float4x4",
+null
+],
+"View_WorldToClip": [
+192,
+"float4x4",
+null
+],
+"View_ClipToWorld": [
+256,
+"float4x4",
+null
+],
+"View_TranslatedWorldToView": [
+320,
+"float4x4",
+null
+],
+"View_ViewToTranslatedWorld": [
+384,
+"float4x4",
+null
+],
+"View_TranslatedWorldToCameraView": [
+448,
+"float4x4",
+null
+],
+"View_CameraViewToTranslatedWorld": [
+512,
+"float4x4",
+null
+],
+"View_ViewToClip": [
+576,
+"float4x4",
+null
+],
+"View_ViewToClipNoAA": [
+640,
+"float4x4",
+null
+],
+"View_ClipToView": [
+704,
+"float4x4",
+null
+],
+"View_ClipToTranslatedWorld": [
+768,
+"float4x4",
+null
+],
+"View_SVPositionToTranslatedWorld": [
+832,
+"float4x4",
+null
+],
+"View_ScreenToWorld": [
+896,
+"float4x4",
+null
+],
+"View_ScreenToTranslatedWorld": [
+960,
+"float4x4",
+null
+],
+"View_MobileMultiviewShadowTransform": [
+1024,
+"float4x4",
+null
+],
+"View_ViewForward": [
+1088,
+"float3",
+null
+],
+"PrePadding_View_1100": [
+1100,
+"float",
+null
+],
+"View_ViewUp": [
+1104,
+"float3",
+null
+],
+"PrePadding_View_1116": [
+1116,
+"float",
+null
+],
+"View_ViewRight": [
+1120,
+"float3",
+null
+],
+"PrePadding_View_1132": [
+1132,
+"float",
+null
+],
+"View_HMDViewNoRollUp": [
+1136,
+"float3",
+null
+],
+"PrePadding_View_1148": [
+1148,
+"float",
+null
+],
+"View_HMDViewNoRollRight": [
+1152,
+"float3",
+null
+],
+"PrePadding_View_1164": [
+1164,
+"float",
+null
+],
+"View_InvDeviceZToWorldZTransform": [
+1168,
+"float4",
+null
+],
+"View_ScreenPositionScaleBias": [
+1184,
+"float4",
+null
+],
+"View_WorldCameraOrigin": [
+1200,
+"float3",
+null
+],
+"PrePadding_View_1212": [
+1212,
+"float",
+null
+],
+"View_TranslatedWorldCameraOrigin": [
+1216,
+"float3",
+null
+],
+"PrePadding_View_1228": [
+1228,
+"float",
+null
+],
+"View_WorldViewOrigin": [
+1232,
+"float3",
+null
+],
+"PrePadding_View_1244": [
+1244,
+"float",
+null
+],
+"View_PreViewTranslation": [
+1248,
+"float3",
+null
+],
+"PrePadding_View_1260": [
+1260,
+"float",
+null
+],
+"View_PrevProjection": [
+1264,
+"float4x4",
+null
+],
+"View_PrevViewProj": [
+1328,
+"float4x4",
+null
+],
+"View_PrevViewRotationProj": [
+1392,
+"float4x4",
+null
+],
+"View_PrevViewToClip": [
+1456,
+"float4x4",
+null
+],
+"View_PrevClipToView": [
+1520,
+"float4x4",
+null
+],
+"View_PrevTranslatedWorldToClip": [
+1584,
+"float4x4",
+null
+],
+"View_PrevWorldToOrthographicClip": [
+1648,
+"float4x4",
+null
+],
+"View_PrevTranslatedWorldToOrthographicClip": [
+1712,
+"float4x4",
+null
+],
+"View_PrevTranslatedWorldToView": [
+1776,
+"float4x4",
+null
+],
+"View_PrevViewToTranslatedWorld": [
+1840,
+"float4x4",
+null
+],
+"View_PrevTranslatedWorldToCameraView": [
+1904,
+"float4x4",
+null
+],
+"View_PrevCameraViewToTranslatedWorld": [
+1968,
+"float4x4",
+null
+],
+"View_PrevWorldCameraOrigin": [
+2032,
+"float3",
+null
+],
+"PrePadding_View_2044": [
+2044,
+"float",
+null
+],
+"View_PrevWorldViewOrigin": [
+2048,
+"float3",
+null
+],
+"PrePadding_View_2060": [
+2060,
+"float",
+null
+],
+"View_PrevPreViewTranslation": [
+2064,
+"float3",
+null
+],
+"PrePadding_View_2076": [
+2076,
+"float",
+null
+],
+"View_PrevInvViewProj": [
+2080,
+"float4x4",
+null
+],
+"View_PrevScreenToTranslatedWorld": [
+2144,
+"float4x4",
+null
+],
+"View_ClipToPrevClip": [
+2208,
+"float4x4",
+null
+],
+"View_ClipToPrevClipWithoutTranslation": [
+2272,
+"float4x4",
+null
+],
+"View_ProjectionToWorld": [
+2336,
+"float4x4",
+null
+],
+"View_WorldToProjection": [
+2400,
+"float4x4",
+null
+],
+"View_TemporalAAJitter": [
+2464,
+"float4",
+null
+],
+"View_TemporalSamplerBias": [
+2480,
+"float4",
+null
+],
+"View_GlobalClippingPlane": [
+2496,
+"float4",
+null
+],
+"View_FieldOfViewWideAngles": [
+2512,
+"float2",
+null
+],
+"View_PrevFieldOfViewWideAngles": [
+2520,
+"float2",
+null
+],
+"View_ViewRectMin": [
+2528,
+"float4",
+null
+],
+"View_ViewSizeAndInvSize": [
+2544,
+"float4",
+null
+],
+"View_LightProbeSizeRatioAndInvSizeRatio": [
+2560,
+"float4",
+null
+],
+"View_BufferSizeAndInvSize": [
+2576,
+"float4",
+null
+],
+"View_BufferBilinearUVMinMax": [
+2592,
+"float4",
+null
+],
+"View_ScreenToViewSpace": [
+2608,
+"float4",
+null
+],
+"View_NumSceneColorMSAASamples": [
+2624,
+"int",
+null
+],
+"View_PreExposure": [
+2628,
+"float",
+null
+],
+"View_OneOverPreExposure": [
+2632,
+"float",
+null
+],
+"View_PreviousPreExposure": [
+2636,
+"float",
+null
+],
+"View_PreviousOneOverPreExposure": [
+2640,
+"float",
+null
+],
+"PrePadding_View_2644": [
+2644,
+"float",
+null
+],
+"PrePadding_View_2648": [
+2648,
+"float",
+null
+],
+"PrePadding_View_2652": [
+2652,
+"float",
+null
+],
+"View_DiffuseOverrideParameter": [
+2656,
+"float4",
+null
+],
+"View_SpecularOverrideParameter": [
+2672,
+"float4",
+null
+],
+"View_NormalOverrideParameter": [
+2688,
+"float4",
+null
+],
+"View_RoughnessOverrideParameter": [
+2704,
+"float4",
+null
+],
+"View_PrevFrameGameTime": [
+2720,
+"float",
+null
+],
+"View_PrevFrameRealTime": [
+2724,
+"float",
+null
+],
+"View_OutOfBoundsMask": [
+2728,
+"float",
+null
+],
+"PrePadding_View_2732": [
+2732,
+"float",
+null
+],
+"View_WorldCameraMovementSinceLastFrame": [
+2736,
+"float3",
+null
+],
+"View_CullingSign": [
+2748,
+"float",
+null
+],
+"View_NearPlane": [
+2752,
+"float",
+null
+],
+"View_AdaptiveTessellationFactor": [
+2756,
+"float",
+null
+],
+"View_GameTime": [
+2760,
+"float",
+null
+],
+"View_RealTime": [
+2764,
+"float",
+null
+],
+"View_DeltaTime": [
+2768,
+"float",
+null
+],
+"View_EnvironmentTime": [
+2772,
+"float",
+null
+],
+"View_PreviousEnvironmentTime": [
+2776,
+"float",
+null
+],
+"View_MaterialTextureMipBias": [
+2780,
+"float",
+null
+],
+"View_MaterialTextureDerivativeMultiply": [
+2784,
+"float",
+null
+],
+"View_Random": [
+2788,
+"uint",
+null
+],
+"View_FrameNumber": [
+2792,
+"uint",
+null
+],
+"View_StateFrameIndexMod8": [
+2796,
+"uint",
+null
+],
+"View_StateFrameIndex": [
+2800,
+"uint",
+null
+],
+"View_StateFrameDelayIndex": [
+2804,
+"uint",
+null
+],
+"View_DebugViewModeMask": [
+2808,
+"uint",
+null
+],
+"View_CameraCut": [
+2812,
+"float",
+null
+],
+"View_UnlitViewmodeMask": [
+2816,
+"float",
+null
+],
+"PrePadding_View_2820": [
+2820,
+"float",
+null
+],
+"PrePadding_View_2824": [
+2824,
+"float",
+null
+],
+"PrePadding_View_2828": [
+2828,
+"float",
+null
+],
+"View_DirectionalLightColor": [
+2832,
+"float4",
+null
+],
+"View_DirectionalLightDirection": [
+2848,
+"float3",
+null
+],
+"PrePadding_View_2860": [
+2860,
+"float",
+null
+],
+"View_TranslucencyLightingVolumeMin": [
+2864,
+"float4",
+"[2]"
+],
+"View_TranslucencyLightingVolumeInvSize": [
+2896,
+"float4",
+"[2]"
+],
+"View_TranslucencyLightingVolumeDistance": [
+2928,
+"float4",
+"[2]"
+],
+"View_TemporalAAParams": [
+2960,
+"float4",
+null
+],
+"View_CircleDOFParams": [
+2976,
+"float4",
+null
+],
+"View_ForceDrawAllVelocities": [
+2992,
+"uint",
+null
+],
+"View_DepthOfFieldIntensity": [
+2996,
+"float",
+null
+],
+"View_DepthOfFieldFocalDistance": [
+3000,
+"float",
+null
+],
+"View_DepthOfFieldFstop": [
+3004,
+"float",
+null
+],
+"View_LightModifierEnvironmentLight": [
+3008,
+"float",
+null
+],
+"View_LightModifierDirectionalLight": [
+3012,
+"float",
+null
+],
+"View_MotionBlurNormalizedToPixel": [
+3016,
+"float",
+null
+],
+"View_bSubsurfacePostprocessEnabled": [
+3020,
+"float",
+null
+],
+"View_GeneralPurposeTweak": [
+3024,
+"float4",
+null
+],
+"View_DemosaicVposOffset": [
+3040,
+"float",
+null
+],
+"PrePadding_View_3044": [
+3044,
+"float",
+null
+],
+"PrePadding_View_3048": [
+3048,
+"float",
+null
+],
+"PrePadding_View_3052": [
+3052,
+"float",
+null
+],
+"View_IndirectLightingColorScale": [
+3056,
+"float3",
+null
+],
+"View_AtmosphericFogSunPower": [
+3068,
+"float",
+null
+],
+"View_AtmosphericFogPower": [
+3072,
+"float",
+null
+],
+"View_AtmosphericFogDensityScale": [
+3076,
+"float",
+null
+],
+"View_AtmosphericFogDensityOffset": [
+3080,
+"float",
+null
+],
+"View_AtmosphericFogGroundOffset": [
+3084,
+"float",
+null
+],
+"View_AtmosphericFogDistanceScale": [
+3088,
+"float",
+null
+],
+"View_AtmosphericFogAltitudeScale": [
+3092,
+"float",
+null
+],
+"View_AtmosphericFogHeightScaleRayleigh": [
+3096,
+"float",
+null
+],
+"View_AtmosphericFogStartDistance": [
+3100,
+"float",
+null
+],
+"View_AtmosphericFogDistanceOffset": [
+3104,
+"float",
+null
+],
+"View_AtmosphericFogSunDiscScale": [
+3108,
+"float",
+null
+],
+"PrePadding_View_3112": [
+3112,
+"float",
+null
+],
+"PrePadding_View_3116": [
+3116,
+"float",
+null
+],
+"View_AtmosphereLightDirection": [
+3120,
+"float4",
+"[2]"
+],
+"View_AtmosphereLightColor": [
+3152,
+"float4",
+"[2]"
+],
+"View_AtmosphereLightColorGlobalPostTransmittance": [
+3184,
+"float4",
+"[2]"
+],
+"View_AtmosphereLightDiscLuminance": [
+3216,
+"float4",
+"[2]"
+],
+"View_AtmosphereLightDiscCosHalfApexAngle": [
+3248,
+"float4",
+"[2]"
+],
+"View_SkyViewLutSizeAndInvSize": [
+3280,
+"float4",
+null
+],
+"View_SkyWorldCameraOrigin": [
+3296,
+"float3",
+null
+],
+"PrePadding_View_3308": [
+3308,
+"float",
+null
+],
+"View_SkyPlanetCenterAndViewHeight": [
+3312,
+"float4",
+null
+],
+"View_SkyViewLutReferential": [
+3328,
+"float4x4",
+null
+],
+"View_SkyAtmosphereSkyLuminanceFactor": [
+3392,
+"float4",
+null
+],
+"View_SkyAtmospherePresentInScene": [
+3408,
+"float",
+null
+],
+"View_SkyAtmosphereHeightFogContribution": [
+3412,
+"float",
+null
+],
+"View_SkyAtmosphereBottomRadiusKm": [
+3416,
+"float",
+null
+],
+"View_SkyAtmosphereTopRadiusKm": [
+3420,
+"float",
+null
+],
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeSizeAndInvSize": [
+3424,
+"float4",
+null
+],
+"View_SkyAtmosphereAerialPerspectiveStartDepthKm": [
+3440,
+"float",
+null
+],
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolution": [
+3444,
+"float",
+null
+],
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolutionInv": [
+3448,
+"float",
+null
+],
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKm": [
+3452,
+"float",
+null
+],
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKmInv": [
+3456,
+"float",
+null
+],
+"View_SkyAtmosphereApplyCameraAerialPerspectiveVolume": [
+3460,
+"float",
+null
+],
+"View_AtmosphericFogRenderMask": [
+3464,
+"uint",
+null
+],
+"View_AtmosphericFogInscatterAltitudeSampleNum": [
+3468,
+"uint",
+null
+],
+"View_EnvironmentLightFallbackContext": [
+3472,
+"float4",
+null
+],
+"View_FogContextDirectionalLightDirection": [
+3488,
+"float4",
+null
+],
+"View_FogContextDirectionalLightColor": [
+3504,
+"float4",
+null
+],
+"View_FogContextMediumIOR": [
+3520,
+"float",
+null
+],
+"View_NumberOfFogContext": [
+3524,
+"uint",
+null
+],
+"PrePadding_View_3528": [
+3528,
+"uint",
+null
+],
+"PrePadding_View_3532": [
+3532,
+"uint",
+null
+],
+"View_FogContextHeightBasedContextAlbedo": [
+3536,
+"float4",
+"[4]"
+],
+"View_FogContextHeightBasedContextDensity": [
+3600,
+"float4",
+"[4]"
+],
+"View_FogContextTransmitContextAlbedo": [
+3664,
+"float4",
+"[4]"
+],
+"View_FogContextTransmitContextDensity": [
+3728,
+"float4",
+"[4]"
+],
+"View_FogContextRegionContext": [
+3792,
+"float4",
+"[4]"
+],
+"View_FogContextLightContext": [
+3856,
+"float4",
+"[4]"
+],
+"View_NormalCurvatureToRoughnessScaleBias": [
+3920,
+"float3",
+null
+],
+"View_RenderingReflectionCaptureMask": [
+3932,
+"float",
+null
+],
+"View_RealTimeReflectionCapture": [
+3936,
+"float",
+null
+],
+"View_RealTimeReflectionCapturePreExposure": [
+3940,
+"float",
+null
+],
+"PrePadding_View_3944": [
+3944,
+"float",
+null
+],
+"PrePadding_View_3948": [
+3948,
+"float",
+null
+],
+"View_AmbientCubemapTint": [
+3952,
+"float4",
+null
+],
+"View_AmbientCubemapIntensity": [
+3968,
+"float",
+null
+],
+"View_WetnessIntensity": [
+3972,
+"float",
+null
+],
+"View_SkyLightApplyPrecomputedBentNormalShadowingFlag": [
+3976,
+"float",
+null
+],
+"View_SkyLightAffectReflectionFlag": [
+3980,
+"float",
+null
+],
+"View_SkyLightAffectGlobalIlluminationFlag": [
+3984,
+"float",
+null
+],
+"PrePadding_View_3988": [
+3988,
+"float",
+null
+],
+"PrePadding_View_3992": [
+3992,
+"float",
+null
+],
+"PrePadding_View_3996": [
+3996,
+"float",
+null
+],
+"View_SkyLightColor": [
+4000,
+"float4",
+null
+],
+"View_MobileSkyIrradianceEnvironmentMap": [
+4016,
+"float4",
+"[7]"
+],
+"View_MobilePreviewMode": [
+4128,
+"float",
+null
+],
+"View_HMDEyePaddingOffset": [
+4132,
+"float",
+null
+],
+"View_ReflectionCubemapMaxMip": [
+4136,
+"float",
+null
+],
+"View_ShowDecalsMask": [
+4140,
+"float",
+null
+],
+"View_DistanceFieldAOSpecularOcclusionMode": [
+4144,
+"uint",
+null
+],
+"View_IndirectCapsuleSelfShadowingIntensity": [
+4148,
+"float",
+null
+],
+"PrePadding_View_4152": [
+4152,
+"float",
+null
+],
+"PrePadding_View_4156": [
+4156,
+"float",
+null
+],
+"View_ReflectionEnvironmentRoughnessMixingScaleBiasAndLargestWeight": [
+4160,
+"float3",
+null
+],
+"View_StereoPassIndex": [
+4172,
+"int",
+null
+],
+"View_GlobalVolumeCenterAndExtent": [
+4176,
+"float4",
+"[4]"
+],
+"View_GlobalVolumeWorldToUVAddAndMul": [
+4240,
+"float4",
+"[4]"
+],
+"View_GlobalVolumeDimension": [
+4304,
+"float",
+null
+],
+"View_GlobalVolumeTexelSize": [
+4308,
+"float",
+null
+],
+"View_MaxGlobalDistance": [
+4312,
+"float",
+null
+],
+"PrePadding_View_4316": [
+4316,
+"float",
+null
+],
+"View_CursorPosition": [
+4320,
+"int2",
+null
+],
+"View_bCheckerboardSubsurfaceProfileRendering": [
+4328,
+"float",
+null
+],
+"PrePadding_View_4332": [
+4332,
+"float",
+null
+],
+"View_PrecomputedLightVolumeGridZParams": [
+4336,
+"float3",
+null
+],
+"PrePadding_View_4348": [
+4348,
+"float",
+null
+],
+"View_PrecomputedLightVolumeGridSize": [
+4352,
+"float3",
+null
+],
+"PrePadding_View_4364": [
+4364,
+"float",
+null
+],
+"View_PrecomputedLightVolumeGridSizeInt": [
+4368,
+"int3",
+null
+],
+"PrePadding_View_4380": [
+4380,
+"int",
+null
+],
+"View_VolumetricFogGridSize": [
+4384,
+"float3",
+null
+],
+"PrePadding_View_4396": [
+4396,
+"float",
+null
+],
+"View_VolumetricFogGridSizeReciprocal": [
+4400,
+"float3",
+null
+],
+"PrePadding_View_4412": [
+4412,
+"float",
+null
+],
+"View_VolumetricFogGridZParameter": [
+4416,
+"float3",
+null
+],
+"PrePadding_View_4428": [
+4428,
+"float",
+null
+],
+"View_VolumetricFogGridZParameterReciprocal": [
+4432,
+"float3",
+null
+],
+"PrePadding_View_4444": [
+4444,
+"float",
+null
+],
+"View_VolumetricFogGridCoordinateSolver": [
+4448,
+"float3",
+null
+],
+"PrePadding_View_4460": [
+4460,
+"float",
+null
+],
+"View_VolumetricFogGridCoordinateMinimum": [
+4464,
+"float3",
+null
+],
+"PrePadding_View_4476": [
+4476,
+"float",
+null
+],
+"View_VolumetricFogGridCoordinateMaximum": [
+4480,
+"float3",
+null
+],
+"View_VolumetricFogMaxDistance": [
+4492,
+"float",
+null
+],
+"View_VolumetricLightmapWorldToUVScale": [
+4496,
+"float3",
+null
+],
+"PrePadding_View_4508": [
+4508,
+"float",
+null
+],
+"View_VolumetricLightmapWorldToUVAdd": [
+4512,
+"float3",
+null
+],
+"PrePadding_View_4524": [
+4524,
+"float",
+null
+],
+"View_VolumetricLightmapIndirectionTextureSize": [
+4528,
+"float3",
+null
+],
+"View_VolumetricLightmapBrickSize": [
+4540,
+"float",
+null
+],
+"View_VolumetricLightmapBrickTexelSize": [
+4544,
+"float3",
+null
+],
+"View_StereoIPD": [
+4556,
+"float",
+null
+],
+"View_IndirectLightingCacheShowFlag": [
+4560,
+"float",
+null
+],
+"View_EyeToPixelSpreadAngle": [
+4564,
+"float",
+null
+],
+"PrePadding_View_4568": [
+4568,
+"float",
+null
+],
+"PrePadding_View_4572": [
+4572,
+"float",
+null
+],
+"View_WorldToVirtualTexture": [
+4576,
+"float4x4",
+null
+],
+"View_XRPassthroughCameraUVs": [
+4640,
+"float4",
+"[2]"
+],
+"View_VirtualTextureFeedbackStride": [
+4672,
+"uint",
+null
+],
+"PrePadding_View_4676": [
+4676,
+"uint",
+null
+],
+"PrePadding_View_4680": [
+4680,
+"uint",
+null
+],
+"PrePadding_View_4684": [
+4684,
+"uint",
+null
+],
+"View_RuntimeVirtualTextureMipLevel": [
+4688,
+"float4",
+null
+],
+"View_RuntimeVirtualTexturePackHeight": [
+4704,
+"float2",
+null
+],
+"PrePadding_View_4712": [
+4712,
+"float",
+null
+],
+"PrePadding_View_4716": [
+4716,
+"float",
+null
+],
+"View_RuntimeVirtualTextureDebugParams": [
+4720,
+"float4",
+null
+],
+"View_FarShadowStaticMeshLODBias": [
+4736,
+"int",
+null
+],
+"View_MinRoughness": [
+4740,
+"float",
+null
+],
+"PrePadding_View_4744": [
+4744,
+"float",
+null
+],
+"PrePadding_View_4748": [
+4748,
+"float",
+null
+],
+"View_HairRenderInfo": [
+4752,
+"float4",
+null
+],
+"View_EnableSkyLight": [
+4768,
+"uint",
+null
+],
+"View_HairRenderInfoBits": [
+4772,
+"uint",
+null
+],
+"View_HairComponents": [
+4776,
+"uint",
+null
+],
+"View_DebugContext": [
+4780,
+"uint",
+null
+],
+"View_DebugTweak": [
+4784,
+"uint",
+null
+],
+"View": [
+0,
+"}",
+null
+]
+},
+"Primitive": {
+"Primitive_LocalToWorld": [
+0,
+"float4x4",
+null
+],
+"Primitive_InvNonUniformScaleAndDeterminantSign": [
+64,
+"float4",
+null
+],
+"Primitive_ObjectWorldPositionAndRadius": [
+80,
+"float4",
+null
+],
+"Primitive_WorldToLocal": [
+96,
+"float4x4",
+null
+],
+"Primitive_PreviousLocalToWorld": [
+160,
+"float4x4",
+null
+],
+"Primitive_PreviousWorldToLocal": [
+224,
+"float4x4",
+null
+],
+"Primitive_ActorWorldPosition": [
+288,
+"float3",
+null
+],
+"Primitive_UseSingleSampleShadowFromStationaryLights": [
+300,
+"float",
+null
+],
+"Primitive_ObjectBounds": [
+304,
+"float3",
+null
+],
+"Primitive_LpvBiasMultiplier": [
+316,
+"float",
+null
+],
+"Primitive_DecalReceiverMask": [
+320,
+"float",
+null
+],
+"Primitive_PerObjectGBufferData": [
+324,
+"float",
+null
+],
+"Primitive_UseVolumetricLightmapShadowFromStationaryLights": [
+328,
+"float",
+null
+],
+"Primitive_DrawsVelocity": [
+332,
+"float",
+null
+],
+"Primitive_ObjectOrientation": [
+336,
+"float4",
+null
+],
+"Primitive_NonUniformScale": [
+352,
+"float4",
+null
+],
+"Primitive_LocalObjectBoundsMin": [
+368,
+"float3",
+null
+],
+"Primitive_LightingChannelMask": [
+380,
+"uint",
+null
+],
+"Primitive_LocalObjectBoundsMax": [
+384,
+"float3",
+null
+],
+"Primitive_LightmapDataIndex": [
+396,
+"uint",
+null
+],
+"Primitive_PreSkinnedLocalBoundsMin": [
+400,
+"float3",
+null
+],
+"Primitive_SingleCaptureIndex": [
+412,
+"uint",
+null
+],
+"Primitive_PreSkinnedLocalBoundsMax": [
+416,
+"float3",
+null
+],
+"Primitive_OutputVelocity": [
+428,
+"uint",
+null
+],
+"Primitive_Reserved0": [
+432,
+"uint",
+null
+],
+"Primitive_Reserved1": [
+436,
+"uint",
+null
+],
+"Primitive_PixelAttribute": [
+440,
+"uint",
+null
+],
+"Primitive_DynamicCoverage": [
+444,
+"float",
+null
+],
+"Primitive": [
+0,
+"}",
+null
+]
+}
+}

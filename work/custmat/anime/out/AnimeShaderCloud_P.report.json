@@ -1,0 +1,93 @@
+{
+ "/Game/RebirthCustom/AnimeShader/AnimeShader_Fabric_Wide": {
+  "carrier": "RMI_Surface_Fabric_Wide",
+  "replaced": [
+   154,
+   310
+  ],
+  "size": 7420756,
+  "shaders": 420
+ },
+ "/Game/RebirthCustom/AnimeShader/AnimeShader_Hair_Wide": {
+  "carrier": "RMI_Surface_Hair_Wide",
+  "replaced": [
+   245
+  ],
+  "size": 5570728,
+  "shaders": 296
+ },
+ "/Game/RebirthCustom/AnimeShader/AnimeShader_Skin_Wide_Detail": {
+  "carrier": "RMI_Surface_Skin_Wide_Detail",
+  "replaced": [
+   20,
+   202
+  ],
+  "size": 7459514,
+  "shaders": 420
+ },
+ "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Coverage_Wide": {
+  "carrier": "RMI_Surface_Standard_Coverage_Wide",
+  "replaced": [
+   293
+  ],
+  "size": 5533372,
+  "shaders": 296
+ },
+ "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide": {
+  "carrier": "RMI_Surface_Standard_Wide",
+  "replaced": [
+   93,
+   143
+  ],
+  "size": 7420532,
+  "shaders": 420
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_ArmA": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide.AnimeShader_Standard_Wide",
+  "size": 4192
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_ArmB": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Coverage_Wide.AnimeShader_Standard_Coverage_Wide",
+  "size": 4527
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Bottms": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide.AnimeShader_Standard_Wide",
+  "size": 4224
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Eyebrow": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Coverage_Wide.AnimeShader_Standard_Coverage_Wide",
+  "size": 4692
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Eyelash": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide.AnimeShader_Standard_Wide",
+  "size": 4357
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Hair": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Hair_Wide.AnimeShader_Hair_Wide",
+  "size": 4845
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Head": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Skin_Wide_Detail.AnimeShader_Skin_Wide_Detail",
+  "size": 4952
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Pants": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Fabric_Wide.AnimeShader_Fabric_Wide",
+  "size": 4819
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Shoulder": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide.AnimeShader_Standard_Wide",
+  "size": 4248
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_Skin": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Skin_Wide_Detail.AnimeShader_Skin_Wide_Detail",
+  "size": 4803
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_TopsA": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Fabric_Wide.AnimeShader_Fabric_Wide",
+  "size": 4192
+ },
+ "/Game/Character/Player/PC0000_00_Cloud_Standard/Material/PC0000_00_TopsB": {
+  "parent": "/Game/RebirthCustom/AnimeShader/AnimeShader_Standard_Wide.AnimeShader_Standard_Wide",
+  "size": 4200
+ }
+}

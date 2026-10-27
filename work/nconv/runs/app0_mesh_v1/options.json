@@ -1,0 +1,22 @@
+{
+ "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit_Soft.RMI_Particle_Emit_Soft",
+ "textures": {
+  "/Game/KH3/Effects/texcom/mat_part/jmi_glw_01sk.jmi_glw_01sk": "/Game/KH3/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp",
+  "/Game/KH3/Effects/trescom/mat_part/tmi_fls_05a.tmi_fls_05a": "/Game/KH3/Effects/trescom/tex/fls/ttx_fls_02a.ttx_fls_02a",
+  "/Game/KH3/Effects/texcom/mat_part/jmi_glt_05k.jmi_glt_05k": "/Game/KH3/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp",
+  "/Game/KH3/Effects/trescom/mat_part/zmi_crs_03csk.zmi_crs_03csk": "/Game/KH3/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a",
+  "/Game/KH3/Effects/trescom/mat_part/zmi_glw_00sk.zmi_glw_00sk": "/Game/KH3/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp",
+  "/Game/KH3/Effects/wep/w_so010/mat/smt_frn_01a.smt_frn_01a": "/Game/KH3/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+  "/Game/KH3/Effects/trescom/mat_mdl/nmi_ora_01sla.nmi_ora_01sla": "/Game/KH3/Effects/trescom/tex/ora/stx_ora_01m.stx_ora_01m",
+  "/Game/KH3/Effects/trescom/mat_mdl/zmi_rng_00sa.zmi_rng_00sa": "/Game/KH3/Effects/trescom/tex/stx_rng_00a.stx_rng_00a",
+  "/Game/KH3/Effects/texcom/mat_mdl/jmi_sho_00a.jmi_sho_00a": "/Game/KH3/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+  "/Game/KH3/Effects/trescom/mat_part/zmi_glw_01sk.zmi_glw_01sk": "/Game/KH3/Effects/trescom/tex/glw/ztx_glt_00a.ztx_glt_00a"
+ },
+ "sprite_template_from": "/work/nconv/samples/Character__Player__PC0000_Cloud__Particle__FX_PC0000_BurstChain00_01_Hit_01.uasset",
+ "sprite_template_export": 5,
+ "bounds": 500.0,
+ "independent_params": true,
+ "mesh_template_from": "/work/nconv/samples/Character__Player__PC0000_Cloud__Particle__FX_PC0000_Limit02_Hit_03.uasset",
+ "mesh_template_export": 19,
+ "mesh_material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit_Soft.RMI_Particle_Emit_Soft"
+}

@@ -1,0 +1,37 @@
+BattleDamageSource (18 rows):
+  PC0010_RM_Hattou_01    from EB2210_00_Hattou_01    power   360  None [] (on the target)
+  PC0010_RM_Hattou_02    from EB2210_00_Hattou_02    power   360  None [] (on the target)
+  PC0010_RM_Hattou_03    from EB2210_00_Hattou_03    power   480  None [] (on the target)
+  PC0010_RM_Hattou_04    from EB2210_00_Hattou_04    power   480  None [] (on the target)
+  PC0010_RM_Hattou_05    from EB2210_00_Hattou_05    power   360  None [] (on the target)
+  PC0010_RM_Hattou_06    from EB2210_00_Hattou_06    power   360  None [] (on the target)
+  PC0010_RM_Hattou_07    from EB2210_00_Hattou_07    power  1200  None [] (on the target)
+  PC0010_RM_Hattou_08    from EB2210_00_Hattou_08    power  2400  None [] (on the target)
+  PC0010_RM_Senkou_01    from EB2210_00_Hattou_01    power   600  None [] (on the target)
+  PC0010_RM_Senkou_02    from EB2210_00_Hattou_01    power  1500  None [] (on the target)
+  PC0010_RM_Senkou_03    from EB2210_00_Hattou_01    power   450  None [] (on the target)
+  PC0010_RM_Senkou_04    from EB2210_00_Hattou_01    power   450  None [] (on the target)
+  PC0010_RM_Senkou_05    from EB2210_00_Hattou_01    power   450  None [] (on the target)
+  PC0010_RM_Senkou_06    from EB2210_00_Hattou_01    power   450  None [] (on the target)
+  PC0010_RM_Gokumon_01   from EB2210_00_Hattou_08    power  3000  None [] (on the target)
+  PC0010_RM_Gokumon_02   from PC0010_AtkBurst02_02   power  2400  None [600.0] (around him)
+  PC0010_RM_NPAtk_1_01   from EB2210_00_Zanshin1_R01 power   180  C_Spine_d [50.0, 700.0, -50.0, 0.0, 0.0, 1.0] (on the target)
+  PC0010_RM_NPAtk_1_02   from EB2210_00_Zanshin1_L01 power   180  C_Spine_d [50.0, 700.0, 50.0, 0.0, 0.0, 1.0] (on the target)
+BattleAbility (4 rows):
+  PC0010_RM_Octaslash    from PC0010_BZ_Octaslash    $bt_Sephiroth_Hattou01     ATB 2  ['B_AtkHattou01']  damage PC0010_RM_Hattou
+  PC0010_RM_Scintilla    from PC0010_W3_SwordDance   $bt_Sephiroth_Senkou01     ATB 1  ['B_AtkSenkou02']  damage PC0010_RM_Senkou
+  PC0010_RM_ShadowFlare  from PC0010_T_ShadowFlare   $bt_Sephiroth_Flare01      ATB 1  ['B_AtkSFlare01_0', 'B_AtkSFlare01_1', 'B_AtkSFlare01_2']  damage PC0010_P_ShadowFlare
+  PC0010_RM_HellsGate    from PC0010_BZ_HellsGate    $bt_Sephiroth_Gokumon01    ATB 2  ['B_AtkGokumon01']  damage PC0010_RM_Gokumon
+Text/US: 4 help texts; names: $bt_Sephiroth_Hattou01 = Octaslash, $bt_Sephiroth_Senkou01 = Scintilla, $bt_Sephiroth_Flare01 = Shadow Flare, $bt_Sephiroth_Gokumon01 = Hell's Gate
+CharaSpec:
+  PC0000_00_Cloud_Standard: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_08_Cloud_SoldierNoHelmet: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_09_Cloud_CostaClothing: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_10_Cloud_CostaClothing2: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_04_Cloud_ZackCostume: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_12_Cloud_ZackCostumeDirty: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_18_Cloud_ZackCostumeAge21: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_19_Cloud_ZackCostumeDirtyAge21: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+  PC0000_23_Cloud_ZackCostumeWet: ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp', 'Battle06', 'Battle08', 'Battle09']
+Moves: 30 packages (Battle08 25, Battle09 5), laid out like the game's animations; left out of the moves container: nothing
+FullyPlayableSephirothDataAssets_P: 1058 chunks (1028 before; 1023 byte for byte the old ones; the 4 tables and the header changed; 30 added); .ucas +16286544 bytes

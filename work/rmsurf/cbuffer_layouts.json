@@ -1,0 +1,2210 @@
+{
+"View": {
+"0": [
+"float4x4",
+"View_TranslatedWorldToClip"
+],
+"64": [
+"float4x4",
+"View_WorldToOrthographicClip"
+],
+"128": [
+"float4x4",
+"View_TranslatedWorldToOrthographicClip"
+],
+"192": [
+"float4x4",
+"View_WorldToClip"
+],
+"256": [
+"float4x4",
+"View_ClipToWorld"
+],
+"320": [
+"float4x4",
+"View_TranslatedWorldToView"
+],
+"384": [
+"float4x4",
+"View_ViewToTranslatedWorld"
+],
+"448": [
+"float4x4",
+"View_TranslatedWorldToCameraView"
+],
+"512": [
+"float4x4",
+"View_CameraViewToTranslatedWorld"
+],
+"576": [
+"float4x4",
+"View_ViewToClip"
+],
+"640": [
+"float4x4",
+"View_ViewToClipNoAA"
+],
+"704": [
+"float4x4",
+"View_ClipToView"
+],
+"768": [
+"float4x4",
+"View_ClipToTranslatedWorld"
+],
+"832": [
+"float4x4",
+"View_SVPositionToTranslatedWorld"
+],
+"896": [
+"float4x4",
+"View_ScreenToWorld"
+],
+"960": [
+"float4x4",
+"View_ScreenToTranslatedWorld"
+],
+"1024": [
+"float4x4",
+"View_MobileMultiviewShadowTransform"
+],
+"1088": [
+"float3",
+"View_ViewForward"
+],
+"1100": [
+"float",
+"PrePadding_View_1100"
+],
+"1104": [
+"float3",
+"View_ViewUp"
+],
+"1116": [
+"float",
+"PrePadding_View_1116"
+],
+"1120": [
+"float3",
+"View_ViewRight"
+],
+"1132": [
+"float",
+"PrePadding_View_1132"
+],
+"1136": [
+"float3",
+"View_HMDViewNoRollUp"
+],
+"1148": [
+"float",
+"PrePadding_View_1148"
+],
+"1152": [
+"float3",
+"View_HMDViewNoRollRight"
+],
+"1164": [
+"float",
+"PrePadding_View_1164"
+],
+"1168": [
+"float4",
+"View_InvDeviceZToWorldZTransform"
+],
+"1184": [
+"float4",
+"View_ScreenPositionScaleBias"
+],
+"1200": [
+"float3",
+"View_WorldCameraOrigin"
+],
+"1212": [
+"float",
+"PrePadding_View_1212"
+],
+"1216": [
+"float3",
+"View_TranslatedWorldCameraOrigin"
+],
+"1228": [
+"float",
+"PrePadding_View_1228"
+],
+"1232": [
+"float3",
+"View_WorldViewOrigin"
+],
+"1244": [
+"float",
+"PrePadding_View_1244"
+],
+"1248": [
+"float3",
+"View_PreViewTranslation"
+],
+"1260": [
+"float",
+"PrePadding_View_1260"
+],
+"1264": [
+"float4x4",
+"View_PrevProjection"
+],
+"1328": [
+"float4x4",
+"View_PrevViewProj"
+],
+"1392": [
+"float4x4",
+"View_PrevViewRotationProj"
+],
+"1456": [
+"float4x4",
+"View_PrevViewToClip"
+],
+"1520": [
+"float4x4",
+"View_PrevClipToView"
+],
+"1584": [
+"float4x4",
+"View_PrevTranslatedWorldToClip"
+],
+"1648": [
+"float4x4",
+"View_PrevWorldToOrthographicClip"
+],
+"1712": [
+"float4x4",
+"View_PrevTranslatedWorldToOrthographicClip"
+],
+"1776": [
+"float4x4",
+"View_PrevTranslatedWorldToView"
+],
+"1840": [
+"float4x4",
+"View_PrevViewToTranslatedWorld"
+],
+"1904": [
+"float4x4",
+"View_PrevTranslatedWorldToCameraView"
+],
+"1968": [
+"float4x4",
+"View_PrevCameraViewToTranslatedWorld"
+],
+"2032": [
+"float3",
+"View_PrevWorldCameraOrigin"
+],
+"2044": [
+"float",
+"PrePadding_View_2044"
+],
+"2048": [
+"float3",
+"View_PrevWorldViewOrigin"
+],
+"2060": [
+"float",
+"PrePadding_View_2060"
+],
+"2064": [
+"float3",
+"View_PrevPreViewTranslation"
+],
+"2076": [
+"float",
+"PrePadding_View_2076"
+],
+"2080": [
+"float4x4",
+"View_PrevInvViewProj"
+],
+"2144": [
+"float4x4",
+"View_PrevScreenToTranslatedWorld"
+],
+"2208": [
+"float4x4",
+"View_ClipToPrevClip"
+],
+"2272": [
+"float4x4",
+"View_ClipToPrevClipWithoutTranslation"
+],
+"2336": [
+"float4x4",
+"View_ProjectionToWorld"
+],
+"2400": [
+"float4x4",
+"View_WorldToProjection"
+],
+"2464": [
+"float4",
+"View_TemporalAAJitter"
+],
+"2480": [
+"float4",
+"View_TemporalSamplerBias"
+],
+"2496": [
+"float4",
+"View_GlobalClippingPlane"
+],
+"2512": [
+"float2",
+"View_FieldOfViewWideAngles"
+],
+"2520": [
+"float2",
+"View_PrevFieldOfViewWideAngles"
+],
+"2528": [
+"float4",
+"View_ViewRectMin"
+],
+"2544": [
+"float4",
+"View_ViewSizeAndInvSize"
+],
+"2560": [
+"float4",
+"View_LightProbeSizeRatioAndInvSizeRatio"
+],
+"2576": [
+"float4",
+"View_BufferSizeAndInvSize"
+],
+"2592": [
+"float4",
+"View_BufferBilinearUVMinMax"
+],
+"2608": [
+"float4",
+"View_ScreenToViewSpace"
+],
+"2624": [
+"int",
+"View_NumSceneColorMSAASamples"
+],
+"2628": [
+"float",
+"View_PreExposure"
+],
+"2632": [
+"float",
+"View_OneOverPreExposure"
+],
+"2636": [
+"float",
+"View_PreviousPreExposure"
+],
+"2640": [
+"float",
+"View_PreviousOneOverPreExposure"
+],
+"2644": [
+"float",
+"PrePadding_View_2644"
+],
+"2648": [
+"float",
+"PrePadding_View_2648"
+],
+"2652": [
+"float",
+"PrePadding_View_2652"
+],
+"2656": [
+"float4",
+"View_DiffuseOverrideParameter"
+],
+"2672": [
+"float4",
+"View_SpecularOverrideParameter"
+],
+"2688": [
+"float4",
+"View_NormalOverrideParameter"
+],
+"2704": [
+"float4",
+"View_RoughnessOverrideParameter"
+],
+"2720": [
+"float",
+"View_PrevFrameGameTime"
+],
+"2724": [
+"float",
+"View_PrevFrameRealTime"
+],
+"2728": [
+"float",
+"View_OutOfBoundsMask"
+],
+"2732": [
+"float",
+"PrePadding_View_2732"
+],
+"2736": [
+"float3",
+"View_WorldCameraMovementSinceLastFrame"
+],
+"2748": [
+"float",
+"View_CullingSign"
+],
+"2752": [
+"float",
+"View_NearPlane"
+],
+"2756": [
+"float",
+"View_AdaptiveTessellationFactor"
+],
+"2760": [
+"float",
+"View_GameTime"
+],
+"2764": [
+"float",
+"View_RealTime"
+],
+"2768": [
+"float",
+"View_DeltaTime"
+],
+"2772": [
+"float",
+"View_EnvironmentTime"
+],
+"2776": [
+"float",
+"View_PreviousEnvironmentTime"
+],
+"2780": [
+"float",
+"View_MaterialTextureMipBias"
+],
+"2784": [
+"float",
+"View_MaterialTextureDerivativeMultiply"
+],
+"2788": [
+"uint",
+"View_Random"
+],
+"2792": [
+"uint",
+"View_FrameNumber"
+],
+"2796": [
+"uint",
+"View_StateFrameIndexMod8"
+],
+"2800": [
+"uint",
+"View_StateFrameIndex"
+],
+"2804": [
+"uint",
+"View_StateFrameDelayIndex"
+],
+"2808": [
+"uint",
+"View_DebugViewModeMask"
+],
+"2812": [
+"float",
+"View_CameraCut"
+],
+"2816": [
+"float",
+"View_UnlitViewmodeMask"
+],
+"2820": [
+"float",
+"PrePadding_View_2820"
+],
+"2824": [
+"float",
+"PrePadding_View_2824"
+],
+"2828": [
+"float",
+"PrePadding_View_2828"
+],
+"2832": [
+"float4",
+"View_DirectionalLightColor"
+],
+"2848": [
+"float3",
+"View_DirectionalLightDirection"
+],
+"2860": [
+"float",
+"PrePadding_View_2860"
+],
+"2864": [
+"float4[2]",
+"View_TranslucencyLightingVolumeMin"
+],
+"2896": [
+"float4[2]",
+"View_TranslucencyLightingVolumeInvSize"
+],
+"2928": [
+"float4[2]",
+"View_TranslucencyLightingVolumeDistance"
+],
+"2960": [
+"float4",
+"View_TemporalAAParams"
+],
+"2976": [
+"float4",
+"View_CircleDOFParams"
+],
+"2992": [
+"uint",
+"View_ForceDrawAllVelocities"
+],
+"2996": [
+"float",
+"View_DepthOfFieldIntensity"
+],
+"3000": [
+"float",
+"View_DepthOfFieldFocalDistance"
+],
+"3004": [
+"float",
+"View_DepthOfFieldFstop"
+],
+"3008": [
+"float",
+"View_LightModifierEnvironmentLight"
+],
+"3012": [
+"float",
+"View_LightModifierDirectionalLight"
+],
+"3016": [
+"float",
+"View_MotionBlurNormalizedToPixel"
+],
+"3020": [
+"float",
+"View_bSubsurfacePostprocessEnabled"
+],
+"3024": [
+"float4",
+"View_GeneralPurposeTweak"
+],
+"3040": [
+"float",
+"View_DemosaicVposOffset"
+],
+"3044": [
+"float",
+"PrePadding_View_3044"
+],
+"3048": [
+"float",
+"PrePadding_View_3048"
+],
+"3052": [
+"float",
+"PrePadding_View_3052"
+],
+"3056": [
+"float3",
+"View_IndirectLightingColorScale"
+],
+"3068": [
+"float",
+"View_AtmosphericFogSunPower"
+],
+"3072": [
+"float",
+"View_AtmosphericFogPower"
+],
+"3076": [
+"float",
+"View_AtmosphericFogDensityScale"
+],
+"3080": [
+"float",
+"View_AtmosphericFogDensityOffset"
+],
+"3084": [
+"float",
+"View_AtmosphericFogGroundOffset"
+],
+"3088": [
+"float",
+"View_AtmosphericFogDistanceScale"
+],
+"3092": [
+"float",
+"View_AtmosphericFogAltitudeScale"
+],
+"3096": [
+"float",
+"View_AtmosphericFogHeightScaleRayleigh"
+],
+"3100": [
+"float",
+"View_AtmosphericFogStartDistance"
+],
+"3104": [
+"float",
+"View_AtmosphericFogDistanceOffset"
+],
+"3108": [
+"float",
+"View_AtmosphericFogSunDiscScale"
+],
+"3112": [
+"float",
+"PrePadding_View_3112"
+],
+"3116": [
+"float",
+"PrePadding_View_3116"
+],
+"3120": [
+"float4[2]",
+"View_AtmosphereLightDirection"
+],
+"3152": [
+"float4[2]",
+"View_AtmosphereLightColor"
+],
+"3184": [
+"float4[2]",
+"View_AtmosphereLightColorGlobalPostTransmittance"
+],
+"3216": [
+"float4[2]",
+"View_AtmosphereLightDiscLuminance"
+],
+"3248": [
+"float4[2]",
+"View_AtmosphereLightDiscCosHalfApexAngle"
+],
+"3280": [
+"float4",
+"View_SkyViewLutSizeAndInvSize"
+],
+"3296": [
+"float3",
+"View_SkyWorldCameraOrigin"
+],
+"3308": [
+"float",
+"PrePadding_View_3308"
+],
+"3312": [
+"float4",
+"View_SkyPlanetCenterAndViewHeight"
+],
+"3328": [
+"float4x4",
+"View_SkyViewLutReferential"
+],
+"3392": [
+"float4",
+"View_SkyAtmosphereSkyLuminanceFactor"
+],
+"3408": [
+"float",
+"View_SkyAtmospherePresentInScene"
+],
+"3412": [
+"float",
+"View_SkyAtmosphereHeightFogContribution"
+],
+"3416": [
+"float",
+"View_SkyAtmosphereBottomRadiusKm"
+],
+"3420": [
+"float",
+"View_SkyAtmosphereTopRadiusKm"
+],
+"3424": [
+"float4",
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeSizeAndInvSize"
+],
+"3440": [
+"float",
+"View_SkyAtmosphereAerialPerspectiveStartDepthKm"
+],
+"3444": [
+"float",
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolution"
+],
+"3448": [
+"float",
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthResolutionInv"
+],
+"3452": [
+"float",
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKm"
+],
+"3456": [
+"float",
+"View_SkyAtmosphereCameraAerialPerspectiveVolumeDepthSliceLengthKmInv"
+],
+"3460": [
+"float",
+"View_SkyAtmosphereApplyCameraAerialPerspectiveVolume"
+],
+"3464": [
+"uint",
+"View_AtmosphericFogRenderMask"
+],
+"3468": [
+"uint",
+"View_AtmosphericFogInscatterAltitudeSampleNum"
+],
+"3472": [
+"float4",
+"View_EnvironmentLightFallbackContext"
+],
+"3488": [
+"float4",
+"View_FogContextDirectionalLightDirection"
+],
+"3504": [
+"float4",
+"View_FogContextDirectionalLightColor"
+],
+"3520": [
+"float",
+"View_FogContextMediumIOR"
+],
+"3524": [
+"uint",
+"View_NumberOfFogContext"
+],
+"3528": [
+"uint",
+"PrePadding_View_3528"
+],
+"3532": [
+"uint",
+"PrePadding_View_3532"
+],
+"3536": [
+"float4[4]",
+"View_FogContextHeightBasedContextAlbedo"
+],
+"3600": [
+"float4[4]",
+"View_FogContextHeightBasedContextDensity"
+],
+"3664": [
+"float4[4]",
+"View_FogContextTransmitContextAlbedo"
+],
+"3728": [
+"float4[4]",
+"View_FogContextTransmitContextDensity"
+],
+"3792": [
+"float4[4]",
+"View_FogContextRegionContext"
+],
+"3856": [
+"float4[4]",
+"View_FogContextLightContext"
+],
+"3920": [
+"float3",
+"View_NormalCurvatureToRoughnessScaleBias"
+],
+"3932": [
+"float",
+"View_RenderingReflectionCaptureMask"
+],
+"3936": [
+"float",
+"View_RealTimeReflectionCapture"
+],
+"3940": [
+"float",
+"View_RealTimeReflectionCapturePreExposure"
+],
+"3944": [
+"float",
+"PrePadding_View_3944"
+],
+"3948": [
+"float",
+"PrePadding_View_3948"
+],
+"3952": [
+"float4",
+"View_AmbientCubemapTint"
+],
+"3968": [
+"float",
+"View_AmbientCubemapIntensity"
+],
+"3972": [
+"float",
+"View_WetnessIntensity"
+],
+"3976": [
+"float",
+"View_SkyLightApplyPrecomputedBentNormalShadowingFlag"
+],
+"3980": [
+"float",
+"View_SkyLightAffectReflectionFlag"
+],
+"3984": [
+"float",
+"View_SkyLightAffectGlobalIlluminationFlag"
+],
+"3988": [
+"float",
+"PrePadding_View_3988"
+],
+"3992": [
+"float",
+"PrePadding_View_3992"
+],
+"3996": [
+"float",
+"PrePadding_View_3996"
+],
+"4000": [
+"float4",
+"View_SkyLightColor"
+],
+"4016": [
+"float4[7]",
+"View_MobileSkyIrradianceEnvironmentMap"
+],
+"4128": [
+"float",
+"View_MobilePreviewMode"
+],
+"4132": [
+"float",
+"View_HMDEyePaddingOffset"
+],
+"4136": [
+"float",
+"View_ReflectionCubemapMaxMip"
+],
+"4140": [
+"float",
+"View_ShowDecalsMask"
+],
+"4144": [
+"uint",
+"View_DistanceFieldAOSpecularOcclusionMode"
+],
+"4148": [
+"float",
+"View_IndirectCapsuleSelfShadowingIntensity"
+],
+"4152": [
+"float",
+"PrePadding_View_4152"
+],
+"4156": [
+"float",
+"PrePadding_View_4156"
+],
+"4160": [
+"float3",
+"View_ReflectionEnvironmentRoughnessMixingScaleBiasAndLargestWeight"
+],
+"4172": [
+"int",
+"View_StereoPassIndex"
+],
+"4176": [
+"float4[4]",
+"View_GlobalVolumeCenterAndExtent"
+],
+"4240": [
+"float4[4]",
+"View_GlobalVolumeWorldToUVAddAndMul"
+],
+"4304": [
+"float",
+"View_GlobalVolumeDimension"
+],
+"4308": [
+"float",
+"View_GlobalVolumeTexelSize"
+],
+"4312": [
+"float",
+"View_MaxGlobalDistance"
+],
+"4316": [
+"float",
+"PrePadding_View_4316"
+],
+"4320": [
+"int2",
+"View_CursorPosition"
+],
+"4328": [
+"float",
+"View_bCheckerboardSubsurfaceProfileRendering"
+],
+"4332": [
+"float",
+"PrePadding_View_4332"
+],
+"4336": [
+"float3",
+"View_PrecomputedLightVolumeGridZParams"
+],
+"4348": [
+"float",
+"PrePadding_View_4348"
+],
+"4352": [
+"float3",
+"View_PrecomputedLightVolumeGridSize"
+],
+"4364": [
+"float",
+"PrePadding_View_4364"
+],
+"4368": [
+"int3",
+"View_PrecomputedLightVolumeGridSizeInt"
+],
+"4380": [
+"int",
+"PrePadding_View_4380"
+],
+"4384": [
+"float3",
+"View_VolumetricFogGridSize"
+],
+"4396": [
+"float",
+"PrePadding_View_4396"
+],
+"4400": [
+"float3",
+"View_VolumetricFogGridSizeReciprocal"
+],
+"4412": [
+"float",
+"PrePadding_View_4412"
+],
+"4416": [
+"float3",
+"View_VolumetricFogGridZParameter"
+],
+"4428": [
+"float",
+"PrePadding_View_4428"
+],
+"4432": [
+"float3",
+"View_VolumetricFogGridZParameterReciprocal"
+],
+"4444": [
+"float",
+"PrePadding_View_4444"
+],
+"4448": [
+"float3",
+"View_VolumetricFogGridCoordinateSolver"
+],
+"4460": [
+"float",
+"PrePadding_View_4460"
+],
+"4464": [
+"float3",
+"View_VolumetricFogGridCoordinateMinimum"
+],
+"4476": [
+"float",
+"PrePadding_View_4476"
+],
+"4480": [
+"float3",
+"View_VolumetricFogGridCoordinateMaximum"
+],
+"4492": [
+"float",
+"View_VolumetricFogMaxDistance"
+],
+"4496": [
+"float3",
+"View_VolumetricLightmapWorldToUVScale"
+],
+"4508": [
+"float",
+"PrePadding_View_4508"
+],
+"4512": [
+"float3",
+"View_VolumetricLightmapWorldToUVAdd"
+],
+"4524": [
+"float",
+"PrePadding_View_4524"
+],
+"4528": [
+"float3",
+"View_VolumetricLightmapIndirectionTextureSize"
+],
+"4540": [
+"float",
+"View_VolumetricLightmapBrickSize"
+],
+"4544": [
+"float3",
+"View_VolumetricLightmapBrickTexelSize"
+],
+"4556": [
+"float",
+"View_StereoIPD"
+],
+"4560": [
+"float",
+"View_IndirectLightingCacheShowFlag"
+],
+"4564": [
+"float",
+"View_EyeToPixelSpreadAngle"
+],
+"4568": [
+"float",
+"PrePadding_View_4568"
+],
+"4572": [
+"float",
+"PrePadding_View_4572"
+],
+"4576": [
+"float4x4",
+"View_WorldToVirtualTexture"
+],
+"4640": [
+"float4[2]",
+"View_XRPassthroughCameraUVs"
+],
+"4672": [
+"uint",
+"View_VirtualTextureFeedbackStride"
+],
+"4676": [
+"uint",
+"PrePadding_View_4676"
+],
+"4680": [
+"uint",
+"PrePadding_View_4680"
+],
+"4684": [
+"uint",
+"PrePadding_View_4684"
+],
+"4688": [
+"float4",
+"View_RuntimeVirtualTextureMipLevel"
+],
+"4704": [
+"float2",
+"View_RuntimeVirtualTexturePackHeight"
+],
+"4712": [
+"float",
+"PrePadding_View_4712"
+],
+"4716": [
+"float",
+"PrePadding_View_4716"
+],
+"4720": [
+"float4",
+"View_RuntimeVirtualTextureDebugParams"
+],
+"4736": [
+"int",
+"View_FarShadowStaticMeshLODBias"
+],
+"4740": [
+"float",
+"View_MinRoughness"
+],
+"4744": [
+"float",
+"PrePadding_View_4744"
+],
+"4748": [
+"float",
+"PrePadding_View_4748"
+],
+"4752": [
+"float4",
+"View_HairRenderInfo"
+],
+"4768": [
+"uint",
+"View_EnableSkyLight"
+],
+"4772": [
+"uint",
+"View_HairRenderInfoBits"
+],
+"4776": [
+"uint",
+"View_HairComponents"
+],
+"4780": [
+"uint",
+"View_DebugContext"
+],
+"4784": [
+"uint",
+"View_DebugTweak"
+]
+},
+"Primitive": {
+"0": [
+"float4x4",
+"Primitive_LocalToWorld"
+],
+"64": [
+"float4",
+"Primitive_InvNonUniformScaleAndDeterminantSign"
+],
+"80": [
+"float4",
+"Primitive_ObjectWorldPositionAndRadius"
+],
+"96": [
+"float4x4",
+"Primitive_WorldToLocal"
+],
+"160": [
+"float4x4",
+"Primitive_PreviousLocalToWorld"
+],
+"224": [
+"float4x4",
+"Primitive_PreviousWorldToLocal"
+],
+"288": [
+"float3",
+"Primitive_ActorWorldPosition"
+],
+"300": [
+"float",
+"Primitive_UseSingleSampleShadowFromStationaryLights"
+],
+"304": [
+"float3",
+"Primitive_ObjectBounds"
+],
+"316": [
+"float",
+"Primitive_LpvBiasMultiplier"
+],
+"320": [
+"float",
+"Primitive_DecalReceiverMask"
+],
+"324": [
+"float",
+"Primitive_PerObjectGBufferData"
+],
+"328": [
+"float",
+"Primitive_UseVolumetricLightmapShadowFromStationaryLights"
+],
+"332": [
+"float",
+"Primitive_DrawsVelocity"
+],
+"336": [
+"float4",
+"Primitive_ObjectOrientation"
+],
+"352": [
+"float4",
+"Primitive_NonUniformScale"
+],
+"368": [
+"float3",
+"Primitive_LocalObjectBoundsMin"
+],
+"380": [
+"uint",
+"Primitive_LightingChannelMask"
+],
+"384": [
+"float3",
+"Primitive_LocalObjectBoundsMax"
+],
+"396": [
+"uint",
+"Primitive_LightmapDataIndex"
+],
+"400": [
+"float3",
+"Primitive_PreSkinnedLocalBoundsMin"
+],
+"412": [
+"uint",
+"Primitive_SingleCaptureIndex"
+],
+"416": [
+"float3",
+"Primitive_PreSkinnedLocalBoundsMax"
+],
+"428": [
+"uint",
+"Primitive_OutputVelocity"
+],
+"432": [
+"uint",
+"Primitive_Reserved0"
+],
+"436": [
+"uint",
+"Primitive_Reserved1"
+],
+"440": [
+"uint",
+"Primitive_PixelAttribute"
+],
+"444": [
+"float",
+"Primitive_DynamicCoverage"
+]
+},
+"Material": {
+"0": [
+"float4[4]",
+"Material_VectorExpressions"
+],
+"64": [
+"float4[1]",
+"Material_ScalarExpressions"
+],
+"128": [
+"float4[2]",
+"Material_ScalarExpressions"
+],
+"192": [
+"float4[3]",
+"Material_ScalarExpressions"
+],
+"256": [
+"float4[4]",
+"Material_ScalarExpressions"
+],
+"320": [
+"float4[6]",
+"Material_ScalarExpressions"
+],
+"384": [
+"float4[7]",
+"Material_ScalarExpressions"
+]
+},
+"TranslucentBasePass": {
+"0": [
+"uint",
+"TranslucentBasePass_Shared_Forward_NumLocalLights"
+],
+"4": [
+"uint",
+"TranslucentBasePass_Shared_Forward_NumReflectionCaptures"
+],
+"8": [
+"uint",
+"TranslucentBasePass_Shared_Forward_HasDirectionalLight"
+],
+"12": [
+"uint",
+"TranslucentBasePass_Shared_Forward_NumGridCells"
+],
+"16": [
+"int3",
+"TranslucentBasePass_Shared_Forward_CulledGridSize"
+],
+"28": [
+"uint",
+"TranslucentBasePass_Shared_Forward_MaxCulledLightsPerCell"
+],
+"32": [
+"uint",
+"TranslucentBasePass_Shared_Forward_LightGridPixelSizeShift"
+],
+"36": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Forward_36"
+],
+"40": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Forward_40"
+],
+"44": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Forward_44"
+],
+"48": [
+"float3",
+"TranslucentBasePass_Shared_Forward_LightGridZParams"
+],
+"60": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Forward_60"
+],
+"64": [
+"float3",
+"TranslucentBasePass_Shared_Forward_DirectionalLightColor"
+],
+"76": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Forward_76"
+],
+"80": [
+"float3",
+"TranslucentBasePass_Shared_Forward_DirectionalLightDirection"
+],
+"92": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Forward_92"
+],
+"96": [
+"float3",
+"TranslucentBasePass_Shared_Forward_DirectionalLightTangent"
+],
+"108": [
+"uint",
+"TranslucentBasePass_Shared_Forward_DirectionalLightLightContextBitField"
+],
+"112": [
+"float2",
+"TranslucentBasePass_Shared_Forward_DirectionalLightDistanceFadeMAD"
+],
+"120": [
+"uint",
+"TranslucentBasePass_Shared_Forward_NumDirectionalLightCascades"
+],
+"124": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Forward_124"
+],
+"128": [
+"float4",
+"TranslucentBasePass_Shared_Forward_CascadeEndDepths"
+],
+"144": [
+"float4x4",
+"TranslucentBasePass_Shared_Forward_DirectionalLightWorldToShadowMatrix"
+],
+"400": [
+"float4[4]",
+"TranslucentBasePass_Shared_Forward_DirectionalLightShadowmapMinMax"
+],
+"464": [
+"float4",
+"TranslucentBasePass_Shared_Forward_DirectionalLightShadowmapAtlasBufferSize"
+],
+"480": [
+"float",
+"TranslucentBasePass_Shared_Forward_DirectionalLightDepthBias"
+],
+"484": [
+"uint",
+"TranslucentBasePass_Shared_Forward_DirectionalLightUseStaticShadowing"
+],
+"488": [
+"uint",
+"TranslucentBasePass_Shared_Forward_SimpleLightsEndIndex"
+],
+"492": [
+"uint",
+"TranslucentBasePass_Shared_Forward_ClusteredDeferredSupportedEndIndex"
+],
+"496": [
+"int4",
+"TranslucentBasePass_Shared_Forward_DirectionalLightStaticShadowDepthTileSize"
+],
+"512": [
+"int4",
+"TranslucentBasePass_Shared_Forward_DirectionalLightStaticShadowDepthTileRange"
+],
+"528": [
+"float4x4",
+"TranslucentBasePass_Shared_Forward_DirectionalLightWorldToStaticShadow"
+],
+"592": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_592"
+],
+"596": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_596"
+],
+"600": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_600"
+],
+"604": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_604"
+],
+"608": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_608"
+],
+"612": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_612"
+],
+"616": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_616"
+],
+"620": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_620"
+],
+"624": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_624"
+],
+"628": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_628"
+],
+"632": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_632"
+],
+"636": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_636"
+],
+"640": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_640"
+],
+"644": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_644"
+],
+"648": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_648"
+],
+"652": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_652"
+],
+"656": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_656"
+],
+"660": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_660"
+],
+"664": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_664"
+],
+"668": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_668"
+],
+"672": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_NumLocalLights"
+],
+"676": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_NumReflectionCaptures"
+],
+"680": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_HasDirectionalLight"
+],
+"684": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_NumGridCells"
+],
+"688": [
+"int3",
+"TranslucentBasePass_Shared_ForwardISR_CulledGridSize"
+],
+"700": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_MaxCulledLightsPerCell"
+],
+"704": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_LightGridPixelSizeShift"
+],
+"708": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_708"
+],
+"712": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_712"
+],
+"716": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_716"
+],
+"720": [
+"float3",
+"TranslucentBasePass_Shared_ForwardISR_LightGridZParams"
+],
+"732": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_732"
+],
+"736": [
+"float3",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightColor"
+],
+"748": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_748"
+],
+"752": [
+"float3",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightDirection"
+],
+"764": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_764"
+],
+"768": [
+"float3",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightTangent"
+],
+"780": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightLightContextBitField"
+],
+"784": [
+"float2",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightDistanceFadeMAD"
+],
+"792": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_NumDirectionalLightCascades"
+],
+"796": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_ForwardISR_796"
+],
+"800": [
+"float4",
+"TranslucentBasePass_Shared_ForwardISR_CascadeEndDepths"
+],
+"816": [
+"float4x4",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightWorldToShadowMatrix"
+],
+"1072": [
+"float4[4]",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightShadowmapMinMax"
+],
+"1136": [
+"float4",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightShadowmapAtlasBufferSize"
+],
+"1152": [
+"float",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightDepthBias"
+],
+"1156": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightUseStaticShadowing"
+],
+"1160": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_SimpleLightsEndIndex"
+],
+"1164": [
+"uint",
+"TranslucentBasePass_Shared_ForwardISR_ClusteredDeferredSupportedEndIndex"
+],
+"1168": [
+"int4",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightStaticShadowDepthTileSize"
+],
+"1184": [
+"int4",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightStaticShadowDepthTileRange"
+],
+"1200": [
+"float4x4",
+"TranslucentBasePass_Shared_ForwardISR_DirectionalLightWorldToStaticShadow"
+],
+"1264": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1264"
+],
+"1268": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1268"
+],
+"1272": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1272"
+],
+"1276": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1276"
+],
+"1280": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1280"
+],
+"1284": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1284"
+],
+"1288": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1288"
+],
+"1292": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1292"
+],
+"1296": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1296"
+],
+"1300": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1300"
+],
+"1304": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1304"
+],
+"1308": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1308"
+],
+"1312": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1312"
+],
+"1316": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1316"
+],
+"1320": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1320"
+],
+"1324": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1324"
+],
+"1328": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1328"
+],
+"1332": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1332"
+],
+"1336": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1336"
+],
+"1340": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Reflection_1340"
+],
+"1344": [
+"float4",
+"TranslucentBasePass_Shared_Reflection_SkyLightParameters"
+],
+"1360": [
+"float",
+"TranslucentBasePass_Shared_Reflection_SkyLightCubemapBrightness"
+],
+"1364": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1364"
+],
+"1368": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1368"
+],
+"1372": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1372"
+],
+"1376": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1376"
+],
+"1380": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1380"
+],
+"1384": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1384"
+],
+"1388": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1388"
+],
+"1392": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1392"
+],
+"1396": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1396"
+],
+"1400": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1400"
+],
+"1404": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1404"
+],
+"1408": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1408"
+],
+"1412": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1412"
+],
+"1416": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1416"
+],
+"1420": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1420"
+],
+"1424": [
+"float4",
+"TranslucentBasePass_Shared_PlanarReflection_ReflectionPlane"
+],
+"1440": [
+"float4",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionOrigin"
+],
+"1456": [
+"float4",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionXAxis"
+],
+"1472": [
+"float4",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionYAxis"
+],
+"1488": [
+"float3x4",
+"TranslucentBasePass_Shared_PlanarReflection_InverseTransposeMirrorMatrix"
+],
+"1536": [
+"float3",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionParameters"
+],
+"1548": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1548"
+],
+"1552": [
+"float2",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionParameters2"
+],
+"1560": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1560"
+],
+"1564": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_PlanarReflection_1564"
+],
+"1568": [
+"float4x4",
+"TranslucentBasePass_Shared_PlanarReflection_ProjectionWithExtraFOV"
+],
+"1696": [
+"float4[2]",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionScreenScaleBias"
+],
+"1728": [
+"float2",
+"TranslucentBasePass_Shared_PlanarReflection_PlanarReflectionScreenBound"
+],
+"1736": [
+"uint",
+"TranslucentBasePass_Shared_PlanarReflection_bIsStereo"
+],
+"1740": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_1740"
+],
+"1744": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_1744"
+],
+"1748": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_1748"
+],
+"1752": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_1752"
+],
+"1756": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_1756"
+],
+"1760": [
+"float4",
+"TranslucentBasePass_Shared_Fog_DirectionalLightDirection"
+],
+"1776": [
+"float4",
+"TranslucentBasePass_Shared_Fog_DirectionalLightColor"
+],
+"1792": [
+"float",
+"TranslucentBasePass_Shared_Fog_MediumIOR"
+],
+"1796": [
+"uint",
+"TranslucentBasePass_Shared_Fog_NumberOfFogContext"
+],
+"1800": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Fog_1800"
+],
+"1804": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_Fog_1804"
+],
+"1808": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_HeightBasedContextAlbedo"
+],
+"1872": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_HeightBasedContextDensity"
+],
+"1936": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_TransmitContextAlbedo"
+],
+"2000": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_TransmitContextDensity"
+],
+"2064": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_RegionContext"
+],
+"2128": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_LightContext"
+],
+"2192": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_EnvironmentTextureContext"
+],
+"2256": [
+"float4[4]",
+"TranslucentBasePass_Shared_Fog_DistanceTextureContext"
+],
+"2320": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2320"
+],
+"2324": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2324"
+],
+"2328": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2328"
+],
+"2332": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2332"
+],
+"2336": [
+"float4",
+"TranslucentBasePass_Shared_Fog_FarIntegratedScatteringTextureContext"
+],
+"2352": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2352"
+],
+"2356": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2356"
+],
+"2360": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2360"
+],
+"2364": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_Fog_2364"
+],
+"2368": [
+"float4",
+"TranslucentBasePass_Shared_Fog_IntegratedScatteringVolumeTextureContext"
+],
+"2384": [
+"float4",
+"TranslucentBasePass_Shared_FogISR_DirectionalLightDirection"
+],
+"2400": [
+"float4",
+"TranslucentBasePass_Shared_FogISR_DirectionalLightColor"
+],
+"2416": [
+"float",
+"TranslucentBasePass_Shared_FogISR_MediumIOR"
+],
+"2420": [
+"uint",
+"TranslucentBasePass_Shared_FogISR_NumberOfFogContext"
+],
+"2424": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2424"
+],
+"2428": [
+"uint",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2428"
+],
+"2432": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_HeightBasedContextAlbedo"
+],
+"2496": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_HeightBasedContextDensity"
+],
+"2560": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_TransmitContextAlbedo"
+],
+"2624": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_TransmitContextDensity"
+],
+"2688": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_RegionContext"
+],
+"2752": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_LightContext"
+],
+"2816": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_EnvironmentTextureContext"
+],
+"2880": [
+"float4[4]",
+"TranslucentBasePass_Shared_FogISR_DistanceTextureContext"
+],
+"2944": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2944"
+],
+"2948": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2948"
+],
+"2952": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2952"
+],
+"2956": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2956"
+],
+"2960": [
+"float4",
+"TranslucentBasePass_Shared_FogISR_FarIntegratedScatteringTextureContext"
+],
+"2976": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2976"
+],
+"2980": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2980"
+],
+"2984": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2984"
+],
+"2988": [
+"float",
+"PrePadding_TranslucentBasePass_Shared_FogISR_2988"
+],
+"2992": [
+"float4",
+"TranslucentBasePass_Shared_FogISR_IntegratedScatteringVolumeTextureContext"
+],
+"3008": [
+"float",
+"PrePadding_TranslucentBasePass_3008"
+],
+"3012": [
+"float",
+"PrePadding_TranslucentBasePass_3012"
+],
+"3016": [
+"float",
+"PrePadding_TranslucentBasePass_3016"
+],
+"3020": [
+"float",
+"PrePadding_TranslucentBasePass_3020"
+],
+"3024": [
+"float",
+"PrePadding_TranslucentBasePass_3024"
+],
+"3028": [
+"float",
+"PrePadding_TranslucentBasePass_3028"
+],
+"3032": [
+"float",
+"PrePadding_TranslucentBasePass_3032"
+],
+"3036": [
+"float",
+"PrePadding_TranslucentBasePass_3036"
+],
+"3040": [
+"float",
+"PrePadding_TranslucentBasePass_3040"
+],
+"3044": [
+"float",
+"PrePadding_TranslucentBasePass_3044"
+],
+"3048": [
+"float",
+"PrePadding_TranslucentBasePass_3048"
+],
+"3052": [
+"float",
+"PrePadding_TranslucentBasePass_3052"
+],
+"3056": [
+"float",
+"PrePadding_TranslucentBasePass_3056"
+],
+"3060": [
+"float",
+"PrePadding_TranslucentBasePass_3060"
+],
+"3064": [
+"float",
+"PrePadding_TranslucentBasePass_3064"
+],
+"3068": [
+"float",
+"PrePadding_TranslucentBasePass_3068"
+],
+"3072": [
+"float",
+"PrePadding_TranslucentBasePass_3072"
+],
+"3076": [
+"float",
+"PrePadding_TranslucentBasePass_3076"
+],
+"3080": [
+"float",
+"PrePadding_TranslucentBasePass_3080"
+],
+"3084": [
+"float",
+"PrePadding_TranslucentBasePass_3084"
+],
+"3088": [
+"float",
+"PrePadding_TranslucentBasePass_3088"
+],
+"3092": [
+"float",
+"PrePadding_TranslucentBasePass_3092"
+],
+"3096": [
+"float",
+"PrePadding_TranslucentBasePass_3096"
+],
+"3100": [
+"float",
+"PrePadding_TranslucentBasePass_3100"
+],
+"3104": [
+"float",
+"PrePadding_TranslucentBasePass_3104"
+],
+"3108": [
+"float",
+"PrePadding_TranslucentBasePass_3108"
+],
+"3112": [
+"float",
+"PrePadding_TranslucentBasePass_3112"
+],
+"3116": [
+"float",
+"PrePadding_TranslucentBasePass_3116"
+],
+"3120": [
+"float",
+"PrePadding_TranslucentBasePass_3120"
+],
+"3124": [
+"float",
+"PrePadding_TranslucentBasePass_3124"
+],
+"3128": [
+"float",
+"PrePadding_TranslucentBasePass_3128"
+],
+"3132": [
+"float",
+"PrePadding_TranslucentBasePass_3132"
+],
+"3136": [
+"float",
+"PrePadding_TranslucentBasePass_3136"
+],
+"3140": [
+"float",
+"PrePadding_TranslucentBasePass_3140"
+],
+"3144": [
+"float",
+"PrePadding_TranslucentBasePass_3144"
+],
+"3148": [
+"float",
+"PrePadding_TranslucentBasePass_3148"
+],
+"3152": [
+"float",
+"PrePadding_TranslucentBasePass_3152"
+],
+"3156": [
+"float",
+"PrePadding_TranslucentBasePass_3156"
+],
+"3160": [
+"float",
+"PrePadding_TranslucentBasePass_3160"
+],
+"3164": [
+"float",
+"PrePadding_TranslucentBasePass_3164"
+],
+"3168": [
+"float4",
+"TranslucentBasePass_HZBUvFactorAndInvFactor"
+],
+"3184": [
+"float4",
+"TranslucentBasePass_PrevScreenPositionScaleBias"
+],
+"3200": [
+"float4",
+"TranslucentBasePass_PreviousViewRectangleContext"
+],
+"3216": [
+"float",
+"TranslucentBasePass_PrevSceneColorPreExposureInv"
+],
+"3220": [
+"float",
+"PrePadding_TranslucentBasePass_3220"
+],
+"3224": [
+"float",
+"PrePadding_TranslucentBasePass_3224"
+],
+"3228": [
+"float",
+"PrePadding_TranslucentBasePass_3228"
+],
+"3232": [
+"float",
+"PrePadding_TranslucentBasePass_3232"
+],
+"3236": [
+"float",
+"PrePadding_TranslucentBasePass_3236"
+],
+"3240": [
+"float",
+"PrePadding_TranslucentBasePass_3240"
+],
+"3244": [
+"float",
+"PrePadding_TranslucentBasePass_3244"
+],
+"3248": [
+"float",
+"PrePadding_TranslucentBasePass_3248"
+],
+"3252": [
+"float",
+"PrePadding_TranslucentBasePass_3252"
+],
+"3256": [
+"float",
+"PrePadding_TranslucentBasePass_3256"
+],
+"3260": [
+"float",
+"PrePadding_TranslucentBasePass_3260"
+],
+"3264": [
+"float4",
+"TranslucentBasePass_HZBCoordinateContext"
+]
+}
+}

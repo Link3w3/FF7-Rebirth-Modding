@@ -1,0 +1,65 @@
+@echo off
+title Create a Character System 3.14.4 - building the game mod and installing it, please leave this window open
+rem Create a Character System 3.14.4 (close the game first; the editor can stay open):
+rem   builds the game mod 3.14.4 (main.dll) from Tools\RebirthSkelCompat\src and installs it (build_dll.py --install:
+rem   the old main.dll is kept as dlls\main.dll.bak-<time>, the mod's README.txt updated). KawaiiPhysics on a model with
+rem   a Bonamik: "disable_bonamik" now takes the model's BNMs off the model itself as it loads (its KineDriver kept), the
+rem   way Young Sephiroth's pak has his. 3.14.3 only switched them off, and a BNM the game runs writes its bones after
+rem   KawaiiPhysics, switched off or not, so the Sephiroth skins showed none of it.
+rem Status: Tools\RebirthSkelCompat\build\install3144_status.txt
+rem Leave the window open until it says FINISHED (the build takes a few minutes; Ctrl+C stops it half way).
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\install3144_status.txt"
+echo Create a Character System 3.14.4 game mod install, started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close the game ^(%%P^) first, then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+for %%F in (build_dll.py src\RebirthSkelCompat.cpp src\SkelCompatCore.hpp src\KawaiiSolver.hpp mod\README.txt) do (
+  if not exist "%~dp0%%F" (
+    echo FAILED: %%F is missing ^(tell Sandalphon^)>> "%STATUS%"
+    goto :done
+  )
+)
+findstr /L /C:"= L\"3.14.4\";" "%~dp0src\RebirthSkelCompat.cpp" >nul
+if errorlevel 1 (
+  echo FAILED: src\RebirthSkelCompat.cpp is not 3.14.4 ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+findstr /L /C:"MaxKawaiiNodes = 64" "%~dp0src\SkelCompatCore.hpp" >nul
+if errorlevel 1 (
+  echo FAILED: src\SkelCompatCore.hpp is not 3.14.2's ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+findstr /L /C:"Create a Character System 3.14.4" "%~dp0mod\README.txt" >nul
+if errorlevel 1 (
+  echo FAILED: mod\README.txt is not 3.14.4's ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+call :findpython
+echo building the game mod 3.14.4 ^(main.dll^) and installing it ^(a few minutes^)...>> "%STATUS%"
+type "%STATUS%"
+%PY% "%~dp0build_dll.py" --install > "%~dp0build\install3144_dll.log" 2>&1
+if errorlevel 1 goto :dllfailed
+echo    game mod 3.14.4 installed.>> "%STATUS%"
+echo DONE: start the game and put on a Sephiroth skin. The mod's log should say "RebirthSkelCompat 3.14.4 starting", then "Kawaii: PC0010_15: its Bonamik taken off the model as it loaded: PC0010_00_BNM" (and the same for PC0010_10, EB0021_00, EB0021_01_Body as they load), and on the "Kawaii check" lines "at the frame's end the result still in its buffer" N of N.>> "%STATUS%"
+goto :done
+:dllfailed
+echo FAILED: the game mod did not build ^(build\install3144_dll.log^); nothing was changed: tell Sandalphon>> "%STATUS%"
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY set "PY=python"
+exit /b

@@ -1,0 +1,105 @@
+  line better_match  CARDG_QST_06_0300_0300_00_vin    2.46 s
+  line brief         C3110_MAIN_5400_0810_00_vin      0.85 s
+  line come          C3340_MAIN_1200_2000_00_vin      0.51 s
+  line diverting     CARDG_QST_06_0300_0200_00_vin    1.93 s
+  line duel          CARDG_QST_06_0100_1000_00_vin    1.51 s
+  line dying         CARDG_QST_07_0300_3100_00_vin    3.93 s
+  line ends_well     CARDG_QST_07_0300_2900_00_vin    2.87 s
+  line enough        NIBLE_QST_03_0500_0100_00_vin    1.30 s
+  line even_better   C3310_MAIN_0100_0400_00_vin      0.82 s
+  line expectations  C3310_MAIN_2100_0200_00_vin      3.23 s
+  line find_out      NIBLE_QST_03_0800_1100_00_vin    1.27 s
+  line get_out       C3110_MAIN_6200_1200_00_vin      2.63 s
+  line go            NIBLE_QST_03_1600_0400_00_vin    0.78 s
+  line hmph          C3110_MAIN_5400_1300_00_vin      0.73 s
+  line job           NIBLE_QST_03_0600_0300_00_vin    2.20 s
+  line loud          NIBLE_QST_03_0800_0700_00_vin    1.40 s
+  line need          CARDG_QST_06_0100_0100_00_vin    1.10 s
+  line not_blame     CARDG_QST_07_0300_2000_00_vin    2.43 s
+  line oh            NIBLE_QST_03_0700_0500_00_vin    0.59 s
+  line ready         C3310_MAIN_0400_0900_00_vin      1.66 s
+  line resting       NIBLE_QST_03_1300_0100_00_vin    1.65 s
+  line scared        NIBLE_QST_03_0400_1100_00_vin    2.43 s
+  line sin           C3110_MAIN_5400_3100_00_vin      5.22 s
+  line sleep         C3110_MAIN_5500_0300_00_vin      1.31 s
+  line slumber       C3110_MAIN_5400_0200_00_vin      2.68 s
+  line trouble       NIBLE_QST_03_1300_0200_00_vin    1.33 s
+  line well          C3110_MAIN_5400_0400_00_vin      0.72 s
+VO_PC0000_00_Cloud (US): 676 sounds, 137 of them Vincent's now (25 aliases), 539 silent; 7615360 -> 8402432 bytes
+    Btl_Start_Monster_01     brief, duel, find_out, go, job, ready
+    Btl_Start_Shinra_01      brief, duel, find_out, go, job, ready
+    Btl_Start_Shinra_02      brief, duel, find_out, go, job, ready
+    Btl_Start_Monster_02     duel, go, ready, slumber
+    Btl_Start_Secret_01      duel, slumber
+    Victory_01_Self          better_match, diverting, ends_well, hmph
+    Victory_02_self          diverting, ends_well, hmph
+    Squat_Victory_01         hmph
+    Victory_02_Dead          dying, not_blame
+    GameOver                 expectations
+    Dead_Self                sleep
+    Return_Dead              resting
+    Recover_04               even_better
+    Recover_05               even_better
+    Atk_Limit_Start          get_out, sin
+    Summon_Start_0000        come
+    Change_01_Normal         loud, need, well
+    Change_02_Normal         loud, need, well
+    Change_01_Crisis         trouble
+    Change_02_Crisis         trouble
+    Change_01_Normal_Burst   oh
+    Change_02_Normal_Burst   oh
+    Burst_Start              scared
+    Atk_Enemy_Down           enough
+    Atk_Finish               hmph
+  VO_PC0000_01_Cloud_Past: no alias Btl_Start_Shinra_01
+  VO_PC0000_01_Cloud_Past: no alias Btl_Start_Shinra_02
+  VO_PC0000_01_Cloud_Past: no alias Btl_Start_Secret_01
+  VO_PC0000_01_Cloud_Past: no alias Squat_Victory_01
+VO_PC0000_01_Cloud_Past (US): 285 sounds, 37 of them Vincent's now (21 aliases), 248 silent; 3010528 -> 3187920 bytes
+    Btl_Start_Monster_01     duel, go, ready
+    Btl_Start_Monster_02     duel, go, ready
+    Victory_01_Self          better_match, diverting, hmph
+    Victory_02_self          diverting, hmph
+    Victory_02_Dead          
+    GameOver                 expectations
+    Dead_Self                sleep
+    Return_Dead              resting
+    Recover_04               even_better
+    Recover_05               even_better
+    Atk_Limit_Start          get_out, sin
+    Summon_Start_0000        come
+    Change_01_Normal         loud, need, well
+    Change_02_Normal         loud, need, well
+    Change_01_Crisis         loud, need, well
+    Change_02_Crisis         loud, need, well
+    Change_01_Normal_Burst   loud, need, well
+    Change_02_Normal_Burst   loud, need, well
+    Burst_Start              scared
+    Atk_Enemy_Down           enough
+    Atk_Finish               hmph
+VO_PC0000_02_Cloud_Insanity (US): 677 sounds, 87 of them Vincent's now (25 aliases), 590 silent; 7651840 -> 8238432 bytes
+    Btl_Start_Monster_01     brief, duel, find_out, go, ready
+    Btl_Start_Shinra_01      brief, duel, find_out, go, ready
+    Btl_Start_Shinra_02      duel, go, ready
+    Btl_Start_Monster_02     ready, slumber
+    Btl_Start_Secret_01      duel, slumber
+    Victory_01_Self          better_match, diverting, ends_well, hmph
+    Victory_02_self          diverting, ends_well, hmph
+    Squat_Victory_01         hmph
+    Victory_02_Dead          dying, not_blame
+    GameOver                 expectations
+    Dead_Self                sleep
+    Return_Dead              resting
+    Recover_04               even_better
+    Recover_05               even_better
+    Atk_Limit_Start          get_out, sin
+    Summon_Start_0000        come
+    Change_01_Normal         need, well
+    Change_02_Normal         need, well
+    Change_01_Crisis         need, well
+    Change_02_Crisis         need, well
+    Change_01_Normal_Burst   need, well
+    Change_02_Normal_Burst   need, well
+    Burst_Start              scared
+    Atk_Enemy_Down           enough
+    Atk_Finish               hmph

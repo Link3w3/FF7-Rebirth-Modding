@@ -1,0 +1,377 @@
+{
+ "emitters": {
+  "emt": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleAcceleration"
+   ],
+   "local_space": false,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 600.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    }
+   }
+  },
+  "GPU_loop": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleSize",
+    "ParticleModuleVelocity",
+    "ParticleModuleLocationEmitter",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleVectorFieldScaleOverLife"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 600.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    }
+   }
+  },
+  "Glow_main": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSizeMultiplyLife",
+    "EndParticleModuleLoopTime"
+   ],
+   "local_space": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 5000.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Glow_04_T.FX_R_Glow_04_T"
+    }
+   }
+  },
+  "Particle Emitter_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "EndParticleModuleLoopTime",
+    "ParticleModuleColorOverLife"
+   ],
+   "local_space": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 0.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Kira_04_T.FX_R_Kira_04_T"
+    }
+   }
+  }
+ },
+ "dropped": [
+  {
+   "emitter": "Light",
+   "why": "no material (a helper emitter: EndParticleModuleLight)",
+   "light": {
+    "color": [
+     0.39675500988960266,
+     1.0,
+     0.8069519996643066
+    ],
+    "intensity": [
+     0.0,
+     0.7847912708918253,
+     1.002916979789734,
+     0.9949935793876648,
+     0.84168674548467,
+     0.5594409704208375,
+     0.4109807848930359,
+     0.5595701535542806,
+     0.8404295325279236,
+     0.9916005849838256,
+     0.9229249954223633,
+     0.7393156449000042,
+     0.4986511766910552,
+     0.26001344919204705,
+     0.07494874000549301,
+     0.0
+    ],
+    "radius": 60.0
+   }
+  }
+ ],
+ "notes": [
+  "Glow_main: Square Enix module EndParticleModuleLoopTime left out",
+  "Particle Emitter_01: Square Enix module EndParticleModuleLoopTime left out"
+ ],
+ "source": "rm/End/Content/GameContents/Effect/Resident/Particle/FX_R_ChargeMagicArm_01",
+ "package": "/Game/RemakeFx/Cascade/FX_R_ChargeMagicArm_01",
+ "socket": "VFX_Magic01",
+ "bind_time": null,
+ "exposure": "ON",
+ "bounds": {
+  "Min": {
+   "X": -200.0,
+   "Y": -200.0,
+   "Z": -100.0
+  },
+  "Max": {
+   "X": 200.0,
+   "Y": 200.0,
+   "Z": 300.0
+  },
+  "IsValid": 1
+ },
+ "exports": 81
+}

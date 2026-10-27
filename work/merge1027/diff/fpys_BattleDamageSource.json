@@ -1,0 +1,1079 @@
+{
+ "fields": [
+  "HitDamageSourceID_Array",
+  "ControlName_Array",
+  "ExtControlName_Array",
+  "ConditionCreateDamageSourceID_Array",
+  "HitReactionParamID_Array",
+  "HitEffectResourceName_Array",
+  "StatusChangeID_Array",
+  "GuardOwnerReactionStringParam_Array",
+  "CreateDamageSourceParameter_Array",
+  "CollisionParameter_Array",
+  "ControlParameter_Array",
+  "ExtControlParameter_Array",
+  "HitReactionParam_Array",
+  "AerialHitReactionParam_Array",
+  "HitEffectIntervalTime_Array",
+  "GuardOwnerReactionParam_Array",
+  "CreateDamageSourceFloat_Array",
+  "ExtControlFlag_Array",
+  "Attribute_Array",
+  "ExtControlType_Array",
+  "ConditionCreateDamageSourceType_Array",
+  "HitReactionType_Array",
+  "HitEffectResourceCategory_Array",
+  "HitEffectAttachCharacter_Array",
+  "HitEffectAttachHitLocation_Array",
+  "StatusChangeProbability_Array",
+  "StatusChangeTime_Array",
+  "StatusChangeLock_Array",
+  "CreateDamageSourceConditionType_Array",
+  "HitGroupName",
+  "CreatePartName",
+  "TargetName",
+  "CreateCameraShakeDataID",
+  "HitReactionID",
+  "KnockbackDirStringParam0",
+  "HitSlowID",
+  "HitCameraShakeDataID",
+  "HitForceFeedbackFileName",
+  "CharaSpecID",
+  "CharaSpecMotionName",
+  "CreatePhysicsObjectCharaSpecID",
+  "CreatePhysicsObjectPartName",
+  "CreateEffectResourceName",
+  "CreateSoundResourceName",
+  "HitSoundResourceName",
+  "GuardEffectResourceName",
+  "GuardSoundResourceName",
+  "BindEffectResourceName",
+  "BindSoundResourceName",
+  "SpecialStatusChangeID",
+  "HitCharaSpecID",
+  "Flag0",
+  "PowerBurst",
+  "PowerBreak",
+  "PowerCactusMission",
+  "RandomBreadth",
+  "CriticalHitRate",
+  "HitBonusParameter",
+  "BurstHitBonusParameter",
+  "BreakHitBonusParameter",
+  "HitBonusLimit",
+  "BreakValue",
+  "DestroyBreakableDamage",
+  "ControlFlag",
+  "Power",
+  "BPAttackDamageCoefficient",
+  "LinkageAddCoefficient",
+  "BurstDamageCoefficientAddOnBurst",
+  "BurstTimeExtension",
+  "HitInterval",
+  "CollisionFaceGuardScale",
+  "CreatePartOffsetX",
+  "CreatePartOffsetY",
+  "CreatePartOffsetZ",
+  "CreatePartOffsetPitch",
+  "CreatePartOffsetYaw",
+  "CreatePartOffsetRoll",
+  "CreateDelayTime",
+  "TargetOffsetX",
+  "TargetOffsetY",
+  "TargetOffsetZ",
+  "DisableHitTime",
+  "DisableHitOnlyTime",
+  "LifeTime",
+  "DestroyDelayTime",
+  "PhysicsVelocityScaleCharacter",
+  "PhysicsVelocityScaleBackground",
+  "PhysicsVelocityScaleDamageSource",
+  "CreatePhysicsObjectDelay",
+  "CreatePhysicsObjectForce",
+  "CreatePhysicsObjectForceRandom",
+  "PushCollisionRadiusReachTime",
+  "BindEffectDelayTime",
+  "BindEffectOffsetX",
+  "BindEffectOffsetY",
+  "BindEffectOffsetZ",
+  "BindEffectOffsetPitch",
+  "BindEffectOffsetYaw",
+  "BindEffectOffsetRoll",
+  "DangerRange",
+  "DangerLengthCoefficient",
+  "DangerDamageDestroyDelayTime",
+  "BPAttack",
+  "TypeParameter",
+  "PowerType",
+  "StunValue",
+  "StunTimeType",
+  "StunAttenuationStartTimeType",
+  "StunAttenuationValueType",
+  "HitBonusType",
+  "Property",
+  "ShieldType",
+  "ReflectType",
+  "DamageBlockType",
+  "HitTarget0",
+  "HitTarget1",
+  "HitTarget5",
+  "HitTarget4",
+  "HitTarget6",
+  "HitTarget2",
+  "HitTarget3",
+  "EnemyHitCategoryTypeBit",
+  "HitDamageSourceTypeBit",
+  "HitDamageSourceEffectType",
+  "DisableHitBackground",
+  "MoveOnTerrain",
+  "SyncActionHitCountType",
+  "HitDestroyType",
+  "HitDestroyTargetType",
+  "HitCountTotal",
+  "HitCount",
+  "CollisionType",
+  "CreateBasePos",
+  "CreatePartOffsetDirectionType",
+  "TargetBase",
+  "TargetOffsetDirectionType",
+  "DirectionType",
+  "RecalcMoveDir",
+  "LifeTimeNotify",
+  "OwnerStopType",
+  "CreateExecutionType",
+  "ProgressDirectionType",
+  "ControlType",
+  "RotationType",
+  "GuardBasePos",
+  "CutValue",
+  "KnockbackDirType",
+  "HitExecutionType",
+  "CharaSpecType",
+  "PhysicsType",
+  "CreatePhysicsObjectBasePos",
+  "CreateEffectResourceCategory",
+  "CreateSoundResourceCategory",
+  "PushCollisionEnable",
+  "HitSoundResourceCategory",
+  "GuardEffectResourceCategory",
+  "GuardSoundResourceCategory",
+  "BindEffectResourceCategory",
+  "BindEffectAttachSocket",
+  "BindSoundResourceCategory",
+  "TakeDamageDirectionType",
+  "GuardOwnerReactionType",
+  "GuardOwnerReactionUCPCGuardOnly",
+  "DisableLookAtCheck",
+  "DisableMoveHitPosition",
+  "DangerDamageDodgeDirectionType",
+  "DangerDamageReflectType",
+  "ForceDamageDisplayToOne",
+  "DamageType"
+ ],
+ "added": [
+  "PC0010_T_HeartlessAngel_01",
+  "PC0010_T_HeartlessAngel_02",
+  "PC0010_Meteor_01",
+  "PC0010_Meteor_Burst",
+  "PC0010_T_Stab_01",
+  "PC0010_T_Stab_Feeler_01",
+  "PC0010_T_StabDetach_01",
+  "PC0010_Meteor",
+  "PC0010_Meteor_Impact",
+  "EB2210_00_ShadowFlare_01",
+  "EB2210_00_Zanshin1_01",
+  "EB2210_00_Zanshin1_L01",
+  "EB2210_00_Zanshin1_R01",
+  "EB2210_00_BurstFlare_01",
+  "EB2210_00_FeelerWingSmash_01",
+  "EB2210_00_FeelerWingSmash_02",
+  "EB2210_00_FeelerWingSmash_03",
+  "EB2210_00_FeelerWingSmash_04",
+  "EB2210_00_FeelerWingSmash_05",
+  "EB2210_00_WindBlow_01",
+  "EB2210_00_WindBlow_02",
+  "EB2210_00_EyeMagic_01",
+  "EB2210_00_WingSwing_L01",
+  "EB2210_00_WingSwing_R01",
+  "EB2210_00_Stigma_01",
+  "EB2210_00_Stigma_02",
+  "EB2210_00_Hattou_01",
+  "EB2210_00_Hattou_02",
+  "EB2210_00_Hattou_03",
+  "EB2210_00_Hattou_04",
+  "EB2210_00_Hattou_05",
+  "EB2210_00_Hattou_06",
+  "EB2210_00_Hattou_07",
+  "EB2210_00_Hattou_08",
+  "EB2210_00_HeartlessAngel_01",
+  "PC0010_P_BindAttack01_01",
+  "PC0010_P_BindAttack02_01",
+  "PC0010_P_BindFeeler_01",
+  "PC0010_P_Blizzard3_01",
+  "PC0010_P_Blizzard3_02",
+  "PC0010_P_FeelerLaser_01",
+  "PC0010_P_FeelerTornado_01",
+  "PC0010_P_Fire3_01",
+  "PC0010_P_Fire3_02",
+  "PC0010_P_GroundFeeler_02",
+  "PC0010_P_GroundFeeler_01",
+  "PC0010_P_HeatAttack_1_01",
+  "PC0010_P_HeatAttack_1_Feeler_01",
+  "PC0010_P_LastAttack_R01",
+  "PC0010_P_LastAttack_L01",
+  "PC0010_P_ShadowFlare_01",
+  "PC0010_P_ShadowFlare_02",
+  "PC0010_P_Thunder3_01",
+  "PC0010_P_Thunder3_02",
+  "PC0010_P_Wind3_01",
+  "PC0010_P_Wind3_02",
+  "PC0010_P_GroundFeelerBullet",
+  "PC0010_P_GroundFeelerExp",
+  "EB2210_00_GokumonA1_01",
+  "EB2210_00_GokumonA1_02",
+  "EB2210_00_GokumonA1_03",
+  "EB2210_00_GokumonA1_04",
+  "EB2210_00_GokumonB1_01",
+  "EB2210_00_GokumonB1_02",
+  "EB2210_00_GokumonB1_03",
+  "EB2210_00_GokumonB1_04",
+  "EB2210_00_GokumonB1_05",
+  "EB2210_00_GokumonDanger",
+  "EB2210_00_Zanshin2_01",
+  "EB2210_00_WingSmashR_01",
+  "EB2210_00_WingSmashL_01",
+  "PC0010_BZ_NAtk_1_01",
+  "PC0010_BZ_NAtk_2_01",
+  "PC0010_BZ_NAtk_3_01",
+  "PC0010_BZ_NAtk_4_01",
+  "PC0010_BZ_JAtk_1_01",
+  "PC0010_BZ_JAtk_2_01",
+  "PC0010_BZ_JAtk_3_01",
+  "PC0010_BZ_NPAtk_1_01",
+  "PC0010_BZ_Satk_1_01",
+  "PC0010_BZ_Satk_2_01",
+  "PC0010_BZ_Satk_6_01",
+  "PC0010_BZ_Satk_8_01",
+  "PC0010_BZ_Satk_8_02",
+  "PC0010_BZ_Satk_8_03",
+  "PC0010_BZ_SAtk_9_01",
+  "PC0010_BZ_SAtk_9_02",
+  "PC0010_BZ_SAtk_9_03",
+  "PC0010_BZ_ChainChange01_01",
+  "PC0010_BZ_PAtk_1_01",
+  "PC0010_BZ_PAtk_2_01",
+  "PC0010_BZ_Limit_1_01",
+  "PC0010_BZ_Limit_1_02",
+  "PC0010_BZ_Limit_1_03",
+  "PC0010_BZ_Limit_1_04",
+  "PC0010_BZ_Limit_1_05",
+  "PC0010_BZ_Limit_1_06",
+  "PC0010_BZ_Limit_1_07",
+  "PC0010_BZ_Limit_1_08",
+  "PC0010_SF_NAtk_1_01",
+  "PC0010_SF_NAtk_2_01",
+  "PC0010_SF_NAtk_3_01",
+  "PC0010_SF_NAtk_4_01",
+  "PC0010_SF_JAtk_1_01",
+  "PC0010_SF_JAtk_2_01",
+  "PC0010_SF_JAtk_3_01",
+  "PC0010_SF_ChainChange01_01",
+  "PC0010_SF_NPAtk_1_01",
+  "PC0010_SF_Satk_1_01",
+  "PC0010_SF_Satk_2_01",
+  "PC0010_SF_Satk_6_01",
+  "PC0010_SF_Satk_8_01",
+  "PC0010_SF_Satk_8_02",
+  "PC0010_SF_Satk_8_03",
+  "PC0010_SF_SAtk_9_01",
+  "PC0010_SF_SAtk_9_02",
+  "PC0010_SF_SAtk_9_03",
+  "PC0010_SF_PAtk_1_01",
+  "PC0010_SF_PAtk_2_01",
+  "PC0010_SF_Limit_1_01",
+  "PC0010_SF_Limit_1_02",
+  "PC0010_SF_Limit_1_03",
+  "PC0010_SF_Limit_1_04",
+  "PC0010_SF_Limit_1_05",
+  "PC0010_SF_Limit_1_06",
+  "PC0010_SF_Limit_1_07",
+  "PC0010_SF_Limit_1_08",
+  "PC0010_RM_Hattou_01",
+  "PC0010_RM_Hattou_02",
+  "PC0010_RM_Hattou_03",
+  "PC0010_RM_Hattou_04",
+  "PC0010_RM_Hattou_05",
+  "PC0010_RM_Hattou_06",
+  "PC0010_RM_Hattou_07",
+  "PC0010_RM_Hattou_08",
+  "PC0010_RM_Senkou_01",
+  "PC0010_RM_Senkou_02",
+  "PC0010_RM_Senkou_03",
+  "PC0010_RM_Senkou_04",
+  "PC0010_RM_Senkou_05",
+  "PC0010_RM_Senkou_06",
+  "PC0010_RM_Gokumon_01",
+  "PC0010_RM_Gokumon_02",
+  "PC0010_RM_NPAtk_1_01",
+  "PC0010_RM_NPAtk_1_02"
+ ],
+ "removed": [],
+ "changed": {
+  "PC0010_ChainChange01_01": {
+   "Power": [
+    20,
+    120
+   ]
+  },
+  "PC0010_NAtk_1_01": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_NAtk_2_01": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_NAtk_3_01": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_NAtk_4_01": {
+   "Power": [
+    70,
+    420
+   ]
+  },
+  "PC0010_JAtk_1_01": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_JAtk_2_01": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_JAtk_3_01": {
+   "Power": [
+    70,
+    420
+   ]
+  },
+  "PC0010_PAtk_1_01": {
+   "Power": [
+    10,
+    60
+   ]
+  },
+  "PC0010_PAtk_2_01": {
+   "Power": [
+    10,
+    60
+   ]
+  },
+  "PC0010_Satk_1_01": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Satk_2_01": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_SAtk_5_01": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Satk_6_01": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_Satk_6_02": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Satk_6_03": {
+   "Power": [
+    150,
+    900
+   ]
+  },
+  "PC0010_Satk_6_04": {
+   "Power": [
+    200,
+    1200
+   ]
+  },
+  "PC0010_Satk_6_05": {
+   "Power": [
+    250,
+    1500
+   ]
+  },
+  "PC0010_Satk_6_06": {
+   "Power": [
+    300,
+    1800
+   ]
+  },
+  "PC0010_SAtk_7_01": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_SAtk_7_02": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Satk_8_01": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_Satk_8_02": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_Satk_8_03": {
+   "Power": [
+    150,
+    900
+   ]
+  },
+  "PC0010_SAtk_9_01": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_SAtk_9_02": {
+   "Power": [
+    30,
+    180
+   ]
+  },
+  "PC0010_SAtk_9_03": {
+   "Power": [
+    200,
+    1200
+   ]
+  },
+  "PC0010_SAtk_10_01": {
+   "Power": [
+    400,
+    2400
+   ]
+  },
+  "PC0010_NPAtk_1_02": {
+   "Power": [
+    5,
+    30
+   ]
+  },
+  "PC0010_NPAtk_1_04": {
+   "Power": [
+    10,
+    60
+   ]
+  },
+  "PC0010_AtkBurst01_01": {
+   "Power": [
+    180,
+    1080
+   ]
+  },
+  "PC0010_AtkBurst01_02": {
+   "Power": [
+    180,
+    1080
+   ]
+  },
+  "PC0010_AtkBurst01_03": {
+   "Power": [
+    200,
+    1200
+   ]
+  },
+  "PC0010_AtkBurst01_A01": {
+   "Power": [
+    180,
+    1080
+   ]
+  },
+  "PC0010_AtkBurst01_A02": {
+   "Power": [
+    180,
+    1080
+   ]
+  },
+  "PC0010_AtkBurst01_A03": {
+   "Power": [
+    200,
+    1200
+   ]
+  },
+  "PC0010_AtkBurst02_01": {
+   "Power": [
+    500,
+    3000
+   ]
+  },
+  "PC0010_AtkBurst02_02": {
+   "Power": [
+    300,
+    1800
+   ]
+  },
+  "PC0010_ChainCounter4_AI_01": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_ChainCounter5_AI_01": {
+   "Power": [
+    400,
+    2400
+   ]
+  },
+  "PC0010_ChainCharge1_AI_01": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_ChainTatakau1_UC_1_01": {
+   "Power": [
+    5,
+    30
+   ]
+  },
+  "PC0010_ChainTatakau1_UC_2_01": {
+   "Power": [
+    10,
+    60
+   ]
+  },
+  "PC0010_ChainTatakau1_UC_2_02": {
+   "Power": [
+    20,
+    120
+   ]
+  },
+  "PC0010_ChainTatakau1_UC_3_01": {
+   "Power": [
+    20,
+    120
+   ]
+  },
+  "PC0010_ChainTatakau1_UC_3_02": {
+   "Power": [
+    50,
+    300
+   ]
+  },
+  "PC0010_Limit_1_01": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Limit_1_02": {
+   "Power": [
+    100,
+    600
+   ]
+  },
+  "PC0010_Limit_1_03": {
+   "Power": [
+    200,
+    1200
+   ]
+  },
+  "PC0010_Limit_1_04": {
+   "Power": [
+    300,
+    1800
+   ]
+  },
+  "PC0010_Limit_1_05": {
+   "Power": [
+    150,
+    900
+   ]
+  },
+  "PC0010_Limit_1_06": {
+   "Power": [
+    150,
+    900
+   ]
+  },
+  "PC0010_Limit_1_07": {
+   "Power": [
+    300,
+    1800
+   ]
+  },
+  "PC0010_Limit_1_08": {
+   "Power": [
+    1100,
+    6600
+   ]
+  },
+  "PC0010_10_Zanshin01_Feeler_03": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Zanshin01_Feeler_04": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Zanshin02_Feeler_05": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Zanshin02_Feeler_06": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Zanshin02_Feeler_07": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Zanshin02_Feeler_08": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_03": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_04": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_05": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_06": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_07": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_08": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_09": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_Gokumon02_Feeler_10": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_GokumonFeelerExp": {
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Exp_01",
+    "FX_PC0000_Limit03_Exp_01"
+   ]
+  },
+  "PC0010_10_GroundFeelerExp_02": {
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Exp_01",
+    "FX_PC0000_Limit03_Exp_01"
+   ]
+  },
+  "PC0010_10_LastAttack_R01": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerLaser_Bullet_01",
+    "FX_PC0000_ChainChargeMagic_Beam_01"
+   ]
+  },
+  "PC0010_10_LastAttack_L01": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerLaser_Bullet_01",
+    "FX_PC0000_ChainChargeMagic_Beam_01"
+   ]
+  },
+  "PC0010_10_BindFeeler_01": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_FeelerTornado_01": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerTornado_Bullet_01",
+    "FX_PC0000_Limit03_Wind_01"
+   ]
+  },
+  "PC0010_10_FeelerLaser_01": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerLaser_Bullet_01",
+    "FX_PC0000_ChainChargeMagic_Beam_01"
+   ]
+  },
+  "PC0010_10_GroundFeelerBullet": {
+   "HitEffectResourceName_Array": [
+    [
+     "FX_PC0010_10_FeelerBullet_Hit_01"
+    ],
+    [
+     "FX_PC0000_ChargeAttack_Hit_01"
+    ]
+   ],
+   "CharaSpecID": [
+    "EN9000_22_Feeler_BlackBulletEnd2",
+    null
+   ],
+   "CharaSpecMotionName": [
+    "B_AtkFeelrBInd01_1",
+    null
+   ],
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Bullet_01",
+    "FX_PC0000_Burst05_Bullet_01"
+   ]
+  },
+  "PC0010_10_GroundFeelerExp": {
+   "BindEffectResourceName": [
+    "FX_PC0010_10_FeelerBullet_Exp_01",
+    "FX_PC0000_Limit03_Exp_01"
+   ]
+  },
+  "PC0010_10_FeelerWingBreak_01": {
+   "BindEffectResourceName": [
+    "FX_PC0010_10_BreakFeeler_Wing_01",
+    null
+   ]
+  }
+ }
+}

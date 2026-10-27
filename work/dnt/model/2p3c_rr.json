@@ -1,0 +1,1162 @@
+{
+ "bones": 211,
+ "vertices": 73593,
+ "triangles": 108772,
+ "slots": [
+  "DNT_M00_PBB_ArIriNWt",
+  "DNT_M01_PBB_ArIriNWt",
+  "DNT_M02_PBS_ArHhaNWt",
+  "DNT_M03_PBB_ArIriNWt",
+  "DNT_M04_PBB_ArIriNbSssWt",
+  "DNT_M05_PBS_ArHhaNWt",
+  "DNT_M06_PBB_ArGfPmSssWt",
+  "DNT_M07_PBB_ArGfNWt",
+  "DNT_M08_PBB_ArNWt",
+  "DNT_M09_PBB_ArNSssWt",
+  "DNT_M10_PBB_ArIriNSssWt",
+  "DNT_M11_PBB_ArIriNWt"
+ ],
+ "aligned": [
+  [
+   "swing",
+   "Spine",
+   1.6
+  ],
+  [
+   "swing",
+   "Neck",
+   1.31
+  ],
+  [
+   "unturn",
+   "Head",
+   0.29
+  ],
+  [
+   "swing",
+   "LeftShoulder",
+   3.98
+  ],
+  [
+   "swing",
+   "LeftArm",
+   8.11
+  ],
+  [
+   "swing",
+   "LeftForeArm",
+   0.0
+  ],
+  [
+   "twist",
+   "LeftForeArm",
+   0.63
+  ],
+  [
+   "swing",
+   "LeftHand",
+   3.9
+  ],
+  [
+   "twist",
+   "LeftHand",
+   0.12
+  ],
+  [
+   "swing",
+   "LeftHandThumb1",
+   33.78
+  ],
+  [
+   "swing",
+   "LeftHandThumb2",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandThumb3",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandIndex1",
+   3.46
+  ],
+  [
+   "swing",
+   "LeftHandIndex2",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandIndex3",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandMiddle1",
+   4.24
+  ],
+  [
+   "swing",
+   "LeftHandMiddle2",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandMiddle3",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandRing1",
+   4.95
+  ],
+  [
+   "swing",
+   "LeftHandRing2",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandRing3",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandPinky1",
+   5.47
+  ],
+  [
+   "swing",
+   "LeftHandPinky2",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftHandPinky3",
+   0.0
+  ],
+  [
+   "swing",
+   "RightShoulder",
+   3.98
+  ],
+  [
+   "swing",
+   "RightArm",
+   8.11
+  ],
+  [
+   "swing",
+   "RightForeArm",
+   0.0
+  ],
+  [
+   "twist",
+   "RightForeArm",
+   -0.63
+  ],
+  [
+   "swing",
+   "RightHand",
+   3.9
+  ],
+  [
+   "twist",
+   "RightHand",
+   -0.12
+  ],
+  [
+   "swing",
+   "RightHandThumb1",
+   33.78
+  ],
+  [
+   "swing",
+   "RightHandThumb2",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandThumb3",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandIndex1",
+   3.46
+  ],
+  [
+   "swing",
+   "RightHandIndex2",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandIndex3",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandMiddle1",
+   4.24
+  ],
+  [
+   "swing",
+   "RightHandMiddle2",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandMiddle3",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandRing1",
+   4.95
+  ],
+  [
+   "swing",
+   "RightHandRing2",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandRing3",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandPinky1",
+   5.47
+  ],
+  [
+   "swing",
+   "RightHandPinky2",
+   0.0
+  ],
+  [
+   "swing",
+   "RightHandPinky3",
+   0.0
+  ],
+  [
+   "swing",
+   "LeftUpLeg",
+   2.29
+  ],
+  [
+   "swing",
+   "LeftLeg",
+   0.56
+  ],
+  [
+   "unturn",
+   "LeftFoot",
+   2.85
+  ],
+  [
+   "swing",
+   "RightUpLeg",
+   2.29
+  ],
+  [
+   "swing",
+   "RightLeg",
+   0.56
+  ],
+  [
+   "unturn",
+   "RightFoot",
+   2.85
+  ]
+ ],
+ "chains": {
+  "C_CoatDNTA": 6,
+  "C_HairDNTA": 11,
+  "C_HairDNTAXA": 1,
+  "C_HairDNTAXB": 1,
+  "C_HairDNTAXC": 5,
+  "C_HairDNTAXD": 5,
+  "C_HairDNTAXE": 5,
+  "C_HairDNTAXF": 3,
+  "C_HairDNTAXG": 2,
+  "L_CoatDNTA": 6,
+  "L_CoatDNTB": 6,
+  "L_CoatDNTC": 6,
+  "L_CoatDNTD": 6,
+  "L_CollarDNTA": 1,
+  "L_HairDNTA": 2,
+  "L_HairDNTB": 3,
+  "L_HairDNTC": 1,
+  "L_HairDNTD": 2,
+  "L_SleeveDNTA": 1,
+  "R_CoatDNTA": 6,
+  "R_CoatDNTB": 6,
+  "R_CoatDNTC": 6,
+  "R_CoatDNTD": 6,
+  "R_CollarDNTA": 1,
+  "R_FeatherDNTA": 1,
+  "R_FeatherDNTB": 1,
+  "R_FeatherDNTC": 1,
+  "R_FeatherDNTD": 1,
+  "R_FeatherDNTE": 1,
+  "R_FeatherDNTF": 1,
+  "R_FeatherDNTG": 1,
+  "R_FeatherDNTH": 1,
+  "R_FeatherDNTI": 1,
+  "R_FeatherDNTJ": 1,
+  "R_FeatherDNTK": 1,
+  "R_FeatherDNTL": 1,
+  "R_FeatherDNTM": 1,
+  "R_FeatherDNTN": 1,
+  "R_FeatherDNTO": 1,
+  "R_HairDNTA": 1,
+  "R_HairDNTB": 2,
+  "R_HairDNTC": 4,
+  "R_HairDNTD": 3,
+  "R_SleeveDNTA": 1
+ },
+ "plain": [
+  "C_ExDNT_b332",
+  "C_ExDNT_b339",
+  "C_ExDNT_b345",
+  "L_ExDNT_b333",
+  "L_ExDNT_b335",
+  "L_ExDNT_b337",
+  "L_ExDNT_b341",
+  "L_ExDNT_b343",
+  "R_ExDNT_b334",
+  "R_ExDNT_b336",
+  "R_ExDNT_b338",
+  "R_ExDNT_b342",
+  "R_ExDNT_b344",
+  "R_WingDNT_b456",
+  "R_WingDNT_b457",
+  "R_WingDNT_b458",
+  "R_WingDNT_b459",
+  "R_WingDNT_b460",
+  "R_WingDNT_b461",
+  "R_WingDNT_b462",
+  "R_WingDNT_b463",
+  "R_WingDNT_b464",
+  "R_WingDNT_b465",
+  "R_WingDNT_b466",
+  "R_WingDNT_b467"
+ ],
+ "folded": {
+  "b315": [
+   [
+    "R_UpperLeg_a",
+    0.5
+   ],
+   [
+    "R_Foreleg_a",
+    0.5
+   ]
+  ],
+  "b313": [
+   [
+    "R_UpperLeg_a",
+    1.0
+   ]
+  ],
+  "b317": [
+   [
+    "R_Foreleg_a",
+    1.0
+   ]
+  ],
+  "b314": [
+   [
+    "L_UpperLeg_a",
+    0.5
+   ],
+   [
+    "L_Foreleg_a",
+    0.5
+   ]
+  ],
+  "b312": [
+   [
+    "L_UpperLeg_a",
+    1.0
+   ]
+  ],
+  "b316": [
+   [
+    "L_Foreleg_a",
+    1.0
+   ]
+  ],
+  "b301": [
+   [
+    "R_UpperArm_a",
+    1.0
+   ]
+  ],
+  "b300": [
+   [
+    "L_UpperArm_a",
+    1.0
+   ]
+  ],
+  "b302": [
+   [
+    "L_UpperArm_a",
+    1.0
+   ]
+  ],
+  "b303": [
+   [
+    "R_UpperArm_a",
+    1.0
+   ]
+  ],
+  "b308": [
+   [
+    "L_Forearm_a",
+    1.0
+   ]
+  ],
+  "b25": [
+   [
+    "L_Hand_a",
+    1.0
+   ]
+  ],
+  "b311": [
+   [
+    "R_UpperLeg_a",
+    1.0
+   ]
+  ],
+  "b319": [
+   [
+    "C_Spine_b",
+    1
+   ]
+  ],
+  "b310": [
+   [
+    "L_UpperLeg_a",
+    1.0
+   ]
+  ],
+  "b318": [
+   [
+    "C_Spine_b",
+    1
+   ]
+  ],
+  "b306": [
+   [
+    "L_Forearm_a",
+    1.0
+   ]
+  ],
+  "b304": [
+   [
+    "L_UpperArm_a",
+    0.5
+   ],
+   [
+    "L_Forearm_a",
+    0.5
+   ]
+  ],
+  "b307": [
+   [
+    "R_Forearm_a",
+    1.0
+   ]
+  ],
+  "b305": [
+   [
+    "R_UpperArm_a",
+    0.5
+   ],
+   [
+    "R_Forearm_a",
+    0.5
+   ]
+  ],
+  "b309": [
+   [
+    "R_Forearm_a",
+    1.0
+   ]
+  ],
+  "b26": [
+   [
+    "R_Hand_a",
+    1.0
+   ]
+  ],
+  "b321": [
+   [
+    "C_Hip_a",
+    0.5
+   ],
+   [
+    "R_UpperLeg_a",
+    0.5
+   ]
+  ],
+  "b320": [
+   [
+    "C_Hip_a",
+    0.5
+   ],
+   [
+    "L_UpperLeg_a",
+    0.5
+   ]
+  ],
+  "b104": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b102": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b101": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b169": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b183": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b187": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b185": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b177": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b179": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b163": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b199": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b173": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b195": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b197": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b202": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b203": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b181": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b189": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b193": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b136": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b118": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b131": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b130": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b137": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b175": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b165": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b140": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b139": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b201": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b161": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b145": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b147": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b159": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b149": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b153": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b155": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b151": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b167": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b171": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b108": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b157": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b106": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b132": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b128": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b126": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b121": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b129": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b113": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b114": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b105": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b115": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b134": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b122": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b124": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b143": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b141": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b119": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b116": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b205": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b120": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b138": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b103": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b196": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b150": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b194": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b200": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b206": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b198": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b156": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b152": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b142": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b172": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b158": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b154": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b160": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b184": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b174": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b170": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b182": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b176": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b186": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b166": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b109": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b107": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b188": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b190": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b180": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b162": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b125": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b123": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b127": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b178": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b168": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b164": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b148": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b146": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b133": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b135": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b144": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b117": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b191": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b192": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b112": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b111": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b110": [
+   [
+    "C_Head_a",
+    1.0
+   ]
+  ],
+  "b329": [
+   [
+    "L_Shoulder_a",
+    1
+   ]
+  ],
+  "b330": [
+   [
+    "R_Shoulder_a",
+    1
+   ]
+  ]
+ },
+ "max_vertex_move": 7.550862066392568
+}

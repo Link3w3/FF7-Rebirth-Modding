@@ -1,0 +1,440 @@
+{
+ "RMI_Surface_Hair_Wide": {
+  "size": 5495762,
+  "shaders": 296,
+  "patched": {
+   "89": {
+    "frame_mask_line": "%18 = and i32 %17, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%22",
+     "%23"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "106": {
+    "frame_mask_line": "%103 = and i32 %102, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%24",
+     "%25"
+    ],
+    "coords": [
+     "%107",
+     "%108"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "112": {
+    "frame_mask_line": "%103 = and i32 %102, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%24",
+     "%25"
+    ],
+    "coords": [
+     "%107",
+     "%108"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "124": {
+    "frame_mask_line": "%20 = and i32 %19, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%24",
+     "%25"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "126": {
+    "frame_mask_line": "%101 = and i32 %100, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%24",
+     "%25"
+    ],
+    "coords": [
+     "%105",
+     "%106"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "153": {
+    "frame_mask_line": "%15 = and i32 %14, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%10",
+     "%11"
+    ],
+    "coords": [
+     "%18",
+     "%19"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "187": {
+    "frame_mask_line": "%96 = and i32 %95, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%23",
+     "%24"
+    ],
+    "coords": [
+     "%99",
+     "%100"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "207": {
+    "frame_mask_line": "%16 = and i32 %15, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%10",
+     "%11"
+    ],
+    "coords": [
+     "%19",
+     "%20"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "240": {
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ],
+    "skipped": "TEXCOORD0 is not loaded"
+   },
+   "245": {
+    "frame_mask_line": "%101 = and i32 %100, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%24",
+     "%25"
+    ],
+    "coords": [
+     "%105",
+     "%106"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "257": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "skipped": "TEXCOORD0 is not loaded"
+   },
+   "272": {
+    "frame_mask_line": "%18 = and i32 %17, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%22",
+     "%23"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "275": {
+    "frame_mask_line": "%106 = and i32 %105, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%25",
+     "%26"
+    ],
+    "coords": [
+     "%109",
+     "%110"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "278": {
+    "frame_mask_line": "%20 = and i32 %19, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%24",
+     "%25"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   }
+  }
+ },
+ "RMI_Surface_Hair_Wetness_Wide": {
+  "size": 5506872,
+  "shaders": 296,
+  "patched": {
+   "11": {
+    "frame_mask_line": "%20 = and i32 %19, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%24",
+     "%25"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "60": {
+    "frame_mask_line": "%15 = and i32 %14, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%10",
+     "%11"
+    ],
+    "coords": [
+     "%18",
+     "%19"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "74": {
+    "frame_mask_line": "%103 = and i32 %102, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%26",
+     "%27"
+    ],
+    "coords": [
+     "%107",
+     "%108"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "109": {
+    "frame_mask_line": "%18 = and i32 %17, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%22",
+     "%23"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "134": {
+    "frame_mask_line": "%18 = and i32 %17, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%22",
+     "%23"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "143": {
+    "frame_mask_line": "%108 = and i32 %107, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%27",
+     "%28"
+    ],
+    "coords": [
+     "%111",
+     "%112"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "185": {
+    "frame_mask_line": "%98 = and i32 %97, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%25",
+     "%26"
+    ],
+    "coords": [
+     "%101",
+     "%102"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "217": {
+    "frame_mask_line": "%105 = and i32 %104, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%26",
+     "%27"
+    ],
+    "coords": [
+     "%109",
+     "%110"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "225": {
+    "frame_mask_line": "%20 = and i32 %19, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%11",
+     "%12"
+    ],
+    "coords": [
+     "%24",
+     "%25"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   },
+   "226": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "skipped": "TEXCOORD0 is not loaded"
+   },
+   "246": {
+    "frame_mask_line": "%103 = and i32 %102, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%26",
+     "%27"
+    ],
+    "coords": [
+     "%107",
+     "%108"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "248": {
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ],
+    "skipped": "TEXCOORD0 is not loaded"
+   },
+   "258": {
+    "frame_mask_line": "%105 = and i32 %104, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%26",
+     "%27"
+    ],
+    "coords": [
+     "%109",
+     "%110"
+    ],
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ]
+   },
+   "260": {
+    "frame_mask_line": "%16 = and i32 %15, 7",
+    "uv": "coverage sample",
+    "uv_regs": [
+     "%10",
+     "%11"
+    ],
+    "coords": [
+     "%19",
+     "%20"
+    ],
+    "types": [
+     "TDepthOnlyPSNoDynamicCoverage",
+     "TDepthOnlyPSWithDynamicCoverage"
+    ]
+   }
+  }
+ }
+}

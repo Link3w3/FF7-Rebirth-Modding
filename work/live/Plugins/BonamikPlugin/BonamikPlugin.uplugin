@@ -1,0 +1,29 @@
+{
+  "FileVersion": 3,
+  "Version": 3,
+  "VersionName": "3.7.13.20220712",
+  "FriendlyName": "Bonamik for UE4",
+  "Description": "Bonamik dynamic cloth and hair system.",
+  "Category": "Happy",
+  "CreatedBy": "Square Enix",
+  "CreatedByURL": "http://happy/",
+  "DocsURL": "http://happy2/doc/view/tools/Bonamik3_7",
+  "MarketplaceURL": "",
+  "SupportURL": "",
+  "EnabledByDefault": true,
+  "CanContainContent": false,
+  "IsBetaVersion": false,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "BonamikRt",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "BonamikEd",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

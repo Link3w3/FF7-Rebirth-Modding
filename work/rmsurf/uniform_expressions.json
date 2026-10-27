@@ -1,0 +1,3506 @@
+{
+ "RMI_Surface_Fabric_Coverage": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Coverage_Emissive_Wide": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "__SubsurfaceProfile"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Coverage_Wetness_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Thin_Coverage_Wide_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Film_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Gradient_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Unlit_Ghost_Coverage_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Ghost_Hair_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Ghost_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Coverage_Emissive_Wide_Detail": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_ExtraColor": {
+  "vector": [
+   "ExtraPixelCoordinateContext",
+   "append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y)",
+   "append(append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y), ExtraPixelCoordinateContext.z)",
+   "ExtraNormalizedCoordinateContext",
+   "append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y)",
+   "append(append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y), ExtraNormalizedCoordinateContext.z)",
+   "append(append(append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y), ExtraPixelCoordinateContext.z), ExtraPixelCoordinateContext.w)",
+   "append(append(append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y), ExtraNormalizedCoordinateContext.z), ExtraNormalizedCoordinateContext.w)"
+  ],
+  "scalar": [
+   "ExtraPixelCoordinateContext.y",
+   "ExtraPixelCoordinateContext.x",
+   "ExtraPixelCoordinateContext.z",
+   "ExtraPixelCoordinateContext.w",
+   "ExtraNormalizedCoordinateContext.y",
+   "ExtraNormalizedCoordinateContext.x",
+   "ExtraNormalizedCoordinateContext.z",
+   "ExtraNormalizedCoordinateContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExtraPixelCoordinateContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExtraNormalizedCoordinateContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Isotropy_Decal": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Unlit_View_Emissive": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SkinnedBody_Standard_Coverage_Isotropy": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SkinnedBody_Standard_Isotropy": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Emissive": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Wide_Detail": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Subsurface": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Wetness_Trickle_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Film": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Segmented_Wide": {
+  "vector": [
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w"
+  ],
+  "params": [
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Isotropy": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Crystal_Convex_Wide_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Crystal_Early_Reverse_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Crystal_Thick_Wide_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Eye_Emissive_Migration": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "__SubsurfaceProfile"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Eye_Migration": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Eye_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Coverage_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Coverage_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Identifier_Coverage_Emissive_Wide_Detail": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "__SubsurfaceProfile"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Identifier_Coverage_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Identifier_Coverage_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Wetness_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Emissive_Thin_Environment": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Thin_Wide_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Thin_Wide_Early_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Thin_Wide_Late_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Hair_Wetness_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Hair_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Skin_And_Fabric_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Skin_Wetness_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Skin_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Skin_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Skin_Wrinkle_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Coverage_Emissive_Wide": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Wetness_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Emissive": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Emissive_Wide": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_ExtraEmissive": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "ExtraPixelCoordinateContext",
+   "append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y)",
+   "append(append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y), ExtraPixelCoordinateContext.z)",
+   "ExtraNormalizedCoordinateContext",
+   "append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y)",
+   "append(append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y), ExtraNormalizedCoordinateContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(ExtraPixelCoordinateContext.x, ExtraPixelCoordinateContext.y), ExtraPixelCoordinateContext.z), ExtraPixelCoordinateContext.w)",
+   "append(append(append(ExtraNormalizedCoordinateContext.x, ExtraNormalizedCoordinateContext.y), ExtraNormalizedCoordinateContext.z), ExtraNormalizedCoordinateContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "ExtraPixelCoordinateContext.y",
+   "ExtraPixelCoordinateContext.x",
+   "ExtraPixelCoordinateContext.z",
+   "ExtraPixelCoordinateContext.w",
+   "ExtraNormalizedCoordinateContext.y",
+   "ExtraNormalizedCoordinateContext.x",
+   "ExtraNormalizedCoordinateContext.z",
+   "ExtraNormalizedCoordinateContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExtraPixelCoordinateContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExtraNormalizedCoordinateContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Identifier_Coverage_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Materia_Indexed_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Materia_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Segmented_Wide": {
+  "vector": [
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w"
+  ],
+  "params": [
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Wetness_Wide": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Wetness_Wide_Detail": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Wide_Detail": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Subsurface_Blood_Coverage_Wide_Decal": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Subsurface_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Water_Thick_Wide_Character": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Emissive_Isotropy": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Fabric": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Fabric_Wide_Detail": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Emissive_Thin_Wide_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Glass_Thin_Environment": {
+  "vector": [],
+  "scalar": [
+   "RefractionDepthBias"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Ocean_Water_Pool_Environment_Development": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_RigidBody_Standard": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Skin_Wetness_Trickle_Wide_Detail": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "__SubsurfaceProfile"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_SoftBody_Standard": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SoftBody_Standard_Coverage": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SoftBody_Standard_Coverage_Isotropy": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SoftBody_Standard_Isotropy": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SoftBody_Water_Pool_Flow_Wide_Detail_Environment_Development": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_And_Fabric_Coverage_Wide": {
+  "vector": [],
+  "scalar": [
+   "__SubsurfaceProfile"
+  ],
+  "params": [],
+  "scalar_params": [
+   {
+    "name": "__SubsurfaceProfile",
+    "type": 2,
+    "default": [
+     1.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Standard_Coverage_Emissive_Isotropy": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Isotropy": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Overlay_Isotropy_Detail": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Wetness": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Emissive_Gradient_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Emissive_Wide_Detail": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Overlay_Isotropy_Detail": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Wetness": {
+  "vector": [],
+  "scalar": [],
+  "params": [],
+  "scalar_params": []
+ },
+ "RMI_Surface_Unlit_BrokenFlow_Emissive_Wide_Decal_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Emissive": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Unlit_Hologram_Coverage_Wide_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Hologram_Coverage_Wide_Detail_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Hologram_Eye_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Hologram_Hair_Wide_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Hologram_Wide_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Hologram_Wide_Detail_Character": {
+  "vector": [
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Phantom_Coverage_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Phantom_Hair_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Phantom_Wide_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Unlit_Phantom_Wide_Detail_Character": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_Water_Pool_Flow_Wide_Detail_Environment_Development": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "GenericVector0Context",
+   "append(GenericVector0Context.x, GenericVector0Context.y)",
+   "append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z)",
+   "GenericVector1Context",
+   "append(GenericVector1Context.x, GenericVector1Context.y)",
+   "append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z)",
+   "GenericVector2Context",
+   "append(GenericVector2Context.x, GenericVector2Context.y)",
+   "append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z)",
+   "GenericVector3Context",
+   "append(GenericVector3Context.x, GenericVector3Context.y)",
+   "append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(GenericVector0Context.x, GenericVector0Context.y), GenericVector0Context.z), GenericVector0Context.w)",
+   "append(append(append(GenericVector1Context.x, GenericVector1Context.y), GenericVector1Context.z), GenericVector1Context.w)",
+   "append(append(append(GenericVector2Context.x, GenericVector2Context.y), GenericVector2Context.z), GenericVector2Context.w)",
+   "append(append(append(GenericVector3Context.x, GenericVector3Context.y), GenericVector3Context.z), GenericVector3Context.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "GenericVector0Context.y",
+   "GenericVector0Context.x",
+   "GenericVector0Context.z",
+   "GenericVector0Context.w",
+   "GenericVector1Context.y",
+   "GenericVector1Context.x",
+   "GenericVector1Context.z",
+   "GenericVector1Context.w",
+   "GenericVector2Context.y",
+   "GenericVector2Context.x",
+   "GenericVector2Context.z",
+   "GenericVector2Context.w",
+   "GenericVector3Context.y",
+   "GenericVector3Context.x",
+   "GenericVector3Context.z",
+   "GenericVector3Context.w",
+   "RefractionDepthBias"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector0Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector1Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector2Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "GenericVector3Context",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": [
+   {
+    "name": "RefractionDepthBias",
+    "type": 2,
+    "default": [
+     0.0
+    ]
+   }
+  ]
+ },
+ "RMI_Surface_SoftBody_Standard_Coverage_Emissive": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_SoftBody_Standard_Emissive": {
+  "vector": [
+   "DeformContext",
+   "append(DeformContext.x, DeformContext.y)",
+   "append(append(DeformContext.x, DeformContext.y), DeformContext.z)",
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(DeformContext.x, DeformContext.y), DeformContext.z), DeformContext.w)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "DeformContext.y",
+   "DeformContext.x",
+   "DeformContext.z",
+   "DeformContext.w",
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "DeformContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Emissive_Gradient_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "ExternalEmissiveContext",
+   "append(ExternalEmissiveContext.x, ExternalEmissiveContext.y)",
+   "append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)",
+   "append(append(append(ExternalEmissiveContext.x, ExternalEmissiveContext.y), ExternalEmissiveContext.z), ExternalEmissiveContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w",
+   "ExternalEmissiveContext.y",
+   "ExternalEmissiveContext.x",
+   "ExternalEmissiveContext.z",
+   "ExternalEmissiveContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "ExternalEmissiveContext",
+    "type": 2,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ },
+ "RMI_Surface_Standard_Coverage_Gradient_Wide": {
+  "vector": [
+   "AnimateTimeContext",
+   "append(AnimateTimeContext.x, AnimateTimeContext.y)",
+   "append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z)",
+   "append(append(append(AnimateTimeContext.x, AnimateTimeContext.y), AnimateTimeContext.z), AnimateTimeContext.w)"
+  ],
+  "scalar": [
+   "AnimateTimeContext.y",
+   "AnimateTimeContext.x",
+   "AnimateTimeContext.z",
+   "AnimateTimeContext.w"
+  ],
+  "params": [
+   {
+    "name": "AnimateTimeContext",
+    "type": 2,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "scalar_params": []
+ }
+}

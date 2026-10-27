@@ -1,0 +1,11 @@
+{
+  "FileVersion": 3,
+  "Version": 2,
+  "VersionName": "0.2.0",
+  "FriendlyName": "End Asset Tools",
+  "Description": "FFVII Rebirth notify and EndAnimSet editors, asset catalogs, bundled UAssetGUI tools, and SQEX viewport command repair.",
+  "Category": "Editor",
+  "CanContainContent": false,
+  "EnabledByDefault": true,
+  "Modules": [{ "Name": "EndAssetTools", "Type": "Editor", "LoadingPhase": "PostEngineInit" }]
+}

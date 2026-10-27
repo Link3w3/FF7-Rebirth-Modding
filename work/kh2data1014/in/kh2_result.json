@@ -1,0 +1,30 @@
+{
+ "steps": [
+  "scanned",
+  "import",
+  "row",
+  "failed",
+  "build",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth",
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "import": "OK ",
+ "row": "345 moves, 51 of them his KH2 form's (Battle04)",
+ "failed": [
+  "B_Run01_0_R90"
+ ],
+ "build": "50 of 51 built, not built: B_Run01_0_R90",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: PROBLEMS",
+ "done": true
+}

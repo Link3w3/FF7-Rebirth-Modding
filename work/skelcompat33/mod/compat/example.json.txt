@@ -1,0 +1,98 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "pairs": [
+    {
+      "receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+      ],
+      "method": "animations",
+      "adopt_paths": [],
+      "requires_paks": [
+        "SephirothOverCloud_P"
+      ],
+      "enabled": true
+    },
+    {
+      "receiving_skeleton": "/Game/YourMod/Character/SK_YourCharacter_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton"
+      ],
+      "method": "mesh",
+      "receiving_meshes": [],
+      "fix_hierarchy": true,
+      "carry_sockets": true,
+      "enabled": false
+    }
+  ],
+  "families": [
+    {
+      "skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+        "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+        "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton",
+        "/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton",
+        "/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton"
+      ],
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "proportions": true,
+      "requires_paks": [],
+      "enabled": false
+    }
+  ],
+  "animation_sets": [
+    {
+      "characters": [
+        "PC0000_00_Cloud_Standard"
+      ],
+      "battle": [
+        {
+          "from": "/Game/Motion/Enemy/EB2020_Elena/Battle00",
+          "auto": true,
+          "only": [
+            "Shot"
+          ]
+        },
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "moves": [
+        {
+          "key": "B_NAttack01_0",
+          "animation": "/Game/Motion/Player/PC0011_Vincent/Battle00/B_NAttack01_0"
+        },
+        {
+          "set": "Neutral00",
+          "key": "N_Atk01",
+          "animation": [
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_0",
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_1",
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_2"
+          ]
+        }
+      ],
+      "limit_breaks": [
+        "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02",
+        null
+      ],
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+      "cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "sockets": [
+        {
+          "socket": "Attach_Weapon01",
+          "use": "Attach_Weapon_Right01"
+        }
+      ],
+      "proportions": true,
+      "field_actions": "PC0000_Cloud",
+      "requires_paks": [
+        "YourVincentOverCloudMod_P"
+      ],
+      "enabled": false
+    }
+  ]
+}

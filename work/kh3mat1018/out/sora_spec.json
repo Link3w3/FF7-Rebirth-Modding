@@ -1,0 +1,900 @@
+{
+ "kh3": "/Game/Character/pc/p_ex001/mdl/mat0/p_ex001_Basemat",
+ "path": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_Basemat",
+ "cls": "Material",
+ "vf": "TGPUSkinVertexFactoryfalse",
+ "shader": "TBasePassPSFNoLightMapPolicy",
+ "blend": "BLEND_Masked",
+ "shading": "MSM_Subsurface",
+ "two_sided": false,
+ "clip": 0.3333,
+ "skeletal": true,
+ "morph": false,
+ "cloth": false,
+ "main": {
+  "code": "float4 r0 = 0, r1 = 0, r2 = 0, r3 = 0, r4 = 0, r5 = 0, r6 = 0, r7 = 0, r8 = 0, r9 = 0, r10 = 0, r11 = 0, r12 = 0, r13 = 0, r14 = 0, r15 = 0, r16 = 0, r17 = 0, r18 = 0, r19 = 0;\nfloat4 o0 = 0, o1 = 0, o2 = 0, o3 = 0, o4 = 0;\nfloat KH3_MASK = 1;\nfloat KH3_TIME = View.GameTime;\nfloat4 CB2_1 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_3 = ((P_LeatherTileMulti.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_6 = float4(((P_LeatherMaskChannell).xyzz).x, ((P_LeatherMaskChannell).xyzz).y, ((P_LeatherMaskChannell).xyzz).z, ((P_LeatherMaskChannell).wwww).x);\nfloat4 CB2_7 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_9 = ((P_NunoTileMulti.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_12 = float4(((P_NunoMaskChannell).xyzz).x, ((P_NunoMaskChannell).xyzz).y, ((P_NunoMaskChannell).xyzz).z, ((P_NunoMaskChannell).wwww).x);\nfloat4 CB2_13 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_16 = float4(((P_MetalMaskChannell).xyzz).x, ((P_MetalMaskChannell).xyzz).y, ((P_MetalMaskChannell).xyzz).z, ((P_MetalMaskChannell).wwww).x);\nfloat4 CB2_18 = ((P_wetnessTile.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_20 = (P_L_ashi1).xyzz;\nfloat4 CB2_22 = (P_R_ashi1).xyzz;\nfloat4 CB2_28 = ((P_InLightCenterPosition).xyzz).xyzz;\nfloat4 CB2_30 = (P_LeatherColorMulti).xyzz;\nfloat4 CB2_32 = (P_NunoColorMulti).xyzz;\nfloat4 CB2_34 = (P_MetalColorMulti).xyzz;\nfloat4 CB2_37 = ((P_AuraColor).xyzz).xyzz;\nfloat4 CB2_40 = ((P_AuraOutColor).xyzz).xyzz;\nfloat4 CB2_46 = ((P_InLightColor).xyzz).xyzz;\nfloat4 CB2_47 = ((P_InLightOutColor).xyzz).xyzz;\nfloat4 CB2_48 = (P_SelectionColor).xyzz;\nfloat4 CB2_50 = ((P_IceTileMulti.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_53 = ((P_LeatherSetting).xyzz).xyzz;\nfloat4 CB2_56 = ((P_CottonclothSetting).xyzz).xyzz;\nfloat4 CB2_59 = ((P_C_Metalsetting).xyzz).xyzz;\nfloat4 CB2_61 = float4((P_NormalTexIndex.xxxx).x, (P_LeatherTileMulti.xxxx).x, (P_LeatherPatternID.xxxx).x, (clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))).x);\nfloat4 CB2_65 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, (P_FormChangeSlide.xxxx).x, (P_UseUltimateMask.xxxx).x, ((P_LeatherMaskChannell).wwww).x);\nfloat4 CB2_66 = float4((P_UseOldAddMaskMode.xxxx).x, (P_NunoTileMulti.xxxx).x, (P_NunoPatternID.xxxx).x, (clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))).x);\nfloat4 CB2_70 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((P_NunoMaskChannell).wwww).x, (P_MetalTileMulti.xxxx).x, (P_MetalPattenID.xxxx).x);\nfloat4 CB2_75 = float4((P_WetnessSlideMulti.xxxx).x, (P_wetnessTile.xxxx).x, (P_wetnessTileNormalBlendVolume.xxxx).x, (P_WetnessCSMode.xxxx).x);\nfloat4 CB2_76 = float4((P_Wetness_CS.xxxx).x, (P_Wetness.xxxx).x, (P_InWater_CS.xxxx).x, (P_InWater.xxxx).x);\nfloat4 CB2_77 = float4((P_WetnessLength_CS.xxxx).x, (P_WetnessLength.xxxx).x, (P_Wetness_Ashi1_Offset.xxxx).x, ((clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx).x);\nfloat4 CB2_81 = float4((clamp(ceil((((((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy)) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)) * ((((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy)) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)))), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (P_Ice.xxxx).x, (P_AOTexIndex.xxxx).x, (clamp(P_AOTexIndex.xxxx, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x);\nfloat4 CB2_82 = float4(((P_AOTexIndex.xxxx - float4(1.0, 1.0, 1.0, 1.0))).x, (clamp((P_AOTexIndex.xxxx - float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, ((P_AOChannel).xxxx).x, ((P_AOChannel).yyyy).x);\nfloat4 CB2_83 = float4(((P_AOChannel).zzzz).x, ((P_AOChannel).wwww).x, (P_sRGBtoLinar.xxxx).x, (P_InLightOutBounds.xxxx).x);\nfloat4 CB2_84 = float4(((P_InLightCenterPosition).wwww).x, (max(P_InLightOutBounds.xxxx, float4(0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513))).x, (P_InLightOutBoundsBlur.xxxx).x, (P_InLight.xxxx).x);\nfloat4 CB2_85 = float4((P_UsePureBloodInLight.xxxx).x, (P_Aura.xxxx).x, (P_PointChangeTime.xxxx).x, ((P_PointChangeTime.xxxx * float4(2.0, 2.0, 2.0, 2.0))).x);\nfloat4 CB2_87 = float4((clamp(ceil(((P_FormChangeSlide.xxxx * (P_PointChangeTime.xxxx * float4(2.0, 2.0, 2.0, 2.0))) - ((P_PointChangeTime.xxxx * float4(2.0, 2.0, 2.0, 2.0)) - float4(2.0, 2.0, 2.0, 2.0)))), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, ((((P_AuraColor).xyzz).xyzz).yyyy).x, ((((P_AuraColor).xyzz).xyzz).xxxx).x, ((((P_AuraColor).xyzz).xyzz).zzzz).x);\nfloat4 CB2_88 = float4((((((P_AuraColor).xyzz).xyzz).xxxx + (((P_AuraColor).xyzz).xyzz).yyyy)).x, ((((((P_AuraColor).xyzz).xyzz).xxxx + (((P_AuraColor).xyzz).xyzz).yyyy) + (((P_AuraColor).xyzz).xyzz).zzzz)).x, (ceil((((((P_AuraColor).xyzz).xyzz).xxxx + (((P_AuraColor).xyzz).xyzz).yyyy) + (((P_AuraColor).xyzz).xyzz).zzzz))).x, (clamp(ceil((((((P_AuraColor).xyzz).xyzz).xxxx + (((P_AuraColor).xyzz).xyzz).yyyy) + (((P_AuraColor).xyzz).xyzz).zzzz)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x);\nfloat4 CB2_90 = float4(((((clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy) + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)).x, (ceil((((clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy) + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz))).x, (clamp(ceil((((clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy) + (clamp(((P_AuraOutColor).xyzz).xyzz, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (clamp(P_Aura.xxxx, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x);\nfloat4 CB2_91 = float4((P_InLightCenterBounds.xxxx).x, (max(P_InLightCenterBounds.xxxx, float4(0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513))).x, (P_InLightCenterBoundsBlur.xxxx).x, ((P_PointChangeTime.xxxx - float4(1.0, 1.0, 1.0, 1.0))).x);\nfloat4 CB2_93 = float4((clamp(ceil(((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx) - (P_PointChangeTime.xxxx - float4(1.0, 1.0, 1.0, 1.0)))), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, ((clamp(ceil(((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx) - (P_PointChangeTime.xxxx - float4(1.0, 1.0, 1.0, 1.0)))), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)) * frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx)))).x, ((float4(1.0, 1.0, 1.0, 1.0) - frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx)))).x, (((float4(1.0, 1.0, 1.0, 1.0) - frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx))) * frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx)))).x);\nfloat4 CB2_94 = float4((P_PointEmissivMulti.xxxx).x, ((((float4(1.0, 1.0, 1.0, 1.0) - frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx))) * frac((P_FormChangeSlide.xxxx * P_PointChangeTime.xxxx))) * float4(4.0, 4.0, 4.0, 4.0))).x, (P_AntiVolume.xxxx).x, (ceil(P_AntiVolume.xxxx)).x);\nfloat4 CB2_95 = float4(((float4(1.0, 1.0, 1.0, 1.0) - clamp(P_Aura.xxxx, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)))).x, ((((((float4(0.0, 0.0, 0.0, 0.0)).xxxx).xyyy).xyyy).xxxx * (float4(1.0, 1.0, 1.0, 1.0) - clamp(P_Aura.xxxx, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))))).x, (P_OpacityFade.xxxx).x, (P_VisChara.xxxx).x);\nfloat4 CB2_96 = float4(((P_VisChara.xxxx * P_OpacityFade.xxxx)).x, (clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, ((float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)))).x);\nfloat4 CB2_97 = float4((P_OpacityFadeMaskEmissivType.xxxx).x, (P_IceTileMulti.xxxx).x, (((P_LeatherSetting).xyzz).xxxx).x, (((P_LeatherSetting).xyzz).yyyy).x);\nfloat4 CB2_98 = float4((((P_LeatherSetting).xyzz).zzzz).x, (((P_CottonclothSetting).xyzz).yyyy).x, (((P_CottonclothSetting).xyzz).xxxx).x, (((P_CottonclothSetting).xyzz).zzzz).x);\nfloat4 CB2_99 = float4((((P_C_Metalsetting).xyzz).xxxx).x, (((P_C_Metalsetting).xyzz).yyyy).x, (((P_C_Metalsetting).xyzz).zzzz).x, (P_InWaterSpeMin.xxxx).x);\nfloat4 CB2_100 = float4((P_InWaterRoughMin.xxxx).x, (((float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))) + float4(-1.0, -1.0, -1.0, -1.0))).x, ((float4(1.0, 1.0, 1.0, 1.0) - (float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))))).x, (P_OpacityMaskRise.xxxx).x);\nfloat4 MPC0_1 = float4(M0_Chr_KHColVol, M0_WorldTypeInt, M0_Env_KHCol_Min_Vol, M0_Chr_AmbientVol);\nfloat4 MPC0_8 = float4(M0_BG_Lef_ACMBlend, M0_BG_Lef_ACMHue, M0_BG_Luminosity_Value, M0_KHSCoreControl);\nfloat4 MPC0_10 = float4(M0_KHS_ChrEmissivMultiCounter, 0, 0, 0);\nr0.xyz = (float4(Parameters.TangentToWorld[0], 0).yzx * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).zxy);\nr0.xyz = (float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).yzx * float4(Parameters.TangentToWorld[0], 0).zxy + (-r0.xyz));\nr0.xyz = (r0.xyz * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).www);\nr1.xyzw = (Parameters.SvPosition.yyyy * View.SVPositionToTranslatedWorld[1].xyzw);\nr1.xyzw = (Parameters.SvPosition.xxxx * View.SVPositionToTranslatedWorld[0].xyzw + r1.xyzw);\nr1.xyzw = (Parameters.SvPosition.zzzz * View.SVPositionToTranslatedWorld[2].xyzw + r1.xyzw);\nr1.xyzw = (r1.xyzw + View.SVPositionToTranslatedWorld[3].xyzw);\nr1.xyz = (r1.xyz / r1.www);\nr2.xyz = (r1.xyz + (-float4(View.PreViewTranslation, 0).xyz));\nr3.xyz = (float4(K_WPNO, 0).xyz + (-float4(View.PreViewTranslation, 0).xyz));\nr0.w = dot((-r1.xyz), (-r1.xyz));\nr0.w = rsqrt(r0.w);\nr1.xyz = (r0.www * (-r1.xyz));\nr4.xy = ((-float4(UV0, 0, 0).xy) + float4(UV1, 0, 0).xy);\nr4.zw = (CB2_61.xx * r4.xy + float4(UV0, 0, 0).xy);\nr4.zw = (Texture2DSample(Tex0, Tex0Sampler, r4.zw)).xy;\nr5.xy = (r4.zw * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr0.w = dot(r5.xy, r5.xy);\nr0.w = ((-r0.w) + 1.0);\nr0.w = max(r0.w, 0.0);\nr0.w = sqrt(r0.w);\nr5.z = (r0.w + 1.0);\nr4.zw = (float4(UV0, 0, 0).xy * CB2_61.yy);\nr4.zw = frac(r4.zw);\nr4.zw = (r4.zw * float2(0.0625, 0.0625) + CB2_1.xy);\nr6.xy = ddx(float4(UV0, 0, 0).xy);\nr6.zw = (r6.xy * CB2_3.xy);\nr0.w = dot(r6.zw, r6.zw);\nr6.zw = ddy(float4(UV0, 0, 0).xy);\nr7.xy = (r6.zw * CB2_3.xy);\nr1.w = dot(r7.xy, r7.xy);\nr2.w = float(r0.w >= r1.w);\nr0.w = ((r2.w != 0) ? r0.w : r1.w);\nr0.w = sqrt(r0.w);\nr0.w = log2(r0.w);\nr7.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r4.zw, r0.w)).xy;\nr7.xy = (r7.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr1.w = dot(r7.xy, r7.xy);\nr1.w = ((-r1.w) + 1.0);\nr1.w = max(r1.w, 0.0);\nr7.z = sqrt(r1.w);\nr8.xyzw = (Texture2DSample(Tex2, Tex2Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr9.xyzw = (Texture2DSample(Tex3, Tex3Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr1.w = (Parameters.SvPosition.w + -24.0);\nr1.w = saturate((r1.w * 0.0078125));\nr2.w = ((-r1.w) + 1.0);\nr2.w = (CB2_65.y * r2.w + CB2_65.y);\nr3.w = saturate(dot(float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).xyz, r1.xyz));\nr3.w = ((-r3.w) + 1.0);\nr3.w = max(r3.w, 9.99999997e-07);\nr5.w = saturate((r2.w * 2.0 + (-r3.w)));\nr7.w = (r5.w * 5.0);\nr7.w = min(r7.w, 1.0);\nr9.xyzw = ((-r8.xyzw) + r9.xyzw);\nr8.xyzw = (r7.wwww * r9.xyzw + r8.xyzw);\nr9.xyzw = (Texture2DSample(Tex4, Tex4Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr10.xyzw = (Texture2DSample(Tex5, Tex5Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr10.w = ((-r9.w) + r10.w);\nr9.w = (r7.w * r10.w + r9.w);\nr9.w = (r9.w + -1.0);\nr9.w = (CB2_65.z * r9.w + 1.0);\nr8.xyzw = (r8.xyzw * r9.wwww);\nr11.xyzw = (r8.xyzw * CB2_6.xyzw);\nr10.w = saturate((r11.w * 1.0160000324249268 + -0.01600000075995922));\nr12.xy = ((-r8.yz) * CB2_6.yz + float2(1.0, 1.0));\nr11.w = (r11.x * r12.x + r11.y);\nr11.z = (r11.w * r12.y + r11.z);\nr11.w = ((-r10.w) + 1.0);\nr10.w = saturate((r11.z * r11.w + r10.w));\nr11.x = (r11.y + r11.x);\nr11.x = (r8.z * CB2_6.z + r11.x);\nr11.x = saturate((r8.w * CB2_6.w + r11.x));\nr11.x = ((-r10.w) + r11.x);\nr10.w = (CB2_66.x * r11.x + r10.w);\nr11.x = (CB2_66.x + 1.0);\nr10.w = saturate((r10.w * r11.x));\nr7.xyz = (r7.xyz * r10.www + float3(-0.0, -0.0, -1.0));\nr7.xyz = (r10.www * r7.xyz + float3(0.0, 0.0, 1.0));\nr11.yz = (float4(UV0, 0, 0).xy * CB2_66.yy);\nr11.yz = frac(r11.yz);\nr11.yz = (r11.yz * float2(0.0625, 0.0625) + CB2_7.xy);\nr12.xy = (r6.xy * CB2_9.xy);\nr11.w = dot(r12.xy, r12.xy);\nr12.xy = (r6.zw * CB2_9.xy);\nr12.x = dot(r12.xy, r12.xy);\nr12.y = float(r11.w >= r12.x);\nr11.w = ((r12.y != 0) ? r11.w : r12.x);\nr11.w = sqrt(r11.w);\nr11.w = log2(r11.w);\nr12.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r11.yz, r11.w)).xy;\nr12.xy = (r12.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr12.w = dot(r12.xy, r12.xy);\nr12.w = ((-r12.w) + 1.0);\nr12.w = max(r12.w, 0.0);\nr12.z = sqrt(r12.w);\nr13.xyzw = (r8.xyzw * CB2_12.xyzw);\nr12.w = saturate((r13.w * 1.0160000324249268 + -0.01600000075995922));\nr14.xy = ((-r8.yz) * CB2_12.yz + float2(1.0, 1.0));\nr13.w = (r13.x * r14.x + r13.y);\nr13.z = (r13.w * r14.y + r13.z);\nr13.w = ((-r12.w) + 1.0);\nr12.w = saturate((r13.z * r13.w + r12.w));\nr13.x = (r13.y + r13.x);\nr13.x = (r8.z * CB2_12.z + r13.x);\nr13.x = saturate((r8.w * CB2_12.w + r13.x));\nr13.x = ((-r12.w) + r13.x);\nr12.w = (CB2_66.x * r13.x + r12.w);\nr12.w = saturate((r11.x * r12.w));\nr12.xyz = (r12.xyz * r12.www + (-r7.xyz));\nr7.xyz = (r12.www * r12.xyz + r7.xyz);\nr12.x = (CB2_70.z + -200.0);\nr12.x = (r9.w * r12.x + 200.0);\nr12.yz = (r12.xx * float4(UV0, 0, 0).xy);\nr12.yz = frac(r12.yz);\nr12.yz = (r12.yz * float2(0.0625, 0.0625) + CB2_13.xy);\nr12.x = (r12.x * 128.0);\nr13.xy = (r6.xy * r12.xx);\nr13.x = dot(r13.xy, r13.xy);\nr13.yz = (r6.zw * r12.xx);\nr12.x = dot(r13.yz, r13.yz);\nr13.y = float(r13.x >= r12.x);\nr12.x = ((r13.y != 0) ? r13.x : r12.x);\nr12.x = sqrt(r12.x);\nr12.x = log2(r12.x);\nr13.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r12.yz, r12.x)).xy;\nr13.xy = (r13.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr13.w = dot(r13.xy, r13.xy);\nr13.w = ((-r13.w) + 1.0);\nr13.w = max(r13.w, 0.0);\nr13.z = sqrt(r13.w);\nr14.xyzw = (r8.xyzw * CB2_16.xyzw);\nr8.x = saturate((r14.w * 1.0160000324249268 + -0.01600000075995922));\nr15.xy = ((-r8.yz) * CB2_16.yz + float2(1.0, 1.0));\nr8.y = (r14.x * r15.x + r14.y);\nr8.y = (r8.y * r15.y + r14.z);\nr13.w = ((-r8.x) + 1.0);\nr8.x = saturate((r8.y * r13.w + r8.x));\nr8.y = (r14.y + r14.x);\nr8.y = (r8.z * CB2_16.z + r8.y);\nr8.y = saturate((r8.w * CB2_16.w + r8.y));\nr8.y = ((-r8.x) + r8.y);\nr8.x = (CB2_66.x * r8.y + r8.x);\nr8.x = saturate((r11.x * r8.x));\nr8.x = (r8.x + -1.0);\nr8.x = (r9.w * r8.x + 1.0);\nr8.yzw = (r13.xyz * r8.xxx + (-r7.xyz));\nr7.xyz = (r8.xxx * r8.yzw + r7.xyz);\nr7.xyz = (r7.xyz * float3(-1.0, -1.0, 1.0));\nr8.y = dot(r5.xyz, r7.xyz);\nr7.xyz = (r5.zzz * r7.xyz);\nr5.xyz = (r5.xyz * r8.yyy + (-r7.xyz));\nr7.x = dot(r5.xyz, r5.xyz);\nr7.x = sqrt(r7.x);\nr5.xyz = (r5.xyz / r7.xxx);\nr7.xyz = (r5.xyz + float3(-0.0, -0.0, -1.0));\nr13.xy = (r7.xy * float2(0.5, 0.5));\nr7.x = (r7.z * 0.5 + 2.0);\nr14.y = (float4(0, K_EA, KH3_TIME, 0).w * CB2_75.x + float4(UV0, 0, 0).y);\nr14.x = float4(UV0, 0, 0).x;\nr8.yz = (r14.xy * CB2_75.yy);\nr8.yz = frac(r8.yz);\nr8.yz = (r8.yz * float2(0.0625, 0.0625) + float2(0.90625, 0.15625));\nr14.zw = ddx(r14.xy);\nr14.zw = (r14.zw * CB2_18.xy);\nr7.y = dot(r14.zw, r14.zw);\nr14.xy = ddy(r14.xy);\nr14.xy = (r14.xy * CB2_18.xy);\nr8.w = dot(r14.xy, r14.xy);\nr11.x = float(r7.y >= r8.w);\nr7.y = ((r11.x != 0) ? r7.y : r8.w);\nr7.y = sqrt(r7.y);\nr7.y = log2(r7.y);\nr8.yz = (Texture2DSampleLevel(Tex1, Tex1Sampler, r8.yz, r7.y)).xy;\nr14.xy = (r8.yz + r8.yz);\nr8.yz = (r8.yz * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr7.y = dot(r8.yz, r8.yz);\nr7.y = ((-r7.y) + 1.0);\nr7.y = max(r7.y, 0.0);\nr14.z = sqrt(r7.y);\nr8.yzw = (r14.xyz + float3(-1.0, -1.0, -1.0));\nr8.yzw = (CB2_75.zzz * r8.yzw + float3(0.0, 0.0, 1.0));\nr13.w = (r7.z * 0.5 + 2.0);\nr8.yzw = (r8.yzw * float3(-1.0, -1.0, 1.0));\nr7.y = dot(r13.xyw, r8.yzw);\nr8.yzw = (r7.xxx * r8.yzw);\nr7.xyz = (r13.xyw * r7.yyy + (-r8.yzw));\nr8.y = ((-CB2_76.y) + CB2_76.x);\nr8.y = (CB2_75.w * r8.y + CB2_76.y);\nr8.z = saturate((CB2_75.w * CB2_76.z + CB2_76.w));\nr8.w = ((-r8.z) + 1.0);\nr8.y = (r8.w * r8.y);\nr13.xyz = (r2.xyz + (-CB2_20.xyz));\nr8.w = dot(r13.xyz, r13.xyz);\nr8.w = sqrt(r8.w);\nr11.x = ((-CB2_77.y) + CB2_77.x);\nr11.x = (CB2_75.w * r11.x + CB2_77.y);\nr11.x = (r11.x + (-CB2_77.z));\nr11.x = max(r11.x, 0.0010000000474974513);\nr8.w = (r8.w / r11.x);\nr13.x = (r11.x * 0.5);\nr8.w = max(r8.w, 9.99999997e-07);\nr8.w = log2(r8.w);\nr8.w = (r8.w * r13.x);\nr8.w = exp2(r8.w);\nr8.w = min(r8.w, 1.0);\nr13.y = ((-r8.w) + 1.0);\nr8.w = (r8.w * r13.y + r8.w);\nr8.w = ((-r8.w) + 1.0);\nr13.yzw = ((-r2.xyz) + CB2_22.xyz);\nr13.y = dot(r13.yzw, r13.yzw);\nr13.y = sqrt(r13.y);\nr11.x = (r13.y / r11.x);\nr11.x = max(r11.x, 9.99999997e-07);\nr11.x = log2(r11.x);\nr11.x = (r11.x * r13.x);\nr11.x = exp2(r11.x);\nr11.x = min(r11.x, 1.0);\nr13.x = ((-r11.x) + 1.0);\nr11.x = (r11.x * r13.x + r11.x);\nr8.w = (r8.w + (-r11.x));\nr8.w = saturate((r8.w + 1.0));\nr8.w = (r8.w + -1.0);\nr8.w = (CB2_81.x * r8.w + 1.0);\nr11.x = (r8.w * r8.y);\nr7.xyz = ((-r5.xyz) + r7.xyz);\nr5.xyz = (r11.xxx * r7.xyz + r5.xyz);\nr5.xyz = (r5.xyz * float4(0, 0, 0, 1).www + float4(0, 0, 0, 1).xyz);\nr7.x = dot(r5.xyz, r5.xyz);\nr7.x = rsqrt(r7.x);\nr5.xyz = (r5.xyz * r7.xxx);\nr13.xyzw = (r0.zxyz * r5.yyyy);\nr13.xyzw = (r5.xxxx * float4(Parameters.TangentToWorld[0], 0).zxyz + r13.xyzw);\nr13.xyzw = (r5.zzzz * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).zxyz + r13.xyzw);\nr5.x = dot(r13.yzw, r13.yzw);\nr5.x = rsqrt(r5.x);\nr13.xyzw = (r5.xxxx * r13.xyzw);\nr5.x = dot(r13.yzw, r1.xyz);\nr7.xyz = (r5.xxx * r13.yzw);\nr7.xyz = (r7.xyz * float3(2.0, 2.0, 2.0) + (-r1.xyz));\nr4.xy = (CB2_81.ww * r4.xy + float4(UV0, 0, 0).xy);\nr5.yz = ((-r4.xy) + float4(UV2, 0, 0).xy);\nr4.xy = (CB2_82.yy * r5.yz + r4.xy);\nr14.xyzw = (Texture2DSample(Tex6, Tex6Sampler, r4.xy)).xyzw;\nr4.x = dot(CB2_82.zw, r14.xy);\nr4.x = (CB2_83.x * r14.z + r4.x);\nr4.x = saturate((CB2_83.y * r14.w + r4.x));\nr4.y = max(r4.x, 9.99999997e-07);\nr4.y = log2(r4.y);\nr4.y = (r4.y * 0.4545449912548065);\nr4.y = exp2(r4.y);\nr4.y = ((-r4.x) + r4.y);\nr4.x = (CB2_83.z * r4.y + r4.x);\nr5.yz = (r4.xx * float2(0.10000002384185791, 0.30000001192092896) + float2(0.5, 0.699999988079071));\nr4.y = (Texture2DSampleLevel(Tex7, Tex7Sampler, r12.yz, r12.x)).x;\nr12.x = (r4.y + -1.0);\nr12.x = (r8.x * r12.x + 1.0);\nr11.y = (Texture2DSampleLevel(Tex7, Tex7Sampler, r11.yz, r11.w)).x;\nr11.z = saturate((r11.y * 3.0));\nr11.z = (r11.z + -1.0);\nr11.z = (r12.w * r11.z + 1.0);\nr0.w = (Texture2DSampleLevel(Tex7, Tex7Sampler, r4.zw, r0.w)).x;\nr4.z = (r0.w + -1.0);\nr4.z = (r10.w * r4.z + 1.0);\nr4.z = (r4.z * r11.z);\nr4.z = (r4.z * r12.x);\nr4.w = ((-r5.y) + r5.z);\nr4.z = (r4.z * r4.w + r5.y);\nr4.w = (r4.x * r4.z);\nr5.yz = (r4.ww * float2(0.5, 0.30000001192092896) + float2(0.5, 0.699999988079071));\nr3.xyz = ((-r3.xyz) + GetPrimitiveData(Parameters.PrimitiveId).ObjectWorldPositionAndRadius.xyz);\nr3.xyz = (r3.xyz + CB2_28.xyz);\nr12.xyz = ((-float4(View.WorldCameraOrigin, 0).xyz) + GetPrimitiveData(Parameters.PrimitiveId).ObjectWorldPositionAndRadius.xyz);\nr11.z = dot(r12.xyz, r12.xyz);\nr11.z = sqrt(r11.z);\nr12.xyz = (r12.xyz / r11.zzz);\nr3.xyz = ((-r12.xyz) * CB2_84.xxx + r3.xyz);\nr3.x = dot(r3.xyz, r3.xyz);\nr3.x = sqrt(r3.x);\nr3.y = (CB2_84.y / r3.x);\nr3.y = max(abs(r3.y), 9.99999997e-07);\nr3.y = log2(r3.y);\nr3.y = (r3.y * CB2_84.z);\nr3.y = exp2(r3.y);\nr3.z = ceil(r3.y);\nr3.z = saturate((r3.z * CB2_84.w));\nr3.z = (r3.z * CB2_85.x);\nr4.x = ((-r4.z) * r4.x + r5.y);\nr3.z = (r3.z * r4.x + r4.w);\nr4.xzw = (r7.xyz * r1.xyz + float3(-1.0, -1.0, -1.0));\nr5.y = dot(abs(r4.xzw), float3(0.30000001192092896, 0.5899999737739563, 0.10999999940395355));\nr7.xyz = ((-abs(r4.xzw)) + r5.yyy);\nr4.xzw = (r7.xyz * float3(0.5, 0.5, 0.5) + abs(r4.xzw));\nr5.x = max(r5.x, 0.0);\nr5.x = ((-r5.x) + 1.0);\nr5.y = (abs(r5.x) * abs(r5.x));\nr7.x = (r5.y * abs(r5.x));\nr7.y = (r7.x + r7.x);\nr7.z = (r5.y * r5.y);\nr7.z = (r5.y * r7.z);\nr7.y = saturate(((-r7.z) * 10.0 + r7.y));\nr7.y = (r7.y * 5.0);\nr12.xyz = (r4.xzw + float3(-1.0, -1.0, -1.0));\nr12.xyz = (r7.yyy * r12.xyz + float3(1.0, 1.0, 1.0));\nr12.xyz = (r12.xyz * float3(0.699999988079071, 0.699999988079071, 0.800000011920929) + float3(-0.699999988079071, -0.699999988079071, -0.800000011920929));\nr4.xzw = (r4.xzw * r12.xyz + float3(0.699999988079071, 0.699999988079071, 0.800000011920929));\nr14.xyzw = (Texture2DSample(Tex8, Tex8Sampler, float4(UV1, 0, 0).xy)).xyzw;\nr7.yz = floor(float4(UV1, 0, 0).xy);\nr7.yz = (r7.yz + float2(-1.0, -0.0));\nr7.y = dot(r7.yz, r7.yz);\nr7.y = sqrt(r7.y);\nr7.y = ((-r7.y) + 1.0);\nr7.y = max(r7.y, 0.0);\nr7.z = (r14.w * r7.y);\nr12.xyz = ((-r9.xyz) + r14.xyz);\nr9.xyz = (r7.zzz * r12.xyz + r9.xyz);\nr14.xyzw = (Texture2DSample(Tex9, Tex9Sampler, float4(UV1, 0, 0).xy)).xyzw;\nr7.z = (r14.w * CB2_87.x);\nr7.z = (r7.z * r7.y);\nr12.xyz = ((-r10.xyz) + r14.xyz);\nr10.xyz = (r7.zzz * r12.xyz + r10.xyz);\nr12.xyz = ((-r9.xyz) + r10.xyz);\nr12.xyz = (r7.www * r12.xyz + r9.xyz);\nr12.xyz = ((-r4.xzw) + r12.xyz);\nr4.xzw = (r9.www * r12.xyz + r4.xzw);\nr12.xyz = (CB2_30.xyz + float3(-1.0, -1.0, -1.0));\nr12.xyz = (r10.www * r12.xyz + float3(1.0, 1.0, 1.0));\nr15.xyz = ((-r12.xyz) + CB2_32.xyz);\nr12.xyz = (r12.www * r15.xyz + r12.xyz);\nr15.xyz = ((-r12.xyz) + CB2_34.xyz);\nr12.xyz = (r8.xxx * r15.xyz + r12.xyz);\nr15.xyz = (r4.xzw * r12.xyz);\nr16.xyz = max(r15.xyz, float3(0.0039059999398887157, 0.0039059999398887157, 0.0039059999398887157));\nr16.xyz = min(r16.xyz, float3(1.0, 1.0, 1.0));\nr17.xyz = log2(r16.zxy);\nr17.xyz = (r17.xyz * float3(0.4545449912548065, 0.4545449912548065, 0.4545449912548065));\nr17.xyz = exp2(r17.xyz);\nr11.zw = (r17.xz * float2(16.0, 0.03125));\nr7.z = floor(r11.z);\nr9.w = min(r7.z, 15.0);\nr11.z = (r17.y * 0.9375 + 0.03125);\nr11.z = (r11.z * 0.0625);\nr18.y = (r9.w * 0.0625 + r11.z);\nr17.yz = saturate((MPC0_1.yy + float2(-2.0, -1.0)));\nr15.w = (r17.y * 2.0 + 1.0);\nr19.xy = (r15.ww * float2(0.03125, 0.03125) + float2(0.0009765625, 0.0302734375));\nr11.w = (r15.w * 0.03125 + r11.w);\nr11.w = max(r19.x, r11.w);\nr18.z = min(r19.y, r11.w);\nr19.xyz = (Texture2DSample(Tex10, Tex10Sampler, r18.yz)).xyz;\nr11.w = (r9.w + 1.0);\nr18.x = (r11.w * 0.0625 + r11.z);\nr18.xyz = (Texture2DSample(Tex10, Tex10Sampler, r18.xz)).xyz;\nr7.z = saturate((r17.x * 16.0 + (-r7.z)));\nr9.w = float(r9.w >= 15.0);\nr7.z = ((r9.w != 0) ? 0.0 : r7.z);\nr18.xyz = ((-r19.xyz) + r18.xyz);\nr18.xyz = (r7.zzz * r18.xyz + r19.xyz);\nr7.z = saturate(MPC0_1.y);\nr9.w = ((-abs(r5.x)) + 1.0);\nr13.xyzw = (r13.xyzw * float4(0.5, 0.5, 0.5, 0.5) + float4(0.5, 0.5, 0.5, 0.5));\nr9.w = (r9.w * r13.x);\nr11.z = (r7.z * 0.30000001192092896);\nr11.w = (r7.z * 1.2999999523162842 + -0.30000001192092896);\nr15.w = ((-r11.w) + 1.0);\nr11.w = (abs(r5.x) * r15.w + r11.w);\nr13.x = (r11.w * r13.x + (-r9.w));\nr9.w = saturate((r11.w * r13.x + r9.w));\nr7.z = ((-r7.z) * 0.30000001192092896 + 1.0);\nr7.z = (r9.w * r7.z + r11.z);\nr16.xyz = (r16.xyz + (-r18.xyz));\nr16.xyz = (r7.zzz * r16.xyz + r18.xyz);\nr16.xyz = ((-r4.xzw) * r12.xyz + r16.xyz);\nr15.xyz = (MPC0_8.www * r16.xyz + r15.xyz);\nr7.z = ((-r17.z) + r17.y);\nr7.z = max(r7.z, 0.0);\nr4.xzw = (r4.xzw * r12.xyz + (-r15.xyz));\nr4.xzw = (r7.zzz * r4.xzw + r15.xyz);\nr7.z = ((-r4.w) + r4.z);\nr7.z = saturate(ceil(r7.z));\nr15.xy = r4.wz;\nr15.zw = float2(-1.0, 0.6700000166893005);\nr16.xy = (r4.zw + (-r15.xy));\nr16.zw = float2(1.0, -1.0);\nr15.xyzw = (r7.zzzz * r16.xyzw + r15.xyzw);\nr7.z = (r4.x + (-r15.x));\nr7.z = saturate(ceil(r7.z));\nr16.xyz = r15.xyw;\nr16.w = r4.x;\nr15.xyw = r16.wyx;\nr15.xyzw = ((-r16.xyzw) + r15.xyzw);\nr15.xyzw = (r7.zzzz * r15.yzxw + r16.yzxw);\nr7.z = ((-r15.x) + r15.w);\nr9.w = min(r15.w, r15.x);\nr9.w = ((-r9.w) + r15.z);\nr11.z = (r9.w * 6.0 + 1.00000001e-07);\nr7.z = (r7.z / r11.z);\nr7.z = (r15.y + r7.z);\nr15.x = abs(r7.z);\nr7.z = (r15.z + 1.00000001e-07);\nr15.y = (r9.w / r7.z);\nr15.z = saturate(r15.z);\nr12.z = (r15.y * -0.30000001192092896 + 0.800000011920929);\nr12.xy = float2(1.0, 1.0);\nr11.zw = (r12.yz * r15.yz);\nr12.xyz = (r15.xxx * r12.xxx + float3(1.0, 0.6700000166893005, 0.33000001311302185));\nr12.xyz = frac(r12.xyz);\nr12.xyz = (r12.xyz * float3(6.0, 6.0, 6.0) + float3(-3.0, -3.0, -3.0));\nr12.xyz = saturate((abs(r12.xyz) + float3(-1.0, -1.0, -1.0)));\nr12.xyz = (r12.xyz + float3(-1.0, -1.0, -1.0));\nr12.xyz = (r11.zzz * r12.xyz + float3(1.0, 1.0, 1.0));\nr12.xyz = (r11.www * r12.xyz);\nr12.xyz = max(r12.xyz, float3(0.0, 0.0, 0.0));\nr12.xyz = ((-r4.xzw) + r12.xyz);\nr4.xzw = (r11.xxx * r12.xyz + r4.xzw);\nr12.xyz = saturate((r4.xzw * float3(16.0, 16.0, 16.0)));\nr15.xyz = ((-r12.xyz) + CB2_37.xyz);\nr15.xyz = (CB2_88.www * r15.xyz + r12.xyz);\nr16.xyz = ((-r12.xyz) + CB2_40.xyz);\nr12.xyz = (CB2_90.zzz * r16.xyz + r12.xyz);\nr7.z = log2(abs(r5.x));\nr7.z = (r7.z * 1.149999976158142);\nr7.z = exp2(r7.z);\nr9.w = (r7.z * 1.100000023841858);\nr11.z = min(r9.w, 1.0);\nr12.xyz = ((-r15.xyz) + r12.xyz);\nr16.xyz = (r11.zzz * r12.xyz + r15.xyz);\nr12.xyz = (r5.yyy * r12.xyz + r15.xyz);\nr5.y = ((-abs(r5.x)) * abs(r5.x) + 1.0);\nr5.y = (r5.y * r5.y);\nr5.y = min(r5.y, 1.0);\nr12.xyz = (r12.xyz * r16.xyz + (-r16.xyz));\nr12.xyz = (r5.yyy * r12.xyz + r16.xyz);\nr5.y = (r7.z * r9.w);\nr5.y = (r5.y * 20.0);\nr12.xyz = (r12.xyz * r5.yyy + r4.xzw);\nr12.xyz = (r12.xyz * CB2_90.www);\nr5.y = float(0.0 != float4(0, K_EA, KH3_TIME, 0).x);\nif (r5.y == 0) {\nr7.z = K_EA.x;\n} else {\nr7.z = float4(0, K_EA, KH3_TIME, 0).y;\n}\nr7.z = (1.0 / r7.z);\nr3.y = min(r3.y, 1.0);\nr3.x = (CB2_91.y / r3.x);\nr3.x = max(abs(r3.x), 9.99999997e-07);\nr3.x = log2(r3.x);\nr3.x = (r3.x * CB2_91.z);\nr3.x = exp2(r3.x);\nr9.w = (r3.x + r3.x);\nr9.w = min(r9.w, 1.0);\nr15.xyz = (CB2_46.xyz + (-CB2_47.xyz));\nr15.xyz = (r9.www * r15.xyz + CB2_47.xyz);\nr16.xyz = ((-r15.xyz) + CB2_46.xyz);\nr15.xyz = (r3.xxx * r16.xyz + r15.xyz);\nr15.xyz = (r3.yyy * r15.xyz);\nr15.xyz = (r15.xyz * CB2_84.www);\nif (r5.y == 0) {\nr3.x = K_EA.x;\n} else {\nr3.x = float4(0, K_EA, KH3_TIME, 0).y;\n}\nr3.x = (1.0 / r3.x);\nr3.y = (r14.w * CB2_93.y);\nr3.y = (r3.y * r7.y);\nr14.xyz = (r14.xyz * CB2_94.xxx);\nr14.xyz = (r14.xyz * CB2_94.yyy);\nr14.xyz = (r14.xyz * r14.www);\nr3.w = (r3.w + 0.5);\nr2.w = saturate(((-r2.w) * 2.0 + r3.w));\nr2.w = (r5.w * r2.w);\nr2.w = (r2.w * 8.0);\nr2.w = min(r2.w, 1.0);\nr9.xyz = (r9.xyz * float3(3.0, 3.0, 3.0));\nr9.xyz = max(abs(r9.xyz), float3(9.99999997e-07, 9.99999997e-07, 9.99999997e-07));\nr16.xyz = (r9.xyz * r9.xyz);\nr9.xyz = (r9.xyz * r16.xyz);\nr10.xyz = (r10.xyz * float3(3.0, 3.0, 3.0));\nr10.xyz = max(abs(r10.xyz), float3(9.99999997e-07, 9.99999997e-07, 9.99999997e-07));\nr16.xyz = (r10.xyz * r10.xyz);\nr10.xyz = (r10.xyz * r16.xyz + (-r9.xyz));\nr9.xyz = (r7.www * r10.xyz + r9.xyz);\nr3.w = max(r2.w, 9.99999997e-07);\nr5.w = (r3.w * r3.w);\nr5.w = (r5.w * r5.w);\nr3.w = (r3.w * r5.w);\nr9.xyz = (r3.www * float3(10.0, 10.0, 10.0) + r9.xyz);\nr7.yw = (Parameters.SvPosition.xy * View.BufferSizeAndInvSize.zw);\nr16.xyzw = (r7.ywyw * float4(20.0, 20.0, 10.0, 10.0));\nr3.w = (Texture2DSample(Tex11, Tex11Sampler, r16.xy)).x;\nr10.xyz = (r3.www + float3(0.0, 1.0, 0.30000001192092896));\nr17.xyz = (r1.www * float3(100.0, 20.0, 50.0));\nr10.xyz = (r10.xyz * r17.zzz);\nr10.xyz = (r2.www * r10.xyz + (-r9.xyz));\nr9.xyz = (r3.www * r10.xyz + r9.xyz);\nr1.w = (Texture2DSample(Tex11, Tex11Sampler, r16.zw)).x;\nr10.xyz = (r1.www + float3(0.30000001192092896, 0.0, 1.0));\nr10.xyz = (r17.yyy * r10.xyz);\nr10.xyz = (r2.www * r10.xyz + (-r9.xyz));\nr9.xyz = (r1.www * r10.xyz + r9.xyz);\nr7.yw = (r7.yw * float2(16.0, 16.0));\nr1.w = (Texture2DSample(Tex11, Tex11Sampler, r7.yw)).x;\nr10.xyz = (r1.www + float3(1.0, 0.30000001192092896, 0.0));\nr10.xyz = (r17.xxx * r10.xyz);\nr10.xyz = (r2.www * r10.xyz + (-r9.xyz));\nr9.xyz = (r1.www * r10.xyz + r9.xyz);\nr9.xyz = (r2.www * r9.xyz);\nr9.xyz = (r3.yyy * r14.xyz + r9.xyz);\nr9.xyz = (CB2_94.www * (-r9.xyz) + r9.xyz);\nif (r5.y == 0) {\nr1.w = K_EA.x;\n} else {\nr1.w = float4(0, K_EA, KH3_TIME, 0).y;\n}\nr1.w = (1.0 / r1.w);\nr9.xyz = (r1.www * r9.xyz);\nr9.xyz = (r9.xyz * float3(0.5, 0.5, 0.5));\nr3.xyw = (r15.xyz * r3.xxx + r9.xyz);\nr3.xyw = (r12.xyz * r7.zzz + r3.xyw);\nr3.xyw = (CB2_95.yyy * (-r3.xyw) + r3.xyw);\nr3.xyw = (r3.xyw * r3.zzz);\nr1.w = (CB2_96.w * 2.0 + -1.0);\nr7.yzw = (r2.xyz + (-GetPrimitiveData(Parameters.PrimitiveId).ObjectWorldPositionAndRadius.xyz));\nr9.xyz = ((-float4(GetPrimitiveData(Parameters.PrimitiveId).LocalObjectBoundsMin, 0).xyz) + float4(GetPrimitiveData(Parameters.PrimitiveId).LocalObjectBoundsMax, 0).xyz);\nr9.xyz = (r7.yzw / r9.xyz);\nr2.w = dot(r9.xyz, r9.xyz);\nr2.w = sqrt(r2.w);\nr9.xyz = (r9.xyz / r2.www);\nr9.xyz = (r9.xyz + float3(-0.0, -0.0, 1.0));\nr2.w = dot(r9.xyz, r9.xyz);\nr2.w = sqrt(r2.w);\nr2.w = (r2.w * 0.5);\nr2.w = min(r2.w, 1.0);\nr1.w = saturate((r1.w + r2.w));\nr1.w = (CB2_97.x * (-r1.w) + r1.w);\nr3.xyw = (r1.www * (-r3.xyw) + r3.xyw);\nr3.xyw = (r3.xyw * MPC0_10.xxx + CB2_48.xyz);\nr5.yw = (float4(UV0, 0, 0).xy * CB2_97.yy);\nr5.yw = frac(r5.yw);\nr5.yw = (r5.yw * float2(0.0625, 0.0625) + float2(0.78125, 0.15625));\nr6.xy = (r6.xy * CB2_50.xy);\nr1.w = dot(r6.xy, r6.xy);\nr6.xy = (r6.zw * CB2_50.xy);\nr2.w = dot(r6.xy, r6.xy);\nr6.x = float(r1.w >= r2.w);\nr1.w = ((r6.x != 0) ? r1.w : r2.w);\nr1.w = sqrt(r1.w);\nr1.w = log2(r1.w);\nr2.w = (Texture2DSampleLevel(Tex7, Tex7Sampler, r5.yw, r1.w)).w;\nr6.xyz = (r2.www * float3(0.1926089972257614, 0.3467879891395569, 0.39499998092651367) + float3(0.19279100000858307, 0.3103860020637512, 0.42500001192092896));\nr5.yw = (Texture2DSampleLevel(Tex1, Tex1Sampler, r5.yw, r1.w)).xy;\nr5.yw = (r5.yw * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr1.w = dot(r5.yw, r5.yw);\nr1.w = ((-r1.w) + 1.0);\nr1.w = max(r1.w, 0.0);\nr1.w = sqrt(r1.w);\nr0.xyz = (r0.xyz * r5.www);\nr0.xyz = (r5.yyy * float4(Parameters.TangentToWorld[0], 0).xyz + r0.xyz);\nr0.xyz = (r1.www * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).zxy + r0.zxy);\nr0.y = dot(r0.yzx, r1.xyz);\nr0.y = max(r0.y, 0.0);\nr0.y = ((-r0.y) + 1.0);\nr0.z = (abs(r0.y) * abs(r0.y));\nr1.x = (r0.z * abs(r0.y));\nr1.y = saturate(r0.x);\nr1.y = ((-r1.y) + 1.0);\nr0.y = ((-abs(r0.y)) * r0.z + 1.0);\nr0.y = (r1.y * r0.y + r1.x);\nr1.xyz = ((-r4.xzw) + r6.xyz);\nr9.xyz = (r0.yyy * r1.xyz);\nr9.xyz = saturate((CB2_81.yyy * r9.xyz + r4.xzw));\nr14.xyzw = (abs(r5.xxxx) * float4(-0.5, -0.8999999761581421, 4.0, 0.19999998807907104) + float4(1.0, 1.0, 1.0, 0.800000011920929));\nr5.yw = (r14.xy * CB2_97.zw + (-CB2_53.xy));\nr5.yw = (r0.ww * r5.yw + CB2_53.xy);\nr0.z = (r10.w * r10.w);\nr0.z = (r0.z * r5.y);\nr10.xy = ((-CB2_56.xz) + CB2_98.zw);\nr10.xy = (r11.yy * r10.xy + CB2_56.xz);\nr1.w = (r12.w * r10.x + (-r0.z));\nr0.z = (r12.w * r1.w + r0.z);\nr10.xz = (r14.xx * CB2_99.xy + (-CB2_59.xy));\nr10.xz = (r4.yy * r10.xz + CB2_59.xy);\nr1.w = ((-r0.z) + r10.x);\nr12.x = saturate((r8.x * r1.w + r0.z));\nr0.z = (abs(r5.x) * r5.w);\nr0.z = (r0.z * -0.5 + r5.w);\nr0.z = (r10.w * r0.z + -0.5);\nr0.z = (r10.w * r0.z + 0.5);\nr1.w = (CB2_98.y * r14.z + (-CB2_56.y));\nr1.w = (r11.y * r1.w + CB2_56.y);\nr2.w = (abs(r5.x) * r1.w);\nr1.w = (r2.w * -0.5 + r1.w);\nr1.w = (r12.w * r1.w + (-r0.z));\nr0.z = (r12.w * r1.w + r0.z);\nr1.w = (abs(r5.x) * r10.z);\nr1.w = (r1.w * -0.699999988079071 + r10.z);\nr1.w = ((-r0.z) + r1.w);\nr0.z = (r8.x * r1.w + r0.z);\nr1.w = (CB2_98.x * r14.w + (-CB2_53.z));\nr0.w = (r0.w * r1.w + CB2_53.z);\nr1.w = (r7.x * r0.w);\nr0.w = (r1.w * -0.19999998807907104 + r0.w);\nr0.w = (r10.w * r0.w + -0.5);\nr0.w = (r10.w * r0.w + 0.5);\nr1.w = (r7.x * r10.y);\nr1.w = (r1.w * -0.19999998807907104 + r10.y);\nr1.w = (r12.w * r1.w + (-r0.w));\nr0.w = (r12.w * r1.w + r0.w);\nr1.w = (abs(r5.x) * 0.5 + 0.5);\nr1.w = (CB2_99.z * r1.w + (-CB2_59.z));\nr1.w = (r4.y * r1.w + CB2_59.z);\nr2.w = (abs(r5.x) * r1.w);\nr1.w = (r2.w * -0.5 + r1.w);\nr1.w = ((-r0.w) + r1.w);\nr0.w = (r8.x * r1.w + r0.w);\nr1.w = ((-CB2_99.w) + 1.0);\nr1.w = (r0.z * r1.w + CB2_99.w);\nr1.w = ((-r0.z) + r1.w);\nr0.z = (r8.z * r1.w + r0.z);\nr1.w = ((-r0.z) + r0.y);\nr12.y = saturate((CB2_81.y * r1.w + r0.z));\nr0.z = ((-r8.y) * r8.w + r0.w);\nr0.z = max(r0.z, 0.10000000149011612);\nr0.z = min(r0.z, 1.0);\nr0.z = ((-r0.w) + r0.z);\nr0.z = (r0.z * r5.z);\nr0.z = (r11.x * r0.z + r0.w);\nr0.w = ((-CB2_100.x) + 1.0);\nr0.w = (r0.z * r0.w + CB2_100.x);\nr0.w = ((-r0.z) + r0.w);\nr0.z = (r8.z * r0.w + r0.z);\nr0.w = (r0.y * 0.4000000059604645 + 0.10000000149011612);\nr0.w = ((-r0.z) + r0.w);\nr0.z = saturate((CB2_81.y * r0.w + r0.z));\nr0.w = (r10.w + -1.0);\nr0.w = (r10.w * r0.w + 1.0);\nr1.w = ((-r0.w) + r12.w);\nr0.w = (r12.w * r1.w + r0.w);\nr1.w = ((-r0.w) + 1.0);\nr0.w = (r8.x * r1.w + r0.w);\nr1.w = ((-r0.w) * r0.y);\no4.w = saturate((CB2_81.y * r1.w + r0.w));\no2.z = (r0.z * float4(0, 1, View.PrevFrameGameTime, View.PrevFrameRealTime).y + float4(0, 1, View.PrevFrameGameTime, View.PrevFrameRealTime).x);\nr0.yzw = (r0.yyy * r1.xyz + r4.xzw);\nr0.x = saturate((-r0.x));\nr0.xyz = (r0.yzw * r6.xyz + r0.xxx);\nr0.xyz = saturate((r0.xyz * CB2_81.yyy));\nr0.xyz = saturate((r0.xyz * float4(0, 0, 0, 1).www + float4(0, 0, 0, 1).xyz));\no4.xyz = sqrt(r0.xyz);\nr0.x = (r12.y * 0.07999999821186066);\nr1.xyz = ((-r12.yyy) * float3(0.07999999821186066, 0.07999999821186066, 0.07999999821186066) + r9.xyz);\nr0.xyz = (r12.xxx * r1.xyz + r0.xxx);\nr1.xyz = ((-r9.xyz) * r12.xxx + r9.xyz);\nr1.xyz = (r1.xyz * float4(0, 0, 0, 1).www + float4(0, 0, 0, 1).xyz);\nr0.xyz = (r0.xyz * float4(0, 0, 0, 1).www + float4(0, 0, 0, 1).xyz);\nr0.xyz = (r0.xyz * float3(0.44999998807907104, 0.44999998807907104, 0.44999998807907104) + r1.xyz);\nr1.x = float(0.0 < float4(0, View.WorldCameraMovementSinceLastFrame).x);\nif (r1.x != 0) {\nr1.xyz = (float4(GetPrimitiveData(Parameters.PrimitiveId).ObjectBounds, GetPrimitiveData(Parameters.PrimitiveId).InvNonUniformScaleAndDeterminantSign.w).xyz + float3(1.0, 1.0, 1.0));\nr1.xyz = float3(r1.xyz < abs(r7.yzw));\nr1.x = max(r1.y, r1.x);\nr1.x = max(r1.z, r1.x);\nr1.y = dot(r2.xyz, float3(0.5770000219345093, 0.5770000219345093, 0.5770000219345093));\nr1.y = (r1.y * 0.0020000000949949026);\nr1.y = frac(r1.y);\nr1.y = float(0.5 < r1.y);\nr1.yzw = ((r1.yyy != 0) ? float3(0.0, 1.0, 1.0) : float3(1.0, 1.0, 0.0));\nr3.xyw = ((r1.xxx != 0) ? r1.yzw : r3.xyw);\n}\no0.xyz = (float4(0, 0, 0, 0).xxx * r0.xyz + r3.xyw);\no1.xyz = r13.yzw;\no2.xy = r12.xy;\no3.xyz = r9.xyz;\nfloat KH3_DEPTHMASK = 1;\n{\n    float4 r0 = 0, r1 = 0, r2 = 0;\n    float KH3_MASK = 1;\n    float4 CB2_96 = float4(((P_VisChara.xxxx * P_OpacityFade.xxxx)).x, (clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, ((float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)))).x);\n    float4 CB2_100 = float4((P_InWaterRoughMin.xxxx).x, (((float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))) + float4(-1.0, -1.0, -1.0, -1.0))).x, ((float4(1.0, 1.0, 1.0, 1.0) - (float4(1.0, 1.0, 1.0, 1.0) - clamp(clamp((P_VisChara.xxxx * P_OpacityFade.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))))).x, (P_OpacityMaskRise.xxxx).x);\n    float4 CB2_101 = float4((abs(P_OpacityMaskRise.xxxx)).x, (clamp(abs(P_OpacityMaskRise.xxxx), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (P_IceLenge.xxxx).x, ((P_IceLenge.xxxx * float4(-1.0, -1.0, -1.0, -1.0))).x);\n    float4 CB2_103 = float4(((P_SelectIceHardEddeUVindex.xxxx - float4(2.0, 2.0, 2.0, 2.0))).x, (clamp((P_SelectIceHardEddeUVindex.xxxx - float4(2.0, 2.0, 2.0, 2.0)), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (float4(1.0, 1.0, 1.0, 1.0)).x, (P_CameraFade.xxxx).x);\n    r0.xy = (Parameters.SvPosition.xy * View.BufferSizeAndInvSize.zw);\n    r0.xy = (View.BufferSizeAndInvSize.xy * r0.xy + View.TemporalAAParams.xx);\n    r0.x = (r0.y * 2.0 + r0.x);\n    r0.x = trunc(r0.x);\n    r0.x = r0.x;\n    r0.x = (r0.x * 0.1666666716337204);\n    r0.x = frac(r0.x);\n    r0.x = (r0.x * 0.8571429252624512 + CB2_103.w);\n    r0.x = (r0.x + -0.833299994468689);\n    r0.x = float(r0.x < 0.0);\n    KH3_MASK = (r0.x != 0) ? 0 : KH3_MASK;\n    r0.xyzw = (Parameters.SvPosition.yyyy * View.SVPositionToTranslatedWorld[1].xyzw);\n    r0.xyzw = (Parameters.SvPosition.xxxx * View.SVPositionToTranslatedWorld[0].xyzw + r0.xyzw);\n    r0.xyzw = (Parameters.SvPosition.zzzz * View.SVPositionToTranslatedWorld[2].xyzw + r0.xyzw);\n    r0.xyzw = (r0.xyzw + View.SVPositionToTranslatedWorld[3].xyzw);\n    r0.xyz = (r0.xyz / r0.www);\n    r0.xyz = (r0.xyz + (-float4(View.PreViewTranslation, 0).xyz));\n    r1.xyz = (r0.yyy * GetPrimitiveData(Parameters.PrimitiveId).WorldToLocal[1].xyz);\n    r1.xyz = (r0.xxx * GetPrimitiveData(Parameters.PrimitiveId).WorldToLocal[0].xyz + r1.xyz);\n    r1.xyz = (r0.zzz * GetPrimitiveData(Parameters.PrimitiveId).WorldToLocal[2].xyz + r1.xyz);\n    r0.xyz = (r0.xyz + (-GetPrimitiveData(Parameters.PrimitiveId).ObjectWorldPositionAndRadius.xyz));\n    r1.xyz = (r1.xyz + GetPrimitiveData(Parameters.PrimitiveId).WorldToLocal[3].xyz);\n    r1.xyz = (r1.xyz + (-float4(GetPrimitiveData(Parameters.PrimitiveId).LocalObjectBoundsMin, 0).xyz));\n    r2.xyz = ((-float4(GetPrimitiveData(Parameters.PrimitiveId).LocalObjectBoundsMin, 0).xyz) + float4(GetPrimitiveData(Parameters.PrimitiveId).LocalObjectBoundsMax, 0).xyz);\n    r1.xyz = (r1.xyz / r2.xyz);\n    r0.xyz = (r0.xyz / r2.xyz);\n    r1.xyz = (r1.xyz * float3(100.0, 100.0, 100.0));\n    r1.xyz = frac(abs(r1.xyz));\n    r2.xyz = ((-r1.xyz) + float3(1.0, 1.0, 1.0));\n    r1.xy = (r1.xy * r2.xy);\n    r0.w = (r1.y + r1.x);\n    r0.w = (r1.z * r2.z + r0.w);\n    r0.w = (r0.w * 500.0);\n    r0.w = frac(r0.w);\n    r1.x = dot(r0.xyz, r0.xyz);\n    r1.x = sqrt(r1.x);\n    r0.xyz = (r0.xyz / r1.xxx);\n    r0.xyz = (r0.xyz + float3(-0.0, -0.0, 1.0));\n    r0.x = dot(r0.xyz, r0.xyz);\n    r0.x = sqrt(r0.x);\n    r0.x = (r0.x * 0.5);\n    r0.x = min(r0.x, 1.0);\n    r0.y = (CB2_96.w * 2.0 + -1.0);\n    r0.x = saturate((r0.x + r0.y));\n    r0.y = ((-CB2_100.z) + CB2_100.y);\n    r0.x = (r0.x * r0.y + CB2_100.z);\n    r0.y = ((-CB2_96.w) + 1.0);\n    r0.x = ((-r0.y) + r0.x);\n    r0.x = (CB2_101.y * r0.x + r0.y);\n    r0.x = saturate((r0.x + r0.w));\n    r0.x = floor(r0.x);\n    r0.x = (r0.x + -0.33329999446868896);\n    r0.x = float(r0.x < 0.0);\n    KH3_MASK = (r0.x != 0) ? 0 : KH3_MASK;\n    KH3_DEPTHMASK = KH3_MASK;\n}\nKHMask = min(KH3_MASK, KH3_DEPTHMASK);\nKHMetallic = o2.x;\nKHSpecular = o2.y;\nKHRoughness = o2.z;\nKHEmissive = o0.xyz;\nKHSubsurface = o4.xyz * o4.xyz;\nKHOpacity = o4.w;\nreturn o3.xyz;",
+  "inputs": [
+   {
+    "name": "UV0",
+    "kind": "texcoord",
+    "index": 0
+   },
+   {
+    "name": "UV1",
+    "kind": "texcoord",
+    "index": 1
+   },
+   {
+    "name": "UV2",
+    "kind": "texcoord",
+    "index": 2
+   },
+   {
+    "name": "K_EA",
+    "kind": "eyeadaptation"
+   },
+   {
+    "name": "K_WPNO",
+    "kind": "worldpos_noofs"
+   },
+   {
+    "name": "P_AOChannel",
+    "kind": "vector",
+    "param": "AOChannel",
+    "default": [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_AOTexIndex",
+    "kind": "scalar",
+    "param": "AOTexIndex",
+    "default": 0.0
+   },
+   {
+    "name": "P_AntiVolume",
+    "kind": "scalar",
+    "param": "AntiVolume",
+    "default": 0.0
+   },
+   {
+    "name": "P_Aura",
+    "kind": "scalar",
+    "param": "Aura",
+    "default": 0.0
+   },
+   {
+    "name": "P_AuraColor",
+    "kind": "vector",
+    "param": "AuraColor",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_AuraOutColor",
+    "kind": "vector",
+    "param": "AuraOutColor",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_C_Metalsetting",
+    "kind": "vector",
+    "param": "C_Metalsetting",
+    "default": [
+     0.8999999761581421,
+     0.5,
+     0.5,
+     0.0
+    ]
+   },
+   {
+    "name": "P_CottonclothSetting",
+    "kind": "vector",
+    "param": "CottonclothSetting",
+    "default": [
+     0.0,
+     0.5,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_FormChangeSlide",
+    "kind": "scalar",
+    "param": "FormChangeSlide",
+    "default": 0.0
+   },
+   {
+    "name": "P_Ice",
+    "kind": "scalar",
+    "param": "Ice",
+    "default": 0.0
+   },
+   {
+    "name": "P_IceTileMulti",
+    "kind": "scalar",
+    "param": "IceTileMulti",
+    "default": 2.0
+   },
+   {
+    "name": "P_InLight",
+    "kind": "scalar",
+    "param": "InLight",
+    "default": 0.0
+   },
+   {
+    "name": "P_InLightCenterBounds",
+    "kind": "scalar",
+    "param": "InLightCenterBounds",
+    "default": 5.0
+   },
+   {
+    "name": "P_InLightCenterBoundsBlur",
+    "kind": "scalar",
+    "param": "InLightCenterBoundsBlur",
+    "default": 3.0
+   },
+   {
+    "name": "P_InLightCenterPosition",
+    "kind": "vector",
+    "param": "InLightCenterPosition",
+    "default": [
+     0.0,
+     0.0,
+     70.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_InLightColor",
+    "kind": "vector",
+    "param": "InLightColor",
+    "default": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_InLightOutBounds",
+    "kind": "scalar",
+    "param": "InLightOutBounds",
+    "default": 20.0
+   },
+   {
+    "name": "P_InLightOutBoundsBlur",
+    "kind": "scalar",
+    "param": "InLightOutBoundsBlur",
+    "default": 5.0
+   },
+   {
+    "name": "P_InLightOutColor",
+    "kind": "vector",
+    "param": "InLightOutColor",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_InWater",
+    "kind": "scalar",
+    "param": "InWater",
+    "default": 0.0
+   },
+   {
+    "name": "P_InWaterRoughMin",
+    "kind": "scalar",
+    "param": "InWaterRoughMin",
+    "default": 0.800000011920929
+   },
+   {
+    "name": "P_InWaterSpeMin",
+    "kind": "scalar",
+    "param": "InWaterSpeMin",
+    "default": 0.800000011920929
+   },
+   {
+    "name": "P_InWater_CS",
+    "kind": "scalar",
+    "param": "InWater_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_L_ashi1",
+    "kind": "vector",
+    "param": "L_ashi1",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_LeatherColorMulti",
+    "kind": "vector",
+    "param": "LeatherColorMulti",
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_LeatherMaskChannell",
+    "kind": "vector",
+    "param": "LeatherMaskChannell",
+    "default": [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_LeatherPatternID",
+    "kind": "scalar",
+    "param": "LeatherPatternID",
+    "default": 9.0
+   },
+   {
+    "name": "P_LeatherSetting",
+    "kind": "vector",
+    "param": "LeatherSetting",
+    "default": [
+     0.0,
+     0.30000001192092896,
+     0.550000011920929,
+     0.0
+    ]
+   },
+   {
+    "name": "P_LeatherTileMulti",
+    "kind": "scalar",
+    "param": "LeatherTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_MetalColorMulti",
+    "kind": "vector",
+    "param": "MetalColorMulti",
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_MetalMaskChannell",
+    "kind": "vector",
+    "param": "MetalMaskChannell",
+    "default": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_MetalPattenID",
+    "kind": "scalar",
+    "param": "MetalPattenID",
+    "default": 7.0
+   },
+   {
+    "name": "P_MetalTileMulti",
+    "kind": "scalar",
+    "param": "MetalTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_NormalTexIndex",
+    "kind": "scalar",
+    "param": "NormalTexIndex",
+    "default": 0.0
+   },
+   {
+    "name": "P_NunoColorMulti",
+    "kind": "vector",
+    "param": "NunoColorMulti",
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_NunoMaskChannell",
+    "kind": "vector",
+    "param": "NunoMaskChannell",
+    "default": [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_NunoPatternID",
+    "kind": "scalar",
+    "param": "NunoPatternID",
+    "default": 1.0
+   },
+   {
+    "name": "P_NunoTileMulti",
+    "kind": "scalar",
+    "param": "NunoTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_OpacityFade",
+    "kind": "scalar",
+    "param": "OpacityFade",
+    "default": 1.0
+   },
+   {
+    "name": "P_OpacityFadeMaskEmissivType",
+    "kind": "scalar",
+    "param": "OpacityFadeMaskEmissivType",
+    "default": 0.0
+   },
+   {
+    "name": "P_OpacityMaskRise",
+    "kind": "scalar",
+    "param": "OpacityMaskRise",
+    "default": 0.0
+   },
+   {
+    "name": "P_PointChangeTime",
+    "kind": "scalar",
+    "param": "PointChangeTime",
+    "default": 1.0
+   },
+   {
+    "name": "P_PointEmissivMulti",
+    "kind": "scalar",
+    "param": "PointEmissivMulti",
+    "default": 100.0
+   },
+   {
+    "name": "P_R_ashi1",
+    "kind": "vector",
+    "param": "R_ashi1",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_UseOldAddMaskMode",
+    "kind": "scalar",
+    "param": "UseOldAddMaskMode",
+    "default": 0.0
+   },
+   {
+    "name": "P_UsePureBloodInLight",
+    "kind": "scalar",
+    "param": "UsePureBloodInLight",
+    "default": 0.0
+   },
+   {
+    "name": "P_UseUltimateMask",
+    "kind": "scalar",
+    "param": "UseUltimateMask",
+    "default": 0.0
+   },
+   {
+    "name": "P_VisChara",
+    "kind": "scalar",
+    "param": "VisChara",
+    "default": 1.0
+   },
+   {
+    "name": "P_Wetness",
+    "kind": "scalar",
+    "param": "Wetness",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessCSMode",
+    "kind": "scalar",
+    "param": "WetnessCSMode",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessLength",
+    "kind": "scalar",
+    "param": "WetnessLength",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessLength_CS",
+    "kind": "scalar",
+    "param": "WetnessLength_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessSlideMulti",
+    "kind": "scalar",
+    "param": "WetnessSlideMulti",
+    "default": -0.009999999776482582
+   },
+   {
+    "name": "P_Wetness_Ashi1_Offset",
+    "kind": "scalar",
+    "param": "Wetness_Ashi1_Offset",
+    "default": 0.0
+   },
+   {
+    "name": "P_Wetness_CS",
+    "kind": "scalar",
+    "param": "Wetness_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_sRGBtoLinar",
+    "kind": "scalar",
+    "param": "sRGBtoLinar",
+    "default": 0.0
+   },
+   {
+    "name": "P_wetnessTile",
+    "kind": "scalar",
+    "param": "wetnessTile",
+    "default": 5.0
+   },
+   {
+    "name": "P_wetnessTileNormalBlendVolume",
+    "kind": "scalar",
+    "param": "wetnessTileNormalBlendVolume",
+    "default": 1.0
+   },
+   {
+    "name": "Tex0",
+    "kind": "textureparam",
+    "param": "NormalTex",
+    "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseNormalTex.BaseNormalTex",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex1",
+    "kind": "texture",
+    "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex2",
+    "kind": "textureparam",
+    "param": "FormChangeMaskTex0",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0m00.p_ex001_0m00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex3",
+    "kind": "textureparam",
+    "param": "FormChangeMaskTex1",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0m00.p_ex001_0m00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex4",
+    "kind": "textureparam",
+    "param": "FormChangeTex0",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0d00.p_ex001_0d00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex5",
+    "kind": "textureparam",
+    "param": "FormChangeTex1",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0d00.p_ex001_0d00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex6",
+    "kind": "textureparam",
+    "param": "AOTexture",
+    "texture": null,
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex7",
+    "kind": "texture",
+    "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex8",
+    "kind": "textureparam",
+    "param": "FormChangePointTex0",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0f00.p_ex001_0f00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex9",
+    "kind": "textureparam",
+    "param": "FormChangePointTex1",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0f00.p_ex001_0f00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex10",
+    "kind": "texture",
+    "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseColorTex.BaseColorTex",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex11",
+    "kind": "texture",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0m00.p_ex001_0m00",
+    "sampler_source": 0
+   },
+   {
+    "name": "M0_Chr_KHColVol",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "Chr_KHColVol",
+    "comps": 1
+   },
+   {
+    "name": "M0_WorldTypeInt",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "WorldTypeInt",
+    "comps": 1
+   },
+   {
+    "name": "M0_Env_KHCol_Min_Vol",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "Env KHCol Min Vol",
+    "comps": 1
+   },
+   {
+    "name": "M0_Chr_AmbientVol",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "Chr_AmbientVol",
+    "comps": 1
+   },
+   {
+    "name": "M0_BG_Lef_ACMBlend",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "BG_Lef_ACMBlend",
+    "comps": 1
+   },
+   {
+    "name": "M0_BG_Lef_ACMHue",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "BG_Lef_ACMHue",
+    "comps": 1
+   },
+   {
+    "name": "M0_BG_Luminosity_Value",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "BG_Luminosity_Value",
+    "comps": 1
+   },
+   {
+    "name": "M0_KHSCoreControl",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "KHSCoreControl",
+    "comps": 1
+   },
+   {
+    "name": "M0_KHS_ChrEmissivMultiCounter",
+    "kind": "collection",
+    "collection": "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control",
+    "param": "KHS_ChrEmissivMultiCounter",
+    "comps": 1
+   },
+   {
+    "name": "P_CameraFade",
+    "kind": "scalar",
+    "param": "CameraFade",
+    "default": 1.0
+   },
+   {
+    "name": "P_IceLenge",
+    "kind": "scalar",
+    "param": "IceLenge",
+    "default": 20.0
+   },
+   {
+    "name": "P_SelectIceHardEddeUVindex",
+    "kind": "scalar",
+    "param": "SelectIceHardEddeUVindex",
+    "default": 0.0
+   }
+  ]
+ },
+ "normal": {
+  "code": "float4 r0 = 0, r1 = 0, r2 = 0, r3 = 0, r4 = 0, r5 = 0, r6 = 0, r7 = 0, r8 = 0, r9 = 0, r10 = 0, r11 = 0, r12 = 0, r13 = 0, r14 = 0, r15 = 0, r16 = 0, r17 = 0, r18 = 0, r19 = 0;\nfloat4 o1 = 0;\nfloat KH3_MASK = 1;\nfloat KH3_TIME = View.GameTime;\nfloat4 CB2_1 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_3 = ((P_LeatherTileMulti.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_6 = float4(((P_LeatherMaskChannell).xyzz).x, ((P_LeatherMaskChannell).xyzz).y, ((P_LeatherMaskChannell).xyzz).z, ((P_LeatherMaskChannell).wwww).x);\nfloat4 CB2_7 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_9 = ((P_NunoTileMulti.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_12 = float4(((P_NunoMaskChannell).xyzz).x, ((P_NunoMaskChannell).xyzz).y, ((P_NunoMaskChannell).xyzz).z, ((P_NunoMaskChannell).wwww).x);\nfloat4 CB2_13 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).y, ((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * (floor(max((((clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_MetalPattenID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0))) * float4(2.0, 2.0, 2.0, 2.0))) + ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).z);\nfloat4 CB2_16 = float4(((P_MetalMaskChannell).xyzz).x, ((P_MetalMaskChannell).xyzz).y, ((P_MetalMaskChannell).xyzz).z, ((P_MetalMaskChannell).wwww).x);\nfloat4 CB2_18 = ((P_wetnessTile.xxxx * float4(((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).x, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).y, ((float4(2048.0, 2048.0, 2048.0, 2048.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))).z))).xyyy;\nfloat4 CB2_20 = (P_L_ashi1).xyzz;\nfloat4 CB2_22 = (P_R_ashi1).xyzz;\nfloat4 CB2_61 = float4((P_NormalTexIndex.xxxx).x, (P_LeatherTileMulti.xxxx).x, (P_LeatherPatternID.xxxx).x, (clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))).x);\nfloat4 CB2_65 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_LeatherPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, (P_FormChangeSlide.xxxx).x, (P_UseUltimateMask.xxxx).x, ((P_LeatherMaskChannell).wwww).x);\nfloat4 CB2_66 = float4((P_UseOldAddMaskMode.xxxx).x, (P_NunoTileMulti.xxxx).x, (P_NunoPatternID.xxxx).x, (clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))).x);\nfloat4 CB2_70 = float4((((((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * ((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) - ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * floor(max((((clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) + clamp(P_NunoPatternID.xxxx, float4(1.0, 1.0, 1.0, 1.0), ((float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)) * (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))))) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))), float4(0.0, 0.0, 0.0, 0.0)))))) - (float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0)))) - ((float4(1.0, 1.0, 1.0, 1.0) / (float4(8.0, 8.0, 8.0, 8.0) + float4(8.0, 8.0, 8.0, 8.0))) * float4(0.5, 0.5, 0.5, 0.5)))).x, ((P_NunoMaskChannell).wwww).x, (P_MetalTileMulti.xxxx).x, (P_MetalPattenID.xxxx).x);\nfloat4 CB2_75 = float4((P_WetnessSlideMulti.xxxx).x, (P_wetnessTile.xxxx).x, (P_wetnessTileNormalBlendVolume.xxxx).x, (P_WetnessCSMode.xxxx).x);\nfloat4 CB2_76 = float4((P_Wetness_CS.xxxx).x, (P_Wetness.xxxx).x, (P_InWater_CS.xxxx).x, (P_InWater.xxxx).x);\nfloat4 CB2_77 = float4((P_WetnessLength_CS.xxxx).x, (P_WetnessLength.xxxx).x, (P_Wetness_Ashi1_Offset.xxxx).x, ((clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx).x);\nfloat4 CB2_81 = float4((clamp(ceil((((((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy)) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)) * ((((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).xxxx) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).yyyy)) + ((clamp((P_L_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz + (clamp((P_R_ashi1).xyzz, float4(-1.0, -1.0, -1.0, -1.0), float4(1.0, 1.0, 1.0, 1.0))).zzzz)))), float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x, (P_Ice.xxxx).x, (P_AOTexIndex.xxxx).x, (clamp(P_AOTexIndex.xxxx, float4(0.0, 0.0, 0.0, 0.0), float4(1.0, 1.0, 1.0, 1.0))).x);\nr0.xyz = (float4(Parameters.TangentToWorld[0], 0).yzx * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).zxy);\nr0.xyz = (float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).yzx * float4(Parameters.TangentToWorld[0], 0).zxy + (-r0.xyz));\nr0.xyz = (r0.xyz * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).www);\nr1.xyzw = (Parameters.SvPosition.yyyy * View.SVPositionToTranslatedWorld[1].xyzw);\nr1.xyzw = (Parameters.SvPosition.xxxx * View.SVPositionToTranslatedWorld[0].xyzw + r1.xyzw);\nr1.xyzw = (Parameters.SvPosition.zzzz * View.SVPositionToTranslatedWorld[2].xyzw + r1.xyzw);\nr1.xyzw = (r1.xyzw + View.SVPositionToTranslatedWorld[3].xyzw);\nr1.xyz = (r1.xyz / r1.www);\nr2.xyz = (r1.xyz + (-float4(View.PreViewTranslation, 0).xyz));\nr0.w = dot((-r1.xyz), (-r1.xyz));\nr0.w = rsqrt(r0.w);\nr1.xyz = (r0.www * (-r1.xyz));\nr4.xy = ((-float4(UV0, 0, 0).xy) + float4(UV1, 0, 0).xy);\nr4.zw = (CB2_61.xx * r4.xy + float4(UV0, 0, 0).xy);\nr4.zw = (Texture2DSample(Tex0, Tex0Sampler, r4.zw)).xy;\nr5.xy = (r4.zw * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr0.w = dot(r5.xy, r5.xy);\nr0.w = ((-r0.w) + 1.0);\nr0.w = max(r0.w, 0.0);\nr0.w = sqrt(r0.w);\nr5.z = (r0.w + 1.0);\nr4.zw = (float4(UV0, 0, 0).xy * CB2_61.yy);\nr4.zw = frac(r4.zw);\nr4.zw = (r4.zw * float2(0.0625, 0.0625) + CB2_1.xy);\nr6.xy = ddx(float4(UV0, 0, 0).xy);\nr6.zw = (r6.xy * CB2_3.xy);\nr0.w = dot(r6.zw, r6.zw);\nr6.zw = ddy(float4(UV0, 0, 0).xy);\nr7.xy = (r6.zw * CB2_3.xy);\nr1.w = dot(r7.xy, r7.xy);\nr2.w = float(r0.w >= r1.w);\nr0.w = ((r2.w != 0) ? r0.w : r1.w);\nr0.w = sqrt(r0.w);\nr0.w = log2(r0.w);\nr7.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r4.zw, r0.w)).xy;\nr7.xy = (r7.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr1.w = dot(r7.xy, r7.xy);\nr1.w = ((-r1.w) + 1.0);\nr1.w = max(r1.w, 0.0);\nr7.z = sqrt(r1.w);\nr8.xyzw = (Texture2DSample(Tex2, Tex2Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr9.xyzw = (Texture2DSample(Tex3, Tex3Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr1.w = (Parameters.SvPosition.w + -24.0);\nr1.w = saturate((r1.w * 0.0078125));\nr2.w = ((-r1.w) + 1.0);\nr2.w = (CB2_65.y * r2.w + CB2_65.y);\nr3.w = saturate(dot(float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).xyz, r1.xyz));\nr3.w = ((-r3.w) + 1.0);\nr3.w = max(r3.w, 9.99999997e-07);\nr5.w = saturate((r2.w * 2.0 + (-r3.w)));\nr7.w = (r5.w * 5.0);\nr7.w = min(r7.w, 1.0);\nr9.xyzw = ((-r8.xyzw) + r9.xyzw);\nr8.xyzw = (r7.wwww * r9.xyzw + r8.xyzw);\nr9.xyzw = (Texture2DSample(Tex4, Tex4Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr10.xyzw = (Texture2DSample(Tex5, Tex5Sampler, float4(UV0, 0, 0).xy)).xyzw;\nr10.w = ((-r9.w) + r10.w);\nr9.w = (r7.w * r10.w + r9.w);\nr9.w = (r9.w + -1.0);\nr9.w = (CB2_65.z * r9.w + 1.0);\nr8.xyzw = (r8.xyzw * r9.wwww);\nr11.xyzw = (r8.xyzw * CB2_6.xyzw);\nr10.w = saturate((r11.w * 1.0160000324249268 + -0.01600000075995922));\nr12.xy = ((-r8.yz) * CB2_6.yz + float2(1.0, 1.0));\nr11.w = (r11.x * r12.x + r11.y);\nr11.z = (r11.w * r12.y + r11.z);\nr11.w = ((-r10.w) + 1.0);\nr10.w = saturate((r11.z * r11.w + r10.w));\nr11.x = (r11.y + r11.x);\nr11.x = (r8.z * CB2_6.z + r11.x);\nr11.x = saturate((r8.w * CB2_6.w + r11.x));\nr11.x = ((-r10.w) + r11.x);\nr10.w = (CB2_66.x * r11.x + r10.w);\nr11.x = (CB2_66.x + 1.0);\nr10.w = saturate((r10.w * r11.x));\nr7.xyz = (r7.xyz * r10.www + float3(-0.0, -0.0, -1.0));\nr7.xyz = (r10.www * r7.xyz + float3(0.0, 0.0, 1.0));\nr11.yz = (float4(UV0, 0, 0).xy * CB2_66.yy);\nr11.yz = frac(r11.yz);\nr11.yz = (r11.yz * float2(0.0625, 0.0625) + CB2_7.xy);\nr12.xy = (r6.xy * CB2_9.xy);\nr11.w = dot(r12.xy, r12.xy);\nr12.xy = (r6.zw * CB2_9.xy);\nr12.x = dot(r12.xy, r12.xy);\nr12.y = float(r11.w >= r12.x);\nr11.w = ((r12.y != 0) ? r11.w : r12.x);\nr11.w = sqrt(r11.w);\nr11.w = log2(r11.w);\nr12.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r11.yz, r11.w)).xy;\nr12.xy = (r12.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr12.w = dot(r12.xy, r12.xy);\nr12.w = ((-r12.w) + 1.0);\nr12.w = max(r12.w, 0.0);\nr12.z = sqrt(r12.w);\nr13.xyzw = (r8.xyzw * CB2_12.xyzw);\nr12.w = saturate((r13.w * 1.0160000324249268 + -0.01600000075995922));\nr14.xy = ((-r8.yz) * CB2_12.yz + float2(1.0, 1.0));\nr13.w = (r13.x * r14.x + r13.y);\nr13.z = (r13.w * r14.y + r13.z);\nr13.w = ((-r12.w) + 1.0);\nr12.w = saturate((r13.z * r13.w + r12.w));\nr13.x = (r13.y + r13.x);\nr13.x = (r8.z * CB2_12.z + r13.x);\nr13.x = saturate((r8.w * CB2_12.w + r13.x));\nr13.x = ((-r12.w) + r13.x);\nr12.w = (CB2_66.x * r13.x + r12.w);\nr12.w = saturate((r11.x * r12.w));\nr12.xyz = (r12.xyz * r12.www + (-r7.xyz));\nr7.xyz = (r12.www * r12.xyz + r7.xyz);\nr12.x = (CB2_70.z + -200.0);\nr12.x = (r9.w * r12.x + 200.0);\nr12.yz = (r12.xx * float4(UV0, 0, 0).xy);\nr12.yz = frac(r12.yz);\nr12.yz = (r12.yz * float2(0.0625, 0.0625) + CB2_13.xy);\nr12.x = (r12.x * 128.0);\nr13.xy = (r6.xy * r12.xx);\nr13.x = dot(r13.xy, r13.xy);\nr13.yz = (r6.zw * r12.xx);\nr12.x = dot(r13.yz, r13.yz);\nr13.y = float(r13.x >= r12.x);\nr12.x = ((r13.y != 0) ? r13.x : r12.x);\nr12.x = sqrt(r12.x);\nr12.x = log2(r12.x);\nr13.xy = (Texture2DSampleLevel(Tex1, Tex1Sampler, r12.yz, r12.x)).xy;\nr13.xy = (r13.xy * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr13.w = dot(r13.xy, r13.xy);\nr13.w = ((-r13.w) + 1.0);\nr13.w = max(r13.w, 0.0);\nr13.z = sqrt(r13.w);\nr14.xyzw = (r8.xyzw * CB2_16.xyzw);\nr8.x = saturate((r14.w * 1.0160000324249268 + -0.01600000075995922));\nr15.xy = ((-r8.yz) * CB2_16.yz + float2(1.0, 1.0));\nr8.y = (r14.x * r15.x + r14.y);\nr8.y = (r8.y * r15.y + r14.z);\nr13.w = ((-r8.x) + 1.0);\nr8.x = saturate((r8.y * r13.w + r8.x));\nr8.y = (r14.y + r14.x);\nr8.y = (r8.z * CB2_16.z + r8.y);\nr8.y = saturate((r8.w * CB2_16.w + r8.y));\nr8.y = ((-r8.x) + r8.y);\nr8.x = (CB2_66.x * r8.y + r8.x);\nr8.x = saturate((r11.x * r8.x));\nr8.x = (r8.x + -1.0);\nr8.x = (r9.w * r8.x + 1.0);\nr8.yzw = (r13.xyz * r8.xxx + (-r7.xyz));\nr7.xyz = (r8.xxx * r8.yzw + r7.xyz);\nr7.xyz = (r7.xyz * float3(-1.0, -1.0, 1.0));\nr8.y = dot(r5.xyz, r7.xyz);\nr7.xyz = (r5.zzz * r7.xyz);\nr5.xyz = (r5.xyz * r8.yyy + (-r7.xyz));\nr7.x = dot(r5.xyz, r5.xyz);\nr7.x = sqrt(r7.x);\nr5.xyz = (r5.xyz / r7.xxx);\nr7.xyz = (r5.xyz + float3(-0.0, -0.0, -1.0));\nr13.xy = (r7.xy * float2(0.5, 0.5));\nr7.x = (r7.z * 0.5 + 2.0);\nr14.y = (float4(0, K_EA, KH3_TIME, 0).w * CB2_75.x + float4(UV0, 0, 0).y);\nr14.x = float4(UV0, 0, 0).x;\nr8.yz = (r14.xy * CB2_75.yy);\nr8.yz = frac(r8.yz);\nr8.yz = (r8.yz * float2(0.0625, 0.0625) + float2(0.90625, 0.15625));\nr14.zw = ddx(r14.xy);\nr14.zw = (r14.zw * CB2_18.xy);\nr7.y = dot(r14.zw, r14.zw);\nr14.xy = ddy(r14.xy);\nr14.xy = (r14.xy * CB2_18.xy);\nr8.w = dot(r14.xy, r14.xy);\nr11.x = float(r7.y >= r8.w);\nr7.y = ((r11.x != 0) ? r7.y : r8.w);\nr7.y = sqrt(r7.y);\nr7.y = log2(r7.y);\nr8.yz = (Texture2DSampleLevel(Tex1, Tex1Sampler, r8.yz, r7.y)).xy;\nr14.xy = (r8.yz + r8.yz);\nr8.yz = (r8.yz * float2(2.0, 2.0) + float2(-1.0, -1.0));\nr7.y = dot(r8.yz, r8.yz);\nr7.y = ((-r7.y) + 1.0);\nr7.y = max(r7.y, 0.0);\nr14.z = sqrt(r7.y);\nr8.yzw = (r14.xyz + float3(-1.0, -1.0, -1.0));\nr8.yzw = (CB2_75.zzz * r8.yzw + float3(0.0, 0.0, 1.0));\nr13.w = (r7.z * 0.5 + 2.0);\nr8.yzw = (r8.yzw * float3(-1.0, -1.0, 1.0));\nr7.y = dot(r13.xyw, r8.yzw);\nr8.yzw = (r7.xxx * r8.yzw);\nr7.xyz = (r13.xyw * r7.yyy + (-r8.yzw));\nr8.y = ((-CB2_76.y) + CB2_76.x);\nr8.y = (CB2_75.w * r8.y + CB2_76.y);\nr8.z = saturate((CB2_75.w * CB2_76.z + CB2_76.w));\nr8.w = ((-r8.z) + 1.0);\nr8.y = (r8.w * r8.y);\nr13.xyz = (r2.xyz + (-CB2_20.xyz));\nr8.w = dot(r13.xyz, r13.xyz);\nr8.w = sqrt(r8.w);\nr11.x = ((-CB2_77.y) + CB2_77.x);\nr11.x = (CB2_75.w * r11.x + CB2_77.y);\nr11.x = (r11.x + (-CB2_77.z));\nr11.x = max(r11.x, 0.0010000000474974513);\nr8.w = (r8.w / r11.x);\nr13.x = (r11.x * 0.5);\nr8.w = max(r8.w, 9.99999997e-07);\nr8.w = log2(r8.w);\nr8.w = (r8.w * r13.x);\nr8.w = exp2(r8.w);\nr8.w = min(r8.w, 1.0);\nr13.y = ((-r8.w) + 1.0);\nr8.w = (r8.w * r13.y + r8.w);\nr8.w = ((-r8.w) + 1.0);\nr13.yzw = ((-r2.xyz) + CB2_22.xyz);\nr13.y = dot(r13.yzw, r13.yzw);\nr13.y = sqrt(r13.y);\nr11.x = (r13.y / r11.x);\nr11.x = max(r11.x, 9.99999997e-07);\nr11.x = log2(r11.x);\nr11.x = (r11.x * r13.x);\nr11.x = exp2(r11.x);\nr11.x = min(r11.x, 1.0);\nr13.x = ((-r11.x) + 1.0);\nr11.x = (r11.x * r13.x + r11.x);\nr8.w = (r8.w + (-r11.x));\nr8.w = saturate((r8.w + 1.0));\nr8.w = (r8.w + -1.0);\nr8.w = (CB2_81.x * r8.w + 1.0);\nr11.x = (r8.w * r8.y);\nr7.xyz = ((-r5.xyz) + r7.xyz);\nr5.xyz = (r11.xxx * r7.xyz + r5.xyz);\nr5.xyz = (r5.xyz * float4(0, 0, 0, 1).www + float4(0, 0, 0, 1).xyz);\nr7.x = dot(r5.xyz, r5.xyz);\nr7.x = rsqrt(r7.x);\nr5.xyz = (r5.xyz * r7.xxx);\nr13.xyzw = (r0.zxyz * r5.yyyy);\nr13.xyzw = (r5.xxxx * float4(Parameters.TangentToWorld[0], 0).zxyz + r13.xyzw);\nr13.xyzw = (r5.zzzz * float4(Parameters.TangentToWorld[2], Parameters.UnMirrored).zxyz + r13.xyzw);\nr5.x = dot(r13.yzw, r13.yzw);\nr5.x = rsqrt(r5.x);\nr13.xyzw = (r5.xxxx * r13.xyzw);\nr13.xyzw = (r13.xyzw * float4(0.5, 0.5, 0.5, 0.5) + float4(0.5, 0.5, 0.5, 0.5));\no1.xyz = r13.yzw;\nreturn normalize(o1.xyz * 2 - 1);",
+  "inputs": [
+   {
+    "name": "UV0",
+    "kind": "texcoord",
+    "index": 0
+   },
+   {
+    "name": "UV1",
+    "kind": "texcoord",
+    "index": 1
+   },
+   {
+    "name": "K_EA",
+    "kind": "eyeadaptation"
+   },
+   {
+    "name": "P_AOTexIndex",
+    "kind": "scalar",
+    "param": "AOTexIndex",
+    "default": 0.0
+   },
+   {
+    "name": "P_FormChangeSlide",
+    "kind": "scalar",
+    "param": "FormChangeSlide",
+    "default": 0.0
+   },
+   {
+    "name": "P_Ice",
+    "kind": "scalar",
+    "param": "Ice",
+    "default": 0.0
+   },
+   {
+    "name": "P_InWater",
+    "kind": "scalar",
+    "param": "InWater",
+    "default": 0.0
+   },
+   {
+    "name": "P_InWater_CS",
+    "kind": "scalar",
+    "param": "InWater_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_L_ashi1",
+    "kind": "vector",
+    "param": "L_ashi1",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_LeatherMaskChannell",
+    "kind": "vector",
+    "param": "LeatherMaskChannell",
+    "default": [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_LeatherPatternID",
+    "kind": "scalar",
+    "param": "LeatherPatternID",
+    "default": 9.0
+   },
+   {
+    "name": "P_LeatherTileMulti",
+    "kind": "scalar",
+    "param": "LeatherTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_MetalMaskChannell",
+    "kind": "vector",
+    "param": "MetalMaskChannell",
+    "default": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_MetalPattenID",
+    "kind": "scalar",
+    "param": "MetalPattenID",
+    "default": 7.0
+   },
+   {
+    "name": "P_MetalTileMulti",
+    "kind": "scalar",
+    "param": "MetalTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_NormalTexIndex",
+    "kind": "scalar",
+    "param": "NormalTexIndex",
+    "default": 0.0
+   },
+   {
+    "name": "P_NunoMaskChannell",
+    "kind": "vector",
+    "param": "NunoMaskChannell",
+    "default": [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "P_NunoPatternID",
+    "kind": "scalar",
+    "param": "NunoPatternID",
+    "default": 1.0
+   },
+   {
+    "name": "P_NunoTileMulti",
+    "kind": "scalar",
+    "param": "NunoTileMulti",
+    "default": 30.0
+   },
+   {
+    "name": "P_R_ashi1",
+    "kind": "vector",
+    "param": "R_ashi1",
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "P_UseOldAddMaskMode",
+    "kind": "scalar",
+    "param": "UseOldAddMaskMode",
+    "default": 0.0
+   },
+   {
+    "name": "P_UseUltimateMask",
+    "kind": "scalar",
+    "param": "UseUltimateMask",
+    "default": 0.0
+   },
+   {
+    "name": "P_Wetness",
+    "kind": "scalar",
+    "param": "Wetness",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessCSMode",
+    "kind": "scalar",
+    "param": "WetnessCSMode",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessLength",
+    "kind": "scalar",
+    "param": "WetnessLength",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessLength_CS",
+    "kind": "scalar",
+    "param": "WetnessLength_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_WetnessSlideMulti",
+    "kind": "scalar",
+    "param": "WetnessSlideMulti",
+    "default": -0.009999999776482582
+   },
+   {
+    "name": "P_Wetness_Ashi1_Offset",
+    "kind": "scalar",
+    "param": "Wetness_Ashi1_Offset",
+    "default": 0.0
+   },
+   {
+    "name": "P_Wetness_CS",
+    "kind": "scalar",
+    "param": "Wetness_CS",
+    "default": 0.0
+   },
+   {
+    "name": "P_wetnessTile",
+    "kind": "scalar",
+    "param": "wetnessTile",
+    "default": 5.0
+   },
+   {
+    "name": "P_wetnessTileNormalBlendVolume",
+    "kind": "scalar",
+    "param": "wetnessTileNormalBlendVolume",
+    "default": 1.0
+   },
+   {
+    "name": "Tex0",
+    "kind": "textureparam",
+    "param": "NormalTex",
+    "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseNormalTex.BaseNormalTex",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex1",
+    "kind": "texture",
+    "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex2",
+    "kind": "textureparam",
+    "param": "FormChangeMaskTex0",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0m00.p_ex001_0m00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex3",
+    "kind": "textureparam",
+    "param": "FormChangeMaskTex1",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0m00.p_ex001_0m00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex4",
+    "kind": "textureparam",
+    "param": "FormChangeTex0",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0d00.p_ex001_0d00",
+    "sampler_source": 0
+   },
+   {
+    "name": "Tex5",
+    "kind": "textureparam",
+    "param": "FormChangeTex1",
+    "texture": "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_0d00.p_ex001_0d00",
+    "sampler_source": 0
+   }
+  ]
+ },
+ "mpcs": [
+  "/Game/KH3/Shader/KHS_set/KHS_Control.KHS_Control"
+ ],
+ "notes": [],
+ "stats": {
+  "base_kept": 674,
+  "base_total": 706,
+  "normal_kept": 238,
+  "mask": true,
+  "discards": 2
+ }
+}

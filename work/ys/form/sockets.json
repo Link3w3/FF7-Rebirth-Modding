@@ -1,0 +1,1022 @@
+[
+ {
+  "socket": "Icon_Name01",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   -0.0,
+   -0.0,
+   176.1353
+  ],
+  "rotation": [
+   0.0,
+   -90.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Icon_Name02",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   -0.0,
+   -0.0,
+   88.0676
+  ],
+  "rotation": [
+   0.0,
+   -90.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Icon_Target01",
+  "seph_bone": "C_Spine_d",
+  "bone": "spine4",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Icon_Damage01",
+  "seph_bone": "C_Hip_a",
+  "bone": "hip",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   5.0879,
+   -180.0,
+   -90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Center01",
+  "seph_bone": "C_Hip_a",
+  "bone": "hip",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   5.0879,
+   -180.0,
+   -90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Damage_Body01",
+  "seph_bone": "C_Spine_d",
+  "bone": "spine4",
+  "location": [
+   -0.0,
+   0.0,
+   -17.6135
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Chest01",
+  "seph_bone": "C_Spine_d",
+  "bone": "spine4",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Neck01",
+  "seph_bone": "C_Neck_a",
+  "bone": "neck",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   -0.0006,
+   -0.0001,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Head01",
+  "seph_bone": "C_Head_a",
+  "bone": "head",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   12.3049,
+   -0.0001,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Face_Eyes01",
+  "seph_bone": "C_Head_a",
+  "bone": "head",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   12.3049,
+   -0.0001,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Face_Mouth01",
+  "seph_bone": "C_Head_a",
+  "bone": "head",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   12.3049,
+   -0.0001,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Hand_Right01",
+  "seph_bone": "R_Hand_a",
+  "bone": "right_hand",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   1.0403,
+   3.9624,
+   75.4064
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Knee_Right01",
+  "seph_bone": "R_Foreleg_a",
+  "bone": "right_leg",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   90.0002
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Foot_Right01",
+  "seph_bone": "R_Foot_a",
+  "bone": "right_foot",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   66.7161,
+   0.0,
+   90.0001
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Hand_Left01",
+  "seph_bone": "L_Hand_a",
+  "bone": "left_hand",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   1.0402,
+   -3.9624,
+   104.5936
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Knee_Left01",
+  "seph_bone": "L_Foreleg_a",
+  "bone": "left_leg",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   89.9998
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Body_Foot_Left01",
+  "seph_bone": "L_Foot_a",
+  "bone": "left_foot",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   66.7161,
+   0.0,
+   89.9999
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_Weapon_Right01",
+  "seph_bone": "R_Weapon_a",
+  "bone": "right_hand",
+  "location": [
+   6.8387,
+   3.0366,
+   0.7935
+  ],
+  "rotation": [
+   -75.3701,
+   89.9734,
+   94.1221
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_Weapon_Left01",
+  "seph_bone": "L_Weapon_a",
+  "bone": "main_weapon",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   90.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_Chara01",
+  "seph_bone": "C_CharaA_a",
+  "bone": "root",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "VFX_Magic02",
+  "seph_bone": "R_Weapon_a",
+  "bone": "right_hand",
+  "location": [
+   6.8387,
+   3.0366,
+   0.7935
+  ],
+  "rotation": [
+   -75.3701,
+   89.9734,
+   94.1221
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "VFX_Magic01",
+  "seph_bone": "L_Weapon_a",
+  "bone": "main_weapon",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   90.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "ParryEffect",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   87.3116,
+   -0.0,
+   141.5593
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_Head01",
+  "seph_bone": "C_Head_a",
+  "bone": "head",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   12.3049,
+   -0.0001,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_ExChara01",
+  "seph_bone": "C_CharaExA_a",
+  "bone": "root",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Attach_ExChara02",
+  "seph_bone": "C_CharaExB_a",
+  "bone": "root",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaser",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   116.7918,
+   0.0031,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "TargetSword",
+  "seph_bone": "L_Weapon_a",
+  "bone": "main_weapon",
+  "location": [
+   -0.0047,
+   45.9972,
+   0.0021
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "TargetWIng",
+  "seph_bone": "R_FeatherFinger_a",
+  "bone": "spine4",
+  "location": [
+   44.3097,
+   98.411,
+   35.5652
+  ],
+  "rotation": [
+   18.3174,
+   82.0899,
+   72.4937
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "GokumonFeeler",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   77.1952,
+   -0.0,
+   -0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaser2",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   414.2068,
+   -0.0144,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaser0",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   105.6812,
+   0.0065,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "AttackTenshi",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   82.6643,
+   -21.4291,
+   -469.5886
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Hattou_Pull",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   292.2124,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   0.0,
+   -179.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Hattou_PullTarget1",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   292.2118,
+   88.0677,
+   -0.0
+  ],
+  "rotation": [
+   0.0,
+   -180.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "Hattou_PullTarget2",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   292.2118,
+   -88.0677,
+   -0.0002
+  ],
+  "rotation": [
+   0.0,
+   -180.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "BindAttackMagic",
+  "seph_bone": "L_Weapon_a",
+  "bone": "main_weapon",
+  "location": [
+   0.0033,
+   171.4962,
+   11.6381
+  ],
+  "rotation": [
+   39.9994,
+   -90.0055,
+   179.9923
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "MagicWind",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   440.3384,
+   -0.0,
+   -0.0
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "MagicBullet",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   73.7387,
+   0.0,
+   129.6292
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "VFX_OverHead01",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   0.0,
+   0.0,
+   176.1353
+  ],
+  "rotation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "LastHattouA",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   446.8733,
+   -0.0007,
+   -0.0
+  ],
+  "rotation": [
+   0.0,
+   -179.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "LastHattouB",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   616.4737,
+   39.0041,
+   -0.0002
+  ],
+  "rotation": [
+   0.0,
+   -179.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastL1",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.4187,
+   132.1015,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   89.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastL2",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.4204,
+   334.4255,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   89.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastR1",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.414,
+   -132.1015,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   -89.9998,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastR2",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.4159,
+   -357.2485,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   -89.9998,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastL0",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.4187,
+   176.1353,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   89.9992,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FeelerLaserLastR0",
+  "seph_bone": "Trans",
+  "bone": "root",
+  "location": [
+   6.414,
+   -176.1353,
+   163.9781
+  ],
+  "rotation": [
+   0.0,
+   -89.9998,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "TargetSword_0",
+  "seph_bone": "C_CharaA_a",
+  "bone": "root",
+  "location": [
+   -0.4895,
+   -49.0168,
+   -0.0103
+  ],
+  "rotation": [
+   0.0,
+   -90.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "BindStab",
+  "seph_bone": "L_Weapon_a",
+  "bone": "main_weapon",
+  "location": [
+   -0.0008,
+   172.761,
+   -0.0
+  ],
+  "rotation": [
+   0.0,
+   -90.0,
+   -0.0016
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "socket": "FadeBase00",
+  "seph_bone": "C_Hip_a",
+  "bone": "hip",
+  "location": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rotation": [
+   -5.0879,
+   0.0,
+   90.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ }
+]

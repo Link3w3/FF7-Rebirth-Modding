@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 7,
+	"VersionName": "1.12.0-cacs3.20",
+	"FriendlyName": "Kawaii Dynamic Motions",
+	"Description": "Kawaii Dynamic Motions: KawaiiPhysics 1.7.0 for UE 4.26 with the newest KawaiiPhysics' features fused in, its own motions (1.9: waves and a looping key animation that move a node's bones, the physics on top), (1.10) KawaiiPhysics' sync bones (a coat's strips follow a knee) (1.11) the rest of KawaiiPhysics 1.21 (external forces and wind, the game's sets, physics asset and mirrored shapes, shared and world collision, the entry's animation triggers, shared winds and wind source) and (1.12) the motions of animation sets (EndAnimSet: the set's motion of what the character plays, KH3-style in step with Sync; the preview plays them) and solid floors. Its preview runs Create a Character System's own simulation (FINAL FANTASY VII REBIRTH, game mod 3.20.0); Export For Game writes an AnimBlueprint's nodes as the game mod's \"kawaii\" entries, and Import From Game makes them back into nodes. Editor only: keep AnimBlueprints with these nodes out of game paks.",
+	"Category": "Animation",
+	"CreatedBy": "pafuhana1213 (KawaiiPhysics); Create a Character System (Kawaii Dynamic Motions)",
+	"CreatedByURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"DocsURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/pafuhana1213/KawaiiPhysics/issues",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "KawaiiPhysics",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		},
+		{
+			"Name": "KawaiiPhysicsEd",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

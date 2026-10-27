@@ -1,0 +1,1012 @@
+{
+ "import_folder": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth",
+ "skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "fps": 60,
+ "moves": [
+  {
+   "set": "Battle04",
+   "name": "B_Idle01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Idle01_1.KH2_B_Idle01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1",
+   "hits": [],
+   "seconds": 2.633,
+   "frames": 159,
+   "source": "OWA1015",
+   "kh3": "1015 battle idle",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Idle01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Idle01_0.KH2_B_Idle01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA1014",
+   "kh3": "1014 into the battle stance",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_1.KH2_B_Run01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1",
+   "hits": [],
+   "seconds": 0.367,
+   "frames": 23,
+   "source": "OWA1013",
+   "kh3": "1013 run",
+   "root_travel": [
+    256.7,
+    0.0,
+    0.0
+   ],
+   "tracks": 268
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_0_L0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L0.KH2_B_Run01_0_L0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+   "hits": [],
+   "seconds": 0.1,
+   "frames": 7,
+   "source": "OWA1021",
+   "kh3": "1021 run start",
+   "root_travel": [
+    92.4,
+    -0.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_0_L90",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L90.KH2_B_Run01_0_L90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+   "hits": [],
+   "seconds": 0.1,
+   "frames": 7,
+   "source": "OWA1021L",
+   "kh3": "1021L run start, left",
+   "root_travel": [
+    -0.0,
+    -92.4,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_0_R90",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_R90.KH2_B_Run01_0_R90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R90.B_Run01_0_R90",
+   "hits": [],
+   "seconds": 0.1,
+   "frames": 7,
+   "source": "OWA1021R",
+   "kh3": "1021R run start, right",
+   "root_travel": [
+    0.0,
+    92.4,
+    -0.0
+   ],
+   "tracks": 268
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_0_L180",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L180.KH2_B_Run01_0_L180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+   "hits": [],
+   "seconds": 0.1,
+   "frames": 7,
+   "source": "OWA1021BL",
+   "kh3": "1021BL run start, turning back left",
+   "root_travel": [
+    -92.4,
+    0.0,
+    -0.0
+   ],
+   "tracks": 267
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Run01_0_R180",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_R180.KH2_B_Run01_0_R180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+   "hits": [],
+   "seconds": 0.1,
+   "frames": 7,
+   "source": "OWA1021BR",
+   "kh3": "1021BR run start, turning back right",
+   "root_travel": [
+    -92.4,
+    0.0,
+    -0.0
+   ],
+   "tracks": 267
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Walk01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Walk01_1.KH2_B_Walk01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016 battle walk",
+   "root_travel": [
+    176.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkFL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkFL01_1.KH2_B_WalkFL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016, legs turned",
+   "root_travel": [
+    124.4,
+    -124.4,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkFR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkFR01_1.KH2_B_WalkFR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016, legs turned",
+   "root_travel": [
+    124.4,
+    124.4,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkL01_1.KH2_B_WalkL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016, legs turned",
+   "root_travel": [
+    0.0,
+    -176.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkR01_1.KH2_B_WalkR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016, legs turned",
+   "root_travel": [
+    0.0,
+    176.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkB01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkB01_1.KH2_B_WalkB01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016 played backwards",
+   "root_travel": [
+    -176.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkBL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkBL01_1.KH2_B_WalkBL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016 backwards, legs turned",
+   "root_travel": [
+    -124.4,
+    -124.4,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_WalkBR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkBR01_1.KH2_B_WalkBR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 89,
+   "source": "OWA1016",
+   "kh3": "1016 backwards, legs turned",
+   "root_travel": [
+    -124.4,
+    124.4,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Fall01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Fall01_1.KH2_B_Fall01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1",
+   "hits": [],
+   "seconds": 0.3,
+   "frames": 19,
+   "source": "OWA0033",
+   "kh3": "0033 in the air",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 259
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Fall01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Fall01_2.KH2_B_Fall01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2",
+   "hits": [],
+   "seconds": 0.533,
+   "frames": 33,
+   "source": "OWA0034",
+   "kh3": "0034 landing",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 267
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Guard01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_0.KH2_B_Guard01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_0.B_Guard01_0",
+   "hits": [],
+   "seconds": 0.2,
+   "frames": 13,
+   "source": "OWABLOCK",
+   "kh3": "block, into the guard",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Guard01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_1.KH2_B_Guard01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_1.B_Guard01_1",
+   "hits": [],
+   "seconds": 1.3,
+   "frames": 79,
+   "source": "OWABLOCK",
+   "kh3": "block, guard held",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Guard01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_2.KH2_B_Guard01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_2.B_Guard01_2",
+   "hits": [],
+   "seconds": 0.2,
+   "frames": 13,
+   "source": "OWABLOCK",
+   "kh3": "block, out of the guard",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgGuard02",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgGuard02.KH2_B_DmgGuard02",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgGuard02.B_DmgGuard02",
+   "hits": [],
+   "seconds": 0.233,
+   "frames": 15,
+   "source": "OWABLOCKHIT",
+   "kh3": "block hit",
+   "root_travel": [
+    14.4,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 267
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Avoid01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_0.KH2_B_Avoid01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_0.B_Avoid01_0",
+   "hits": [],
+   "seconds": 0.083,
+   "frames": 6,
+   "source": "OWADODGEGROUND",
+   "kh3": "dodge, start",
+   "root_travel": [
+    81.5,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Avoid01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_1.KH2_B_Avoid01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_1.B_Avoid01_1",
+   "hits": [],
+   "seconds": 0.167,
+   "frames": 11,
+   "source": "OWADODGEGROUND",
+   "kh3": "dodge, dash",
+   "root_travel": [
+    953.0,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 260
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Avoid01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_2.KH2_B_Avoid01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_2.B_Avoid01_2",
+   "hits": [],
+   "seconds": 0.633,
+   "frames": 39,
+   "source": "OWADODGEGROUND",
+   "kh3": "dodge, end",
+   "root_travel": [
+    36.0,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Avoid02_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid02_2.KH2_B_Avoid02_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid02_2.B_Avoid02_2",
+   "hits": [],
+   "seconds": 0.633,
+   "frames": 39,
+   "source": "OWADODGEGROUND",
+   "kh3": "dodge, end",
+   "root_travel": [
+    36.0,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgF01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgF01.KH2_B_DmgF01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF01.B_DmgF01",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA0201",
+   "kh3": "0201 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgB01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgB01.KH2_B_DmgB01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB01.B_DmgB01",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA0202",
+   "kh3": "0202 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgL01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgL01.KH2_B_DmgL01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgL01.B_DmgL01",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA0203",
+   "kh3": "0203 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgR01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgR01.KH2_B_DmgR01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgR01.B_DmgR01",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA0204",
+   "kh3": "0204 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgF02",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgF02.KH2_B_DmgF02",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF02.B_DmgF02",
+   "hits": [],
+   "seconds": 0.867,
+   "frames": 53,
+   "source": "OWA0205",
+   "kh3": "0205 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgB02",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgB02.KH2_B_DmgB02",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB02.B_DmgB02",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA0206",
+   "kh3": "0206 small damage",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowF01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_0.KH2_B_DmgBlowF01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0",
+   "hits": [],
+   "seconds": 0.183,
+   "frames": 12,
+   "source": "OWA0211",
+   "kh3": "0211 knocked back",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 258
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowF01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_1.KH2_B_DmgBlowF01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1",
+   "hits": [],
+   "seconds": 0.267,
+   "frames": 17,
+   "source": "OWA0212",
+   "kh3": "0212 knocked back, flying",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowF01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_2.KH2_B_DmgBlowF01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_2.B_DmgBlowF01_2",
+   "hits": [],
+   "seconds": 0.867,
+   "frames": 53,
+   "source": "OWA0213",
+   "kh3": "0213 knocked back, landing",
+   "root_travel": [
+    -251.7,
+    0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowB01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_0.KH2_B_DmgBlowB01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0",
+   "hits": [],
+   "seconds": 0.183,
+   "frames": 12,
+   "source": "OWA0214",
+   "kh3": "0214 knocked forward",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowB01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_1.KH2_B_DmgBlowB01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1",
+   "hits": [],
+   "seconds": 0.283,
+   "frames": 18,
+   "source": "OWA0215",
+   "kh3": "0215 knocked forward, flying",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_DmgBlowB01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_2.KH2_B_DmgBlowB01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_2.B_DmgBlowB01_2",
+   "hits": [],
+   "seconds": 0.867,
+   "frames": 53,
+   "source": "OWA0216",
+   "kh3": "0216 knocked forward, landing",
+   "root_travel": [
+    260.3,
+    -0.0,
+    0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Item01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Item01.KH2_B_Item01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Item01.B_Item01",
+   "hits": [
+    0.42
+   ],
+   "seconds": 1.033,
+   "frames": 63,
+   "source": "OWAITEMGROUND",
+   "kh3": "item",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 266
+  },
+  {
+   "set": "Battle04",
+   "name": "B_ItemCure01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_ItemCure01.KH2_B_ItemCure01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ItemCure01.B_ItemCure01",
+   "hits": [
+    0.42
+   ],
+   "seconds": 1.033,
+   "frames": 63,
+   "source": "OWAITEMGROUND",
+   "kh3": "item",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 266
+  },
+  {
+   "set": "Battle04",
+   "name": "B_AtkLimit03_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_AtkLimit03_0.KH2_B_AtkLimit03_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_2.B_MagAttack01_2",
+   "hits": [
+    1.0
+   ],
+   "seconds": 9.067,
+   "frames": 545,
+   "source": "MASAFINISH",
+   "kh3": "MASAFINISH: raises his sword to the sky (Meteor)",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 268
+  },
+  {
+   "set": "Battle04",
+   "name": "B_Win01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Win01.KH2_B_Win01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Win01.B_Win01",
+   "hits": [],
+   "seconds": 6.75,
+   "frames": 406,
+   "source": "OWAFULLSL",
+   "kh3": "sword raised",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttack01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack01_0.KH2_B_NAttack01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0.B_NAttack01_0",
+   "hits": [
+    0.1,
+    0.47
+   ],
+   "seconds": 0.717,
+   "frames": 44,
+   "source": "OWA13056",
+   "kh3": "1305/1306 speed slash",
+   "root_travel": [
+    219.0,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 265
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttack02_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack02_0.KH2_B_NAttack02_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0.B_NAttack02_0",
+   "hits": [
+    0.1,
+    0.38,
+    0.57
+   ],
+   "seconds": 0.617,
+   "frames": 38,
+   "source": "OWA1361",
+   "kh3": "1361 radial blaster",
+   "root_travel": [
+    257.2,
+    -0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttack03_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack03_0.KH2_B_NAttack03_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0.B_NAttack03_0",
+   "hits": [
+    0.14,
+    0.42
+   ],
+   "seconds": 0.783,
+   "frames": 48,
+   "source": "OWA1359",
+   "kh3": "1359 quick slash",
+   "root_travel": [
+    241.9,
+    -0.0,
+    0.0
+   ],
+   "tracks": 263
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttack04_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack04_0.KH2_B_NAttack04_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0.B_NAttack04_0",
+   "hits": [
+    0.23,
+    0.51,
+    0.76
+   ],
+   "seconds": 0.9,
+   "frames": 55,
+   "source": "OWA1304",
+   "kh3": "1304 finisher",
+   "root_travel": [
+    317.6,
+    -0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NPAttack01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NPAttack01.KH2_B_NPAttack01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttack01.B_NPAttack01",
+   "hits": [
+    0.44
+   ],
+   "seconds": 0.833,
+   "frames": 51,
+   "source": "OWA1319",
+   "kh3": "1319 rising spiral",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 262
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttackJ01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ01_0.KH2_B_NAttackJ01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ01_0.B_NAttackJ01_0",
+   "hits": [
+    0.1,
+    0.46
+   ],
+   "seconds": 0.717,
+   "frames": 44,
+   "source": "OWA13156",
+   "kh3": "1315/1316 air speed slash",
+   "root_travel": [
+    219.0,
+    -0.0,
+    -0.0
+   ],
+   "tracks": 264
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttackJ02_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ02_0.KH2_B_NAttackJ02_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ02_0.B_NAttackJ02_0",
+   "hits": [
+    0.1,
+    0.38,
+    0.56
+   ],
+   "seconds": 0.617,
+   "frames": 38,
+   "source": "OWA1365",
+   "kh3": "1365 air radial blaster",
+   "root_travel": [
+    263.4,
+    -0.0,
+    0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NAttackJ03_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ03_0.KH2_B_NAttackJ03_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ03_0.B_NAttackJ03_0",
+   "hits": [
+    0.23,
+    0.51,
+    0.68
+   ],
+   "seconds": 0.7,
+   "frames": 43,
+   "source": "OWA1314",
+   "kh3": "1314 air finisher",
+   "root_travel": [
+    277.9,
+    -0.0,
+    0.0
+   ],
+   "tracks": 261
+  },
+  {
+   "set": "Battle04",
+   "name": "B_NPAttackJ01",
+   "animation": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NPAttackJ01.KH2_B_NPAttackJ01",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttackJ01.B_NPAttackJ01",
+   "hits": [
+    0.17,
+    0.47
+   ],
+   "seconds": 0.933,
+   "frames": 57,
+   "source": "OWA1310",
+   "kh3": "1310 air downward slash",
+   "root_travel": [
+    130.7,
+    -0.0,
+    0.0
+   ],
+   "tracks": 262
+  }
+ ],
+ "sources": [
+  {
+   "path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00.Battle00",
+   "as_": "Battle04"
+  },
+  {
+   "path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00_Comp.Battle00_Comp",
+   "as_": "Battle04"
+  }
+ ],
+ "extra": [
+  {
+   "set": "Battle04",
+   "name": "B_AtkLimit02_0",
+   "animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_0.B_AtkLimit02_0",
+   "then": [
+    "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_1.B_AtkLimit02_1"
+   ],
+   "build": false
+  },
+  {
+   "set": "Battle04",
+   "name": "B_AtkTenshi01_0",
+   "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_0.B_AtkTenshi01_0",
+   "build": false
+  },
+  {
+   "set": "Battle04",
+   "name": "B_AtkTenshi01_1",
+   "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_1.B_AtkTenshi01_1",
+   "build": false
+  },
+  {
+   "set": "Battle00",
+   "name": "B_AtkLimit03_0",
+   "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0",
+   "build": false
+  },
+  {
+   "set": "Battle02",
+   "name": "B_AtkLimit03_0",
+   "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0",
+   "build": false
+  },
+  {
+   "set": "Battle03",
+   "name": "B_AtkLimit03_0",
+   "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0",
+   "build": false
+  }
+ ]
+}

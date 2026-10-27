@@ -1,0 +1,9581 @@
+{
+ "kawaii": [
+  {
+   "name": "Bahamut Fused Sephiroth Whisper (PC0010_18): his wings and tail with Neo Bahamut's own motion, his crest and his hair",
+   "models": [
+    "/Game/Character/Player/PC0010_18_Bahumunt_Fused_Sephiroth_Whisper/Model/PC0010_18.PC0010_18"
+   ],
+   "preset": "bahamut fused sephiroth whisper",
+   "nodes": [
+    {
+     "name": "tail",
+     "root_bone": "C_Tail_a",
+     "damping": 0.22,
+     "stiffness": 0.22,
+     "world_damping_location": 0.9,
+     "world_damping_rotation": 0.9,
+     "radius": 8.0,
+     "radius_curve": [
+      [
+       0,
+       1.1
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "limit_angle": 20,
+     "limit_angle_curve": [
+      [
+       0,
+       0.5
+      ],
+      [
+       1,
+       1.5
+      ]
+     ],
+     "stiffness_curve": [
+      [
+       0,
+       1.7
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "damping_curve": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -200
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     },
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ],
+     "planes": [
+      {
+       "offset": [
+        0.0,
+        0.0,
+        0.5
+       ],
+       "rotation": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "one_sided": true
+      }
+     ]
+    },
+    {
+     "name": "crest",
+     "root_bone": "C_Tentacle_a",
+     "damping": 0.3,
+     "stiffness": 0.45,
+     "world_damping_location": 0.95,
+     "world_damping_rotation": 0.95,
+     "radius": 3.0,
+     "limit_angle": 8,
+     "stiffness_curve": [
+      [
+       0,
+       1.5
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_waves": [
+      {
+       "axis": [
+        0,
+        0,
+        1
+       ],
+       "degrees": 1.2,
+       "seconds": 4.6,
+       "phase_per_bone": 14.0,
+       "degrees_curve": [
+        [
+         0,
+         0.3
+        ],
+        [
+         1,
+         1.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "name": "wing arm L",
+     "root_bone": "L_WingArmRoot_Spo",
+     "damping": 0.2,
+     "stiffness": 0.3,
+     "world_damping_location": 0.92,
+     "world_damping_rotation": 0.9,
+     "radius": 4.0,
+     "limit_angle": 14,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     }
+    },
+    {
+     "name": "blade wing L",
+     "root_bone": "L_WingARoot_Spo",
+     "damping": 0.16,
+     "stiffness": 0.25,
+     "world_damping_location": 0.9,
+     "world_damping_rotation": 0.88,
+     "radius": 4.0,
+     "limit_angle": 18,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     },
+     "planes": [
+      {
+       "offset": [
+        0.0,
+        0.0,
+        0.5
+       ],
+       "rotation": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "one_sided": true
+      }
+     ]
+    },
+    {
+     "name": "upper wing L",
+     "root_bone": "L_WingBRoot_Spo",
+     "damping": 0.2,
+     "stiffness": 0.3,
+     "world_damping_location": 0.92,
+     "world_damping_rotation": 0.9,
+     "radius": 4.0,
+     "limit_angle": 14,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     },
+     "planes": [
+      {
+       "offset": [
+        0.0,
+        0.0,
+        0.5
+       ],
+       "rotation": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "one_sided": true
+      }
+     ]
+    },
+    {
+     "name": "wing arm R",
+     "root_bone": "R_WingArmRoot_Spo",
+     "damping": 0.2,
+     "stiffness": 0.3,
+     "world_damping_location": 0.92,
+     "world_damping_rotation": 0.9,
+     "radius": 4.0,
+     "limit_angle": 14,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     }
+    },
+    {
+     "name": "blade wing R",
+     "root_bone": "R_WingARoot_Spo",
+     "damping": 0.16,
+     "stiffness": 0.25,
+     "world_damping_location": 0.9,
+     "world_damping_rotation": 0.88,
+     "radius": 4.0,
+     "limit_angle": 18,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     },
+     "planes": [
+      {
+       "offset": [
+        0.0,
+        0.0,
+        0.5
+       ],
+       "rotation": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "one_sided": true
+      }
+     ]
+    },
+    {
+     "name": "upper wing R",
+     "root_bone": "R_WingBRoot_Spo",
+     "damping": 0.2,
+     "stiffness": 0.3,
+     "world_damping_location": 0.92,
+     "world_damping_rotation": 0.9,
+     "radius": 4.0,
+     "limit_angle": 14,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 0,
+     "gravity": [
+      0,
+      0,
+      -60
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "pose_animset": {
+      "sets": [
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00",
+       "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss"
+      ],
+      "motions": {
+       "N_Idle*": "N_Idle01_1",
+       "N_MenuIdle*": "N_Idle01_1",
+       "B_Idle*": "B_Idle01_1",
+       "B_Run*": "B_Walk01_1",
+       "N_Run*": "B_Walk01_1",
+       "N_Walk*": "B_Walk01_1",
+       "N_Dash*": "B_Walk01_1",
+       "N_Accel*": "B_Walk01_1",
+       "B_StrafingWalk*": "B_Walk01_1",
+       "N_ClimbOver*": "B_Walk01_1",
+       "N_Over*": "B_Walk01_1",
+       "N_Jump*": "B_Warp01_0",
+       "N_Fall*": "B_Warp01_0",
+       "B_Fall*": "B_Warp01_0",
+       "N_MenuAct*": "N_Act01_0",
+       "N_MenuPTIN*": "N_Act01_1",
+       "N_ItemCure*": "B_EnergyCharge01_0",
+       "N_MagCure*": "B_EnergyCharge01_0",
+       "B_NAttack01*": "B_AtkBladeCombo01_0",
+       "B_NAttack02*": "B_AtkSpinSlash01",
+       "B_NAttack03*": "B_AtkUpperSlash01_0",
+       "B_NAttack04*": "B_AtkKickCombo01",
+       "B_NAttack2*": "B_AtkJumpSlash01",
+       "B_NAttackJ*": "B_AtkJumpSlash01",
+       "B_NPAttack*": "B_AtkStinger01_0",
+       "B_SAttack*": "B_AtkWingAttack01_0",
+       "B_ParryAttack*": "B_AtkTailSpinR01_1",
+       "B_AtkWarp*": "B_Warp01_0",
+       "B_AtkSFlare*": "B_AtkBreathMove01_0",
+       "B_AtkLimit*": "B_AtkSatelliteCanon01_0",
+       "B_AtkBurst*": "B_EnergyCharge01_0",
+       "B_Atk*": "B_AtkNeoHeavyStilke01",
+       "B_MagAttack*": "B_AtkStunLaser01_0",
+       "B_MagCure*": "B_EnergyCharge01_0",
+       "B_Item*": "B_ModeChange01",
+       "B_Chain*": "B_EnergyCharge01_1",
+       "B_Win*": "B_ModeChange01",
+       "B_Avoid*": "B_Warp02_0",
+       "B_Step*": "B_Warp02_0",
+       "B_GuardTurn*": "B_ModeChange02",
+       "B_Guard*": "B_ModeChange02",
+       "*_Add": "B_DmgF01",
+       "B_DmgF02": "B_DmgF01",
+       "B_DmgB02": "B_DmgB01",
+       "B_DmgBlow*": "B_DmgF03_0",
+       "B_DmgStrike*": "B_DmgF03_0",
+       "B_DmgUpper*": "B_DmgB03_0",
+       "B_DmgDownB*": "B_DmgDownF01_0",
+       "B_DmgRecover*": "B_DmgDownF01_2",
+       "B_DmgReflect*": "B_DmgF01",
+       "B_DmgGuard*": "B_DmgF01",
+       "B_Abnormal*": "B_DmgF03_1",
+       "B_DownAbnormal*": "B_DmgDownF01_1",
+       "B_DownDie*": "B_Die01_1",
+       "B_Die01_2": "B_Die01_1"
+      },
+      "idle": "N_Idle01_1",
+      "battle_idle": "B_Idle01_1",
+      "moving": "B_Walk01_1",
+      "moving_speed": 40,
+      "blend_seconds": 0.3,
+      "additive": true,
+      "additive_base": "reference_pose"
+     },
+     "planes": [
+      {
+       "offset": [
+        0.0,
+        0.0,
+        0.5
+       ],
+       "rotation": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "one_sided": true
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFLA",
+     "root_bone": "C_HairFLA_a_Phy",
+     "damping": 0.2283,
+     "stiffness": 0.2319,
+     "world_damping_location": 0.8132,
+     "world_damping_rotation": 0.887,
+     "radius": 1.04,
+     "limit_angle": 36.56,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -172.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.333,
+       0.579
+      ],
+      [
+       0.667,
+       0.579
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFLB",
+     "root_bone": "C_HairFLB_a_Phy",
+     "damping": 0.2604,
+     "stiffness": 0.166,
+     "world_damping_location": 0.8508,
+     "world_damping_rotation": 0.9076,
+     "radius": 0.75,
+     "limit_angle": 35.38,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -134.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.8
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFLC",
+     "root_bone": "C_HairFLC_a_Phy",
+     "damping": 0.2521,
+     "stiffness": 0.1485,
+     "world_damping_location": 0.7973,
+     "world_damping_rotation": 0.8232,
+     "radius": 0.62,
+     "limit_angle": 36.68,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -135.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.333,
+       0.982
+      ],
+      [
+       0.667,
+       0.966
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "front hair C_HairFLD",
+     "root_bone": "C_HairFLD_a_Phy",
+     "damping": 0.3358,
+     "stiffness": 0.3137,
+     "world_damping_location": 0.9637,
+     "world_damping_rotation": 0.9206,
+     "radius": 0.8,
+     "limit_angle": 26.86,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -177.5
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.2,
+       1.0
+      ],
+      [
+       0.4,
+       1.0
+      ],
+      [
+       0.6,
+       1.0
+      ],
+      [
+       0.8,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFLE",
+     "root_bone": "C_HairFLE_a_Phy",
+     "damping": 0.272,
+     "stiffness": 0.2546,
+     "world_damping_location": 0.8879,
+     "world_damping_rotation": 0.9216,
+     "radius": 1.21,
+     "limit_angle": 30.96,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -141.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.25,
+       0.963
+      ],
+      [
+       0.5,
+       0.633
+      ],
+      [
+       0.75,
+       0.494
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.03
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 5.98
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRA",
+     "root_bone": "C_HairFRA_a_Phy",
+     "damping": 0.2426,
+     "stiffness": 0.2433,
+     "world_damping_location": 0.8909,
+     "world_damping_rotation": 0.7768,
+     "radius": 0.6,
+     "limit_angle": 32.9,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -178.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRB",
+     "root_bone": "C_HairFRB_a_Phy",
+     "damping": 0.3092,
+     "stiffness": 0.2258,
+     "world_damping_location": 0.8472,
+     "world_damping_rotation": 0.8505,
+     "radius": 0.74,
+     "limit_angle": 35.03,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -174.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.816
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.667,
+       0.816
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRC",
+     "root_bone": "C_HairFRC_a_Phy",
+     "damping": 0.2861,
+     "stiffness": 0.1699,
+     "world_damping_location": 0.7731,
+     "world_damping_rotation": 0.8916,
+     "radius": 0.6,
+     "limit_angle": 40.23,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -118.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRD",
+     "root_bone": "C_HairFRD_a_Phy",
+     "damping": 0.2486,
+     "stiffness": 0.1851,
+     "world_damping_location": 0.8498,
+     "world_damping_rotation": 0.7956,
+     "radius": 0.86,
+     "limit_angle": 30.21,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -183.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.9
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.667,
+       0.998
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.41
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.33
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRE",
+     "root_bone": "C_HairFRE_a_Phy",
+     "damping": 0.3061,
+     "stiffness": 0.245,
+     "world_damping_location": 0.8037,
+     "world_damping_rotation": 0.814,
+     "radius": 0.61,
+     "limit_angle": 31.57,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -179.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.2,
+       0.978
+      ],
+      [
+       0.4,
+       0.978
+      ],
+      [
+       0.6,
+       0.978
+      ],
+      [
+       0.8,
+       0.978
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.54
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "hair C_HairFRF",
+     "root_bone": "C_HairFRF_a_Phy",
+     "damping": 0.22,
+     "stiffness": 0.1434,
+     "world_damping_location": 0.8932,
+     "world_damping_rotation": 0.9051,
+     "radius": 0.97,
+     "limit_angle": 40.19,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -123.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.903
+      ],
+      [
+       0.2,
+       1.0
+      ],
+      [
+       0.4,
+       0.618
+      ],
+      [
+       0.6,
+       0.618
+      ],
+      [
+       0.8,
+       0.618
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.2
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 5.73
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "front hair C_HairFRG",
+     "root_bone": "C_HairFRG_a_Phy",
+     "damping": 0.332,
+     "stiffness": 0.2976,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.897,
+     "radius": 1.53,
+     "limit_angle": 26.52,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -231.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.25,
+       0.844
+      ],
+      [
+       0.5,
+       0.534
+      ],
+      [
+       0.75,
+       0.523
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.42
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "front hair C_HairFRH",
+     "root_bone": "C_HairFRH_a_Phy",
+     "damping": 0.3929,
+     "stiffness": 0.2824,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.9163,
+     "radius": 0.8,
+     "limit_angle": 24.09,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -238.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.167,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.833,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.46
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.05
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "long hair C_HairL",
+     "root_bone": "C_HairL_a_Phy",
+     "damping": 0.3025,
+     "stiffness": 0.0857,
+     "world_damping_location": 0.944,
+     "world_damping_rotation": 0.8041,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 55.09,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -324.1
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 7.27
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 7.29
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 5.72
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 5.73
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 6.27
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 6.27
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 4.94
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 4.94
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 7.62
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 7.62
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 5.01
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 5.01
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 4.08
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair C_HairM",
+     "root_bone": "C_HairM_a_Phy",
+     "damping": 0.2172,
+     "stiffness": 0.0803,
+     "world_damping_location": 0.9385,
+     "world_damping_rotation": 0.8149,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 50.53,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -256.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.43
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 4.08
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairC",
+     "root_bone": "L_HairC_a_Phy",
+     "damping": 0.3222,
+     "stiffness": 0.0846,
+     "world_damping_location": 0.8821,
+     "world_damping_rotation": 0.8625,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ]
+     ],
+     "limit_angle": 53.29,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -322.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        14.651,
+        -6.631,
+        0.0
+       ],
+       "radius": 5.93
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 6.39
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 7.61
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 5.47
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairD",
+     "root_bone": "L_HairD_a_Phy",
+     "damping": 0.2806,
+     "stiffness": 0.0805,
+     "world_damping_location": 0.8614,
+     "world_damping_rotation": 0.8808,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.125,
+       0.9
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 61.86,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -250.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 4.04
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 4.3
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 5.78
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 4.03
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 7.66
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 5.31
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 5.2
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 7.8
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 6.76
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 7.74
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 7.74
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 7.84
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairE",
+     "root_bone": "L_HairE_a_Phy",
+     "damping": 0.2566,
+     "stiffness": 0.0762,
+     "world_damping_location": 0.9517,
+     "world_damping_rotation": 0.8313,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 58.97,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -363.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.1
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 5.58
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 5.44
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 5.15
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 4.94
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 4.44
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 4.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 5.79
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 7.84
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 5.95
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 7.62
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "hair L_HairF",
+     "root_bone": "L_HairF_a_Phy",
+     "damping": 0.2321,
+     "stiffness": 0.145,
+     "world_damping_location": 0.9286,
+     "world_damping_rotation": 0.9064,
+     "radius": 3.0,
+     "limit_angle": 29.85,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -173.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.983
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.24
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 5.61
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      }
+     ]
+    },
+    {
+     "name": "front hair L_HairLongA",
+     "root_bone": "L_HairLongA_a_Phy",
+     "damping": 0.3404,
+     "stiffness": 0.2132,
+     "world_damping_location": 0.9378,
+     "world_damping_rotation": 0.9556,
+     "radius": 3.0,
+     "limit_angle": 21.9,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -160.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.143,
+       0.702
+      ],
+      [
+       0.286,
+       0.648
+      ],
+      [
+       0.429,
+       0.559
+      ],
+      [
+       0.571,
+       0.489
+      ],
+      [
+       0.714,
+       0.43
+      ],
+      [
+       0.857,
+       0.347
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 7.07
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.8
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.378,
+        14.579,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.535,
+        15.381,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "front hair L_HairLongB",
+     "root_bone": "L_HairLongB_a_Phy",
+     "damping": 0.4175,
+     "stiffness": 0.2416,
+     "world_damping_location": 0.8905,
+     "world_damping_rotation": 0.8753,
+     "radius": 2.76,
+     "limit_angle": 23.64,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -165.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.928
+      ],
+      [
+       0.143,
+       0.774
+      ],
+      [
+       0.286,
+       0.763
+      ],
+      [
+       0.429,
+       1.0
+      ],
+      [
+       0.571,
+       0.475
+      ],
+      [
+       0.714,
+       0.402
+      ],
+      [
+       0.857,
+       0.415
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 6.19
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.59
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.378,
+        14.579,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.535,
+        15.381,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "front hair L_HairLongC",
+     "root_bone": "L_HairLongC_a_Phy",
+     "damping": 0.384,
+     "stiffness": 0.2623,
+     "world_damping_location": 0.9164,
+     "world_damping_rotation": 0.97,
+     "radius": 3.0,
+     "limit_angle": 27.9,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -174.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       0.941
+      ],
+      [
+       0.375,
+       0.829
+      ],
+      [
+       0.5,
+       0.69
+      ],
+      [
+       0.625,
+       0.469
+      ],
+      [
+       0.75,
+       0.284
+      ],
+      [
+       0.875,
+       0.305
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 5.52
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.17
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 6.72
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 5.35
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 5.41
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        9.477,
+        12.629,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 9.68,
+       "radius1": 9.88
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "front hair L_HairLongD",
+     "root_bone": "L_HairLongD_a_Phy",
+     "damping": 0.3631,
+     "stiffness": 0.3713,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.97,
+     "radius": 2.28,
+     "limit_angle": 24.94,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -211.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       0.89
+      ],
+      [
+       0.375,
+       0.683
+      ],
+      [
+       0.5,
+       0.577
+      ],
+      [
+       0.625,
+       0.603
+      ],
+      [
+       0.75,
+       0.681
+      ],
+      [
+       0.875,
+       0.528
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 4.61
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.79
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 4.39
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 6.77
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 5.64
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 6.9
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 4.82
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 5.39
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        9.477,
+        12.629,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 10.17,
+       "radius1": 10.37
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "hair L_HairSideA",
+     "root_bone": "L_HairSideA_a_Phy",
+     "damping": 0.2574,
+     "stiffness": 0.156,
+     "world_damping_location": 0.8038,
+     "world_damping_rotation": 0.9059,
+     "radius": 1.94,
+     "limit_angle": 37.05,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -170.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       0.502
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.34
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.82
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 3.55
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 5.18
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 6.72
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairC",
+     "root_bone": "R_HairC_a_Phy",
+     "damping": 0.2184,
+     "stiffness": 0.0816,
+     "world_damping_location": 0.8696,
+     "world_damping_rotation": 0.9081,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ]
+     ],
+     "limit_angle": 58.62,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -328.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        14.651,
+        -6.631,
+        0.0
+       ],
+       "radius": 5.93
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 6.39
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 7.61
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 5.47
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairD",
+     "root_bone": "R_HairD_a_Phy",
+     "damping": 0.2374,
+     "stiffness": 0.0763,
+     "world_damping_location": 0.8088,
+     "world_damping_rotation": 0.807,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 46.84,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -395.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 4.04
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 4.3
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 5.78
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 7.66
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 4.03
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 5.31
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 7.8
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 5.2
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 7.74
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 6.76
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 7.74
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 7.84
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairE",
+     "root_bone": "R_HairE_a_Phy",
+     "damping": 0.2235,
+     "stiffness": 0.0751,
+     "world_damping_location": 0.8915,
+     "world_damping_rotation": 0.9229,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 56.38,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -268.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.1
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.242,
+        -2.668,
+        8.0
+       ],
+       "radius": 5.61
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 5.15
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.504,
+        -3.151,
+        8.0
+       ],
+       "radius": 5.45
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 4.44
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 4.94
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 5.79
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 4.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.634,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        11.55,
+        -16.295,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 7.84
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.44,
+        -15.58,
+        0.0
+       ],
+       "radius": 7.62
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        3.897,
+        -10.258,
+        8.0
+       ],
+       "radius": 5.95
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.313,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        10.916,
+        -14.44,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        11.022,
+        -9.312,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        3.977,
+        -11.404,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.072,
+        -6.81,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.199,
+        -5.989,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        11.448,
+        -3.539,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.53,
+        -2.386,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        4.605,
+        -1.647,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        12.398,
+        -10.33,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        13.22,
+        -1.089,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.7,
+        -6.619,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        5.559,
+        -8.206,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.183,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.37,
+        0.0
+       ],
+       "length": 34.4,
+       "radius0": 9.31,
+       "radius1": 10.46
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        21.046,
+        -2.244,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.57,
+        0.0
+       ],
+       "length": 34.38,
+       "radius0": 9.31,
+       "radius1": 10.58
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        20.008,
+        -0.926,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -175.7,
+        0.0
+       ],
+       "length": 40.13,
+       "radius0": 4.91,
+       "radius1": 9.51
+      }
+     ]
+    },
+    {
+     "name": "hair R_HairF",
+     "root_bone": "R_HairF_a_Phy",
+     "damping": 0.2568,
+     "stiffness": 0.2064,
+     "world_damping_location": 0.8905,
+     "world_damping_rotation": 0.8826,
+     "radius": 2.23,
+     "limit_angle": 36.82,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -184.8
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       0.97
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.38
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        16.23,
+        -2.697,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        14.651,
+        -6.631,
+        0.0
+       ],
+       "radius": 4.55
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.501,
+        -3.16,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        7.001,
+        -6.894,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.869,
+        -8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        0.069,
+        -14.056,
+        0.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        2.554,
+        -7.867,
+        8.0
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.994,
+        -8.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        4.779,
+        -13.679,
+        -0.064
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        3.557,
+        -6.993,
+        7.936
+       ],
+       "radius": 8.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.768,
+        -8.633,
+        8.0
+       ],
+       "radius": 8.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "L_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "L_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        -0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      },
+      {
+       "bone": "R_WingArmA_b",
+       "offset": [
+        10.84,
+        -1.35,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        172.9,
+        0.0
+       ],
+       "length": 21.85,
+       "radius": 6.67
+      },
+      {
+       "bone": "R_WingArmA_c",
+       "offset": [
+        13.992,
+        0.227,
+        0.001
+       ],
+       "rotation": [
+        90.0,
+        -179.07,
+        0.0
+       ],
+       "length": 27.99,
+       "radius": 9.09
+      }
+     ]
+    },
+    {
+     "name": "front hair R_HairLongA",
+     "root_bone": "R_HairLongA_a_Phy",
+     "damping": 0.2861,
+     "stiffness": 0.3162,
+     "world_damping_location": 0.9316,
+     "world_damping_rotation": 0.97,
+     "radius": 2.47,
+     "limit_angle": 23.76,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -201.6
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.858
+      ],
+      [
+       0.143,
+       1.0
+      ],
+      [
+       0.286,
+       0.805
+      ],
+      [
+       0.429,
+       0.731
+      ],
+      [
+       0.571,
+       0.481
+      ],
+      [
+       0.714,
+       0.338
+      ],
+      [
+       0.857,
+       0.324
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 8.21
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 5.76
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.378,
+        14.579,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      }
+     ]
+    },
+    {
+     "name": "front hair R_HairLongB",
+     "root_bone": "R_HairLongB_a_Phy",
+     "damping": 0.2925,
+     "stiffness": 0.3741,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.8852,
+     "radius": 1.78,
+     "limit_angle": 21.29,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -176.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       0.7
+      ],
+      [
+       0.143,
+       0.846
+      ],
+      [
+       0.286,
+       0.964
+      ],
+      [
+       0.429,
+       1.0
+      ],
+      [
+       0.571,
+       0.755
+      ],
+      [
+       0.714,
+       0.518
+      ],
+      [
+       0.857,
+       0.45
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 7.89
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 6.22
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.378,
+        14.579,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.04,
+       "radius1": 13.33
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        -2.985
+       ],
+       "rotation": [
+        100.8,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 13.03,
+       "radius1": 13.23
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "front hair R_HairLongC",
+     "root_bone": "R_HairLongC_a_Phy",
+     "damping": 0.4037,
+     "stiffness": 0.2642,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.97,
+     "radius": 2.96,
+     "limit_angle": 22.22,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -215.8
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       0.934
+      ],
+      [
+       0.375,
+       0.751
+      ],
+      [
+       0.5,
+       0.469
+      ],
+      [
+       0.625,
+       0.401
+      ],
+      [
+       0.75,
+       0.353
+      ],
+      [
+       0.875,
+       0.435
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 5.81
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.48
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 6.64
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 6.75
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 5.36
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 5.28
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        9.477,
+        12.629,
+        -6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 9.63,
+       "radius1": 9.92
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "front hair R_HairLongD",
+     "root_bone": "R_HairLongD_a_Phy",
+     "damping": 0.406,
+     "stiffness": 0.3645,
+     "world_damping_location": 0.9047,
+     "world_damping_rotation": 0.9231,
+     "radius": 2.33,
+     "limit_angle": 25.09,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -187.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       0.893
+      ],
+      [
+       0.375,
+       0.643
+      ],
+      [
+       0.5,
+       0.629
+      ],
+      [
+       0.625,
+       0.593
+      ],
+      [
+       0.75,
+       0.631
+      ],
+      [
+       0.875,
+       0.467
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 4.35
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.31
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 6.39
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.895,
+        0.505,
+        6.0
+       ],
+       "radius": 4.25
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 6.56
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 5.57
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.235,
+        5.806,
+        -6.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 6.91
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 6.99
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.714,
+        11.594,
+        0.0
+       ],
+       "radius": 5.04
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        10.836,
+        10.401,
+        6.0
+       ],
+       "radius": 4.8
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.538,
+        13.01,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        15.495,
+        13.447,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        9.477,
+        12.629,
+        -6.0
+       ],
+       "radius": 7.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        15.268,
+        -3.431,
+        2.985
+       ],
+       "rotation": [
+        79.2,
+        167.33,
+        0.0
+       ],
+       "length": 31.86,
+       "radius0": 9.67,
+       "radius1": 9.96
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        20.543,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 41.09,
+       "radius0": 13.8,
+       "radius1": 17.77
+      }
+     ]
+    },
+    {
+     "name": "hair R_HairSideA",
+     "root_bone": "R_HairSideA_a_Phy",
+     "damping": 0.2452,
+     "stiffness": 0.24,
+     "world_damping_location": 0.8066,
+     "world_damping_rotation": 0.869,
+     "radius": 2.34,
+     "limit_angle": 31.75,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -129.5
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       0.517
+      ]
+     ],
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.788,
+        0.177,
+        0.003
+       ],
+       "radius": 7.81
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.894,
+        2.177,
+        0.003
+       ],
+       "radius": 4.08
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.884,
+        0.477,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_b",
+       "offset": [
+        8.962,
+        0.671,
+        0.0
+       ],
+       "radius": 4.78
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.808,
+        0.236,
+        -6.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        6.083,
+        0.92,
+        0.0
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.811,
+        0.243,
+        6.0
+       ],
+       "radius": 6.32
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        1.784,
+        8.272,
+        -0.064
+       ],
+       "radius": 7.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        2.234,
+        5.809,
+        5.936
+       ],
+       "radius": 7.0
+      }
+     ]
+    }
+   ],
+   "disable_bonamik": true
+  }
+ ]
+}

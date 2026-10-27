@@ -1,0 +1,1640 @@
+{
+ "asset": "/Game/Renderer/Material/RM_Surface",
+ "material": {
+  "shading_model": "MSM_FROM_MATERIAL_EXPRESSION",
+  "blend_mode": "BLEND_OPAQUE",
+  "opacity_mask_clip_value": 0.33329999446868896,
+  "tangent_space_normal": false,
+  "two_sided": false,
+  "usage": [
+   "skeletal_mesh",
+   "morph_targets",
+   "instanced_static_meshes",
+   "niagara_mesh_particles",
+   "static_lighting"
+  ]
+ },
+ "textures": [
+  {
+   "name": "PositiveTransitionNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "DetailEmissive",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_HDR.FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": false
+  },
+  {
+   "name": "Roughness",
+   "default": "/Game/Renderer/Texture/808080FF_BC4.808080FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "DetailRoughness",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "WideBentNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "WideFlowPhase",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailFoam",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "WideFlowDirectivity",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Wetness",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "ExtraEmissive",
+   "default": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "ExtraColor",
+   "default": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Metallic",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "SegmentLayer1",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "WideOcclusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Thickness",
+   "default": "/Game/Renderer/Texture/XXXX7BFF_HDR.XXXX7BFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "DetailColor",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_sRGB.FFFFFFFF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Emissive",
+   "default": "/Game/Renderer/Texture/000000FF_HDR.000000FF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "BrokenFlowEmissive0",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_HDR.FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "BrokenFlowEmissive1",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_HDR.FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "FilmStructure",
+   "default": "/Game/Renderer/Texture/666666FF_BC4.666666FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Normal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "OceanGeometry",
+   "default": "/Game/Renderer/Texture/000000FF_HDR.000000FF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Visibility",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": false
+  },
+  {
+   "name": "Occlusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailMetallic",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": false
+  },
+  {
+   "name": "WideFoamThreshold",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "NegativeTransitionNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": false
+  },
+  {
+   "name": "Detail",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "OceanMagnitude",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": false
+  },
+  {
+   "name": "WideFlowDirection",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "FilmThickness",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Foam",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "GradientRoughness",
+   "default": "/Game/Renderer/Texture/808080FF_BC4.808080FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "IrisColor",
+   "default": "/Game/Renderer/Texture/767676FF_sRGB.767676FF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "GazeNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "Distribution",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailOcclusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "IrisOcclusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailCoverage",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "MateriaContext",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_sRGB.FFFFFFFF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "LayeredColor",
+   "default": "/Game/Renderer/Texture/808080FF_sRGB.808080FF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "BlurVelocity",
+   "default": "/Game/Renderer/Texture/000000FF_HDR.000000FF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": false
+  },
+  {
+   "name": "Muddiness",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_sRGB.FFFFFFFF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Sheen",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": false
+  },
+  {
+   "name": "TransparencyCoefficient",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_HDR.FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "IrisNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "ShadingLayer",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Thinness",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Color",
+   "default": "/Game/Renderer/Texture/767676FF_sRGB.767676FF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Isotropy",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "OxygenSaturation",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Pores",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Diffusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "GradientOcclusion",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "DetailWetness",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": false
+  },
+  {
+   "name": "SegmentLayer0",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "GradientNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "ToneGradient",
+   "default": "/Game/Renderer/Texture/000000FF_FFFFFFFF_HDR.000000FF_FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Transmittance",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_sRGB.FFFFFFFF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  },
+  {
+   "name": "Opacity",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Coverage",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "IrisEmissive",
+   "default": "/Game/Renderer/Texture/000000FF_HDR.000000FF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "TransmittanceCoefficient",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_HDR.FFFFFFFF_HDR",
+   "sampler_type": "SAMPLERTYPE_LINEAR_COLOR",
+   "connected": true
+  },
+  {
+   "name": "ScrelaNormal",
+   "default": "/Game/Renderer/Texture/8080FFFF_BC5.8080FFFF_BC5",
+   "sampler_type": "SAMPLERTYPE_NORMAL",
+   "connected": true
+  },
+  {
+   "name": "GradientPhase",
+   "default": "/Game/Renderer/Texture/000000FF_BC4.000000FF_BC4",
+   "sampler_type": "SAMPLERTYPE_ALPHA",
+   "connected": true
+  },
+  {
+   "name": "Transparency",
+   "default": "/Game/Renderer/Texture/FFFFFFFF_sRGB.FFFFFFFF_sRGB",
+   "sampler_type": "SAMPLERTYPE_COLOR",
+   "connected": true
+  }
+ ],
+ "vectors": [
+  {
+   "name": "GenericVector2Context",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": false
+  },
+  {
+   "name": "GenericVector3Context",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": false
+  },
+  {
+   "name": "ExtraPixelCoordinateContext",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": true
+  },
+  {
+   "name": "GenericVector0Context",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": true
+  },
+  {
+   "name": "DeformContext",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": false
+  },
+  {
+   "name": "ExternalEmissiveContext",
+   "default": [
+    1.0,
+    1.0,
+    1.0,
+    0.0
+   ],
+   "connected": true
+  },
+  {
+   "name": "ExtraNormalizedCoordinateContext",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": true
+  },
+  {
+   "name": "AnimateTimeContext",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": true
+  },
+  {
+   "name": "GenericVector1Context",
+   "default": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "connected": true
+  }
+ ],
+ "buffers": [
+  {
+   "name": "DeformContext0",
+   "default": "/Engine/EngineResources/DefaultBuffer.DefaultBuffer"
+  },
+  {
+   "name": "DeformContext2",
+   "default": "/Engine/EngineResources/DefaultBuffer.DefaultBuffer"
+  },
+  {
+   "name": "DeformContext1",
+   "default": "/Engine/EngineResources/DefaultBuffer.DefaultBuffer"
+  }
+ ],
+ "scalars": [
+  {
+   "name": "RefractionDepthBias",
+   "default": 0.0
+  }
+ ],
+ "switches": [
+  {
+   "name": "AnimateTime_",
+   "input": "S_AnimateTime",
+   "connected": true
+  },
+  {
+   "name": "Blood_",
+   "input": "S_Blood",
+   "connected": true
+  },
+  {
+   "name": "BrokenFlow_",
+   "input": "S_BrokenFlow",
+   "connected": true
+  },
+  {
+   "name": "BrokenFlowEmissive0_",
+   "input": "S_BrokenFlowEmissive0",
+   "connected": true
+  },
+  {
+   "name": "BrokenFlowEmissive1_",
+   "input": "S_BrokenFlowEmissive1",
+   "connected": true
+  },
+  {
+   "name": "Color_",
+   "input": "S_Color",
+   "connected": true
+  },
+  {
+   "name": "Convex_",
+   "input": "S_Convex",
+   "connected": true
+  },
+  {
+   "name": "Coordinate0_",
+   "input": "S_Coordinate0",
+   "connected": false
+  },
+  {
+   "name": "Coordinate1_",
+   "input": "S_Coordinate1",
+   "connected": false
+  },
+  {
+   "name": "Coordinate2_",
+   "input": "S_Coordinate2",
+   "connected": false
+  },
+  {
+   "name": "Coordinate3_",
+   "input": "S_Coordinate3",
+   "connected": false
+  },
+  {
+   "name": "Coverage_",
+   "input": "S_Coverage",
+   "connected": true
+  },
+  {
+   "name": "CoverageIdentifier_",
+   "input": "S_CoverageIdentifier",
+   "connected": false
+  },
+  {
+   "name": "CoverageIdentifierCoordinate2_",
+   "input": "S_CoverageIdentifierCoordinate2",
+   "connected": false
+  },
+  {
+   "name": "CoverageIdentifierCoordinate3_",
+   "input": "S_CoverageIdentifierCoordinate3",
+   "connected": false
+  },
+  {
+   "name": "CylindricalNormal_",
+   "input": "S_CylindricalNormal",
+   "connected": true
+  },
+  {
+   "name": "Deform_",
+   "input": "S_Deform",
+   "connected": false
+  },
+  {
+   "name": "Detail_",
+   "input": "S_Detail",
+   "connected": true
+  },
+  {
+   "name": "DetailColor_",
+   "input": "S_DetailColor",
+   "connected": true
+  },
+  {
+   "name": "DetailCoverage_",
+   "input": "S_DetailCoverage",
+   "connected": true
+  },
+  {
+   "name": "DetailFoam_",
+   "input": "S_DetailFoam",
+   "connected": true
+  },
+  {
+   "name": "DetailMetallic_",
+   "input": "S_DetailMetallic",
+   "connected": false
+  },
+  {
+   "name": "DetailNormal_",
+   "input": "S_DetailNormal",
+   "connected": true
+  },
+  {
+   "name": "DetailOcclusion_",
+   "input": "S_DetailOcclusion",
+   "connected": true
+  },
+  {
+   "name": "DetailRoughness_",
+   "input": "S_DetailRoughness",
+   "connected": true
+  },
+  {
+   "name": "Diffusion_",
+   "input": "S_Diffusion",
+   "connected": true
+  },
+  {
+   "name": "Distribution_",
+   "input": "S_Distribution",
+   "connected": true
+  },
+  {
+   "name": "Emissive_",
+   "input": "S_Emissive",
+   "connected": true
+  },
+  {
+   "name": "ExternalEmissive_",
+   "input": "S_ExternalEmissive",
+   "connected": true
+  },
+  {
+   "name": "ExtraColor_",
+   "input": "S_ExtraColor",
+   "connected": true
+  },
+  {
+   "name": "ExtraEmissive_",
+   "input": "S_ExtraEmissive",
+   "connected": true
+  },
+  {
+   "name": "ExtraNormalizedCoordinate_",
+   "input": "S_ExtraNormalizedCoordinate",
+   "connected": true
+  },
+  {
+   "name": "ExtraPixelCoordinate_",
+   "input": "S_ExtraPixelCoordinate",
+   "connected": true
+  },
+  {
+   "name": "Eye_",
+   "input": "S_Eye",
+   "connected": true
+  },
+  {
+   "name": "EyeMigration_",
+   "input": "S_EyeMigration",
+   "connected": true
+  },
+  {
+   "name": "Fabric_",
+   "input": "S_Fabric",
+   "connected": true
+  },
+  {
+   "name": "Film_",
+   "input": "S_Film",
+   "connected": true
+  },
+  {
+   "name": "FilmStructure_",
+   "input": "S_FilmStructure",
+   "connected": true
+  },
+  {
+   "name": "FilmThickness_",
+   "input": "S_FilmThickness",
+   "connected": true
+  },
+  {
+   "name": "Flow_",
+   "input": "S_Flow",
+   "connected": true
+  },
+  {
+   "name": "FlowDetailFoam_",
+   "input": "S_FlowDetailFoam",
+   "connected": true
+  },
+  {
+   "name": "FlowDetailNormal_",
+   "input": "S_FlowDetailNormal",
+   "connected": true
+  },
+  {
+   "name": "FlowDetailRoughness_",
+   "input": "S_FlowDetailRoughness",
+   "connected": true
+  },
+  {
+   "name": "FlowDirection_",
+   "input": "S_FlowDirection",
+   "connected": true
+  },
+  {
+   "name": "FlowFoam_",
+   "input": "S_FlowFoam",
+   "connected": true
+  },
+  {
+   "name": "FlowNormal_",
+   "input": "S_FlowNormal",
+   "connected": true
+  },
+  {
+   "name": "FlowRoughness_",
+   "input": "S_FlowRoughness",
+   "connected": true
+  },
+  {
+   "name": "Foam_",
+   "input": "S_Foam",
+   "connected": true
+  },
+  {
+   "name": "Froth_",
+   "input": "S_Froth",
+   "connected": false
+  },
+  {
+   "name": "GazeNormal_",
+   "input": "S_GazeNormal",
+   "connected": true
+  },
+  {
+   "name": "GenericVector_",
+   "input": "S_GenericVector",
+   "connected": false
+  },
+  {
+   "name": "Ghost_",
+   "input": "S_Ghost",
+   "connected": true
+  },
+  {
+   "name": "Gradient_",
+   "input": "S_Gradient",
+   "connected": true
+  },
+  {
+   "name": "GradientNormal_",
+   "input": "S_GradientNormal",
+   "connected": true
+  },
+  {
+   "name": "GradientOcclusion_",
+   "input": "S_GradientOcclusion",
+   "connected": true
+  },
+  {
+   "name": "GradientPhase_",
+   "input": "S_GradientPhase",
+   "connected": true
+  },
+  {
+   "name": "GradientRoughness_",
+   "input": "S_GradientRoughness",
+   "connected": true
+  },
+  {
+   "name": "Hair_",
+   "input": "S_Hair",
+   "connected": true
+  },
+  {
+   "name": "Hologram_",
+   "input": "S_Hologram",
+   "connected": true
+  },
+  {
+   "name": "HologramEye_",
+   "input": "S_HologramEye",
+   "connected": true
+  },
+  {
+   "name": "IrisColor_",
+   "input": "S_IrisColor",
+   "connected": true
+  },
+  {
+   "name": "IrisEmissive_",
+   "input": "S_IrisEmissive",
+   "connected": true
+  },
+  {
+   "name": "IrisNormal_",
+   "input": "S_IrisNormal",
+   "connected": true
+  },
+  {
+   "name": "IrisOcclusion_",
+   "input": "S_IrisOcclusion",
+   "connected": true
+  },
+  {
+   "name": "Isotropy_",
+   "input": "S_Isotropy",
+   "connected": true
+  },
+  {
+   "name": "Layered_",
+   "input": "S_Layered",
+   "connected": true
+  },
+  {
+   "name": "LayeredColor_",
+   "input": "S_LayeredColor",
+   "connected": true
+  },
+  {
+   "name": "Materia_",
+   "input": "S_Materia",
+   "connected": true
+  },
+  {
+   "name": "MateriaContext_",
+   "input": "S_MateriaContext",
+   "connected": false
+  },
+  {
+   "name": "MateriaIndexed_",
+   "input": "S_MateriaIndexed",
+   "connected": true
+  },
+  {
+   "name": "Metallic_",
+   "input": "S_Metallic",
+   "connected": true
+  },
+  {
+   "name": "Muddiness_",
+   "input": "S_Muddiness",
+   "connected": true
+  },
+  {
+   "name": "Normal_",
+   "input": "S_Normal",
+   "connected": true
+  },
+  {
+   "name": "Occlusion_",
+   "input": "S_Occlusion",
+   "connected": true
+  },
+  {
+   "name": "Ocean_",
+   "input": "S_Ocean",
+   "connected": true
+  },
+  {
+   "name": "OceanGeometry_",
+   "input": "S_OceanGeometry",
+   "connected": true
+  },
+  {
+   "name": "OceanMagnitude_",
+   "input": "S_OceanMagnitude",
+   "connected": false
+  },
+  {
+   "name": "Opacity_",
+   "input": "S_Opacity",
+   "connected": true
+  },
+  {
+   "name": "OxygenSaturation_",
+   "input": "S_OxygenSaturation",
+   "connected": true
+  },
+  {
+   "name": "Phantom_",
+   "input": "S_Phantom",
+   "connected": true
+  },
+  {
+   "name": "PhaseGCrystal_",
+   "input": "S_PhaseGCrystal",
+   "connected": false
+  },
+  {
+   "name": "PhaseGGlass_",
+   "input": "S_PhaseGGlass",
+   "connected": false
+  },
+  {
+   "name": "PhaseGWater_",
+   "input": "S_PhaseGWater",
+   "connected": true
+  },
+  {
+   "name": "Pool_",
+   "input": "S_Pool",
+   "connected": true
+  },
+  {
+   "name": "Pores_",
+   "input": "S_Pores",
+   "connected": true
+  },
+  {
+   "name": "PositiveTransitionNormal_",
+   "input": "S_PositiveTransitionNormal",
+   "connected": true
+  },
+  {
+   "name": "ReflectanceCrystal_",
+   "input": "S_ReflectanceCrystal",
+   "connected": true
+  },
+  {
+   "name": "ReflectanceGlass_",
+   "input": "S_ReflectanceGlass",
+   "connected": true
+  },
+  {
+   "name": "ReflectanceWater_",
+   "input": "S_ReflectanceWater",
+   "connected": true
+  },
+  {
+   "name": "RenderPassWater_",
+   "input": "S_RenderPassWater",
+   "connected": false
+  },
+  {
+   "name": "RigidBody_",
+   "input": "S_RigidBody",
+   "connected": false
+  },
+  {
+   "name": "Roughness_",
+   "input": "S_Roughness",
+   "connected": true
+  },
+  {
+   "name": "ScleraNormal_",
+   "input": "S_ScleraNormal",
+   "connected": true
+  },
+  {
+   "name": "SegmentLayer0_",
+   "input": "S_SegmentLayer0",
+   "connected": true
+  },
+  {
+   "name": "SegmentLayer1_",
+   "input": "S_SegmentLayer1",
+   "connected": true
+  },
+  {
+   "name": "Segmented_",
+   "input": "S_Segmented",
+   "connected": true
+  },
+  {
+   "name": "ShadingLayer_",
+   "input": "S_ShadingLayer",
+   "connected": true
+  },
+  {
+   "name": "Skin_",
+   "input": "S_Skin",
+   "connected": true
+  },
+  {
+   "name": "SkinnedBody_",
+   "input": "S_SkinnedBody",
+   "connected": false
+  },
+  {
+   "name": "SoftBody_",
+   "input": "S_SoftBody",
+   "connected": false
+  },
+  {
+   "name": "Standard_",
+   "input": "S_Standard",
+   "connected": true
+  },
+  {
+   "name": "Subsurface_",
+   "input": "S_Subsurface",
+   "connected": true
+  },
+  {
+   "name": "Thick_",
+   "input": "S_Thick",
+   "connected": true
+  },
+  {
+   "name": "Thickness_",
+   "input": "S_Thickness",
+   "connected": true
+  },
+  {
+   "name": "Thin_",
+   "input": "S_Thin",
+   "connected": true
+  },
+  {
+   "name": "Thinness_",
+   "input": "S_Thinness",
+   "connected": true
+  },
+  {
+   "name": "ToneGradient_",
+   "input": "S_ToneGradient",
+   "connected": true
+  },
+  {
+   "name": "Transmittance_",
+   "input": "S_Transmittance",
+   "connected": true
+  },
+  {
+   "name": "TransmittanceCoefficient_",
+   "input": "S_TransmittanceCoefficient",
+   "connected": true
+  },
+  {
+   "name": "Transparency_",
+   "input": "S_Transparency",
+   "connected": true
+  },
+  {
+   "name": "TransparencyCoefficient_",
+   "input": "S_TransparencyCoefficient",
+   "connected": true
+  },
+  {
+   "name": "Unlit_",
+   "input": "S_Unlit",
+   "connected": true
+  },
+  {
+   "name": "VertexExpression_",
+   "input": "S_VertexExpression",
+   "connected": false
+  },
+  {
+   "name": "VertexExpressionBone_",
+   "input": "S_VertexExpressionBone",
+   "connected": false
+  },
+  {
+   "name": "VertexExpressionNormal_",
+   "input": "S_VertexExpressionNormal",
+   "connected": false
+  },
+  {
+   "name": "VertexExpressionOcean_",
+   "input": "S_VertexExpressionOcean",
+   "connected": false
+  },
+  {
+   "name": "VertexExpressionPosition_",
+   "input": "S_VertexExpressionPosition",
+   "connected": false
+  },
+  {
+   "name": "ViewCoordinate_",
+   "input": "S_ViewCoordinate",
+   "connected": true
+  },
+  {
+   "name": "Wetness_",
+   "input": "S_Wetness",
+   "connected": true
+  },
+  {
+   "name": "WetnessTrickle_",
+   "input": "S_WetnessTrickle",
+   "connected": true
+  },
+  {
+   "name": "WideBentNormal_",
+   "input": "S_WideBentNormal",
+   "connected": true
+  },
+  {
+   "name": "WideFlowDirection_",
+   "input": "S_WideFlowDirection",
+   "connected": true
+  },
+  {
+   "name": "WideFlowDirectivity_",
+   "input": "S_WideFlowDirectivity",
+   "connected": true
+  },
+  {
+   "name": "WideFlowPhase_",
+   "input": "S_WideFlowPhase",
+   "connected": true
+  },
+  {
+   "name": "WideFoamThreshold_",
+   "input": "S_WideFoamThreshold",
+   "connected": true
+  },
+  {
+   "name": "WideOcclusion_",
+   "input": "S_WideOcclusion",
+   "connected": true
+  }
+ ],
+ "node": {
+  "code_file": "RMS_Surface_Editor.hlsl",
+  "outputs": [
+   {
+    "name": "RMS_Metallic",
+    "size": 1
+   },
+   {
+    "name": "RMS_Specular",
+    "size": 1
+   },
+   {
+    "name": "RMS_Roughness",
+    "size": 1
+   },
+   {
+    "name": "RMS_AO",
+    "size": 1
+   },
+   {
+    "name": "RMS_Normal",
+    "size": 3
+   },
+   {
+    "name": "RMS_Emissive",
+    "size": 3
+   },
+   {
+    "name": "RMS_OpacityMask",
+    "size": 1
+   },
+   {
+    "name": "RMS_Opacity",
+    "size": 1
+   },
+   {
+    "name": "RMS_ShadingModel",
+    "size": 1
+   },
+   {
+    "name": "RMS_ModelParam",
+    "size": 1
+   },
+   {
+    "name": "RMS_Reflectance",
+    "size": 1
+   },
+   {
+    "name": "RMS_Custom",
+    "size": 4
+   },
+   {
+    "name": "RMS_WetLayer",
+    "size": 2
+   },
+   {
+    "name": "RMS_WetNormal",
+    "size": 3
+   },
+   {
+    "name": "RMS_ColoredOpacity",
+    "size": 3
+   },
+   {
+    "name": "RMS_Muddiness",
+    "size": 3
+   },
+   {
+    "name": "RMS_TransparencyLog2",
+    "size": 1
+   },
+   {
+    "name": "RMS_TransmittanceLog2",
+    "size": 3
+   },
+   {
+    "name": "RMS_Thickness",
+    "size": 1
+   },
+   {
+    "name": "RMS_PhaseG",
+    "size": 1
+   },
+   {
+    "name": "RMS_MediumPath",
+    "size": 1
+   },
+   {
+    "name": "RMS_Foam",
+    "size": 1
+   }
+  ],
+  "inputs": [
+   "UV0",
+   "UV1",
+   "UV2",
+   "UV3",
+   "RMS_Noise",
+   "RMS_DynamicCoverage",
+   "RMS_VertexExpression",
+   "RMS_EBuffer",
+   "RMS_LocalToWorld0",
+   "RMS_LocalToWorld1",
+   "RMS_LocalToWorld2",
+   "T_PositiveTransitionNormal",
+   "T_Roughness",
+   "T_DetailNormal",
+   "T_DetailRoughness",
+   "T_WideBentNormal",
+   "T_WideFlowPhase",
+   "T_DetailFoam",
+   "T_WideFlowDirectivity",
+   "T_Wetness",
+   "T_ExtraEmissive",
+   "T_ExtraColor",
+   "T_Metallic",
+   "T_SegmentLayer1",
+   "T_WideOcclusion",
+   "T_Thickness",
+   "T_DetailColor",
+   "T_Emissive",
+   "T_BrokenFlowEmissive0",
+   "T_BrokenFlowEmissive1",
+   "T_FilmStructure",
+   "T_Normal",
+   "T_OceanGeometry",
+   "T_Occlusion",
+   "T_WideFoamThreshold",
+   "T_Detail",
+   "T_WideFlowDirection",
+   "T_FilmThickness",
+   "T_Foam",
+   "T_GradientRoughness",
+   "T_IrisColor",
+   "T_GazeNormal",
+   "T_Distribution",
+   "T_DetailOcclusion",
+   "T_IrisOcclusion",
+   "T_DetailCoverage",
+   "T_MateriaContext",
+   "T_LayeredColor",
+   "T_Muddiness",
+   "T_TransparencyCoefficient",
+   "T_IrisNormal",
+   "T_ShadingLayer",
+   "T_Thinness",
+   "T_Color",
+   "T_Isotropy",
+   "T_OxygenSaturation",
+   "T_Pores",
+   "T_Diffusion",
+   "T_GradientOcclusion",
+   "T_SegmentLayer0",
+   "T_GradientNormal",
+   "T_ToneGradient",
+   "T_Transmittance",
+   "T_Opacity",
+   "T_Coverage",
+   "T_IrisEmissive",
+   "T_TransmittanceCoefficient",
+   "T_ScrelaNormal",
+   "T_GradientPhase",
+   "T_Transparency",
+   "V_ExtraPixelCoordinateContext",
+   "V_GenericVector0Context",
+   "V_ExternalEmissiveContext",
+   "V_ExtraNormalizedCoordinateContext",
+   "V_AnimateTimeContext",
+   "V_GenericVector1Context",
+   "S_AnimateTime",
+   "S_Blood",
+   "S_BrokenFlow",
+   "S_BrokenFlowEmissive0",
+   "S_BrokenFlowEmissive1",
+   "S_Color",
+   "S_Convex",
+   "S_Coverage",
+   "S_CylindricalNormal",
+   "S_Detail",
+   "S_DetailColor",
+   "S_DetailCoverage",
+   "S_DetailFoam",
+   "S_DetailNormal",
+   "S_DetailOcclusion",
+   "S_DetailRoughness",
+   "S_Diffusion",
+   "S_Distribution",
+   "S_Emissive",
+   "S_ExternalEmissive",
+   "S_ExtraColor",
+   "S_ExtraEmissive",
+   "S_ExtraNormalizedCoordinate",
+   "S_ExtraPixelCoordinate",
+   "S_Eye",
+   "S_EyeMigration",
+   "S_Fabric",
+   "S_Film",
+   "S_FilmStructure",
+   "S_FilmThickness",
+   "S_Flow",
+   "S_FlowDetailFoam",
+   "S_FlowDetailNormal",
+   "S_FlowDetailRoughness",
+   "S_FlowDirection",
+   "S_FlowFoam",
+   "S_FlowNormal",
+   "S_FlowRoughness",
+   "S_Foam",
+   "S_GazeNormal",
+   "S_Ghost",
+   "S_Gradient",
+   "S_GradientNormal",
+   "S_GradientOcclusion",
+   "S_GradientPhase",
+   "S_GradientRoughness",
+   "S_Hair",
+   "S_Hologram",
+   "S_HologramEye",
+   "S_IrisColor",
+   "S_IrisEmissive",
+   "S_IrisNormal",
+   "S_IrisOcclusion",
+   "S_Isotropy",
+   "S_Layered",
+   "S_LayeredColor",
+   "S_Materia",
+   "S_MateriaIndexed",
+   "S_Metallic",
+   "S_Muddiness",
+   "S_Normal",
+   "S_Occlusion",
+   "S_Ocean",
+   "S_OceanGeometry",
+   "S_Opacity",
+   "S_OxygenSaturation",
+   "S_Phantom",
+   "S_PhaseGWater",
+   "S_Pool",
+   "S_Pores",
+   "S_PositiveTransitionNormal",
+   "S_ReflectanceCrystal",
+   "S_ReflectanceGlass",
+   "S_ReflectanceWater",
+   "S_Roughness",
+   "S_ScleraNormal",
+   "S_SegmentLayer0",
+   "S_SegmentLayer1",
+   "S_Segmented",
+   "S_ShadingLayer",
+   "S_Skin",
+   "S_Standard",
+   "S_Subsurface",
+   "S_Thick",
+   "S_Thickness",
+   "S_Thin",
+   "S_Thinness",
+   "S_ToneGradient",
+   "S_Transmittance",
+   "S_TransmittanceCoefficient",
+   "S_Transparency",
+   "S_TransparencyCoefficient",
+   "S_Unlit",
+   "S_ViewCoordinate",
+   "S_Wetness",
+   "S_WetnessTrickle",
+   "S_WideBentNormal",
+   "S_WideFlowDirection",
+   "S_WideFlowDirectivity",
+   "S_WideFlowPhase",
+   "S_WideFoamThreshold",
+   "S_WideOcclusion"
+  ]
+ },
+ "engine": {
+  "code_file": "RMS_Engine_Editor.hlsl",
+  "inputs": [
+   [
+    "RMS_N",
+    "RMS_Normal"
+   ],
+   [
+    "RMS_R",
+    "RMS_Roughness"
+   ],
+   [
+    "RMS_M",
+    "RMS_Metallic"
+   ],
+   [
+    "RMS_E",
+    "RMS_Emissive"
+   ],
+   [
+    "RMS_SM",
+    "RMS_ShadingModel"
+   ],
+   [
+    "RMS_AO",
+    "RMS_AO"
+   ],
+   [
+    "RMS_F0",
+    "RMS_Reflectance"
+   ],
+   [
+    "RMS_W",
+    "RMS_WetNormal"
+   ],
+   [
+    "RMS_C",
+    "RMS_Custom"
+   ]
+  ],
+  "outputs": [
+   {
+    "name": "FilteredRoughness",
+    "size": 1
+   },
+   {
+    "name": "EmissiveOut",
+    "size": 3
+   },
+   {
+    "name": "SpecularOut",
+    "size": 1
+   },
+   {
+    "name": "AOOut",
+    "size": 1
+   },
+   {
+    "name": "InnerNormalWS",
+    "size": 3
+   },
+   {
+    "name": "RadialDirectionWS",
+    "size": 3
+   }
+  ]
+ },
+ "noise": {
+  "code_file": "RMS_Noise_Editor.hlsl",
+  "texture": "/Engine/EngineResources/SpatiotemporalBlueNoiseVolumeSource.SpatiotemporalBlueNoiseVolumeSource"
+ },
+ "shading_models": [
+  [
+   "Eye_",
+   "MSM_EYE"
+  ],
+  [
+   "Unlit_",
+   "MSM_DEFAULT_LIT"
+  ],
+  [
+   "Standard_",
+   "MSM_DEFAULT_LIT"
+  ],
+  [
+   "Skin_",
+   "MSM_PREINTEGRATED_SKIN"
+  ],
+  [
+   "Subsurface_",
+   "MSM_SUBSURFACE_PROFILE"
+  ],
+  [
+   "Hair_",
+   "MSM_HAIR"
+  ],
+  [
+   "Fabric_",
+   "MSM_CLOTH"
+  ]
+ ],
+ "pins": {
+  "BaseColor": [
+   "RMS",
+   ""
+  ],
+  "Metallic": [
+   "RMS",
+   "RMS_Metallic"
+  ],
+  "Specular": [
+   "Engine",
+   "SpecularOut"
+  ],
+  "Roughness": [
+   "Engine",
+   "FilteredRoughness"
+  ],
+  "AmbientOcclusion": [
+   "Engine",
+   "AOOut"
+  ],
+  "Normal": [
+   "Engine",
+   ""
+  ],
+  "EmissiveColor": [
+   "Engine",
+   "EmissiveOut"
+  ],
+  "Opacity": [
+   "RMS",
+   "RMS_Opacity"
+  ],
+  "OpacityMask": [
+   "RMS",
+   "RMS_OpacityMask"
+  ]
+ },
+ "bridges": {
+  "RebirthSurfaceOutput": {
+   "NormalWS": [
+    "Engine",
+    ""
+   ],
+   "Roughness": [
+    "Engine",
+    "FilteredRoughness"
+   ],
+   "MaterialAO": [
+    "RMS",
+    "RMS_AO"
+   ],
+   "SurfaceDiffusion": [
+    "RMS",
+    "RMS_Custom",
+    "x"
+   ],
+   "Sentinel": [
+    "Const",
+    1.0
+   ]
+  },
+  "RebirthHairOutput": {
+   "EncodedWideBentNormal": [
+    "RMS",
+    "RMS_Custom",
+    "xyz"
+   ]
+  },
+  "RebirthEyeOutput": {
+   "ScleraNormalWS": [
+    "Engine",
+    "InnerNormalWS"
+   ],
+   "RadialDirectionWS": [
+    "Engine",
+    "RadialDirectionWS"
+   ],
+   "IrisNormalPacked": [
+    "RMS",
+    "RMS_Custom",
+    "w"
+   ],
+   "ScleraMask": [
+    "RMS",
+    "RMS_Metallic"
+   ],
+   "IrisOcclusion": [
+    "RMS",
+    "RMS_Specular"
+   ],
+   "RadialDistance": [
+    "RMS",
+    "RMS_AO"
+   ]
+  }
+ },
+ "vertex_expression": {
+  "position_switch": "VertexExpressionPosition_",
+  "normal_switch": "VertexExpressionNormal_"
+ }
+}

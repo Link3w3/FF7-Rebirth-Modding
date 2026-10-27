@@ -1,0 +1,80 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/Vincent_TEST_3_2_Pistol.Vincent_TEST_3_2_Pistol",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton.EB0016_00_Skeleton",
+				"/Game/Character/NonPlayer/NP0000_00_Biggs_Standard/Model/NP0000_00_Skeleton.NP0000_00_Skeleton",
+				"/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+				"/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton.EB2020_00_Skeleton"
+			],
+			"method": "animations",
+			"enabled": true
+		}
+	],
+	"animation_sets": [
+		{
+			"characters": [
+				"PC0000_00_Cloud_Standard"
+			],
+			"battle": [
+				{
+					"from": "/Game/Motion/Enemy/EB2020_Elena/Battle00",
+					"auto": true,
+					"only": [
+						"Shot"
+					]
+				},
+				{
+					"from": "/Game/Motion/Enemy/EB0016_Rufus/Battle00",
+					"as": "Battle01",
+					"auto": true,
+					"only": [
+						"Shot"
+					]
+				},
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"field": [
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"moves": [
+				{
+					"set": "Neutral00",
+					"key": "N_Atk01",
+					"animation": [
+						"/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_0",
+						"/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_1",
+						"/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_2"
+					]
+				}
+			],
+			"field_actions": "PC0000_Cloud",
+			"cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"sockets": [
+				{
+					"socket": "Attach_Weapon01",
+					"use": "Attach_Weapon_Right01"
+				}
+			],
+			"limit_breaks": [
+				"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02",
+				[
+					"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkThunderShot01",
+					"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBlizzardShot01_0"
+				]
+			],
+			"proportions": true,
+			"override": true,
+			"requires_paks": [
+				"FullyPlayableVincentAssets_P"
+			],
+			"enabled": true
+		}
+	]
+}

@@ -1,0 +1,178 @@
+Validate: OK
+
+Pair 0 (Family): /Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton
+    hub PC0000_00_Skeleton: its own characters and animations stay as they are; the members' animations move onto it and their meshes are bound to it
+    member PC0011_00_Skeleton:
+      its animations on the hub: PC0011_00_Skeleton -> PC0000_00_Skeleton: 298 of 622 bones carry over (same name and parent chain), 256 missing on PC0000_00_Skeleton, 68 placed differently (they keep their own pose or physics): L_HairA_a_Phy, L_HairA_b_Phy, L_HairA_c_Phy, L_HairB_a_Phy, L_HairB_b_Phy, L_HairB_c_Phy, L_HairC_a_Phy, L_HairC_b_Phy, L_HairD_a_Phy, L_HairD_b_Phy
+      PC0011_00 on PC0000_00_Skeleton: 366 shared bones, 256 only on the mesh (they keep their own pose or physics). OK with the hierarchy fix: 70 bone(s) renamed (they keep the mesh's own pose): L_HairA_a_Phy, L_HairA_b_Phy, L_HairA_c_Phy, L_HairB_a_Phy, L_HairB_b_Phy, L_HairB_c_Phy, L_HairC_a_Phy, L_HairC_b_Phy, L_HairC_c_Phy, L_HairD_a_Phy .... AnimBlueprints for PC0000_00_Skeleton and for PC0011_00_Skeleton both run
+    member EB0016_00_Skeleton:
+      its animations on the hub: EB0016_00_Skeleton -> PC0000_00_Skeleton: 292 of 684 bones carry over (same name and parent chain), 392 missing on PC0000_00_Skeleton, 0 placed differently
+      no meshes found on this skeleton to check
+    member EB2020_00_Skeleton:
+      its animations on the hub: EB2020_00_Skeleton -> PC0000_00_Skeleton: 258 of 405 bones carry over (same name and parent chain), 110 missing on PC0000_00_Skeleton, 37 placed differently (they keep their own pose or physics): L_HairA_a_Phy, L_HairA_b_Phy, L_HairA_c_Phy, L_HairA_d_Phy, L_HairD_a_Phy, L_HairD_b_Phy, R_HairC_a_Phy, R_HairC_b_Phy, R_HairC_c_Phy, L_HairB_a_Phy
+      no meshes found on this skeleton to check
+Animation set row 0: PC0000_00_Cloud_Standard, PC0000_04_Cloud_ZackCostume, PC0000_12_Cloud_ZackCostumeDirty, PC0000_18_Cloud_ZackCostumeAge21, PC0000_19_Cloud_ZackCostumeDirtyAge21, PC0000_23_Cloud_ZackCostumeWet
+    CharaSpec PC0000_00_Cloud_Standard: model PC0011_00_Vincent_Standard, sets Battle00, Neutral00, Neutral20, Facial00, Battle01, Battle00_Comp, field-action folder PC0010_Sephiroth
+    note: Field Actions is PC0000_Cloud: press Apply To CharaSpec to write it into PC0000_00_Cloud_Standard
+    CharaSpec PC0000_04_Cloud_ZackCostume: model PC0000_04_Cloud_ZackCostume, sets Battle00, Neutral00, Emotion00, Facial00, Battle01, Neutral20, field-action folder PC0000_Cloud
+    CharaSpec PC0000_12_Cloud_ZackCostumeDirty: model PC0000_12_Cloud_ZackCostumeDirty, sets Battle00, Neutral00, Emotion00, Facial00, Battle01, Neutral20, field-action folder PC0000_Cloud
+    CharaSpec PC0000_18_Cloud_ZackCostumeAge21: model PC0000_18_Cloud_ZackCostumeAge21, sets Battle00, Neutral00, Emotion00, Facial00, Battle01, Neutral20, field-action folder PC0000_Cloud
+    CharaSpec PC0000_19_Cloud_ZackCostumeDirtyAge21: model PC0000_19_Cloud_ZackCostumeDirtyAge21, sets Battle00, Neutral00, Emotion00, Facial00, Battle01, Neutral20, field-action folder PC0000_Cloud
+    CharaSpec PC0000_23_Cloud_ZackCostumeWet: model PC0000_23_Cloud_ZackCostumeWet, sets Battle00, Neutral00, Emotion00, Facial00, Battle01, Neutral20, field-action folder PC0000_Cloud
+    Battle00: PC0000_Cloud/Battle00; also looked for in the game: EB2020_Elena/Battle00 (auto: attacks, only names with Shot), PC0011_Vincent/Battle00
+    Battle01: PC0000_Cloud/Battle01; also looked for in the game: EB0016_Rufus/Battle00 (auto: attacks, only names with Shot), PC0011_Vincent/Battle01
+    Battle00_Comp: no source in this project; also looked for in the game: PC0011_Vincent/Battle00_Comp, PC0000_Cloud/Battle00_Comp
+    Neutral00: PC0000_Cloud/Neutral00; also looked for in the game: PC0011_Vincent/Neutral00
+    Neutral20: PC0000_Cloud/Neutral20; also looked for in the game: PC0011_Vincent/Neutral20
+    Emotion00: PC0000_Cloud/Emotion00; also looked for in the game: PC0011_Vincent/Emotion00
+    Facial00: PC0000_Cloud/Facial00; also looked for in the game: PC0011_Vincent/Facial00
+    move Battle00/B_NAttack01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_0.B_NAttack01_0
+    move Battle00/B_NAttack02_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack02_0.B_NAttack02_0
+    move Battle00/B_NAttack03_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack03_0.B_NAttack03_0
+    move Battle00/B_NAttack04_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack04_0.B_NAttack04_0
+    move Battle00/B_NAttack05_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack05_0.B_NAttack05_0
+    move Battle00/B_NAttack01_1_2 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_1_2.B_NAttack01_1_2
+    move Battle01/B_SAttack01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack01_0.B_SAttack01_0
+    move Battle01/B_SAttack02_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack02_0.B_SAttack02_0
+    move Battle01/B_SAttack03_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack03_0.B_SAttack03_0
+    move Battle01/B_SAttack04_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack04_0.B_SAttack04_0
+    move Battle01/B_SAttack05_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack05_0.B_SAttack05_0
+    move Neutral00/N_Atk01 -> /Game/RebirthSkelCompat/Built/Vincent/Neutral00/N_Atk01.N_Atk01
+    move Battle00/B_NAttack06_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack06_0.B_NAttack06_0
+    move Battle00/B_NAttack07_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack07_0.B_NAttack07_0
+    move Battle00/B_Run01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0.B_Run01_0
+    move Battle00/B_Run01_0_L0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L0.B_Run01_0_L0
+    move Battle00/B_Run01_0_L90 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L90.B_Run01_0_L90
+    move Battle00/B_Run01_0_L180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L180.B_Run01_0_L180
+    move Battle00/B_Run01_0_R90 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_R90.B_Run01_0_R90
+    move Battle00/B_Run01_0_R180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_R180.B_Run01_0_R180
+    move Battle00/B_Run01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1.B_Run01_1
+    move Battle00/B_Run01_1_L180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1_L180.B_Run01_1_L180
+    move Battle00/B_Run01_1_R180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1_R180.B_Run01_1_R180
+    move Battle00/B_Run01_Up -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_Up.B_Run01_Up
+    move Battle00/B_Run01_2 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2.B_Run01_2
+    move Battle00/B_Run01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2l.B_Run01_2l
+    move Battle00/B_Run01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2r.B_Run01_2r
+    move Battle00/B_Walk01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0.B_Walk01_0
+    move Battle00/B_Walk01_0_L0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L0.B_Walk01_0_L0
+    move Battle00/B_Walk01_0_L90 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L90.B_Walk01_0_L90
+    move Battle00/B_Walk01_0_L180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L180.B_Walk01_0_L180
+    move Battle00/B_Walk01_0_R90 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_R90.B_Walk01_0_R90
+    move Battle00/B_Walk01_0_R180 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_R180.B_Walk01_0_R180
+    move Battle00/B_Walk01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_1.B_Walk01_1
+    move Battle00/B_Walk01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_2l.B_Walk01_2l
+    move Battle00/B_Walk01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_2r.B_Walk01_2r
+    move Battle00/B_WalkF01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_0.B_WalkF01_0
+    move Battle00/B_WalkF01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_1.B_WalkF01_1
+    move Battle00/B_WalkF01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_2l.B_WalkF01_2l
+    move Battle00/B_WalkF01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_2r.B_WalkF01_2r
+    move Battle00/B_WalkB01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_0.B_WalkB01_0
+    move Battle00/B_WalkB01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_1.B_WalkB01_1
+    move Battle00/B_WalkB01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_2l.B_WalkB01_2l
+    move Battle00/B_WalkB01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_2r.B_WalkB01_2r
+    move Battle00/B_WalkBL01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkBL01_1.B_WalkBL01_1
+    move Battle00/B_WalkBR01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkBR01_1.B_WalkBR01_1
+    move Battle00/B_WalkL01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_0.B_WalkL01_0
+    move Battle00/B_WalkL01_0l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_0l.B_WalkL01_0l
+    move Battle00/B_WalkL01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_1.B_WalkL01_1
+    move Battle00/B_WalkL01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_2l.B_WalkL01_2l
+    move Battle00/B_WalkL01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_2r.B_WalkL01_2r
+    move Battle00/B_WalkFL01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkFL01_1.B_WalkFL01_1
+    move Battle00/B_WalkR01_0 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_0.B_WalkR01_0
+    move Battle00/B_WalkR01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_1.B_WalkR01_1
+    move Battle00/B_WalkR01_2l -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_2l.B_WalkR01_2l
+    move Battle00/B_WalkR01_2r -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_2r.B_WalkR01_2r
+    move Battle00/B_WalkFR01_1 -> /Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkFR01_1.B_WalkFR01_1
+    move B_AtkLimit01_0 -> /Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02.B_AtkFireBreak02 (not all in this project: the game must have them)
+    move B_AtkLimit02_0 -> /Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkThunderShot01.B_AtkThunderShot01 then /Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBlizzardShot01_0.B_AtkBlizzardShot01_0 (played one after another) (not all in this project: the game must have them)
+    build Battle00/B_NAttack01_0: built from Battle00/p000_m000_c_atk_0_remap; gameplay notifies from Battle00/B_NAttack01_0, 1 hit(s)
+    build Battle00/B_NAttack02_0: built from Battle00/p000_m000_c_atk_1_remap; gameplay notifies from Battle00/B_NAttack02_0, 1 hit(s)
+    build Battle00/B_NAttack03_0: built from Battle00/p000_m000_c_atk_2_remap; gameplay notifies from Battle00/B_NAttack03_0, 1 hit(s)
+    build Battle00/B_NAttack04_0: built from Battle00/p000_m000_c_atk_3_remap; gameplay notifies from Battle00/B_NAttack04_0, 1 hit(s)
+    build Battle00/B_NAttack05_0: built from Battle00/p000_m000_c_atk_4_remap; gameplay notifies from Battle00/B_NAttack05_0, 1 hit(s)
+    build Battle00/B_NAttack01_1_2: built from Battle00/p000_m000_c_atk_01_remap; gameplay notifies from Battle00/B_NAttack01_1_2, 1 hit(s)
+    build Battle01/B_SAttack01_0: built from Battle00/p000_m000_c_atk_0_remap; gameplay notifies from Battle01/B_SAttack01_0, 1 hit(s)
+    build Battle01/B_SAttack02_0: built from Battle00/p000_m000_c_atk_1_remap; gameplay notifies from Battle01/B_SAttack02_0, 1 hit(s)
+    build Battle01/B_SAttack03_0: built from Battle00/p000_m000_c_atk_2_remap; gameplay notifies from Battle01/B_SAttack03_0, 1 hit(s)
+    build Battle01/B_SAttack04_0: built from Battle00/p000_m000_c_atk_3_remap; gameplay notifies from Battle01/B_SAttack04_0, 1 hit(s)
+    build Battle01/B_SAttack05_0: built from Battle00/p000_m000_c_atk_4_remap; gameplay notifies from Battle01/B_SAttack05_0, 2 hit(s)
+    build Neutral00/N_Atk01: built from Battle00/p000_m000_c_atk_0_remap; gameplay notifies from Neutral00/N_Atk01, 1 hit(s)
+    build Battle00/B_NAttack06_0: built from Battle00/p000_m000_c_atk_21_remap; gameplay notifies from Battle00/B_NAttack06_0, 2 hit(s)
+    build Battle00/B_NAttack07_0: built from Battle00/p000_m000_c_atk_11_remap; gameplay notifies from Battle00/B_NAttack07_0, 2 hit(s)
+    build Battle00/B_Run01_0: built from Battle00/B_Run01_0_L0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_L0, 0 hit(s)
+    build Battle00/B_Run01_0_L0: built from Battle00/B_Run01_0_L0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_L0, 0 hit(s)
+    build Battle00/B_Run01_0_L90: built from Battle00/B_Run01_0_L90, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_L90, 0 hit(s)
+    build Battle00/B_Run01_0_L180: built from Battle00/B_Run01_0_L180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_L180, 0 hit(s)
+    build Battle00/B_Run01_0_R90: built from Battle00/B_Run01_0_R90, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_R90, 0 hit(s)
+    build Battle00/B_Run01_0_R180: built from Battle00/B_Run01_0_R180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_0_R180, 0 hit(s)
+    build Battle00/B_Run01_1: built from Battle00/B_Run01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_1, 0 hit(s)
+    build Battle00/B_Run01_1_L180: built from Battle00/B_Run01_1_L180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_1_L180, 0 hit(s)
+    build Battle00/B_Run01_1_R180: built from Battle00/B_Run01_1_R180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_1_R180, 0 hit(s)
+    build Battle00/B_Run01_Up: built from Battle00/B_Run01_Up, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_Up, 0 hit(s)
+    build Battle00/B_Run01_2: built from Battle00/B_Run01_2, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_2, 0 hit(s)
+    build Battle00/B_Run01_2l: built from Battle00/B_Run01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_2l, 0 hit(s)
+    build Battle00/B_Run01_2r: built from Battle00/B_Run01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Run01_2r, 0 hit(s)
+    build Battle00/B_Walk01_0: built from Battle00/B_Walk01_0_L0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_L0, 0 hit(s)
+    build Battle00/B_Walk01_0_L0: built from Battle00/B_Walk01_0_L0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_L0, 0 hit(s)
+    build Battle00/B_Walk01_0_L90: built from Battle00/B_Walk01_0_L90, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_L90, 0 hit(s)
+    build Battle00/B_Walk01_0_L180: built from Battle00/B_Walk01_0_L180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_L180, 0 hit(s)
+    build Battle00/B_Walk01_0_R90: built from Battle00/B_Walk01_0_R90, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_R90, 0 hit(s)
+    build Battle00/B_Walk01_0_R180: built from Battle00/B_Walk01_0_R180, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_0_R180, 0 hit(s)
+    build Battle00/B_Walk01_1: built from Battle00/B_Walk01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_1, 0 hit(s)
+    build Battle00/B_Walk01_2l: built from Battle00/B_Walk01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_2l, 0 hit(s)
+    build Battle00/B_Walk01_2r: built from Battle00/B_Walk01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_Walk01_2r, 0 hit(s)
+    build Battle00/B_WalkF01_0: built from Battle00/B_WalkF01_0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkF01_0, 0 hit(s)
+    build Battle00/B_WalkF01_1: built from Battle00/B_WalkF01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkF01_1, 0 hit(s)
+    build Battle00/B_WalkF01_2l: built from Battle00/B_WalkF01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkF01_2l, 0 hit(s)
+    build Battle00/B_WalkF01_2r: built from Battle00/B_WalkF01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkF01_2r, 0 hit(s)
+    build Battle00/B_WalkB01_0: built from Battle00/B_WalkB01_0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkB01_0, 0 hit(s)
+    build Battle00/B_WalkB01_1: built from Battle00/B_WalkB01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkB01_1, 0 hit(s)
+    build Battle00/B_WalkB01_2l: built from Battle00/B_WalkB01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkB01_2l, 0 hit(s)
+    build Battle00/B_WalkB01_2r: built from Battle00/B_WalkB01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkB01_2r, 0 hit(s)
+    build Battle00/B_WalkBL01_1: built from Battle00/B_WalkBL01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkBL01_1, 0 hit(s)
+    build Battle00/B_WalkBR01_1: built from Battle00/B_WalkBR01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkBR01_1, 0 hit(s)
+    build Battle00/B_WalkL01_0: built from Battle00/B_WalkL01_0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkL01_0, 0 hit(s)
+    build Battle00/B_WalkL01_0l: built from Battle00/B_WalkL01_0l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkL01_0l, 0 hit(s)
+    build Battle00/B_WalkL01_1: built from Battle00/B_WalkL01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkL01_1, 0 hit(s)
+    build Battle00/B_WalkL01_2l: built from Battle00/B_WalkL01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkL01_2l, 0 hit(s)
+    build Battle00/B_WalkL01_2r: built from Battle00/B_WalkL01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkL01_2r, 0 hit(s)
+    build Battle00/B_WalkFL01_1: built from Battle00/B_WalkFL01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkFL01_1, 0 hit(s)
+    build Battle00/B_WalkR01_0: built from Battle00/B_WalkR01_0, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkR01_0, 0 hit(s)
+    build Battle00/B_WalkR01_1: built from Battle00/B_WalkR01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkR01_1, 0 hit(s)
+    build Battle00/B_WalkR01_2l: built from Battle00/B_WalkR01_2l, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkR01_2l, 0 hit(s)
+    build Battle00/B_WalkR01_2r: built from Battle00/B_WalkR01_2r, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkR01_2r, 0 hit(s)
+    build Battle00/B_WalkFR01_1: built from Battle00/B_WalkFR01_1, put on PC0011_00_Skeleton from PC0000_00_Skeleton (the character's own pose kept, the animation's motion added); gameplay notifies from Battle00/B_WalkFR01_1, 0 hit(s)
+    auto sources: the game matches their attacks to the character's attack names when the pack loads (Moves and Limit Breaks win over them):
+    Battle00 auto-match: no preview (EB2020_Elena/Battle00, PC0011_Vincent/Battle00 not in this project, and the game has not logged this set yet)
+    Battle01 auto-match: no preview (EB0016_Rufus/Battle00, PC0011_Vincent/Battle01 not in this project, and the game has not logged this set yet)
+    socket Attach_Weapon01 -> Attach_Weapon_Right01 (socket on bone R_Weapon_a)
+    proportions: the pairs and families of PC0011_00_Skeleton keep every body's own bone lengths (body bones from each mesh, hips scaled to its height)
+    cutscenes: meshes on PC0011_00_Skeleton are bound to PC0000_00_Skeleton and play its cutscene animations (a family with PC0000_00_Skeleton as hub)
+    CharaSpec check: PC0000_00_Cloud_Standard: motion folder PC0010_Sephiroth has no anim set Neutral20 (it has Battle00, Battle00_Comp, Battle01, EV_FOREE_5530_PC0010_00_AfterLp, EV_FOREE_5540_PC0010_00_AfterLp, EV_FOREE_5540_PC0010_00_Before, EV_NIBLE_0800_PC0010_00_BeforeLp, EV_NIBLE_0890_PC0010_00_BeforeLp, Facial00, L_PC0010_00_BattleWait, L_PC0010_00_EV0960Before, L_PC0010_00_EV0960Before2, L_PC0010_00_KeyBoard, L_PC0010_00_KillJikeidan, N_Climb01_0, N_Climb01_1, N_ClimbEnd01_0_D, N_ClimbEND01_0_U, N_ClimbHang01_0, N_ClimbJump01_0_D, N_ClimbJump01_0_L, N_ClimbJump01_0_LU, N_ClimbJump01_0_R, N_ClimbJump01_0_RU, N_ClimbJump01_0_U, N_ClimbJump02_0_D, N_ClimbJump02_0_L, N_ClimbJump02_0_LU, N_ClimbJump02_0_R, N_ClimbJump02_0_RU, N_ClimbJump02_0_U, N_ClimbOver01_0, N_ClimbStart01_0_D, N_ClimbStart01_0_U, N_Ladder01_1, N_LadderD01_0, N_LadderD01_2, N_LadderD02_0, N_LadderD02_1, N_LadderD02_2, N_LadderD02_3, N_LadderJ01_0, N_LadderU01_0, N_LadderU01_1, N_LadderU01_2, N_Narrow02_1, N_Narrow02_1l, N_Narrow02_1r, N_NarrowL02_0, N_NarrowL02_1, N_NarrowL02_2, N_NarrowL02_3, N_NarrowL02_4, N_NarrowR02_0, N_NarrowR02_1, N_NarrowR02_2, N_NarrowR02_3, N_NarrowR02_4, Neutral00, PV_GONGE_2060_PC0010_00_Sephiroth, PV_NIBLE_0470_PC0010_00_MotivatedCloud).
+CharaSpec packs of this project that disagree with their rows (Apply To CharaSpec gives a row the model of the blueprint its pack spawns; swaps fix the rest):
+    CharaSpec_PC0000_00_Cloud_Standard: ContentSoundVoice_Array lists VO_PC0010_00_Sephiroth, the pack loads VO_PC0000_00_Cloud
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsEffect_Array lists PC0010_Sephiroth_Effect__Pack, the pack loads PC0000_Cloud_Effect__Pack
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsSoundSE_Array lists SE_PC0010_00_Sephiroth_Standard, the pack loads SE_PC0000_00_Cloud
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsSoundAutoSE_Array lists AS_PC0010_00_Sephiroth_Standard, the pack loads AS_PC0000_00_Cloud_Standard
+    CharaSpec_PC0000_00_Cloud_Standard: End2AIList_Array lists PC0010_00_Sephiroth_Standard_AIBP, the pack loads PC0000_00_Cloud_Standard_AIBP
+    CharaSpec_PC0010_00_Sephiroth_Standard: ContentSoundVoice_Array lists VO_PC0000_02_Cloud_Insanity, the pack loads VO_PC0010_00_Sephiroth
+    CharaSpec_PC0010_10_Sephiroth_Transform: ContentSoundVoice_Array lists VO_PC0000_02_Cloud_Insanity, the pack loads VO_EB0021_00_Sephiroth_Standard
+    CharaSpec_WE0000_05_Cloud_NailBat: ContentsEffect_Array lists WE0000_00_Cloud_BusterSword_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_05_Cloud_NailBat: ContentsSoundSE_Array lists SE_WE0000_00_BusterSword, the pack loads (none)
+    CharaSpec_WE0000_11_Cloud_END2Weapon1: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_12_Cloud_END2Weapon2: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_13_Cloud_END2Weapon3: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_14_Cloud_END2Weapon4: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_15_Cloud_END2Weapon5: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_16_Cloud_END2Weapon6: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_17_Cloud_Umbrella: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+
+In game (game folder not found: this data object alone, Requires Paks counted as installed):
+  family of PC0000_00_Skeleton: PC0011_00_Skeleton, EB0016_00_Skeleton, EB2020_00_Skeleton play each other's animations with it (their animations move onto PC0000_00_Skeleton, their meshes are bound to it)
+  note: Vincent_Moves.json: family of /Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton (hub: named in Vincent_Moves.json): /Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton, /Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton.EB0016_00_Skeleton, /Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton.EB2020_00_Skeleton and /Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton play each other's animations. The animations of the others are adopted onto /Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton and their meshes are rebound to it; every character keeps its own proportions ("proportions")
+  sets of CharaSpec_PC0000_00_Cloud_Standard (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud
+  sets of CharaSpec_PC0000_04_Cloud_ZackCostume (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud
+  sets of CharaSpec_PC0000_12_Cloud_ZackCostumeDirty (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud
+  sets of CharaSpec_PC0000_18_Cloud_ZackCostumeAge21 (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud
+  sets of CharaSpec_PC0000_19_Cloud_ZackCostumeDirtyAge21 (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud
+  sets of CharaSpec_PC0000_23_Cloud_ZackCostumeWet (Vincent_Moves.json): battle from EB2020_Elena/Battle00 (auto), EB0016_Rufus/Battle00 as Battle01 (auto), /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; field from /Game/Motion/Player/PC0011_Vincent/*, /Game/Motion/Player/PC0000_Cloud/*; 59 move(s); field actions PC0000_Cloud

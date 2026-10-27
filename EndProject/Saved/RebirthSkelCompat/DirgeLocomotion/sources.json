@@ -1,0 +1,1119 @@
+{
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0.B_Run01_0_L0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.46666663885116577,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180.B_Run01_0_L180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.46666666865348816,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.46666669845581055,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90.B_Run01_0_L90": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.46666666865348816,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.46666669845581055,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180.B_Run01_0_R180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.46666666865348816,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.46666669845581055,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90.B_Run01_0_R90": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90.B_Run01_0_R90",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.46666666865348816,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.46666669845581055,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1.B_Run01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1.B_Run01_1",
+  "class": "AnimSequence",
+  "length": 0.5333333611488342,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 17,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.5333333611488342,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.5333333611488342,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_L180.B_Run01_1_L180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_L180.B_Run01_1_L180",
+  "class": "AnimSequence",
+  "length": 0.5666666626930237,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 18,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.5666666626930237,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.5666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_R180.B_Run01_1_R180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_R180.B_Run01_1_R180",
+  "class": "AnimSequence",
+  "length": 0.5666666626930237,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 18,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.5666666626930237,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.5666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2.B_Run01_2": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2.B_Run01_2",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l.B_Run01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l.B_Run01_2l",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2r.B_Run01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2r.B_Run01_2r",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 0,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_Up.B_Run01_Up": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_Up.B_Run01_Up",
+  "class": "AnimSequence",
+  "length": 0.6666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 21,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.6666666865348816,
+    "track": 1,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.2994736135005951,
+    "track": 2,
+    "name": "EndWeaponAttachment",
+    "class": "AnimNotify_EndWeaponAttachment",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SocketName": "Attach_Weapon01"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.6666666865348816,
+    "track": 3,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.07097450643777847,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayWeaponSound",
+    "class": "EndAnimNotifyPlayWeaponSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+     "SoundName": "B_Idle01_0_all"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0.B_Walk01_0_L0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+  "class": "AnimSequence",
+  "length": 0.46666666865348816,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 15,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180.B_Walk01_0_L180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+  "class": "AnimSequence",
+  "length": 1.1333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 35,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90.B_Walk01_0_L90": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.0666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180.B_Walk01_0_R180": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+  "class": "AnimSequence",
+  "length": 1.1333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 35,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.133333444595337,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90.B_Walk01_0_R90": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.0666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1.B_Walk01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1.B_Walk01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l.B_Walk01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l.B_Walk01_2l",
+  "class": "AnimSequence",
+  "length": 0.8666666746139526,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 27,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r.B_Walk01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r.B_Walk01_2r",
+  "class": "AnimSequence",
+  "length": 0.5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 16,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0.B_WalkB01_0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0.B_WalkB01_0",
+  "class": "AnimSequence",
+  "length": 0.36666667461395264,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 12,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.36666667461395264,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1.B_WalkB01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1.B_WalkB01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.0666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l.B_WalkB01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+  "class": "AnimSequence",
+  "length": 0.7666666507720947,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 24,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r.B_WalkB01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBL01_1.B_WalkBL01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBR01_1.B_WalkBR01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.0666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_0.B_WalkF01_0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_0.B_WalkF01_0",
+  "class": "AnimSequence",
+  "length": 0.800000011920929,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 25,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.8000000715255737,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_1.B_WalkF01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_1.B_WalkF01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2l.B_WalkF01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2l.B_WalkF01_2l",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2r.B_WalkF01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2r.B_WalkF01_2r",
+  "class": "AnimSequence",
+  "length": 0.5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 16,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFL01_1.B_WalkFL01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1.0666667222976685,
+    "track": 1,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFR01_1.B_WalkFR01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0.B_WalkL01_0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0.B_WalkL01_0",
+  "class": "AnimSequence",
+  "length": 0.4000000059604645,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 13,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0l.B_WalkL01_0l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0l.B_WalkL01_0l",
+  "class": "AnimSequence",
+  "length": 0.4000000059604645,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 13,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1.B_WalkL01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1.B_WalkL01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l.B_WalkL01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+  "class": "AnimSequence",
+  "length": 0.8666666746139526,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 27,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r.B_WalkL01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0.B_WalkR01_0": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0.B_WalkR01_0",
+  "class": "AnimSequence",
+  "length": 0.5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 16,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1.B_WalkR01_1": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1.B_WalkR01_1",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l.B_WalkR01_2l": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+  "class": "AnimSequence",
+  "length": 1.0666667222976685,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 33,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r.B_WalkR01_2r": {
+  "path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+  "class": "AnimSequence",
+  "length": 0.5666666626930237,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+  "frames": 18,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap.p000_m001_h_brn_a_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap.p000_m001_h_brn_a_remap",
+  "class": "AnimSequence",
+  "length": 0.6333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 20,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap.p000_m001_h_lrn_a_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap.p000_m001_h_lrn_a_remap",
+  "class": "AnimSequence",
+  "length": 0.6333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 20,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap.p000_m001_h_rn_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap.p000_m001_h_rn_remap",
+  "class": "AnimSequence",
+  "length": 0.6333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 20,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rrn_a_remap.p000_m001_h_rrn_a_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rrn_a_remap.p000_m001_h_rrn_a_remap",
+  "class": "AnimSequence",
+  "length": 0.6333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 20,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap.p000_m001_h_st_a_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap.p000_m001_h_st_a_remap",
+  "class": "AnimSequence",
+  "length": 1.9666666984558105,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 60,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap.p000_m001_h_st_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap.p000_m001_h_st_remap",
+  "class": "AnimSequence",
+  "length": 5.300000190734863,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 160,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_a_remap.p000_m001_h_wk_a_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_a_remap.p000_m001_h_wk_a_remap",
+  "class": "AnimSequence",
+  "length": 0.9666666388511658,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 30,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap.p000_m001_h_wk_remap": {
+  "path": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap.p000_m001_h_wk_remap",
+  "class": "AnimSequence",
+  "length": 1.2999999523162842,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 40,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ }
+}

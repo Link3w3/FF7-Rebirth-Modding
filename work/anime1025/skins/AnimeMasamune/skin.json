@@ -1,0 +1,57 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Anime Masamune",
+ "author": "",
+ "description": "Anime Sephiroth's Masamune: the game's playable (cut-scale) Masamune on its toon material (WE1021_00_Body_Toon, a game material in RebirthGameMaterials_P). Its packages only: the weapon of the Anime Sephiroth skin.",
+ "characters": [],
+ "model": "",
+ "skeleton": "",
+ "family": "",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "",
+ "weapon": "",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "part": true,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale/Anime/WE1021_10",
+   "file": "Content/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale/Anime/WE1021_10.uasset",
+   "size": 52337,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 624746,
+   "imports": [
+    "16dfcd83d556532c",
+    "4116e28d134c9474",
+    "1d2bc9bde8a7f952",
+    "60a7917d7d36887a"
+   ],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale/Anime/WE1021_10.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/BluePrint/Character/Weapon/Anime/WE1021_10_SephirothIllusion_MasamuneCutScale",
+   "file": "Content/BluePrint/Character/Weapon/Anime/WE1021_10_SephirothIllusion_MasamuneCutScale.uasset",
+   "size": 2312,
+   "export_count": 6,
+   "export_bundle_count": 1,
+   "load_order": 624747,
+   "imports": [
+    "43ea269859b874d2",
+    "6e7447ff692c32af"
+   ],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-25T23:58:51Z",
+ "built_with": "make_anime_masamune.py (the game's packages copied to new paths)"
+}

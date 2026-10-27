@@ -1,0 +1,252 @@
+{
+ "carriers": {
+  "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7486621,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26
+   ],
+   "size": 5590207,
+   "shaders": 296
+  }
+ },
+ "mis": {
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_BodyA": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail.Anime_Standard_Wide_Detail",
+   "textures": {
+    "Metallic": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Metallic: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness: texture -> /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   ],
+   "size": 4891
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Head": {
+   "source": "PC0010_00_Head",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail.Anime_Standard_Wide_Detail",
+   "textures": {
+    "Metallic": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Metallic: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness: texture -> /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   ],
+   "size": 5060
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Skin": {
+   "source": "PC0010_00_Skin",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail.Anime_Standard_Wide_Detail",
+   "textures": {
+    "Metallic": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Metallic: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness: texture -> /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   ],
+   "size": 5076
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Eyelash": {
+   "source": "PC0010_00_Eyelash",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail.Anime_Standard_Wide_Detail",
+   "textures": {
+    "Metallic": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Metallic: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Roughness: texture -> /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   ],
+   "size": 4465
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_BodyB": {
+   "source": "PC0010_00_BodyB",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail.Anime_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Roughness": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Occlusion": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Occlusion: /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   ],
+   "size": 4900
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Eyebrow": {
+   "source": "PC0010_00_Eyebrow",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail.Anime_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Roughness": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Occlusion": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Occlusion: /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   ],
+   "size": 4892
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Hair": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail.Anime_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Roughness": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Occlusion": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Occlusion: /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   ],
+   "size": 5069
+  },
+  "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_HairCore": {
+   "source": "PC0010_00_HairCore",
+   "parent": "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail.Anime_Fabric_Coverage_Wide_Detail",
+   "textures": {
+    "Roughness": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "Occlusion": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Occlusion: /Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB (new override)",
+    "Roughness: texture -> /Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   ],
+   "size": 5122
+  }
+ },
+ "plans": {
+  "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail": {
+   "Texture2D_0": {
+    "slot": 2,
+    "parameter": "Normal",
+    "texture": "(the part's own Normal)"
+   },
+   "Texture2D_1": {
+    "slot": 0,
+    "parameter": "Color",
+    "texture": "(the part's own Color)"
+   },
+   "Texture2D_2": {
+    "slot": 1,
+    "parameter": "Metallic",
+    "texture": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   },
+   "Texture2D_4": {
+    "slot": 3,
+    "parameter": "Roughness",
+    "texture": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "Texture2D_8": {
+    "slot": 3,
+    "parameter": "Roughness",
+    "texture": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   }
+  },
+  "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail": {
+   "Texture2D_0": {
+    "slot": 2,
+    "parameter": "Normal",
+    "texture": "(the part's own Normal)"
+   },
+   "Texture2D_1": {
+    "slot": 0,
+    "parameter": "Color",
+    "texture": "(the part's own Color)"
+   },
+   "Texture2D_2": {
+    "slot": 3,
+    "parameter": "Roughness",
+    "texture": "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+   },
+   "Texture2D_4": {
+    "slot": 4,
+    "parameter": "Occlusion",
+    "texture": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   },
+   "Texture2D_8": {
+    "slot": 4,
+    "parameter": "Occlusion",
+    "texture": "/Game/Renderer/Texture/000000FF_sRGB.000000FF_sRGB"
+   }
+  }
+ },
+ "shaders": {
+  "/Game/RebirthCustom/Anime/Anime_Standard_Wide_Detail": {
+   "318": {
+    "types": [
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy"
+    ],
+    "size": 24164,
+    "sha1": "a103bd9943c2413717f3a7a1261b189f02ff9c90"
+   },
+   "353": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "size": 23920,
+    "sha1": "0515cd08f508dfdccad927754735f8d647870ca8"
+   }
+  },
+  "/Game/RebirthCustom/Anime/Anime_Fabric_Coverage_Wide_Detail": {
+   "26": {
+    "types": [
+     "TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+     "TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+     "fa99734846c7227e"
+    ],
+    "size": 24594,
+    "sha1": "a7d2f98bb1772806169a959db3829c75c4973b32"
+   }
+  }
+ },
+ "textures": [
+  "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture"
+ ],
+ "wear": {
+  "PC0010_00_BodyA": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_BodyA",
+  "PC0010_00_Head": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Head",
+  "PC0010_00_Skin": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Skin",
+  "PC0010_00_Eyelash": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Eyelash",
+  "PC0010_00_BodyB": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_BodyB",
+  "PC0010_00_Eyebrow": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Eyebrow",
+  "PC0010_00_Hair": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_Hair",
+  "PC0010_00_HairCore": "/Game/RebirthCustom/Anime/MI_Anime_PC0010_00_HairCore"
+ },
+ "texture_info": {
+  "/Game/Shader/KadeMats/Textures/BaseMapTexture.BaseMapTexture": {
+   "format": "PF_DXT1",
+   "size": [
+    128,
+    128
+   ],
+   "mips": 8
+  }
+ }
+}

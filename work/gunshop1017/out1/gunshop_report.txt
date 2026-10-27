@@ -1,0 +1,18 @@
+key_dirge_cerberus_power (Cerberus Power Core, id 3860): 1500 gil, up to 5; A reinforced firing core for Cerberus. Each one you own raises its damage by 20%. Up to 5.
+key_dirge_cerberus_trigger (Cerberus Hair Trigger, id 3861): 1200 gil, up to 5; A lighter trigger for Cerberus. Each one you own shortens the time between shots by 8%. Up to 5.
+key_dirge_cerberus_magazine (Cerberus Extended Magazine, id 3862): 1000 gil, up to 5; A larger magazine for Cerberus. Each one you own adds 1 round and speeds up reloading by 8%. Up to 5.
+key_dirge_cerberus_barrel (Cerberus Long Barrel, id 3863): 800 gil, up to 5; A longer barrel for Cerberus. Each one you own extends its range by 20%. Up to 5.
+key_dirge_hydra_power (Hydra Power Core, id 3864): 1500 gil, up to 5; A reinforced firing core for Hydra. Each one you own raises its damage by 20%. Up to 5.
+key_dirge_hydra_trigger (Hydra Hair Trigger, id 3865): 1200 gil, up to 5; A lighter trigger for Hydra. Each one you own shortens the time between shots by 8%. Up to 5.
+key_dirge_hydra_magazine (Hydra Extended Magazine, id 3866): 1000 gil, up to 5; A larger magazine for Hydra. Each one you own adds 6 rounds and speeds up reloading by 8%. Up to 5.
+key_dirge_hydra_barrel (Hydra Long Barrel, id 3867): 800 gil, up to 5; A longer barrel for Hydra. Each one you own extends its range by 20%. Up to 5.
+key_dirge_griffon_power (Griffon Power Core, id 3868): 2000 gil, up to 5; A reinforced firing core for Griffon. Each one you own raises its damage by 20%. Up to 5.
+key_dirge_griffon_trigger (Griffon Hair Trigger, id 3869): 1200 gil, up to 5; A lighter trigger for Griffon. Each one you own shortens the time between shots by 8%. Up to 5.
+key_dirge_griffon_magazine (Griffon Extended Magazine, id 3870): 1000 gil, up to 5; A larger magazine for Griffon. Each one you own adds 1 round and speeds up reloading by 8%. Up to 5.
+key_dirge_griffon_barrel (Griffon Long Barrel, id 3871): 800 gil, up to 5; A longer barrel for Griffon. Each one you own extends its range by 20%. Up to 5.
+shops: KALMT_WEAPON_000, JNONV_WEAPON_000, JNONT_WEAPON_000, COSTT_WEAPON_000, CORLV_WEAPON_000, UNDRS_WEAPON_000, GONGV_WEAPON_000, COSMA_WEAPON_000 get 12 entries each (unlimited stock, sold out at 5)
+PC0011_Dirge_Cerberus: 36 rows; level 0: power 12, 12000 cm/s for 0.250 s (30 m); level 5: power 24, 18000 cm/s for 0.333 s (60 m)
+PC0011_Dirge_Hydra: 36 rows; level 0: power 5, 12000 cm/s for 0.167 s (20 m); level 5: power 10, 18000 cm/s for 0.222 s (40 m)
+PC0011_Dirge_Griffon: 36 rows; level 0: power 45, 16000 cm/s for 0.281 s (45 m); level 5: power 90, 24000 cm/s for 0.375 s (90 m)
+container zzVincentGunShop_P: DataObject/Resident/Item.uasset 662332 bytes, DataObject/Resident/ShopItem.uasset 177732 bytes, DataObject/Resident/ShopList.uasset 79556 bytes, Text/US/Resident_TxtRes.uasset 2353404 bytes; {'utoc': (1348, '3c30ffa6e1989149d782fa6ed41a3f6c'), 'ucas': (3273264, 'f19acf59164f698db1f46b537dbab1b6'), 'pak': (339, '978275e5395574cf363603d330e50a28')}
+container FullyPlayableVincentAssets_P: 78 packages (77 of the installed one as they were, the damage table with 8148 rows, 8380912 bytes); {'utoc': (11008, 'b0b4a3bf3a1abe28cf4f8200dfd480ac'), 'ucas': (12859344, '1eb432fc4567f3ca6e538e7c7dcd17df'), 'pak': (339, '978275e5395574cf363603d330e50a28')}

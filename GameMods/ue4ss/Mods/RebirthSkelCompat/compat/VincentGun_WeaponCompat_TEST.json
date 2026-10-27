@@ -1,0 +1,17 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "test: Vincent's gun (hub) plays the Buster Sword's cutscene animations",
+ "pairs": [
+  {
+   "receiving_skeleton": "/Game/Character/Weapon/WE0011_00_Vincent_Quiksilver/Model/WE0011_00_Skeleton.WE0011_00_Skeleton",
+   "animation_skeletons": [
+    "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton"
+   ],
+   "method": "family",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

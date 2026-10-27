@@ -1,0 +1,900 @@
+{
+ "EB0021_00_BodyA": {
+  "name": "EB0021_00_BodyA",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Detail.EndMaterialInstance_Standard_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_C.EB0021_00_BodyA_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_M.EB0021_00_BodyA_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_N.EB0021_00_BodyA_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_B.EB0021_00_BodyA_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_O.EB0021_00_BodyA_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Leather_N.Common_Detail_Leather_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_BodyB": {
+  "name": "EB0021_00_BodyB",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Coverage.EndMaterialInstance_Standard_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_C.EB0021_00_BodyB_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_A.EB0021_00_BodyB_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_M.EB0021_00_BodyB_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_N.EB0021_00_BodyB_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_O.EB0021_00_BodyB_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Eye": {
+  "name": "EB0021_00_Eye",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Eye.EndMaterialInstance_Eye",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Eye_C.EB0021_00_Eye_C"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NO.Common_Eye_Player_NO"
+   ],
+   [
+    "0:4:Normal(Inner)",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NI.Common_Eye_Player_NI"
+   ],
+   [
+    "0:5:Normal(Gaze)",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NG.Common_Eye_Player_NG"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Eye_O.EB0021_00_Eye_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Eyebrow": {
+  "name": "EB0021_00_Eyebrow",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Coverage.EndMaterialInstance_Standard_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_A.EB0021_00_Hair_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Eyelash": {
+  "name": "EB0021_00_Eyelash",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard.EndMaterialInstance_Standard",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_C.EB0021_00_Head_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_M.EB0021_00_Head_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_N.EB0021_00_Head_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_O.EB0021_00_Head_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Hair": {
+  "name": "EB0021_00_Hair",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Hair_Coverage.EndMaterialInstance_Hair_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_A.EB0021_00_Hair_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ],
+   [
+    "1:1:BentNormal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_NB.EB0021_00_Hair_NB"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_HairCore": {
+  "name": "EB0021_00_HairCore",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Hair.EndMaterialInstance_Hair",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ],
+   [
+    "1:1:BentNormal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_NB.EB0021_00_Hair_NB"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Head": {
+  "name": "EB0021_00_Head",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_C.EB0021_00_Head_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_M.EB0021_00_Head_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_N.EB0021_00_Head_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_B.EB0021_00_Head_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_O.EB0021_00_Head_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Skin_N.Common_Detail_Skin_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Mouth": {
+  "name": "EB0021_00_Mouth",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_C.Common_Mouth_Player_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_M.Common_Mouth_Player_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_N.Common_Mouth_Player_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_O.Common_Mouth_Player_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_00_Skin": {
+  "name": "EB0021_00_Skin",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_C.EB0021_00_BodyA_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_M.EB0021_00_BodyA_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_N.EB0021_00_BodyA_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_B.EB0021_00_BodyA_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_O.EB0021_00_BodyA_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Skin_N.Common_Detail_Skin_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_BodyA": {
+  "name": "EB0021_01_BodyA",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Detail.EndMaterialInstance_Standard_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_C.EB0021_00_BodyA_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_M.EB0021_00_BodyA_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_N.EB0021_00_BodyA_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_B.EB0021_00_BodyA_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_O.EB0021_00_BodyA_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Leather_N.Common_Detail_Leather_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_BodyB": {
+  "name": "EB0021_01_BodyB",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Coverage.EndMaterialInstance_Standard_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_C.EB0021_00_BodyB_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_A.EB0021_00_BodyB_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_M.EB0021_00_BodyB_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_N.EB0021_00_BodyB_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyB_O.EB0021_00_BodyB_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Eye": {
+  "name": "EB0021_01_Eye",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Eye.EndMaterialInstance_Eye",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Eye_C.EB0021_00_Eye_C"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NO.Common_Eye_Player_NO"
+   ],
+   [
+    "0:4:Normal(Inner)",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NI.Common_Eye_Player_NI"
+   ],
+   [
+    "0:5:Normal(Gaze)",
+    "/Game/GameContents/Character/Common/Eye/Texture/Common_Eye_Player_NG.Common_Eye_Player_NG"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Eye_O.EB0021_00_Eye_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Eyebrow": {
+  "name": "EB0021_01_Eyebrow",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Coverage.EndMaterialInstance_Standard_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_A.EB0021_00_Hair_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Eyelash": {
+  "name": "EB0021_01_Eyelash",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard.EndMaterialInstance_Standard",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_C.EB0021_00_Head_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_M.EB0021_00_Head_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_N.EB0021_00_Head_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_O.EB0021_00_Head_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Hair": {
+  "name": "EB0021_01_Hair",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Hair_Coverage.EndMaterialInstance_Hair_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_A.EB0021_00_Hair_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ],
+   [
+    "1:1:BentNormal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_NB.EB0021_00_Hair_NB"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_HairCore": {
+  "name": "EB0021_01_HairCore",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Hair.EndMaterialInstance_Hair",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_C.EB0021_00_Hair_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_M.EB0021_00_Hair_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_N.EB0021_00_Hair_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_O.EB0021_00_Hair_O"
+   ],
+   [
+    "1:1:BentNormal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Hair_NB.EB0021_00_Hair_NB"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Head": {
+  "name": "EB0021_01_Head",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_C.EB0021_00_Head_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_M.EB0021_00_Head_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_N.EB0021_00_Head_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_B.EB0021_00_Head_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_Head_O.EB0021_00_Head_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Skin_N.Common_Detail_Skin_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Mouth": {
+  "name": "EB0021_01_Mouth",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_C.Common_Mouth_Player_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_M.Common_Mouth_Player_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_N.Common_Mouth_Player_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Common/Mouth/Texture/Common_Mouth_Player_O.Common_Mouth_Player_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Skin": {
+  "name": "EB0021_01_Skin",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Skin_Detail.EndMaterialInstance_Skin_Detail",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_C.EB0021_00_BodyA_C"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_M.EB0021_00_BodyA_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_N.EB0021_00_BodyA_N"
+   ],
+   [
+    "0:5:DetailOpacity",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_B.EB0021_00_BodyA_B"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Texture/EB0021_00_BodyA_O.EB0021_00_BodyA_O"
+   ],
+   [
+    "2:0:DetailNormal:0",
+    "/Game/GameContents/Character/Common/Detail/Texture/Common_Detail_Skin_N.Common_Detail_Skin_N"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ },
+ "EB0021_01_Wing": {
+  "name": "EB0021_01_Wing",
+  "parent": "/Game/GameContents/Renderer/MaterialInstance/EndMaterialInstance_Standard_Coverage.EndMaterialInstance_Standard_Coverage",
+  "scalars": [
+   [
+    "RefractionDepthBias",
+    0
+   ]
+  ],
+  "vectors": [],
+  "textures": [
+   [
+    "0:0:Color",
+    "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Texture/EB0021_01_Wing_C.EB0021_01_Wing_C"
+   ],
+   [
+    "0:1:Coverage",
+    "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Texture/EB0021_01_Wing_A.EB0021_01_Wing_A"
+   ],
+   [
+    "0:2:Metallic/Roughness/Variant",
+    "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Texture/EB0021_01_Wing_M.EB0021_01_Wing_M"
+   ],
+   [
+    "0:3:Normal",
+    "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Texture/EB0021_01_Wing_N.EB0021_01_Wing_N"
+   ],
+   [
+    "1:0:Occlusion",
+    "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Texture/EB0021_01_Wing_O.EB0021_01_Wing_O"
+   ]
+  ],
+  "overrides": {},
+  "static_resource": false,
+  "props": [
+   "Parent",
+   "ScalarParameterValues",
+   "TextureParameterValues",
+   "TextureStreamingData"
+  ],
+  "native_left": 0
+ }
+}

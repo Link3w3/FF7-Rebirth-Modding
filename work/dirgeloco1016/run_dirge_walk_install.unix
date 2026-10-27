@@ -1,0 +1,139 @@
+@echo off
+title Vincent's Dirge of Cerberus walk and run - installing, please leave this window open
+rem Installs (close the game first; takes a few seconds):
+rem   1. FullyPlayableVincentAssets_P into Paks\~mods\FullyPlayableVincentPaks: the one installed now (the prologue's Cloud
+rem      is Vincent) with the 43 walk, run and strafe moves built in the editor (his Dirge of Cerberus motions moving him
+rem      with the root motion of the game's walks and runs) and his four strafing blend spaces playing the built strafes,
+rem   2. Vincent_Moves.json (the editor's export: the moves above added to it, nothing else changed) and VincentDirge.json
+rem      (its description only) into the compat folder.
+rem Everything it replaces is copied to Tools\_backup\dirgewalk1017 first; every file is checked (md5); if anything does
+rem not check out, all of it is put back as it was.
+rem Status: build\install_dirgewalk_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\install_dirgewalk_status.txt"
+set "STAGE=C:\FF7R2UProj\Tools\_stage\dirgewalk1017"
+set "GAME=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH"
+set "VPAKS=%GAME%\End\Content\Paks\~mods\FullyPlayableVincentPaks"
+set "COMPAT=%GAME%\End\Binaries\Win64\ue4ss\Mods\RebirthSkelCompat\compat"
+set "BACKUP=C:\FF7R2UProj\Tools\_backup\dirgewalk1017"
+echo Vincent Dirge of Cerberus walk and run install started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%COMPAT%\Vincent_Moves.json" goto :nocompat
+if not exist "%VPAKS%\FullyPlayableVincentAssets_P.utoc" goto :novincent
+
+echo checking the files to install...>> "%STATUS%"
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || goto :badstage
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.ucas" d658e5f10fe536965cbf15fa568061c6 || goto :badstage
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.utoc" af4e5db703ced17174c3d6cb5121620b || goto :badstage
+call :md5 "%STAGE%\compat\Vincent_Moves.json" 6f8a502f12218bd3b6d62734d9f5ca03 || goto :badstage
+call :md5 "%STAGE%\compat\VincentDirge.json" c61d6f3529c45ad9ac53a0aa9524bbd7 || goto :badstage
+echo    all 5 as made>> "%STATUS%"
+
+rem ---- what is installed now must be the prologue install's (this is made from it), or this (run again)
+call :is "%VPAKS%\FullyPlayableVincentAssets_P.utoc" af4e5db703ced17174c3d6cb5121620b && goto :again
+echo checking what is installed now...>> "%STATUS%"
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || goto :notbase
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.ucas" bf6acd8b1f52713e6674187465d64b5b || goto :notbase
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.utoc" c73040ee65a4e5e4e8b1ac9bfd7ce1ec || goto :notbase
+call :md5 "%COMPAT%\Vincent_Moves.json" 58790cb53dfd62419c783b7a337c6c58 || goto :notbase
+call :md5 "%COMPAT%\VincentDirge.json" bac80681a0e1171fb919573102482ec1 || goto :notbase
+echo    the prologue install's, as this was made from>> "%STATUS%"
+echo copying what this replaces to Tools\_backup\dirgewalk1017...>> "%STATUS%"
+if not exist "%BACKUP%\paks" mkdir "%BACKUP%\paks"
+if not exist "%BACKUP%\compat" mkdir "%BACKUP%\compat"
+for %%F in (pak ucas utoc) do if not exist "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" copy /y "%VPAKS%\FullyPlayableVincentAssets_P.%%F" "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" >nul
+for %%J in (VincentDirge.json Vincent_Moves.json) do if not exist "%BACKUP%\compat\%%J" copy /y "%COMPAT%\%%J" "%BACKUP%\compat\%%J" >nul
+call :backedup || goto :nobackup
+echo    done>> "%STATUS%"
+goto :install
+
+:again
+echo    this is installed already: installing it again over itself ^(Tools\_backup\dirgewalk1017 has the prologue install's^)>> "%STATUS%"
+call :backedup || goto :nobackup
+
+:install
+rem ---- 1. the container
+echo 1/2 FullyPlayableVincentAssets_P ^(his walk and run^) into Paks\~mods\FullyPlayableVincentPaks...>> "%STATUS%"
+for %%F in (pak ucas utoc) do copy /y "%STAGE%\paks\FullyPlayableVincentAssets_P.%%F" "%VPAKS%\FullyPlayableVincentAssets_P.%%F" >nul
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || goto :failed
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.ucas" d658e5f10fe536965cbf15fa568061c6 || goto :failed
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.utoc" af4e5db703ced17174c3d6cb5121620b || goto :failed
+echo    installed and checked>> "%STATUS%"
+
+rem ---- 2. the settings
+echo 2/2 Vincent_Moves.json and VincentDirge.json into the compat folder...>> "%STATUS%"
+copy /y "%STAGE%\compat\Vincent_Moves.json" "%COMPAT%\Vincent_Moves.json" >nul
+copy /y "%STAGE%\compat\VincentDirge.json" "%COMPAT%\VincentDirge.json" >nul
+call :md5 "%COMPAT%\Vincent_Moves.json" 6f8a502f12218bd3b6d62734d9f5ca03 || goto :failed
+call :md5 "%COMPAT%\VincentDirge.json" c61d6f3529c45ad9ac53a0aa9524bbd7 || goto :failed
+echo    installed and checked>> "%STATUS%"
+echo ALL DONE: start the game. In battle he walks, runs, starts, stops, turns and strafes as in Dirge of Cerberus, and moves. If anything is off send Sandalphon ue4ss\Mods\RebirthSkelCompat\RebirthSkelCompat.log>> "%STATUS%"
+goto :done
+
+:nocompat
+echo STOPPED: the Create a Character System's compat folder ^(with Vincent_Moves.json^) is not there; nothing was changed>> "%STATUS%"
+goto :done
+
+:novincent
+echo STOPPED: Paks\~mods\FullyPlayableVincentPaks\FullyPlayableVincentAssets_P is not there; nothing was changed>> "%STATUS%"
+goto :done
+
+:badstage
+echo STOPPED: a staged file in Tools\_stage\dirgewalk1017 is not the one made for this ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:notbase
+echo STOPPED: what is installed is not the prologue install's ^(see above; this was made from it^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:nobackup
+echo STOPPED: Tools\_backup\dirgewalk1017 does not have the prologue install's files ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:failed
+echo FAILED: putting everything back as it was from Tools\_backup\dirgewalk1017...>> "%STATUS%"
+for %%F in (pak ucas utoc) do copy /y "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" "%VPAKS%\FullyPlayableVincentAssets_P.%%F" >nul
+for %%J in (VincentDirge.json Vincent_Moves.json) do copy /y "%BACKUP%\compat\%%J" "%COMPAT%\%%J" >nul
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.ucas" bf6acd8b1f52713e6674187465d64b5b || goto :stuck
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.utoc" c73040ee65a4e5e4e8b1ac9bfd7ce1ec || goto :stuck
+call :md5 "%COMPAT%\Vincent_Moves.json" 58790cb53dfd62419c783b7a337c6c58 || goto :stuck
+call :md5 "%COMPAT%\VincentDirge.json" bac80681a0e1171fb919573102482ec1 || goto :stuck
+echo    put back and checked: the game is as it was before this; tell Sandalphon>> "%STATUS%"
+goto :done
+
+:stuck
+echo    NOT all of it could be put back ^(see above^): do not start the game; tell Sandalphon>> "%STATUS%"
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:backedup
+call :md5 "%BACKUP%\paks\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || exit /b 1
+call :md5 "%BACKUP%\paks\FullyPlayableVincentAssets_P.ucas" bf6acd8b1f52713e6674187465d64b5b || exit /b 1
+call :md5 "%BACKUP%\paks\FullyPlayableVincentAssets_P.utoc" c73040ee65a4e5e4e8b1ac9bfd7ce1ec || exit /b 1
+call :md5 "%BACKUP%\compat\Vincent_Moves.json" 58790cb53dfd62419c783b7a337c6c58 || exit /b 1
+call :md5 "%BACKUP%\compat\VincentDirge.json" bac80681a0e1171fb919573102482ec1 || exit /b 1
+exit /b 0
+
+:is
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+exit /b 1
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1

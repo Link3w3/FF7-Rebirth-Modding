@@ -1,0 +1,100 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "characters": [
+  "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_YOUNGSEPHIROTH",
+  "PC0000_00_Cloud_Standard_SEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_SEPHIROTH"
+ ],
+ "worn": false,
+ "enabled": true,
+ "name": "Remake Sephiroth (Winged)",
+ "description": "FINAL FANTASY VII REMAKE's winged Sephiroth (EB0021_01: his body and his black wing, worn together), on his Remake skeleton in Sephiroth's skeleton family, speaking with adult Sephiroth's voice, with the Masamune.",
+ "model": "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Body.EB0021_01_Body",
+ "meshes": [
+  {
+   "mesh": "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Wing.EB0021_01_Wing"
+  }
+ ],
+ "skeleton": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton.EB0021_00_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "voice": "own",
+ "weapon": "/Game/BluePrint/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C",
+ "packages": [
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Body",
+   "file": "Content/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Body.uasset",
+   "size": 12791320,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 14,
+   "imports": [
+    "e556949435d46fb8",
+    "eea4bbf556113638",
+    "6ff0ed52fc9bdab4",
+    "3f5cb8a9a77ada20",
+    "f7cc0e63f241c18c",
+    "b6ec69f28125254f",
+    "d5f00a91421cf247",
+    "ba4a6e50106158e6",
+    "5822323461a0e7bd",
+    "c59d133f4f5911fd",
+    "a7a345682119b381",
+    "6048d3de0c77b3a4",
+    "7e67246c450f680c",
+    "651bc01d6e15392f",
+    "6f3d4e5ab749a6eb",
+    "9de57532fdf8807d"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Wing",
+   "file": "Content/GameContents/Character/Enemy/EB0021_01_Sephiroth_Transform/Model/EB0021_01_Wing.uasset",
+   "size": 3080103,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 9,
+   "imports": [
+    "b6ec69f28125254f",
+    "c9bfa0ab9a4bf3c4"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton.uasset",
+   "size": 79040,
+   "export_count": 53,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_BNM",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_BNM.uasset",
+   "size": 136500,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-22T19:19:55Z"
+}

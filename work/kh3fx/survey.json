@@ -1,0 +1,2030 @@
+{
+ "by_class": {
+  "ParticleSystem": 16,
+  "SQEX_EffectSeAttachDataAsset": 10,
+  "Material": 42,
+  "MaterialInstanceConstant": 87,
+  "StaticMesh": 49,
+  "MaterialFunction": 28,
+  "Texture2D": 94
+ },
+ "missing": [],
+ "expression_classes": {
+  "MaterialExpressionDynamicParameter": 24,
+  "MaterialExpressionMaterialFunctionCall": 266,
+  "MaterialExpressionTextureSample": 54,
+  "MaterialExpressionTextureSampleParameter2D": 80,
+  "MaterialExpressionVectorParameter": 35,
+  "MaterialExpressionScalarParameter": 146,
+  "MaterialExpressionTextureObject": 10,
+  "MaterialExpressionTextureObjectParameter": 1
+ },
+ "items": {
+  "/Game/Effects/wep/w_so010/par/VW_SO010_APP0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/VW_SO010_APP0",
+   "size": 239724,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_app0.vw_so010_app0": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/VW_SO010_LOC0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/VW_SO010_LOC0",
+   "size": 6246,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/VW_SO010_WHT0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/VW_SO010_WHT0",
+   "size": 38899,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/vw_ex027_mon_sgn03": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_ex027_mon_sgn03",
+   "size": 326405,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so060/vw_ex027_mon_sgn03.vw_ex027_mon_sgn03": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_ex027_thu_sgn00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_ex027_thu_sgn00",
+   "size": 435748,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/ve_ex027_thu_sgn00.ve_ex027_thu_sgn00": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_hit0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_hit0",
+   "size": 47242,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_rgn_bst00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_rgn_bst00",
+   "size": 69285,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_rgn_fls00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_rgn_fls00",
+   "size": 88964,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_rgn_fls00.vw_so010_rgn_fls00": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_rgn_hit00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_rgn_hit00",
+   "size": 128674,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_rgn_hit00.vw_so010_rgn_hit00": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_rgn_tam00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_rgn_tam00",
+   "size": 240430,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_rgn_tam00.vw_so010_rgn_tam00": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_rgn_wht00": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_rgn_wht00",
+   "size": 78371,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_rgn_wht00.vw_so010_rgn_wht00": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_so010_str0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_so010_str0",
+   "size": 42253,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/vw_sor_mon_blt7": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_sor_mon_blt7",
+   "size": 217109,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/par/vw_sor_rbs_blt4": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_sor_rbs_blt4",
+   "size": 110658,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vp_sor_rbs_blt4.vp_sor_rbs_blt4": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_sor_rbs_hit0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_sor_rbs_hit0",
+   "size": 150237,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vp_sor_rbs_hit0.vp_sor_rbs_hit0": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/par/vw_sor_rbs_wht0": {
+   "cls": "ParticleSystem",
+   "file": "wep/w_so010/par/vw_sor_rbs_wht0",
+   "size": 74589,
+   "ubulk": false
+  },
+  "/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vp_sor_rbs_wht0.vp_sor_rbs_wht0": {
+   "cls": "SQEX_EffectSeAttachDataAsset",
+   "other": true
+  },
+  "/Game/Effects/wep/w_so010/mat/Smt_frn_01a.smt_frn_01a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/Smt_frn_01a",
+   "size": 358603,
+   "ubulk": false,
+   "expressions": 3
+  },
+  "/Game/Effects/texcom/mat_mdl/jmi_sho_00a.jmi_sho_00a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_mdl/jmi_sho_00a",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_05k.jmi_glt_05k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_05k",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glw_01sk.jmi_glw_01sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glw_01sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/nmi_ora_01sla.nmi_ora_01sla": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/nmi_ora_01sla",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/zmi_rng_00sa.zmi_rng_00sa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/zmi_rng_00sa",
+   "size": 660,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/tmi_fls_05a.tmi_fls_05a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/tmi_fls_05a",
+   "size": 816,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/zmi_crs_03csk.zmi_crs_03csk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/zmi_crs_03csk",
+   "size": 2392,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/zmi_glw_00sk.zmi_glw_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/zmi_glw_00sk",
+   "size": 1455,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/zmi_glw_01sk.zmi_glw_01sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/zmi_glw_01sk",
+   "size": 2122,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_cir_32x1_00.jmd_cir_32x1_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_cir_32x1_00",
+   "size": 3382,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mmd_brd_2x6_02.mmd_brd_2x6_02": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mmd_brd_2x6_02",
+   "size": 3342,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/zmd_grd_01.zmd_grd_01": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/zmd_grd_01",
+   "size": 2036,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/Smd_so010_00.smd_so010_00": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/Smd_so010_00",
+   "size": 99253,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/Smd_so020_rsn0.smd_so020_rsn0": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/Smd_so020_rsn0",
+   "size": 5577,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_com/mat/jmt_loc_00sa.jmt_loc_00sa": {
+   "cls": "Material",
+   "file": "wep/w_com/mat/jmt_loc_00sa",
+   "size": 118012,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/texcom/mat_mdl/jmi_wht_k.jmi_wht_k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_mdl/jmi_wht_k",
+   "size": 393,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/omi_fls_02k.omi_fls_02k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/omi_fls_02k",
+   "size": 816,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_dst_8_00.jmd_dst_8_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_dst_8_00",
+   "size": 2618,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_fls_01x.jmd_fls_01x": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_fls_01x",
+   "size": 2465,
+   "ubulk": false
+  },
+  "/Game/Effects/PC_aqua/mat/smi_apu_sho_01sk.smi_apu_sho_01sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "PC_aqua/mat/smi_apu_sho_01sk",
+   "size": 1125,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_mdl/jmi_mzl_00a.jmi_mzl_00a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_mdl/jmi_mzl_00a",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_fls_00sk.jmi_fls_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_fls_00sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_fls_04sk.jmi_fls_04sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_fls_04sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_mix_00k.jmi_glt_mix_00k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_mix_00k",
+   "size": 393,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_mix_00sk.jmi_glt_mix_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_mix_00sk",
+   "size": 393,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glw_01k_cfg15.jmi_glw_01k_cfg15": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glw_01k_cfg15",
+   "size": 622,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/smi_hit_w_02sk.smi_hit_w_02sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/smi_hit_w_02sk",
+   "size": 842,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/tmi_fls_03k.tmi_fls_03k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/tmi_fls_03k",
+   "size": 816,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_bbl_00a.fmi_bbl_00a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_bbl_00a",
+   "size": 1540,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_dis_4.fmi_dis_4": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_dis_4",
+   "size": 2427,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_hole_02a1.fmi_hole_02a1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_hole_02a1",
+   "size": 2045,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_hole_04k.fmi_hole_04k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_hole_04k",
+   "size": 513354,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_hole_05a.fmi_hole_05a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_hole_05a",
+   "size": 575,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_grd_2x2_00.jmd_grd_2x2_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_grd_2x2_00",
+   "size": 2001,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rng_128x4_00.jmd_rng_128x4_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rng_128x4_00",
+   "size": 62025,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/omd_rsn_50x02_01.omd_rsn_50x02_01": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/omd_rsn_50x02_01",
+   "size": 22650,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_wht_two_sk.jmb_wht_two_sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_wht_two_sk",
+   "size": 444376,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_fle_00sk.fmi_fle_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_fle_00sk",
+   "size": 892,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_glw_00k1.fmi_glw_00k1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_glw_00k1",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_ora_06ma.fmi_ora_06ma": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_ora_06ma",
+   "size": 1514,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_ora_ble_00msk.fmi_ora_ble_00msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_ora_ble_00msk",
+   "size": 1919,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_pzm_00csk1.fmi_pzm_00csk1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_pzm_00csk1",
+   "size": 1424,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_sho_00la2.fmi_sho_00la2": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_sho_00la2",
+   "size": 1221,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_sho_00msla.fmi_sho_00msla": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_sho_00msla",
+   "size": 816,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_sho_01ma1.fmi_sho_01ma1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_sho_01ma1",
+   "size": 2259,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_vm_cri_rng_00sa2.fmi_vm_cri_rng_00sa2": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_vm_cri_rng_00sa2",
+   "size": 3642,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rng_48x2_00.jmd_rng_48x2_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rng_48x2_00",
+   "size": 13326,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rng_48x3_01.jmd_rng_48x3_01": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rng_48x3_01",
+   "size": 17386,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rsn_32x2_00z.jmd_rsn_32x2_00z": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rsn_32x2_00z",
+   "size": 8882,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rsn_48x2_02z.jmd_rsn_48x2_02z": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rsn_48x2_02z",
+   "size": 12914,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rsn_48x2_03z.jmd_rsn_48x2_03z": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rsn_48x2_03z",
+   "size": 13362,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_rng_128x3_02.fmd_rng_128x3_02": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_rng_128x3_02",
+   "size": 49168,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_rng_64x3_17.fmd_rng_64x3_17": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_rng_64x3_17",
+   "size": 31680,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g1x40_01.fmd_spi_g1x40_01": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g1x40_01",
+   "size": 6477,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_00.fmd_spi_g4x20_00": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_00",
+   "size": 10876,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_00b.fmd_spi_g4x20_00b": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_00b",
+   "size": 10876,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_01.fmd_spi_g4x20_01": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_01",
+   "size": 10381,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_01b.fmd_spi_g4x20_01b": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_01b",
+   "size": 10381,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_02.fmd_spi_g4x20_02": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_02",
+   "size": 10428,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_spi_g4x20_02b.fmd_spi_g4x20_02b": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_spi_g4x20_02b",
+   "size": 10428,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glw_01sa.jmi_glw_01sa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glw_01sa",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/omi_fls_01k.omi_fls_01k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/omi_fls_01k",
+   "size": 1784,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_cir_12x2_00.jmd_cir_12x2_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_cir_12x2_00",
+   "size": 3557,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/omd_grd_04x04_00.omd_grd_04x04_00": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/omd_grd_04x04_00",
+   "size": 2801,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_mdl/jmi_mzl_00sk.jmi_mzl_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_mdl/jmi_mzl_00sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_05sk.jmi_glt_05sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_05sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glw_00k.jmi_glw_00k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glw_00k",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/omi_lne_brk00a.omi_lne_brk00a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/omi_lne_brk00a",
+   "size": 1297,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_grd_mzl_00xz.jmd_grd_mzl_00xz": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_grd_mzl_00xz",
+   "size": 2502,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_fls_06k.jmi_fls_06k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_fls_06k",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_05k_cfg8.jmi_glt_05k_cfg8": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_05k_cfg8",
+   "size": 622,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/zmi_sho_00fsla.zmi_sho_00fsla": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/zmi_sho_00fsla",
+   "size": 1964,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_part/tmi_fls_00sk.tmi_fls_00sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_part/tmi_fls_00sk",
+   "size": 1353,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rng_128x2_00.jmd_rng_128x2_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rng_128x2_00",
+   "size": 34017,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_mcrs_sa.jmb_mcrs_sa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_mcrs_sa",
+   "size": 379371,
+   "ubulk": false,
+   "expressions": 8
+  },
+  "/Game/Effects/texcom/mat_part/jmi_fls_01sk.jmi_fls_01sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_fls_01sk",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_gltg_01k.jmi_gltg_01k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_gltg_01k",
+   "size": 1483,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/zmi_sho_02slk.zmi_sho_02slk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/zmi_sho_02slk",
+   "size": 1208,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/zmi_smk_002csa.zmi_smk_002csa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/zmi_smk_002csa",
+   "size": 1379,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_07k_cfg8.jmi_glt_07k_cfg8": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_07k_cfg8",
+   "size": 622,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat_mdl/nmi_rng_c1k.nmi_rng_c1k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "trescom/mat_mdl/nmi_rng_c1k",
+   "size": 415960,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/zmi_ami_00sa.zmi_ami_00sa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/zmi_ami_00sa",
+   "size": 1567,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/zmi_gry_01mfa.zmi_gry_01mfa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/zmi_gry_01mfa",
+   "size": 941,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/zmi_gry_02mfa.zmi_gry_02mfa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/zmi_gry_02mfa",
+   "size": 941,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/zmi_lne_mov00k.zmi_lne_mov00k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/zmi_lne_mov00k",
+   "size": 879,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/tmd_sph_64x64_00.tmd_sph_64x64_00": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/tmd_sph_64x64_00",
+   "size": 412306,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/zmd_hex_spr_42.zmd_hex_spr_42": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/zmd_hex_spr_42",
+   "size": 221602,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_fls_00x.jmd_fls_00x": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_fls_00x",
+   "size": 2465,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glw_00sa.jmi_glw_00sa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glw_00sa",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/omi_opq_unlit_fres.omi_opq_unlit_fres": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/omi_opq_unlit_fres",
+   "size": 964,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/smd_so010_str1.smd_so010_str1": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/smd_so010_str1",
+   "size": 14749,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat/smt_gtb_00k.smt_gtb_00k": {
+   "cls": "Material",
+   "file": "trescom/mat/smt_gtb_00k",
+   "size": 399663,
+   "ubulk": false,
+   "expressions": 11
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_hole_02a.fmt_hole_02a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_hole_02a",
+   "size": 596915,
+   "ubulk": false,
+   "expressions": 33
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_hole_04k.fmt_hole_04k": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_hole_04k",
+   "size": 590173,
+   "ubulk": false,
+   "expressions": 30
+  },
+  "/Game/Effects/texcom/mat_mdl/jmi_wht_sk.jmi_wht_sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_mdl/jmi_wht_sk",
+   "size": 528,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_hole_03a.fmi_hole_03a": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_hole_03a",
+   "size": 978,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_lne_00sk5.fmi_lne_00sk5": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_lne_00sk5",
+   "size": 1590,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_lne_00sk6.fmi_lne_00sk6": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_lne_00sk6",
+   "size": 1725,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_mon_hed_00msa.fmi_mon_hed_00msa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_mon_hed_00msa",
+   "size": 622,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_sin_lin02sa.fmi_sin_lin02sa": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_sin_lin02sa",
+   "size": 163251,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_rng_128x3_03.jmd_rng_128x3_03": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_rng_128x3_03",
+   "size": 48525,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_crs_00k.jmi_crs_00k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_crs_00k",
+   "size": 749,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_part/jmi_glt_04k_cfg15.jmi_glt_04k_cfg15": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_part/jmi_glt_04k_cfg15",
+   "size": 622,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_01msk1.fmi_mdl_uv_01msk1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_mdl_uv_01msk1",
+   "size": 1958,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_03msk2.fmi_mdl_uv_03msk2": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_mdl_uv_03msk2",
+   "size": 1984,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_hrt_100x5_01.fmd_hrt_100x5_01": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_hrt_100x5_01",
+   "size": 48720,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_hrt_100x5_01b.fmd_hrt_100x5_01b": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_hrt_100x5_01b",
+   "size": 24980,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mdl/fmd_hrt_100x5_01c.fmd_hrt_100x5_01c": {
+   "cls": "StaticMesh",
+   "file": "wep/w_so010/mdl/fmd_hrt_100x5_01c",
+   "size": 24980,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_mdl/jmt_dst_00o.jmt_dst_00o": {
+   "cls": "Material",
+   "file": "texcom/mat_mdl/jmt_dst_00o",
+   "size": 20059,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/PC_aqua/mat/smi_aqu_rng_c0sk.smi_aqu_rng_c0sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "PC_aqua/mat/smi_aqu_rng_c0sk",
+   "size": 423726,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_02msk1.fmi_mdl_uv_02msk1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_mdl_uv_02msk1",
+   "size": 2254,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_03msk1.fmi_mdl_uv_03msk1": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_mdl_uv_03msk1",
+   "size": 1984,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmi_ora_03mfslk.fmi_ora_03mfslk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "wep/w_so010/mat/fmi_ora_03mfslk",
+   "size": 1582,
+   "ubulk": false
+  },
+  "/Game/Effects/enemy/e_ex027/mdl/fmd_thd_cirf_low00.fmd_thd_cirf_low00": {
+   "cls": "StaticMesh",
+   "file": "enemy/e_ex027/mdl/fmd_thd_cirf_low00",
+   "size": 44698,
+   "ubulk": false
+  },
+  "/Game/Effects/enemy/e_ex027/mdl/fmd_thd_cirf_low01.fmd_thd_cirf_low01": {
+   "cls": "StaticMesh",
+   "file": "enemy/e_ex027/mdl/fmd_thd_cirf_low01",
+   "size": 45594,
+   "ubulk": false
+  },
+  "/Game/Effects/enemy/e_ex027/mdl/fmd_thd_cirf_low02.fmd_thd_cirf_low02": {
+   "cls": "StaticMesh",
+   "file": "enemy/e_ex027/mdl/fmd_thd_cirf_low02",
+   "size": 44698,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mdl/jmd_cir_64x1_00.jmd_cir_64x1_00": {
+   "cls": "StaticMesh",
+   "file": "texcom/mdl/jmd_cir_64x1_00",
+   "size": 5590,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/kmd_sph_64x32_01.kmd_sph_64x32_01": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/kmd_sph_64x32_01",
+   "size": 208629,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_thd/fmd_thd_rngfA02.fmd_thd_rngfA02": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_thd/fmd_thd_rngfA02",
+   "size": 21840,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/tmd_xyz_00.tmd_xyz_00": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/tmd_xyz_00",
+   "size": 3460,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mat/smt_thd_lin0sa.smt_thd_lin0sa": {
+   "cls": "Material",
+   "file": "trescom/mat/smt_thd_lin0sa",
+   "size": 117947,
+   "ubulk": false,
+   "expressions": 8
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra02.fmd_lit_sprrra02": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra02",
+   "size": 14374,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra03.fmd_lit_sprrra03": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra03",
+   "size": 14822,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra04.fmd_lit_sprrra04": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra04",
+   "size": 14374,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra05.fmd_lit_sprrra05": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra05",
+   "size": 14822,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra06.fmd_lit_sprrra06": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra06",
+   "size": 14038,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra07.fmd_lit_sprrra07": {
+   "cls": "StaticMesh",
+   "file": "trescom/mdl/mdl_anim/thd_bal/fmd_lit_sprrra07",
+   "size": 14486,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mf/jmf_basic.jmf_basic": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_basic",
+   "size": 2555,
+   "ubulk": false,
+   "expressions": 3
+  },
+  "/Game/Effects/texcom/mf/jmf_power2.jmf_power2": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_power2",
+   "size": 213,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_power2_vec3",
+   "size": 213,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_ma",
+   "size": 484515,
+   "ubulk": false,
+   "expressions": 9
+  },
+  "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_sho_00a",
+   "size": 3369,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_sho_00m",
+   "size": 3369,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_bsc_mk",
+   "size": 461152,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_1dot_wht_00m",
+   "size": 346,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glt_05a_clamp",
+   "size": 2467,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_bsc_msk",
+   "size": 470668,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_01a_clamp",
+   "size": 8611,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_01m_clamp.jtx_glw_01m_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_01m_clamp",
+   "size": 8611,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msla",
+   "size": 493744,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/trescom/tex/ora/stx_ora_01m.stx_ora_01m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/ora/stx_ora_01m",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/mat/smt_rng_k0sa.smt_rng_k0sa": {
+   "cls": "Material",
+   "file": "trescom/mat/smt_rng_k0sa",
+   "size": 432415,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/trescom/tex/fls/ttx_fls_02a.ttx_fls_02a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/fls/ttx_fls_02a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_crs_03a",
+   "size": 6589,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/glw/ztx_glt_00a.ztx_glt_00a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/glw/ztx_glt_00a",
+   "size": 3419,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_soft",
+   "size": 463,
+   "ubulk": false,
+   "expressions": 1
+  },
+  "/Game/Effects/texcom/tex/jtx_loc_02.jtx_loc_02": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_loc_02",
+   "size": 675,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/tex/ttx_loc_00.ttx_loc_00": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ttx_loc_00",
+   "size": 3376,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_wht_k.jmb_wht_k": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_wht_k",
+   "size": 386284,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fls_00a",
+   "size": 3451,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_03a_clamp.jtx_glw_03a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_03a_clamp",
+   "size": 33187,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_msk_msk",
+   "size": 490767,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grd_00a_clamp",
+   "size": 2431,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/sho/stx_sho_01m.stx_sho_01m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/sho/stx_sho_01m",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_ca.jmb_bsc_ca": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_bsc_ca",
+   "size": 468245,
+   "ubulk": false,
+   "expressions": 8
+  },
+  "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_mzl_00a",
+   "size": 33105,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_mzl_00c.jtx_mzl_00c": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_mzl_00c",
+   "size": 3271,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_fls_04a.jtx_fls_04a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fls_04a",
+   "size": 3451,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_glt_mix_mk.jmb_glt_mix_mk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_glt_mix_mk",
+   "size": 460082,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_glt_mix_msk.jmb_glt_mix_msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_glt_mix_msk",
+   "size": 469598,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_frg_m1k",
+   "size": 462649,
+   "ubulk": false,
+   "expressions": 4
+  },
+  "/Game/Effects/trescom/tex/fls/stx_hit_00m.stx_hit_00m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/fls/stx_hit_00m",
+   "size": 3451,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_bbl_00a.fmt_bbl_00a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_bbl_00a",
+   "size": 446410,
+   "ubulk": false,
+   "expressions": 16
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_dis_05k.fmt_dis_05k": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_dis_05k",
+   "size": 529855,
+   "ubulk": false,
+   "expressions": 15
+  },
+  "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_dis_00a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_dis_01a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glt_01a_clamp",
+   "size": 3419,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/ora/stx_ora_01n.stx_ora_01n": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/ora/stx_ora_01n",
+   "size": 6081,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/ora/stx_ora_04n.stx_ora_04n": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/ora/stx_ora_04n",
+   "size": 6113,
+   "ubulk": true
+  },
+  "/Game/Effects/level/tt/tt_40/task/mat/fmt_hole_00k.fmt_hole_00k": {
+   "cls": "Material",
+   "file": "level/tt/tt_40/task/mat/fmt_hole_00k",
+   "size": 550899,
+   "ubulk": false,
+   "expressions": 30
+  },
+  "/Game/Effects/texcom/tex/jtx_ora_02a.jtx_ora_02a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_ora_02a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_hole_03a.fmt_hole_03a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_hole_03a",
+   "size": 533816,
+   "ubulk": false,
+   "expressions": 24
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_hole_05a.fmt_hole_05a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_hole_05a",
+   "size": 523486,
+   "ubulk": false,
+   "expressions": 18
+  },
+  "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_wht_sa",
+   "size": 400268,
+   "ubulk": false,
+   "expressions": 3
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_csk",
+   "size": 481335,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/prism/stx_fle_00c.stx_fle_00c": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/prism/stx_fle_00c",
+   "size": 3321,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/grd/ktx_lit_01a.ktx_lit_01a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/grd/ktx_lit_01a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_ora_03a.jtx_ora_03a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_ora_03a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_ora_03m",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/glw/htx_glw_00.htx_glw_00": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/glw/htx_glw_00",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_pzm_00c.jtx_pzm_00c": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_pzm_00c",
+   "size": 3271,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_msla.jmb_uv_msk_msla": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msk_msla",
+   "size": 505605,
+   "ubulk": false,
+   "expressions": 17
+  },
+  "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_dis_02a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_03a.jtx_grdb_03a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_03a",
+   "size": 1106,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msk_ma",
+   "size": 495588,
+   "ubulk": false,
+   "expressions": 16
+  },
+  "/Game/Effects/texcom/tex/jtx_sho_01a.jtx_sho_01a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_sho_01a",
+   "size": 3369,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_grdb_03ya.ftx_grdb_03ya": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_grdb_03ya",
+   "size": 1366,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_vm_cri_rng_00sa.fmt_vm_cri_rng_00sa": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_vm_cri_rng_00sa",
+   "size": 212346,
+   "ubulk": false,
+   "expressions": 46
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_02a.jtx_grdb_02a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_02a",
+   "size": 1138,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_02ya_clamp.jtx_grdb_02ya_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_02ya_clamp",
+   "size": 2431,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_03a_clamp.jtx_grdb_03a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_03a_clamp",
+   "size": 1407,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_03ya_clamp.jtx_grdb_03ya_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_03ya_clamp",
+   "size": 1407,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_05a.jtx_grdb_05a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_05a",
+   "size": 1074,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_07a_clamp.jtx_grdb_07a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_07a_clamp",
+   "size": 2431,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/grd/ttx_lin_00a.ttx_lin_00a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/grd/ttx_lin_00a",
+   "size": 1945,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_bsc_msa",
+   "size": 481647,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/trescom/tex/fls/otx_fls_00m.otx_fls_00m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/fls/otx_fls_00m",
+   "size": 3483,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/glw/otx_grd_01m.otx_grd_01m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/glw/otx_grd_01m",
+   "size": 3483,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_csk.jmb_bsc_csk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_bsc_csk",
+   "size": 469002,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_00a_clamp",
+   "size": 8611,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_00m_clamp",
+   "size": 8611,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_brk_msk.jmb_brk_msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_brk_msk",
+   "size": 500134,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_06a.jtx_grdb_06a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_06a",
+   "size": 1106,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/grd/otx_chigire.otx_chigire": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/grd/otx_chigire",
+   "size": 1138,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_fls_06a.jtx_fls_06a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fls_06a",
+   "size": 16803,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_mfsla.jmb_uv_msk_mfsla": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msk_mfsla",
+   "size": 538506,
+   "ubulk": false,
+   "expressions": 18
+  },
+  "/Game/Effects/texcom/tex/jtx_fls_05a.jtx_fls_05a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fls_05a",
+   "size": 2059,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_fls_01a.jtx_fls_01a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fls_01a",
+   "size": 3451,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bscw_mk.jmb_bscw_mk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_bscw_mk",
+   "size": 467934,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glt_06a_clamp.jtx_glt_06a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glt_06a_clamp",
+   "size": 3387,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_mslk.jmb_uv_mslk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_mslk",
+   "size": 481728,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msa",
+   "size": 495121,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00.atx_expc_ver_01_00": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/exp/atx_expc_ver_01_00",
+   "size": 3335,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00_al.atx_expc_ver_01_00_al": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/exp/atx_expc_ver_01_00_al",
+   "size": 3401,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_glt_07a_clamp.jtx_glt_07a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glt_07a_clamp",
+   "size": 3387,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/mat/smt_rng_c0a.smt_rng_c0a": {
+   "cls": "Material",
+   "file": "trescom/mat/smt_rng_c0a",
+   "size": 421583,
+   "ubulk": false,
+   "expressions": 8
+  },
+  "/Game/Effects/trescom/tex/ora/mtx_ora_00.mtx_ora_00": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/ora/mtx_ora_00",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsk.jmb_2fresrnel_fsk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_2fresrnel_fsk",
+   "size": 486107,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_2fresrnel_fsa",
+   "size": 493725,
+   "ubulk": false,
+   "expressions": 8
+  },
+  "/Game/Effects/trescom/mat_part/omt_lin_mov_00k.omt_lin_mov_00k": {
+   "cls": "Material",
+   "file": "trescom/mat_part/omt_lin_mov_00k",
+   "size": 492642,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/trescom/mat/tmt_fresnel_00o.tmt_fresnel_00o": {
+   "cls": "Material",
+   "file": "trescom/mat/tmt_fresnel_00o",
+   "size": 25103,
+   "ubulk": false,
+   "expressions": 5
+  },
+  "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_soft_particle",
+   "size": 267,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/d_magic/ariel/mf/fmf_olp_def_00.fmf_olp_def_00": {
+   "cls": "MaterialFunction",
+   "file": "d_magic/ariel/mf/fmf_olp_def_00",
+   "size": 756,
+   "ubulk": false,
+   "expressions": 3
+  },
+  "/Game/Effects/d_magic/ariel/mf/fmf_uv_scr_03.fmf_uv_scr_03": {
+   "cls": "MaterialFunction",
+   "file": "d_magic/ariel/mf/fmf_uv_scr_03",
+   "size": 210,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_uv_rot",
+   "size": 267,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/tex/jtx_fir_02a.jtx_fir_02a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_fir_02a",
+   "size": 3369,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_grd_01a.jtx_grd_01a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grd_01a",
+   "size": 1170,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_02a_clamp.jtx_grdb_02a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_02a_clamp",
+   "size": 2431,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_05a_clamp.jtx_grdb_05a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_05a_clamp",
+   "size": 895,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_ora_00a.jtx_ora_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_ora_00a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mf/jmf_cam_fade.jmf_cam_fade": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_cam_fade",
+   "size": 241,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/mf/jmf_fresnel2.jmf_fresnel2": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_fresnel2",
+   "size": 275,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/mat_master/jmb_wht_sk.jmb_wht_sk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_wht_sk",
+   "size": 395394,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_hole_01a.fmt_hole_01a": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_hole_01a",
+   "size": 561491,
+   "ubulk": false,
+   "expressions": 28
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_msk",
+   "size": 483001,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_sin_01.ftx_sin_01": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_sin_01",
+   "size": 3369,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_spr_100x10_03.ftx_spr_100x10_03": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_spr_100x10_03",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_snake_00.ftx_snake_00": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_snake_00",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/mat/fmt_sin_lin02sa.fmt_sin_lin02sa": {
+   "cls": "Material",
+   "file": "wep/w_so010/mat/fmt_sin_lin02sa",
+   "size": 180275,
+   "ubulk": false,
+   "expressions": 18
+  },
+  "/Game/Effects/texcom/tex/jtx_crs_0a.jtx_crs_0a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_crs_0a",
+   "size": 3387,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_mk.jmb_uv_msk_mk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_msk_mk",
+   "size": 481251,
+   "ubulk": false
+  },
+  "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02": {
+   "cls": "Texture2D",
+   "file": "enemy/e_ex027/tex/ftx_ymk_02",
+   "size": 1305,
+   "ubulk": true
+  },
+  "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c": {
+   "cls": "Texture2D",
+   "file": "enemy/e_ex027/tex/ftx_ymk_02c",
+   "size": 1305,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/mat/smt_rng_c0sa.smt_rng_c0sa": {
+   "cls": "Material",
+   "file": "trescom/mat/smt_rng_c0sa",
+   "size": 430809,
+   "ubulk": false,
+   "expressions": 9
+  },
+  "/Game/Effects/texcom/tex/jtx_mzl_02a.jtx_mzl_02a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_mzl_02a",
+   "size": 1977,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_mfslk.jmb_uv_mfslk": {
+   "cls": "MaterialInstanceConstant",
+   "file": "texcom/mat_master/jmb_uv_mfslk",
+   "size": 513849,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/thd/otx_thd_zmn0.otx_thd_zmn0": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/thd/otx_thd_zmn0",
+   "size": 3401,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_02a_clamp.jtx_glw_02a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_02a_clamp",
+   "size": 33187,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_05a_clamp.jtx_glw_05a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_05a_clamp",
+   "size": 33187,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_2color_emi",
+   "size": 1346,
+   "ubulk": false,
+   "expressions": 4
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_bright_opa",
+   "size": 722,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_tiling",
+   "size": 737,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_uv_speed",
+   "size": 691,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_uvs_curve",
+   "size": 1829,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_uv_m",
+   "size": 506,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_ma.jmb_bsc_ma": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_bsc_ma",
+   "size": 471041,
+   "ubulk": false,
+   "expressions": 9
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_uvs_fixed",
+   "size": 1067,
+   "ubulk": false,
+   "expressions": 1
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_uv_ml.jtx_ic_uv_ml": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_uv_ml",
+   "size": 690,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/stx_rng_00a.stx_rng_00a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/stx_rng_00a",
+   "size": 3483,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_wht_a.jmb_wht_a": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_wht_a",
+   "size": 389604,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_msk_msa.jmb_uv_msk_msa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_msk_msa",
+   "size": 506194,
+   "ubulk": false,
+   "expressions": 17
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_emi.jmf_bright_emi": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_bright_emi",
+   "size": 722,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_tiling_emi",
+   "size": 723,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_tiling_opa",
+   "size": 723,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_c.jtx_ic_bsc_c": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_bsc_c",
+   "size": 440,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_glt_mix_ma.jmb_glt_mix_ma": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_glt_mix_ma",
+   "size": 468016,
+   "ubulk": false,
+   "expressions": 10
+  },
+  "/Game/Effects/texcom/mat_master/jmb_glt_mix_msa.jmb_glt_mix_msa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_glt_mix_msa",
+   "size": 478622,
+   "ubulk": false,
+   "expressions": 11
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_col_frg_mk.jmf_col_frg_mk": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_col_frg_mk",
+   "size": 3788,
+   "ubulk": false,
+   "expressions": 4
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_frg_m.jtx_ic_frg_m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_frg_m",
+   "size": 506,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/mf/smf_tx_dist_awa0.smf_tx_dist_awa0": {
+   "cls": "MaterialFunction",
+   "file": "trescom/mf/smf_tx_dist_awa0",
+   "size": 2719,
+   "ubulk": false,
+   "expressions": 4
+  },
+  "/Game/Effects/trescom/tex/wat/stx_awa_00c.stx_awa_00c": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/wat/stx_awa_00c",
+   "size": 6087,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_fresnel.jmf_fresnel": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_fresnel",
+   "size": 2104,
+   "ubulk": false,
+   "expressions": 5
+  },
+  "/Game/Effects/texcom/mf/jmf_polar_coord.jmf_polar_coord": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_polar_coord",
+   "size": 2055,
+   "ubulk": false,
+   "expressions": 3
+  },
+  "/Game/Effects/trescom/mf/smf_cir_msk0.smf_cir_msk0": {
+   "cls": "MaterialFunction",
+   "file": "trescom/mf/smf_cir_msk0",
+   "size": 7519,
+   "ubulk": false,
+   "expressions": 5
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_00a.jtx_glw_00a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_00a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/trescom/tex/grd/otx_bem_bem02.otx_bem_bem02": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/grd/otx_bem_bem02",
+   "size": 1106,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_csa.jmb_uv_csa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_csa",
+   "size": 492325,
+   "ubulk": false,
+   "expressions": 9
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_mask.jmf_bright_mask": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_bright_mask",
+   "size": 718,
+   "ubulk": false,
+   "expressions": 2
+  },
+  "/Game/Effects/texcom/tex/jtx_dmy_alp.jtx_dmy_alp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_dmy_alp",
+   "size": 690,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_m.jtx_ic_bsc_m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_bsc_m",
+   "size": 506,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bsc_csa.jmb_bsc_csa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_bsc_csa",
+   "size": 478851,
+   "ubulk": false,
+   "expressions": 9
+  },
+  "/Game/Effects/texcom/mat_master/jmb_brk_msa.jmb_brk_msa": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_brk_msa",
+   "size": 516586,
+   "ubulk": false,
+   "expressions": 17
+  },
+  "/Game/Effects/texcom/mat_master/jmb_bscw_ma.jmb_bscw_ma": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_bscw_ma",
+   "size": 480147,
+   "ubulk": false,
+   "expressions": 15
+  },
+  "/Game/Effects/texcom/mf/jmf_fresnelx2.jmf_fresnelx2": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_fresnelx2",
+   "size": 285,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/tex/jtx_grdb_04a_clamp.jtx_grdb_04a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_grdb_04a_clamp",
+   "size": 895,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/glw/stx_lin_glw2m.stx_lin_glw2m": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/glw/stx_lin_glw2m",
+   "size": 33187,
+   "ubulk": false
+  },
+  "/Game/Effects/trescom/tex/grd/ktx_turu_00a.ktx_turu_00a": {
+   "cls": "Texture2D",
+   "file": "trescom/tex/grd/ktx_turu_00a",
+   "size": 1074,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_ora_04a.jtx_ora_04a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_ora_04a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_sin_03.ftx_sin_03": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_sin_03",
+   "size": 2615,
+   "ubulk": false
+  },
+  "/Game/Effects/wep/w_so010/tex/ftx_str_01.ftx_str_01": {
+   "cls": "Texture2D",
+   "file": "wep/w_so010/tex/ftx_str_01",
+   "size": 2722,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/jmb_uv_mfsla.jmb_uv_mfsla": {
+   "cls": "Material",
+   "file": "texcom/mat_master/jmb_uv_mfsla",
+   "size": 526813,
+   "ubulk": false,
+   "expressions": 11
+  },
+  "/Game/Effects/texcom/tex/jtx_dis_03a.jtx_dis_03a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_dis_03a",
+   "size": 3305,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_glw_05a.jtx_glw_05a": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_glw_05a",
+   "size": 3337,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/jtx_check1.jtx_check1": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_check1",
+   "size": 3248,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/tex/jtx_msk_01a_clamp.jtx_msk_01a_clamp": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/jtx_msk_01a_clamp",
+   "size": 3483,
+   "ubulk": true
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_uv_c.jtx_ic_uv_c": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_uv_c",
+   "size": 440,
+   "ubulk": false
+  },
+  "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_mask1.jmf_uvs_mask1": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mat_master/mf_master/jmf_uvs_mask1",
+   "size": 1325,
+   "ubulk": false,
+   "expressions": 4
+  },
+  "/Game/Effects/texcom/mf/jmf_brk_sstep.jmf_brk_sstep": {
+   "cls": "MaterialFunction",
+   "file": "texcom/mf/jmf_brk_sstep",
+   "size": 299,
+   "ubulk": false,
+   "expressions": 0
+  },
+  "/Game/Effects/texcom/tex/icon/jtx_ic_brk_m.jtx_ic_brk_m": {
+   "cls": "Texture2D",
+   "file": "texcom/tex/icon/jtx_ic_brk_m",
+   "size": 690,
+   "ubulk": false
+  }
+ }
+}

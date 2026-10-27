@@ -1,0 +1,330 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Fully Playable Young Sephiroth's copy (on FullyPlayableYoungSephirothDataAssets_P) of BizarroSummon.json: Bizarro Sephiroth as a summon in Alexander's place (Create a Character System 3.5): the summon keeps Alexander's AI and summon settings and fights with Bizarro Sephiroth's own attacks: its abilities play his animations (his Battle00 and Battle01 sets fill the summon's Battle00, their _Comp sets its Battle00_Comp), with his effects and damage. The summon's own animation names (appearing, idling, warping, leaving) play moves built from his animations with Alexander's gameplay notifies. Goes with FullyPlayableSephirothDataAssets_P (the summon's CharaSpec row, pack, abilities and damage, and the moves).",
+ "pairs": [],
+ "animation_sets": [
+  {
+   "characters": [
+    "SU2030_00_Alexander_Standard_BIZARRO"
+   ],
+   "battle": [
+    {
+     "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00.Battle00",
+     "as": "Battle00"
+    },
+    {
+     "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01.Battle01",
+     "as": "Battle00"
+    },
+    {
+     "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00_Comp.Battle00_Comp",
+     "as": "Battle00_Comp"
+    },
+    {
+     "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01_Comp.Battle01_Comp",
+     "as": "Battle00_Comp"
+    }
+   ],
+   "moves": [
+    {
+     "set": "Battle00",
+     "key": "B_Appear01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Appear01_0.B_Appear01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_DmgPhase1Down01_2.B_DmgPhase1Down01_2",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Appear01_0.B_Appear01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Idle01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Idle01_1.B_Idle01_1",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_Idle01_1.B_Idle01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Idle01_1.B_Idle01_1",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkChestLaser01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkChestLaser01.B_AtkChestLaser01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkMagA02_3.B_AtkMagA02_3",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkChestLaser01.B_AtkChestLaser01",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkCleaveL01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkCleaveL01.B_AtkCleaveL01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01/B_AtkWingSwingL01.B_AtkWingSwingL01",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkCleaveL01.B_AtkCleaveL01",
+      "hits": [
+       {
+        "time": 0
+       },
+       {
+        "time": 1.923
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkCleaveR01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkCleaveR01.B_AtkCleaveR01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01/B_AtkWingSwingR01.B_AtkWingSwingR01",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkCleaveR01.B_AtkCleaveR01",
+      "hits": [
+       {
+        "time": 0
+       },
+       {
+        "time": 1.923
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkDeltaCore01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkDeltaCore01_0.B_AtkDeltaCore01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkCoreFeeler01_0.B_AtkCoreFeeler01_0",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkDeltaCore01_0.B_AtkDeltaCore01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkDeltaCore01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkDeltaCore01_1.B_AtkDeltaCore01_1",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkCoreFeeler01_1.B_AtkCoreFeeler01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkDeltaCore01_1.B_AtkDeltaCore01_1",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkDeltaCore01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkDeltaCore01_2.B_AtkDeltaCore01_2",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkCoreFeeler01_2.B_AtkCoreFeeler01_2",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkDeltaCore01_2.B_AtkDeltaCore01_2",
+      "hits": [
+       {
+        "time": 0.43
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkHardStrike01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkHardStrike01.B_AtkHardStrike01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkBodyExplode01.B_AtkBodyExplode01",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkHardStrike01.B_AtkHardStrike01",
+      "hits": [
+       {
+        "time": 2.122
+       },
+       {
+        "time": 2.234
+       },
+       {
+        "time": 2.376
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkJudgeCharge01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkJudgeCharge01_0.B_AtkJudgeCharge01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkAngel01_0.B_AtkAngel01_0",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkJudgeCharge01_0.B_AtkJudgeCharge01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkJudgeCharge01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkJudgeCharge01_1.B_AtkJudgeCharge01_1",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkAngel01_1.B_AtkAngel01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkJudgeCharge01_1.B_AtkJudgeCharge01_1",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00_Comp",
+     "key": "B_AtkJudgeCharge01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00_Comp/B_AtkJudgeCharge01_2.B_AtkJudgeCharge01_2",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkAngel01_2.B_AtkAngel01_2",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00_Comp/B_AtkJudgeCharge01_2.B_AtkJudgeCharge01_2",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkMagic01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkMagic01_0.B_AtkMagic01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkMagB01_0.B_AtkMagB01_0",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkMagic01_0.B_AtkMagic01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkMagic01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkMagic01_1.B_AtkMagic01_1",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkMagB01_1.B_AtkMagB01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkMagic01_1.B_AtkMagic01_1",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkMagic01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkMagic01_2.B_AtkMagic01_2",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkMagB01_3.B_AtkMagB01_3",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkMagic01_2.B_AtkMagic01_2",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkShockWaveB01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkShockWaveB01.B_AtkShockWaveB01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkWindBlow01.B_AtkWindBlow01",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkShockWaveB01.B_AtkShockWaveB01",
+      "hits": [
+       {
+        "time": 1.6280000000000001
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkShockWaveL01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkShockWaveL01.B_AtkShockWaveL01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkEnergyChargeL01_1.B_AtkEnergyChargeL01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkShockWaveL01.B_AtkShockWaveL01",
+      "hits": [
+       {
+        "time": 0.3
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkShockWaveR01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_AtkShockWaveR01.B_AtkShockWaveR01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkEnergyChargeR01_1.B_AtkEnergyChargeR01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_AtkShockWaveR01.B_AtkShockWaveR01",
+      "hits": [
+       {
+        "time": 0.3
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Barrier01",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Barrier01.B_Barrier01",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkWingHeal01_1.B_AtkWingHeal01_1",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Barrier01.B_Barrier01",
+      "hits": [
+       {
+        "time": 1.6
+       }
+      ],
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Die01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Die01_0.B_Die01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_DmgF01.B_DmgF01",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Die01_0.B_Die01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Die01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Die01_1.B_Die01_1",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_DmgBurst01_0.B_DmgBurst01_0",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Die01_1.B_Die01_1",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Warp01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Warp01_0.B_Warp01_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkEyeMagic01_2.B_AtkEyeMagic01_2",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Warp01_0.B_Warp01_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Warp02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Warp02_0.B_Warp02_0",
+     "build": {
+      "from": "/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00/B_AtkEyeMagic01_0.B_AtkEyeMagic01_0",
+      "notifies_from": "/Game/Motion/Summon/SU2030_Alexander/Battle00/B_Warp02_0.B_Warp02_0",
+      "retarget": "as_is"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Rtrn01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Warp01_0.B_Warp01_0"
+    },
+    {
+     "set": "Battle00_Comp",
+     "key": "B_Barrier01_CompForPC",
+     "animation": "/Game/RebirthSkelCompat/Built/BizarroSummon/Battle00/B_Barrier01.B_Barrier01"
+    }
+   ],
+   "skeleton": "/Game/Character/Enemy/EB2210_00_BizarroSephiroth_Standard/Model/EB2210_00_Skeleton.EB2210_00_Skeleton",
+   "build_folder": "/Game/RebirthSkelCompat/Built/BizarroSummon",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

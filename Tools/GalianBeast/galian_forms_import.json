@@ -1,0 +1,33 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "pairs": [],
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0000_00_Cloud_Standard",
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0000_23_Cloud_ZackCostumeWet"
+   ],
+   "forms": {
+    "list": [
+     {
+      "name": "NORMAL"
+     },
+     {
+      "name": "GALIAN",
+      "pack": "Battle07",
+      "model": "/Game/Character/Enemy/EB2160_00_VincentValentine_Standard/Model/EB2160_00_Body.EB2160_00_Body"
+     },
+     {
+      "name": "GALIAN PUNISHER",
+      "pack": "Battle08",
+      "model": "/Game/Character/Enemy/EB2160_00_VincentValentine_Standard/Model/EB2160_00_Body.EB2160_00_Body"
+     }
+    ]
+   }
+  }
+ ]
+}

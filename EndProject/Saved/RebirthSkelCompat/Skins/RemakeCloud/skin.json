@@ -1,0 +1,78 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Remake Cloud",
+ "author": "",
+ "description": "FINAL FANTASY VII REMAKE's Cloud (PC0000_00, his standard look) on his Remake skeleton in Sephiroth's skeleton family, keeping his own build, with KawaiiPhysics on his hair and trousers (compat\\CloudKawaii.json) and the Buster Sword. His materials come from RebirthGameMaterials_P.",
+ "characters": [
+  "PC0000_00_Cloud_Standard",
+  "PC0000_08_Cloud_SoldierNoHelmet",
+  "PC0000_09_Cloud_CostaClothing",
+  "PC0000_10_Cloud_CostaClothing2",
+  "PC0000_04_Cloud_ZackCostume",
+  "PC0000_12_Cloud_ZackCostumeDirty",
+  "PC0000_18_Cloud_ZackCostumeAge21",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+  "PC0000_23_Cloud_ZackCostumeWet"
+ ],
+ "model": "/Game/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00.PC0000_00",
+ "skeleton": "/Game/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": true,
+ "proportion_bones": [],
+ "voice": "",
+ "weapon": "/Game/BluePrint/Character/Weapon/WE0000_00_Cloud_BusterSword.WE0000_00_Cloud_BusterSword_C",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00",
+   "file": "Content/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00.uasset",
+   "size": 12511162,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [
+    "7da856f393faacea",
+    "65743f301de9e614",
+    "f14ea06c8b58596b",
+    "02a39a74e78daeab",
+    "ce87860c8aafb5a3",
+    "17e2ba4d0bf81a00",
+    "da80db22c4bd4e6d",
+    "e7fedfc956a0f3e5",
+    "7895534952568d06",
+    "4f754575418dc0c9",
+    "1d88dc9715e56f18",
+    "46e6752ee04a3374",
+    "609a21ed31e38f59",
+    "84f134ba82378a45"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+   "file": "Content/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.uasset",
+   "size": 85431,
+   "export_count": 41,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_BNM",
+   "file": "Content/GameContents/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_BNM.uasset",
+   "size": 484320,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-26T05:01:39Z",
+ "built_with": "Create a Character System editor 1.17.0"
+}

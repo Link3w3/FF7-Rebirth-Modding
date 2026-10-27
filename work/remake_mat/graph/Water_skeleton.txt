@@ -1,0 +1,141 @@
+Material EndMaterial_Water
+  PIN BaseColor              <- MaterialExpressionComponentMask_2[0]
+  PIN Metallic               <- MaterialExpressionConstant_9[0]
+  PIN Specular               <- MaterialExpressionMaterialFunctionCall_5[0]
+  PIN Roughness              <- MaterialExpressionConstant_5[0]
+  PIN Normal                 <- MaterialExpressionStaticSwitchParameter_7[0]
+  PIN Opacity                <- MaterialExpressionStaticSwitchParameter_9[0]
+  PIN OpacityMask            <- MaterialExpressionConstant_1[0]
+  PIN AmbientOcclusion       <- MaterialExpressionConstant_14[0]
+  MaterialExpressionMaterialFunctionCall_0 (MaterialFunctionCall) {"function": "AnimateRigid"}
+      Coordinate       <- MaterialExpressionComponentMask_0[0]
+      Index            <- MaterialExpressionScalarParameter_29[0]
+      Translation      <- MaterialExpressionTextureObjectParameter_2[0]
+      Rotation         <- MaterialExpressionTextureObjectParameter_3[0]
+      Position         <- MaterialExpressionTextureObjectParameter_4[0]
+  MaterialExpressionMaterialFunctionCall_1 (MaterialFunctionCall) {"function": "AnimateSoft"}
+      Coordinate       <- MaterialExpressionComponentMask_0[0]
+      Index            <- MaterialExpressionScalarParameter_29[0]
+      Translation      <- MaterialExpressionTextureObjectParameter_5[0]
+      Rotation         <- MaterialExpressionTextureObjectParameter_6[0]
+  MaterialExpressionMaterialFunctionCall_2 (MaterialFunctionCall) {"function": "AnimateFluid"}
+      Coordinate       <- MaterialExpressionComponentMask_0[0]
+      Index            <- MaterialExpressionScalarParameter_29[0]
+      Position         <- MaterialExpressionTextureObjectParameter_9[0]
+      Normal           <- MaterialExpressionTextureObjectParameter_10[0]
+  MaterialExpressionMaterialFunctionCall_3 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_3[0]
+  MaterialExpressionMaterialFunctionCall_5 (MaterialFunctionCall) {"function": "EncodeReflectance"}
+      Reflectance      <- MaterialExpressionConstant_3[0]
+  MaterialExpressionMaterialFunctionCall_6 (MaterialFunctionCall) {"function": "FlattenNormal"}
+      Normal           <- MaterialExpressionCustom_3[0]
+      Value            <- MaterialExpressionOneMinus_0[0]
+  MaterialExpressionMaterialFunctionCall_8 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_7[0]
+  MaterialExpressionScalarParameter_0 (ScalarParameter) {"ParameterName": "AnimateTime", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_29 (ScalarParameter) {"ParameterName": "AnimateKeyIndex", "Group": "Dynamic"}
+  MaterialExpressionStaticSwitchParameter_0 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_RIGID_BODY", "ParameterName": "RigidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant4Vector_7[0]
+      B                <- MaterialExpressionConstant4Vector_7[0]
+  MaterialExpressionStaticSwitchParameter_1 (StaticSwitchParameter) {"DefaultValue": true, "Definition": "STATIC_SWITCH_WATER", "ParameterName": "Water", "Group": "Static"}
+      A                <- MaterialExpressionConstant_4[0]
+      B                <- MaterialExpressionConstant_2[0]
+  MaterialExpressionStaticSwitchParameter_2 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_WATER_THICKNESS", "ParameterName": "WaterThickness", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_8[0]
+      B                <- MaterialExpressionConstant_11[0]
+  MaterialExpressionStaticSwitchParameter_3 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_WATER_EDGE", "ParameterName": "WaterEdge", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_1[0]
+      B                <- MaterialExpressionStaticSwitchParameter_1[0]
+  MaterialExpressionStaticSwitchParameter_5 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant2Vector_0[0]
+      B                <- MaterialExpressionCustom_2[0]
+  MaterialExpressionStaticSwitchParameter_6 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant_8[0]
+      B                <- MaterialExpressionMultiply_11[0]
+  MaterialExpressionStaticSwitchParameter_7 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant3Vector_1[0]
+      B                <- MaterialExpressionMaterialFunctionCall_6[0]
+  MaterialExpressionStaticSwitchParameter_8 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_1[0]
+      B                <- MaterialExpressionConstant_11[0]
+  MaterialExpressionStaticSwitchParameter_9 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_WATER_ENVIRONMENT", "ParameterName": "WaterEnvironment", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_3[0]
+      B                <- MaterialExpressionStaticSwitchParameter_3[0]
+  MaterialExpressionStaticSwitchParameter_19 (StaticSwitchParameter) {"ParameterName": "Reference", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_3[0]
+      B                <- MaterialExpressionComponentMask_23[0]
+  MaterialExpressionStaticSwitchParameter_34 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_SOFT_BODY", "ParameterName": "SoftBody", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_1[0]
+      B                <- MaterialExpressionStaticSwitchParameter_0[0]
+  MaterialExpressionStaticSwitchParameter_50 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_2[0]
+      B                <- MaterialExpressionStaticSwitchParameter_34[0]
+  MaterialExpressionStaticSwitchParameter_51 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_RIGID_BODY", "ParameterName": "RigidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant4Vector_8[0]
+      B                <- MaterialExpressionConstant4Vector_8[0]
+  MaterialExpressionStaticSwitchParameter_52 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_SOFT_BODY", "ParameterName": "SoftBody", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_1[1]
+      B                <- MaterialExpressionStaticSwitchParameter_51[0]
+  MaterialExpressionStaticSwitchParameter_53 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_FLUID_BODY", "ParameterName": "FluidBody", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_2[1]
+      B                <- MaterialExpressionStaticSwitchParameter_52[0]
+  MaterialExpressionStaticSwitchParameter_54 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_RIGID_BODY", "ParameterName": "RigidBody", "Group": "Static"}
+      A                <- MaterialExpressionConstant4Vector_9[0]
+      B                <- MaterialExpressionConstant4Vector_9[0]
+  MaterialExpressionTextureObjectParameter_2 (TextureObjectParameter) {"ParameterName": "V:R:0:Translation", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_3 (TextureObjectParameter) {"ParameterName": "V:R:1:Rotation", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_4 (TextureObjectParameter) {"ParameterName": "V:R:2:Position", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_5 (TextureObjectParameter) {"ParameterName": "V:S:0:Translation", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_6 (TextureObjectParameter) {"ParameterName": "V:S:1:Rotation", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_9 (TextureObjectParameter) {"ParameterName": "V:F:0:Position", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_10 (TextureObjectParameter) {"ParameterName": "V:F:1:Normal", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureSampleParameter2D_0 (TextureSampleParameter2D) {"ParameterName": "0:1:Form", "Group": "Texture", "texture": "000000FF_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionAdd_1[0]
+  MaterialExpressionTextureSampleParameter2D_1 (TextureSampleParameter2D) {"ParameterName": "1:0:Flow", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_3 (TextureSampleParameter2D) {"ParameterName": "1:2:FormContext", "Group": "Texture", "texture": "FFFFFFFF", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_4 (TextureSampleParameter2D) {"ParameterName": "0:0:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionAdd_4[0]
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "C:1:Extinct/Transparency/Thickness", "Group": "Texture", "SamplerSource": "ESamplerSourceMode::SSM_Clamp_WorldGroupSettings", "texture": "00FFFFFF", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionConstant2Vector_1[0]
+  MaterialExpressionTextureSampleParameter2D_6 (TextureSampleParameter2D) {"ParameterName": "C:0:Color", "Group": "Texture", "SamplerSource": "ESamplerSourceMode::SSM_Clamp_WorldGroupSettings", "texture": "FFFFFFFF_sRGB"}
+      Coordinates      <- MaterialExpressionConstant2Vector_1[0]
+  MaterialExpressionTextureSampleParameter2D_7 (TextureSampleParameter2D) {"ParameterName": "0:0:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionAdd_0[0]
+  MaterialExpressionTextureSampleParameter2D_10 (TextureSampleParameter2D) {"ParameterName": "0:1:Form", "Group": "Texture", "texture": "000000FF_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionAdd_3[0]
+  MaterialExpressionTextureSampleParameter2D_11 (TextureSampleParameter2D) {"ParameterName": "1:1:NormalContext", "Group": "Texture", "texture": "FFFFFFFF", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  stripped expressions referred to: 31
+    MaterialExpressionAdd_0                       <- used by MaterialExpressionTextureSampleParameter2D_7.Coordinates
+    MaterialExpressionAdd_1                       <- used by MaterialExpressionTextureSampleParameter2D_0.Coordinates
+    MaterialExpressionAdd_3                       <- used by MaterialExpressionTextureSampleParameter2D_10.Coordinates
+    MaterialExpressionAdd_4                       <- used by MaterialExpressionTextureSampleParameter2D_4.Coordinates
+    MaterialExpressionComponentMask_0             <- used by MaterialExpressionMaterialFunctionCall_0.Coordinate, MaterialExpressionMaterialFunctionCall_1.Coordinate, MaterialExpressionMaterialFunctionCall_2.Coordinate
+    MaterialExpressionComponentMask_2             <- used by <pins>.BaseColor
+    MaterialExpressionComponentMask_23            <- used by MaterialExpressionStaticSwitchParameter_19.B
+    MaterialExpressionComponentMask_3             <- used by MaterialExpressionMaterialFunctionCall_3.NormalRG
+    MaterialExpressionComponentMask_7             <- used by MaterialExpressionMaterialFunctionCall_8.NormalRG
+    MaterialExpressionConstant2Vector_0           <- used by MaterialExpressionStaticSwitchParameter_5.A
+    MaterialExpressionConstant2Vector_1           <- used by MaterialExpressionTextureSampleParameter2D_5.Coordinates, MaterialExpressionTextureSampleParameter2D_6.Coordinates
+    MaterialExpressionConstant3Vector_1           <- used by MaterialExpressionStaticSwitchParameter_7.A
+    MaterialExpressionConstant4Vector_7           <- used by MaterialExpressionStaticSwitchParameter_0.A, MaterialExpressionStaticSwitchParameter_0.B
+    MaterialExpressionConstant4Vector_8           <- used by MaterialExpressionStaticSwitchParameter_51.A, MaterialExpressionStaticSwitchParameter_51.B
+    MaterialExpressionConstant4Vector_9           <- used by MaterialExpressionStaticSwitchParameter_54.A, MaterialExpressionStaticSwitchParameter_54.B
+    MaterialExpressionConstant_1                  <- used by <pins>.OpacityMask
+    MaterialExpressionConstant_11                 <- used by MaterialExpressionStaticSwitchParameter_2.B, MaterialExpressionStaticSwitchParameter_8.B
+    MaterialExpressionConstant_14                 <- used by <pins>.AmbientOcclusion
+    MaterialExpressionConstant_2                  <- used by MaterialExpressionStaticSwitchParameter_1.B
+    MaterialExpressionConstant_3                  <- used by MaterialExpressionMaterialFunctionCall_5.Reflectance
+    MaterialExpressionConstant_4                  <- used by MaterialExpressionStaticSwitchParameter_1.A
+    MaterialExpressionConstant_5                  <- used by <pins>.Roughness
+    MaterialExpressionConstant_8                  <- used by MaterialExpressionStaticSwitchParameter_6.A
+    MaterialExpressionConstant_9                  <- used by <pins>.Metallic
+    MaterialExpressionCustom_2                    <- used by MaterialExpressionStaticSwitchParameter_5.B
+    MaterialExpressionCustom_3                    <- used by MaterialExpressionMaterialFunctionCall_6.Normal
+    MaterialExpressionMultiply_1                  <- used by MaterialExpressionStaticSwitchParameter_8.A
+    MaterialExpressionMultiply_11                 <- used by MaterialExpressionStaticSwitchParameter_6.B
+    MaterialExpressionMultiply_3                  <- used by MaterialExpressionStaticSwitchParameter_19.A
+    MaterialExpressionOneMinus_0                  <- used by MaterialExpressionMaterialFunctionCall_6.Value
+    MaterialExpressionTextureCoordinate_3         <- used by MaterialExpressionTextureSampleParameter2D_1.Coordinates, MaterialExpressionTextureSampleParameter2D_11.Coordinates, MaterialExpressionTextureSampleParameter2D_3.Coordinates

@@ -1,0 +1,44 @@
+{
+ "steps": [
+  "scanned",
+  "row",
+  "forms",
+  "todo",
+  "compression",
+  "failed",
+  "build",
+  "checked",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth",
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/Motion/Enemy/EB2210_BizarroSephiroth",
+  "/Game/Character/Enemy/EB2210_00_BizarroSephiroth_Standard",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "row": "552 moves, 187 of them the Bizarro form's (Battle05)",
+ "forms": [
+  "NORMAL",
+  "WINGED",
+  "FLYING",
+  "KH2",
+  "BIZARRO"
+ ],
+ "todo": "39 move(s) (only.json)",
+ "compression": {
+  "ACL QuatDropW_Variable": 39
+ },
+ "failed": [],
+ "build": "39 of 39 built",
+ "checked": "177 package(s), all load back",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: PROBLEMS",
+ "done": true
+}

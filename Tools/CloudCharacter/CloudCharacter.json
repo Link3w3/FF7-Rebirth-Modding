@@ -1,0 +1,288 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "comment": "CLOUD on the CHARACTER page (Create a Character System 3.16.0): the game's own Cloud as a character of his own (CreateACharacterCloud_P: his CharaSpec rows PC0000_xx_..._CACS, his blueprints and AnimBlueprint), in Cloud's place, which Fully Playable (Young) Sephiroth gives Sephiroth. While he has it: his CharaSpec rows wherever the game names Cloud's, pt_Cloud as the game's own (pt_Cloud_CACS), Cloud's weapon abilities and limits as the game's own (their _CACS rows, the UniqueId kept: your progress), his battle voice, the weapon row FPYS changed. His CharaSpec, pt_Cloud_CACS and _CACS ability rows are in the Fully Playable (Young) Sephiroth data container (its 3.16.0 update).",
+ "characters": [
+  {
+   "name": "CLOUD",
+   "slot": "Cloud",
+   "player": "pt_Cloud",
+   "note": "the game's own Cloud, as a character of his own (his own CharaSpec rows, blueprints and AnimBlueprint)",
+   "requires_paks": [
+    "CreateACharacterCloud_P"
+   ],
+   "charaspecs": {
+    "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_CACS",
+    "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_CACS_NoBattle",
+    "PC0000_00_Cloud_Standard_Reserve": "PC0000_00_Cloud_Standard_CACS_Reserve",
+    "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_CACS",
+    "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_CACS_NoBattle",
+    "PC0000_04_Cloud_ZackCostume_Reserve": "PC0000_04_Cloud_ZackCostume_CACS_Reserve",
+    "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_CACS",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_CACS_NoBattle",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve": "PC0000_08_Cloud_SoldierNoHelmet_CACS_Reserve",
+    "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_CACS",
+    "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_CACS_NoBattle",
+    "PC0000_09_Cloud_CostaClothing_Reserve": "PC0000_09_Cloud_CostaClothing_CACS_Reserve",
+    "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_CACS",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_CACS_NoBattle",
+    "PC0000_10_Cloud_CostaClothing2_Reserve": "PC0000_10_Cloud_CostaClothing2_CACS_Reserve",
+    "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_CACS",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_CACS_NoBattle",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve": "PC0000_12_Cloud_ZackCostumeDirty_CACS_Reserve",
+    "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_CACS",
+    "WE0000_05_Cloud_NailBat": "WE0000_05_Cloud_NailBat_CACS",
+    "WE0000_11_Cloud_END2Weapon1": "WE0000_11_Cloud_END2Weapon1_CACS",
+    "WE0000_12_Cloud_END2Weapon2": "WE0000_12_Cloud_END2Weapon2_CACS",
+    "WE0000_13_Cloud_END2Weapon3": "WE0000_13_Cloud_END2Weapon3_CACS",
+    "WE0000_14_Cloud_END2Weapon4": "WE0000_14_Cloud_END2Weapon4_CACS",
+    "WE0000_15_Cloud_END2Weapon5": "WE0000_15_Cloud_END2Weapon5_CACS",
+    "WE0000_16_Cloud_END2Weapon6": "WE0000_16_Cloud_END2Weapon6_CACS",
+    "WE0000_17_Cloud_Umbrella": "WE0000_17_Cloud_Umbrella_CACS"
+   },
+   "rows": [
+    {
+     "table": "BattlePlayerParameter",
+     "row": "pt_Cloud",
+     "from": "pt_Cloud_CACS"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst02",
+     "from": "PC0000_AtkBurst02_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst04",
+     "from": "PC0000_AtkBurst04_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst05",
+     "from": "PC0000_AtkBurst05_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst06",
+     "from": "PC0000_AtkBurst06_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst07",
+     "from": "PC0000_AtkBurst07_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst08",
+     "from": "PC0000_AtkBurst08_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst09",
+     "from": "PC0000_AtkBurst09_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst10",
+     "from": "PC0000_AtkBurst10_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit001",
+     "from": "PC0000_Limit001_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit002",
+     "from": "PC0000_Limit002_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit003",
+     "from": "PC0000_Limit003_CACS",
+     "keep": [
+      "UniqueId"
+     ]
+    }
+   ],
+   "values": [
+    {
+     "table": "PlannerEvent",
+     "field": "VoicePack",
+     "value": "VO_PC0000_00_Cloud",
+     "rows": [
+      "BT_BVCLD_STARTBTL_0000",
+      "BT_BVCLD_STARTBTL_0010",
+      "BT_BVCLD_STARTBTL_0100",
+      "BT_BVCLD_STARTBTL_0110",
+      "BT_BVCLD_STARTBTL_0200",
+      "BT_BVCLD_NATKNML_0000",
+      "BT_BVCLD_NATKMOVE_0000",
+      "BT_BVCLD_NATKNML_0010",
+      "BT_BVCLD_NATKNML_0020",
+      "BT_BVCLD_NATKNML_0030",
+      "BT_BVCLD_NATKNML_0040",
+      "BT_BVCLD_AATKNML_0000",
+      "BT_BVCLD_AATKNML_0010",
+      "BT_BVCLD_AATKNML_0020",
+      "BT_BVCLD_ABILITY_0000",
+      "BT_BVCLD_ABILITY_0010",
+      "BT_BVCLD_ABILITY_0020",
+      "BT_BVCLD_ABILITY_0030",
+      "BT_BVCLD_ABILITY_0040",
+      "BT_BVCLD_ABILITY_0050",
+      "BT_BVCLD_ABILITY_0060",
+      "BT_BVCLD_LIMIT_0000",
+      "BT_BVCLD_LIMIT_0010",
+      "BT_BVCLD_LIMIT_0020",
+      "BT_BVCLD_LIMIT_0030",
+      "BT_BVCLD_FILLLIMIT_0000",
+      "BT_BVCLD_HEATENEMY_0000",
+      "BT_BVCLD_ATKFINISH_0000",
+      "BT_BVCLD_BMODE_0000",
+      "BT_BVCLD_BRAVEATK_0000",
+      "BT_BVCLD_BRAVEATK_0010",
+      "BT_BVCLD_BRAVEATK_0020",
+      "BT_BVCLD_UNIQUECNT_0000",
+      "BT_BVCLD_UNIQUECNT_0010",
+      "BT_BVCLD_UNIQUEEND_0000",
+      "BT_BVCLD_UNIQUEEND_0010",
+      "BT_BVCLD_STBURST_0000",
+      "BT_BVCLD_MAGDBFCMN_0000",
+      "BT_BVCLD_MAGDBFSLP_0000",
+      "BT_BVCLD_MAGDBFSIL_0000",
+      "BT_BVCLD_MAGDBFPOI_0000",
+      "BT_BVCLD_MAGDBFBAR_0000",
+      "BT_BVCLD_MAGDBFDTH_0000",
+      "BT_BVCLD_MAGDBFDES_0000",
+      "BT_BVCLD_MAGDBFSLW_0000",
+      "BT_BVCLD_MAGBUFHST_0000",
+      "BT_BVCLD_MAGBUFREG_0000",
+      "BT_BVCLD_MAGATRCMN_0000",
+      "BT_BVCLD_MAGATRFIR_0000",
+      "BT_BVCLD_MAGATRICE_0000",
+      "BT_BVCLD_MAGATRTND_0000",
+      "BT_BVCLD_MAGATRWND_0000",
+      "BT_BVCLD_MAGADDATK_0000",
+      "BT_BVCLD_AVOID_0000",
+      "BT_BVCLD_GUARD_0000",
+      "BT_BVCLD_GUARD_0010",
+      "BT_BVCLD_GUARD_0011",
+      "BT_BVCLD_PARRY_0000",
+      "BT_BVCLD_DAMAGE_0000",
+      "BT_BVCLD_DAMAGE_0010",
+      "BT_BVCLD_DAMAGE_0020",
+      "BT_BVCLD_DAMAGE_0030",
+      "BT_BVCLD_DEAD_0000",
+      "BT_BVCLD_SLEEP_0000",
+      "BT_BVCLD_SLEEP_0010",
+      "BT_BVCLD_SLEEP_0020",
+      "BT_BVCLD_STUN_0000",
+      "BT_BVCLD_STUN_0010",
+      "BT_BVCLD_STUN_0020",
+      "BT_BVCLD_RECOVER_0000",
+      "BT_BVCLD_RECOVER_0010",
+      "BT_BVCLD_RECOVER_0100",
+      "BT_BVCLD_ITEMCMN_0000",
+      "BT_BVCLD_ITEMENEMY_0000",
+      "BT_BVCLD_ITEMPARTY_0000",
+      "BT_BVCLD_CURE_0000",
+      "BT_BVCLD_CURE_0010",
+      "BT_BVCLD_CLEAR_0000",
+      "BT_BVCLD_CUREPARTY_0000",
+      "BT_BVCLD_RAISE_0000",
+      "BT_BVCLD_BUFF_0000",
+      "BT_BVCLD_PENETRATE_0000",
+      "BT_BVCLD_CHANGENML_0000",
+      "BT_BVCLD_CHANGECRI_0000",
+      "BT_BVCLD_CHANGEBST_0000",
+      "BT_BVCLD_CHANGENML_0010",
+      "BT_BVCLD_CHANGECRI_0010",
+      "BT_BVCLD_CHANGEBST_0010",
+      "BT_BVCLD_CNGCMNDIE_0000",
+      "BT_BVCLD_VICTORY_0000",
+      "BT_BVCLD_VICTORY_0010",
+      "BT_BVCLD_VICTORY_0020",
+      "BT_BVCLD_GAMEOVER",
+      "BT_BVCLD_SUMMONCMN_0000",
+      "BT_BVCLD_SUMMON000_0000",
+      "BT_BVCLD_SUMMON010_0000",
+      "BT_BVCLD_SUMMON020_0000",
+      "BT_BVCLD_SUMMON030_0000",
+      "BT_BVCLD_SUMMON040_0000",
+      "BT_BVCLD_SUMMON050_0000",
+      "BT_BVCLD_SUMMON060_0000",
+      "BT_BVCLD_SUMMON070_0000",
+      "BT_BVCLD_SUMMON080_0000",
+      "BT_BVCLD_SUMMONEND_0000",
+      "BT_BVCLD_ATKCHAINST_0000",
+      "BT_BVCLD_ATKCHAINFN_0000"
+     ]
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_00_Cloud"
+     ],
+     "value": "Character/Player/VO_PC0000_00_Cloud"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_01_Cloud_Past"
+     ],
+     "value": "Character/Player/VO_PC0000_01_Cloud_Past"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_02_Cloud_Insanity"
+     ],
+     "value": "Character/Player/VO_PC0000_02_Cloud_Insanity"
+    },
+    {
+     "table": "Equipment",
+     "field": "CharaSpecID_Array",
+     "rows": [
+      "W_TSW_9001"
+     ],
+     "value": [
+      "WE0000_00_Cloud_BusterSword_CACS"
+     ]
+    }
+   ]
+  }
+ ]
+}

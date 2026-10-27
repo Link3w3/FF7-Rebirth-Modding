@@ -1,0 +1,19349 @@
+// RebirthSkelCompat - KH3-style skeleton compatibility for FINAL FANTASY VII REBIRTH (retail UE 4.26)
+// UE4SS C++ mod, built against the installed UE4SS 3.0.1 c0a8d4c / UEPseudo b4a6e7 SDK.
+//
+// Retail Rebirth has no compatible-skeleton list (no SQEX_CompatibleSkeletonLists or UE5-style
+// CompatibleSkeletons in the executable's reflection data) and its skeleton checks are inlined
+// pointer comparisons. Instead of patching those checks, each pair uses one of two methods:
+//
+//   * "animations" (default, KH3 mode): every animation asset of the animation skeleton is rewritten
+//     onto the receiving skeleton while it loads (track tables, curve UIDs, per-bone data, Skeleton
+//     pointer). Characters keep their own skeleton, AnimBlueprint and physics; the adopted animations
+//     simply belong to their skeleton now. See "Animation adoption" below for the safety rules.
+//   * "mesh": a mesh whose skeleton is listed as a receiving skeleton is rebound to the animation
+//     skeleton while it loads. The engine then builds the usual by-name mesh/skeleton linkup: shared
+//     bones animate, mesh-only bones keep their reference pose (or physics), skeleton-only tracks are
+//     ignored. Used for custom skeletons that should run another skeleton's AnimBlueprint.
+//   * families (3.0): skeletons that share animations both ways, or that several pairs want animations
+//     from, gather on one hub skeleton. SkelCompatCore's FinishConfig turns a family into an "animations"
+//     pair (the hub adopts every member's animations) plus a "mesh" pair per member (its meshes are rebound
+//     to the hub), so every member plays every member's animations with its own AnimBlueprint.
+//   * animation set rows (3.1): which animations a character's animation sets hold. The CharaSpec pack's
+//     sets are replaced, while the pack loads, by sets merged from the row's battle / field sources (first
+//     source with an animation name wins, the pack's own sets fill in last) plus the row's moves.
+//   * 3.2: "auto" sources (another character's attacks fill a set's attack names by kind and length), socket
+//     stand-ins on a character's meshes (row "sockets": a weapon socket the character lacks -> its hand), and
+//     "proportions" (every character keeps its own bone lengths: body bones take their translation from the
+//     playing mesh, the pelvis is scaled per body, against a retarget pose of the body each animation was made for).
+//   * 3.3: "abilities" per primary animation pack: when a character's pack switches (EndBattleAPI SetPrimaryAnimPack /
+//     ResetPrimaryAnimPack), its BattlePlayerParameter row ("player") lists that pack's commands and limit breaks.
+//     3.3.1: through the game's own list getters (their table slots point at the mod's), as the rows can be read-only.
+//     3.3.1 "pack_assets": objects put into a character's CharaSpec pack (another character's effect pack).
+//   * 3.4: "weapon_abilities" per pack: the abilities a character's weapons give switch with its pack.
+//   * 3.5: every set of a character's pack can be switched to: the game's calls of its set lookup point at the mod's,
+//     which gives the pack's own set when the game took none of that name (it takes sets only from some slots of the
+//     row's AnimationSetList).
+//     3.5.1: the lookup is told apart from the game's other functions of its shape by the container its calls pass.
+//     3.5.2: the log says, for the first switch of each row to each pack, whether the game had that set, and how often the
+//     mod's lookup answered with its sets.
+//     3.5.3: the Lua pump: Lua mods named in LuaPump::Mods are called every frame on the game thread (UE4SS 3.0.1's
+//     ExecuteInGameThread is neither safe nor always on the game thread); RebirthSkelCompatIsGameThread() for every Lua mod.
+//     3.5.2: the weapon ability lookups are found again: their table global holds 3 lists of 16-byte entries (not one
+//     list of weak pointers), so the Equipment table is looked for in all of them.
+//   * 3.6: forms: a row's "forms" (up to 13, its normal one first) are what the character changes into in battle, through
+//     the forms menu (hold Triangle: a command window in the game's menu art, 7 forms at a time, the list scrolls; up and
+//     down to choose, let go to switch). A form plays its animation pack and changes what goes with it: parts of the model
+//     shown or hidden, another model (its AnimBlueprint, size and added parts, for a model on another skeleton), the
+//     weapons hidden, effects and sounds as it switches, effects kept while it lasts, real flying. A pack switch made by
+//     anything else changes the character's form too; every character is back in its normal form when the battle ends.
+//     A form can have super armor (hits do not make the character flinch or stagger: EndBattleAPI SetDisableReaction), a
+//     time limit (game time, shown on screen; then it turns back by itself, once the ability it is running ends) and a
+//     cooldown (it can be chosen again only that long after it ends; the menu shows when). Knocked out in such a form,
+//     the character loses its super armor and its time stops; back on its feet it turns back.
+//     The frame work (the Lua pump, the forms) runs from actor ticks and ProcessEvent: this game's UE4SS calls no viewport
+//     tick, so 3.5.3's pump never ran.
+//     3.7.5: a form's "sets" ({"Battle00": "Battle07", "Battle01": "Battle08", "Facial00": "Facial07"}): while the
+//     character is in it, the game's lookups of a set of a name on the left (its default pack, Punisher mode's, its
+//     face's) get its set of the name on the right (PackSets' lookup): a beast form keeps its own walks, guard and face
+//     whatever mode the game plays. The log says which names the game looked up, and how often.
+//   * 3.9.0: "voice" on a row or a form: the voice lines of the character's animations (the game's sound notifies, each
+//     naming a voice bank and a cue) play from that voice bank in that form (or "own": the banks the animations name), so
+//     a character can speak with a voice bank of its own (one made with the editor's Sound Banks) in some forms and with
+//     the game's in others. The normal form can have a pack of its own ("pack" on the first form): the character's base
+//     moves are then that pack in battle (on at the battle's start, and again whenever the game puts its own pack back).
+// Assets in the paks are untouched; everything happens in memory.
+//
+// Hook points
+//   * USkeletalMesh::PostLoad (primary vtable slot, validated before patching): rebind before the
+//     engine's PostLoad runs, so virtual bones of the animation skeleton are merged as usual.
+//     This runs for every skeletal mesh the game loads, so it only does a few direct reads unless
+//     the mesh is part of a pair (no object-array walks, no string building).
+//   * PostLoad of every native animation-asset class (same slot): adoption, after the engine's own
+//     PostLoad. Sequences post-load on the async loading thread; that path only reads published,
+//     immutable plans and writes the asset being loaded (serialised by AdoptMutex).
+//   * UEndAssetDataAsset::PostLoad (same slot, game thread): animation set rows merge the pack's sets
+//     before the engine's PostLoad.
+//   * LoadMap post-callback (game thread): the first call finishes initialisation (class lookups,
+//     offsets, hooks), then scans already-loaded assets and preloads + roots the configured skeletons.
+//   * GameViewportClient::Tick post-callback (game thread, after the world tick): late adoption of
+//     animations that were loaded before their plan existed.
+//   * ProcessEvent post-callback (game thread only, throttled): late rebinds, repair of components
+//     whose AnimBlueprint was refused before the rebind, diagnostics, F9 report.
+//   * 3.3.1: the slots of the game's read-only tables of list getters that read a BattlePlayerParameter row's command
+//     and limit entries (found by their code, validated, ListGetters): the mod's getters answer for switched rows only.
+//   * 3.4: the game's calls that look up a weapon's Equipment row to read its ability (found by their code; the table
+//     and the field are checked against the Equipment table): a call (rel32) to a jump near the game's code, to the
+//     mod's lookup, which calls the game's and hands out a stand-in row for a weapon whose ability the pack replaces.
+// Any error inside the mod switches the mod off for the session instead of taking the game down.
+
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#include <Windows.h>
+
+#include <algorithm>
+#include <array>
+#include <atomic>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <cstring>
+#include <cwchar>
+#include <deque>
+#include <filesystem>
+#include <fstream>
+#include <memory>
+#include <mutex>
+#include <new>
+#include <stdexcept>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+
+#include "SkelCompatCore.hpp"
+
+// Parse fmt before Unreal's warning policy (same order as the existing RebirthSkeletonObserver build).
+#include <fmt/chrono.h>
+#include <Unreal/UFunction.hpp>
+#include <Unreal/FURL.hpp>
+#include <Mod/CppUserModBase.hpp>
+#include <LuaMadeSimple/LuaMadeSimple.hpp>
+#include <Unreal/Hooks.hpp>
+#include <Unreal/UObject.hpp>
+#include <Unreal/UObjectGlobals.hpp>
+#include <Unreal/UObjectArray.hpp>
+#include <Unreal/UClass.hpp>
+#include <Unreal/FProperty.hpp>
+#include <Unreal/Property/FArrayProperty.hpp>
+#include <Unreal/Property/FStructProperty.hpp>
+#include <Unreal/Property/FBoolProperty.hpp>
+#include <Unreal/UScriptStruct.hpp>
+#include <Unreal/UGameViewportClient.hpp>
+#include <Unreal/FString.hpp>
+#include <Unreal/FText.hpp>
+#include <Unreal/AActor.hpp>
+#include <Unreal/FMemory.hpp>
+#include <Unreal/NameTypes.hpp>
+
+namespace
+{
+using namespace RC;
+using namespace RC::Unreal;
+namespace fs = std::filesystem;
+
+static_assert(std::is_same_v<RC::StringType, std::wstring>, "Installed UE4SS uses wchar_t strings; do not define FORCE_U16.");
+static_assert(_ITERATOR_DEBUG_LEVEL == 0, "Installed UE4SS uses release MSVC containers.");
+static_assert(sizeof(RC::CppUserModBase) == 192, "CppUserModBase must match the installed UE4SS c0a8d4c layout.");
+static_assert(sizeof(void*) == 8, "x64 only.");
+
+constexpr wchar_t ModVersionText[] = L"3.9.0";
+constexpr size_t PostLoadSlot = 0x78 / sizeof(void*); // UObject::PostLoad per Rebirth's VTableLayout.ini; verified below
+constexpr uint64_t PumpIntervalMs = 250;
+constexpr int32_t MaxBones = 8192;
+
+const EObjectFlags DeadFlags = static_cast<EObjectFlags>(RF_BeginDestroyed | RF_FinishDestroyed);
+const EObjectFlags TemplateFlags = static_cast<EObjectFlags>(RF_ClassDefaultObject | RF_ArchetypeObject);
+const EObjectFlags NotReadyFlags = static_cast<EObjectFlags>(RF_ClassDefaultObject | RF_ArchetypeObject | RF_BeginDestroyed |
+                                                             RF_FinishDestroyed | RF_NeedInitialization | RF_NeedLoad |
+                                                             RF_NeedPostLoad | RF_NeedPostLoadSubobjects);
+
+// ---------------------------------------------------------------------------------------
+// Logging (own file next to the mod; UE4SS hot reload never truncates it mid-session)
+// ---------------------------------------------------------------------------------------
+class Logger
+{
+public:
+    void Open(const fs::path& path)
+    {
+        std::lock_guard lock(Mutex);
+        File.open(path, std::ios::binary | std::ios::trunc);
+    }
+
+    void Line(const std::wstring& text)
+    {
+        SYSTEMTIME t{};
+        GetLocalTime(&t);
+        wchar_t stamp[32]{};
+        swprintf_s(stamp, L"[%02u:%02u:%02u.%03u] ", t.wHour, t.wMinute, t.wSecond, t.wMilliseconds);
+        const std::string utf8 = SkelCompat::Narrow(std::wstring(stamp) + text + L"\n");
+        {
+            std::lock_guard lock(Mutex);
+            if (File.is_open())
+            {
+                File.write(utf8.data(), static_cast<std::streamsize>(utf8.size()));
+                File.flush();
+            }
+        }
+        OutputDebugStringW((L"[RebirthSkelCompat] " + text + L"\n").c_str());
+    }
+
+private:
+    std::mutex Mutex;
+    std::ofstream File;
+};
+
+Logger Log;
+
+std::wstring Hex(uintptr_t value)
+{
+    wchar_t buffer[32]{};
+    swprintf_s(buffer, L"0x%llX", static_cast<unsigned long long>(value));
+    return buffer;
+}
+
+// ---------------------------------------------------------------------------------------
+// Guarded memory access for pointers that are not known to be live
+// ---------------------------------------------------------------------------------------
+bool SafeCopy(void* destination, const void* source, size_t size)
+{
+    SIZE_T copied = 0;
+    return source && ReadProcessMemory(GetCurrentProcess(), source, destination, size, &copied) && copied == size;
+}
+
+template <class T>
+bool ReadAt(const void* base, size_t offset, T& out)
+{
+    return base && SafeCopy(&out, static_cast<const uint8_t*>(base) + offset, sizeof(T));
+}
+
+// Direct read from an object the engine is currently handing us (known live).
+template <class T>
+T Field(const void* base, int32_t offset)
+{
+    T value{};
+    std::memcpy(&value, static_cast<const uint8_t*>(base) + offset, sizeof(T));
+    return value;
+}
+
+struct RawArray
+{
+    void* Data = nullptr;
+    int32_t Num = 0;
+    int32_t Max = 0;
+};
+static_assert(sizeof(RawArray) == 16);
+
+struct ImageRange
+{
+    uintptr_t Begin = 0;
+    uintptr_t End = 0;
+    bool Contains(const void* p) const
+    {
+        const auto v = reinterpret_cast<uintptr_t>(p);
+        return v >= Begin && v < End;
+    }
+};
+
+ImageRange MainImage()
+{
+    ImageRange range;
+    const auto* base = reinterpret_cast<const uint8_t*>(GetModuleHandleW(nullptr));
+    IMAGE_DOS_HEADER dos{};
+    IMAGE_NT_HEADERS64 nt{};
+    if (!base || !SafeCopy(&dos, base, sizeof(dos)) || dos.e_magic != IMAGE_DOS_SIGNATURE ||
+        !SafeCopy(&nt, base + dos.e_lfanew, sizeof(nt)) || nt.Signature != IMAGE_NT_SIGNATURE)
+    {
+        return range;
+    }
+    range.Begin = reinterpret_cast<uintptr_t>(base);
+    range.End = range.Begin + nt.OptionalHeader.SizeOfImage;
+    return range;
+}
+
+// ---------------------------------------------------------------------------------------
+// Reflection and object helpers.
+// 3.6.8: IsLive is the mod's check that a pointer (which may be stale) is a live object, in constant time: the object's
+// own index names its slot in the object array (UE4SS's GetObjectItem, which reads the index and checks it is in the
+// array; under SEH, as the pointer may be stale), and that slot must hold this very pointer and not be unreachable -
+// what UE4SS's UObject::IsReal checks by walking every slot of the whole object array. That walk takes tens of
+// milliseconds in this game, and the mod made it once a second during a form's entrance, for every effect or sound it
+// stopped and for every voice line: the hitches of the entrances.
+// Only through what UE4SS.dll exports (GetObjectItem, FUObjectItem's GetUObject and IsUnreachable, ForEachUObjectInRange):
+// its versioned container (Container::UnrealVC) is not exported - the first build of 3.6.8 called it and did not link.
+// ---------------------------------------------------------------------------------------
+namespace LiveCheck
+{
+std::atomic<bool> Walk{false};   // UE4SS's GetObjectItem did not name a live object's slot (LateInit): IsReal's walk instead
+
+bool Holds(const void* object) noexcept
+{
+    __try
+    {
+        const FUObjectItem* item = static_cast<const UObject*>(object)->GetObjectItem();
+        return item && item->GetUObject() == object && !item->IsUnreachable();
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+// The constant-time check, tried on two objects known to be live (game thread, LateInit). Says how objects are checked.
+std::wstring Check(UObject* known, UObject* other)
+{
+    if (!known || !other) { return L"in constant time, from UE4SS's object items (no object to try them on)"; }
+    for (UObject* object : {known, other})
+    {
+        if (!Holds(object))
+        {
+            Walk.store(true, std::memory_order_relaxed);
+            return L"by UE4SS's IsReal, a walk of the whole object array (UE4SS's object item of " + object->GetName() +
+                   L" does not name it)";
+        }
+    }
+    return L"in constant time, from UE4SS's object items (each object's index names its slot)";
+}
+} // namespace LiveCheck
+
+bool IsLive(const void* candidate)
+{
+    if (!candidate) { return false; }
+    if (LiveCheck::Walk.load(std::memory_order_relaxed)) { return UObject::IsReal(candidate); }
+    return LiveCheck::Holds(candidate);
+}
+
+FProperty* FindField(UStruct* owner, const wchar_t* name)
+{
+    if (!owner) { return nullptr; }
+    int count = 0;
+    for (FProperty* property : owner->ForEachPropertyInChain())
+    {
+        if (++count > 4096) { break; }
+        if (property && property->GetName() == name) { return property; }
+    }
+    return nullptr;
+}
+
+std::wstring TypeOf(FProperty* property) { return property ? property->GetClass().GetName() : std::wstring{}; }
+
+int32_t FieldOffset(UStruct* owner, const wchar_t* name, std::initializer_list<const wchar_t*> types, int32_t size)
+{
+    FProperty* property = FindField(owner, name);
+    if (!property || property->GetArrayDim() != 1 || property->GetElementSize() != size) { return -1; }
+    const std::wstring type = TypeOf(property);
+    if (std::none_of(types.begin(), types.end(), [&](const wchar_t* t) { return type == t; })) { return -1; }
+    const int32_t offset = property->GetOffset_Internal();
+    const int32_t limit = owner->GetPropertiesSize();
+    return (offset >= 0 && offset + size <= limit) ? offset : -1;
+}
+
+// Path of an object known to be live.
+std::wstring ObjectPath(UObject* object) { return object ? object->GetPathName() : std::wstring{}; }
+
+// Object name (no path): one FName::ToString, cheap.
+std::wstring ShortName(UObject* object) { return object ? object->GetNamePrivate().ToString() : std::wstring{}; }
+
+std::wstring ShortNameOfPath(const std::wstring& path)
+{
+    const size_t dot = path.find_last_of(L'.');
+    const size_t slash = path.find_last_of(L'/');
+    if (dot != std::wstring::npos && (slash == std::wstring::npos || dot > slash)) { return path.substr(dot + 1); }
+    return slash == std::wstring::npos ? path : path.substr(slash + 1);
+}
+
+std::wstring Folded(const std::wstring& text) { return SkelCompat::FoldedKey(text); }
+
+bool Alive(UObject* object) { return object && IsLive(object) && !object->HasAnyFlags(DeadFlags); }
+bool FlagsReady(UObject* object) { return object && !object->HasAnyFlags(NotReadyFlags); }
+
+// Path of an object that may be stale (pump / report only).
+std::wstring PathOf(UObject* object)
+{
+    try
+    {
+        return (object && IsLive(object)) ? object->GetPathName() : std::wstring{};
+    }
+    catch (...)
+    {
+        return {};
+    }
+}
+
+UObject* FindObjectByPath(const wchar_t* path)
+{
+    UObject* object = UObjectGlobals::StaticFindObject(nullptr, nullptr, path);
+    return (object && IsLive(object)) ? object : nullptr;
+}
+
+UClass* FindClass(const wchar_t* path)
+{
+    UObject* object = FindObjectByPath(path);
+    return (object && object->IsA<UClass>()) ? static_cast<UClass*>(object) : nullptr;
+}
+
+// ---------------------------------------------------------------------------------------
+// FReferenceSkeleton reader. Layout in UE 4.26 shipping: four TArrays (raw/final bone info and
+// poses), two TMaps, two TArrays, one bool. FMeshBoneInfo = { FName Name; int32 ParentIndex; }.
+// ---------------------------------------------------------------------------------------
+static_assert(sizeof(FName) == 8, "Retail Rebirth uses 8-byte FNames (ComparisonIndex + Number).");
+constexpr size_t BoneInfoStride = (sizeof(FName) + sizeof(int32_t) + 3) & ~size_t{3};
+
+bool ReadRefSkeleton(const void* owner, size_t offset, SkelCompat::BoneTable& out)
+{
+    RawArray raw{}, rawPose{}, finalInfo{}, finalPose{};
+    if (!ReadAt(owner, offset, raw) || !ReadAt(owner, offset + 0x10, rawPose) || !ReadAt(owner, offset + 0x20, finalInfo) ||
+        !ReadAt(owner, offset + 0x30, finalPose))
+    {
+        return false;
+    }
+    if (raw.Num <= 0 || raw.Num > MaxBones || raw.Max < raw.Num || !raw.Data) { return false; }
+    if (rawPose.Num != raw.Num || rawPose.Max < rawPose.Num || !rawPose.Data) { return false; }
+    if (finalInfo.Num < raw.Num || finalInfo.Num > raw.Num + 1024 || finalInfo.Max < finalInfo.Num || !finalInfo.Data) { return false; }
+    if (finalPose.Num != finalInfo.Num || finalPose.Max < finalPose.Num || !finalPose.Data) { return false; }
+    std::array<uint8_t, 16> probe{};
+    if (!SafeCopy(probe.data(), rawPose.Data, probe.size()) || !SafeCopy(probe.data(), finalPose.Data, probe.size())) { return false; }
+
+    std::vector<uint8_t> bytes(static_cast<size_t>(finalInfo.Num) * BoneInfoStride);
+    if (!SafeCopy(bytes.data(), finalInfo.Data, bytes.size())) { return false; }
+
+    // Validate the hierarchy before touching any name: random memory almost never forms a tree.
+    std::vector<int32_t> parents(static_cast<size_t>(finalInfo.Num));
+    for (int32_t i = 0; i < finalInfo.Num; ++i)
+    {
+        int32_t parent = 0;
+        std::memcpy(&parent, bytes.data() + static_cast<size_t>(i) * BoneInfoStride + sizeof(FName), sizeof(parent));
+        if ((i == 0 && parent != -1) || (i > 0 && (parent < 0 || parent >= i))) { return false; }
+        parents[static_cast<size_t>(i)] = parent;
+    }
+
+    SkelCompat::BoneTable table;
+    table.Parents = std::move(parents);
+    table.RawCount = raw.Num;
+    table.Names.reserve(static_cast<size_t>(finalInfo.Num));
+    for (int32_t i = 0; i < finalInfo.Num; ++i)
+    {
+        FName name{};
+        std::memcpy(static_cast<void*>(&name), bytes.data() + static_cast<size_t>(i) * BoneInfoStride, sizeof(FName));
+        std::wstring text = name.ToString();
+        if (text.empty() || text == L"None") { return false; }
+        table.Names.push_back(std::move(text));
+    }
+    if (!table.Valid()) { return false; }
+    out = std::move(table);
+    return true;
+}
+
+// ---------------------------------------------------------------------------------------
+// Mod state
+// ---------------------------------------------------------------------------------------
+struct VTablePatch
+{
+    void** Table = nullptr;
+    void* Original = nullptr;
+};
+
+struct ReboundMesh
+{
+    UObject* Mesh = nullptr;
+    UObject* Target = nullptr;
+    std::vector<UObject*> KeepCompatible; // AnimBlueprints made for these skeletons must still accept the mesh
+    bool Family = false;            // family member: the mesh may also run its own character's AnimBlueprint
+    std::wstring MeshPath;
+    std::wstring FromSkeleton;
+    std::wstring ToSkeleton;
+    bool Late = false;
+    bool Diagnosed = false;
+    int32_t Attempts = 0;
+    std::wstring Diagnosis;
+    bool FixHierarchy = true;
+    int32_t Renamed = -1;           // bones renamed by the hierarchy fix; -1 = not applied
+    std::wstring HierarchyNote;     // what the hierarchy fix did
+    std::wstring SocketNote;        // sockets of the mesh's own skeleton kept on it
+};
+
+enum class PathKind : uint8_t
+{
+    None,
+    Soft,
+    Hard,
+    String,
+    Name
+};
+
+struct PathField
+{
+    int32_t Offset = -1;
+    int32_t Stride = 0;
+    PathKind Kind = PathKind::None;
+};
+
+// What an AssetUserData class offers (cached per class; validated by the class's FName).
+struct CarrierInfo
+{
+    std::array<uint8_t, sizeof(FName)> ClassName{};
+    bool IsCarrier = false;
+    PathField Animation;
+    PathField Meshes;
+};
+
+// One animation skeleton's animations adopted by one receiving skeleton (KH3 mode). Immutable once published,
+// except the counters; read from the async loading thread.
+struct AdoptionPlan
+{
+    UObject* From = nullptr;                          // animation skeleton (rooted)
+    UObject* To = nullptr;                            // receiving skeleton (rooted)
+    std::wstring FromPath;
+    std::wstring ToPath;
+    std::vector<int32_t> TrackMap;                    // from bone index -> to bone index, or -1 (track dropped)
+    std::unordered_map<uint64_t, uint16_t> CurveUids; // raw FName of a receiving-skeleton curve -> its UID
+    bool CurvesKnown = false;                         // false: curve UIDs could not be read, curves are dropped
+    std::unordered_map<uint64_t, int32_t> ToBoneIndex;// raw FName of a receiving-skeleton bone -> its index
+    std::vector<std::wstring> Paths;                  // adopt_paths (empty = every asset of From)
+    size_t PairIndex = 0;                             // config order decides which pair gets an animation first
+    bool Family = false;                              // From is a family member, To its hub (From's meshes are rebound to To)
+    std::array<uint8_t, 16> ToVirtualBoneGuid{};      // receiving skeleton's VirtualBoneGuid, written into adopted assets
+    bool WriteVirtualBoneGuid = false;
+    std::wstring Summary;
+    bool KeepProportions = false;                     // 3.2: adopted sequences name From's retarget pose on To (RetargetSource)
+    uint64_t RetargetName = 0;                        // raw FName of From: the key of that pose
+    mutable std::atomic<uint64_t> RetargetReplaced{0};// adopted sequences whose own RetargetSource was replaced
+    mutable std::atomic<uint64_t> Adopted{0};
+    mutable std::atomic<uint64_t> Refused{0};
+    mutable std::atomic<uint64_t> CurvesDropped{0};        // curve tracks of adopted assets the receiving skeleton does not know
+    mutable std::atomic<uint64_t> AssetsDroppingCurves{0}; // adopted assets with at least one such curve
+    mutable std::atomic<bool> MemberMeshAlive{false};      // family: the last late pass saw a live mesh still on From
+};
+
+struct AdoptionTable
+{
+    std::vector<std::shared_ptr<AdoptionPlan>> Plans;
+};
+
+enum class AnimKind : uint8_t
+{
+    Other,      // not adopted (pose assets, streamable animations, ...)
+    Sequence,
+    Composite,
+    Montage,
+    BlendSpace
+};
+
+// A montage, composite or blend space whose animations are not all on the receiving skeleton yet. Rooted by the
+// mod while it waits, so the pointer stays valid; adopted as soon as its last animation arrives.
+struct WaitingContainer
+{
+    UObject* Asset = nullptr;
+    AnimKind Kind = AnimKind::Other;
+    const AdoptionPlan* Plan = nullptr;
+    std::wstring Path;
+    std::vector<UObject*> Children;
+    bool RootedByMod = false;
+};
+
+struct ModState
+{
+    std::mutex Mutex;
+    SkelCompat::Config Config;                               // immutable after Initialize
+    std::unordered_set<std::wstring> ReceivingNames;         // folded short names of JSON receiving skeletons (immutable)
+    fs::path ModDirectory;
+    fs::path GameContentPaks;
+
+    UClass* SkeletonClass = nullptr;
+    UClass* MeshClass = nullptr;
+    UClass* ComponentClass = nullptr;
+    UFunction* SetAnimClass = nullptr;
+    UFunction* MakeSoftObjectPath = nullptr;
+    UFunction* ConvertSoftObjectPath = nullptr;
+    UFunction* LoadAssetBlocking = nullptr;
+    UFunction* LoadAssetAsync = nullptr;    // (3.6.12) KismetSystemLibrary.LoadAsset, a load in the background
+    UStruct* LatentActionInfo = nullptr;    // (3.6.12) its LatentInfo parameter's struct
+    UObject* KismetSystemLibrary = nullptr;
+    int32_t OffMeshSkeleton = -1;
+    int32_t OffCompMesh = -1;
+    int32_t OffCompAnimClass = -1;
+    int32_t OffCompAnimInstance = -1;
+    int32_t OffCompLinked = -1;              // SkeletalMeshComponent.LinkedInstances (TArray<UAnimInstance*>)
+    int32_t OffSkelRefLocalPoses = -1;
+    int32_t OffSkelVirtualBones = -1;
+    int32_t OffSkelUserData = -1;
+    int32_t OffMeshUserData = -1;
+    int32_t OffMeshSockets = -1;                             // USkeletalMesh::Sockets (TArray<USkeletalMeshSocket*>)
+    int32_t OffSkelSockets = -1;                             // USkeleton::Sockets
+    int32_t OffSocketName = -1;                              // USkeletalMeshSocket::SocketName
+    int32_t OffSocketBone = -1;                              // USkeletalMeshSocket::BoneName
+    std::atomic<int32_t> MeshRefSkeletonOffset{-1};
+
+    std::array<VTablePatch, 16> Patches{};
+    std::atomic<int32_t> PatchCount{0};
+
+    std::atomic<bool> Enabled{false};                        // startup succeeded, waiting for / done with game-thread setup
+    std::atomic<bool> Active{false};                         // fully set up on the game thread and not faulted
+    std::atomic<bool> Faulted{false};
+    std::atomic<DWORD> GameThread{0};
+    std::atomic<bool> Work{false};
+    std::atomic<bool> ReportRequested{false};
+    bool LateInitDone = false;
+    bool StartupScanDone = false;
+    bool PreloadDone = false;
+    uint64_t NextPumpMs = 0;
+
+    // Animation skeletons. Rooted ones are kept alive by the mod, so their pointers stay valid.
+    std::unordered_map<std::wstring, UObject*> Rooted;       // folded path -> rooted, fully loaded skeleton
+    std::vector<std::wstring> LoadQueue;                     // paths the pump should find or load
+    std::vector<std::wstring> LoadAttempted;                 // folded paths already loaded (or tried) by the mod
+    std::vector<UObject*> Pending;                           // receiving meshes waiting for their animation skeleton
+    uint64_t RootedVersion = 0;                              // bumped whenever a skeleton becomes resident (game thread)
+    uint64_t PendingVersion = 0;                             // RootedVersion the pending list was last checked against
+    std::vector<ReboundMesh> Rebound;
+    int32_t Repaired = 0;
+
+    std::mutex CarrierMutex;
+    std::unordered_map<UClass*, CarrierInfo> Carriers;
+
+    std::atomic<uint64_t> PostLoadCalls{0};
+    std::atomic<uint64_t> PostLoadTicks{0};
+    std::atomic<uint64_t> PostLoadMaxTicks{0};
+    std::atomic<uint64_t> SkeletonNotLoaded{0};
+
+    bool Busy = false;                                       // game thread re-entrancy guard
+    bool HookInstalled = false;
+
+    // Animation adoption (KH3 mode)
+    UClass* AnimAssetClass = nullptr;                        // UAnimationAsset
+    UClass* AnimSequenceClass = nullptr;                     // UAnimSequence
+    UClass* AnimCompositeClass = nullptr;                    // UAnimComposite
+    UClass* AnimMontageClass = nullptr;                      // UAnimMontage
+    UClass* BlendSpaceBaseClass = nullptr;                   // UBlendSpaceBase
+    int32_t OffAnimSkeleton = -1;                            // UAnimationAsset::Skeleton
+    int32_t OffAnimVirtualBoneGuid = -1;                     // UAnimationAsset::SkeletonVirtualBoneGuid (not reflected)
+    int32_t OffSkelVirtualBoneGuid = -1;                     // USkeleton::VirtualBoneGuid
+    int32_t OffSeqBlendOut = -1;                             // UAnimSequenceBase::OverrideBehaviorActionBlendOutSequence (Rebirth)
+    int32_t OffSeqRefPose = -1;                              // UAnimSequence::RefPoseSeq (additive base)
+    int32_t OffSeqCompressed = -1;                           // UAnimSequence::CompressedData (track table, then curve names)
+    int32_t OffSeqRawTracks = -1;                            // UAnimSequence::TrackToSkeletonMapTable
+    int32_t OffSeqCustomAttrs = -1;                          // UAnimSequence::BakedPerBoneCustomAttributeData
+    int32_t SeqCustomAttrStride = 0;
+    int32_t AttrBone = -1;                                   // FBakedCustomAttributePerBoneData::BoneTreeIndex (-1: unknown)
+    std::array<int32_t, 3> AttrArrays{-1, -1, -1};           // its String/Int/Float attribute arrays (-1: unknown)
+    int32_t OffRawFloatCurves = -1;                          // UAnimSequenceBase::RawCurveData.FloatCurves
+    int32_t FloatCurveStride = 0;
+    int32_t FloatCurveName = -1;                             // FFloatCurve::Name (FSmartName)
+    int32_t OffCompositeTrack = -1;                          // UAnimComposite::AnimationTrack (FAnimTrack)
+    int32_t OffMontageSlots = -1;                            // UAnimMontage::SlotAnimTracks
+    int32_t SlotStride = 0;
+    int32_t SlotTrack = -1;                                  // FSlotAnimationTrack::AnimTrack
+    int32_t TrackSegments = -1;                              // FAnimTrack::AnimSegments
+    int32_t SegmentStride = 0;
+    int32_t SegmentRef = -1;                                 // FAnimSegment::AnimReference
+    int32_t OffBlendSamples = -1;                            // UBlendSpaceBase::SampleData
+    int32_t SampleStride = 0;
+    int32_t SampleAnim = -1;                                 // FBlendSample::Animation
+    int32_t OffBlendPerBone = -1;                            // UBlendSpaceBase::PerBoneBlend
+    int32_t BlendPerBoneStride = 0;
+    int32_t PerBoneRef = -1;                                 // FPerBoneInterpolation::BoneReference (FName, then BoneIndex:31)
+    int32_t OffSkelSmartNames = -1;                          // USkeleton::SmartNames, followed by AnimCurveMapping*
+    std::array<VTablePatch, 64> AnimPatches{};
+    std::atomic<int32_t> AnimPatchCount{0};
+    bool AnimHooksInstalled = false;
+    std::atomic<const AdoptionTable*> Adoption{nullptr};     // published plans (never freed during the session)
+    std::vector<std::unique_ptr<AdoptionTable>> AdoptionTables;
+    std::vector<std::wstring> AdoptionFailed;                // folded animation-skeleton paths that cannot be planned
+    uint64_t AdoptionVersion = ~0ull;                        // RootedVersion the plans were last built for
+    std::mutex AdoptMutex;                                   // guards adoption and Waiting (loading thread vs. game thread)
+    std::vector<WaitingContainer> Waiting;                   // containers whose animations have not all arrived
+    std::atomic<int32_t> WaitingCount{0};                    // Waiting.size(), readable without the lock
+    uint64_t NextWaitingCheck = 0;
+    std::atomic<bool> LatePassWanted{false};                 // already-loaded animations need the game-thread pass
+    std::atomic<bool> ViewportSafePoint{false};              // the after-world-tick callback is running
+    uint64_t LatePassNotBefore = 0;
+    uint64_t LatePassBackoffMs = 0;
+    int32_t LateFollowUps = 0;                               // extra passes after a plan is published (assets still loading)
+    uint64_t LatePasses = 0;
+    std::atomic<int32_t> FamilyGated{0};                     // family animations the last late pass left (member character alive)
+
+    // Animation set rows (3.1)
+    UClass* AnimSetClass = nullptr;                          // UEndAnimSet
+    UClass* PackClass = nullptr;                             // UEndAssetDataAsset (CharaSpec packs)
+    int32_t OffSetAssets = -1;                               // UEndAnimSet::AnimationAssets (TMap<FName, UAnimationAsset*>)
+    int32_t OffSetDisplayName = -1;                          // UEndAnimSet::DisplayName
+    int32_t OffPackList = -1;                                // UEndAssetDataAsset::AssetDataList (TArray<FEndAssetData>)
+    int32_t PackEntryStride = 0;
+    int32_t OffEntryObjects = -1;                            // FEndAssetData::AssetUserData (TArray<UObject*>)
+    std::array<VTablePatch, 8> PackPatches{};
+    std::atomic<int32_t> PackPatchCount{0};
+    bool PackHookInstalled = false;
+
+    // 3.2.1: AnimBlueprints made for a family member's skeleton follow the hub. The engine runs an AnimBlueprint only on
+    // meshes of the skeleton it targets (USkeleton::IsCompatible), and a family rebinds every member mesh to the hub, so
+    // a member character that keeps its own AnimBlueprint (Vincent's Blueprint in Cloud's slot) would T-pose.
+    UClass* AbpClass = nullptr;                              // UAnimBlueprintGeneratedClass
+    int32_t OffAbpTargetSkeleton = -1;                       // UAnimBlueprintGeneratedClass::TargetSkeleton
+    std::unordered_map<std::wstring, std::wstring> AbpHubs;  // folded member skeleton path -> hub path (immutable)
+    std::array<VTablePatch, 8> AbpPatches{};
+    std::atomic<int32_t> AbpPatchCount{0};
+    std::mutex AbpMutex;
+    std::vector<UObject*> AbpMoved;                          // AnimBlueprint classes moved to a hub (AbpMutex)
+    std::vector<std::wstring> AbpLines;                      // what was moved, for the report (AbpMutex)
+    std::atomic<bool> AbpRepairWanted{false};                // live components may wait for a moved class (game thread)
+    int32_t AbpRepaired = 0;
+    bool SetsPreloaded = false;
+    std::atomic<bool> SetsReady{false};                      // sources are resident: packs are merged from now on
+    std::unordered_set<std::wstring> PackNames;              // folded object names of the packs rows name (immutable)
+    std::unordered_map<std::wstring, UObject*> SetObjects;   // folded source set path -> resident set (null: not found)
+    std::unordered_map<std::wstring, int32_t> SetKeys;       // folded source set path -> animations in it (-1: unreadable)
+    std::unordered_map<std::wstring, UObject*> MoveObjects;  // folded animation path -> resident animation (null: not found)
+    std::vector<std::wstring> SetLines;                      // what the rows found, for the report
+    std::vector<std::wstring> MergeLines;                    // packs merged so far, for the report
+    std::vector<UObject*> MergedPacks;                       // packs merged by the late pass (never merged twice)
+    std::mutex PackMutex;
+    std::vector<UObject*> PacksToMerge;                      // packs post-loaded off the game thread (merged by the pump)
+    std::atomic<uint64_t> PacksMerged{0};
+
+    // 3.2: auto match
+    UClass* AnimSequenceBaseClass = nullptr;                 // UAnimSequenceBase
+    int32_t OffSeqLength = -1;                               // UAnimSequenceBase::SequenceLength
+    int32_t OffSeqAdditiveType = -1;                         // UAnimSequence::AdditiveAnimType
+    // 3.2: chained moves (an AnimComposite built at run time)
+    int32_t SegStartPos = -1;                                // FAnimSegment::StartPos
+    int32_t SegAnimStart = -1;                               // FAnimSegment::AnimStartTime
+    int32_t SegAnimEnd = -1;                                 // FAnimSegment::AnimEndTime
+    int32_t SegPlayRate = -1;                                // FAnimSegment::AnimPlayRate
+    int32_t SegLooping = -1;                                 // FAnimSegment::LoopingCount
+    int32_t SegBlendTime = -1;                               // FAnimSegment::AnimBlendTime (Rebirth; -1 when absent)
+    int32_t SegTriggerNotify = -1;                           // FAnimSegment::bTriggerAnimReferenceNotify (Rebirth; -1 when absent)
+    int32_t SegValid = -1;                                   // FAnimSegment::bValid (private, unreflected: right after the last property)
+    std::vector<uint8_t> SegmentTemplate;                    // a segment of a loaded montage, when one was seen (engine-made bytes)
+    std::unordered_map<std::wstring, UObject*> ChainObjects; // folded chain paths -> composite built for it (null: could not)
+    // 3.2: socket stand-ins
+    UClass* SocketClass = nullptr;                           // USkeletalMeshSocket
+    std::unordered_set<std::wstring> AliasSkeletonNames;     // folded short names of skeletons whose meshes get stand-ins (immutable)
+    // 3.2: proportions
+    int32_t OffSkelBoneTree = -1;                            // USkeleton::BoneTree (TArray<FBoneNode>)
+    int32_t BoneNodeStride = 0;
+    int32_t BoneNodeMode = -1;                               // FBoneNode::TranslationRetargetingMode
+    int32_t OffSkelRetargetSources = -1;                     // USkeleton::AnimRetargetSources (native TMap right after Sockets)
+    int32_t OffSeqRetargetSource = -1;                       // UAnimSequence::RetargetSource
+    int32_t OffSeqIgnoreRetarget = -1;                       // 3.6.7: UAnimSequence::bIgnoreTranslationRetargeting (Rebirth's; the byte)
+    uint8_t IgnoreRetargetMask = 0;                          //        its bit(s)
+    std::atomic<uint64_t> CutsceneProportioned{0};           //        sequences it was cleared on (cutscene animations)
+    std::vector<std::wstring> ProportionSkeletons;           // skeletons that get the proportion modes (immutable)
+    std::vector<UObject*> ProportionsDone;                   // skeletons whose modes are set (game thread)
+    struct PoseToAdd
+    {
+        UObject* Skeleton = nullptr;                         // receiving skeleton (rooted)
+        uint64_t Name = 0;                                   // raw FName key (the animation skeleton's name)
+        std::vector<uint8_t> Pose;                           // FTransforms, one per receiving bone
+        std::wstring Label;
+    };
+    std::vector<PoseToAdd> PosesToAdd;                       // retarget poses waiting for a safe point (game thread)
+    std::atomic<bool> ProportionsWanted{false};              // modes or poses to apply at the next safe point
+    uint64_t ProportionsVersion = ~0ull;                     // RootedVersion the configured skeletons were last looked for at
+    std::vector<std::wstring> ProportionLines;               // for the report
+
+    // 3.3: abilities per animation pack (game thread only)
+    UFunction* SetPrimaryAnimPack = nullptr;                 // EndBattleAPI:SetPrimaryAnimPack
+    UFunction* ResetPrimaryAnimPack = nullptr;               // EndBattleAPI:ResetPrimaryAnimPack
+    UFunction* GetCharaSpecName = nullptr;                   // EndBattleAPI:GetCharaSpecName
+    UObject* BattleApi = nullptr;                            // Default__EndBattleAPI
+    UFunction* GetPlayerLevel = nullptr;                     // EndMenuBPAPI:BPGetPlayerLevel
+    UFunction* GetPlayerExperience = nullptr;                // EndMenuBPAPI:BPGetPlayerExperience
+    UFunction* SetPlayerExperience = nullptr;                // EndMenuBPAPI:BPSetPlayerExperience (EXP := value, recalculates the status)
+    bool RefreshProblem = false;                             // a recalculation changed the level or EXP: no more this session
+    std::wstring RefreshText;
+    struct PackCall
+    {
+        UObject* Character = nullptr;
+        std::wstring Pack;
+        bool Reset = false;
+    };
+    std::vector<PackCall> QueuedPackCalls;                   // 3.4: pack switches made while the mod was busy (game thread)
+    UObject* MenuApi = nullptr;                              // Default__EndMenuBPAPI
+    bool AbilitiesWanted = false;                            // a row has "abilities" and the functions were found
+    bool AbilitiesSwitched = false;                          // lists were written since the last map load
+    std::vector<std::wstring> UnlistedPackWarnings;          // spec/pack pairs warned about (not in the row's AnimationSetList)
+    struct TableArray
+    {
+        uintptr_t At = 0;                                    // the array {ptr, num, max} inside a table row
+        std::array<uint8_t, 16> Original{};                  // as the game loaded it
+    };
+    std::vector<TableArray> AbilityOriginals;
+    std::unordered_map<std::wstring, std::unique_ptr<std::vector<uint64_t>>> AbilityLists; // lists the rows point at (session)
+    std::vector<std::wstring> AbilityLines;                  // for the report (last switches)
+};
+
+ModState State;
+
+std::wstring PostLoadStats();
+
+void RequestWork() { State.Work.store(true, std::memory_order_release); }
+
+// Any error inside the mod: switch it off for the rest of the session, keep the game running.
+void Fault(const wchar_t* where)
+{
+    if (!State.Active.exchange(false)) { return; }
+    State.Faulted.store(true);
+    try
+    {
+        Log.Line(std::wstring(L"ERROR inside ") + where + L". RebirthSkelCompat switched itself off for this session; the game continues unmodified.");
+    }
+    catch (...)
+    {
+    }
+}
+
+// Registers the animation skeletons of a pair as "of interest" and queues the ones not resident yet.
+void WantPair(const SkelCompat::Pair& pair)
+{
+    std::lock_guard lock(State.Mutex);
+    std::vector<std::wstring> wanted = pair.Animation;
+    if (pair.Use == SkelCompat::Method::Animations) { wanted.push_back(pair.Receiving); } // adoption needs both skeletons resident
+    for (const auto& path : wanted)
+    {
+        const std::wstring key = Folded(path);
+        const bool rooted = State.Rooted.count(key) > 0;
+        const bool tried = std::find(State.LoadAttempted.begin(), State.LoadAttempted.end(), key) != State.LoadAttempted.end();
+        const bool queued = std::any_of(State.LoadQueue.begin(), State.LoadQueue.end(), [&](const std::wstring& q) { return Folded(q) == key; });
+        if (!rooted && !tried && !queued) { State.LoadQueue.push_back(path); }
+    }
+}
+
+// First animation skeleton of the pair that the mod holds (rooted and fully loaded). No slow lookups.
+UObject* RootedAnimationSkeleton(const SkelCompat::Pair& pair, std::wstring* chosenPath)
+{
+    std::lock_guard lock(State.Mutex);
+    for (const auto& path : pair.Animation)
+    {
+        const auto it = State.Rooted.find(Folded(path));
+        if (it != State.Rooted.end() && FlagsReady(it->second))
+        {
+            if (chosenPath) { *chosenPath = path; }
+            return it->second;
+        }
+    }
+    return nullptr;
+}
+
+// ---------------------------------------------------------------------------------------
+// Pairs declared inside the pak: an AssetUserData Blueprint (parent: native AssetUserData) on the
+// receiving skeleton or on the mesh, with an array "AnimationSkeletons" (or "CompatibleSkeletons")
+// of object paths (strings or names) or Skeleton soft/hard references, and an optional
+// "ReceivingMeshes" array. Same place KH3 keeps SQEX_CompatibleSkeletonLists.
+// ---------------------------------------------------------------------------------------
+PathField DescribePathArray(UStruct* type, const wchar_t* name)
+{
+    PathField field;
+    FProperty* property = FindField(type, name);
+    if (!property || TypeOf(property) != L"ArrayProperty" || property->GetElementSize() != static_cast<int32_t>(sizeof(RawArray))) { return field; }
+    FProperty* inner = static_cast<FArrayProperty*>(property)->GetInner();
+    if (!inner) { return field; }
+    const std::wstring innerType = TypeOf(inner);
+    const int32_t stride = inner->GetElementSize();
+    PathKind kind = PathKind::None;
+    if (innerType == L"SoftObjectProperty" && stride == 40) { kind = PathKind::Soft; }
+    else if (innerType == L"ObjectProperty" && stride == 8) { kind = PathKind::Hard; }
+    else if (innerType == L"StrProperty" && stride == static_cast<int32_t>(sizeof(RawArray))) { kind = PathKind::String; }
+    else if (innerType == L"NameProperty" && stride == static_cast<int32_t>(sizeof(FName))) { kind = PathKind::Name; }
+    const int32_t offset = property->GetOffset_Internal();
+    if (kind == PathKind::None || offset < 0 || offset + static_cast<int32_t>(sizeof(RawArray)) > type->GetPropertiesSize()) { return field; }
+    field.Offset = offset;
+    field.Stride = stride;
+    field.Kind = kind;
+    return field;
+}
+
+CarrierInfo CarrierInfoFor(UClass* type)
+{
+    CarrierInfo info;
+    if (!type) { return info; }
+    std::memcpy(info.ClassName.data(), &type->GetNamePrivate(), sizeof(FName));
+    {
+        std::lock_guard lock(State.CarrierMutex);
+        const auto it = State.Carriers.find(type);
+        if (it != State.Carriers.end() && it->second.ClassName == info.ClassName) { return it->second; }
+    }
+    info.Animation = DescribePathArray(type, L"AnimationSkeletons");
+    if (info.Animation.Kind == PathKind::None) { info.Animation = DescribePathArray(type, L"CompatibleSkeletons"); }
+    info.Meshes = DescribePathArray(type, L"ReceivingMeshes");
+    info.IsCarrier = info.Animation.Kind != PathKind::None;
+    std::lock_guard lock(State.CarrierMutex);
+    State.Carriers[type] = info;
+    return info;
+}
+
+std::wstring ReadFString(const uint8_t* at)
+{
+    RawArray header{};
+    if (!SafeCopy(&header, at, sizeof(header)) || header.Num <= 1 || header.Num > 1024 || header.Max < header.Num || !header.Data)
+    {
+        return {};
+    }
+    std::wstring text(static_cast<size_t>(header.Num), L'\0');
+    if (!SafeCopy(text.data(), header.Data, text.size() * sizeof(wchar_t))) { return {}; }
+    text.resize(std::wcslen(text.c_str())); // FString counts its terminator
+    return text;
+}
+
+std::vector<std::wstring> ReadPaths(UObject* owner, const PathField& field)
+{
+    std::vector<std::wstring> paths;
+    if (field.Kind == PathKind::None) { return paths; }
+    RawArray array{};
+    if (!ReadAt(owner, static_cast<size_t>(field.Offset), array) || array.Num <= 0 || array.Num > 64 || !array.Data) { return paths; }
+    for (int32_t i = 0; i < array.Num; ++i)
+    {
+        const auto* element = static_cast<const uint8_t*>(array.Data) + static_cast<size_t>(i) * static_cast<size_t>(field.Stride);
+        std::wstring path;
+        if (field.Kind == PathKind::Soft || field.Kind == PathKind::Name)
+        {
+            // TSoftObjectPtr = { FWeakObjectPtr (8); int32 Tag; pad; FSoftObjectPath { FName AssetPathName; FString SubPath; } }
+            FName value{};
+            if (SafeCopy(&value, element + (field.Kind == PathKind::Soft ? 16 : 0), sizeof(FName))) { path = value.ToString(); }
+        }
+        else if (field.Kind == PathKind::String)
+        {
+            path = ReadFString(element);
+        }
+        else
+        {
+            UObject* object = nullptr;
+            if (ReadAt(element, 0, object) && object) { path = ObjectPath(object); }
+        }
+        path = SkelCompat::NormalizeObjectPath(path);
+        if (!path.empty()) { paths.push_back(std::move(path)); }
+    }
+    return paths;
+}
+
+// Looks for a carrier among owner's AssetUserData. Direct reads only (owner is live).
+bool CarrierPair(UObject* owner, int32_t userDataOffset, UObject* skeleton, std::wstring& skeletonPath, SkelCompat::Pair& out)
+{
+    if (userDataOffset < 0) { return false; }
+    const RawArray array = Field<RawArray>(owner, userDataOffset);
+    if (array.Num <= 0 || array.Num > 32 || !array.Data) { return false; }
+    for (int32_t i = 0; i < array.Num; ++i)
+    {
+        UObject* data = static_cast<UObject* const*>(array.Data)[i];
+        if (!data || data->HasAnyFlags(DeadFlags)) { continue; }
+        const CarrierInfo info = CarrierInfoFor(data->GetClassPrivate());
+        if (!info.IsCarrier) { continue; }
+        if (skeletonPath.empty()) { skeletonPath = SkelCompat::NormalizeObjectPath(ObjectPath(skeleton)); }
+        SkelCompat::Pair result;
+        result.Use = SkelCompat::Method::Mesh; // carriers are found when a mesh loads: they always rebind that mesh
+        result.Receiving = skeletonPath;
+        result.Origin = L"AssetUserData on " + ShortName(owner);
+        for (auto& listed : ReadPaths(data, info.Animation))
+        {
+            // Like JSON "mesh" pairs, the meshes follow animations an "animations" pair (or a family) took over
+            // completely, and stay compatible with the AnimBlueprints of the skeleton they were made for.
+            std::wstring path = SkelCompat::FollowAdoption(State.Config, listed);
+            if (!SkelCompat::PathEquals(path, listed)) { SkelCompat::Detail::AddUnique(result.KeepCompatible, listed); }
+            const bool duplicate = std::any_of(result.Animation.begin(), result.Animation.end(),
+                                               [&](const std::wstring& a) { return SkelCompat::PathEquals(a, path); });
+            if (!duplicate && !SkelCompat::PathEquals(path, skeletonPath)) { result.Animation.push_back(std::move(path)); }
+        }
+        result.Meshes = ReadPaths(data, info.Meshes);
+        if (result.Animation.empty()) { continue; }
+        out = std::move(result);
+        return true;
+    }
+    return false;
+}
+
+// The pair this mesh takes part in, if any. Cheap when nothing applies: a few direct reads and,
+// only if JSON pairs exist, one FName::ToString of the skeleton's name.
+const SkelCompat::Pair* QuickPair(UObject* mesh, UObject* skeleton, std::wstring& skeletonPath, SkelCompat::Pair& storage)
+{
+    if (!State.ReceivingNames.empty() && State.ReceivingNames.count(Folded(ShortName(skeleton))) > 0)
+    {
+        skeletonPath = SkelCompat::NormalizeObjectPath(ObjectPath(skeleton));
+        if (const SkelCompat::Pair* pair = State.Config.FindForSkeleton(skeletonPath))
+        {
+            // "animations" pairs never touch meshes; only "mesh" pairs rebind them.
+            return pair->Use == SkelCompat::Method::Mesh ? pair : nullptr;
+        }
+    }
+    if (CarrierPair(mesh, State.OffMeshUserData, skeleton, skeletonPath, storage)) { return &storage; }
+    if (skeleton->HasAnyFlags(RF_NeedLoad))
+    {
+        State.SkeletonNotLoaded.fetch_add(1, std::memory_order_relaxed);
+        return nullptr;
+    }
+    if (CarrierPair(skeleton, State.OffSkelUserData, skeleton, skeletonPath, storage)) { return &storage; }
+    return nullptr;
+}
+
+UObject* RawMeshSkeleton(UObject* mesh) { return Field<UObject*>(mesh, State.OffMeshSkeleton); }
+
+void WriteMeshSkeleton(UObject* mesh, UObject* skeleton)
+{
+    *reinterpret_cast<UObject**>(reinterpret_cast<uint8_t*>(mesh) + State.OffMeshSkeleton) = skeleton;
+}
+
+bool AddPending(UObject* mesh)
+{
+    std::lock_guard lock(State.Mutex);
+    if (std::find(State.Pending.begin(), State.Pending.end(), mesh) != State.Pending.end()) { return false; }
+    State.Pending.push_back(mesh);
+    return true;
+}
+
+void RecordRebind(UObject* mesh, UObject* target, std::vector<UObject*> keep, bool family, std::wstring meshPath, std::wstring from, std::wstring to,
+                  bool late, bool fixHierarchy, const std::wstring& note)
+{
+    ReboundMesh record;
+    record.Mesh = mesh;
+    record.Target = target;
+    record.KeepCompatible = std::move(keep);
+    record.Family = family;
+    record.MeshPath = std::move(meshPath);
+    record.FromSkeleton = std::move(from);
+    record.ToSkeleton = std::move(to);
+    record.Late = late;
+    record.FixHierarchy = fixHierarchy;
+    record.SocketNote = note;
+    Log.Line(std::wstring(late ? L"Rebound (late) " : L"Rebound ") + record.MeshPath + L"\n    skeleton " + record.FromSkeleton +
+             L"\n    -> " + record.ToSkeleton + (note.empty() ? std::wstring{} : L"\n    " + note));
+    {
+        std::lock_guard lock(State.Mutex);
+        State.Rebound.erase(std::remove_if(State.Rebound.begin(), State.Rebound.end(),
+                                           [&](const ReboundMesh& r) { return r.Mesh == mesh; }),
+                            State.Rebound.end());
+        State.Rebound.push_back(std::move(record));
+    }
+    RequestWork();
+}
+
+// Keeps the sockets of a mesh's own skeleton on a mesh rebound while it loads (defined further down).
+int32_t CarrySockets(UObject* mesh, UObject* ownSkeleton, std::wstring& names);
+
+// Socket stand-ins of a character's own skeleton (row "sockets") on one of its meshes (defined further down).
+std::wstring AliasSockets(UObject* mesh, UObject* ownSkeleton, UObject* boundSkeleton);
+
+// A skeleton the mod holds (rooted, fully loaded), or null (defined further down).
+UObject* RootedSkeleton(const std::wstring& path);
+
+// Decide for one live mesh. Returns true when the mesh was rebound now.
+bool TryRebind(UObject* mesh, bool late)
+{
+    if (mesh->HasAnyFlags(TemplateFlags) || mesh->HasAnyFlags(DeadFlags)) { return false; }
+    UObject* current = RawMeshSkeleton(mesh);
+    if (!current) { return false; }
+    std::wstring skeletonPath;
+    SkelCompat::Pair storage;
+    const SkelCompat::Pair* pair = QuickPair(mesh, current, skeletonPath, storage);
+    if (!pair)
+    {
+        // A character's mesh that keeps its skeleton can still get socket stand-ins (before the engine builds its socket map).
+        if (!late && !State.AliasSkeletonNames.empty() && State.AliasSkeletonNames.count(Folded(ShortName(current))) > 0)
+        {
+            const std::wstring note = AliasSockets(mesh, current, current);
+            if (!note.empty()) { Log.Line(L"Sockets of " + SkelCompat::NormalizeObjectPath(ObjectPath(mesh)) + L": " + note); }
+        }
+        return false;
+    }
+
+    // From here on the mesh takes part in a pair (rare), so slower work is fine.
+    if (skeletonPath.empty()) { skeletonPath = SkelCompat::NormalizeObjectPath(ObjectPath(current)); }
+    const std::wstring meshPath = SkelCompat::NormalizeObjectPath(ObjectPath(mesh));
+    if (!SkelCompat::MeshAllowed(*pair, meshPath)) { return false; }
+    std::wstring targetPath;
+    UObject* target = RootedAnimationSkeleton(*pair, &targetPath);
+    if (!target)
+    {
+        WantPair(*pair);
+        if (AddPending(mesh))
+        {
+            Log.Line(L"Deferred " + meshPath + L": its animation skeleton is not loaded yet (" + pair->Origin + L")");
+        }
+        RequestWork();
+        return false;
+    }
+    if (target == current) { return false; }
+    WriteMeshSkeleton(mesh, target);
+    std::wstring note;
+    if (!pair->FamilyHub.empty())
+    {
+        note = L"family of " + ShortNameOfPath(pair->FamilyHub) + L".";
+        // Animations of this member that a late pass left behind (a character still on the member's skeleton was
+        // alive) may be able to move now.
+        if (State.FamilyGated.load(std::memory_order_relaxed) > 0) { State.LatePassWanted.store(true, std::memory_order_release); }
+    }
+    if (!late && pair->CarrySockets)
+    {
+        // Before the engine's PostLoad builds the socket map. A late rebind keeps the socket map built for the old
+        // skeleton, which already holds that skeleton's sockets.
+        std::wstring names;
+        const int32_t carried = CarrySockets(mesh, current, names);
+        if (carried > 0) { note += (note.empty() ? L"" : L" ") + std::wstring(L"Kept ") + std::to_wstring(carried) + L" socket(s) of its own skeleton: " + names; }
+        else if (carried < 0) { note += (note.empty() ? L"" : L" ") + std::wstring(L"Sockets of its own skeleton not kept: ") + names; }
+    }
+    if (!State.AliasSkeletonNames.empty() && State.AliasSkeletonNames.count(Folded(ShortName(current))) > 0)
+    {
+        if (late)
+        {
+            note += (note.empty() ? L"" : L" ") + std::wstring(L"Socket stand-ins not made: the mesh was loaded before its skeleton could be "
+                                                               L"rebound (its socket map is built); they apply from its next load.");
+        }
+        else if (const std::wstring aliased = AliasSockets(mesh, current, target); !aliased.empty())
+        {
+            note += (note.empty() ? L"" : L" ") + aliased;
+        }
+    }
+    // Skeletons whose AnimBlueprints must still accept the mesh (its own, for a family member; the one an outfit was made
+    // for, when it followed that skeleton's animations): the hierarchy fix keeps the mesh compatible with them too.
+    std::vector<UObject*> keep;
+    for (const auto& path : pair->KeepCompatible)
+    {
+        UObject* skeleton = SkelCompat::PathEquals(path, skeletonPath) ? current : RootedSkeleton(path);
+        if (skeleton && skeleton != target && std::find(keep.begin(), keep.end(), skeleton) == keep.end()) { keep.push_back(skeleton); }
+    }
+    RecordRebind(mesh, target, std::move(keep), !pair->FamilyHub.empty(), meshPath, skeletonPath, targetPath, late, pair->FixHierarchy, note);
+    return true;
+}
+
+// Renames the mesh bones the animation skeleton places under other parents (defined further down).
+void FixHierarchy(UObject* mesh);
+
+// ---------------------------------------------------------------------------------------
+// USkeletalMesh::PostLoad vtable hook
+// ---------------------------------------------------------------------------------------
+using PostLoadFunction = void (*)(UObject*);
+
+void* OriginalPostLoad(UObject* self)
+{
+    void** table = nullptr;
+    std::memcpy(&table, self, sizeof(table));
+    const int32_t count = State.PatchCount.load(std::memory_order_acquire);
+    for (int32_t i = 0; i < count; ++i)
+    {
+        if (State.Patches[static_cast<size_t>(i)].Table == table) { return State.Patches[static_cast<size_t>(i)].Original; }
+    }
+    return count > 0 ? State.Patches[0].Original : nullptr;
+}
+
+void HookedPostLoad(UObject* self)
+{
+    bool rebound = false;
+    if (State.Active.load(std::memory_order_acquire) && GetCurrentThreadId() == State.GameThread.load(std::memory_order_relaxed))
+    {
+        LARGE_INTEGER start{}, end{};
+        QueryPerformanceCounter(&start);
+        try
+        {
+            rebound = TryRebind(self, false);
+        }
+        catch (...)
+        {
+            Fault(L"SkeletalMesh PostLoad");
+        }
+        QueryPerformanceCounter(&end);
+        const uint64_t ticks = static_cast<uint64_t>(end.QuadPart - start.QuadPart);
+        State.PostLoadTicks.fetch_add(ticks, std::memory_order_relaxed);
+        if (ticks > State.PostLoadMaxTicks.load(std::memory_order_relaxed)) { State.PostLoadMaxTicks.store(ticks, std::memory_order_relaxed); }
+        const uint64_t calls = State.PostLoadCalls.fetch_add(1, std::memory_order_relaxed) + 1;
+        if (calls <= 3 || calls % 1000 == 0)
+        {
+            try
+            {
+                Log.Line(L"PostLoad hook (thread " + std::to_wstring(GetCurrentThreadId()) + L"): " + PostLoadStats());
+            }
+            catch (...)
+            {
+            }
+        }
+    }
+    if (auto* original = reinterpret_cast<PostLoadFunction>(OriginalPostLoad(self))) { original(self); }
+    // After the mesh's own PostLoad, so everything it maps by bone name still sees the original names.
+    if (rebound && State.Active.load(std::memory_order_acquire))
+    {
+        try
+        {
+            FixHierarchy(self);
+        }
+        catch (...)
+        {
+            Fault(L"hierarchy fix");
+        }
+    }
+}
+
+bool PatchSlot(void** table, size_t index, void* replacement, void*& original)
+{
+    void** slot = table + index;
+    void* current = nullptr;
+    if (!SafeCopy(&current, slot, sizeof(current))) { return false; }
+    if (current == replacement) { return false; }
+    DWORD oldProtect = 0;
+    if (!VirtualProtect(slot, sizeof(void*), PAGE_READWRITE, &oldProtect)) { return false; }
+    original = current;
+    InterlockedExchangePointer(reinterpret_cast<PVOID volatile*>(slot), replacement);
+    DWORD ignored = 0;
+    VirtualProtect(slot, sizeof(void*), oldProtect, &ignored);
+    return true;
+}
+
+void** VTableOf(UObject* object)
+{
+    void** table = nullptr;
+    return (object && SafeCopy(&table, object, sizeof(table))) ? table : nullptr;
+}
+
+void* SlotOf(void** table, size_t index)
+{
+    void* entry = nullptr;
+    return (table && SafeCopy(&entry, table + index, sizeof(entry))) ? entry : nullptr;
+}
+
+bool InstallPostLoadHook()
+{
+    const ImageRange image = MainImage();
+    UObject* objectCdo = FindObjectByPath(L"/Script/CoreUObject.Default__Object");
+    UObject* meshCdo = FindObjectByPath(L"/Script/Engine.Default__SkeletalMesh");
+    UObject* skeletonCdo = FindObjectByPath(L"/Script/Engine.Default__Skeleton");
+    UObject* libraryCdo = State.KismetSystemLibrary;
+    const bool identities = meshCdo && meshCdo->GetClassPrivate() == State.MeshClass && skeletonCdo &&
+                            skeletonCdo->GetClassPrivate() == State.SkeletonClass && objectCdo;
+    void** objectTable = VTableOf(objectCdo);
+    void** meshTable = VTableOf(meshCdo);
+    void** skeletonTable = VTableOf(skeletonCdo);
+    void** libraryTable = VTableOf(libraryCdo);
+    void* objectPostLoad = SlotOf(objectTable, PostLoadSlot);
+    void* meshPostLoad = SlotOf(meshTable, PostLoadSlot);
+    void* skeletonPostLoad = SlotOf(skeletonTable, PostLoadSlot);
+    void* libraryPostLoad = SlotOf(libraryTable, PostLoadSlot);
+    // PostLoad is overridden by USkeletalMesh and USkeleton but not by a function library.
+    // A wrong slot index fails at least one of these, and then nothing is patched.
+    const bool verified = identities && image.Contains(objectPostLoad) && image.Contains(meshPostLoad) && image.Contains(skeletonPostLoad) &&
+                          image.Contains(meshTable) && meshPostLoad != objectPostLoad && skeletonPostLoad != objectPostLoad &&
+                          libraryPostLoad == objectPostLoad;
+    Log.Line(L"PostLoad slot check: Object " + Hex(reinterpret_cast<uintptr_t>(objectPostLoad)) + L", SkeletalMesh " +
+             Hex(reinterpret_cast<uintptr_t>(meshPostLoad)) + L", Skeleton " + Hex(reinterpret_cast<uintptr_t>(skeletonPostLoad)) +
+             L", KismetSystemLibrary " + Hex(reinterpret_cast<uintptr_t>(libraryPostLoad)) + (verified ? L" -> verified" : L" -> REFUSED"));
+    if (!verified) { return false; }
+
+    // Patch SkeletalMesh and every native subclass that has its own vtable.
+    std::vector<void**> tables{meshTable};
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || !object->IsA<UClass>()) { return LoopAction::Continue; }
+        auto* type = static_cast<UClass*>(object);
+        if (type == State.MeshClass || !type->IsChildOf(State.MeshClass)) { return LoopAction::Continue; }
+        UObject* cdo = type->GetClassDefaultObject();
+        void** table = VTableOf(cdo);
+        if (table && image.Contains(table) && std::find(tables.begin(), tables.end(), table) == tables.end()) { tables.push_back(table); }
+        return LoopAction::Continue;
+    });
+    int32_t installed = 0;
+    for (void** table : tables)
+    {
+        if (installed >= static_cast<int32_t>(State.Patches.size())) { break; }
+        void* current = SlotOf(table, PostLoadSlot);
+        if (!image.Contains(current)) { continue; }
+        // Publish the original before the slot points at the hook, so the hook can always find it.
+        auto& patch = State.Patches[static_cast<size_t>(installed)];
+        patch.Table = table;
+        patch.Original = current;
+        State.PatchCount.store(installed + 1, std::memory_order_release);
+        void* replaced = nullptr;
+        if (PatchSlot(table, PostLoadSlot, reinterpret_cast<void*>(&HookedPostLoad), replaced))
+        {
+            // Once the slot points at the hook the record must stay (with whatever the slot held), or that class would
+            // fall back to another class's PostLoad.
+            patch.Original = replaced;
+            ++installed;
+        }
+        else
+        {
+            State.PatchCount.store(installed, std::memory_order_release);
+        }
+    }
+    Log.Line(L"PostLoad hook installed on " + std::to_wstring(installed) + L" SkeletalMesh vtable(s)");
+    return installed > 0;
+}
+
+// ---------------------------------------------------------------------------------------
+// Blocking load through KismetSystemLibrary (no FName construction on our side). Game thread,
+// outside loading callbacks only.
+// ---------------------------------------------------------------------------------------
+struct ParamBlock
+{
+    UFunction* Function = nullptr;
+    std::vector<uint8_t> Bytes;
+
+    explicit ParamBlock(UFunction* function) : Function(function)
+    {
+        const size_t size = function ? static_cast<size_t>(function->GetParmsSize()) : 0;
+        Bytes.assign(std::max<size_t>(size, 16) + 16, 0);
+    }
+
+    uint8_t* At(int32_t offset) { return Bytes.data() + offset; }
+};
+
+int32_t ParamOffset(UFunction* function, const wchar_t* name, int32_t& size)
+{
+    FProperty* property = FindField(function, name);
+    if (!property) { return -1; }
+    size = property->GetElementSize();
+    const int32_t offset = property->GetOffset_Internal();
+    return (offset >= 0 && size > 0 && offset + size <= function->GetParmsSize()) ? offset : -1;
+}
+
+void FreeStringAt(uint8_t* at)
+{
+    RawArray header{};
+    std::memcpy(&header, at, sizeof(header));
+    if (header.Data) { FMemory::Free(header.Data); }
+    std::memset(at, 0, sizeof(header));
+}
+
+UObject* LoadBlocking(const std::wstring& path)
+{
+    UFunction* make = State.MakeSoftObjectPath;
+    UFunction* convert = State.ConvertSoftObjectPath;
+    UFunction* load = State.LoadAssetBlocking;
+    UObject* library = State.KismetSystemLibrary;
+    if (!make || !convert || !load || !library) { Log.Line(L"Loading unavailable: KismetSystemLibrary functions not found"); return nullptr; }
+
+    int32_t pathSize = 0, madeSize = 0, inSize = 0, refSize = 0, assetSize = 0, resultSize = 0;
+    const int32_t pathOffset = ParamOffset(make, L"PathString", pathSize);
+    const int32_t madeOffset = ParamOffset(make, L"ReturnValue", madeSize);
+    const int32_t inOffset = ParamOffset(convert, L"SoftObjectPath", inSize);
+    const int32_t refOffset = ParamOffset(convert, L"ReturnValue", refSize);
+    const int32_t assetOffset = ParamOffset(load, L"Asset", assetSize);
+    const int32_t resultOffset = ParamOffset(load, L"ReturnValue", resultSize);
+    if (pathOffset < 0 || madeOffset < 0 || inOffset < 0 || refOffset < 0 || assetOffset < 0 || resultOffset < 0 ||
+        pathSize != static_cast<int32_t>(sizeof(RawArray)) || madeSize != inSize || refSize != assetSize ||
+        resultSize != static_cast<int32_t>(sizeof(void*)) || madeSize < static_cast<int32_t>(sizeof(FName) + sizeof(RawArray)))
+    {
+        Log.Line(L"Loading unavailable: unexpected KismetSystemLibrary parameter layout");
+        return nullptr;
+    }
+
+    ParamBlock first(make);
+    new (first.At(pathOffset)) FString(path.c_str());
+    library->ProcessEvent(make, first.Bytes.data());
+    reinterpret_cast<FString*>(first.At(pathOffset))->~FString();
+
+    ParamBlock second(convert);
+    std::memcpy(second.At(inOffset), first.At(madeOffset), static_cast<size_t>(madeSize));
+    library->ProcessEvent(convert, second.Bytes.data());
+
+    ParamBlock third(load);
+    std::memcpy(third.At(assetOffset), second.At(refOffset), static_cast<size_t>(refSize));
+    library->ProcessEvent(load, third.Bytes.data());
+    UObject* result = nullptr;
+    std::memcpy(&result, third.At(resultOffset), sizeof(result));
+
+    // FSoftObjectPath = { FName AssetPathName; FString SubPathString; } and TSoftObjectPtr ends with an
+    // FSoftObjectPath, so in both results the FString is the last 16 bytes. Our buffers own those two
+    // strings (the copy handed to LoadAsset_Blocking is an alias and is not freed again).
+    FreeStringAt(first.At(madeOffset) + (madeSize - static_cast<int32_t>(sizeof(RawArray))));
+    FreeStringAt(second.At(refOffset) + (refSize - static_cast<int32_t>(sizeof(RawArray))));
+    return (result && IsLive(result)) ? result : nullptr;
+}
+
+// (3.6.12) The engine's asset manager: KismetSystemLibrary.LoadAsset loads with its streamable manager, and the engine
+// stops the game when it has none. Looked for once (FindFirstOf walks the object array).
+bool AssetManagerPresent(std::wstring& why)
+{
+    static int known = 0;   // 1 there, -1 not
+    if (known == 0)
+    {
+        UObject* manager = nullptr;
+        if (UObject* engine = UObjectGlobals::FindFirstOf(L"Engine"))
+        {
+            const int32_t at = FieldOffset(engine->GetClassPrivate(), L"AssetManager", {L"ObjectProperty"}, 8);
+            if (at >= 0) { manager = Field<UObject*>(engine, at); }
+        }
+        known = (manager && IsLive(manager) && !manager->HasAnyFlags(TemplateFlags)) ? 1 : -1;
+        Log.Line(known > 0 ? L"Background loads: through the engine's asset manager " + PathOf(manager)
+                           : std::wstring(L"Background loads unavailable: the engine has no asset manager"));
+    }
+    if (known < 0) { why = L"the engine has no asset manager"; }
+    return known > 0;
+}
+
+// (3.6.12) Asks for `path` to be loaded in the background: KismetSystemLibrary.LoadAsset (what a Blueprint's Async Load
+// Asset calls) with no callback, as a latent action of `context` (an actor in the world) that the world finishes. Unlike
+// a blocking load it can be asked for anywhere on the game thread, inside the game's loading callbacks too; the object is
+// found (FindObject) once it is loaded. False, with why, when it cannot be asked.
+bool LoadInBackground(const std::wstring& path, UObject* context, std::wstring& why)
+{
+    UFunction* make = State.MakeSoftObjectPath;
+    UFunction* convert = State.ConvertSoftObjectPath;
+    UFunction* load = State.LoadAssetAsync;
+    UObject* library = State.KismetSystemLibrary;
+    UStruct* info = State.LatentActionInfo;
+    if (!make || !convert || !load || !library || !info) { why = L"KismetSystemLibrary.LoadAsset not found"; return false; }
+    if (!context || !IsLive(context)) { why = L"no actor to ask it with"; return false; }
+    if (!AssetManagerPresent(why)) { return false; }
+
+    int32_t pathSize = 0, madeSize = 0, inSize = 0, refSize = 0, contextSize = 0, assetSize = 0, loadedSize = 0, infoSize = 0;
+    const int32_t pathOffset = ParamOffset(make, L"PathString", pathSize);
+    const int32_t madeOffset = ParamOffset(make, L"ReturnValue", madeSize);
+    const int32_t inOffset = ParamOffset(convert, L"SoftObjectPath", inSize);
+    const int32_t refOffset = ParamOffset(convert, L"ReturnValue", refSize);
+    const int32_t contextOffset = ParamOffset(load, L"WorldContextObject", contextSize);
+    const int32_t assetOffset = ParamOffset(load, L"Asset", assetSize);
+    const int32_t loadedOffset = ParamOffset(load, L"OnLoaded", loadedSize);
+    const int32_t infoOffset = ParamOffset(load, L"LatentInfo", infoSize);
+    const int32_t linkage = FieldOffset(info, L"Linkage", {L"IntProperty"}, 4);
+    const int32_t uuid = FieldOffset(info, L"UUID", {L"IntProperty"}, 4);
+    const int32_t execution = FieldOffset(info, L"ExecutionFunction", {L"NameProperty"}, 8);
+    const int32_t target = FieldOffset(info, L"CallbackTarget", {L"ObjectProperty"}, 8);
+    if (pathOffset < 0 || madeOffset < 0 || inOffset < 0 || refOffset < 0 || contextOffset < 0 || assetOffset < 0 || loadedOffset < 0 ||
+        infoOffset < 0 || linkage < 0 || uuid < 0 || execution < 0 || target < 0 || pathSize != static_cast<int32_t>(sizeof(RawArray)) ||
+        madeSize != inSize || refSize != assetSize || contextSize != static_cast<int32_t>(sizeof(void*)) || loadedSize != 16 ||
+        infoSize != info->GetPropertiesSize() || infoSize < 24 || madeSize < static_cast<int32_t>(sizeof(FName) + sizeof(RawArray)))
+    {
+        why = L"unexpected KismetSystemLibrary.LoadAsset parameter layout";
+        return false;
+    }
+
+    ParamBlock first(make);
+    new (first.At(pathOffset)) FString(path.c_str());
+    library->ProcessEvent(make, first.Bytes.data());
+    reinterpret_cast<FString*>(first.At(pathOffset))->~FString();
+
+    ParamBlock second(convert);
+    std::memcpy(second.At(inOffset), first.At(madeOffset), static_cast<size_t>(madeSize));
+    library->ProcessEvent(convert, second.Bytes.data());
+
+    // OnLoaded unbound (zero), LatentInfo: no link to run when it is done (Linkage INDEX_NONE, ExecutionFunction None), an id
+    // of its own for the path (away from the small ids Blueprint nodes use) and the actor it belongs to
+    ParamBlock third(load);
+    std::memcpy(third.At(contextOffset), &context, sizeof(context));
+    std::memcpy(third.At(assetOffset), second.At(refOffset), static_cast<size_t>(refSize));
+    const int32_t none = -1;
+    const int32_t id = static_cast<int32_t>(std::hash<std::wstring>{}(Folded(path)) & 0x3FFFFFFF) | 0x40000000;
+    std::memcpy(third.At(infoOffset + linkage), &none, sizeof(none));
+    std::memcpy(third.At(infoOffset + uuid), &id, sizeof(id));
+    std::memcpy(third.At(infoOffset + target), &context, sizeof(context));
+    library->ProcessEvent(load, third.Bytes.data());
+
+    // (as in LoadBlocking: our two buffers own the strings; LoadAsset's is an alias)
+    FreeStringAt(first.At(madeOffset) + (madeSize - static_cast<int32_t>(sizeof(RawArray))));
+    FreeStringAt(second.At(refOffset) + (refSize - static_cast<int32_t>(sizeof(RawArray))));
+    return true;
+}
+
+void RootSkeleton(const std::wstring& key, UObject* skeleton, const wchar_t* how)
+{
+    skeleton->SetRootSet();
+    {
+        std::lock_guard lock(State.Mutex);
+        State.Rooted[key] = skeleton;
+        ++State.RootedVersion;
+    }
+    Log.Line(std::wstring(L"Skeleton resident (") + how + L"): " + ObjectPath(skeleton));
+    RequestWork();
+}
+
+// Finds (or loads) and roots one animation skeleton, once per path.
+void LoadAnimationSkeleton(const std::wstring& path)
+{
+    const std::wstring key = Folded(path);
+    {
+        std::lock_guard lock(State.Mutex);
+        if (State.Rooted.count(key) > 0) { return; }
+        if (std::find(State.LoadAttempted.begin(), State.LoadAttempted.end(), key) != State.LoadAttempted.end()) { return; }
+        State.LoadAttempted.push_back(key);
+    }
+    UObject* found = FindObjectByPath(path.c_str());
+    if (found && !found->IsA(State.SkeletonClass)) { found = nullptr; }
+    if (!found || !FlagsReady(found))
+    {
+        UObject* loaded = LoadBlocking(path);
+        if (loaded && loaded->IsA(State.SkeletonClass)) { found = loaded; }
+    }
+    if (found && FlagsReady(found))
+    {
+        RootSkeleton(key, found, L"loaded by RebirthSkelCompat");
+    }
+    else
+    {
+        Log.Line(L"Could not load " + path + L" (wrong path, or not a Skeleton); meshes wait until the game loads it");
+    }
+}
+
+void PreloadAnimationSkeletons()
+{
+    for (const auto& pair : State.Config.Pairs)
+    {
+        for (const auto& path : pair.Animation) { LoadAnimationSkeleton(path); }
+        if (pair.Use == SkelCompat::Method::Animations) { LoadAnimationSkeleton(pair.Receiving); }
+    }
+}
+
+void LoadQueuedSkeletons()
+{
+    std::vector<std::wstring> queue;
+    {
+        std::lock_guard lock(State.Mutex);
+        queue.swap(State.LoadQueue);
+    }
+    for (const auto& path : queue) { LoadAnimationSkeleton(path); }
+}
+
+// ---------------------------------------------------------------------------------------
+// Startup scan, late rebinds and component repair (game thread only)
+// ---------------------------------------------------------------------------------------
+int32_t LateRebind(const std::vector<UObject*>& meshes, bool validate);
+
+void StartupScan()
+{
+    std::vector<UObject*> meshes;
+    int32_t skeletons = 0;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (type == State.SkeletonClass)
+        {
+            ++skeletons;
+        }
+        else if (type && type->IsChildOf(State.MeshClass))
+        {
+            meshes.push_back(object);
+        }
+        return LoopAction::Continue;
+    });
+    const int32_t rebound = LateRebind(meshes, false);
+    Log.Line(L"Scan: " + std::to_wstring(skeletons) + L" skeleton(s) and " + std::to_wstring(meshes.size()) +
+             L" mesh(es) loaded, " + std::to_wstring(rebound) + L" mesh(es) rebound late");
+}
+
+struct ComponentView
+{
+    UObject* Component = nullptr;
+    UObject* Mesh = nullptr;
+    UObject* AnimClass = nullptr;
+    UObject* AnimInstance = nullptr;
+};
+
+std::vector<ComponentView> ComponentsUsing(const std::vector<UObject*>& meshes)
+{
+    std::vector<ComponentView> found;
+    if (meshes.empty() || !State.ComponentClass || State.OffCompMesh < 0) { return found; }
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (!type || !type->IsChildOf(State.ComponentClass)) { return LoopAction::Continue; }
+        ComponentView view;
+        view.Component = object;
+        view.Mesh = Field<UObject*>(object, State.OffCompMesh);
+        if (!view.Mesh || std::find(meshes.begin(), meshes.end(), view.Mesh) == meshes.end()) { return LoopAction::Continue; }
+        if (State.OffCompAnimClass >= 0) { view.AnimClass = Field<UObject*>(object, State.OffCompAnimClass); }
+        if (State.OffCompAnimInstance >= 0) { view.AnimInstance = Field<UObject*>(object, State.OffCompAnimInstance); }
+        found.push_back(view);
+        return LoopAction::Continue;
+    });
+    return found;
+}
+
+UObject* TargetSkeletonOf(UObject* animClass)
+{
+    if (!animClass || !IsLive(animClass)) { return nullptr; }
+    const int32_t offset = FieldOffset(animClass->GetClassPrivate(), L"TargetSkeleton", {L"ObjectProperty"}, 8);
+    UObject* skeleton = nullptr;
+    return (offset >= 0 && ReadAt(animClass, static_cast<size_t>(offset), skeleton) && IsLive(skeleton)) ? skeleton : nullptr;
+}
+
+void CallSetAnimClass(UObject* component, UObject* animClass)
+{
+    struct
+    {
+        UObject* NewClass;
+    } params{animClass};
+    component->ProcessEvent(State.SetAnimClass, &params);
+}
+
+// Components that initialised before the rebind had their AnimBlueprint refused (no instance).
+// Re-applying the same class makes the engine spawn it against the new skeleton.
+void RepairComponents(const std::vector<std::pair<UObject*, UObject*>>& meshTargets)
+{
+    if (!State.SetAnimClass || meshTargets.empty()) { return; }
+    std::vector<UObject*> meshes;
+    for (const auto& [mesh, target] : meshTargets) { meshes.push_back(mesh); }
+    for (const ComponentView& view : ComponentsUsing(meshes))
+    {
+        if (!view.AnimClass || view.AnimInstance) { continue; }
+        UObject* target = nullptr;
+        for (const auto& [mesh, t] : meshTargets)
+        {
+            if (mesh == view.Mesh) { target = t; }
+        }
+        UObject* animSkeleton = TargetSkeletonOf(view.AnimClass);
+        if (!target || animSkeleton != target) { continue; }
+        CallSetAnimClass(view.Component, nullptr);
+        CallSetAnimClass(view.Component, view.AnimClass);
+        UObject* instance = State.OffCompAnimInstance >= 0 ? Field<UObject*>(view.Component, State.OffCompAnimInstance) : nullptr;
+        ++State.Repaired;
+        Log.Line(L"Re-initialised AnimBlueprint on " + ObjectPath(view.Component) + (instance ? L" (instance spawned)" :
+                 L" (still refused: see the hierarchy check for this mesh)"));
+    }
+}
+
+// Rebinds meshes that may already be in use. A mesh is left alone (and logged) when a live
+// component runs an AnimBlueprint authored for the mesh's current skeleton: rebinding would pull
+// that skeleton out from under the running instance. Such meshes are rebound on their next load.
+// validate = the pointers come from a queue and may be stale.
+int32_t LateRebind(const std::vector<UObject*>& meshes, bool validate)
+{
+    std::vector<UObject*> candidates;
+    for (UObject* mesh : meshes)
+    {
+        if (validate && !Alive(mesh)) { continue; }
+        if (!FlagsReady(mesh) || !mesh->IsA(State.MeshClass)) { continue; } // still loading: its own PostLoad decides
+        UObject* skeleton = RawMeshSkeleton(mesh);
+        if (!skeleton) { continue; }
+        std::wstring skeletonPath;
+        SkelCompat::Pair storage;
+        const SkelCompat::Pair* pair = QuickPair(mesh, skeleton, skeletonPath, storage);
+        if (!pair || !SkelCompat::MeshAllowed(*pair, SkelCompat::NormalizeObjectPath(ObjectPath(mesh)))) { continue; }
+        if (!RootedAnimationSkeleton(*pair, nullptr))
+        {
+            AddPending(mesh); // still waiting; checked again on a later pump
+            WantPair(*pair);
+            continue;
+        }
+        candidates.push_back(mesh);
+    }
+    if (candidates.empty()) { return 0; }
+    const std::vector<ComponentView> views = ComponentsUsing(candidates);
+    std::vector<std::pair<UObject*, UObject*>> repair;
+    int32_t rebound = 0;
+    for (UObject* mesh : candidates)
+    {
+        UObject* current = RawMeshSkeleton(mesh);
+        const bool conflict = std::any_of(views.begin(), views.end(), [&](const ComponentView& view) {
+            return view.Mesh == mesh && view.AnimInstance && TargetSkeletonOf(view.AnimClass) == current;
+        });
+        if (conflict)
+        {
+            Log.Line(L"Not rebinding " + ObjectPath(mesh) + L" now: a live component runs an AnimBlueprint made for its own skeleton. "
+                     L"It is rebound the next time it loads.");
+            continue;
+        }
+        std::wstring skeletonPath;
+        SkelCompat::Pair storage;
+        const SkelCompat::Pair* pair = QuickPair(mesh, current, skeletonPath, storage);
+        const bool repairWanted = pair && pair->RepairLiveComponents;
+        if (TryRebind(mesh, true))
+        {
+            ++rebound;
+            FixHierarchy(mesh); // before the repair, so re-initialised AnimBlueprints pass the engine's test
+            if (repairWanted) { repair.emplace_back(mesh, RawMeshSkeleton(mesh)); }
+        }
+    }
+    RepairComponents(repair);
+    return rebound;
+}
+
+// Pending meshes only change state when a new animation skeleton becomes resident.
+void ProcessPending()
+{
+    std::vector<UObject*> pending;
+    {
+        std::lock_guard lock(State.Mutex);
+        if (State.PendingVersion == State.RootedVersion) { return; }
+        State.PendingVersion = State.RootedVersion;
+        pending.swap(State.Pending);
+    }
+    if (!pending.empty()) { LateRebind(pending, true); }
+}
+
+bool ReadMeshBones(UObject* mesh, SkelCompat::BoneTable& table)
+{
+    const int32_t known = State.MeshRefSkeletonOffset.load();
+    if (known >= 0 && ReadRefSkeleton(mesh, static_cast<size_t>(known), table)) { return true; }
+    const int32_t size = State.MeshClass->GetPropertiesSize();
+    for (int32_t offset = 0x30; offset + 0x108 <= size; offset += 8)
+    {
+        if (ReadRefSkeleton(mesh, static_cast<size_t>(offset), table))
+        {
+            State.MeshRefSkeletonOffset.store(offset);
+            Log.Line(L"SkeletalMesh reference skeleton found at offset " + Hex(static_cast<uintptr_t>(offset)));
+            return true;
+        }
+    }
+    return false;
+}
+
+bool ReadSkeletonBones(UObject* skeleton, SkelCompat::BoneTable& table)
+{
+    return State.OffSkelRefLocalPoses >= 0 &&
+           ReadRefSkeleton(skeleton, static_cast<size_t>(State.OffSkelRefLocalPoses) + sizeof(RawArray), table);
+}
+
+// ---------------------------------------------------------------------------------------
+// Hierarchy fix (plan: SkelCompat::PlanConflictRenames). A renamed bone keeps its text and gets the
+// FName number RenameDisplayBase + index + 1, so it reads "<name>_9xxxxx" and matches no skeleton
+// bone. Four places hold a bone's name inside FReferenceSkeleton: the raw and final bone info arrays
+// and the raw and final name-to-index maps. All four are validated against the bone list before
+// anything is written, and only the aligned 4-byte FName number is written, so a reader on another
+// thread sees either the old or the new name, never a torn one. Game thread only.
+// ---------------------------------------------------------------------------------------
+struct RawName
+{
+    uint32_t Comparison = 0;
+    uint32_t Number = 0;
+};
+static_assert(sizeof(RawName) == sizeof(FName));
+
+bool SameName(const RawName& a, const RawName& b) { return a.Comparison == b.Comparison && a.Number == b.Number; }
+
+// GetTypeHash(FName) = GetTypeHash(ComparisonIndex) + Number. UE 4.23+ hashes the index through its name-entry handle
+// (`handle`); the plain index form is kept as a fallback. Only trusted after every chain of a map checked out with it.
+uint32_t NameHash(const RawName& name, bool handle) { return SkelCompat::NameHash(name.Comparison, name.Number, handle); }
+
+// Which form the game's maps check out with: evidence counted from every map whose chains were verified.
+std::atomic<int32_t> HandleHashMaps{0};
+std::atomic<int32_t> PlainHashMaps{0};
+
+void NoteNameHash(bool handle) { (handle ? HandleHashMaps : PlainHashMaps).fetch_add(1, std::memory_order_relaxed); }
+
+// -1 unknown or contradicting, 0 plain index form, 1 entry-handle form.
+int32_t NameHashForm()
+{
+    const int32_t handle = HandleHashMaps.load(std::memory_order_relaxed);
+    const int32_t plain = PlainHashMaps.load(std::memory_order_relaxed);
+    if (handle > 0 && plain == 0) { return 1; }
+    if (plain > 0 && handle == 0) { return 0; }
+    return -1;
+}
+
+// TMap<FName, int32> (UE 4.26 shipping), 0x50 bytes: TSparseArray (elements, inline bit array, free list),
+// hash bucket heads (one inline slot or a heap block), hash size. Elements are TSetElement<TPair<FName,int32>>:
+// key, value, next element in the bucket, bucket index.
+struct NameMapHeader
+{
+    RawArray Elements;
+    uint32_t InlineFlags[4];
+    void* HeapFlags;
+    int32_t NumBits;
+    int32_t MaxBits;
+    int32_t FirstFree;
+    int32_t NumFree;
+    int32_t InlineHash;
+    int32_t Pad0;
+    int32_t* HeapHash;
+    int32_t HashSize;
+    int32_t Pad1;
+};
+static_assert(sizeof(NameMapHeader) == 0x50);
+
+struct NameMapElement
+{
+    RawName Key;
+    int32_t Value;
+    int32_t Next;
+    int32_t Bucket;
+};
+static_assert(sizeof(NameMapElement) == 20);
+
+constexpr size_t RefSkelRawInfo = 0x00;
+constexpr size_t RefSkelFinalInfo = 0x20;
+constexpr size_t RefSkelRawMap = 0x40;
+constexpr size_t RefSkelFinalMap = RefSkelRawMap + sizeof(NameMapHeader);
+
+struct NameMapView
+{
+    NameMapElement* Elements = nullptr;
+    int32_t* Hash = nullptr;            // bucket heads; null when the hash could not be verified (keys still renamed)
+    int32_t HashSize = 0;
+    bool HandleHash = true;             // the GetTypeHash(FName) form the buckets follow
+    std::vector<int32_t> ElementOfBone; // element holding each raw bone
+};
+
+bool ReadBoneNames(const RawArray& info, std::vector<RawName>& names)
+{
+    if (!info.Data || info.Num <= 0 || info.Num > MaxBones + 1024 || info.Max < info.Num) { return false; }
+    std::vector<uint8_t> bytes(static_cast<size_t>(info.Num) * BoneInfoStride);
+    if (!SafeCopy(bytes.data(), info.Data, bytes.size())) { return false; }
+    names.resize(static_cast<size_t>(info.Num));
+    for (size_t i = 0; i < names.size(); ++i) { std::memcpy(&names[i], bytes.data() + i * BoneInfoStride, sizeof(RawName)); }
+    return true;
+}
+
+// A map built from a bone list: as many elements as bones, no free slots, every raw bone's element
+// keyed by that bone's name. Virtual-bone elements (value >= rawCount) are left unchecked: the engine
+// numbers them by skeleton position, which can skip.
+bool ReadNameMap(uint8_t* at, const std::vector<RawName>& names, int32_t rawCount, NameMapView& out)
+{
+    NameMapHeader header{};
+    if (!SafeCopy(&header, at, sizeof(header))) { return false; }
+    const int32_t count = header.Elements.Num;
+    if (!header.Elements.Data || count != static_cast<int32_t>(names.size()) || header.Elements.Max < count || header.NumFree != 0 ||
+        header.NumBits != count || rawCount <= 0 || rawCount > count)
+    {
+        return false;
+    }
+    std::vector<NameMapElement> elements(static_cast<size_t>(count));
+    if (!SafeCopy(elements.data(), header.Elements.Data, elements.size() * sizeof(NameMapElement))) { return false; }
+    out.ElementOfBone.assign(static_cast<size_t>(rawCount), -1);
+    for (int32_t e = 0; e < count; ++e)
+    {
+        const NameMapElement& element = elements[static_cast<size_t>(e)];
+        if (element.Value < 0 || element.Value >= count) { return false; }
+        if (element.Value >= rawCount) { continue; }
+        int32_t& slot = out.ElementOfBone[static_cast<size_t>(element.Value)];
+        if (slot >= 0 || !SameName(element.Key, names[static_cast<size_t>(element.Value)])) { return false; }
+        slot = e;
+    }
+    if (std::find(out.ElementOfBone.begin(), out.ElementOfBone.end(), -1) != out.ElementOfBone.end()) { return false; }
+    out.Elements = static_cast<NameMapElement*>(header.Elements.Data);
+
+    // Relinking renamed keys into their new buckets needs the exact hash; verify it on every element.
+    const int32_t size = header.HashSize;
+    if (size <= 0 || (size & (size - 1)) != 0 || size > (1 << 22)) { return true; }
+    int32_t* hash = header.HeapHash ? header.HeapHash : reinterpret_cast<int32_t*>(at + offsetof(NameMapHeader, InlineHash));
+    if (!header.HeapHash && size != 1) { return true; }
+    std::vector<int32_t> heads(static_cast<size_t>(size));
+    if (!SafeCopy(heads.data(), hash, heads.size() * sizeof(int32_t))) { return true; }
+    std::vector<int32_t> next(static_cast<size_t>(count)), bucket(static_cast<size_t>(count));
+    for (size_t e = 0; e < elements.size(); ++e)
+    {
+        next[e] = elements[e].Next;
+        bucket[e] = elements[e].Bucket;
+    }
+    const std::vector<uint8_t> allocated(static_cast<size_t>(count), 1);
+    bool matches[2] = {false, false}; // [plain, handle]
+    for (const bool handle : {true, false})
+    {
+        std::vector<uint32_t> hashes(static_cast<size_t>(count));
+        for (size_t e = 0; e < elements.size(); ++e) { hashes[e] = NameHash(elements[e].Key, handle); }
+        matches[handle ? 1 : 0] = SkelCompat::SetChainsMatch(heads, next, bucket, allocated, hashes);
+    }
+    if (!matches[0] && !matches[1]) { return true; }
+    // Only a map with enough keys spread over enough buckets tells the two forms apart.
+    if (matches[0] != matches[1] && size >= 8 && count >= 8) { NoteNameHash(matches[1]); }
+    out.Hash = hash;
+    out.HashSize = size;
+    out.HandleHash = matches[1];
+    return true;
+}
+
+void StoreNumber(void* name, uint32_t number)
+{
+    *reinterpret_cast<volatile uint32_t*>(static_cast<uint8_t*>(name) + offsetof(RawName, Number)) = number;
+}
+
+// New key first (readers walking the old bucket stop matching it), then unlink from the old bucket,
+// then publish at the head of the new one. Every intermediate state is a valid chain.
+void RenameInMap(NameMapView& map, int32_t bone, const RawName& renamed)
+{
+    const int32_t e = map.ElementOfBone[static_cast<size_t>(bone)];
+    NameMapElement* element = map.Elements + e;
+    StoreNumber(&element->Key, renamed.Number);
+    if (!map.Hash) { return; }
+    const int32_t from = element->Bucket;
+    const int32_t to = static_cast<int32_t>(NameHash(renamed, map.HandleHash) & static_cast<uint32_t>(map.HashSize - 1));
+    if (from == to) { return; }
+    volatile int32_t* link = map.Hash + from;
+    for (int32_t guard = 0; *link != -1 && *link != e && guard <= map.HashSize + static_cast<int32_t>(map.ElementOfBone.size()) + 1024; ++guard)
+    {
+        link = &map.Elements[*link].Next;
+    }
+    if (*link != e) { return; } // not found (cannot happen after validation): the key is renamed, the bucket stays
+    *link = element->Next;
+    element->Bucket = to;
+    element->Next = map.Hash[to];
+    *static_cast<volatile int32_t*>(map.Hash + to) = e;
+}
+
+// Writes the renames. Returns false and writes nothing when anything does not match the expected layout.
+bool WriteBoneRenames(UObject* mesh, const std::vector<int32_t>& bones, std::wstring& why)
+{
+    const int32_t offset = State.MeshRefSkeletonOffset.load();
+    if (offset < 0) { why = L"reference skeleton not located"; return false; }
+    auto* ref = reinterpret_cast<uint8_t*>(mesh) + offset;
+    RawArray rawInfo{}, finalInfo{};
+    std::vector<RawName> rawNames, finalNames;
+    if (!SafeCopy(&rawInfo, ref + RefSkelRawInfo, sizeof(rawInfo)) || !SafeCopy(&finalInfo, ref + RefSkelFinalInfo, sizeof(finalInfo)) ||
+        !ReadBoneNames(rawInfo, rawNames) || !ReadBoneNames(finalInfo, finalNames) || finalNames.size() < rawNames.size())
+    {
+        why = L"bone lists not readable";
+        return false;
+    }
+    for (size_t i = 0; i < rawNames.size(); ++i)
+    {
+        if (!SameName(rawNames[i], finalNames[i])) { why = L"raw and final bone lists differ"; return false; }
+    }
+    NameMapView rawMap, finalMap;
+    if (!ReadNameMap(ref + RefSkelRawMap, rawNames, rawInfo.Num, rawMap)) { why = L"raw name map not recognised"; return false; }
+    if (!ReadNameMap(ref + RefSkelFinalMap, finalNames, rawInfo.Num, finalMap)) { why = L"final name map not recognised"; return false; }
+
+    std::vector<RawName> renamed;
+    renamed.reserve(bones.size());
+    for (int32_t bone : bones)
+    {
+        if (bone <= 0 || bone >= rawInfo.Num) { why = L"bone index out of range"; return false; }
+        const RawName name{rawNames[static_cast<size_t>(bone)].Comparison, SkelCompat::RenameDisplayBase + static_cast<uint32_t>(bone) + 1};
+        if (std::any_of(finalNames.begin(), finalNames.end(), [&](const RawName& n) { return SameName(n, name); }))
+        {
+            why = L"a renamed bone would collide with an existing name";
+            return false;
+        }
+        renamed.push_back(name);
+    }
+    // The engine must print the new name with the expected number, else the FName layout is not what we think.
+    {
+        FName probe{};
+        std::memcpy(static_cast<void*>(&probe), &renamed.front(), sizeof(RawName));
+        const std::wstring text = probe.ToString();
+        const std::wstring suffix = L"_" + std::to_wstring(SkelCompat::RenameDisplayBase + static_cast<uint32_t>(bones.front()));
+        if (text.size() <= suffix.size() || text.compare(text.size() - suffix.size(), suffix.size(), suffix) != 0)
+        {
+            why = L"FName layout not recognised (" + text + L")";
+            return false;
+        }
+    }
+    for (size_t k = 0; k < bones.size(); ++k)
+    {
+        const size_t bone = static_cast<size_t>(bones[k]);
+        StoreNumber(static_cast<uint8_t*>(rawInfo.Data) + bone * BoneInfoStride, renamed[k].Number);
+        StoreNumber(static_cast<uint8_t*>(finalInfo.Data) + bone * BoneInfoStride, renamed[k].Number);
+        RenameInMap(rawMap, bones[k], renamed[k]);
+        RenameInMap(finalMap, bones[k], renamed[k]);
+    }
+    if (!rawMap.Hash || !finalMap.Hash) { why = L"name maps renamed without relinking"; }
+    return true;
+}
+
+// Bone tables of the rooted animation skeletons (game thread only; rooted pointers stay valid).
+const SkelCompat::BoneTable* TargetBones(UObject* target)
+{
+    static std::unordered_map<UObject*, SkelCompat::BoneTable> cache;
+    const auto it = cache.find(target);
+    if (it != cache.end()) { return &it->second; }
+    SkelCompat::BoneTable table;
+    if (!ReadSkeletonBones(target, table)) { return nullptr; }
+    return &cache.emplace(target, std::move(table)).first->second;
+}
+
+void FixHierarchy(UObject* mesh)
+{
+    ReboundMesh record;
+    {
+        std::lock_guard lock(State.Mutex);
+        const auto it = std::find_if(State.Rebound.begin(), State.Rebound.end(), [&](const ReboundMesh& r) { return r.Mesh == mesh; });
+        if (it == State.Rebound.end()) { return; }
+        record = *it;
+    }
+    int32_t renamed = -1;
+    std::wstring note;
+    SkelCompat::BoneTable meshBones;
+    const SkelCompat::BoneTable* skeletonBones = record.FixHierarchy ? TargetBones(record.Target) : nullptr;
+    if (!record.FixHierarchy)
+    {
+        note = L"hierarchy fix switched off for this pair (fix_hierarchy: false)";
+    }
+    else if (!skeletonBones || !ReadMeshBones(mesh, meshBones))
+    {
+        note = L"bone tables could not be read; hierarchy not fixed";
+    }
+    else
+    {
+        // AnimBlueprints made for other skeletons may still run on this mesh (its own, for a family member; the one an
+        // outfit was made for): the renames keep it compatible with those too (whole subtrees renamed).
+        std::vector<SkelCompat::BoneTable> keepTables;
+        std::vector<std::wstring> keepNames;
+        for (UObject* keepSkeleton : record.KeepCompatible)
+        {
+            SkelCompat::BoneTable table;
+            if (keepSkeleton && keepSkeleton != record.Target && ReadSkeletonBones(keepSkeleton, table))
+            {
+                keepTables.push_back(std::move(table));
+                keepNames.push_back(ShortName(keepSkeleton));
+            }
+        }
+        std::vector<const SkelCompat::BoneTable*> keep;
+        for (const auto& table : keepTables) { keep.push_back(&table); }
+        const SkelCompat::RenamePlan plan = SkelCompat::PlanConflictRenamesFor(meshBones, *skeletonBones, keep);
+        const SkelCompat::BoneTable after = SkelCompat::ApplyRenamePlan(meshBones, plan);
+        std::wstring breaks; // skeletons that accepted the mesh before and would refuse it after
+        for (size_t k = 0; k < keepTables.size(); ++k)
+        {
+            if (SkelCompat::CheckMeshAgainstSkeleton(meshBones, keepTables[k]).Compatible && !SkelCompat::CheckMeshAgainstSkeleton(after, keepTables[k]).Compatible)
+            {
+                breaks += (breaks.empty() ? L"" : L", ") + keepNames[k];
+            }
+        }
+        std::wstring why;
+        if (!plan.Possible)
+        {
+            note = L"root bone '" + meshBones.Names[0] + L"' differs from the skeleton's '" + skeletonBones->Names[0] +
+                   L"'; renaming cannot fix that";
+        }
+        else if (plan.Bones.empty())
+        {
+            renamed = 0;
+        }
+        else if (!SkelCompat::CheckMeshAgainstSkeleton(after, *skeletonBones).Compatible)
+        {
+            note = L"rename plan would not satisfy the engine's test; nothing renamed";
+        }
+        else if (!breaks.empty())
+        {
+            note = L"renaming would make the engine refuse AnimBlueprints made for " + breaks + L"; nothing renamed";
+        }
+        else if (!WriteBoneRenames(mesh, plan.Bones, why))
+        {
+            note = L"bones not renamed: " + why;
+        }
+        else
+        {
+            renamed = static_cast<int32_t>(plan.Bones.size());
+            note = std::to_wstring(renamed) + (keep.empty() ? L" bone(s) placed under other parents on the animation skeleton renamed on this mesh "
+                                                              L"(they keep the mesh's own pose): "
+                                                            : L" bone(s) placed under other parents on " + ShortName(record.Target) +
+                                                                  L" renamed on this mesh, with the bones under them so AnimBlueprints made for " +
+                                                                  SkelCompat::Detail::Joined(keepNames) + L" still run (they keep the mesh's own pose): ");
+            const size_t shown = std::min<size_t>(plan.Bones.size(), 12);
+            for (size_t k = 0; k < shown; ++k)
+            {
+                note += (k ? L", " : L"") + meshBones.Names[static_cast<size_t>(plan.Bones[k])];
+            }
+            if (plan.Bones.size() > shown) { note += L" (+" + std::to_wstring(plan.Bones.size() - shown) + L" more)"; }
+            if (!why.empty()) { note += L" [" + why + L"]"; }
+        }
+    }
+    if (!note.empty()) { Log.Line(L"Hierarchy fix for " + record.MeshPath + L": " + note); }
+    std::lock_guard lock(State.Mutex);
+    for (auto& stored : State.Rebound)
+    {
+        if (stored.Mesh == mesh)
+        {
+            stored.Renamed = renamed;
+            stored.HierarchyNote = note;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------------------
+// Sockets of a rebound mesh's own skeleton. USkeletalMesh::PostLoad ends with RebuildSocketMap: the mesh's own
+// sockets, then those of its Skeleton. A mesh rebound before that would only find the sockets of the skeleton it was
+// rebound to, so a weapon or effect attached to a socket defined on the character's own skeleton lands at the root.
+// The old skeleton's sockets are appended to the mesh's own list first (they then also win over a socket of the same
+// name on the new skeleton, which was placed for another body). Only sockets on a bone the mesh has, and only names
+// the mesh does not define itself. Game thread, inside the mesh's PostLoad before the engine's.
+// Returns the number kept, or -1 (with the reason in `names`) when a layout is not recognised.
+// ---------------------------------------------------------------------------------------
+int32_t CarrySockets(UObject* mesh, UObject* ownSkeleton, std::wstring& names)
+{
+    names.clear();
+    if (State.OffMeshSockets < 0 || State.OffSkelSockets < 0 || State.OffSocketName < 0 || State.OffSocketBone < 0)
+    {
+        names = L"socket layout not recognised";
+        return -1;
+    }
+    if (!ownSkeleton || ownSkeleton->HasAnyFlags(RF_NeedLoad)) { return 0; }
+    RawArray skeletonSockets{};
+    if (!ReadAt(ownSkeleton, static_cast<size_t>(State.OffSkelSockets), skeletonSockets) || skeletonSockets.Num < 0 || skeletonSockets.Num > 4096 ||
+        skeletonSockets.Max < skeletonSockets.Num || (skeletonSockets.Num > 0 && !skeletonSockets.Data))
+    {
+        names = L"socket list of the skeleton not readable";
+        return -1;
+    }
+    if (skeletonSockets.Num == 0) { return 0; }
+    std::vector<UObject*> offered(static_cast<size_t>(skeletonSockets.Num));
+    if (!SafeCopy(offered.data(), skeletonSockets.Data, offered.size() * sizeof(UObject*)))
+    {
+        names = L"socket list of the skeleton not readable";
+        return -1;
+    }
+
+    auto* meshArray = reinterpret_cast<RawArray*>(reinterpret_cast<uint8_t*>(mesh) + State.OffMeshSockets);
+    const RawArray meshSockets = *meshArray;
+    if (meshSockets.Num < 0 || meshSockets.Num > 4096 || meshSockets.Max < meshSockets.Num || (meshSockets.Num > 0 && !meshSockets.Data))
+    {
+        names = L"socket list of the mesh not recognised";
+        return -1;
+    }
+    std::vector<RawName> taken; // socket names the mesh already has
+    for (int32_t i = 0; i < meshSockets.Num; ++i)
+    {
+        UObject* socket = static_cast<UObject* const*>(meshSockets.Data)[i];
+        RawName name{};
+        if (socket && ReadAt(socket, static_cast<size_t>(State.OffSocketName), name)) { taken.push_back(name); }
+    }
+
+    // Bones the mesh has (raw reference skeleton; the merged virtual bones are not there yet).
+    SkelCompat::BoneTable located;
+    if (State.MeshRefSkeletonOffset.load() < 0 && !ReadMeshBones(mesh, located))
+    {
+        names = L"reference skeleton of the mesh not located";
+        return -1;
+    }
+    RawArray rawInfo{};
+    std::vector<RawName> bones;
+    if (!ReadAt(mesh, static_cast<size_t>(State.MeshRefSkeletonOffset.load()) + RefSkelRawInfo, rawInfo) || !ReadBoneNames(rawInfo, bones))
+    {
+        names = L"bones of the mesh not readable";
+        return -1;
+    }
+
+    std::vector<UObject*> kept;
+    for (UObject* socket : offered)
+    {
+        if (!socket || socket->HasAnyFlags(RF_NeedLoad) || socket->HasAnyFlags(DeadFlags)) { continue; }
+        RawName name{}, bone{};
+        if (!ReadAt(socket, static_cast<size_t>(State.OffSocketName), name) || !ReadAt(socket, static_cast<size_t>(State.OffSocketBone), bone)) { continue; }
+        if (name.Comparison == 0 && name.Number == 0) { continue; } // None
+        if (std::any_of(taken.begin(), taken.end(), [&](const RawName& t) { return SameName(t, name); })) { continue; }
+        if (std::none_of(bones.begin(), bones.end(), [&](const RawName& b) { return SameName(b, bone); })) { continue; }
+        taken.push_back(name);
+        kept.push_back(socket);
+        if (kept.size() <= 12)
+        {
+            FName text{};
+            std::memcpy(static_cast<void*>(&text), &name, sizeof(RawName));
+            names += (kept.size() > 1 ? L", " : L"") + text.ToString();
+        }
+    }
+    if (kept.empty()) { return 0; }
+    if (kept.size() > 12) { names += L" (+" + std::to_wstring(kept.size() - 12) + L" more)"; }
+
+    const int32_t num = meshSockets.Num + static_cast<int32_t>(kept.size());
+    void* data = meshSockets.Data;
+    int32_t max = meshSockets.Max;
+    if (num > max)
+    {
+        data = FMemory::Realloc(meshSockets.Data, static_cast<SIZE_T>(num) * sizeof(UObject*));
+        if (!data)
+        {
+            names = L"out of memory";
+            return -1;
+        }
+        max = num;
+    }
+    std::memcpy(static_cast<UObject**>(data) + meshSockets.Num, kept.data(), kept.size() * sizeof(UObject*));
+    meshArray->Data = data;
+    meshArray->Max = max;
+    meshArray->Num = num;
+    return static_cast<int32_t>(kept.size());
+}
+
+// ---------------------------------------------------------------------------------------
+// Socket stand-ins (3.2, row "sockets"). The game attaches a character's weapon to sockets by name: the holster in the
+// field ("Attach_Weapon01", on Cloud's back), the hand in battle ("Attach_Weapon_Right01"), ... A character whose body
+// lacks the bone such a socket sits on gets the weapon at its feet (the engine falls back to the component). A stand-in
+// is a new socket on the mesh under the name the game asks for, copied from the socket the row names instead (or placed
+// on the bone of that name). Mesh sockets come first when the engine's PostLoad builds the socket map, so the stand-in
+// wins over a skeleton socket of the same name. Game thread, inside the mesh's PostLoad before the engine's.
+// Returns what was done, for the log (empty: the skeleton has no stand-ins).
+// ---------------------------------------------------------------------------------------
+// 3.8.1: a socket stand-in's scale for the log.
+std::wstring ScaleText(float value)
+{
+    wchar_t text[32];
+    std::swprintf(text, 32, L"%g", static_cast<double>(value));
+    return text;
+}
+
+// Copies a socket's placement onto another: its offset, rotation and scale from the bone (and whether it is always
+// animated). Settings a socket class may have besides these keep their defaults.
+void CopySocketSettings(UObject* to, UObject* from)
+{
+    struct Setting
+    {
+        const wchar_t* Name;
+        const wchar_t* Type;
+        int32_t Size;
+    };
+    static const Setting settings[] = {{L"RelativeLocation", L"StructProperty", 12}, {L"RelativeRotation", L"StructProperty", 12},
+                                       {L"RelativeScale", L"StructProperty", 12}, {L"bForceAlwaysAnimated", L"BoolProperty", 1}};
+    for (const Setting& setting : settings)
+    {
+        const int32_t at = FieldOffset(State.SocketClass, setting.Name, {setting.Type}, setting.Size);
+        if (at >= 0) { std::memcpy(reinterpret_cast<uint8_t*>(to) + at, reinterpret_cast<const uint8_t*>(from) + at, static_cast<size_t>(setting.Size)); }
+    }
+}
+
+std::wstring AliasSockets(UObject* mesh, UObject* ownSkeleton, UObject* boundSkeleton)
+{
+    const std::wstring skeletonPath = SkelCompat::NormalizeObjectPath(ObjectPath(ownSkeleton));
+    const auto aliases = State.Config.SocketAliasesFor(skeletonPath);
+    if (aliases.empty()) { return {}; }
+    if (!State.SocketClass || State.OffMeshSockets < 0 || State.OffSkelSockets < 0 || State.OffSocketName < 0 || State.OffSocketBone < 0)
+    {
+        return L"Socket stand-ins not made: the socket layout was not recognised.";
+    }
+    SkelCompat::BoneTable located;
+    if (State.MeshRefSkeletonOffset.load() < 0 && !ReadMeshBones(mesh, located)) { return L"Socket stand-ins not made: the mesh's bones were not found."; }
+    RawArray rawInfo{};
+    std::vector<RawName> bones;
+    if (!ReadAt(mesh, static_cast<size_t>(State.MeshRefSkeletonOffset.load()) + RefSkelRawInfo, rawInfo) || !ReadBoneNames(rawInfo, bones))
+    {
+        return L"Socket stand-ins not made: the mesh's bones are not readable.";
+    }
+    const auto hasBone = [&](const RawName& bone) { return std::any_of(bones.begin(), bones.end(), [&](const RawName& b) { return SameName(b, bone); }); };
+
+    // Sockets on offer: the mesh's own (and any kept from its skeleton), its own skeleton's, the skeleton it is bound to.
+    struct Offered
+    {
+        UObject* Socket;
+        RawName Name;
+        RawName Bone;
+    };
+    std::vector<Offered> offered;
+    const auto collect = [&](const RawArray& list) {
+        if (list.Num <= 0 || list.Num > 4096 || list.Max < list.Num || !list.Data) { return; }
+        std::vector<UObject*> pointers(static_cast<size_t>(list.Num));
+        if (!SafeCopy(pointers.data(), list.Data, pointers.size() * sizeof(UObject*))) { return; }
+        for (UObject* socket : pointers)
+        {
+            if (!socket || socket->HasAnyFlags(RF_NeedLoad) || socket->HasAnyFlags(DeadFlags)) { continue; }
+            RawName name{}, bone{};
+            if (!ReadAt(socket, static_cast<size_t>(State.OffSocketName), name) || !ReadAt(socket, static_cast<size_t>(State.OffSocketBone), bone)) { continue; }
+            offered.push_back({socket, name, bone});
+        }
+    };
+    auto* meshArray = reinterpret_cast<RawArray*>(reinterpret_cast<uint8_t*>(mesh) + State.OffMeshSockets);
+    if (meshArray->Num < 0 || meshArray->Num > 4096 || meshArray->Max < meshArray->Num || (meshArray->Num > 0 && !meshArray->Data))
+    {
+        return L"Socket stand-ins not made: the mesh's socket list was not recognised.";
+    }
+    collect(*meshArray);
+    const auto collectSkeleton = [&](UObject* skeleton) {
+        RawArray list{};
+        if (skeleton && !skeleton->HasAnyFlags(RF_NeedLoad) && ReadAt(skeleton, static_cast<size_t>(State.OffSkelSockets), list)) { collect(list); }
+    };
+    collectSkeleton(ownSkeleton);
+    if (boundSkeleton != ownSkeleton) { collectSkeleton(boundSkeleton); }
+
+    const auto raw = [](const FName& name) {
+        RawName out{};
+        std::memcpy(&out, &name, sizeof(out));
+        return out;
+    };
+    std::wstring done, failed;
+    for (const auto& [wanted, use] : aliases)
+    {
+        const RawName wantedName = raw(FName(wanted.c_str(), FNAME_Add));
+        const RawName useName = raw(FName(use.c_str(), FNAME_Find));
+        UObject* model = nullptr;
+        RawName bone{};
+        if (useName.Comparison != 0 || useName.Number != 0)
+        {
+            for (const auto& o : offered)
+            {
+                if (SameName(o.Name, useName) && hasBone(o.Bone))
+                {
+                    model = o.Socket;
+                    bone = o.Bone;
+                    break;
+                }
+            }
+            if (!model && hasBone(useName)) { bone = useName; }
+        }
+        if (!model && bone.Comparison == 0 && bone.Number == 0)
+        {
+            failed += (failed.empty() ? L"" : L", ") + wanted + L" -> " + use + L" (no socket or bone of that name on this mesh)";
+            continue;
+        }
+        FStaticConstructObjectParameters params(State.SocketClass, mesh);
+        params.SetFlags = RF_Transient;
+        UObject* socket = UObjectGlobals::StaticConstructObject(params);
+        if (!socket || !socket->IsA(State.SocketClass))
+        {
+            failed += (failed.empty() ? L"" : L", ") + wanted + L" (the engine did not create the socket)";
+            continue;
+        }
+        if (model) { CopySocketSettings(socket, model); }
+        std::memcpy(reinterpret_cast<uint8_t*>(socket) + State.OffSocketName, &wantedName, sizeof(wantedName));
+        std::memcpy(reinterpret_cast<uint8_t*>(socket) + State.OffSocketBone, &bone, sizeof(bone));
+        // 3.8.1: the row's own placement of the stand-in on its bone ("location", "rotation", "scale", "hidden"), over what it
+        // copied: a frame turned to match the socket the game expects (another rig's bone axes), or a scale for what the game
+        // attaches there (the game attaches weapons keeping their relative scale: a weapon on a hidden socket shrinks out of
+        // sight)
+        std::wstring placeNote;
+        if (SkelCompat::SocketPlacement place; State.Config.SocketPlacementFor(skeletonPath, wanted, place))
+        {
+            static const int32_t locationAt = FieldOffset(State.SocketClass, L"RelativeLocation", {L"StructProperty"}, 12);
+            static const int32_t rotationAt = FieldOffset(State.SocketClass, L"RelativeRotation", {L"StructProperty"}, 12);
+            static const int32_t scaleAt = FieldOffset(State.SocketClass, L"RelativeScale", {L"StructProperty"}, 12);
+            const auto put = [&](bool has, int32_t at, const std::array<float, 3>& value, const wchar_t* what) {
+                if (!has) { return; }
+                if (at < 0)
+                {
+                    placeNote += std::wstring(L", its ") + what + L" NOT set (field not found)";
+                    return;
+                }
+                std::memcpy(reinterpret_cast<uint8_t*>(socket) + at, value.data(), sizeof(float) * 3);
+                if (place.Hidden() && std::wstring_view(what) == L"scale")
+                {
+                    placeNote += L", hidden";
+                    return;
+                }
+                placeNote += std::wstring(L", ") + what + L" " + ScaleText(value[0]) + L" " + ScaleText(value[1]) + L" " + ScaleText(value[2]);
+            };
+            put(place.HasLocation, locationAt, place.Location, L"location");
+            put(place.HasRotation, rotationAt, place.Rotation, L"rotation");
+            put(place.HasScale, scaleAt, place.Scale, L"scale");
+        }
+        socket->SetRootSet(); // the mesh may sit in a garbage-collection cluster that does not know the new socket
+        // Replace a mesh socket of that name, else add one.
+        bool replaced = false;
+        for (int32_t i = 0; i < meshArray->Num; ++i)
+        {
+            auto** slot = static_cast<UObject**>(meshArray->Data) + i;
+            RawName name{};
+            if (*slot && ReadAt(*slot, static_cast<size_t>(State.OffSocketName), name) && SameName(name, wantedName))
+            {
+                *slot = socket;
+                replaced = true;
+            }
+        }
+        if (!replaced)
+        {
+            const int32_t num = meshArray->Num + 1;
+            if (num > meshArray->Max)
+            {
+                void* grown = FMemory::Realloc(meshArray->Data, static_cast<SIZE_T>(num) * sizeof(UObject*));
+                if (!grown)
+                {
+                    failed += (failed.empty() ? L"" : L", ") + wanted + L" (out of memory)";
+                    continue;
+                }
+                meshArray->Data = grown;
+                meshArray->Max = num;
+            }
+            static_cast<UObject**>(meshArray->Data)[meshArray->Num] = socket;
+            meshArray->Num = num;
+        }
+        FName boneText{};
+        std::memcpy(static_cast<void*>(&boneText), &bone, sizeof(bone));
+        done += (done.empty() ? L"" : L", ") + wanted + L" -> " + use + L" (bone " + boneText.ToString() + placeNote + L")";
+    }
+    std::wstring out;
+    if (!done.empty()) { out = L"Socket stand-ins: " + done + L"."; }
+    if (!failed.empty()) { out += (out.empty() ? L"" : L" ") + std::wstring(L"Not made: ") + failed + L"."; }
+    return out;
+}
+
+// ---------------------------------------------------------------------------------------
+// Animation adoption (KH3 mode, method "animations"). Every animation asset authored on an animation skeleton
+// is rewritten onto the receiving skeleton: AnimSequence track tables move each track to the receiving bone of the
+// same name (SkelCompat::BuildTrackRemap; tracks of bones placed differently are dropped), curve UIDs are
+// re-resolved by name against the receiving skeleton (unknown curves are dropped), per-bone data follows its bone,
+// and the asset's Skeleton becomes the receiving skeleton. Every engine check then sees an animation of the
+// receiving skeleton, so characters keep their own skeleton, AnimBlueprint and physics and play the adopted ones.
+// Two rules keep this safe while the game runs:
+//   * An asset is only rewritten while nothing can be playing it: inside its own PostLoad, while it is still in the
+//     async loading pipeline (not handed to the game yet), at a safe point of the frame (map load, after the world
+//     tick), or when no mesh component on its old skeleton exists.
+//   * A montage, composite or blend space moves only after every animation it plays is on the receiving skeleton,
+//     so the receiving skeleton never evaluates another skeleton's track table. Until then it waits (rooted).
+// AnimSequence PostLoad runs on the async loading thread in cooked builds; containers PostLoad on the game thread.
+// ---------------------------------------------------------------------------------------
+constexpr size_t SmartNameStride = sizeof(FName) + 4; // FSmartName (cooked): FName DisplayName, uint16 UID, padding
+constexpr uint16_t InvalidCurveUid = 0xFFFF;          // SmartName::MaxUID: ignored by FBlendedCurve
+constexpr int32_t MaxChildren = 1024;
+constexpr uint64_t LatePassSpacingMs = 2000;
+constexpr uint64_t LatePassMaxBackoffMs = 60000;
+
+uint64_t RawKey(const void* name)
+{
+    uint64_t raw = 0;
+    std::memcpy(&raw, name, sizeof(raw));
+    return raw;
+}
+
+AnimKind KindOf(UObject* asset)
+{
+    if (State.AnimSequenceClass && asset->IsA(State.AnimSequenceClass)) { return AnimKind::Sequence; }
+    if (State.AnimMontageClass && asset->IsA(State.AnimMontageClass)) { return AnimKind::Montage; }
+    if (State.AnimCompositeClass && asset->IsA(State.AnimCompositeClass)) { return AnimKind::Composite; }
+    if (State.BlendSpaceBaseClass && asset->IsA(State.BlendSpaceBaseClass)) { return AnimKind::BlendSpace; }
+    return AnimKind::Other;
+}
+
+bool IsContainer(AnimKind kind) { return kind == AnimKind::Composite || kind == AnimKind::Montage || kind == AnimKind::BlendSpace; }
+
+// Still being loaded: not serialized or post-loaded yet, or its package has not been handed to the game.
+bool InPipeline(UObject* object)
+{
+    return object->HasAnyFlags(static_cast<EObjectFlags>(RF_NeedLoad | RF_NeedPostLoad)) ||
+           object->HasAnyInternalFlags(EInternalObjectFlags::AsyncLoading);
+}
+
+void RequestLatePass() { State.LatePassWanted.store(true, std::memory_order_release); }
+
+// Receiving skeleton's curve names, indexed by UID (USkeleton::AnimCurveMapping->CurveNameList).
+bool ReadCurveUids(UObject* skeleton, std::unordered_map<uint64_t, uint16_t>& out, std::wstring& why)
+{
+    if (State.OffSkelSmartNames < 0) { why = L"Skeleton.SmartNames not found"; return false; }
+    // FSmartNameContainer (one TMap) is followed by the cached FSmartNameMapping* AnimCurveMapping, which points at
+    // the value of the map pair keyed "AnimationCurves"; its first member is the UID-indexed CurveNameList.
+    uint8_t* mapping = nullptr;
+    if (!ReadAt(skeleton, static_cast<size_t>(State.OffSkelSmartNames) + sizeof(NameMapHeader), mapping) || !mapping)
+    {
+        why = L"no curve mapping on the receiving skeleton";
+        return false;
+    }
+    FName key{};
+    if (!SafeCopy(&key, mapping - sizeof(FName), sizeof(FName)) || key.ToString() != L"AnimationCurves")
+    {
+        why = L"curve mapping not recognised";
+        return false;
+    }
+    RawArray list{};
+    if (!SafeCopy(&list, mapping, sizeof(list)) || list.Num < 0 || list.Num >= InvalidCurveUid || list.Max < list.Num || (list.Num > 0 && !list.Data))
+    {
+        why = L"curve name list not recognised";
+        return false;
+    }
+    std::vector<RawName> names(static_cast<size_t>(list.Num));
+    if (list.Num > 0 && !SafeCopy(names.data(), list.Data, names.size() * sizeof(RawName))) { why = L"curve names unreadable"; return false; }
+    for (size_t uid = 0; uid < names.size(); ++uid)
+    {
+        const uint64_t raw = RawKey(&names[uid]);
+        if (raw != 0) { out.emplace(raw, static_cast<uint16_t>(uid)); } // first UID wins, like FSmartNameMapping::FindSmartName
+    }
+    return true;
+}
+
+// Offset and element size of an array property, or -1.
+int32_t ArrayField(UStruct* owner, const wchar_t* name, int32_t& stride)
+{
+    stride = 0;
+    FProperty* property = owner ? FindField(owner, name) : nullptr;
+    if (!property || TypeOf(property) != L"ArrayProperty" || property->GetElementSize() != static_cast<int32_t>(sizeof(RawArray))) { return -1; }
+    FProperty* inner = static_cast<FArrayProperty*>(property)->GetInner();
+    if (!inner) { return -1; }
+    stride = inner->GetElementSize();
+    const int32_t offset = property->GetOffset_Internal();
+    return (offset >= 0 && stride > 0 && offset + static_cast<int32_t>(sizeof(RawArray)) <= owner->GetPropertiesSize()) ? offset : -1;
+}
+
+// Offset of a TArray<UObject*> property, or -1.
+int32_t ObjectArrayField(UStruct* owner, const wchar_t* name)
+{
+    int32_t stride = 0;
+    const int32_t offset = ArrayField(owner, name, stride);
+    if (offset < 0 || stride != static_cast<int32_t>(sizeof(void*))) { return -1; }
+    FProperty* inner = static_cast<FArrayProperty*>(FindField(owner, name))->GetInner();
+    return (inner && TypeOf(inner) == L"ObjectProperty") ? offset : -1;
+}
+
+// Struct type and offset of a struct property, or null.
+UStruct* StructField(UStruct* owner, const wchar_t* name, int32_t& offset)
+{
+    offset = -1;
+    FProperty* property = owner ? FindField(owner, name) : nullptr;
+    if (!property || TypeOf(property) != L"StructProperty" || property->GetArrayDim() != 1) { return nullptr; }
+    UStruct* type = static_cast<FStructProperty*>(property)->GetStruct();
+    const int32_t at = property->GetOffset_Internal();
+    if (!type || at < 0 || at + property->GetElementSize() > owner->GetPropertiesSize()) { return nullptr; }
+    offset = at;
+    return type;
+}
+
+// Element struct type, array offset and element size of an array-of-structs property, or null.
+UStruct* ArrayStructField(UStruct* owner, const wchar_t* name, int32_t& offset, int32_t& stride)
+{
+    offset = -1;
+    stride = 0;
+    FProperty* property = owner ? FindField(owner, name) : nullptr;
+    if (!property || TypeOf(property) != L"ArrayProperty" || property->GetElementSize() != static_cast<int32_t>(sizeof(RawArray))) { return nullptr; }
+    FProperty* inner = static_cast<FArrayProperty*>(property)->GetInner();
+    if (!inner || TypeOf(inner) != L"StructProperty") { return nullptr; }
+    UStruct* type = static_cast<FStructProperty*>(inner)->GetStruct();
+    const int32_t at = property->GetOffset_Internal();
+    if (!type || at < 0 || at + static_cast<int32_t>(sizeof(RawArray)) > owner->GetPropertiesSize() || inner->GetElementSize() <= 0) { return nullptr; }
+    offset = at;
+    stride = inner->GetElementSize();
+    return type;
+}
+
+// Copies the elements of the TArray at `at` (guarded header read). Empty arrays succeed with no bytes.
+bool ReadArrayAt(const void* at, size_t stride, size_t limit, RawArray& header, std::vector<uint8_t>& bytes)
+{
+    bytes.clear();
+    if (!SafeCopy(&header, at, sizeof(header))) { return false; }
+    if (header.Num == 0) { return true; }
+    if (header.Num < 0 || static_cast<size_t>(header.Num) > limit || header.Max < header.Num || !header.Data || stride == 0) { return false; }
+    bytes.resize(static_cast<size_t>(header.Num) * stride);
+    return SafeCopy(bytes.data(), header.Data, bytes.size());
+}
+
+bool ReadArray(UObject* owner, int32_t offset, size_t stride, size_t limit, RawArray& header, std::vector<uint8_t>& bytes)
+{
+    return ReadArrayAt(reinterpret_cast<const uint8_t*>(owner) + offset, stride, limit, header, bytes);
+}
+
+// The animations a container plays: montage and composite segments, blend space samples. False when unreadable.
+bool ReadChildren(UObject* asset, AnimKind kind, std::vector<UObject*>& out)
+{
+    out.clear();
+    const auto* base = reinterpret_cast<const uint8_t*>(asset);
+    RawArray header{};
+    std::vector<uint8_t> bytes;
+    const auto collect = [&](size_t stride, int32_t field) {
+        for (int32_t i = 0; i < header.Num; ++i)
+        {
+            UObject* child = nullptr;
+            std::memcpy(&child, bytes.data() + static_cast<size_t>(i) * stride + static_cast<size_t>(field), sizeof(child));
+            if (child && std::find(out.begin(), out.end(), child) == out.end()) { out.push_back(child); }
+        }
+    };
+    const auto track = [&](const uint8_t* at) -> bool {
+        if (State.TrackSegments < 0 || State.SegmentRef < 0) { return false; }
+        if (!ReadArrayAt(at + State.TrackSegments, static_cast<size_t>(State.SegmentStride), MaxChildren, header, bytes)) { return false; }
+        collect(static_cast<size_t>(State.SegmentStride), State.SegmentRef);
+        return true;
+    };
+    switch (kind)
+    {
+    case AnimKind::Composite:
+        return State.OffCompositeTrack >= 0 && track(base + State.OffCompositeTrack);
+    case AnimKind::Montage:
+    {
+        if (State.OffMontageSlots < 0 || State.SlotTrack < 0) { return false; }
+        RawArray slots{};
+        std::vector<uint8_t> slotBytes;
+        if (!ReadArrayAt(base + State.OffMontageSlots, static_cast<size_t>(State.SlotStride), 64, slots, slotBytes)) { return false; }
+        for (int32_t s = 0; s < slots.Num; ++s)
+        {
+            const auto* slot = static_cast<const uint8_t*>(slots.Data) + static_cast<size_t>(s) * static_cast<size_t>(State.SlotStride);
+            if (!track(slot + State.SlotTrack)) { return false; }
+        }
+        return true;
+    }
+    case AnimKind::BlendSpace:
+        if (State.OffBlendSamples < 0 || State.SampleAnim < 0) { return false; }
+        if (!ReadArray(asset, State.OffBlendSamples, static_cast<size_t>(State.SampleStride), MaxChildren, header, bytes)) { return false; }
+        collect(static_cast<size_t>(State.SampleStride), State.SampleAnim);
+        return true;
+    default:
+        return true;
+    }
+}
+
+enum class ChildState : uint8_t
+{
+    Ready,   // none, or already on the receiving skeleton (or on no skeleton: plays the reference pose)
+    Pending, // on the animation skeleton and still loading: its own PostLoad adopts it
+    Blocked, // on the animation skeleton and already handed to the game: only the game-thread pass may adopt it
+    Foreign  // on a third skeleton, or a kind that cannot be adopted: the container stays where it is
+};
+
+// Another member of plan's family: its animations also move to plan.To (published plans only).
+bool MovesToSameHub(UObject* skeleton, const AdoptionPlan& plan)
+{
+    if (!plan.Family || !skeleton) { return false; }
+    const AdoptionTable* table = State.Adoption.load(std::memory_order_acquire);
+    return table && std::any_of(table->Plans.begin(), table->Plans.end(),
+                                [&](const auto& p) { return p->Family && p->From == skeleton && p->To == plan.To; });
+}
+
+ChildState StateOfChild(UObject* child, UObject* container, const AdoptionPlan& plan)
+{
+    if (!child) { return ChildState::Ready; }
+    if (child == container || !child->IsA(State.AnimAssetClass)) { return ChildState::Foreign; }
+    if (child->HasAnyFlags(RF_NeedLoad)) { return ChildState::Pending; }
+    UObject* skeleton = Field<UObject*>(child, State.OffAnimSkeleton);
+    // RF_NeedLoad is cleared before serialisation starts: a null Skeleton may simply not be read yet.
+    if (!skeleton) { return InPipeline(child) ? ChildState::Pending : ChildState::Ready; }
+    if (skeleton == plan.To) { return ChildState::Ready; }
+    // In a family a container may play animations of another member: they move to the same hub.
+    if ((skeleton != plan.From && !MovesToSameHub(skeleton, plan)) || KindOf(child) == AnimKind::Other) { return ChildState::Foreign; }
+    return InPipeline(child) ? ChildState::Pending : ChildState::Blocked;
+}
+
+struct AdoptStats
+{
+    int32_t Tracks = 0;     // tracks of bones the receiving skeleton lacks or places differently
+    int32_t Curves = 0;     // curves the receiving skeleton does not know
+    int32_t Attributes = 0; // baked attribute sets emptied (their bone is not carried over)
+};
+
+// Plans the UID rewrite of an FSmartName array (elements `stride` bytes apart, FSmartName at `nameAt`).
+void PlanCurveNames(const RawArray& header, const std::vector<uint8_t>& bytes, size_t stride, size_t nameAt, const AdoptionPlan& plan,
+                    std::vector<std::pair<uint16_t*, uint16_t>>& writes, int32_t& dropped)
+{
+    for (int32_t i = 0; i < header.Num; ++i)
+    {
+        const size_t at = static_cast<size_t>(i) * stride + nameAt;
+        const uint64_t raw = RawKey(bytes.data() + at);
+        const auto it = raw != 0 ? plan.CurveUids.find(raw) : plan.CurveUids.end();
+        const uint16_t uid = (plan.CurvesKnown && it != plan.CurveUids.end()) ? it->second : InvalidCurveUid;
+        if (uid == InvalidCurveUid) { ++dropped; }
+        writes.emplace_back(reinterpret_cast<uint16_t*>(static_cast<uint8_t*>(header.Data) + at + sizeof(FName)), uid);
+    }
+}
+
+// 3.6.7: Rebirth's cutscene animations (their bIgnoreTranslationRetargeting) play their own bone lengths whatever the
+// skeleton's retarget settings, so "proportions" did nothing in cutscenes. The flag cleared, every body keeps its build
+// there as in gameplay ("cutscene_proportions": false keeps them as they were). True when it was set.
+bool ClearIgnoreRetarget(UObject* sequence)
+{
+    if (!sequence || State.OffSeqIgnoreRetarget < 0 || !State.Config.CutsceneProportions) { return false; }
+    auto* at = reinterpret_cast<volatile uint8_t*>(reinterpret_cast<uint8_t*>(sequence) + State.OffSeqIgnoreRetarget);
+    const uint8_t before = *at;
+    if (!(before & State.IgnoreRetargetMask)) { return false; }
+    *at = static_cast<uint8_t>(before & static_cast<uint8_t>(~State.IgnoreRetargetMask));
+    const uint64_t n = State.CutsceneProportioned.fetch_add(1, std::memory_order_relaxed) + 1;
+    if (n <= 8 || n % 250 == 0)
+    {
+        Log.Line(L"Proportions: cutscene animation " + ObjectPath(sequence) + L" keeps every body's build (bIgnoreTranslationRetargeting cleared) [" +
+                 std::to_wstring(n) + L" so far]");
+    }
+    return true;
+}
+
+// Rewrites one asset whose Skeleton is plan.From onto plan.To. Validates everything before writing anything.
+// Caller holds AdoptMutex and guarantees nothing plays the asset right now; containers have every child ready.
+bool AdoptAsset(UObject* asset, AnimKind kind, const AdoptionPlan& plan, std::wstring& why, AdoptStats& stats)
+{
+    std::vector<std::pair<int32_t*, int32_t>> intWrites;
+    std::vector<std::pair<uint16_t*, uint16_t>> curveWrites;
+    std::vector<uint8_t> perBone; // blend space: the re-resolved per-bone list, re-sorted
+    void* perBoneData = nullptr;
+    RawArray header{};
+    std::vector<uint8_t> bytes;
+
+    // Float curves of montages and composites (cooked sequences keep theirs in the compressed data).
+    if (kind != AnimKind::BlendSpace && State.OffRawFloatCurves >= 0)
+    {
+        if (!ReadArray(asset, State.OffRawFloatCurves, static_cast<size_t>(State.FloatCurveStride), 4096, header, bytes))
+        {
+            why = L"curve list not recognised";
+            return false;
+        }
+        PlanCurveNames(header, bytes, static_cast<size_t>(State.FloatCurveStride), static_cast<size_t>(State.FloatCurveName), plan, curveWrites,
+                       stats.Curves);
+    }
+
+    if (kind == AnimKind::Sequence)
+    {
+        if (State.OffSeqCompressed < 0) { why = L"AnimSequence layout unknown"; return false; }
+        // Track tables: entry = skeleton bone index of the track.
+        const auto remap = [&](int32_t offset, bool count) -> bool {
+            if (!ReadArray(asset, offset, sizeof(int32_t), MaxBones, header, bytes)) { return false; }
+            for (int32_t i = 0; i < header.Num; ++i)
+            {
+                int32_t index = 0;
+                std::memcpy(&index, bytes.data() + static_cast<size_t>(i) * sizeof(int32_t), sizeof(index));
+                // Cooked tables only hold bones of the animation skeleton; anything else means the layout is not what we think.
+                if (index < -1 || index >= static_cast<int32_t>(plan.TrackMap.size())) { return false; }
+                const int32_t mapped = index >= 0 ? plan.TrackMap[static_cast<size_t>(index)] : -1;
+                if (mapped < 0 && count) { ++stats.Tracks; }
+                intWrites.emplace_back(static_cast<int32_t*>(header.Data) + i, mapped);
+            }
+            return true;
+        };
+        if (!remap(State.OffSeqCompressed, true)) { why = L"compressed track table not recognised"; return false; }
+        if (State.OffSeqRawTracks >= 0 && !remap(State.OffSeqRawTracks, false)) { why = L"raw track table not recognised"; return false; }
+
+        // Compressed curves: UIDs re-resolved by name on the receiving skeleton.
+        if (!ReadArray(asset, State.OffSeqCompressed + static_cast<int32_t>(sizeof(RawArray)), SmartNameStride, 4096, header, bytes))
+        {
+            why = L"compressed curve list not recognised";
+            return false;
+        }
+        PlanCurveNames(header, bytes, SmartNameStride, 0, plan, curveWrites, stats.Curves);
+
+        // Baked custom attributes are keyed by skeleton bone index too. A set whose bone is not carried over is
+        // emptied and parked on the root bone (an index the engine would look up unchecked must stay valid).
+        if (State.OffSeqCustomAttrs >= 0)
+        {
+            const size_t stride = static_cast<size_t>(State.SeqCustomAttrStride);
+            if (!ReadArray(asset, State.OffSeqCustomAttrs, stride, MaxBones, header, bytes))
+            {
+                why = L"baked attribute list not recognised";
+                return false;
+            }
+            if (header.Num > 0 && State.AttrBone < 0) { why = L"baked attributes in an unknown layout"; return false; }
+            const bool canEmpty = std::all_of(State.AttrArrays.begin(), State.AttrArrays.end(), [](int32_t a) { return a >= 0; });
+            for (int32_t i = 0; i < header.Num; ++i)
+            {
+                const size_t at = static_cast<size_t>(i) * stride;
+                int32_t index = 0;
+                std::memcpy(&index, bytes.data() + at + static_cast<size_t>(State.AttrBone), sizeof(index));
+                int32_t mapped = index >= 0 && index < static_cast<int32_t>(plan.TrackMap.size()) ? plan.TrackMap[static_cast<size_t>(index)] : -1;
+                auto* entry = static_cast<uint8_t*>(header.Data) + at;
+                if (mapped < 0)
+                {
+                    if (!canEmpty) { why = L"baked attributes on a bone that is not carried over"; return false; }
+                    for (int32_t field : State.AttrArrays)
+                    {
+                        intWrites.emplace_back(reinterpret_cast<int32_t*>(entry + field + offsetof(RawArray, Num)), 0);
+                    }
+                    ++stats.Attributes;
+                    mapped = 0;
+                }
+                intWrites.emplace_back(reinterpret_cast<int32_t*>(entry + State.AttrBone), mapped);
+            }
+        }
+    }
+    else if (kind == AnimKind::BlendSpace && State.OffBlendPerBone >= 0)
+    {
+        // Per-bone blend speeds cache a skeleton bone index (FBoneReference: FName, BoneIndex:31, bUseSkeletonIndex:1).
+        const size_t stride = static_cast<size_t>(State.BlendPerBoneStride);
+        if (!ReadArray(asset, State.OffBlendPerBone, stride, 1024, header, bytes))
+        {
+            why = L"per-bone blend list not recognised";
+            return false;
+        }
+        if (header.Num > 0 && (State.PerBoneRef < 0 || stride < static_cast<size_t>(State.PerBoneRef) + 16))
+        {
+            why = L"per-bone blend settings in an unknown layout";
+            return false;
+        }
+        std::vector<std::pair<int32_t, size_t>> order; // (new bone index, element)
+        for (int32_t i = 0; i < header.Num; ++i)
+        {
+            uint8_t* reference = bytes.data() + static_cast<size_t>(i) * stride + static_cast<size_t>(State.PerBoneRef);
+            const auto it = plan.ToBoneIndex.find(RawKey(reference));
+            const int32_t index = it != plan.ToBoneIndex.end() ? it->second : -1;
+            uint32_t packed = 0;
+            std::memcpy(&packed, reference + sizeof(FName), sizeof(packed));
+            packed = (packed & 0x80000000u) | (static_cast<uint32_t>(index) & 0x7FFFFFFFu);
+            std::memcpy(reference + sizeof(FName), &packed, sizeof(packed));
+            order.emplace_back(index, static_cast<size_t>(i));
+        }
+        // UBlendSpaceBase::InitializePerBoneBlend keeps the list sorted by bone index, highest first.
+        std::stable_sort(order.begin(), order.end(), [](const auto& a, const auto& b) { return a.first > b.first; });
+        perBone.resize(bytes.size());
+        for (size_t k = 0; k < order.size(); ++k) { std::memcpy(perBone.data() + k * stride, bytes.data() + order[k].second * stride, stride); }
+        perBoneData = header.Data;
+    }
+
+    for (const auto& [at, value] : intWrites) { *reinterpret_cast<volatile int32_t*>(at) = value; }
+    for (const auto& [at, value] : curveWrites) { *reinterpret_cast<volatile uint16_t*>(at) = value; }
+    if (perBoneData && !perBone.empty()) { std::memcpy(perBoneData, perBone.data(), perBone.size()); }
+    if (plan.KeepProportions && kind == AnimKind::Sequence && State.OffSeqRetargetSource >= 0)
+    {
+        // "proportions": the sequence names the retarget pose of the body it was made for (added to plan.To), so
+        // AnimationScaled bones scale by (playing body / that body). One aligned 8-byte store.
+        auto* name = reinterpret_cast<volatile uint64_t*>(reinterpret_cast<uint8_t*>(asset) + State.OffSeqRetargetSource);
+        const uint64_t before = *name;
+        if (before != 0 && before != plan.RetargetName) { plan.RetargetReplaced.fetch_add(1, std::memory_order_relaxed); }
+        *name = plan.RetargetName;
+        // (3.6.7) a cutscene animation skips translation retargeting: it no longer does, so the body keeps its build there too
+        ClearIgnoreRetarget(asset);
+    }
+    if (plan.WriteVirtualBoneGuid)
+    {
+        // UAnimSequence::UseRawDataForPoseExtraction compares this with the skeleton's VirtualBoneGuid; a mismatch
+        // would send the sequence to its raw tracks, which cooked games strip (the reference pose would play).
+        auto* guid = reinterpret_cast<volatile uint32_t*>(reinterpret_cast<uint8_t*>(asset) + State.OffAnimVirtualBoneGuid);
+        for (size_t k = 0; k < 4; ++k)
+        {
+            uint32_t part = 0;
+            std::memcpy(&part, plan.ToVirtualBoneGuid.data() + k * sizeof(uint32_t), sizeof(part));
+            guid[k] = part;
+        }
+    }
+    *reinterpret_cast<UObject* volatile*>(reinterpret_cast<uint8_t*>(asset) + State.OffAnimSkeleton) = plan.To;
+    return true;
+}
+
+void LogAdopted(const AdoptionPlan& plan, const std::wstring& path, const wchar_t* how, const AdoptStats& stats)
+{
+    if (stats.Curves > 0)
+    {
+        plan.CurvesDropped.fetch_add(static_cast<uint64_t>(stats.Curves));
+        plan.AssetsDroppingCurves.fetch_add(1);
+    }
+    const uint64_t n = plan.Adopted.fetch_add(1) + 1;
+    if (n > 12 && n % 250 != 0) { return; }
+    std::wstring line = L"Adopted (" + std::wstring(how) + L") " + path + L" -> " + ShortName(plan.To) + L": " + std::to_wstring(stats.Tracks) +
+                        L" track(s) of bones it lacks or places differently skipped, " + std::to_wstring(stats.Curves) + L" curve(s) skipped";
+    if (stats.Attributes > 0) { line += L", " + std::to_wstring(stats.Attributes) + L" baked attribute set(s) emptied"; }
+    Log.Line(line + L" [" + std::to_wstring(n) + L" so far]");
+}
+
+void LogRefused(const AdoptionPlan& plan, const std::wstring& path, const std::wstring& why)
+{
+    const uint64_t n = plan.Refused.fetch_add(1) + 1;
+    if (n <= 12 || n % 250 == 0) { Log.Line(L"Not adopted " + path + L": " + why + L" [" + std::to_wstring(n) + L" so far]"); }
+}
+
+bool OnGameThread() { return GetCurrentThreadId() == State.GameThread.load(std::memory_order_relaxed); }
+
+// Game thread, AdoptMutex held. Keeps a container until its animations have arrived; rooted (by the mod, unless it
+// already was) so the pointer stays valid. Root flags are only ever changed on the game thread: UE4SS updates them
+// with a plain read-modify-write that must not race the engine's own flag updates.
+void Park(UObject* asset, AnimKind kind, const AdoptionPlan& plan, const std::wstring& path, std::vector<UObject*> children, bool blocked)
+{
+    // Only the game-thread pass can finish a container the game already has, or adopt a blocked animation.
+    if (blocked || !InPipeline(asset))
+    {
+        RequestLatePass();
+        State.LatePassNotBefore = std::min(State.LatePassNotBefore, GetTickCount64() + 500); // soon, but coalesced
+    }
+    for (auto& entry : State.Waiting)
+    {
+        if (entry.Asset != asset) { continue; }
+        entry.Plan = &plan;
+        entry.Children = std::move(children);
+        return;
+    }
+    State.Waiting.emplace_back();
+    WaitingContainer& entry = State.Waiting.back();
+    entry.Asset = asset;
+    entry.Kind = kind;
+    entry.Plan = &plan;
+    entry.Path = path;
+    entry.Children = std::move(children);
+    State.WaitingCount.store(static_cast<int32_t>(State.Waiting.size()), std::memory_order_relaxed);
+    if (!asset->HasAnyInternalFlags(EInternalObjectFlags::RootSet))
+    {
+        asset->SetRootSet();
+        entry.RootedByMod = true;
+    }
+    if (State.Waiting.size() <= 12 || State.Waiting.size() % 100 == 0)
+    {
+        Log.Line(L"Waiting " + path + L": it plays animations that are not on " + ShortName(plan.To) + L" yet (" +
+                 std::to_wstring(State.Waiting.size()) + L" waiting)");
+    }
+}
+
+// Game thread, AdoptMutex held.
+void Unpark(size_t index)
+{
+    WaitingContainer& entry = State.Waiting[index];
+    if (entry.RootedByMod) { entry.Asset->ClearRootSet(); }
+    State.Waiting.erase(State.Waiting.begin() + static_cast<std::ptrdiff_t>(index));
+    State.WaitingCount.store(static_cast<int32_t>(State.Waiting.size()), std::memory_order_relaxed);
+}
+
+enum class Decision : uint8_t
+{
+    Adopted,
+    Refused,
+    Waiting
+};
+
+// AdoptMutex held, nothing plays `asset` right now (see the rules above), its Skeleton is plan.From.
+// Containers are only decided on the game thread (their PostLoad runs there); elsewhere they are left to it.
+Decision AdoptLocked(UObject* asset, AnimKind kind, const AdoptionPlan& plan, const std::wstring& path, const wchar_t* how)
+{
+    if (IsContainer(kind))
+    {
+        if (!OnGameThread())
+        {
+            RequestLatePass();
+            return Decision::Waiting;
+        }
+        std::vector<UObject*> children;
+        if (!ReadChildren(asset, kind, children))
+        {
+            LogRefused(plan, path, L"its animation list could not be read");
+            return Decision::Refused;
+        }
+        bool waiting = false, blocked = false;
+        for (UObject* child : children)
+        {
+            const ChildState state = StateOfChild(child, asset, plan);
+            if (state == ChildState::Foreign)
+            {
+                LogRefused(plan, path, L"it plays " + ObjectPath(child) + L", which cannot move to " + ShortName(plan.To));
+                return Decision::Refused;
+            }
+            waiting = waiting || state != ChildState::Ready;
+            blocked = blocked || state == ChildState::Blocked;
+        }
+        if (waiting)
+        {
+            Park(asset, kind, plan, path, std::move(children), blocked);
+            return Decision::Waiting;
+        }
+    }
+    std::wstring why;
+    AdoptStats stats;
+    if (!AdoptAsset(asset, kind, plan, why, stats))
+    {
+        LogRefused(plan, path, why);
+        return Decision::Refused;
+    }
+    LogAdopted(plan, path, how, stats);
+    return Decision::Adopted;
+}
+
+// AdoptMutex held, any thread. Adopts waiting containers that are still in the loading pipeline (the game does not
+// have them yet) once all their animations are on the receiving skeleton. Entries stay parked: the game thread
+// unroots them later. Containers rooted by someone else are left to the game thread, which can validate them.
+int32_t AdoptReadyInPipeline()
+{
+    int32_t adopted = 0;
+    for (bool changed = true; changed;)
+    {
+        changed = false;
+        for (const WaitingContainer& entry : State.Waiting)
+        {
+            if (!entry.RootedByMod) { continue; }
+            UObject* asset = entry.Asset;
+            const AdoptionPlan& plan = *entry.Plan;
+            if (Field<UObject*>(asset, State.OffAnimSkeleton) != plan.From || !InPipeline(asset)) { continue; }
+            const bool ready = std::all_of(entry.Children.begin(), entry.Children.end(),
+                                           [&](UObject* child) { return StateOfChild(child, asset, plan) == ChildState::Ready; });
+            if (!ready) { continue; }
+            std::wstring why;
+            AdoptStats stats;
+            if (AdoptAsset(asset, entry.Kind, plan, why, stats))
+            {
+                ++adopted;
+                changed = true; // a composite inside a montage may have been the last missing animation
+                LogAdopted(plan, entry.Path, L"after its animations", stats);
+            }
+            else
+            {
+                LogRefused(plan, entry.Path, why);
+            }
+        }
+    }
+    return adopted;
+}
+
+// Game thread, AdoptMutex held. Finishes waiting containers: unparks the ones that moved (or can never move) and
+// adopts those whose animations have all arrived. A container the game already has is only adopted when `released`
+// allows its plan (safe point, or nothing on its old skeleton is alive).
+template <class Allowed>
+int32_t FinishWaiting(Allowed&& released)
+{
+    int32_t adopted = AdoptReadyInPipeline();
+    for (bool changed = true; changed;)
+    {
+        changed = false;
+        for (size_t i = 0; i < State.Waiting.size(); ++i)
+        {
+            WaitingContainer& entry = State.Waiting[i];
+            UObject* asset = entry.Asset;
+            // Kept alive by someone else's root, which may be gone: validate before touching it.
+            if (!entry.RootedByMod && !Alive(asset))
+            {
+                State.Waiting.erase(State.Waiting.begin() + static_cast<std::ptrdiff_t>(i));
+                State.WaitingCount.store(static_cast<int32_t>(State.Waiting.size()), std::memory_order_relaxed);
+                changed = true;
+                break;
+            }
+            const AdoptionPlan& plan = *entry.Plan;
+            if (Field<UObject*>(asset, State.OffAnimSkeleton) != plan.From)
+            {
+                Unpark(i); // adopted, or moved elsewhere
+                changed = true;
+                break;
+            }
+            if (!InPipeline(asset) && !released(plan))
+            {
+                RequestLatePass(); // the game already has it: only a safe point or the gated pass may finish it
+                continue;
+            }
+            bool ready = true, foreign = false;
+            for (UObject* child : entry.Children)
+            {
+                const ChildState state = StateOfChild(child, asset, plan);
+                foreign = foreign || state == ChildState::Foreign;
+                ready = ready && state == ChildState::Ready;
+            }
+            if (!ready && !foreign) { continue; }
+            if (foreign)
+            {
+                LogRefused(plan, entry.Path, L"it plays an animation that cannot move to " + ShortName(plan.To));
+            }
+            else
+            {
+                std::wstring why;
+                AdoptStats stats;
+                if (AdoptAsset(asset, entry.Kind, plan, why, stats))
+                {
+                    ++adopted;
+                    LogAdopted(plan, entry.Path, L"after its animations", stats);
+                }
+                else
+                {
+                    LogRefused(plan, entry.Path, why);
+                }
+            }
+            Unpark(i);
+            changed = true;
+            break;
+        }
+    }
+    return adopted;
+}
+
+namespace Forms
+{
+uint64_t NowMs();   // (defined with the forms)
+}
+
+// ---- (3.6.14) the level and field-action sets whose animations load --------------------------------------------------
+// A level loads the version of a level set made for the character it was made for (Cloud's: /Game/Motion/Level/
+// LureRope00/PC0000_Cloud), not the one of Sephiroth's folder, so the set entry the game makes for Sephiroth stays empty
+// (the T-pose) and nothing names the set when no montage plays (the chocobo wrangling). The set the level loaded last is
+// the one: each animation of a level or field-action folder that loads (an animation's PostLoad, any thread) notes its
+// set and folder with the time; FillEmptyEntries goes by the newest one of the row's folders that is still loaded.
+namespace LevelLoads
+{
+struct Load
+{
+    std::wstring Kind;     // "Level" or "FieldAction"
+    std::wstring Name;     // "LureRope00"
+    std::wstring Folder;   // "PC0000_Cloud"
+    uint64_t At = 0;       // when an animation of it last loaded (NowMs)
+    bool Told = false;     // (game thread) the log said it
+};
+SRWLOCK Lock = SRWLOCK_INIT;
+std::vector<Load> Loads;   // (a few dozen a session; at most MaxLoads)
+constexpr size_t MaxLoads = 512;
+
+struct Exclusive
+{
+    Exclusive() { AcquireSRWLockExclusive(&Lock); }
+    ~Exclusive() { ReleaseSRWLockExclusive(&Lock); }
+};
+
+// Any thread: an animation at `path` loaded (/Game/Motion/Level/<set>/<folder>/<animation>).
+void Note(const std::wstring& path) noexcept
+{
+    try
+    {
+        constexpr wchar_t Prefix[] = L"/Game/Motion/";
+        constexpr size_t PrefixLength = sizeof(Prefix) / sizeof(wchar_t) - 1;
+        if (path.compare(0, PrefixLength, Prefix) != 0) { return; }
+        const size_t kindEnd = path.find(L'/', PrefixLength);
+        if (kindEnd == std::wstring::npos) { return; }
+        const std::wstring kind = path.substr(PrefixLength, kindEnd - PrefixLength);
+        if (kind != L"Level" && kind != L"FieldAction") { return; }
+        const size_t nameEnd = path.find(L'/', kindEnd + 1);
+        if (nameEnd == std::wstring::npos) { return; }
+        const size_t folderEnd = path.find(L'/', nameEnd + 1);   // (an animation inside the folder, not the set itself)
+        if (folderEnd == std::wstring::npos || folderEnd == nameEnd + 1) { return; }
+        const std::wstring name = path.substr(kindEnd + 1, nameEnd - kindEnd - 1);
+        const std::wstring folder = path.substr(nameEnd + 1, folderEnd - nameEnd - 1);
+        const uint64_t now = Forms::NowMs();
+        Exclusive lock;
+        for (auto& l : Loads)
+        {
+            if (l.Kind == kind && l.Name == name && l.Folder == folder)
+            {
+                l.At = now;
+                return;
+            }
+        }
+        if (Loads.size() < MaxLoads) { Loads.push_back(Load{kind, name, folder, now, false}); }
+    }
+    catch (...)
+    {
+    }
+}
+} // namespace LevelLoads
+
+// Inside the asset's own PostLoad: adopts it if a published plan covers it (or a waiting container plays it).
+void AdoptOnLoad(UObject* asset, const AdoptionTable& table)
+{
+    if (State.OffAnimSkeleton < 0) { return; }
+    UObject* skeleton = Field<UObject*>(asset, State.OffAnimSkeleton);
+    // (3.6.7) a cutscene animation of a hub with "proportions": the other bodies of its family play it too, keeping their build
+    if (skeleton && State.OffSeqIgnoreRetarget >= 0 && std::any_of(table.Plans.begin(), table.Plans.end(), [&](const auto& p) { return p->To == skeleton && p->KeepProportions; }) &&
+        KindOf(asset) == AnimKind::Sequence)
+    {
+        ClearIgnoreRetarget(asset);
+    }
+    if (!skeleton || std::none_of(table.Plans.begin(), table.Plans.end(), [&](const auto& p) { return p->From == skeleton; })) { return; }
+    const AnimKind kind = KindOf(asset);
+    if (kind == AnimKind::Other) { return; }
+    const std::wstring path = ObjectPath(asset);
+    LevelLoads::Note(path);   // (3.6.14)
+    std::lock_guard lock(State.AdoptMutex);
+    if (Field<UObject*>(asset, State.OffAnimSkeleton) != skeleton) { return; }
+    const AdoptionPlan* plan = nullptr;
+    for (const auto& candidate : table.Plans)
+    {
+        if (candidate->From == skeleton && SkelCompat::PathUnder(candidate->Paths, path))
+        {
+            plan = candidate.get();
+            break;
+        }
+    }
+    for (size_t i = 0; !plan && i < State.Waiting.size(); ++i)
+    {
+        // Outside adopt_paths, but a waiting container plays it: it follows the container.
+        const WaitingContainer& entry = State.Waiting[i];
+        if (entry.Plan->From == skeleton && std::find(entry.Children.begin(), entry.Children.end(), asset) != entry.Children.end()) { plan = entry.Plan; }
+    }
+    if (!plan) { return; }
+    if (plan->Family && plan->MemberMeshAlive.load(std::memory_order_relaxed))
+    {
+        // A character of this family member is still on its own skeleton (loaded before its mesh could be rebound):
+        // leave its animations where they are until the late pass sees it gone.
+        RequestLatePass();
+        return;
+    }
+    if (AdoptLocked(asset, kind, *plan, path, L"on load") != Decision::Adopted || State.Waiting.empty()) { return; }
+    if (OnGameThread()) { FinishWaiting([](const AdoptionPlan&) { return false; }); }
+    else { AdoptReadyInPipeline(); }
+}
+
+void* OriginalAnimPostLoad(UObject* self)
+{
+    void** table = nullptr;
+    std::memcpy(&table, self, sizeof(table));
+    const int32_t count = State.AnimPatchCount.load(std::memory_order_acquire);
+    for (int32_t i = 0; i < count; ++i)
+    {
+        if (State.AnimPatches[static_cast<size_t>(i)].Table == table) { return State.AnimPatches[static_cast<size_t>(i)].Original; }
+    }
+    return nullptr;
+}
+
+void HookedAnimPostLoad(UObject* self)
+{
+    if (auto* original = reinterpret_cast<PostLoadFunction>(OriginalAnimPostLoad(self))) { original(self); }
+    if (!State.Active.load(std::memory_order_acquire)) { return; }
+    const AdoptionTable* table = State.Adoption.load(std::memory_order_acquire);
+    if (!table || table->Plans.empty()) { return; }
+    try
+    {
+        AdoptOnLoad(self, *table);
+    }
+    catch (...)
+    {
+        Fault(L"animation adoption");
+    }
+}
+
+// Patches PostLoad on every native animation-asset class (each C++ class has its own vtable).
+bool InstallAnimPostLoadHooks()
+{
+    if (!State.AnimAssetClass || State.OffAnimSkeleton < 0) { return false; }
+    const ImageRange image = MainImage();
+    std::vector<void**> tables;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || !object->IsA<UClass>()) { return LoopAction::Continue; }
+        auto* type = static_cast<UClass*>(object);
+        if (!type->IsChildOf(State.AnimAssetClass)) { return LoopAction::Continue; }
+        void** table = VTableOf(type->GetClassDefaultObject());
+        if (table && image.Contains(table) && std::find(tables.begin(), tables.end(), table) == tables.end()) { tables.push_back(table); }
+        return LoopAction::Continue;
+    });
+    int32_t installed = 0;
+    for (void** table : tables)
+    {
+        if (installed >= static_cast<int32_t>(State.AnimPatches.size())) { break; }
+        void* current = SlotOf(table, PostLoadSlot);
+        if (!image.Contains(current)) { continue; }
+        auto& patch = State.AnimPatches[static_cast<size_t>(installed)];
+        patch.Table = table;
+        patch.Original = current;
+        State.AnimPatchCount.store(installed + 1, std::memory_order_release);
+        void* replaced = nullptr;
+        if (PatchSlot(table, PostLoadSlot, reinterpret_cast<void*>(&HookedAnimPostLoad), replaced))
+        {
+            // Once the slot points at the hook the record must stay, or that class would lose its PostLoad.
+            patch.Original = replaced;
+            ++installed;
+        }
+        else
+        {
+            State.AnimPatchCount.store(installed, std::memory_order_release);
+        }
+    }
+    Log.Line(L"Animation PostLoad hook installed on " + std::to_wstring(installed) + L" animation asset vtable(s)");
+    return installed > 0;
+}
+
+UObject* RootedSkeleton(const std::wstring& path)
+{
+    std::lock_guard lock(State.Mutex);
+    const auto it = State.Rooted.find(Folded(path));
+    return (it != State.Rooted.end() && FlagsReady(it->second)) ? it->second : nullptr;
+}
+
+// ---------------------------------------------------------------------------------------
+// Proportions (3.2, "proportions"). UE 4.26 retargets bone translations per bone of the skeleton an animation plays on
+// (FBoneNode::TranslationRetargetingMode): Skeleton takes the translation from the playing mesh's reference pose (the
+// bone keeps that body's length), AnimationScaled scales the animation's translation by (playing mesh / the retarget
+// pose the animation names: USkeleton::GetRefLocalPoses(RetargetSource), else the skeleton's own pose). So the receiving
+// skeleton's body bones get Skeleton and its pelvis AnimationScaled (SkelCompat::ProportionModes), every adopted
+// sequence names the animation skeleton it came from as its RetargetSource, and the receiving skeleton gets that
+// skeleton's pose under that name in AnimRetargetSources (its own pose with every bone that carries over replaced).
+// The map and the modes are only written at a safe point (map load, after the world tick): animation evaluation reads
+// them on worker threads.
+// ---------------------------------------------------------------------------------------
+constexpr size_t TransformStride = 48;     // FTransform (vectorised): rotation, translation, scale, 16 bytes each
+constexpr size_t ReferencePoseSize = 24;   // FReferencePose (cooked): FName PoseName; TArray<FTransform> ReferencePose
+
+// A skeleton's final reference pose (one FTransform per bone), checked to look like transforms.
+bool ReadFinalPose(UObject* skeleton, size_t bones, std::vector<uint8_t>& out, std::wstring& why)
+{
+    RawArray pose{};
+    if (State.OffSkelRefLocalPoses < 0 ||
+        !ReadAt(skeleton, static_cast<size_t>(State.OffSkelRefLocalPoses) + sizeof(RawArray) + 0x30, pose) || pose.Num <= 0 ||
+        static_cast<size_t>(pose.Num) != bones || pose.Max < pose.Num || !pose.Data)
+    {
+        why = L"reference pose of " + ShortName(skeleton) + L" not readable";
+        return false;
+    }
+    out.resize(bones * TransformStride);
+    if (!SafeCopy(out.data(), pose.Data, out.size()))
+    {
+        why = L"reference pose of " + ShortName(skeleton) + L" not readable";
+        return false;
+    }
+    for (size_t i = 0; i < bones; ++i)
+    {
+        float v[12];
+        std::memcpy(v, out.data() + i * TransformStride, sizeof(v));
+        bool finite = true;
+        for (const float f : v) { finite = finite && f == f && f < 1.0e7f && f > -1.0e7f; }
+        const float q = v[0] * v[0] + v[1] * v[1] + v[2] * v[2] + v[3] * v[3];
+        if (!finite || q < 0.98f || q > 1.02f)
+        {
+            why = L"reference pose of " + ShortName(skeleton) + L" is not in the expected FTransform layout";
+            return false;
+        }
+    }
+    return true;
+}
+
+float TranslationLength(const std::vector<uint8_t>& pose, size_t bone)
+{
+    if ((bone + 1) * TransformStride > pose.size()) { return 0.0f; }
+    float t[3];
+    std::memcpy(t, pose.data() + bone * TransformStride + 16, sizeof(t));
+    return std::sqrt(t[0] * t[0] + t[1] * t[1] + t[2] * t[2]);
+}
+
+std::wstring Fixed(float value)
+{
+    wchar_t text[32];
+    std::swprintf(text, 32, L"%.1f", static_cast<double>(value));
+    return text;
+}
+
+// The FName hash form, confirmed if need be from the skeleton's own bone-name map (many keys over many buckets).
+int32_t EnsureNameHashForm(UObject* skeleton)
+{
+    const int32_t form = NameHashForm();
+    if (form >= 0 || State.OffSkelRefLocalPoses < 0) { return form; }
+    const size_t base = static_cast<size_t>(State.OffSkelRefLocalPoses) + sizeof(RawArray);
+    RawArray finalInfo{}, rawInfo{};
+    std::vector<RawName> names;
+    NameMapView view;
+    if (ReadAt(skeleton, base + RefSkelFinalInfo, finalInfo) && ReadAt(skeleton, base + RefSkelRawInfo, rawInfo) && ReadBoneNames(finalInfo, names))
+    {
+        ReadNameMap(reinterpret_cast<uint8_t*>(skeleton) + base + RefSkelFinalMap, names, rawInfo.Num, view);
+    }
+    return NameHashForm();
+}
+
+// Adds retarget poses to a skeleton's AnimRetargetSources. The map is rebuilt with the entries it had (their pose
+// arrays move over as they are) and the new ones, then swapped in. Safe point only. Returns what happened.
+std::wstring AddRetargetPoses(UObject* skeleton, const std::vector<const ModState::PoseToAdd*>& poses)
+{
+    if (State.OffSkelRetargetSources < 0) { return L"NOT added: AnimRetargetSources was not located"; }
+    const int32_t form = EnsureNameHashForm(skeleton);
+    if (form < 0) { return L"NOT added: the game's FName hash form is not confirmed"; }
+    auto* at = reinterpret_cast<uint8_t*>(skeleton) + State.OffSkelRetargetSources;
+    SkelCompat::SetHeader old{};
+    if (!SafeCopy(&old, at, sizeof(old))) { return L"NOT added: AnimRetargetSources unreadable"; }
+    std::vector<uint64_t> keys;
+    std::vector<uint8_t> values;
+    std::wstring why;
+    if (!SkelCompat::ReadNameKeyedMap(old, ReferencePoseSize, form == 1, [](void* to, const void* from, size_t size) { return SafeCopy(to, from, size); },
+                                      keys, values, why))
+    {
+        return L"NOT added: AnimRetargetSources " + why;
+    }
+    const size_t had = keys.size();
+    std::vector<void*> fresh;
+    std::wstring added;
+    for (const auto* pose : poses)
+    {
+        if (std::find(keys.begin(), keys.end(), pose->Name) != keys.end()) { continue; }
+        const size_t bones = pose->Pose.size() / TransformStride;
+        void* data = FMemory::Malloc(pose->Pose.size(), 16);
+        if (!data) { continue; }
+        std::memcpy(data, pose->Pose.data(), pose->Pose.size());
+        fresh.push_back(data);
+        uint8_t value[ReferencePoseSize]{};
+        std::memcpy(value, &pose->Name, sizeof(uint64_t)); // PoseName
+        const RawArray array{data, static_cast<int32_t>(bones), static_cast<int32_t>(bones)};
+        std::memcpy(value + sizeof(uint64_t), &array, sizeof(array));
+        keys.push_back(pose->Name);
+        values.insert(values.end(), value, value + ReferencePoseSize);
+        added += (added.empty() ? L"" : L", ") + pose->Label;
+    }
+    if (keys.size() == had) { return L"already there"; }
+    SkelCompat::SetHeader built{};
+    if (!SkelCompat::BuildNameKeyedMap(keys, values, ReferencePoseSize, form == 1, [](size_t size) { return FMemory::Malloc(size); },
+                                       [](void* block) { FMemory::Free(block); }, built))
+    {
+        for (void* data : fresh) { FMemory::Free(data); }
+        return L"NOT added: out of memory";
+    }
+    std::memcpy(at, &built, sizeof(built));
+    if (old.Elements) { FMemory::Free(old.Elements); }
+    if (old.HeapFlags) { FMemory::Free(old.HeapFlags); }
+    if (old.HeapHash) { FMemory::Free(old.HeapHash); }
+    return L"added " + added + (had ? L" (next to " + std::to_wstring(had) + L" it had)" : std::wstring{});
+}
+
+// Whether this skeleton's AnimRetargetSources reads as a map (empty or not) at the located offset.
+bool RetargetSourcesUsable(UObject* skeleton)
+{
+    if (State.OffSkelRetargetSources < 0 || !skeleton) { return false; }
+    const int32_t form = EnsureNameHashForm(skeleton);
+    if (form < 0) { return false; }
+    SkelCompat::SetHeader header{};
+    if (!SafeCopy(&header, reinterpret_cast<uint8_t*>(skeleton) + State.OffSkelRetargetSources, sizeof(header))) { return false; }
+    std::vector<uint64_t> keys;
+    std::vector<uint8_t> values;
+    std::wstring why;
+    return SkelCompat::ReadNameKeyedMap(header, ReferencePoseSize, form == 1, [](void* to, const void* from, size_t size) { return SafeCopy(to, from, size); },
+                                        keys, values, why);
+}
+
+// Proportion modes on one skeleton's bone tree. Safe point only. Returns what happened. (3.8.2) `extra`: the config's
+// "proportion_bones" for it (more bones that keep the mesh's own length, e.g. a smaller wing).
+std::wstring SetProportionModes(UObject* skeleton, const std::vector<std::wstring>& extra)
+{
+    if (State.OffSkelBoneTree < 0 || State.BoneNodeMode < 0 || State.BoneNodeStride <= State.BoneNodeMode)
+    {
+        return L"NOT set: the bone tree layout was not recognised";
+    }
+    SkelCompat::BoneTable bones;
+    if (!ReadSkeletonBones(skeleton, bones)) { return L"NOT set: the bones are not readable"; }
+    std::vector<SkelCompat::RetargetMode> modes = SkelCompat::ProportionModes(bones.Names, bones.Parents, extra);
+    size_t extraBones = 0;
+    if (!extra.empty())
+    {
+        for (size_t i = 0; i < bones.Names.size() && i < modes.size(); ++i)
+        {
+            if (modes[i] == SkelCompat::RetargetMode::Skeleton && SkelCompat::Shooter::BoneMatches(bones.Names[i], extra)) { ++extraBones; }
+        }
+    }
+    // Without retarget poses every animation would be scaled against the hub's own body, which is wrong for animations
+    // made for the other bodies (Vincent's own would be scaled twice): the pelvis then keeps its animated height.
+    const bool scalePelvis = RetargetSourcesUsable(skeleton);
+    if (!scalePelvis)
+    {
+        for (auto& mode : modes)
+        {
+            if (mode == SkelCompat::RetargetMode::AnimationScaled) { mode = SkelCompat::RetargetMode::Keep; }
+        }
+    }
+    RawArray tree{};
+    std::vector<uint8_t> bytes;
+    const size_t stride = static_cast<size_t>(State.BoneNodeStride);
+    if (!ReadArray(skeleton, State.OffSkelBoneTree, stride, static_cast<size_t>(MaxBones) + 1024, tree, bytes) || tree.Num <= 0 ||
+        (tree.Num != bones.RawCount && static_cast<size_t>(tree.Num) != bones.Names.size()))
+    {
+        return L"NOT set: the bone tree does not match the bones";
+    }
+    for (int32_t i = 0; i < tree.Num; ++i)
+    {
+        if (bytes[static_cast<size_t>(i) * stride + static_cast<size_t>(State.BoneNodeMode)] > 4) { return L"NOT set: the bone tree holds unknown modes"; }
+    }
+    int32_t changed = 0;
+    size_t pelvis = 0;
+    for (int32_t i = 0; i < tree.Num; ++i)
+    {
+        const SkelCompat::RetargetMode mode = modes[static_cast<size_t>(i)];
+        if (mode == SkelCompat::RetargetMode::AnimationScaled) { pelvis = static_cast<size_t>(i); }
+        if (mode == SkelCompat::RetargetMode::Keep) { continue; }
+        auto* at = static_cast<uint8_t*>(tree.Data) + static_cast<size_t>(i) * stride + static_cast<size_t>(State.BoneNodeMode);
+        const auto value = static_cast<uint8_t>(mode);
+        if (*at != value)
+        {
+            *reinterpret_cast<volatile uint8_t*>(at) = value;
+            ++changed;
+        }
+    }
+    return SkelCompat::DescribeModes(modes) + (pelvis ? L" (pelvis: " + bones.Names[pelvis] + L")" : std::wstring{}) +
+           (extra.empty() ? std::wstring{} : L"; proportion_bones (" + SkelCompat::Detail::Joined(extra) + L"): " + std::to_wstring(extraBones) + L" bone(s)") +
+           (scalePelvis ? std::wstring{} : std::wstring(L"; pelvis left as animated (the retarget poses could not be placed)")) + L"; " +
+           std::to_wstring(changed) + L" bone(s) changed";
+}
+
+// At a safe point: retarget poses waiting for their skeleton, then the modes of every configured skeleton now resident.
+void ApplyProportions()
+{
+    State.ProportionsWanted.store(false, std::memory_order_release);
+    if (!State.PosesToAdd.empty())
+    {
+        std::vector<UObject*> skeletons;
+        for (const auto& pose : State.PosesToAdd)
+        {
+            if (std::find(skeletons.begin(), skeletons.end(), pose.Skeleton) == skeletons.end()) { skeletons.push_back(pose.Skeleton); }
+        }
+        for (UObject* skeleton : skeletons)
+        {
+            std::vector<const ModState::PoseToAdd*> list;
+            for (const auto& pose : State.PosesToAdd)
+            {
+                if (pose.Skeleton == skeleton) { list.push_back(&pose); }
+            }
+            const std::wstring line = L"Proportions: retarget poses on " + ShortName(skeleton) + L": " + AddRetargetPoses(skeleton, list);
+            Log.Line(line);
+            State.ProportionLines.push_back(line);
+        }
+        State.PosesToAdd.clear();
+    }
+    for (const auto& path : State.ProportionSkeletons)
+    {
+        UObject* skeleton = RootedSkeleton(path);
+        if (!skeleton || std::find(State.ProportionsDone.begin(), State.ProportionsDone.end(), skeleton) != State.ProportionsDone.end()) { continue; }
+        State.ProportionsDone.push_back(skeleton);
+        if (State.OffSkelRetargetSources < 0 && State.OffSkelSockets >= 0 && State.OffSkelSmartNames > State.OffSkelSockets &&
+            State.OffSkelSmartNames - State.OffSkelSockets <= 0x100 && State.ProportionsDone.size() == 1)
+        {
+            // Where AnimRetargetSources sits in this build: the bytes between Sockets and SmartNames, for the next version.
+            const size_t from = static_cast<size_t>(State.OffSkelSockets), to = static_cast<size_t>(State.OffSkelSmartNames);
+            std::vector<uint8_t> bytes(to - from);
+            if (SafeCopy(bytes.data(), reinterpret_cast<const uint8_t*>(skeleton) + from, bytes.size()))
+            {
+                std::wstring dump;
+                wchar_t buffer[8]{};
+                for (size_t k = 0; k < bytes.size(); ++k)
+                {
+                    if (k % 16 == 0) { dump += L"\n    +" + Hex(from + k) + L":"; }
+                    swprintf_s(buffer, L" %02X", bytes[k]);
+                    dump += buffer;
+                }
+                Log.Line(L"Proportions: skeleton bytes from Sockets to SmartNames (AnimRetargetSources not located):" + dump);
+            }
+        }
+        const std::wstring line = L"Proportions: " + path + L": " + SetProportionModes(skeleton, State.Config.ProportionBonesOf(path));
+        Log.Line(line);
+        State.ProportionLines.push_back(line);
+    }
+}
+
+// Asks for ApplyProportions when a configured skeleton may have become resident since the last look.
+void CheckProportions()
+{
+    if (State.ProportionSkeletons.empty() || State.ProportionsDone.size() >= State.ProportionSkeletons.size()) { return; }
+    uint64_t version = 0;
+    {
+        std::lock_guard lock(State.Mutex);
+        version = State.RootedVersion;
+    }
+    if (version == State.ProportionsVersion) { return; }
+    State.ProportionsVersion = version;
+    State.ProportionsWanted.store(true, std::memory_order_release);
+}
+
+std::shared_ptr<AdoptionPlan> BuildPlan(const SkelCompat::Pair& pair, size_t pairIndex, UObject* from, UObject* to, const std::wstring& fromPath)
+{
+    SkelCompat::BoneTable fromBones, toBones;
+    if (!ReadSkeletonBones(from, fromBones) || !ReadSkeletonBones(to, toBones))
+    {
+        Log.Line(L"Adoption " + fromPath + L" -> " + pair.Receiving + L": bone tables could not be read; not adopted");
+        return nullptr;
+    }
+    auto plan = std::make_shared<AdoptionPlan>();
+    plan->From = from;
+    plan->To = to;
+    plan->FromPath = fromPath;
+    plan->ToPath = pair.Receiving;
+    plan->Paths = pair.AdoptPaths;
+    plan->PairIndex = pairIndex;
+    plan->Family = !pair.FamilyHub.empty();
+    plan->TrackMap = SkelCompat::BuildTrackRemap(fromBones, toBones);
+    if (plan->TrackMap.empty())
+    {
+        Log.Line(L"Adoption " + fromPath + L" -> " + pair.Receiving + L": root bones differ ('" + fromBones.Names[0] + L"' vs '" +
+                 toBones.Names[0] + L"'); animations cannot be carried over");
+        return nullptr;
+    }
+    // Adopted sequences must carry the receiving skeleton's VirtualBoneGuid, or the engine plays their (stripped) raw data.
+    std::array<uint8_t, 16> fromGuid{};
+    const bool guidsRead = State.OffSkelVirtualBoneGuid >= 0 && ReadAt(from, static_cast<size_t>(State.OffSkelVirtualBoneGuid), fromGuid) &&
+                           ReadAt(to, static_cast<size_t>(State.OffSkelVirtualBoneGuid), plan->ToVirtualBoneGuid);
+    if (!guidsRead)
+    {
+        Log.Line(L"Adoption " + fromPath + L" -> " + pair.Receiving + L": the skeletons' VirtualBoneGuid could not be read; not adopted");
+        return nullptr;
+    }
+    plan->WriteVirtualBoneGuid = State.OffAnimVirtualBoneGuid >= 0;
+    if (!plan->WriteVirtualBoneGuid && fromGuid != plan->ToVirtualBoneGuid)
+    {
+        Log.Line(L"Adoption " + fromPath + L" -> " + pair.Receiving + L": the skeletons have different virtual-bone GUIDs and the animation "
+                 L"asset layout is not recognised, so adopted sequences could not play their compressed data; not adopted");
+        return nullptr;
+    }
+    std::wstring why;
+    plan->CurvesKnown = ReadCurveUids(to, plan->CurveUids, why);
+    {
+        // Raw bone FNames of the receiving skeleton (final list), for name-keyed data such as per-bone blend settings.
+        RawArray finalInfo{};
+        std::vector<RawName> toNames;
+        if (State.OffSkelRefLocalPoses >= 0 &&
+            ReadAt(to, static_cast<size_t>(State.OffSkelRefLocalPoses) + sizeof(RawArray) + RefSkelFinalInfo, finalInfo) &&
+            ReadBoneNames(finalInfo, toNames))
+        {
+            for (size_t i = 0; i < toNames.size(); ++i) { plan->ToBoneIndex.emplace(RawKey(&toNames[i]), static_cast<int32_t>(i)); }
+        }
+    }
+    int32_t mapped = 0;
+    std::vector<std::wstring> differs;
+    for (size_t a = 0; a < plan->TrackMap.size(); ++a)
+    {
+        if (plan->TrackMap[a] >= 0) { ++mapped; continue; }
+        if (toBones.Find(fromBones.Names[a]) >= 0 && differs.size() < 10) { differs.push_back(fromBones.Names[a]); }
+    }
+    plan->Summary = std::to_wstring(mapped) + L" of " + std::to_wstring(plan->TrackMap.size()) + L" bones carry over (same name and parent chain)";
+    if (!differs.empty())
+    {
+        plan->Summary += L"; placed differently, left to the receiving skeleton: ";
+        for (size_t k = 0; k < differs.size(); ++k) { plan->Summary += (k ? L", " : L"") + differs[k]; }
+        plan->Summary += L" ...";
+    }
+    plan->Summary += plan->CurvesKnown ? L"; " + std::to_wstring(plan->CurveUids.size()) + L" receiving curve name(s) known"
+                                       : L"; curves dropped (" + why + L")";
+    if (plan->CurvesKnown)
+    {
+        // Curve names of the animation skeleton the receiving skeleton lacks: such curve tracks are left out of
+        // adopted animations (the receiving skeleton has no slot to evaluate them into).
+        std::unordered_map<uint64_t, uint16_t> fromCurves;
+        std::wstring fromWhy;
+        if (ReadCurveUids(from, fromCurves, fromWhy))
+        {
+            std::vector<std::wstring> unknown;
+            size_t unknownCount = 0;
+            for (const auto& [raw, uid] : fromCurves)
+            {
+                if (plan->CurveUids.count(raw) > 0) { continue; }
+                ++unknownCount;
+                FName name{};
+                std::memcpy(&name, &raw, sizeof(name));
+                unknown.push_back(name.ToString());
+            }
+            std::sort(unknown.begin(), unknown.end());
+            plan->Summary += L"; animation skeleton has " + std::to_wstring(fromCurves.size()) + L" curve name(s), " +
+                             std::to_wstring(unknownCount) + L" of them unknown to the receiving skeleton";
+            if (!unknown.empty())
+            {
+                plan->Summary += L" (their tracks are left out):";
+                for (size_t k = 0; k < unknown.size() && k < 12; ++k) { plan->Summary += L" " + unknown[k]; }
+                if (unknown.size() > 12) { plan->Summary += L" ..."; }
+            }
+        }
+    }
+    plan->Summary += plan->Paths.empty() ? L"; adopting every animation of this skeleton" : L"; adopting under " + std::to_wstring(plan->Paths.size()) + L" path(s)";
+    plan->Summary += fromGuid == plan->ToVirtualBoneGuid ? L"; same virtual-bone GUID" : L"; virtual-bone GUID rewritten on adopted assets";
+    if (plan->Family)
+    {
+        plan->Summary += L"; family member: its meshes are rebound to " + ShortNameOfPath(pair.Receiving) +
+                         L", so its bones that do not carry over keep their own pose for every animation";
+    }
+    if (pair.KeepProportions)
+    {
+        // The pose of the body these animations were made for, on the receiving skeleton's bones (added at a safe point).
+        std::wstring proportionsWhy;
+        std::vector<uint8_t> toPose, fromPose, pose;
+        if (State.OffSkelRetargetSources < 0 || State.OffSeqRetargetSource < 0)
+        {
+            proportionsWhy = L"the retarget source layout was not recognised";
+        }
+        else if (ReadFinalPose(to, toBones.Names.size(), toPose, proportionsWhy) && ReadFinalPose(from, fromBones.Names.size(), fromPose, proportionsWhy))
+        {
+            pose = SkelCompat::BuildRetargetPose(toPose, fromPose, plan->TrackMap, TransformStride);
+            if (pose.empty()) { proportionsWhy = L"the poses do not fit"; }
+        }
+        if (!pose.empty())
+        {
+            const FName name = from->GetNamePrivate();
+            std::memcpy(&plan->RetargetName, &name, sizeof(plan->RetargetName));
+            plan->KeepProportions = plan->RetargetName != 0;
+        }
+        if (plan->KeepProportions)
+        {
+            const auto modes = SkelCompat::ProportionModes(toBones.Names, toBones.Parents);
+            const auto pelvis = std::find(modes.begin(), modes.end(), SkelCompat::RetargetMode::AnimationScaled);
+            plan->Summary += L"; proportions: every body keeps its own bone lengths, the pelvis is scaled against " + ShortName(from);
+            if (pelvis != modes.end())
+            {
+                const auto bone = static_cast<size_t>(pelvis - modes.begin());
+                plan->Summary += L" (" + toBones.Names[bone] + L" " + Fixed(TranslationLength(pose, bone)) + L" vs " + ShortName(to) + L" " +
+                                 Fixed(TranslationLength(toPose, bone)) + L")";
+            }
+            State.PosesToAdd.push_back({to, plan->RetargetName, std::move(pose), ShortName(from)});
+            State.ProportionsWanted.store(true, std::memory_order_release);
+        }
+        else
+        {
+            plan->Summary += L"; proportions NOT kept for these animations (" + proportionsWhy + L")";
+        }
+    }
+    Log.Line(L"Adoption ready: animations of " + fromPath + L" now play on " + pair.Receiving + L"\n    " + plan->Summary);
+    return plan;
+}
+
+// Game thread. Adopts animations that were already loaded when their plan was published, animations that must
+// follow a container, and containers waiting for them. `safePoint`: nothing evaluates animations right now (map
+// load, after the world tick). Otherwise only animation skeletons that no live mesh component uses are handled.
+void LatePass(bool safePoint)
+{
+    State.LatePassWanted.store(false, std::memory_order_release);
+    const AdoptionTable* table = State.Adoption.load(std::memory_order_acquire);
+    if (!table || table->Plans.empty() || !State.AnimAssetClass || State.OffAnimSkeleton < 0) { return; }
+    ++State.LatePasses;
+
+    std::vector<UObject*> froms;
+    for (const auto& plan : table->Plans)
+    {
+        if (std::find(froms.begin(), froms.end(), plan->From) == froms.end()) { froms.push_back(plan->From); }
+    }
+    const auto isFrom = [&](UObject* skeleton) { return skeleton && std::find(froms.begin(), froms.end(), skeleton) != froms.end(); };
+
+    struct Candidate
+    {
+        UObject* Asset = nullptr;
+        AnimKind Kind = AnimKind::Other;
+        const AdoptionPlan* Plan = nullptr;
+        std::wstring Path;
+        bool Eligible = false;
+        bool Done = false;
+    };
+    std::vector<Candidate> candidates;
+    std::unordered_set<UObject*> inUse; // animation skeletons a live mesh component plays on
+    std::unordered_map<UClass*, uint8_t> classes; // 0 other, 1 mesh component, 2 animation asset
+    int32_t loading = 0;
+    // Without a way to see mesh components the gate cannot be evaluated: then every skeleton counts as in use.
+    const bool gateKnown = State.ComponentClass && State.OffCompMesh >= 0 && State.OffMeshSkeleton >= 0;
+    if (!gateKnown) { inUse.insert(froms.begin(), froms.end()); }
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (!type) { return LoopAction::Continue; }
+        auto known = classes.find(type);
+        if (known == classes.end())
+        {
+            const uint8_t what = type->IsChildOf(State.AnimAssetClass) ? 2 : (State.ComponentClass && type->IsChildOf(State.ComponentClass) ? 1 : 0);
+            known = classes.emplace(type, what).first;
+        }
+        if (known->second == 1)
+        {
+            if (!gateKnown) { return LoopAction::Continue; }
+            UObject* mesh = nullptr;
+            UObject* skeleton = nullptr;
+            if (!ReadAt(object, static_cast<size_t>(State.OffCompMesh), mesh) || (mesh && !ReadAt(mesh, static_cast<size_t>(State.OffMeshSkeleton), skeleton)))
+            {
+                inUse.insert(froms.begin(), froms.end()); // unreadable: assume the worst
+            }
+            else if (isFrom(skeleton))
+            {
+                inUse.insert(skeleton);
+            }
+            return LoopAction::Continue;
+        }
+        if (known->second != 2) { return LoopAction::Continue; }
+        UObject* skeleton = Field<UObject*>(object, State.OffAnimSkeleton);
+        if (!isFrom(skeleton)) { return LoopAction::Continue; }
+        if (InPipeline(object))
+        {
+            ++loading; // its own PostLoad, or a later pass, handles it
+            return LoopAction::Continue;
+        }
+        Candidate candidate;
+        candidate.Asset = object;
+        candidate.Kind = KindOf(object);
+        if (candidate.Kind == AnimKind::Other) { return LoopAction::Continue; }
+        candidate.Path = ObjectPath(object);
+        for (const auto& plan : table->Plans)
+        {
+            if (plan->From != skeleton) { continue; }
+            if (SkelCompat::PathUnder(plan->Paths, candidate.Path))
+            {
+                candidate.Plan = plan.get();
+                candidate.Eligible = true;
+                break;
+            }
+            if (!candidate.Plan) { candidate.Plan = plan.get(); } // used if a container makes it follow
+        }
+        candidates.push_back(std::move(candidate));
+        return LoopAction::Continue;
+    });
+
+    // Family members with a live mesh still on their own skeleton keep their animations, also on load (AdoptOnLoad).
+    if (gateKnown)
+    {
+        for (const auto& plan : table->Plans)
+        {
+            if (plan->Family) { plan->MemberMeshAlive.store(inUse.count(plan->From) > 0, std::memory_order_relaxed); }
+        }
+    }
+
+    // Animations played by an eligible container follow it (a few levels: composites inside montages), and so do
+    // the animations an eligible asset names for later use (Rebirth's blend-out sequence, an additive base pose).
+    std::unordered_map<UObject*, size_t> indexOf;
+    for (size_t i = 0; i < candidates.size(); ++i) { indexOf.emplace(candidates[i].Asset, i); }
+    std::vector<UObject*> children;
+    const auto related = [&](const Candidate& candidate) {
+        children.clear();
+        if (IsContainer(candidate.Kind) && !ReadChildren(candidate.Asset, candidate.Kind, children)) { children.clear(); }
+        UObject* extra = nullptr;
+        if (candidate.Kind != AnimKind::BlendSpace && State.OffSeqBlendOut >= 0 && (extra = Field<UObject*>(candidate.Asset, State.OffSeqBlendOut)) != nullptr)
+        {
+            children.push_back(extra);
+        }
+        if (candidate.Kind == AnimKind::Sequence && State.OffSeqRefPose >= 0 && (extra = Field<UObject*>(candidate.Asset, State.OffSeqRefPose)) != nullptr)
+        {
+            children.push_back(extra);
+        }
+    };
+    for (int32_t depth = 0; depth < 4; ++depth)
+    {
+        bool grew = false;
+        for (size_t i = 0; i < candidates.size(); ++i)
+        {
+            if (!candidates[i].Eligible) { continue; }
+            related(candidates[i]);
+            for (UObject* child : children)
+            {
+                const auto it = indexOf.find(child);
+                if (it == indexOf.end() || candidates[it->second].Eligible) { continue; }
+                Candidate& follower = candidates[it->second];
+                follower.Eligible = true;
+                // It moves with the container's plan when it is on that plan's skeleton; an animation of another
+                // family member keeps its own plan (same hub).
+                if (Field<UObject*>(follower.Asset, State.OffAnimSkeleton) == candidates[i].Plan->From) { follower.Plan = candidates[i].Plan; }
+                grew = true;
+            }
+        }
+        if (!grew) { break; }
+    }
+
+    // A family member's animations only move once no live mesh is left on the member's skeleton (its meshes are rebound
+    // to the hub when they load): a character still on it would lose them. Other plans move at a safe point.
+    const auto allowed = [&](const AdoptionPlan& plan) { return plan.Family ? inUse.count(plan.From) == 0 : (safePoint || inUse.count(plan.From) == 0); };
+    const wchar_t* how = safePoint ? L"late, safe point" : L"late";
+    int32_t adopted = 0, gated = 0, gatedFamily = 0, waiting = 0;
+    std::unordered_set<UObject*> refused; // animations that cannot move: containers playing them cannot either
+    // Animations first, then containers in rounds (a container moves once its animations have).
+    for (int32_t round = 0; round < 8; ++round)
+    {
+        bool progress = false;
+        for (auto& candidate : candidates)
+        {
+            if (!candidate.Eligible || candidate.Done || (round == 0 && IsContainer(candidate.Kind))) { continue; }
+            candidate.Done = true;
+            if (!allowed(*candidate.Plan))
+            {
+                ++(candidate.Plan->Family ? gatedFamily : gated);
+                continue;
+            }
+            std::lock_guard lock(State.AdoptMutex);
+            if (Field<UObject*>(candidate.Asset, State.OffAnimSkeleton) != candidate.Plan->From) { continue; }
+            if (IsContainer(candidate.Kind) && ReadChildren(candidate.Asset, candidate.Kind, children) &&
+                std::any_of(children.begin(), children.end(), [&](UObject* child) { return refused.count(child) > 0; }))
+            {
+                for (size_t i = 0; i < State.Waiting.size(); ++i)
+                {
+                    if (State.Waiting[i].Asset == candidate.Asset)
+                    {
+                        Unpark(i);
+                        break;
+                    }
+                }
+                LogRefused(*candidate.Plan, candidate.Path, L"it plays an animation that could not be adopted");
+                refused.insert(candidate.Asset);
+                progress = true; // containers that play this one are decided in the next round
+                continue;
+            }
+            const Decision decision = AdoptLocked(candidate.Asset, candidate.Kind, *candidate.Plan, candidate.Path, how);
+            if (decision == Decision::Waiting)
+            {
+                candidate.Done = false; // its animations may move in a later round
+            }
+            else if (decision == Decision::Refused)
+            {
+                refused.insert(candidate.Asset);
+                progress = true;
+            }
+            else
+            {
+                ++adopted;
+                progress = true;
+            }
+        }
+        if (round > 0 && !progress) { break; }
+    }
+    {
+        std::lock_guard lock(State.AdoptMutex);
+        adopted += FinishWaiting(allowed);
+        waiting = static_cast<int32_t>(State.Waiting.size());
+    }
+
+    // Retry policy: soon after a plan is published (animations that were mid-load), back off while nothing moves.
+    const uint64_t now = GetTickCount64();
+    if (loading == 0) { State.LateFollowUps = 0; }
+    if (adopted > 0 || State.LateFollowUps > 0) { State.LatePassBackoffMs = LatePassSpacingMs; }
+    else { State.LatePassBackoffMs = std::min(LatePassMaxBackoffMs, std::max(LatePassSpacingMs, State.LatePassBackoffMs * 2)); }
+    State.LatePassNotBefore = now + State.LatePassBackoffMs;
+    // Family members wait for their characters to be reloaded (rebound): the next map load, or a member mesh rebound.
+    State.FamilyGated.store(gatedFamily, std::memory_order_relaxed);
+    if (gated > 0) { RequestLatePass(); }
+    if (State.LateFollowUps > 0)
+    {
+        --State.LateFollowUps;
+        RequestLatePass();
+    }
+    if (adopted > 0 || gated > 0 || gatedFamily > 0 || waiting > 0)
+    {
+        std::wstring line = L"Late adoption pass (" + std::wstring(safePoint ? L"safe point" : L"no character on the old skeleton") + L"): " +
+                            std::to_wstring(adopted) + L" adopted, " + std::to_wstring(waiting) + L" container(s) waiting for their animations, " +
+                            std::to_wstring(gated) + L" left for a safe point (a character on the old skeleton is alive)";
+        if (gatedFamily > 0)
+        {
+            line += L", " + std::to_wstring(gatedFamily) + L" of family members left until their characters are loaded again (a mesh still on "
+                    L"the member's own skeleton is alive)";
+        }
+        const bool classicInUse = std::any_of(table->Plans.begin(), table->Plans.end(), [&](const auto& p) { return !p->Family && inUse.count(p->From) > 0; });
+        if (safePoint && classicInUse)
+        {
+            line += L". Note: characters on the animation skeleton are alive; they cannot play adopted animations any more";
+        }
+        Log.Line(line);
+    }
+}
+
+// Game thread. Builds plans for animation-method pairs whose skeletons are resident and publishes them; the late
+// pass then handles what is already loaded. Cheap when nothing changed.
+void BuildAdoptionPlans()
+{
+    if (State.OffAnimSkeleton < 0 || !State.AnimAssetClass) { return; }
+    uint64_t version = 0;
+    {
+        std::lock_guard lock(State.Mutex);
+        version = State.RootedVersion;
+    }
+    if (version == State.AdoptionVersion) { return; }
+    State.AdoptionVersion = version;
+
+    const AdoptionTable* current = State.Adoption.load(std::memory_order_acquire);
+    auto next = std::make_unique<AdoptionTable>();
+    if (current) { next->Plans = current->Plans; }
+    const size_t before = next->Plans.size();
+    for (size_t index = 0; index < State.Config.Pairs.size(); ++index)
+    {
+        const auto& pair = State.Config.Pairs[index];
+        if (pair.Use != SkelCompat::Method::Animations) { continue; }
+        UObject* to = RootedSkeleton(pair.Receiving);
+        if (!to) { continue; }
+        for (const auto& fromPath : pair.Animation)
+        {
+            const std::wstring key = Folded(fromPath) + L"->" + Folded(pair.Receiving);
+            if (std::find(State.AdoptionFailed.begin(), State.AdoptionFailed.end(), key) != State.AdoptionFailed.end()) { continue; }
+            UObject* from = RootedSkeleton(fromPath);
+            if (!from || from == to) { continue; }
+            if (std::any_of(next->Plans.begin(), next->Plans.end(), [&](const auto& p) { return p->From == from && p->To == to; })) { continue; }
+            if (auto plan = BuildPlan(pair, index, from, to, fromPath)) { next->Plans.push_back(std::move(plan)); }
+            else { State.AdoptionFailed.push_back(key); }
+        }
+    }
+    if (next->Plans.size() == before) { return; }
+    // Config order decides which pair gets an animation when several could (stable: same-pair plans keep their order).
+    std::stable_sort(next->Plans.begin(), next->Plans.end(), [](const auto& a, const auto& b) { return a->PairIndex < b->PairIndex; });
+    const AdoptionTable* published = next.get();
+    State.AdoptionTables.push_back(std::move(next));
+    State.Adoption.store(published, std::memory_order_release);
+    // Animations loaded before now are handled by the late pass at the next safe point.
+    State.LateFollowUps = 2;
+    State.LatePassNotBefore = 0;
+    State.LatePassBackoffMs = LatePassSpacingMs;
+    RequestLatePass();
+}
+
+// Game thread, every couple of seconds while containers wait: finishes those still loading whose animations have
+// arrived, and hands the ones the game already has to the late pass.
+void CheckWaiting(bool safePoint)
+{
+    if (State.WaitingCount.load(std::memory_order_relaxed) == 0) { return; }
+    const uint64_t now = GetTickCount64();
+    if (now < State.NextWaitingCheck) { return; }
+    State.NextWaitingCheck = now + (safePoint ? 250 : LatePassSpacingMs);
+    std::lock_guard lock(State.AdoptMutex);
+    // Family containers the game already has are left to the late pass, which knows whether a member's character is alive.
+    FinishWaiting([safePoint](const AdoptionPlan& plan) { return safePoint && !plan.Family; });
+}
+
+// Runs the late pass when one is wanted and due. `safePoint` as for LatePass.
+void MaybeLatePass(bool safePoint)
+{
+    if (!State.LatePassWanted.load(std::memory_order_acquire)) { return; }
+    if (!safePoint && State.ViewportSafePoint.load(std::memory_order_relaxed)) { return; } // the safe point runs it
+    if (GetTickCount64() < State.LatePassNotBefore) { return; }
+    LatePass(safePoint);
+}
+
+// ---------------------------------------------------------------------------------------
+// Animation set rows (3.1)
+// A CharaSpec pack (UEndAssetDataAsset) lists, in AssetDataList[].AssetUserData, the animation sets (UEndAnimSet) its
+// character looks animations up in by set name. For a pack a row names, the mod puts merged sets into that list inside
+// the pack's PostLoad, before the engine's own: the row's source sets for that set name in order, then the set the
+// pack had, the first set that has an animation name winning, and the row's moves on top. A merged set is a new
+// UEndAnimSet inside the pack, constructed from its first source (so every other setting is that set's), with an
+// AnimationAssets map the mod builds itself. Its buckets use GetTypeHash(FName) in the form the game's own maps were
+// seen to use; every source map is checked against it, and without that evidence nothing is built. Source sets and
+// move animations are loaded at the first map load and kept resident.
+// ---------------------------------------------------------------------------------------
+// SkelCompat::SetHeader and NameMapHeader describe the same 0x50-byte TSet header, member for member.
+static_assert(sizeof(SkelCompat::SetHeader) == sizeof(NameMapHeader));
+static_assert(SkelCompat::NameObjectStride == sizeof(RawName) + sizeof(void*) + 2 * sizeof(int32_t));
+
+using NameObjectEntry = SkelCompat::NameObjectPair;
+
+RawName RawNameOf(const FName& name)
+{
+    RawName raw{};
+    std::memcpy(&raw, &name, sizeof(raw));
+    return raw;
+}
+
+RawName ObjectRawName(UObject* object) { return RawNameOf(object->GetNamePrivate()); }
+
+uint64_t KeyOf(const RawName& raw) { return RawKey(&raw); }
+
+// Text of a raw FName key (comparison index in the low half, number in the high half).
+std::wstring NameText(uint64_t key)
+{
+    FName name{};
+    std::memcpy(static_cast<void*>(&name), &key, sizeof(key));
+    return name.ToString();
+}
+
+// "/Game/Motion/Player/PC0000_Cloud/Battle00.Battle00" -> "PC0000_Cloud/Battle00".
+std::wstring SourceLabel(const std::wstring& path)
+{
+    std::wstring package = path.substr(0, path.find(L'.'));
+    const size_t last = package.find_last_of(L'/');
+    const size_t before = last == std::wstring::npos || last == 0 ? std::wstring::npos : package.find_last_of(L'/', last - 1);
+    return before == std::wstring::npos ? package : package.substr(before + 1);
+}
+
+// Reads a TMap<FName, UObject*> (allocated elements in slot order) and checks its bucket chains with both forms of
+// GetTypeHash(FName), counting the evidence. False when the memory does not look like such a map.
+bool ReadNameObjectMap(const uint8_t* at, std::vector<NameObjectEntry>& out, std::wstring& why)
+{
+    SkelCompat::SetHeader header{};
+    if (!SafeCopy(&header, at, sizeof(header))) { why = L"map unreadable"; return false; }
+    int forms = 0;
+    if (!SkelCompat::ReadNameObjectMap(header, [](void* to, const void* from, size_t size) { return SafeCopy(to, from, size); }, out, forms, why))
+    {
+        return false;
+    }
+    // Only a map with enough keys spread over enough buckets tells the two forms apart.
+    if ((forms == 1 || forms == 2) && header.HashSize >= 8 && out.size() >= 8) { NoteNameHash(forms == 2); }
+    return true;
+}
+
+// Writes a TMap<FName, UObject*> holding `entries` (in that order) over the map at `at`, which the caller owns (an
+// engine-built map: its allocations are freed). Same layout as TSet builds by adding the elements one by one.
+bool WriteNameObjectMap(uint8_t* at, const std::vector<NameObjectEntry>& entries, bool handleHash)
+{
+    SkelCompat::SetHeader fresh{};
+    if (!SkelCompat::BuildNameObjectMap(entries, handleHash, [](size_t size) { return FMemory::Malloc(size); }, [](void* block) { FMemory::Free(block); }, fresh))
+    {
+        return false;
+    }
+    SkelCompat::SetHeader old{};
+    std::memcpy(&old, at, sizeof(old));
+    std::memcpy(at, &fresh, sizeof(fresh));
+    if (old.Elements) { FMemory::Free(old.Elements); }
+    if (old.HeapFlags) { FMemory::Free(old.HeapFlags); }
+    if (old.HeapHash) { FMemory::Free(old.HeapHash); }
+    return true;
+}
+
+// Copies an animation segment of a loaded montage for chained moves (defined further down).
+void CaptureSegmentTemplate(UObject* asset);
+
+// Source sets and move animations: found if loaded, else loaded, then kept resident. Game thread, map load.
+void PreloadAnimationSets()
+{
+    std::vector<std::wstring> setPaths, movePaths;
+    const auto add = [](std::vector<std::wstring>& list, const std::wstring& path) {
+        if (std::none_of(list.begin(), list.end(), [&](const std::wstring& p) { return SkelCompat::PathEquals(p, path); })) { list.push_back(path); }
+    };
+    for (const auto& row : State.Config.AnimSets)
+    {
+        for (const auto& name : SkelCompat::RowSetNames(row))
+        {
+            for (const auto& path : SkelCompat::SetSourcePaths(row, name)) { add(setPaths, path); }
+        }
+        for (const auto& move : row.Moves)
+        {
+            for (const auto& path : SkelCompat::MoveAnimations(move)) { add(movePaths, path); }
+        }
+    }
+    std::unordered_set<std::wstring> setKeys, moveKeys, moveNames;
+    for (const auto& path : setPaths) { setKeys.insert(Folded(path)); }
+    for (const auto& path : movePaths)
+    {
+        moveKeys.insert(Folded(path));
+        moveNames.insert(Folded(SkelCompat::ObjectNameOfPath(path)));
+    }
+    std::unordered_map<std::wstring, UObject*> found;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (!type) { return LoopAction::Continue; }
+        if (type->IsChildOf(State.AnimSetClass))
+        {
+            const std::wstring key = Folded(object->GetPathName());
+            if (setKeys.count(key) > 0) { found[key] = object; }
+        }
+        else if (!moveNames.empty() && State.AnimAssetClass && moveNames.count(Folded(ShortName(object))) > 0 && type->IsChildOf(State.AnimAssetClass))
+        {
+            const std::wstring key = Folded(object->GetPathName());
+            if (moveKeys.count(key) > 0) { found[key] = object; }
+        }
+        if (State.SegmentTemplate.empty() && State.AnimMontageClass && type->IsChildOf(State.AnimMontageClass) && FlagsReady(object))
+        {
+            CaptureSegmentTemplate(object); // for chained moves
+        }
+        return LoopAction::Continue;
+    });
+    const auto resident = [&](const std::wstring& path, UClass* type) -> UObject* {
+        const std::wstring key = Folded(path);
+        const auto it = found.find(key);
+        UObject* object = it == found.end() ? nullptr : it->second;
+        if (!object || !FlagsReady(object))
+        {
+            UObject* loaded = LoadBlocking(path);
+            object = (loaded && loaded->IsA(type)) ? loaded : nullptr;
+        }
+        if (!object || !FlagsReady(object)) { return nullptr; }
+        object->SetRootSet();
+        return object;
+    };
+    int32_t sets = 0, animations = 0, tried = 0;
+    // Each source's paths in order until one is there: an auto source's fallback set is only loaded when its own is missing.
+    const auto residentSet = [&](const std::wstring& path) -> UObject* {
+        const std::wstring key = Folded(path);
+        if (const auto it = State.SetObjects.find(key); it != State.SetObjects.end()) { return it->second; }
+        ++tried;
+        UObject* set = resident(path, State.AnimSetClass);
+        State.SetObjects[key] = set;
+        if (!set) { return nullptr; }
+        ++sets;
+        std::vector<NameObjectEntry> entries;
+        std::wstring why;
+        const bool read = ReadNameObjectMap(reinterpret_cast<const uint8_t*>(set) + State.OffSetAssets, entries, why);
+        State.SetKeys[key] = read ? static_cast<int32_t>(entries.size()) : -1;
+        if (!read) { Log.Line(L"Animation set " + path + L" not usable: " + why); }
+        return set;
+    };
+    for (const auto& row : State.Config.AnimSets)
+    {
+        for (const auto& name : SkelCompat::RowSetNames(row))
+        {
+            for (const auto& ref : SkelCompat::SetSourcesFor(row, name))
+            {
+                for (const auto& path : ref.Paths)
+                {
+                    if (residentSet(path)) { break; }
+                }
+            }
+        }
+    }
+    for (const auto& path : movePaths)
+    {
+        UObject* animation = State.AnimAssetClass ? resident(path, State.AnimAssetClass) : nullptr;
+        State.MoveObjects[Folded(path)] = animation;
+        if (animation) { ++animations; }
+    }
+
+    // What every row found, for the log and the report.
+    const int32_t form = NameHashForm();
+    State.SetLines.push_back(L"FName hash: " + std::wstring(form == 1 ? L"entry-handle form" : form == 0 ? L"plain index form" : L"NOT CONFIRMED") + L" (" +
+                             std::to_wstring(HandleHashMaps.load()) + L" map(s) checked out with the entry-handle form, " +
+                             std::to_wstring(PlainHashMaps.load()) + L" with the plain form)" +
+                             (form < 0 ? L"; sets are not merged until the form is confirmed" : L""));
+    for (const auto& row : State.Config.AnimSets)
+    {
+        std::wstring text = L"Row for " + row.Characters.front() + L"  [" + row.Origin + L"]";
+        for (const auto& name : SkelCompat::RowSetNames(row))
+        {
+            std::wstring line;
+            for (const auto& ref : SkelCompat::SetSourcesFor(row, name))
+            {
+                for (size_t k = 0; k < ref.Paths.size(); ++k)
+                {
+                    const std::wstring key = Folded(ref.Paths[k]);
+                    if (!State.SetObjects[key]) { continue; }
+                    const int32_t keys = State.SetKeys.count(key) ? State.SetKeys[key] : -1;
+                    line += (line.empty() ? L"" : L", ") + SourceLabel(ref.Paths[k]) + L" (" + (keys >= 0 ? std::to_wstring(keys) : std::wstring(L"unreadable")) +
+                            (ref.Auto == SkelCompat::AutoMatchMode::Off ? L"" : L", auto") + (k > 0 ? L", standing in for " + SourceLabel(ref.Paths[0]) : L"") + L")";
+                    break;
+                }
+            }
+            if (!line.empty()) { text += L"\n    " + name + L": " + line; }
+        }
+        for (const auto& move : row.Moves)
+        {
+            text += L"\n    move " + (move.Set.empty() ? std::wstring{} : move.Set + L"/") + move.Key + L" -> ";
+            if (move.Chain.empty())
+            {
+                text += move.Animation + (State.MoveObjects[Folded(move.Animation)] ? L"" : L"  (NOT FOUND: move ignored)");
+                continue;
+            }
+            text += L"chain of " + std::to_wstring(move.Chain.size()) + L":";
+            for (const auto& path : move.Chain) { text += L" " + path + (State.MoveObjects[Folded(path)] ? L"" : L" (NOT FOUND)"); }
+        }
+        if (!row.Sockets.empty())
+        {
+            text += L"\n    socket stand-ins on meshes of " + row.Skeleton + L" (made while each mesh loads; see \"Socket stand-ins\" lines)";
+        }
+        if (!row.FieldActions.empty())
+        {
+            text += L"\n    field_actions " + row.FieldActions + L": field actions and level sets follow the CharaSpec row's AnimationSetParentFolder, "
+                    L"which the mod sets to it while the game runs (3.8; \"CharaSpec ... AnimationSetParentFolder\" lines)";
+        }
+        if (!row.CutsceneWeaponSocket.empty())   // (3.6.16)
+        {
+            text += L"\n    cutscene_weapon_socket " + row.CutsceneWeaponSocket + L": its weapons go there while it plays a cutscene (\"Cutscene weapons\" lines)";
+        }
+        State.SetLines.push_back(text);
+    }
+    for (const auto& line : State.SetLines) { Log.Line(L"Animation sets: " + line); }
+    Log.Line(L"Animation sets: " + std::to_wstring(sets) + L" of " + std::to_wstring(tried) + L" source set path(s) looked for found, " +
+             std::to_wstring(animations) + L" of " + std::to_wstring(movePaths.size()) + L" move animation(s); all kept resident" +
+             (State.SegmentTemplate.empty() ? L"; chained moves build their segments from the reflected layout (no montage loaded yet)" : L""));
+}
+
+struct PackSlot
+{
+    int32_t Entry = -1;  // AssetDataList index
+    int32_t Index = -1;  // AssetUserData index
+    UObject* Set = nullptr;
+    std::wstring Name;
+};
+
+// AssetUserData array of one AssetDataList entry (null when out of range).
+RawArray* PackObjects(UObject* pack, int32_t entry)
+{
+    RawArray list{};
+    std::memcpy(&list, reinterpret_cast<uint8_t*>(pack) + State.OffPackList, sizeof(list));
+    if (entry < 0 || entry >= list.Num || !list.Data) { return nullptr; }
+    return reinterpret_cast<RawArray*>(static_cast<uint8_t*>(list.Data) + static_cast<size_t>(entry) * static_cast<size_t>(State.PackEntryStride) +
+                                       static_cast<size_t>(State.OffEntryObjects));
+}
+
+bool ReadPackSets(UObject* pack, std::vector<PackSlot>& slots, int32_t& entries, std::wstring& why)
+{
+    RawArray list{};
+    std::vector<uint8_t> bytes;
+    if (!ReadArray(pack, State.OffPackList, static_cast<size_t>(State.PackEntryStride), 4096, list, bytes)) { why = L"AssetDataList unreadable"; return false; }
+    entries = list.Num;
+    for (int32_t e = 0; e < list.Num; ++e)
+    {
+        RawArray objects{};
+        std::vector<uint8_t> pointers;
+        const auto* entry = bytes.data() + static_cast<size_t>(e) * static_cast<size_t>(State.PackEntryStride);
+        RawArray header{};
+        std::memcpy(&header, entry + State.OffEntryObjects, sizeof(header));
+        if (header.Num == 0) { continue; }
+        if (!ReadArrayAt(static_cast<const uint8_t*>(list.Data) + static_cast<size_t>(e) * static_cast<size_t>(State.PackEntryStride) + State.OffEntryObjects,
+                         sizeof(void*), 4096, objects, pointers))
+        {
+            why = L"AssetUserData of entry " + std::to_wstring(e) + L" unreadable";
+            return false;
+        }
+        for (int32_t i = 0; i < objects.Num; ++i)
+        {
+            UObject* object = nullptr;
+            std::memcpy(&object, pointers.data() + static_cast<size_t>(i) * sizeof(void*), sizeof(object));
+            if (!object || !object->IsA(State.AnimSetClass)) { continue; }
+            slots.push_back({e, i, object, ShortName(object)});
+        }
+    }
+    return true;
+}
+
+struct SetBuild
+{
+    UObject* Set = nullptr; // set for the pack's list (null: the pack keeps what it had)
+    std::wstring Note;
+};
+
+// The set named `name` for a pack: the row's sources, then `own` (the pack's set of that name, may be null).
+// What the auto match knows of one animation of a set: its name, length (seconds) and whether it is additive.
+SkelCompat::MatchAnim MatchInfo(uint64_t key, UObject* animation)
+{
+    SkelCompat::MatchAnim info;
+    info.Name = NameText(key);
+    if (!animation || animation->HasAnyFlags(RF_NeedLoad) || animation->HasAnyFlags(DeadFlags)) { return info; }
+    if (State.AnimSequenceBaseClass && State.OffSeqLength >= 0 && animation->IsA(State.AnimSequenceBaseClass))
+    {
+        float length = 0.0f;
+        if (ReadAt(animation, static_cast<size_t>(State.OffSeqLength), length) && length > 0.0f && length < 3600.0f) { info.Length = length; }
+    }
+    if (State.AnimSequenceClass && State.OffSeqAdditiveType >= 0 && animation->IsA(State.AnimSequenceClass))
+    {
+        uint8_t type = 0;
+        if (ReadAt(animation, static_cast<size_t>(State.OffSeqAdditiveType), type)) { info.Additive = type != 0; }
+    }
+    return info;
+}
+
+// Copies the first animation segment of a loaded montage or composite: chained moves start every segment from it, so
+// the segment's unreflected bytes (bValid) are those of a segment the engine made.
+void CaptureSegmentTemplate(UObject* asset)
+{
+    if (!State.SegmentTemplate.empty() || State.SegmentStride <= 0 || State.TrackSegments < 0 || State.SegmentRef < 0) { return; }
+    const size_t stride = static_cast<size_t>(State.SegmentStride);
+    const auto take = [&](const uint8_t* track) {
+        RawArray segments{};
+        std::vector<uint8_t> bytes;
+        if (!ReadArrayAt(track + State.TrackSegments, stride, 64, segments, bytes) || segments.Num <= 0) { return false; }
+        UObject* reference = nullptr;
+        std::memcpy(&reference, bytes.data() + State.SegmentRef, sizeof(reference));
+        if (!reference) { return false; }
+        State.SegmentTemplate.assign(bytes.begin(), bytes.begin() + static_cast<std::ptrdiff_t>(stride));
+        Log.Line(L"Animation segment layout taken from " + ObjectPath(asset) + L" (" + std::to_wstring(stride) + L" bytes, bValid at " +
+                 Hex(static_cast<uintptr_t>(State.SegValid)) + L" reads " +
+                 (State.SegValid >= 0 ? std::to_wstring(State.SegmentTemplate[static_cast<size_t>(State.SegValid)]) : std::wstring(L"?")) + L")");
+        return true;
+    };
+    const auto* base = reinterpret_cast<const uint8_t*>(asset);
+    if (State.AnimMontageClass && asset->IsA(State.AnimMontageClass) && State.OffMontageSlots >= 0 && State.SlotTrack >= 0 && State.SlotStride > 0)
+    {
+        RawArray slots{};
+        std::vector<uint8_t> bytes;
+        if (ReadArray(asset, State.OffMontageSlots, static_cast<size_t>(State.SlotStride), 64, slots, bytes) && slots.Num > 0)
+        {
+            take(static_cast<const uint8_t*>(slots.Data) + State.SlotTrack);
+        }
+    }
+    else if (State.AnimCompositeClass && asset->IsA(State.AnimCompositeClass) && State.OffCompositeTrack >= 0)
+    {
+        take(base + State.OffCompositeTrack);
+    }
+}
+
+// The AnimComposite of animations played one after another (a chained move, or a split move an auto match picked).
+UObject* BuildComposite(const std::vector<UObject*>& animations, const std::vector<std::wstring>& labels, UObject* outer, std::wstring& why);
+
+// The AnimComposite of a chained move: its animations one after another, built once and kept for the session.
+UObject* BuildChain(const std::vector<std::wstring>& paths, UObject* outer, std::wstring& why)
+{
+    std::vector<UObject*> parts;
+    for (const auto& path : paths)
+    {
+        const auto it = State.MoveObjects.find(Folded(path));
+        UObject* animation = it == State.MoveObjects.end() ? nullptr : it->second;
+        if (!animation) { why = path + L" was not found"; return nullptr; }
+        parts.push_back(animation);
+    }
+    return BuildComposite(parts, paths, outer, why);
+}
+
+// The composite for a split move of an auto source, built once per set of pieces.
+UObject* SplitMove(const std::vector<UObject*>& pieces, const std::vector<std::wstring>& labels, UObject* outer, std::wstring& why)
+{
+    std::wstring key = L"split|";
+    for (UObject* piece : pieces) { key += Hex(reinterpret_cast<uintptr_t>(piece)) + L"|"; }
+    if (const auto it = State.ChainObjects.find(key); it != State.ChainObjects.end())
+    {
+        if (!it->second) { why = L"could not be built before"; }
+        return it->second;
+    }
+    UObject* composite = BuildComposite(pieces, labels, outer, why);
+    State.ChainObjects[key] = composite;
+    return composite;
+}
+
+UObject* BuildComposite(const std::vector<UObject*>& animations, const std::vector<std::wstring>& labels, UObject* outer, std::wstring& why)
+{
+    if (!State.AnimCompositeClass || State.OffCompositeTrack < 0 || State.TrackSegments < 0 || State.SegmentStride <= 0 || State.SegmentRef < 0 ||
+        State.SegStartPos < 0 || State.SegAnimStart < 0 || State.SegAnimEnd < 0 || State.SegPlayRate < 0 || State.SegLooping < 0 || State.OffSeqLength < 0 ||
+        State.OffAnimSkeleton < 0 || !State.AnimSequenceBaseClass)
+    {
+        why = L"the AnimComposite layout was not recognised";
+        return nullptr;
+    }
+    const bool fromTemplate = State.SegmentTemplate.size() == static_cast<size_t>(State.SegmentStride);
+    if (!fromTemplate && State.SegValid < 0)
+    {
+        why = L"the animation segment layout was not recognised";
+        return nullptr;
+    }
+    std::vector<UObject*> parts;
+    std::vector<float> lengths;
+    UObject* skeleton = nullptr;
+    for (size_t k = 0; k < animations.size(); ++k)
+    {
+        UObject* animation = animations[k];
+        const std::wstring path = k < labels.size() ? labels[k] : std::to_wstring(k);
+        if (!animation) { why = path + L" was not found"; return nullptr; }
+        if (!animation->IsA(State.AnimSequenceBaseClass) || (State.AnimMontageClass && animation->IsA(State.AnimMontageClass)))
+        {
+            why = path + L" is not an animation sequence or composite";
+            return nullptr;
+        }
+        float length = 0.0f;
+        if (!ReadAt(animation, static_cast<size_t>(State.OffSeqLength), length) || !(length > 0.0f && length < 3600.0f)) { why = path + L" has no length"; return nullptr; }
+        UObject* own = Field<UObject*>(animation, State.OffAnimSkeleton);
+        if (!skeleton) { skeleton = own; }
+        else if (own != skeleton)
+        {
+            why = L"its animations are on different skeletons (" + ShortName(skeleton) + L", " + ShortName(own) + L")";
+            return nullptr;
+        }
+        parts.push_back(animation);
+        lengths.push_back(length);
+    }
+    if (!skeleton) { why = L"its first animation has no skeleton"; return nullptr; }
+    const size_t stride = static_cast<size_t>(State.SegmentStride);
+    auto* data = static_cast<uint8_t*>(FMemory::Malloc(stride * parts.size()));
+    if (!data) { why = L"out of memory"; return nullptr; }
+    float position = 0.0f;
+    const float one = 1.0f, zero = 0.0f;
+    const int32_t once = 1;
+    for (size_t k = 0; k < parts.size(); ++k)
+    {
+        uint8_t* segment = data + k * stride;
+        if (fromTemplate) { std::memcpy(segment, State.SegmentTemplate.data(), stride); }
+        else { std::memset(segment, 0, stride); }
+        if (State.SegValid >= 0) { segment[State.SegValid] = 1; } // FAnimSegment::bValid
+        std::memcpy(segment + State.SegmentRef, &parts[k], sizeof(UObject*));
+        std::memcpy(segment + State.SegStartPos, &position, sizeof(float));
+        std::memcpy(segment + State.SegAnimStart, &zero, sizeof(float));
+        std::memcpy(segment + State.SegAnimEnd, &lengths[k], sizeof(float));
+        std::memcpy(segment + State.SegPlayRate, &one, sizeof(float));
+        std::memcpy(segment + State.SegLooping, &once, sizeof(int32_t));
+        if (State.SegBlendTime >= 0) { std::memcpy(segment + State.SegBlendTime, &zero, sizeof(float)); }
+        if (State.SegTriggerNotify >= 0) { segment[State.SegTriggerNotify] = 1; } // the pieces' sounds and effects still play
+        position += lengths[k];
+    }
+    FStaticConstructObjectParameters params(State.AnimCompositeClass, outer);
+    params.SetFlags = RF_Transient;
+    UObject* composite = UObjectGlobals::StaticConstructObject(params);
+    if (!composite || !composite->IsA(State.AnimCompositeClass))
+    {
+        FMemory::Free(data);
+        why = L"the engine did not create the composite";
+        return nullptr;
+    }
+    auto* track = reinterpret_cast<RawArray*>(reinterpret_cast<uint8_t*>(composite) + State.OffCompositeTrack + State.TrackSegments);
+    if (track->Data || track->Num != 0)
+    {
+        FMemory::Free(data);
+        why = L"a new composite came with segments";
+        return nullptr;
+    }
+    track->Data = data;
+    track->Num = static_cast<int32_t>(parts.size());
+    track->Max = static_cast<int32_t>(parts.size());
+    std::memcpy(reinterpret_cast<uint8_t*>(composite) + State.OffSeqLength, &position, sizeof(float));
+    std::memcpy(reinterpret_cast<uint8_t*>(composite) + State.OffAnimSkeleton, &skeleton, sizeof(UObject*));
+    composite->SetRootSet();
+    return composite;
+}
+
+// The animation a move plays: its one animation, or the composite of its chain.
+UObject* MoveAnimation(const SkelCompat::AnimMove& move, UObject* outer, std::wstring& notes)
+{
+    if (move.Chain.empty())
+    {
+        const auto it = State.MoveObjects.find(Folded(move.Animation));
+        return it == State.MoveObjects.end() ? nullptr : it->second;
+    }
+    std::wstring key;
+    for (const auto& path : move.Chain) { key += Folded(path) + L"|"; }
+    if (const auto it = State.ChainObjects.find(key); it != State.ChainObjects.end()) { return it->second; }
+    std::wstring why;
+    UObject* composite = BuildChain(move.Chain, outer, why);
+    State.ChainObjects[key] = composite;
+    if (!composite) { notes += L"; chained move " + move.Key + L" NOT built (" + why + L")"; }
+    else
+    {
+        float length = 0.0f;
+        ReadAt(composite, static_cast<size_t>(State.OffSeqLength), length);
+        Log.Line(L"Chained move " + move.Key + L": " + std::to_wstring(move.Chain.size()) + L" animations played one after another (" + Fixed(length) + L" s) as " +
+                 ObjectPath(composite));
+    }
+    return composite;
+}
+
+// `base`: 3.6, for the pack of one of the row's forms that the pack has no set of and no source fills: the sets it starts
+// from (the pack's Battle00 and Battle00_Comp, as the row made them), so a form without sets of its own keeps the
+// character's moves and gets its own moves on top.
+SetBuild BuildSet(const SkelCompat::AnimSetRow& row, const std::wstring& name, UObject* own, UObject* pack, bool late, std::vector<uint8_t>& moveUsed,
+                  const std::vector<UObject*>& base = {})
+{
+    SetBuild result;
+    struct Source
+    {
+        UObject* Set;
+        std::wstring Label;
+        SkelCompat::AutoMatchMode Auto;
+        std::vector<std::wstring> Only;
+    };
+    std::vector<Source> sources;
+    for (const auto& ref : SkelCompat::SetSourcesFor(row, name))
+    {
+        // The first of the source's paths that is resident (an auto folder source falls back to its first set of the kind).
+        for (const auto& path : ref.Paths)
+        {
+            const auto it = State.SetObjects.find(Folded(path));
+            UObject* set = it == State.SetObjects.end() ? nullptr : it->second;
+            if (!set) { continue; }
+            if (std::none_of(sources.begin(), sources.end(), [&](const Source& s) { return s.Set == set; }))
+            {
+                sources.push_back({set, SourceLabel(path) + (ref.Auto == SkelCompat::AutoMatchMode::Off ? L"" : L" (auto)"), ref.Auto, ref.Only});
+            }
+            break;
+        }
+    }
+    std::wstring notes;
+    if (own && std::none_of(sources.begin(), sources.end(), [&](const Source& s) { return s.Set == own; }))
+    {
+        if (own->HasAnyFlags(RF_NeedLoad)) { notes += L"; the pack's own " + name + L" was not loaded yet and is left out"; }
+        else { sources.push_back({own, L"the pack's own " + SourceLabel(ObjectPath(own)), SkelCompat::AutoMatchMode::Off, {}}); }
+    }
+    if (sources.empty() && !own)
+    {
+        // 3.6: a form's pack nothing fills starts from the character's own sets
+        for (UObject* set : base)
+        {
+            if (set && !set->HasAnyFlags(RF_NeedLoad) && std::none_of(sources.begin(), sources.end(), [&](const Source& s) { return s.Set == set; }))
+            {
+                sources.push_back({set, L"the pack's " + ShortName(set) + L" (a form's pack starts from it)", SkelCompat::AutoMatchMode::Off, {}});
+            }
+        }
+    }
+    const bool anyAuto = std::any_of(sources.begin(), sources.end(), [](const Source& s) { return s.Auto != SkelCompat::AutoMatchMode::Off; });
+    const std::vector<const SkelCompat::AnimMove*> moves = SkelCompat::MovesFor(row, name);
+    if (sources.empty())
+    {
+        if (std::any_of(moves.begin(), moves.end(), [](const SkelCompat::AnimMove* m) { return !m->Set.empty(); }))
+        {
+            result.Note = L"no source set found, so its moves are not applied";
+        }
+        return result;
+    }
+    // One source named like the set and no moves: the pack lists that set itself.
+    if (!anyAuto && sources.size() == 1 && moves.empty())
+    {
+        if (sources[0].Set == own) { return result; }
+        if (SkelCompat::NameEquals(ShortName(sources[0].Set), name))
+        {
+            result.Set = sources[0].Set;
+            result.Note = L"uses " + sources[0].Label + notes;
+            return result;
+        }
+    }
+    std::vector<std::vector<NameObjectEntry>> read(sources.size());
+    std::vector<size_t> usable;
+    for (size_t k = 0; k < sources.size(); ++k)
+    {
+        std::wstring why;
+        if (!ReadNameObjectMap(reinterpret_cast<const uint8_t*>(sources[k].Set) + State.OffSetAssets, read[k], why))
+        {
+            notes += L"; " + sources[k].Label + L" left out (" + why + L")";
+            continue;
+        }
+        usable.push_back(k);
+    }
+    std::vector<NameObjectEntry> merged;
+    std::wstring counts, picks;
+    if (!anyAuto)
+    {
+        // First source wins per animation name.
+        std::unordered_map<uint64_t, size_t> index;
+        for (const size_t k : usable)
+        {
+            int32_t added = 0;
+            for (const auto& entry : read[k])
+            {
+                if (index.emplace(entry.Key, merged.size()).second)
+                {
+                    merged.push_back(entry);
+                    ++added;
+                }
+            }
+            counts += (counts.empty() ? L"" : L", ") + std::to_wstring(added) + L" from " + sources[k].Label;
+        }
+    }
+    else
+    {
+        // Ordinary sources: first wins; auto sources fill the names they are asked for (SkelCompat::MergeSetSources).
+        std::vector<SkelCompat::MergeSource> inputs;
+        for (const size_t k : usable)
+        {
+            SkelCompat::MergeSource input;
+            input.Auto = sources[k].Auto;
+            input.Only = sources[k].Only;
+            for (const auto& entry : read[k])
+            {
+                input.Keys.push_back(entry.Key);
+                input.Anims.push_back(MatchInfo(entry.Key, static_cast<UObject*>(entry.Value)));
+            }
+            inputs.push_back(std::move(input));
+        }
+        std::vector<int32_t> added(inputs.size(), 0), matched(inputs.size(), 0);
+        for (const auto& e : SkelCompat::MergeSetSources(inputs))
+        {
+            const auto& entries = read[usable[e.Source]];
+            void* value = entries[e.Entry].Value;
+            std::wstring pickedName = inputs[e.Source].Anims[e.Entry].Name;
+            float pickedLength = inputs[e.Source].Anims[e.Entry].Length;
+            if (e.Chain.size() > 1)
+            {
+                // A split move: its pieces played one after another as one animation.
+                std::vector<UObject*> pieces;
+                std::vector<std::wstring> labels;
+                pickedLength = 0.0f;
+                for (const size_t piece : e.Chain)
+                {
+                    pieces.push_back(static_cast<UObject*>(entries[piece].Value));
+                    labels.push_back(inputs[e.Source].Anims[piece].Name);
+                    pickedLength += inputs[e.Source].Anims[piece].Length;
+                }
+                pickedName = labels.front();
+                for (size_t k = 1; k < labels.size(); ++k) { pickedName += L" + " + labels[k]; }
+                std::wstring why;
+                if (UObject* composite = SplitMove(pieces, labels, pack, why)) { value = composite; }
+                else { notes += L"; " + pickedName + L" played as its first piece (" + why + L")"; }
+            }
+            merged.push_back({e.Key, value});
+            ++added[e.Source];
+            if (e.Tier < 2) { continue; }
+            ++matched[e.Source];
+            const SkelCompat::MatchAnim picked{pickedName, pickedLength, false};
+            float before = 0.0f;
+            for (size_t i = 0; i < inputs.size() && before == 0.0f; ++i)
+            {
+                if (inputs[i].Auto != SkelCompat::AutoMatchMode::Off) { continue; }
+                for (size_t j = 0; j < inputs[i].Keys.size(); ++j)
+                {
+                    if (inputs[i].Keys[j] == e.Key)
+                    {
+                        before = inputs[i].Anims[j].Length;
+                        break;
+                    }
+                }
+            }
+            picks += L"\n        " + NameText(e.Key) + L" (" + Fixed(before) + L" s) <- " + picked.Name + L" (" + Fixed(picked.Length) + L" s, " +
+                     (e.Tier == 2 ? L"another variant of the move" : L"same kind, closest length") + L")";
+        }
+        for (size_t i = 0; i < inputs.size(); ++i)
+        {
+            counts += (counts.empty() ? L"" : L", ") + std::to_wstring(added[i]) + L" from " + sources[usable[i]].Label +
+                      (matched[i] ? L" (" + std::to_wstring(matched[i]) + L" auto-matched)" : std::wstring{});
+        }
+    }
+    // Moves: replace an animation name wherever the set has it; a move naming this set may also add a name.
+    int32_t applied = 0;
+    if (!moves.empty() && !merged.empty())
+    {
+        std::vector<std::wstring> texts;
+        texts.reserve(merged.size());
+        for (const auto& entry : merged) { texts.push_back(NameText(entry.Key)); }
+        for (const SkelCompat::AnimMove* move : moves)
+        {
+            const size_t moveIndex = static_cast<size_t>(move - row.Moves.data());
+            UObject* animation = MoveAnimation(*move, pack, notes);
+            if (!animation) { continue; } // reported once by the preload (or in the notes for a chain)
+            bool done = false;
+            for (size_t k = 0; k < texts.size(); ++k)
+            {
+                if (SkelCompat::NameEquals(texts[k], move->Key))
+                {
+                    merged[k].Value = animation;
+                    done = true;
+                    break;
+                }
+            }
+            if (!done && !move->Set.empty())
+            {
+                // A name no source of this set has: only one the game already uses somewhere can be looked up.
+                const RawName key = RawNameOf(FName(move->Key.c_str(), FNAME_Find));
+                if (key.Comparison != 0 || key.Number != 0)
+                {
+                    merged.push_back({KeyOf(key), animation});
+                    texts.push_back(move->Key);
+                    done = true;
+                }
+                else
+                {
+                    notes += L"; move " + move->Key + L" skipped: the game uses no animation of that name";
+                }
+            }
+            if (done)
+            {
+                ++applied;
+                if (moveIndex < moveUsed.size()) { moveUsed[moveIndex] = 1; }
+            }
+        }
+    }
+    if (merged.empty())
+    {
+        result.Note = L"its sources hold no animations" + notes;
+        return result;
+    }
+    if (!anyAuto && applied == 0 && sources.size() == 1 && SkelCompat::NameEquals(ShortName(sources[0].Set), name))
+    {
+        // No move named anything in it: as above, the one source serves as it is.
+        if (sources[0].Set == own) { return result; }
+        result.Set = sources[0].Set;
+        result.Note = L"uses " + sources[0].Label + notes;
+        return result;
+    }
+    const int32_t form = NameHashForm();
+    if (form < 0)
+    {
+        result.Note = L"NOT built: the game's FName hash form is not confirmed (see the FName hash line)";
+        return result;
+    }
+    // The set's name: the FName of a set already called that, else one the game knows.
+    RawName setName{};
+    bool named = false;
+    for (UObject* candidate : {own, sources.front().Set})
+    {
+        if (candidate && SkelCompat::NameEquals(ShortName(candidate), name))
+        {
+            setName = ObjectRawName(candidate);
+            named = true;
+            break;
+        }
+    }
+    for (size_t k = 0; !named && k < sources.size(); ++k)
+    {
+        if (SkelCompat::NameEquals(ShortName(sources[k].Set), name))
+        {
+            setName = ObjectRawName(sources[k].Set);
+            named = true;
+        }
+    }
+    if (!named)
+    {
+        // A name the game does not know is one it never asks for, except a form's pack: the forms switch to it by name.
+        setName = RawNameOf(FName(name.c_str(), SkelCompat::IsFormPack(row, name) ? FNAME_Add : FNAME_Find));
+        named = setName.Comparison != 0 || setName.Number != 0;
+    }
+    if (!named)
+    {
+        result.Note = L"NOT built: no set of the game is called " + name;
+        return result;
+    }
+    FStaticConstructObjectParameters params(State.AnimSetClass, pack);
+    std::memcpy(static_cast<void*>(&params.Name), &setName, sizeof(setName));
+    params.SetFlags = RF_Transient;
+    params.Template = sources.front().Set; // every setting but the map comes from the first source
+    UObject* set = UObjectGlobals::StaticConstructObject(params);
+    if (!set || !set->IsA(State.AnimSetClass))
+    {
+        result.Note = L"NOT built: the engine did not create the set";
+        return result;
+    }
+    if (State.OffSetDisplayName >= 0) { std::memcpy(reinterpret_cast<uint8_t*>(set) + State.OffSetDisplayName, &setName, sizeof(setName)); }
+    if (!WriteNameObjectMap(reinterpret_cast<uint8_t*>(set) + State.OffSetAssets, merged, form == 1))
+    {
+        result.Note = L"NOT built: out of memory for its map";
+        return result; // the new set is unreferenced and goes with the next garbage collection
+    }
+    // A pack that was already loaded may sit in a garbage-collection cluster that does not know the new set: keep it.
+    if (late) { set->SetRootSet(); }
+    result.Set = set;
+    result.Note = std::to_wstring(merged.size()) + L" animations (" + counts + L")" +
+                  (applied ? L", " + std::to_wstring(applied) + L" move(s)" : std::wstring{}) + notes +
+                  (picks.empty() ? std::wstring{} : L"\n      auto-matched (\"moves\" can replace any of these):" + picks);
+    return result;
+}
+
+// Appends `object` to the AssetUserData of AssetDataList entry `entry` of a pack.
+bool AppendPackObject(UObject* pack, int32_t entry, UObject* object)
+{
+    RawArray* objects = PackObjects(pack, entry);
+    if (!objects) { return false; }
+    const int32_t wanted = objects->Num + 1;
+    if (wanted > objects->Max)
+    {
+        void* grown = FMemory::Realloc(objects->Data, static_cast<size_t>(wanted) * sizeof(void*));
+        if (!grown) { return false; }
+        objects->Data = grown;
+        objects->Max = wanted;
+    }
+    static_cast<UObject**>(objects->Data)[objects->Num] = object;
+    objects->Num = wanted;
+    return true;
+}
+
+// 3.3.1 "pack_assets": objects the row adds to the pack (another character's effect pack, a sound bank). Each goes into
+// the AssetDataList entry that already lists an object of its class (else `fallbackEntry`, the entry of the sets), the
+// way the game's own packs list them. They are loaded at the first map load. Returns lines for the log.
+std::wstring AddPackAssets(UObject* pack, const SkelCompat::AnimSetRow& row, int32_t fallbackEntry)
+{
+    std::wstring text;
+    RawArray list{};
+    std::vector<uint8_t> bytes;
+    if (row.PackAssets.empty()) { return text; }
+    if (!ReadArray(pack, State.OffPackList, static_cast<size_t>(State.PackEntryStride), 4096, list, bytes))
+    {
+        return L"\n    pack assets NOT added: AssetDataList unreadable";
+    }
+    for (const auto& path : row.PackAssets)
+    {
+        UObject* asset = FindObjectByPath(path.c_str());
+        if (!asset)
+        {
+            text += L"\n    pack asset " + path + L" NOT added: not loaded (pack assets load at the first map load)";
+            continue;
+        }
+        UClass* type = asset->GetClassPrivate();
+        int32_t entry = -1;
+        bool already = false;
+        for (int32_t e = 0; e < list.Num && !already; ++e)
+        {
+            RawArray* objects = PackObjects(pack, e);
+            if (!objects) { continue; }
+            for (int32_t i = 0; i < objects->Num; ++i)
+            {
+                UObject* object = static_cast<UObject**>(objects->Data)[i];
+                if (object == asset) { already = true; break; }
+                if (entry < 0 && object && object->GetClassPrivate() == type) { entry = e; }
+            }
+        }
+        if (already) { continue; }
+        if (entry < 0) { entry = fallbackEntry; }
+        const bool added = AppendPackObject(pack, entry, asset);
+        if (added) { asset->SetRootSet(); }
+        text += L"\n    pack asset " + ShortNameOfPath(path) + (added ? L" added to entry " + std::to_wstring(entry) : std::wstring(L" NOT added: the pack has no such entry"));
+    }
+    return text;
+}
+
+// Puts the row's sets into a pack's list. `late`: the pack was loaded before (the game may already use its sets).
+void MergePack(UObject* pack, bool late)
+{
+    const std::wstring path = ObjectPath(pack);
+    const SkelCompat::AnimSetRow* row = State.Config.FindAnimSetRow(path);
+    if (!row) { return; }
+    std::wstring text = L"Animation sets of " + path + (late ? L" (already loaded)" : L"") + L":";
+    std::vector<PackSlot> slots;
+    int32_t entries = 0;
+    std::wstring why;
+    if (!ReadPackSets(pack, slots, entries, why))
+    {
+        text += L" left as they are: " + why;
+    }
+    else if (std::any_of(slots.begin(), slots.end(), [&](const PackSlot& s) { return s.Set->GetOuterPrivate() == pack; }))
+    {
+        return; // merged before
+    }
+    else
+    {
+        std::vector<std::wstring> names;
+        const auto add = [&](const std::wstring& name) {
+            if (std::none_of(names.begin(), names.end(), [&](const std::wstring& n) { return SkelCompat::NameEquals(n, name); })) { names.push_back(name); }
+        };
+        for (const auto& slot : slots) { add(slot.Name); }
+        for (const auto& name : SkelCompat::RowSetNames(*row)) { add(name); }
+        std::vector<uint8_t> moveUsed(row->Moves.size(), 0);
+        std::vector<std::pair<std::wstring, UObject*>> changes;
+        std::vector<std::pair<std::wstring, UObject*>> made; // each set name -> the set the pack ends up with (3.6: forms' bases)
+        for (const auto& name : names)
+        {
+            UObject* own = nullptr;
+            for (const auto& slot : slots)
+            {
+                if (SkelCompat::NameEquals(slot.Name, name))
+                {
+                    own = slot.Set;
+                    break;
+                }
+            }
+            std::vector<UObject*> base;
+            if (!own && SkelCompat::IsFormPack(*row, name))
+            {
+                for (const wchar_t* from : {L"Battle00", L"Battle00_Comp"})
+                {
+                    for (const auto& [setName, set] : made)
+                    {
+                        if (set && SkelCompat::NameEquals(setName, from))
+                        {
+                            base.push_back(set);
+                            break;
+                        }
+                    }
+                }
+            }
+            const SetBuild build = BuildSet(*row, name, own, pack, late, moveUsed, base);
+            if (!build.Note.empty()) { text += L"\n    " + name + L": " + build.Note; }
+            if (build.Set && build.Set != own) { changes.emplace_back(name, build.Set); }
+            made.emplace_back(name, build.Set ? build.Set : own);
+        }
+        for (size_t m = 0; m < row->Moves.size(); ++m)
+        {
+            const auto& move = row->Moves[m];
+            if (!moveUsed[m] && State.MoveObjects[Folded(move.Animation)])
+            {
+                text += L"\n    move " + (move.Set.empty() ? std::wstring{} : move.Set + L"/") + move.Key + L": no set of this pack has that name";
+            }
+        }
+        // Replace every slot of a changed name; names the pack did not have go into the entry that lists its sets.
+        std::vector<UObject*> appended;
+        int32_t replaced = 0;
+        for (const auto& [name, set] : changes)
+        {
+            bool found = false;
+            for (const auto& slot : slots)
+            {
+                if (!SkelCompat::NameEquals(slot.Name, name)) { continue; }
+                RawArray* objects = PackObjects(pack, slot.Entry);
+                if (!objects || slot.Index >= objects->Num) { continue; }
+                auto** at = static_cast<UObject**>(objects->Data) + slot.Index;
+                if (late && *at) { (*at)->SetRootSet(); } // the game may still hold the set it had
+                *reinterpret_cast<UObject* volatile*>(at) = set;
+                found = true;
+                ++replaced;
+            }
+            if (!found) { appended.push_back(set); }
+        }
+        if (!appended.empty())
+        {
+            const int32_t entry = slots.empty() ? 0 : slots.front().Entry;
+            RawArray* objects = PackObjects(pack, entry);
+            const int32_t wanted = objects ? objects->Num + static_cast<int32_t>(appended.size()) : 0;
+            if (!objects)
+            {
+                text += L"\n    " + std::to_wstring(appended.size()) + L" set(s) not added: the pack has no AssetDataList entry";
+                appended.clear();
+            }
+            else
+            {
+                if (wanted > objects->Max)
+                {
+                    void* grown = FMemory::Realloc(objects->Data, static_cast<size_t>(wanted) * sizeof(void*));
+                    if (grown)
+                    {
+                        objects->Data = grown;
+                        objects->Max = wanted;
+                    }
+                }
+                if (wanted <= objects->Max)
+                {
+                    std::memcpy(static_cast<UObject**>(objects->Data) + objects->Num, appended.data(), appended.size() * sizeof(void*));
+                    objects->Num = wanted;
+                }
+                else
+                {
+                    text += L"\n    " + std::to_wstring(appended.size()) + L" set(s) not added: out of memory";
+                    appended.clear();
+                }
+            }
+        }
+        text += L"\n    -> " + std::to_wstring(replaced) + L" set(s) replaced, " + std::to_wstring(appended.size()) + L" added";
+        text += AddPackAssets(pack, *row, slots.empty() ? 0 : slots.front().Entry);
+        State.PacksMerged.fetch_add(1, std::memory_order_relaxed);
+    }
+    Log.Line(text);
+    std::lock_guard lock(State.PackMutex);
+    if (State.MergeLines.size() < 64) { State.MergeLines.push_back(text); }
+}
+
+// Packs loaded before the rows were ready (game thread).
+void MergeLoadedPacks()
+{
+    std::vector<UObject*> packs;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (type && type->IsChildOf(State.PackClass) && State.PackNames.count(Folded(ShortName(object))) > 0) { packs.push_back(object); }
+        return LoopAction::Continue;
+    });
+    for (UObject* pack : packs)
+    {
+        if (!FlagsReady(pack)) { continue; } // still loading: its own PostLoad merges it
+        if (std::find(State.MergedPacks.begin(), State.MergedPacks.end(), pack) != State.MergedPacks.end()) { continue; }
+        State.MergedPacks.push_back(pack);
+        MergePack(pack, true);
+    }
+}
+
+// Packs whose PostLoad ran off the game thread, or that were still loading at the late pass (game thread).
+void MergeQueuedPacks()
+{
+    std::vector<UObject*> queue;
+    {
+        std::lock_guard lock(State.PackMutex);
+        queue.swap(State.PacksToMerge);
+    }
+    std::vector<UObject*> later;
+    for (UObject* pack : queue)
+    {
+        if (!Alive(pack)) { continue; }
+        if (!FlagsReady(pack))
+        {
+            later.push_back(pack);
+            continue;
+        }
+        if (std::find(State.MergedPacks.begin(), State.MergedPacks.end(), pack) != State.MergedPacks.end()) { continue; }
+        State.MergedPacks.push_back(pack);
+        MergePack(pack, true);
+    }
+    if (!later.empty())
+    {
+        std::lock_guard lock(State.PackMutex);
+        State.PacksToMerge.insert(State.PacksToMerge.end(), later.begin(), later.end());
+        RequestWork();
+    }
+}
+
+void* OriginalPackPostLoad(UObject* self)
+{
+    void** table = nullptr;
+    std::memcpy(&table, self, sizeof(table));
+    const int32_t count = State.PackPatchCount.load(std::memory_order_acquire);
+    for (int32_t i = 0; i < count; ++i)
+    {
+        if (State.PackPatches[static_cast<size_t>(i)].Table == table) { return State.PackPatches[static_cast<size_t>(i)].Original; }
+    }
+    return nullptr;
+}
+
+// Before the engine's PostLoad, so anything the pack builds from its list already sees the merged sets.
+void HookedPackPostLoad(UObject* self)
+{
+    if (State.Active.load(std::memory_order_acquire) && State.SetsReady.load(std::memory_order_acquire))
+    {
+        try
+        {
+            if (State.PackNames.count(Folded(ShortName(self))) > 0)
+            {
+                if (OnGameThread()) { MergePack(self, false); }
+                else
+                {
+                    std::lock_guard lock(State.PackMutex);
+                    State.PacksToMerge.push_back(self);
+                    RequestWork();
+                }
+            }
+        }
+        catch (...)
+        {
+            Fault(L"animation set rows");
+        }
+    }
+    if (auto* original = reinterpret_cast<PostLoadFunction>(OriginalPackPostLoad(self))) { original(self); }
+}
+
+// Patches PostLoad of the pack class and its native subclasses (slot verified by the mesh hook).
+bool InstallPackPostLoadHook()
+{
+    const ImageRange image = MainImage();
+    std::vector<void**> tables;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || !object->IsA<UClass>()) { return LoopAction::Continue; }
+        auto* type = static_cast<UClass*>(object);
+        if (!type->IsChildOf(State.PackClass)) { return LoopAction::Continue; }
+        void** table = VTableOf(type->GetClassDefaultObject());
+        if (table && image.Contains(table) && std::find(tables.begin(), tables.end(), table) == tables.end()) { tables.push_back(table); }
+        return LoopAction::Continue;
+    });
+    int32_t installed = 0;
+    for (void** table : tables)
+    {
+        if (installed >= static_cast<int32_t>(State.PackPatches.size())) { break; }
+        void* current = SlotOf(table, PostLoadSlot);
+        if (!image.Contains(current)) { continue; }
+        auto& patch = State.PackPatches[static_cast<size_t>(installed)];
+        patch.Table = table;
+        patch.Original = current;
+        State.PackPatchCount.store(installed + 1, std::memory_order_release);
+        void* replaced = nullptr;
+        if (PatchSlot(table, PostLoadSlot, reinterpret_cast<void*>(&HookedPackPostLoad), replaced))
+        {
+            patch.Original = replaced;
+            ++installed;
+        }
+        else
+        {
+            State.PackPatchCount.store(installed, std::memory_order_release);
+        }
+    }
+    Log.Line(L"CharaSpec pack PostLoad hook installed on " + std::to_wstring(installed) + L" vtable(s)");
+    return installed > 0;
+}
+
+// ---------------------------------------------------------------------------------------
+// AnimBlueprints of family members follow the hub (3.2.1)
+// ---------------------------------------------------------------------------------------
+// The hub of a family member's skeleton (resident), or null.
+UObject* HubOfMember(UObject* skeleton)
+{
+    if (!skeleton || State.AbpHubs.empty() || !IsLive(skeleton)) { return nullptr; }
+    const auto it = State.AbpHubs.find(Folded(ObjectPath(skeleton)));
+    if (it == State.AbpHubs.end()) { return nullptr; }
+    if (UObject* hub = RootedSkeleton(it->second)) { return hub; }
+    if (!OnGameThread()) { return nullptr; } // the map-load pass picks the class up once the hub is resident
+    UObject* found = UObjectGlobals::StaticFindObject<UObject*>(nullptr, nullptr, it->second);
+    return (found && State.SkeletonClass && found->IsA(State.SkeletonClass)) ? found : nullptr;
+}
+
+// Points an AnimBlueprint class made for a family member at the hub: every mesh of the member is rebound to the hub and
+// every animation of the member is adopted onto it, so the AnimBlueprint finds everything it plays there. Returns true
+// when the class was moved.
+bool MoveAnimBlueprint(UObject* abpClass, const wchar_t* how)
+{
+    if (!abpClass || State.OffAbpTargetSkeleton < 0 || State.AbpHubs.empty() || abpClass->HasAnyFlags(DeadFlags)) { return false; }
+    UObject* target = nullptr;
+    if (!ReadAt(abpClass, static_cast<size_t>(State.OffAbpTargetSkeleton), target) || !target) { return false; }
+    UObject* hub = HubOfMember(target);
+    if (!hub || hub == target) { return false; }
+    *reinterpret_cast<UObject* volatile*>(reinterpret_cast<uint8_t*>(abpClass) + State.OffAbpTargetSkeleton) = hub;
+    const std::wstring line = L"AnimBlueprint " + ObjectPath(abpClass) + L" (made for " + ShortName(target) + L") now runs on " + ShortName(hub) +
+                              L" (" + how + L")";
+    {
+        std::lock_guard lock(State.AbpMutex);
+        State.AbpMoved.push_back(abpClass);
+        if (State.AbpLines.size() < 64) { State.AbpLines.push_back(line); }
+    }
+    State.AbpRepairWanted.store(true, std::memory_order_release);
+    RequestWork();
+    Log.Line(line);
+    return true;
+}
+
+void* OriginalAbpPostLoad(UObject* self)
+{
+    void** table = nullptr;
+    std::memcpy(&table, self, sizeof(table));
+    const int32_t count = State.AbpPatchCount.load(std::memory_order_acquire);
+    for (int32_t i = 0; i < count; ++i)
+    {
+        if (State.AbpPatches[static_cast<size_t>(i)].Table == table) { return State.AbpPatches[static_cast<size_t>(i)].Original; }
+    }
+    return nullptr;
+}
+
+// After the engine's PostLoad: the class is complete, and no component has spawned an instance of it yet.
+void HookedAbpPostLoad(UObject* self)
+{
+    if (auto* original = reinterpret_cast<PostLoadFunction>(OriginalAbpPostLoad(self))) { original(self); }
+    if (!State.Active.load(std::memory_order_acquire)) { return; }
+    try
+    {
+        MoveAnimBlueprint(self, L"on load");
+    }
+    catch (...)
+    {
+        Fault(L"AnimBlueprints that follow the hub");
+    }
+}
+
+// Patches PostLoad of UAnimBlueprintGeneratedClass and its native subclasses (slot verified by the mesh hook).
+bool InstallAbpPostLoadHook()
+{
+    const ImageRange image = MainImage();
+    std::vector<void**> tables;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || !object->IsA<UClass>()) { return LoopAction::Continue; }
+        auto* type = static_cast<UClass*>(object);
+        if (!type->IsChildOf(State.AbpClass)) { return LoopAction::Continue; }
+        void** table = VTableOf(type->GetClassDefaultObject());
+        if (table && image.Contains(table) && std::find(tables.begin(), tables.end(), table) == tables.end()) { tables.push_back(table); }
+        return LoopAction::Continue;
+    });
+    int32_t installed = 0;
+    for (void** table : tables)
+    {
+        if (installed >= static_cast<int32_t>(State.AbpPatches.size())) { break; }
+        void* current = SlotOf(table, PostLoadSlot);
+        if (!image.Contains(current)) { continue; }
+        auto& patch = State.AbpPatches[static_cast<size_t>(installed)];
+        patch.Table = table;
+        patch.Original = current;
+        State.AbpPatchCount.store(installed + 1, std::memory_order_release);
+        void* replaced = nullptr;
+        if (PatchSlot(table, PostLoadSlot, reinterpret_cast<void*>(&HookedAbpPostLoad), replaced))
+        {
+            patch.Original = replaced;
+            ++installed;
+        }
+        else
+        {
+            State.AbpPatchCount.store(installed, std::memory_order_release);
+        }
+    }
+    Log.Line(L"AnimBlueprint PostLoad hook installed on " + std::to_wstring(installed) + L" vtable(s)");
+    return installed > 0;
+}
+
+// AnimBlueprint classes already loaded (game thread, safe point).
+void MoveLoadedAnimBlueprints()
+{
+    if (!State.AbpClass || State.OffAbpTargetSkeleton < 0 || State.AbpHubs.empty()) { return; }
+    std::vector<UObject*> classes;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (type && type->IsChildOf(State.AbpClass)) { classes.push_back(object); }
+        return LoopAction::Continue;
+    });
+    for (UObject* type : classes) { MoveAnimBlueprint(type, L"already loaded"); }
+}
+
+// Components whose AnimBlueprint the engine refused before its class was moved get it again (game thread).
+void RepairMovedAnimBlueprints()
+{
+    if (!State.AbpRepairWanted.exchange(false, std::memory_order_acq_rel)) { return; }
+    if (!State.SetAnimClass || !State.ComponentClass || State.OffCompMesh < 0 || State.OffCompAnimClass < 0 || State.OffCompAnimInstance < 0) { return; }
+    std::vector<UObject*> moved;
+    {
+        std::lock_guard lock(State.AbpMutex);
+        moved = State.AbpMoved;
+    }
+    if (moved.empty()) { return; }
+    struct Waiting
+    {
+        UObject* Component;
+        UObject* AnimClass;
+        UObject* Mesh;
+    };
+    std::vector<Waiting> waiting;
+    UObjectGlobals::ForEachUObject([&](UObject* object, int32, int32) -> LoopAction {
+        if (!object || object->HasAnyFlags(TemplateFlags) || object->HasAnyFlags(DeadFlags)) { return LoopAction::Continue; }
+        UClass* type = object->GetClassPrivate();
+        if (!type || !type->IsChildOf(State.ComponentClass)) { return LoopAction::Continue; }
+        UObject* animClass = Field<UObject*>(object, State.OffCompAnimClass);
+        if (!animClass || Field<UObject*>(object, State.OffCompAnimInstance)) { return LoopAction::Continue; }
+        if (std::find(moved.begin(), moved.end(), animClass) == moved.end()) { return LoopAction::Continue; }
+        waiting.push_back({object, animClass, Field<UObject*>(object, State.OffCompMesh)});
+        return LoopAction::Continue;
+    });
+    for (const Waiting& w : waiting)
+    {
+        UObject* meshSkeleton = w.Mesh ? RawMeshSkeleton(w.Mesh) : nullptr;
+        if (!meshSkeleton || meshSkeleton != TargetSkeletonOf(w.AnimClass))
+        {
+            Log.Line(L"AnimBlueprint not re-initialised on " + ObjectPath(w.Component) + L": its mesh " + (w.Mesh ? ObjectPath(w.Mesh) : std::wstring(L"(none)")) +
+                     L" is on " + (meshSkeleton ? ShortName(meshSkeleton) : std::wstring(L"no skeleton")) + L", not on the hub");
+            continue;
+        }
+        CallSetAnimClass(w.Component, nullptr);
+        CallSetAnimClass(w.Component, w.AnimClass);
+        UObject* instance = Field<UObject*>(w.Component, State.OffCompAnimInstance);
+        ++State.AbpRepaired;
+        Log.Line(L"Re-initialised AnimBlueprint " + ShortName(w.AnimClass) + L" on " + ObjectPath(w.Component) +
+                 (instance ? L" (instance spawned)" : L" (still refused: see the hierarchy check for " + ObjectPath(w.Mesh) + L")"));
+    }
+}
+
+void Diagnose()
+{
+    std::vector<ReboundMesh> todo;
+    {
+        std::lock_guard lock(State.Mutex);
+        for (const auto& record : State.Rebound)
+        {
+            if (!record.Diagnosed) { todo.push_back(record); }
+        }
+    }
+    for (auto& record : todo)
+    {
+        std::wstring result;
+        SkelCompat::BoneTable meshBones, skeletonBones;
+        const bool meshAlive = Alive(record.Mesh);
+        const bool targetAlive = Alive(record.Target);
+        if (!meshAlive || !targetAlive)
+        {
+            result = L"unloaded before it could be checked";
+        }
+        else if (!FlagsReady(record.Mesh) || !FlagsReady(record.Target))
+        {
+            bool giveUp = false;
+            {
+                std::lock_guard lock(State.Mutex);
+                for (auto& stored : State.Rebound)
+                {
+                    if (stored.Mesh == record.Mesh) { giveUp = ++stored.Attempts > 40; }
+                }
+            }
+            if (!giveUp) { continue; } // still loading; diagnose on a later pump
+            result = L"not checked: the mesh was still loading after 10 s";
+        }
+        else if (!ReadMeshBones(record.Mesh, meshBones) || !ReadSkeletonBones(record.Target, skeletonBones))
+        {
+            result = L"bone tables could not be read; hierarchy not checked";
+        }
+        else
+        {
+            const SkelCompat::MeshCheck check = SkelCompat::CheckMeshAgainstSkeleton(meshBones, skeletonBones);
+            result = std::to_wstring(check.Matched) + L" shared bone(s), " + std::to_wstring(check.MeshOnly) +
+                     L" mesh-only (reference pose / physics), " + std::to_wstring(check.SkeletonOnly) + L" animation-only (ignored). ";
+            result += check.Compatible ? L"Hierarchy OK: AnimBlueprints for this skeleton will run."
+                                       : L"Hierarchy REFUSED by the engine (T-pose): " + check.Problem;
+            for (UObject* keepSkeleton : record.KeepCompatible)
+            {
+                // The engine runs an AnimBlueprint only on meshes of the skeleton it targets: one made for another
+                // skeleton runs here only once it is moved to this mesh's skeleton (family members, 3.2.1).
+                if (!Alive(keepSkeleton)) { continue; }
+                const bool follows = State.OffAbpTargetSkeleton >= 0 && HubOfMember(keepSkeleton) == record.Target;
+                result += follows ? L" AnimBlueprints made for " + ShortName(keepSkeleton) + L" are moved to " + ShortName(record.Target) + L" and run on it."
+                                  : L" AnimBlueprints made for " + ShortName(keepSkeleton) + L" do NOT run on it (the engine needs the AnimBlueprint's own "
+                                    L"skeleton): use one made for " + ShortName(record.Target) + L".";
+            }
+            if (record.Renamed > 0)
+            {
+                result += L" (" + std::to_wstring(record.Renamed) + L" bone(s) renamed by the hierarchy fix keep this mesh's own pose)";
+            }
+            else if (!check.Compatible && !record.HierarchyNote.empty())
+            {
+                result += L" Hierarchy fix: " + record.HierarchyNote;
+            }
+            RawArray virtualBones{};
+            if (record.Late && State.OffSkelVirtualBones >= 0 &&
+                ReadAt(record.Target, static_cast<size_t>(State.OffSkelVirtualBones), virtualBones) && virtualBones.Num > 0)
+            {
+                result += L" Note: rebound after load, so the skeleton's " + std::to_wstring(virtualBones.Num) +
+                          L" virtual bone(s) are missing on this mesh until it is reloaded.";
+            }
+        }
+        Log.Line(L"Check " + record.MeshPath + L": " + result);
+        std::lock_guard lock(State.Mutex);
+        for (auto& stored : State.Rebound)
+        {
+            if (stored.Mesh == record.Mesh)
+            {
+                stored.Diagnosed = true;
+                stored.Diagnosis = result;
+            }
+        }
+    }
+}
+
+std::wstring PostLoadStats()
+{
+    LARGE_INTEGER frequency{};
+    QueryPerformanceFrequency(&frequency);
+    const uint64_t calls = State.PostLoadCalls.load();
+    const double perTick = frequency.QuadPart > 0 ? 1e6 / static_cast<double>(frequency.QuadPart) : 0.0;
+    const double total = static_cast<double>(State.PostLoadTicks.load()) * perTick;
+    wchar_t buffer[200]{};
+    swprintf_s(buffer, L"%llu mesh load(s) checked, %.1f us average, %.1f us max, %llu with the skeleton still loading",
+               static_cast<unsigned long long>(calls), calls ? total / static_cast<double>(calls) : 0.0,
+               static_cast<double>(State.PostLoadMaxTicks.load()) * perTick, static_cast<unsigned long long>(State.SkeletonNotLoaded.load()));
+    return buffer;
+}
+
+// ---------------------------------------------------------------------------------------
+// 3.3: abilities per animation pack
+// A player character's command menu and limit breaks are listed by its BattlePlayerParameter row (CommandAbilityID_Array,
+// LimitAbilityID_Array) in the game's frozen data object, which the game reads in place. The object's table holder comes
+// from its vtable slot 0x2C0 (0x2B8 while byte 0x54 is clear), as the game's own row lookup gets it; the holder's +8 is
+// the frozen root (SkelCompat::Frozen). When a character's primary animation pack switches (EndBattleAPI
+// SetPrimaryAnimPack / ResetPrimaryAnimPack, from a Lua mod or a Blueprint), the two arrays of its row are pointed at
+// the lists the row's "abilities" give for the new pack: the pack's own list, else Battle00's, else the table's own.
+// Map loads apply the Battle00 lists. Nothing is resized: the arrays point at lists the mod keeps for the session, and
+// an ability that is not a row of the resident BattleAbility table is left out. Game thread only.
+// The game copies a party member's lists out of the row (its first 5 commands and 3 limits, then its weapons' and
+// materia's abilities) when it recalculates the member's status, so after a switch the mod has it recalculate:
+// EndMenuBPAPI BPSetPlayerExperience(member, the EXP it already has), unless the row says "refresh_abilities": false.
+// 3.3.1: the rows can sit in memory the game maps read-only, so the mod hands out the lists through the game's own list
+// getters (ListGetters) and writes the rows only where it could not find those.
+// ---------------------------------------------------------------------------------------
+constexpr wchar_t PlayerTablePath[] = L"/Game/DataObject/Resident/BattlePlayerParameter.BattlePlayerParameter";
+constexpr wchar_t AbilityTablePath[] = L"/Game/DataObject/Resident/BattleAbility.BattleAbility";
+
+struct FrozenTable
+{
+    uintptr_t Root = 0;
+    uintptr_t Rows = 0;
+    int32_t Count = 0;
+    int32_t RowSize = 0;
+    std::vector<uint8_t> Elements;                     // copy of the row map's elements (20 bytes each)
+    std::vector<SkelCompat::Frozen::Field> Fields;
+};
+
+// A frozen array {ptr, num, max} at `at`.
+bool ReadFrozenArray(uintptr_t at, uintptr_t& data, int32_t& num)
+{
+    int64_t value = 0;
+    int32_t count = 0;
+    const void* where = reinterpret_cast<const void*>(at);
+    if (!ReadAt(where, 0, value) || !ReadAt(where, 8, count) || count < 0) { return false; }
+    data = SkelCompat::Frozen::Resolve(at, value);
+    num = count;
+    return count == 0 || data != 0;
+}
+
+// The frozen root of an EndDataObject, found the way the game's row lookup finds it.
+uintptr_t DataObjectRoot(UObject* object, std::wstring& why)
+{
+    UClass* type = object->GetClassPrivate();
+    const std::wstring className = type ? type->GetName() : std::wstring{};
+    if (className.find(L"DataObject") == std::wstring::npos)
+    {
+        why = L"not a data object (" + className + L")";
+        return 0;
+    }
+    void** vtable = nullptr;
+    uint8_t ready = 0;
+    if (!ReadAt(object, 0, vtable) || !vtable || !ReadAt(object, 0x54, ready))
+    {
+        why = L"object unreadable";
+        return 0;
+    }
+    void* slot = nullptr;
+    if (!ReadAt(vtable, ready ? 0x2C0 : 0x2B8, slot) || !MainImage().Contains(slot))
+    {
+        why = L"its table getter is not in the game's code";
+        return 0;
+    }
+    using GetTable = void* (*)(UObject*);
+    void* holder = reinterpret_cast<GetTable>(slot)(object);
+    uintptr_t root = 0;
+    if (!holder || !ReadAt(holder, 8, root) || !root)
+    {
+        why = L"no table loaded";
+        return 0;
+    }
+    return root;
+}
+
+bool OpenTable(const wchar_t* path, FrozenTable& table, std::wstring& why)
+{
+    table = FrozenTable{};
+    UObject* object = FindObjectByPath(path);
+    if (!object)
+    {
+        why = L"not loaded";
+        return false;
+    }
+    const uintptr_t root = DataObjectRoot(object, why);
+    if (!root) { return false; }
+    uintptr_t elements = 0, definition = 0;
+    int32_t fields = 0, rows = 0;
+    if (!ReadFrozenArray(root, elements, table.Count) || !ReadFrozenArray(root + 56, definition, fields) || !ReadFrozenArray(root + 72, table.Rows, rows))
+    {
+        why = L"table root unreadable";
+        return false;
+    }
+    if (table.Count <= 0 || table.Count != rows || table.Count > 1000000 || fields <= 0 || fields > 1024)
+    {
+        why = L"the root does not look like a table (" + std::to_wstring(table.Count) + L" keys, " + std::to_wstring(rows) + L" rows, " +
+              std::to_wstring(fields) + L" fields)";
+        return false;
+    }
+    std::vector<uint8_t> defs(static_cast<size_t>(fields) * 12);
+    table.Elements.resize(static_cast<size_t>(table.Count) * 20);
+    if (!SafeCopy(defs.data(), reinterpret_cast<const void*>(definition), defs.size()) ||
+        !SafeCopy(table.Elements.data(), reinterpret_cast<const void*>(elements), table.Elements.size()))
+    {
+        why = L"table unreadable";
+        return false;
+    }
+    for (int32_t k = 0; k < fields; ++k)
+    {
+        RawName name{};
+        int32_t code = 0;
+        std::memcpy(&name, defs.data() + k * 12, sizeof(name));
+        std::memcpy(&code, defs.data() + k * 12 + 8, sizeof(code));
+        table.Fields.push_back(SkelCompat::Frozen::Field{NameText(KeyOf(name)), code});
+    }
+    if (!SkelCompat::Frozen::Layout(table.Fields, table.RowSize))
+    {
+        why = L"a field has an unknown type";
+        return false;
+    }
+    table.Root = root;
+    return true;
+}
+
+// Address of a row, 0 when the table has no such row.
+uintptr_t TableRow(const FrozenTable& table, const RawName& key)
+{
+    if (key.Comparison == 0 && key.Number == 0) { return 0; }
+    for (int32_t k = 0; k < table.Count; ++k)
+    {
+        RawName name{};
+        int32_t row = -1;
+        std::memcpy(&name, table.Elements.data() + k * 20, sizeof(name));
+        std::memcpy(&row, table.Elements.data() + k * 20 + 8, sizeof(row));
+        if (SameName(name, key)) { return row >= 0 && row < table.Count ? table.Rows + static_cast<uintptr_t>(row) * table.RowSize : 0; }
+    }
+    return 0;
+}
+
+RawName ExistingName(const std::wstring& text) { return RawNameOf(FName(text.c_str(), FNAME_Find)); }
+
+const ModState::TableArray& OriginalArray(uintptr_t at)
+{
+    for (const auto& entry : State.AbilityOriginals)
+    {
+        if (entry.At == at) { return entry; }
+    }
+    ModState::TableArray entry;
+    entry.At = at;
+    SafeCopy(entry.Original.data(), reinterpret_cast<const void*>(at), entry.Original.size());
+    State.AbilityOriginals.push_back(entry);
+    return State.AbilityOriginals.back();
+}
+
+// Why the last WriteTableArray failed (for the log).
+std::wstring TableWriteProblem;
+
+// Writes {pointer, num, max} at `at` (a table array): readers see the old or the new list, never a pointer past its count.
+bool WriteTableArray(uintptr_t at, int64_t pointer, int32_t num, int32_t max)
+{
+    MEMORY_BASIC_INFORMATION info{};
+    if (!VirtualQuery(reinterpret_cast<void*>(at), &info, sizeof(info)) || info.State != MEM_COMMIT)
+    {
+        TableWriteProblem = L"the row's memory is not committed";
+        return false;
+    }
+    const DWORD writable = PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY;
+    DWORD old = 0;
+    const bool protect = (info.Protect & writable) == 0;
+    if (protect && !VirtualProtect(reinterpret_cast<void*>(at), 16, PAGE_READWRITE, &old) && !VirtualProtect(reinterpret_cast<void*>(at), 16, PAGE_WRITECOPY, &old))
+    {
+        const DWORD error = GetLastError();
+        TableWriteProblem = L"the row's memory is read-only (" + std::wstring(info.Type == MEM_MAPPED ? L"a mapped file" : info.Type == MEM_IMAGE ? L"an image" : L"private") +
+                            L", protection " + Hex(info.Protect) + L", error " + std::to_wstring(error) + L")";
+        return false;
+    }
+    int32_t oldMax = 0;
+    std::memcpy(&oldMax, reinterpret_cast<const void*>(at + 12), sizeof(oldMax));
+    const auto counts = [](int32_t n, int32_t m) { return static_cast<int64_t>(static_cast<uint64_t>(static_cast<uint32_t>(n)) | (static_cast<uint64_t>(static_cast<uint32_t>(m)) << 32)); };
+    const int64_t closed = counts(0, oldMax), opened = counts(num, max);
+    auto* header = reinterpret_cast<volatile uint8_t*>(at);
+    // the count first (no reader walks past it), then the pointer, then the new count; memcpy: rows need not be 8-aligned
+    std::memcpy(const_cast<uint8_t*>(header) + 8, &closed, 8);
+    std::memcpy(const_cast<uint8_t*>(header), &pointer, 8);
+    std::memcpy(const_cast<uint8_t*>(header) + 8, &opened, 8);
+    if (protect) { VirtualProtect(reinterpret_cast<void*>(at), 16, old, &old); }
+    return true;
+}
+
+// ---------------------------------------------------------------------------------------
+// 3.3.1: the game copies a player's lists out of its BattlePlayerParameter row through small getters of its own, one per
+// entry (SkelCompat::Frozen::IsNameEntryGetter), listed in tables of function pointers in its read-only data. The rows
+// themselves can sit in memory the game maps read-only, so the mod points those table slots at getters of its own: for a
+// row it switched they hand out the pack's list, for any other row (other tables share these getters) they call the game's.
+// ---------------------------------------------------------------------------------------
+namespace ListGetters
+{
+using Getter = uint64_t* (*)(void* handle, uint64_t* out);
+constexpr int Commands = static_cast<int>(SkelCompat::MaxCommandAbilities);
+constexpr int Limits = static_cast<int>(SkelCompat::MaxLimitAbilities);
+constexpr int Count = Commands + Limits;
+
+struct Entry
+{
+    std::atomic<Getter> Original{nullptr};
+    int32_t Slots = 0;          // table slots pointing at the mod's getter for it
+};
+Entry Entries[Count];
+
+struct Override
+{
+    std::atomic<uintptr_t> Row{0};                        // the row's address in the table
+    std::atomic<const std::vector<uint64_t>*> Lists[2]{}; // commands, limits; null: the game's own
+};
+Override Overrides[8];
+std::atomic<uint64_t> None{0};
+bool Tried = false;
+bool CommandsHooked = false;
+bool LimitsHooked = false;
+std::wstring Status = L"not looked for yet";
+
+uint64_t* Answer(int slot, void* handle, uint64_t* out)
+{
+    const bool limit = slot >= Commands;
+    const size_t index = static_cast<size_t>(limit ? slot - Commands : slot);
+    uintptr_t row = 0;
+    if (handle) { std::memcpy(&row, static_cast<const uint8_t*>(handle) + 8, sizeof(row)); }
+    if (row)
+    {
+        for (const Override& entry : Overrides)
+        {
+            if (entry.Row.load(std::memory_order_acquire) != row) { continue; }
+            const std::vector<uint64_t>* list = entry.Lists[limit ? 1 : 0].load(std::memory_order_acquire);
+            if (!list) { break; }
+            *out = index < list->size() ? (*list)[index] : None.load(std::memory_order_relaxed);
+            return out;
+        }
+    }
+    return Entries[slot].Original.load(std::memory_order_acquire)(handle, out);
+}
+
+template <int Slot>
+uint64_t* Thunk(void* handle, uint64_t* out) { return Answer(Slot, handle, out); }
+
+const Getter Thunks[Count] = {&Thunk<0>, &Thunk<1>, &Thunk<2>, &Thunk<3>, &Thunk<4>, &Thunk<5>, &Thunk<6>, &Thunk<7>};
+static_assert(Count == 8, "one thunk per getter");
+
+// Finds the getters of the entries of the command array (at commandOffset in a row) and the limit array (limitOffset)
+// and points every read-only table slot that lists them at the mod's.
+void Install(int32_t commandOffset, int32_t limitOffset)
+{
+    Tried = true;
+    const auto* base = reinterpret_cast<const uint8_t*>(GetModuleHandleW(nullptr));
+    IMAGE_DOS_HEADER dos{};
+    IMAGE_NT_HEADERS64 nt{};
+    if (!base || !SafeCopy(&dos, base, sizeof(dos)) || dos.e_magic != IMAGE_DOS_SIGNATURE || !SafeCopy(&nt, base + dos.e_lfanew, sizeof(nt)) ||
+        nt.Signature != IMAGE_NT_SIGNATURE)
+    {
+        Status = L"the game's image headers are unreadable";
+        return;
+    }
+    const uint8_t* sections = base + dos.e_lfanew + offsetof(IMAGE_NT_HEADERS64, OptionalHeader) + nt.FileHeader.SizeOfOptionalHeader;
+    std::vector<std::pair<uintptr_t, uintptr_t>> code, data;
+    for (WORD k = 0; k < nt.FileHeader.NumberOfSections; ++k)
+    {
+        IMAGE_SECTION_HEADER section{};
+        if (!SafeCopy(&section, sections + k * sizeof(section), sizeof(section))) { continue; }
+        const uintptr_t begin = reinterpret_cast<uintptr_t>(base) + section.VirtualAddress;
+        const DWORD flags = section.Characteristics;
+        if (flags & IMAGE_SCN_MEM_EXECUTE) { code.emplace_back(begin, begin + section.Misc.VirtualSize); }
+        else if ((flags & IMAGE_SCN_MEM_READ) && (flags & IMAGE_SCN_CNT_INITIALIZED_DATA) && !(flags & IMAGE_SCN_MEM_WRITE) && !(flags & IMAGE_SCN_MEM_DISCARDABLE))
+        {
+            // read-only data, as far as the file holds it
+            data.emplace_back(begin, begin + std::min<DWORD>(section.Misc.VirtualSize, section.SizeOfRawData));
+        }
+    }
+    const auto codeEnd = [&](uintptr_t at) -> uintptr_t {
+        for (const auto& [begin, end] : code)
+        {
+            if (at >= begin && at < end) { return end; }
+        }
+        return 0;
+    };
+    struct Found
+    {
+        uintptr_t Slot;
+        int Getter;
+    };
+    std::vector<Found> found;
+    uintptr_t functions[Count]{};
+    size_t noneDisp[Count]{};
+    for (const auto& [begin, end] : data)
+    {
+        for (uintptr_t at = (begin + 7) & ~static_cast<uintptr_t>(7); at + 8 <= end; at += 8)
+        {
+            const uintptr_t value = *reinterpret_cast<const uintptr_t*>(at);
+            const uintptr_t limit = codeEnd(value);
+            if (!limit || limit - value < 64) { continue; }
+            const auto* bytes = reinterpret_cast<const uint8_t*>(value);
+            if (bytes[0] != 0x48 || bytes[1] != 0x8B || bytes[2] != 0x49 || bytes[3] != 0x08) { continue; }
+            const size_t size = static_cast<size_t>(std::min<uintptr_t>(limit - value, 96));
+            for (int g = 0; g < Count; ++g)
+            {
+                const bool isLimit = g >= Commands;
+                size_t none = 0;
+                if (!SkelCompat::Frozen::IsNameEntryGetter(bytes, size, isLimit ? limitOffset : commandOffset, isLimit ? g - Commands : g, &none)) { continue; }
+                if (!functions[g])
+                {
+                    functions[g] = value;
+                    noneDisp[g] = none;
+                }
+                found.push_back(Found{at, g});
+                break;
+            }
+        }
+    }
+    const auto all = [&](int from, int to) {
+        for (int g = from; g < to; ++g)
+        {
+            if (!functions[g]) { return false; }
+        }
+        return true;
+    };
+    const bool commands = all(0, Commands), limits = all(Commands, Count);
+    if (!commands)
+    {
+        Status = L"the game's command getters were not found";
+        return;
+    }
+    // The None the game hands out past a list's end.
+    int32_t rel = 0;
+    uint64_t none = 0;
+    if (SafeCopy(&rel, reinterpret_cast<const void*>(functions[0] + noneDisp[0]), sizeof(rel)))
+    {
+        SafeCopy(&none, reinterpret_cast<const void*>(functions[0] + noneDisp[0] + 4 + static_cast<intptr_t>(rel)), sizeof(none));
+    }
+    None.store(none, std::memory_order_relaxed);
+    for (int g = 0; g < Count; ++g) { Entries[g].Original.store(reinterpret_cast<Getter>(functions[g]), std::memory_order_release); }
+    // Every slot of a getter's shape goes to the mod's getter, which calls the first function found of that shape (any
+    // other one does the same).
+    int32_t patchedCommands = 0, patchedLimits = 0;
+    for (const auto& entry : found)
+    {
+        if (entry.Getter >= Commands && !limits) { continue; }
+        void* original = nullptr;
+        if (!PatchSlot(reinterpret_cast<void**>(entry.Slot), 0, reinterpret_cast<void*>(Thunks[entry.Getter]), original)) { continue; }
+        ++Entries[entry.Getter].Slots;
+        (entry.Getter < Commands ? patchedCommands : patchedLimits) += 1;
+    }
+    CommandsHooked = patchedCommands > 0;
+    LimitsHooked = limits && patchedLimits > 0;
+    Status = L"the game's list getters point at the mod's (" + std::to_wstring(patchedCommands) + L" command slot(s), " +
+             (limits ? std::to_wstring(patchedLimits) + L" limit slot(s)" : std::wstring(L"limit getters NOT found")) + L"; None " + Hex(none) + L")";
+}
+
+// Publishes `list` (null: the game's own) as the commands or limits of the row at `row`.
+bool Publish(uintptr_t row, bool limits, const std::vector<uint64_t>* list)
+{
+    Override* slot = nullptr;
+    for (Override& entry : Overrides)
+    {
+        if (entry.Row.load(std::memory_order_acquire) == row)
+        {
+            slot = &entry;
+            break;
+        }
+    }
+    for (Override& entry : Overrides)
+    {
+        if (!slot && entry.Row.load(std::memory_order_acquire) == 0) { slot = &entry; }
+    }
+    if (!slot) { return false; }
+    slot->Lists[limits ? 1 : 0].store(list, std::memory_order_release);
+    slot->Row.store(row, std::memory_order_release);
+    return true;
+}
+} // namespace ListGetters
+
+// ---------------------------------------------------------------------------------------
+// 3.4: weapon abilities per pack. The game lists a character's weapon abilities (in the status recalculation, which
+// fills the battle menu, and for the menus) by looking up each of its weapons' Equipment rows and reading the row's
+// BurstAbilityID (SkelCompat::Frozen::IsWeaponRowCall). The mod points those calls at a lookup of its own: for a weapon
+// whose ability the playing pack replaces ("weapon_abilities") it hands out a stand-in row that holds the replacement
+// (the callers read nothing else from the row), for every other weapon the game's own row. Whether a weapon's ability
+// shows (learned, or the weapon equipped) is the game's own check of the weapon, so that still decides.
+// ---------------------------------------------------------------------------------------
+constexpr wchar_t EquipmentTablePath[] = L"/Game/DataObject/Resident/Equipment.Equipment";
+
+namespace WeaponAbilities
+{
+using Lookup = void* (*)(void* table, uint64_t key, void* out, void* found);
+
+struct Entry
+{
+    uint64_t From = 0;              // the ability the weapon gives (FName)
+    uint64_t To = 0;                // the ability it gives instead
+    const uint8_t* Row = nullptr;   // stand-in row: To at Field
+    std::wstring FromText, ToText;
+};
+
+std::atomic<Lookup> Original{nullptr};
+int32_t Field = -1;
+std::atomic<const std::vector<Entry>*> Map{nullptr};
+std::vector<std::unique_ptr<std::vector<Entry>>> Maps;         // every map published (a lookup may still be reading one)
+std::vector<std::unique_ptr<uint8_t[]>> StandIns;               // stand-in rows (kept)
+std::unordered_map<uint64_t, const uint8_t*> StandInFor;        // replacement -> its stand-in row
+std::unordered_map<std::wstring, std::vector<Entry>> Current;   // per player row (folded): its playing pack's replacements
+bool Tried = false;
+bool Hooked = false;
+std::atomic<int32_t> Logged{0};
+std::wstring Status = L"not looked for yet";
+
+void* Thunk(void* table, uint64_t key, void* out, void* found)
+{
+    void* row = Original.load(std::memory_order_acquire)(table, key, out, found);
+    const std::vector<Entry>* map = Map.load(std::memory_order_acquire);
+    if (!row || !map || map->empty()) { return row; }
+    uint64_t ability = 0;
+    std::memcpy(&ability, static_cast<const uint8_t*>(row) + Field, sizeof(ability));
+    for (const Entry& entry : *map)
+    {
+        if (entry.From != ability) { continue; }
+        if (Logged.fetch_add(1, std::memory_order_relaxed) < 16) { Log.Line(L"Weapon abilities: a weapon giving " + entry.FromText + L" gives " + entry.ToText); }
+        return const_cast<uint8_t*>(entry.Row);
+    }
+    return row;
+}
+
+// A jump to `target` within a rel32 call of `around` (`near` is a macro of the Windows headers).
+uint8_t* JumpNear(uintptr_t around, const void* target)
+{
+    SYSTEM_INFO info{};
+    GetSystemInfo(&info);
+    const uintptr_t step = info.dwAllocationGranularity ? info.dwAllocationGranularity : 0x10000;
+    constexpr uintptr_t reach = 0x60000000; // the image is far smaller than what a rel32 reaches past this
+    const uintptr_t low = around > reach + step ? around - reach : step;
+    const uintptr_t high = around + reach;
+    uint8_t* stub = nullptr;
+    for (uintptr_t at = low & ~(step - 1); !stub && at < high;)
+    {
+        MEMORY_BASIC_INFORMATION region{};
+        if (!VirtualQuery(reinterpret_cast<void*>(at), &region, sizeof(region)))
+        {
+            at += step;
+            continue;
+        }
+        const uintptr_t begin = reinterpret_cast<uintptr_t>(region.BaseAddress);
+        const uintptr_t end = begin + region.RegionSize;
+        if (region.State == MEM_FREE)
+        {
+            const uintptr_t start = (std::max(begin, at) + step - 1) & ~(step - 1);
+            if (start + step <= end && start < high)
+            {
+                stub = static_cast<uint8_t*>(VirtualAlloc(reinterpret_cast<void*>(start), 4096, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE));
+            }
+        }
+        at = std::max(end, at + step);
+    }
+    if (!stub) { return nullptr; }
+    // mov rax, target; jmp rax
+    const uintptr_t value = reinterpret_cast<uintptr_t>(target);
+    stub[0] = 0x48;
+    stub[1] = 0xB8;
+    std::memcpy(stub + 2, &value, sizeof(value));
+    stub[10] = 0xFF;
+    stub[11] = 0xE0;
+    DWORD old = 0;
+    VirtualProtect(stub, 4096, PAGE_EXECUTE_READ, &old);
+    FlushInstructionCache(GetCurrentProcess(), stub, 12);
+    return stub;
+}
+
+// Points the call (E8 rel32) at `call` to `target`.
+bool PatchCall(uint8_t* call, const uint8_t* target)
+{
+    const intptr_t rel = reinterpret_cast<intptr_t>(target) - reinterpret_cast<intptr_t>(call + 5);
+    if (call[0] != 0xE8 || rel < INT32_MIN || rel > INT32_MAX) { return false; }
+    DWORD old = 0;
+    if (!VirtualProtect(call, 5, PAGE_EXECUTE_READWRITE, &old)) { return false; }
+    const int32_t value = static_cast<int32_t>(rel);
+    std::memcpy(call + 1, &value, sizeof(value));
+    DWORD unused = 0;
+    VirtualProtect(call, 5, old, &unused);
+    FlushInstructionCache(GetCurrentProcess(), call, 5);
+    return true;
+}
+
+// Finds the game's lookups of weapons' rows that read BurstAbilityID and points them at the mod's (game thread).
+void Install()
+{
+    Tried = true;
+    FrozenTable equipment;
+    std::wstring why;
+    if (!OpenTable(EquipmentTablePath, equipment, why))
+    {
+        Status = L"the Equipment table is NOT usable (" + why + L")";
+        return;
+    }
+    const SkelCompat::Frozen::Field* burst = SkelCompat::Frozen::Find(equipment.Fields, L"BurstAbilityID");
+    UObject* table = FindObjectByPath(EquipmentTablePath);
+    if (!burst || burst->Array || burst->Type != 11 || !table)
+    {
+        Status = L"the Equipment table has no BurstAbilityID";
+        return;
+    }
+    const int32_t tableIndex = table->GetInternalIndex();
+    const auto* base = reinterpret_cast<const uint8_t*>(GetModuleHandleW(nullptr));
+    IMAGE_DOS_HEADER dos{};
+    IMAGE_NT_HEADERS64 nt{};
+    if (!base || !SafeCopy(&dos, base, sizeof(dos)) || dos.e_magic != IMAGE_DOS_SIGNATURE || !SafeCopy(&nt, base + dos.e_lfanew, sizeof(nt)) ||
+        nt.Signature != IMAGE_NT_SIGNATURE)
+    {
+        Status = L"the game's image headers are unreadable";
+        return;
+    }
+    const uint8_t* sections = base + dos.e_lfanew + offsetof(IMAGE_NT_HEADERS64, OptionalHeader) + nt.FileHeader.SizeOfOptionalHeader;
+    struct Site
+    {
+        uint8_t* Call;
+        uintptr_t Table;
+        uintptr_t Lookup;
+    };
+    std::vector<Site> sites;
+    std::vector<Site> unconfirmed; // 3.6: they read BurstAbilityID, but their table global did not show the Equipment table
+    int32_t shapes = 0, fieldMatches = 0;
+    static constexpr uint8_t middle[] = {0x4C, 0x8B, 0xE8, 0x48, 0x85, 0xC0, 0x0F, 0x84};
+    for (WORD k = 0; k < nt.FileHeader.NumberOfSections; ++k)
+    {
+        IMAGE_SECTION_HEADER section{};
+        if (!SafeCopy(&section, sections + k * sizeof(section), sizeof(section)) || !(section.Characteristics & IMAGE_SCN_MEM_EXECUTE)) { continue; }
+        const uint8_t* begin = base + section.VirtualAddress;
+        const size_t size = std::min<DWORD>(section.Misc.VirtualSize, section.SizeOfRawData);
+        for (size_t at = 12; at + SkelCompat::Frozen::WeaponRowCallSize <= size + 12;)
+        {
+            const void* hit = std::memchr(begin + at, 0x4C, size - at);
+            if (!hit) { break; }
+            at = static_cast<size_t>(static_cast<const uint8_t*>(hit) - begin);
+            const uint8_t* match = begin + at - 12;
+            ++at;
+            if (at - 1 + sizeof(middle) > size || std::memcmp(begin + at - 1, middle, sizeof(middle)) != 0) { continue; }
+            if (at - 1 - 12 + SkelCompat::Frozen::WeaponRowCallSize > size) { continue; }
+            SkelCompat::Frozen::WeaponRowCall call{};
+            if (!SkelCompat::Frozen::IsWeaponRowCall(match, SkelCompat::Frozen::WeaponRowCallSize, &call)) { continue; }
+            ++shapes;
+            if (call.Field != burst->Offset) { continue; }
+            ++fieldMatches;
+            const uintptr_t global = reinterpret_cast<uintptr_t>(match) + static_cast<uintptr_t>(call.Table);
+            // The table global lists the data objects it looks rows up in: 3 lists (TArray each, the game's lookup walks
+            // them in turn) of 16-byte entries that start with a weak pointer {index, serial}. One is the Equipment table's.
+            bool equipmentTable = false;
+            for (uintptr_t list = 0; list < 3 && !equipmentTable; ++list)
+            {
+                RawArray objects{};
+                if (!SafeCopy(&objects, reinterpret_cast<const void*>(global + list * sizeof(RawArray)), sizeof(objects)) || !objects.Data || objects.Num <= 0 ||
+                    objects.Num > 256)
+                {
+                    continue;
+                }
+                std::vector<int32_t> entries(static_cast<size_t>(objects.Num) * 4);
+                if (!SafeCopy(entries.data(), objects.Data, entries.size() * sizeof(int32_t))) { continue; }
+                for (int32_t w = 0; w < objects.Num; ++w) { equipmentTable = equipmentTable || entries[static_cast<size_t>(w) * 4] == tableIndex; }
+            }
+            const Site site{const_cast<uint8_t*>(match) + call.Call, global, reinterpret_cast<uintptr_t>(match) + static_cast<uintptr_t>(call.Lookup)};
+            if (!equipmentTable)
+            {
+                unconfirmed.push_back(site);
+                continue;
+            }
+            sites.push_back(site);
+        }
+    }
+    // 3.6: 3.5's table check found no Equipment table in them (its layout is not known for sure). Lookups of this exact shape
+    // reading BurstAbilityID's offset, all of one function, are taken: the mod's lookup only hands out a stand-in for a row
+    // whose BurstAbilityID is a weapon ability a pack replaces, which only Equipment rows hold. What the table globals hold
+    // is logged, to learn their layout.
+    bool confirmed = !sites.empty();
+    if (sites.empty() && !unconfirmed.empty() &&
+        std::all_of(unconfirmed.begin(), unconfirmed.end(), [&](const Site& x) { return x.Lookup == unconfirmed.front().Lookup; }))
+    {
+        sites = unconfirmed;
+        std::wstring dump;
+        std::array<uint8_t, 48> head{};
+        if (SafeCopy(head.data(), reinterpret_cast<const void*>(sites.front().Table), head.size()))
+        {
+            for (size_t b = 0; b < head.size(); b += 8)
+            {
+                uint64_t v = 0;
+                std::memcpy(&v, head.data() + b, sizeof(v));
+                dump += (dump.empty() ? L"" : L" ") + Hex(static_cast<uintptr_t>(v));
+            }
+        }
+        Log.Line(L"Weapon abilities: the Equipment table (object " + std::to_wstring(tableIndex) + L" at " + Hex(reinterpret_cast<uintptr_t>(table)) +
+                 L") is not among their table global's lists as 3.5 reads them; their global starts with " + dump);
+    }
+    if (sites.empty())
+    {
+        Status = L"the game's weapon ability lookups were NOT found (" + std::to_wstring(shapes) + L" lookups of that shape, " + std::to_wstring(fieldMatches) +
+                 L" reading +" + Hex(static_cast<uintptr_t>(burst->Offset)) + L", none in the Equipment table (object " + std::to_wstring(tableIndex) + L"))";
+        return;
+    }
+    for (const Site& site : sites)
+    {
+        if (site.Lookup != sites.front().Lookup)
+        {
+            Status = L"the game's weapon ability lookups call different functions; left alone";
+            return;
+        }
+    }
+    uint8_t* stub = JumpNear(reinterpret_cast<uintptr_t>(sites.front().Call), reinterpret_cast<const void*>(&Thunk));
+    if (!stub)
+    {
+        Status = L"no memory near the game's code for the mod's lookup";
+        return;
+    }
+    Field = burst->Offset;
+    Original.store(reinterpret_cast<Lookup>(sites.front().Lookup), std::memory_order_release);
+    int32_t patched = 0;
+    std::wstring where;
+    for (const Site& site : sites)
+    {
+        if (!PatchCall(site.Call, stub)) { continue; }
+        ++patched;
+        where += (where.empty() ? L"" : L", ") + Hex(reinterpret_cast<uintptr_t>(site.Call) - reinterpret_cast<uintptr_t>(base));
+    }
+    Hooked = patched > 0;
+    Status = Hooked ? L"the game's weapon ability lookups point at the mod's (" + std::to_wstring(patched) + L" call(s) at " + where + L"; BurstAbilityID +" +
+                          Hex(static_cast<uintptr_t>(Field)) + (confirmed ? L")" : L"; their table not confirmed)")
+                    : L"the game's weapon ability lookups could NOT be changed";
+}
+
+const uint8_t* StandIn(uint64_t ability)
+{
+    if (const auto it = StandInFor.find(ability); it != StandInFor.end()) { return it->second; }
+    auto row = std::make_unique<uint8_t[]>(static_cast<size_t>(Field) + 16);
+    std::memset(row.get(), 0, static_cast<size_t>(Field) + 16);
+    std::memcpy(row.get() + Field, &ability, sizeof(ability));
+    const uint8_t* at = row.get();
+    StandIns.push_back(std::move(row));
+    StandInFor[ability] = at;
+    return at;
+}
+
+// Publishes `entries` as the replacements of a player row (game thread).
+void Publish(const std::wstring& player, std::vector<Entry> entries)
+{
+    Current[SkelCompat::FoldedKey(player)] = std::move(entries);
+    auto map = std::make_unique<std::vector<Entry>>();
+    for (const auto& [key, list] : Current) { map->insert(map->end(), list.begin(), list.end()); }
+    Map.store(map.get(), std::memory_order_release);
+    Maps.push_back(std::move(map));
+}
+} // namespace WeaponAbilities
+
+// The weapon abilities of a row's pack (3.4 "weapon_abilities") for the log line; `changed` tells whether they changed.
+std::wstring ApplyWeaponAbilities(const SkelCompat::AnimSetRow& row, const std::wstring& pack, const FrozenTable* abilities, bool& changed)
+{
+    changed = false;
+    const bool wanted = std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) {
+        return std::any_of(r.Abilities.begin(), r.Abilities.end(), [](const SkelCompat::PackAbilities& a) { return a.HasWeapons; });
+    });
+    if (!wanted) { return {}; }
+    if (!WeaponAbilities::Tried)
+    {
+        WeaponAbilities::Install();
+        Log.Line(L"Abilities: " + WeaponAbilities::Status);
+    }
+    std::wstring from;
+    const auto* list = row.WeaponsFor(pack, &from);
+    if (!WeaponAbilities::Hooked) { return list && !list->empty() ? L"; weapon abilities NOT switched (" + WeaponAbilities::Status + L")" : std::wstring{}; }
+    std::vector<WeaponAbilities::Entry> entries;
+    std::wstring shown, skipped;
+    if (list)
+    {
+        for (const auto& [weapon, ability] : *list)
+        {
+            const RawName given = ExistingName(weapon), replacement = ExistingName(ability);
+            if ((given.Comparison == 0 && given.Number == 0) || (replacement.Comparison == 0 && replacement.Number == 0) ||
+                (abilities && (!TableRow(*abilities, given) || !TableRow(*abilities, replacement))))
+            {
+                skipped += (skipped.empty() ? L"" : L", ") + weapon + L" -> " + ability;
+                continue;
+            }
+            if (SameName(given, replacement)) { continue; }
+            WeaponAbilities::Entry entry;
+            entry.From = KeyOf(given);
+            entry.To = KeyOf(replacement);
+            entry.Row = WeaponAbilities::StandIn(entry.To);
+            entry.FromText = weapon;
+            entry.ToText = ability;
+            entries.push_back(std::move(entry));
+            shown += (shown.empty() ? L"" : L", ") + weapon + L" -> " + ability;
+        }
+    }
+    const auto key = SkelCompat::FoldedKey(row.Player);
+    const auto before = WeaponAbilities::Current.find(key);
+    const auto same = [&](const std::vector<WeaponAbilities::Entry>& a) {
+        return a.size() == entries.size() && std::equal(a.begin(), a.end(), entries.begin(), [](const auto& x, const auto& y) { return x.From == y.From && x.To == y.To; });
+    };
+    changed = before == WeaponAbilities::Current.end() ? !entries.empty() : !same(before->second);
+    WeaponAbilities::Publish(row.Player, std::move(entries));
+    return L"; weapon abilities " + (shown.empty() ? std::wstring(L"the weapons' own") : shown) +
+           (list && !SkelCompat::NameEquals(from, pack) && !shown.empty() ? L" (" + from + L"'s)" : std::wstring{}) +
+           (skipped.empty() ? std::wstring{} : L" [left out, not BattleAbility rows: " + skipped + L"]");
+}
+
+bool RestoreTableArray(const ModState::TableArray& original)
+{
+    int64_t pointer = 0;
+    int32_t num = 0, max = 0;
+    std::memcpy(&pointer, original.Original.data(), 8);
+    std::memcpy(&num, original.Original.data() + 8, 4);
+    std::memcpy(&max, original.Original.data() + 12, 4);
+    return WriteTableArray(original.At, pointer, num, max);
+}
+
+// A list of names the mod keeps for the session (one per place and contents).
+const std::vector<uint64_t>* NameListFor(uintptr_t place, const std::vector<RawName>& names)
+{
+    std::wstring key = Hex(place) + L":";
+    for (const auto& name : names) { key += Hex(KeyOf(name)) + L","; }
+    auto& list = State.AbilityLists[key];
+    if (!list)
+    {
+        list = std::make_unique<std::vector<uint64_t>>();
+        for (const auto& name : names) { list->push_back(KeyOf(name)); }
+    }
+    return list.get();
+}
+
+// Points the table array at `at` to a list of names the mod keeps for the session.
+bool WriteNameList(uintptr_t at, const std::vector<RawName>& names)
+{
+    const std::vector<uint64_t>* list = NameListFor(at, names);
+    const int32_t count = static_cast<int32_t>(list->size());
+    const int64_t pointer = count ? SkelCompat::Frozen::Encode(at, reinterpret_cast<uintptr_t>(list->data())) : 0;
+    return WriteTableArray(at, pointer, count, count);
+}
+
+// Applies a row's lists for `pack` to its BattlePlayerParameter row. Returns a line for the log; `wrote` tells whether
+// the row's arrays were written.
+std::wstring ApplyAbilities(const SkelCompat::AnimSetRow& row, const std::wstring& pack, bool& wrote)
+{
+    wrote = false;
+    FrozenTable players;
+    std::wstring why;
+    if (!OpenTable(PlayerTablePath, players, why)) { return L"BattlePlayerParameter NOT usable: " + why; }
+    FrozenTable abilities;
+    std::wstring abilityWhy;
+    const bool check = OpenTable(AbilityTablePath, abilities, abilityWhy);
+    const uintptr_t at = TableRow(players, ExistingName(row.Player));
+    if (!at) { return L"BattlePlayerParameter has no row " + row.Player; }
+    const SkelCompat::Frozen::Field* commandField = SkelCompat::Frozen::Find(players.Fields, L"CommandAbilityID_Array");
+    const SkelCompat::Frozen::Field* limitField = SkelCompat::Frozen::Find(players.Fields, L"LimitAbilityID_Array");
+    if (!ListGetters::Tried && commandField && limitField)
+    {
+        ListGetters::Install(commandField->Offset, limitField->Offset);
+        Log.Line(L"Abilities: " + ListGetters::Status);
+    }
+    std::wstring line = row.Player + L", pack " + pack + L":";
+    for (const bool limits : {false, true})
+    {
+        const wchar_t* fieldName = limits ? L"LimitAbilityID_Array" : L"CommandAbilityID_Array";
+        line += limits ? L"; limits " : L" commands ";
+        const SkelCompat::Frozen::Field* field = limits ? limitField : commandField;
+        if (!field || !field->Array || field->Type != 11)
+        {
+            line += L"(the table has no " + std::wstring(fieldName) + L")";
+            continue;
+        }
+        const bool hooked = limits ? ListGetters::LimitsHooked : ListGetters::CommandsHooked;
+        const uintptr_t arrayAt = at + static_cast<uintptr_t>(field->Offset);
+        std::wstring from;
+        const std::vector<std::wstring>* list = row.ListFor(pack, limits, &from);
+        if (!list)
+        {
+            bool restored = false;
+            if (hooked) { restored = ListGetters::Publish(at, limits, nullptr); }
+            else { restored = RestoreTableArray(OriginalArray(arrayAt)); }
+            wrote = wrote || restored;
+            line += restored ? L"the table's own" : L"the table's own (NOT written back" + (TableWriteProblem.empty() ? std::wstring{} : L": " + TableWriteProblem) + L")";
+            continue;
+        }
+        std::vector<RawName> names;
+        std::wstring shown, skipped, extra;
+        const size_t most = limits ? SkelCompat::MaxLimitAbilities : SkelCompat::MaxCommandAbilities;
+        for (const auto& ability : *list)
+        {
+            const RawName name = ExistingName(ability);
+            if ((name.Comparison == 0 && name.Number == 0) || (check && !TableRow(abilities, name)))
+            {
+                skipped += (skipped.empty() ? L"" : L", ") + ability;
+                continue;
+            }
+            if (names.size() >= most)
+            {
+                extra += (extra.empty() ? L"" : L", ") + ability;
+                continue;
+            }
+            names.push_back(name);
+            shown += (shown.empty() ? L"" : L", ") + ability;
+        }
+        bool written = false;
+        if (hooked)
+        {
+            written = ListGetters::Publish(at, limits, NameListFor(at + (limits ? 1 : 0), names));
+            if (!written) { TableWriteProblem = L"no free slot for another switched row"; }
+        }
+        else
+        {
+            OriginalArray(arrayAt);
+            written = WriteNameList(arrayAt, names);
+        }
+        wrote = wrote || written;
+        line += (shown.empty() ? std::wstring(L"(none)") : shown) + (SkelCompat::NameEquals(from, pack) ? std::wstring{} : L" (" + from + L"'s)") +
+                (skipped.empty() ? std::wstring{} : L" [left out, not BattleAbility rows: " + skipped + L"]") +
+                (extra.empty() ? std::wstring{} : L" [left out, the game lists " + std::to_wstring(most) + (limits ? L" limits: " : L" commands: ") + extra + L"]") +
+                (written ? L"" : L" (NOT written: " + (TableWriteProblem.empty() ? std::wstring(L"memory") : TableWriteProblem) + L")");
+    }
+    bool weaponsChanged = false;
+    line += ApplyWeaponAbilities(row, pack, check ? &abilities : nullptr, weaponsChanged);
+    wrote = wrote || weaponsChanged; // the game rebuilds the weapon list with the others
+    if (!check) { line += L" (abilities not checked: BattleAbility " + abilityWhy + L")"; }
+    return line;
+}
+
+// Calls an EndMenuBPAPI function that takes a player type (and optionally an int) and returns an int (or nothing).
+// false when its parameters are not those.
+bool CallMenuInt(UFunction* function, int type, const wchar_t* valueName, int32_t value, int32_t* result)
+{
+    if (!function || !Alive(State.MenuApi)) { return false; }
+    int32_t typeSize = 0, valueSize = 0, resultSize = 0;
+    const int32_t typeAt = ParamOffset(function, L"Type", typeSize);
+    const int32_t valueAt = valueName ? ParamOffset(function, valueName, valueSize) : -1;
+    const int32_t resultAt = result ? ParamOffset(function, L"ReturnValue", resultSize) : -1;
+    if (typeAt < 0 || typeSize != 1 || (valueName && (valueAt < 0 || valueSize != 4)) || (result && (resultAt < 0 || resultSize != 4))) { return false; }
+    ParamBlock block(function);
+    *block.At(typeAt) = static_cast<uint8_t>(type);
+    if (valueName) { std::memcpy(block.At(valueAt), &value, sizeof(value)); }
+    State.MenuApi->ProcessEvent(function, block.Bytes.data());
+    if (result) { std::memcpy(result, block.At(resultAt), sizeof(*result)); }
+    return true;
+}
+
+// Has the game recalculate a party member's status, which rebuilds its ability lists from its BattlePlayerParameter
+// row (see above). Returns a note for the log line.
+// 3.4: the game's BPSetPlayerLevel sets EXP, not the level (it is the same native as BPSetPlayerExperience: EXP := the
+// value, the level follows from it), so 3.3 / 3.3.1, which handed it the level, set a member's EXP to its level (level 70
+// -> 70 EXP -> level 1). The mod now hands BPSetPlayerExperience the EXP the member has: nothing changes but the
+// recalculation. It checks the level and EXP afterwards and stops recalculating for the session if either changed.
+std::wstring RefreshAbilityLists(const SkelCompat::AnimSetRow& row)
+{
+    if (!row.RefreshAbilities) { return L"; status not recalculated (refresh_abilities is off)"; }
+    if (State.RefreshProblem) { return L"; status not recalculated (switched off: " + State.RefreshText + L")"; }
+    const int type = SkelCompat::PlayerTypeOf(row.Player);
+    if (type < 0) { return L"; status not recalculated (" + row.Player + L" is not a party member's row)"; }
+    UFunction* getLevel = State.GetPlayerLevel;
+    UFunction* getExp = State.GetPlayerExperience;
+    UFunction* setExp = State.SetPlayerExperience;
+    if (!getLevel || !getExp || !setExp || !Alive(State.MenuApi)) { return L"; status not recalculated (EndMenuBPAPI BPGetPlayerExperience / BPSetPlayerExperience not found)"; }
+    int32_t level = 0, exp = 0;
+    if (!CallMenuInt(getLevel, type, nullptr, 0, &level) || !CallMenuInt(getExp, type, nullptr, 0, &exp))
+    {
+        return L"; status not recalculated (EndMenuBPAPI level / EXP functions take other parameters)";
+    }
+    // No status (the game hands out level 1 / EXP 0 then): nothing to recalculate, and the game's setter would read a null.
+    if (level < 1 || level > 999 || exp <= 0) { return L"; status not recalculated (no status: level " + std::to_wstring(level) + L", EXP " + std::to_wstring(exp) + L")"; }
+    CallMenuInt(setExp, type, L"Exp", exp, nullptr);
+    int32_t levelAfter = 0, expAfter = 0;
+    CallMenuInt(getLevel, type, nullptr, 0, &levelAfter);
+    CallMenuInt(getExp, type, nullptr, 0, &expAfter);
+    if (levelAfter != level || expAfter != exp)
+    {
+        State.RefreshProblem = true;
+        State.RefreshText = L"level " + std::to_wstring(level) + L" -> " + std::to_wstring(levelAfter) + L", EXP " + std::to_wstring(exp) + L" -> " +
+                            std::to_wstring(expAfter) + L" after a recalculation";
+        Log.Line(L"Abilities: WARNING: " + State.RefreshText + L"; status recalculation switched off for this session");
+        return L"; status recalculated, but " + State.RefreshText + L" (WARNING: switched off for this session)";
+    }
+    return L"; status recalculated (level " + std::to_wstring(level) + L", EXP " + std::to_wstring(exp) + L" kept) so the game rebuilds the lists";
+}
+
+void NoteAbilityLine(const std::wstring& line)
+{
+    State.AbilityLines.push_back(line);
+    if (State.AbilityLines.size() > 40) { State.AbilityLines.erase(State.AbilityLines.begin()); }
+}
+
+// The CharaSpec row a character plays (EndBattleAPI GetCharaSpecName, without "CharaSpec_"); empty when unknown.
+std::wstring CharaSpecRowOf(UObject* character)
+{
+    UFunction* get = State.GetCharaSpecName;
+    if (!get || !State.BattleApi) { return {}; }
+    int32_t objectAt = -1, resultAt = -1;
+    std::wstring resultType;
+    for (FProperty* property : get->ForEachPropertyInChain())
+    {
+        if (!property) { continue; }
+        const std::wstring type = TypeOf(property);
+        const int32_t offset = property->GetOffset_Internal();
+        if (offset < 0 || offset + property->GetElementSize() > get->GetParmsSize()) { continue; }
+        if (property->GetName() == L"ReturnValue")
+        {
+            resultAt = offset;
+            resultType = type;
+        }
+        else if (objectAt < 0 && type == L"ObjectProperty") { objectAt = offset; }
+    }
+    if (objectAt < 0 || resultAt < 0 || (resultType != L"NameProperty" && resultType != L"StrProperty")) { return {}; }
+    ParamBlock block(get);
+    std::memcpy(block.At(objectAt), &character, sizeof(character));
+    State.BattleApi->ProcessEvent(get, block.Bytes.data());
+    std::wstring name;
+    if (resultType == L"NameProperty")
+    {
+        RawName raw{};
+        std::memcpy(&raw, block.At(resultAt), sizeof(raw));
+        name = NameText(KeyOf(raw));
+    }
+    else
+    {
+        name = ReadFString(block.At(resultAt));
+        FreeStringAt(block.At(resultAt));
+    }
+    if (SkelCompat::StartsWithFolded(name, L"CharaSpec_")) { name.erase(0, 10); }
+    return name == L"None" ? std::wstring{} : name;
+}
+
+constexpr wchar_t CharaSpecTablePath[] = L"/Game/DataObject/Resident/CharaSpec.CharaSpec";
+
+// Whether a CharaSpec row lists `set` in its AnimationSetList (the game takes only those sets from the character's pack,
+// so SetPrimaryAnimPack can only switch to them): 1 yes, 0 no, -1 unknown.
+int CharaSpecListsSet(const std::wstring& spec, const std::wstring& set)
+{
+    FrozenTable table;
+    std::wstring why;
+    if (!OpenTable(CharaSpecTablePath, table, why)) { return -1; }
+    const uintptr_t at = TableRow(table, ExistingName(spec));
+    const SkelCompat::Frozen::Field* field = SkelCompat::Frozen::Find(table.Fields, L"AnimationSetList_Array");
+    if (!at || !field || !field->Array || field->Type != 11) { return -1; }
+    uintptr_t data = 0;
+    int32_t num = 0;
+    if (!ReadFrozenArray(at + static_cast<uintptr_t>(field->Offset), data, num) || num > 64) { return -1; }
+    std::vector<RawName> names(static_cast<size_t>(num));
+    if (num > 0 && !SafeCopy(names.data(), reinterpret_cast<const void*>(data), names.size() * sizeof(RawName))) { return -1; }
+    for (const auto& name : names)
+    {
+        if ((name.Comparison || name.Number) && SkelCompat::NameEquals(NameText(KeyOf(name)), set)) { return 1; }
+    }
+    return 0;
+}
+
+// ---------------------------------------------------------------------------------------
+// 3.6.9: the set names the game's set lookup is asked for the character you control and neither the game nor the mod has
+// a set of (it would have nothing to play from it): GiveFolderSet gives them from the character's folders. Lock-free: the
+// lookup runs on the game's animation threads too. A few containers at a time, each with its own table of names.
+// (3.6.13: only those names; the log of every lookup and its outcome was for the burning Nibelheim T-pose.)
+// ---------------------------------------------------------------------------------------
+namespace SetWatch
+{
+constexpr size_t Watched = 4;
+constexpr size_t Names = 128;
+
+std::atomic<void*> Containers[Watched]{};
+std::atomic<uint64_t> Table[Watched][Names]{};
+bool Told[Watched][Names]{};   // (game thread) already handed on
+size_t NextWatch = 0;
+
+// Any thread, inside the game's lookup, for a name it has no set for: a few loads unless the container is watched.
+inline void NoteMissed(void* container, uint64_t key) noexcept
+{
+    if (!key || !container) { return; }
+    size_t w = 0;
+    while (w < Watched && Containers[w].load(std::memory_order_relaxed) != container) { ++w; }
+    if (w == Watched) { return; }
+    const size_t start = static_cast<size_t>((key * 0x9E3779B97F4A7C15ull) >> 57);
+    for (size_t probe = 0; probe < 32; ++probe)
+    {
+        std::atomic<uint64_t>& slot = Table[w][(start + probe) & (Names - 1)];
+        uint64_t held = slot.load(std::memory_order_acquire);
+        if (!held)
+        {
+            uint64_t expected = 0;
+            held = slot.compare_exchange_strong(expected, key, std::memory_order_acq_rel) ? key : expected;
+        }
+        if (held == key) { return; }
+    }
+}
+
+int Find(void* container)
+{
+    for (size_t w = 0; w < Watched; ++w)
+    {
+        if (Containers[w].load(std::memory_order_relaxed) == container) { return static_cast<int>(w); }
+    }
+    return -1;
+}
+
+// Game thread: watch a container (from now on; the oldest watch goes when all are taken).
+int Watch(void* container)
+{
+    if (const int known = Find(container); known >= 0) { return known; }
+    size_t w = 0;
+    while (w < Watched && Containers[w].load(std::memory_order_relaxed)) { ++w; }
+    if (w == Watched) { w = NextWatch++ % Watched; }
+    Containers[w].store(nullptr, std::memory_order_release);
+    for (size_t k = 0; k < Names; ++k)
+    {
+        Table[w][k].store(0, std::memory_order_relaxed);
+        Told[w][k] = false;
+    }
+    Containers[w].store(container, std::memory_order_release);
+    return static_cast<int>(w);
+}
+
+// A map load: the characters are new.
+void Clear()
+{
+    for (size_t w = 0; w < Watched; ++w) { Containers[w].store(nullptr, std::memory_order_release); }
+}
+
+// Game thread: the names the lookup had no set for, for a watched container, since the last call (each once).
+void Missed(void* container, std::vector<uint64_t>& missed)
+{
+    const int w = Find(container);
+    if (w < 0) { return; }
+    for (size_t k = 0; k < Names; ++k)
+    {
+        const uint64_t key = Table[w][k].load(std::memory_order_acquire);
+        if (!key || Told[w][k]) { continue; }
+        Told[w][k] = true;
+        missed.push_back(key);
+    }
+}
+} // namespace SetWatch
+
+// ---------------------------------------------------------------------------------------
+// 3.5: every set of a character's pack can be switched to. The game takes a character's sets from its pack into a map
+// of set names only for some slots of its CharaSpec row's AnimationSetList (a set in another slot is in the pack but
+// never in that map), so EndBattleAPI SetPrimaryAnimPack to it did nothing. The game looks a character's sets up by
+// name in one function (its pack switch, its re-applies and its animation lookups call it); the mod points those calls
+// at its own: the game's answer first, else the set of that name in the character's pack, which the mod found when the
+// pack was switched to it (game thread) and keeps resident.
+// ---------------------------------------------------------------------------------------
+namespace PackSets
+{
+// The game's lookup takes the set's name by value (FName, 8 bytes: comparison index, number).
+using Lookup = UObject* (*)(void* container, uint64_t name);
+
+struct Entry
+{
+    void* Container = nullptr;  // the character's set container (character + ContainerOffset)
+    uint64_t Name = 0;          // the set's name (raw FName)
+    UObject* Set = nullptr;     // the pack's set of that name (rooted)
+};
+
+constexpr size_t MaxEntries = 64;
+std::atomic<Lookup> Original{nullptr};
+int32_t ContainerOffset = -1;   // character -> the container the game's lookup takes
+int32_t MapOffset = -1;         // container -> its TMap<FName, TWeakObjectPtr<UEndAnimSet>>
+SRWLOCK Lock = SRWLOCK_INIT;
+Entry Entries[MaxEntries]{};
+size_t Count = 0;
+bool Tried = false;
+bool Hooked = false;
+std::wstring Status = L"not looked for yet";
+std::vector<std::wstring> Said; // (row/pack) already logged
+std::atomic<uint64_t> Calls{0};  // calls of the game's lookup (through the mod's)
+std::atomic<uint64_t> Served{0}; // of them answered with one of the mod's sets
+
+// (3.7.5) A form's "sets": while a character is in it, the game's lookups of a set of one name (Battle00; Battle01, which
+// Punisher mode plays; Facial00) get the set of another (the form's own), the game's or the mod's. A slot is free when
+// its container is null (slots are not moved: their counts stay theirs).
+struct Redirect
+{
+    void* Container = nullptr;  // the character's set container
+    uint64_t From = 0;          // the name the game looks up (raw FName)
+    uint64_t To = 0;            // the name looked up in its place
+    std::wstring FromText, ToText, Spec; // (game thread: the log)
+};
+constexpr size_t MaxRedirects = 16;
+Redirect Redirects[MaxRedirects]{};
+std::atomic<uint64_t> RedirectHits[MaxRedirects]{};   // lookups answered with the set of the new name
+std::atomic<uint64_t> RedirectMisses[MaxRedirects]{}; // lookups that found no set of the new name (the game's name looked up)
+bool RedirectSaid[MaxRedirects]{};                    // (game thread: its first use logged)
+size_t RedirectCount = 0;                             // slots in use or freed below the last one in use (under Lock)
+std::atomic<size_t> RedirectsOn{0};                   // (RedirectCount, read without the lock: none, no work)
+
+// The mod's set of a name for a container (under Lock, shared or exclusive).
+UObject* RememberedLocked(void* container, uint64_t key)
+{
+    for (size_t i = 0; i < Count; ++i)
+    {
+        if (Entries[i].Container == container && Entries[i].Name == key) { return Entries[i].Set; }
+    }
+    return nullptr;
+}
+
+// The game's lookup, then the mod's sets (any thread: the game's animation lookups run on worker threads too).
+UObject* Thunk(void* container, uint64_t key)
+{
+    Calls.fetch_add(1, std::memory_order_relaxed);
+    const Lookup original = Original.load(std::memory_order_acquire);
+    // (3.7.5) a form's "sets": the set of the name it gives in its place
+    if (key && RedirectsOn.load(std::memory_order_acquire) != 0)
+    {
+        uint64_t to = 0;
+        size_t slot = 0;
+        UObject* mods = nullptr;
+        AcquireSRWLockShared(&Lock);
+        for (size_t i = 0; i < RedirectCount; ++i)
+        {
+            if (Redirects[i].Container == container && Redirects[i].From == key)
+            {
+                to = Redirects[i].To;
+                slot = i;
+                mods = RememberedLocked(container, to);
+                break;
+            }
+        }
+        ReleaseSRWLockShared(&Lock);
+        if (to)
+        {
+            UObject* got = original ? original(container, to) : nullptr;
+            if (!got) { got = mods; }
+            if (got)
+            {
+                RedirectHits[slot].fetch_add(1, std::memory_order_relaxed);
+                return got;
+            }
+            RedirectMisses[slot].fetch_add(1, std::memory_order_relaxed);
+        }
+    }
+    UObject* found = original ? original(container, key) : nullptr;
+    if (found || !key) { return found; }
+    AcquireSRWLockShared(&Lock);
+    for (size_t i = 0; i < Count; ++i)
+    {
+        if (Entries[i].Container == container && Entries[i].Name == key)
+        {
+            found = Entries[i].Set;
+            break;
+        }
+    }
+    ReleaseSRWLockShared(&Lock);
+    if (found) { Served.fetch_add(1, std::memory_order_relaxed); }
+    else { SetWatch::NoteMissed(container, key); }   // (3.6.9: GiveFolderSet)
+    return found;
+}
+
+std::wstring Counts()
+{
+    return L"the game's set lookup ran " + std::to_wstring(Calls.load(std::memory_order_relaxed)) + L" time(s), " +
+           std::to_wstring(Served.load(std::memory_order_relaxed)) + L" of them answered with the mod's sets";
+}
+
+// The game's lookup function: push rbx; mov eax,0x20; call <probe>; sub rsp,rax; lea rbx,[rcx+map]; mov r8,rdx; mov rcx,rbx;
+// lea rdx,[rsp+0x30]; call <FindId>; cmp dword ptr [rax],-1.
+bool IsLookup(const uint8_t* at, int32_t& map)
+{
+    static constexpr uint8_t head[] = {0x40, 0x53, 0xB8, 0x20, 0x00, 0x00, 0x00, 0xE8};
+    static constexpr uint8_t middle[] = {0x48, 0x2B, 0xE0, 0x48, 0x8D, 0x99};
+    static constexpr uint8_t tail[] = {0x4C, 0x8B, 0xC2, 0x48, 0x8B, 0xCB, 0x48, 0x8D, 0x54, 0x24, 0x30, 0xE8};
+    static constexpr uint8_t check[] = {0x83, 0x38, 0xFF};
+    if (std::memcmp(at, head, sizeof(head)) != 0 || std::memcmp(at + 12, middle, sizeof(middle)) != 0 ||
+        std::memcmp(at + 22, tail, sizeof(tail)) != 0 || std::memcmp(at + 38, check, sizeof(check)) != 0)
+    {
+        return false;
+    }
+    std::memcpy(&map, at + 18, sizeof(map));
+    return map > 0 && map < 0x1000;
+}
+
+// Finds the game's lookup and its calls, and points the calls at Thunk (game thread, once).
+void Install()
+{
+    Tried = true;
+    const auto* base = reinterpret_cast<const uint8_t*>(GetModuleHandleW(nullptr));
+    IMAGE_DOS_HEADER dos{};
+    IMAGE_NT_HEADERS64 nt{};
+    if (!base || !SafeCopy(&dos, base, sizeof(dos)) || dos.e_magic != IMAGE_DOS_SIGNATURE || !SafeCopy(&nt, base + dos.e_lfanew, sizeof(nt)) ||
+        nt.Signature != IMAGE_NT_SIGNATURE)
+    {
+        Status = L"the game's image headers are unreadable";
+        return;
+    }
+    const uint8_t* sections = base + dos.e_lfanew + offsetof(IMAGE_NT_HEADERS64, OptionalHeader) + nt.FileHeader.SizeOfOptionalHeader;
+    struct Range
+    {
+        const uint8_t* Begin;
+        size_t Size;
+    };
+    std::vector<Range> code;
+    for (WORD k = 0; k < nt.FileHeader.NumberOfSections; ++k)
+    {
+        IMAGE_SECTION_HEADER section{};
+        if (!SafeCopy(&section, sections + k * sizeof(section), sizeof(section)) || !(section.Characteristics & IMAGE_SCN_MEM_EXECUTE)) { continue; }
+        code.push_back(Range{base + section.VirtualAddress, std::min<DWORD>(section.Misc.VirtualSize, section.SizeOfRawData)});
+    }
+    // Functions of that shape (the game has several: a lookup in a map of names at some offset of an object).
+    struct Candidate
+    {
+        const uint8_t* At = nullptr;
+        int32_t Map = -1;
+        std::vector<uint8_t*> Calls;
+        int32_t Container = -1; // the largest lea rcx,[reg+disp32] just before one of its calls
+    };
+    std::vector<Candidate> candidates;
+    for (const Range& range : code)
+    {
+        for (size_t at = 0; at + 48 <= range.Size;)
+        {
+            const void* hit = std::memchr(range.Begin + at, 0x40, range.Size - 48 - at);
+            if (!hit) { break; }
+            at = static_cast<size_t>(static_cast<const uint8_t*>(hit) - range.Begin);
+            int32_t found = -1;
+            if (IsLookup(range.Begin + at, found))
+            {
+                Candidate candidate;
+                candidate.At = range.Begin + at;
+                candidate.Map = found;
+                candidates.push_back(std::move(candidate));
+            }
+            ++at;
+        }
+    }
+    if (candidates.empty())
+    {
+        Status = L"the game's set lookup was NOT found (no function of its shape)";
+        return;
+    }
+    // their calls (E8 rel32), and the container each call is given: lea rcx,[reg+disp32] just before it
+    for (const Range& range : code)
+    {
+        for (size_t at = 8; at + 5 <= range.Size;)
+        {
+            const void* hit = std::memchr(range.Begin + at, 0xE8, range.Size - 5 - at);
+            if (!hit) { break; }
+            at = static_cast<size_t>(static_cast<const uint8_t*>(hit) - range.Begin);
+            const uint8_t* call = range.Begin + at;
+            int32_t rel = 0;
+            std::memcpy(&rel, call + 1, sizeof(rel));
+            const uintptr_t target = reinterpret_cast<uintptr_t>(call) + 5 + static_cast<intptr_t>(rel);
+            for (Candidate& candidate : candidates)
+            {
+                if (target != reinterpret_cast<uintptr_t>(candidate.At)) { continue; }
+                candidate.Calls.push_back(const_cast<uint8_t*>(call));
+                const uint8_t* lea = call - 7;
+                if (lea[0] == 0x48 && lea[1] == 0x8D && (lea[2] & 0xF8) == 0x88 && (lea[2] & 0x07) != 0x04)
+                {
+                    int32_t disp = 0;
+                    std::memcpy(&disp, lea + 3, sizeof(disp));
+                    if (disp > candidate.Container) { candidate.Container = disp; }
+                }
+                break;
+            }
+            ++at;
+        }
+    }
+    // The set lookup is the one a character's own container is passed to: +0xE38 in this build (the anim interface's
+    // +0x968 at its +0x4D0), its map of sets at +0xB8.
+    const Candidate* pick = nullptr;
+    int32_t takers = 0;
+    for (const Candidate& candidate : candidates)
+    {
+        if (!candidate.Calls.empty() && candidate.Container == 0xE38)
+        {
+            pick = &candidate;
+            ++takers;
+        }
+    }
+    if (takers != 1)
+    {
+        Status = L"the game's set lookup was NOT found (" + std::to_wstring(candidates.size()) + L" functions of its shape, " + std::to_wstring(takers) +
+                 L" of them given a character's container +0xE38; this build of the game differs)";
+        return;
+    }
+    const uint8_t* lookup = pick->At;
+    const std::vector<uint8_t*>& calls = pick->Calls;
+    const int32_t container = pick->Container;
+    const int32_t map = pick->Map;
+    uint8_t* stub = WeaponAbilities::JumpNear(reinterpret_cast<uintptr_t>(calls.front()), reinterpret_cast<const void*>(&Thunk));
+    if (!stub)
+    {
+        Status = L"no memory near the game's code for the mod's set lookup";
+        return;
+    }
+    ContainerOffset = container;
+    MapOffset = map;
+    Original.store(reinterpret_cast<Lookup>(const_cast<uint8_t*>(lookup)), std::memory_order_release);
+    int32_t patched = 0;
+    std::wstring where;
+    for (uint8_t* call : calls)
+    {
+        if (!WeaponAbilities::PatchCall(call, stub)) { continue; }
+        ++patched;
+        where += (where.empty() ? L"" : L", ") + Hex(reinterpret_cast<uintptr_t>(call) - reinterpret_cast<uintptr_t>(base));
+    }
+    Hooked = patched > 0;
+    Status = Hooked ? L"the game's set lookup points at the mod's (" + std::to_wstring(patched) + L" of " + std::to_wstring(calls.size()) + L" call(s) at " + where +
+                          L"; container +" + Hex(static_cast<uintptr_t>(container)) + L", map +" + Hex(static_cast<uintptr_t>(map)) + L"; 1 of " +
+                          std::to_wstring(candidates.size()) + L" functions of its shape)"
+                    : L"the game's set lookup could NOT be changed";
+}
+
+// The names of the sets the game took into a character's map (for the log).
+std::wstring GameSets(UObject* character)
+{
+    std::vector<NameObjectEntry> entries;
+    std::wstring why;
+    if (MapOffset < 0 || !ReadNameObjectMap(reinterpret_cast<const uint8_t*>(character) + ContainerOffset + MapOffset, entries, why))
+    {
+        return L"unreadable" + (why.empty() ? std::wstring{} : L": " + why);
+    }
+    std::wstring text;
+    for (const auto& entry : entries) { text += (text.empty() ? L"" : L", ") + NameText(entry.Key); }
+    return text.empty() ? L"none" : text;
+}
+
+void Remember(void* container, uint64_t name, UObject* set)
+{
+    AcquireSRWLockExclusive(&Lock);
+    size_t at = Count;
+    for (size_t i = 0; i < Count; ++i)
+    {
+        if (Entries[i].Container == container && Entries[i].Name == name)
+        {
+            at = i;
+            break;
+        }
+    }
+    if (at == Count)
+    {
+        if (Count == MaxEntries)
+        {
+            std::memmove(&Entries[0], &Entries[1], (MaxEntries - 1) * sizeof(Entry)); // the oldest goes
+            at = MaxEntries - 1;
+        }
+        else
+        {
+            ++Count;
+        }
+    }
+    Entries[at] = Entry{container, name, set};
+    ReleaseSRWLockExclusive(&Lock);
+}
+
+// A map load: the characters (and their containers) are new.
+void Clear()
+{
+    AcquireSRWLockExclusive(&Lock);
+    Count = 0;
+    for (size_t i = 0; i < RedirectCount; ++i) { Redirects[i] = Redirect{}; }   // (3.7.5)
+    RedirectCount = 0;
+    RedirectsOn.store(0, std::memory_order_release);
+    ReleaseSRWLockExclusive(&Lock);
+}
+
+// SetPrimaryAnimPack(character, pack) is about to run (game thread): when the game's map has no set of that name, the
+// set of that name in the character's pack is remembered for its container.
+void Prepare(UObject* character, const std::wstring& pack)
+{
+    if (!Hooked || !character || pack.empty()) { return; }
+    const Lookup original = Original.load(std::memory_order_acquire);
+    const RawName name = ExistingName(pack);
+    if (!original || (!name.Comparison && !name.Number)) { return; }
+    void* container = reinterpret_cast<uint8_t*>(character) + ContainerOffset;
+    UObject* had = original(container, KeyOf(name));
+    const std::wstring spec = CharaSpecRowOf(character);
+    if (had) // the game has it
+    {
+        const std::wstring key = SkelCompat::FoldedKey(spec + L"/" + pack + L"/had");
+        if (std::find(Said.begin(), Said.end(), key) == Said.end())
+        {
+            Said.push_back(key);
+            Log.Line(L"Animation sets: " + (spec.empty() ? std::wstring(L"a character") : spec) + L" was switched to " + pack +
+                     L", a set the game has in its map (" + ObjectPath(had) + L"; it took: " + GameSets(character) + L"); " + Counts());
+        }
+        return;
+    }
+    UObject* set = nullptr;
+    std::wstring why;
+    UObject* packAsset = spec.empty() ? nullptr : FindObjectByPath(SkelCompat::CharacterPackPath(spec).c_str());
+    if (!packAsset) { why = spec.empty() ? L"its CharaSpec row is unknown" : L"its pack is not loaded"; }
+    else
+    {
+        std::vector<PackSlot> slots;
+        int32_t entries = 0;
+        if (!ReadPackSets(packAsset, slots, entries, why)) { why = L"its pack's sets are unreadable (" + why + L")"; }
+        for (const auto& slot : slots)
+        {
+            if (slot.Set && SkelCompat::NameEquals(slot.Name, pack))
+            {
+                set = slot.Set;
+                break;
+            }
+        }
+        if (!set && why.empty()) { why = L"its pack has no set of that name"; }
+    }
+    if (set)
+    {
+        set->SetRootSet(); // it may be handed out after the pack's own references change
+        Remember(container, KeyOf(name), set);
+    }
+    const std::wstring key = SkelCompat::FoldedKey(spec + L"/" + pack);
+    if (std::find(Said.begin(), Said.end(), key) == Said.end())
+    {
+        Said.push_back(key);
+        Log.Line(L"Animation sets: " + (spec.empty() ? std::wstring(L"a character") : spec) + L" was switched to " + pack +
+                 L", a set the game did not take into its map (it took: " + GameSets(character) + L"): " +
+                 (set ? L"the mod gives it its pack's own " + pack + L" (" + ObjectPath(set) + L")" : L"NOT given (" + why + L")") + L"; " + Counts());
+    }
+}
+
+// (3.7.5) A form's "sets" start on the character (game thread, its pack switched): from now on the game's lookups of each
+// name on the left get the character's set of the name on the right (the game's, or its pack's: Prepare). Returns the
+// log's words.
+std::wstring RedirectSets(UObject* character, const std::wstring& spec, const std::vector<std::pair<std::wstring, std::wstring>>& sets)
+{
+    if (sets.empty() || !character) { return {}; }
+    if (!Hooked) { return L"NOT used: " + Status; }
+    const Lookup original = Original.load(std::memory_order_acquire);
+    void* container = reinterpret_cast<uint8_t*>(character) + ContainerOffset;
+    std::wstring text;
+    for (const auto& [from, to] : sets)
+    {
+        text += (text.empty() ? L"" : L", ") + from + L" -> " + to;
+        const RawName f = ExistingName(from), t = ExistingName(to);
+        if ((!f.Comparison && !f.Number) || (!t.Comparison && !t.Number))
+        {
+            text += L" (NOT: the game has no name " + ((!f.Comparison && !f.Number) ? from : to) + L")";
+            continue;
+        }
+        Prepare(character, to);   // (the set of that name from the character's pack when the game's map has none)
+        UObject* set = original ? original(container, KeyOf(t)) : nullptr;
+        if (!set)
+        {
+            AcquireSRWLockShared(&Lock);
+            set = RememberedLocked(container, KeyOf(t));
+            ReleaseSRWLockShared(&Lock);
+        }
+        if (!set)
+        {
+            text += L" (NOT: the character has no set " + to + L": its CharaSpec row and the row's \"battle\" sources make its sets)";
+            continue;
+        }
+        bool full = false;
+        AcquireSRWLockExclusive(&Lock);
+        size_t at = MaxRedirects;
+        for (size_t i = 0; i < RedirectCount && at == MaxRedirects; ++i)
+        {
+            if (Redirects[i].Container == container && Redirects[i].From == KeyOf(f)) { at = i; }
+        }
+        for (size_t i = 0; i < RedirectCount && at == MaxRedirects; ++i)
+        {
+            if (!Redirects[i].Container) { at = i; }
+        }
+        if (at == MaxRedirects)
+        {
+            if (RedirectCount < MaxRedirects) { at = RedirectCount++; }
+            else { full = true; }
+        }
+        if (!full)
+        {
+            Redirects[at] = Redirect{container, KeyOf(f), KeyOf(t), from, to, spec};
+            RedirectHits[at].store(0, std::memory_order_relaxed);
+            RedirectMisses[at].store(0, std::memory_order_relaxed);
+            RedirectSaid[at] = false;
+            RedirectsOn.store(RedirectCount, std::memory_order_release);
+        }
+        ReleaseSRWLockExclusive(&Lock);
+        text += full ? L" (NOT: " + std::to_wstring(MaxRedirects) + L" are in use)" : L" (" + ObjectPath(set) + L")";
+    }
+    return text;
+}
+
+// (3.7.5) The character's form "sets" end (game thread; before its pack switches back: the game looks the sets it switches
+// to up by their names). Returns what they did, for the log (empty: it had none).
+std::wstring Unredirect(UObject* character)
+{
+    if (!character || RedirectsOn.load(std::memory_order_acquire) == 0) { return {}; }
+    void* container = reinterpret_cast<uint8_t*>(character) + ContainerOffset;
+    std::wstring text;
+    AcquireSRWLockExclusive(&Lock);
+    for (size_t i = 0; i < RedirectCount; ++i)
+    {
+        if (Redirects[i].Container != container) { continue; }
+        const uint64_t hits = RedirectHits[i].load(std::memory_order_relaxed), misses = RedirectMisses[i].load(std::memory_order_relaxed);
+        text += (text.empty() ? L"" : L", ") + Redirects[i].FromText + L" -> " + Redirects[i].ToText + L" " + std::to_wstring(hits) + L" time(s)" +
+                (misses ? L" (" + std::to_wstring(misses) + L" found no " + Redirects[i].ToText + L")" : L"");
+        Redirects[i] = Redirect{};
+    }
+    while (RedirectCount && !Redirects[RedirectCount - 1].Container) { --RedirectCount; }
+    RedirectsOn.store(RedirectCount, std::memory_order_release);
+    ReleaseSRWLockExclusive(&Lock);
+    return text.empty() ? text : L"the set lookups it redirected: " + text;
+}
+
+// (3.7.5) The character's redirects the game used for the first time since the form began (game thread; the log: which
+// of the game's set names it looks up as it plays, Punisher mode's among them).
+std::wstring NewHits(UObject* character)
+{
+    if (!character || RedirectsOn.load(std::memory_order_acquire) == 0) { return {}; }
+    void* container = reinterpret_cast<uint8_t*>(character) + ContainerOffset;
+    std::wstring text;
+    AcquireSRWLockShared(&Lock);   // (RedirectSaid is the game thread's alone)
+    for (size_t i = 0; i < RedirectCount; ++i)
+    {
+        if (Redirects[i].Container != container || RedirectSaid[i]) { continue; }
+        const uint64_t hits = RedirectHits[i].load(std::memory_order_relaxed), misses = RedirectMisses[i].load(std::memory_order_relaxed);
+        if (!hits && !misses) { continue; }
+        RedirectSaid[i] = true;
+        text += (text.empty() ? L"" : L"; ") + std::wstring(L"the game looked up ") + Redirects[i].FromText + L": it got " +
+                (hits ? Redirects[i].ToText : L"its own " + Redirects[i].FromText + L" (NO " + Redirects[i].ToText + L" found)");
+    }
+    ReleaseSRWLockShared(&Lock);
+    return text;
+}
+
+// After a pack switch (game thread): what the game's lookup did since, for the log (the first few switches).
+void AfterSwitch(const std::wstring& pack)
+{
+    static int said = 0;
+    if (!Hooked || said >= 12) { return; }
+    ++said;
+    Log.Line(L"Animation sets: switch to " + pack + L" done; " + Counts());
+}
+} // namespace PackSets
+
+// EndBattleAPI SetPrimaryAnimPack(character, pack, ...) / ResetPrimaryAnimPack(character) just ran.
+// The character and pack of a SetPrimaryAnimPack / ResetPrimaryAnimPack call (only reads its parameters).
+bool ReadPackCall(UFunction* function, void* params, UObject*& character, std::wstring& pack, bool& reset)
+{
+    if (!params || !function) { return false; }
+    reset = function == State.ResetPrimaryAnimPack;
+    character = nullptr;
+    pack = SkelCompat::DefaultAbilityPack();
+    bool havePack = reset;
+    for (FProperty* property : function->ForEachPropertyInChain())
+    {
+        if (!property) { continue; }
+        const std::wstring type = TypeOf(property);
+        const int32_t offset = property->GetOffset_Internal();
+        if (offset < 0 || offset + property->GetElementSize() > function->GetParmsSize()) { continue; }
+        if (!character && type == L"ObjectProperty") { std::memcpy(&character, static_cast<uint8_t*>(params) + offset, sizeof(character)); }
+        else if (!havePack && type == L"NameProperty")
+        {
+            RawName raw{};
+            std::memcpy(&raw, static_cast<uint8_t*>(params) + offset, sizeof(raw));
+            pack = NameText(KeyOf(raw));
+            havePack = true;
+        }
+    }
+    return character && havePack;
+}
+
+void ApplyPackCall(UObject* character, const std::wstring& pack, bool reset, bool queued);
+
+// A character's pack switched (now, or `queued` while the mod was busy): its abilities follow.
+void ApplyPackCall(UObject* character, const std::wstring& pack, bool reset, bool queued)
+{
+    if (!Alive(character)) { return; }
+    const std::wstring spec = CharaSpecRowOf(character);
+    if (spec.empty()) { return; }
+    const SkelCompat::AnimSetRow* row = State.Config.FindAnimSetRow(SkelCompat::CharacterPackPath(spec));
+    if (!row) { return; }
+    // (with the 3.5 set lookup a set the row does not name is given from the pack: PackSets logs that)
+    if (!reset && !PackSets::Hooked && !SkelCompat::NameEquals(pack, SkelCompat::DefaultAbilityPack()) && CharaSpecListsSet(spec, pack) == 0)
+    {
+        const std::wstring key = SkelCompat::FoldedKey(spec + L"/" + pack);
+        if (std::find(State.UnlistedPackWarnings.begin(), State.UnlistedPackWarnings.end(), key) == State.UnlistedPackWarnings.end())
+        {
+            State.UnlistedPackWarnings.push_back(key);
+            const std::wstring warning = L"Animation sets: " + spec + L" was switched to " + pack + L", but its CharaSpec row's AnimationSetList does not name " +
+                                         pack + L": a character only takes the sets its row names, so it keeps playing its pack (add " + pack +
+                                         L" to the row's AnimationSetList in the CharaSpec table)";
+            Log.Line(warning);
+            NoteAbilityLine(warning);
+        }
+    }
+    if (row->Abilities.empty()) { return; }
+    bool wrote = false;
+    std::wstring line = spec + (reset ? L" (pack reset)" : L"") + (queued ? L" (after the mod's work)" : L"") + L": " + ApplyAbilities(*row, pack, wrote);
+    if (wrote)
+    {
+        line += RefreshAbilityLists(*row);
+        State.AbilitiesSwitched = true;
+    }
+    Log.Line(L"Abilities: " + line);
+    NoteAbilityLine(line);
+}
+
+// Every map load: the Battle00 lists (or the table's own) for each player row the rows name.
+void ApplyDefaultAbilities()
+{
+    if (!State.AbilitiesWanted) { return; }
+    std::vector<std::wstring> done;
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.Abilities.empty() || std::any_of(done.begin(), done.end(), [&](const std::wstring& p) { return SkelCompat::NameEquals(p, row.Player); }))
+        {
+            continue;
+        }
+        done.push_back(row.Player);
+        bool wrote = false;
+        std::wstring line = L"map load: " + ApplyAbilities(row, SkelCompat::DefaultAbilityPack(), wrote);
+        // the lists of a pack switched to before this map are still the game's until it recalculates
+        if (wrote && State.AbilitiesSwitched) { line += RefreshAbilityLists(row); }
+        Log.Line(L"Abilities: " + line);
+        NoteAbilityLine(line);
+    }
+    State.AbilitiesSwitched = false;
+}
+
+// 3.3 "preload": objects the rows want resident (a CharaSpec pack a damage source spawns, ...): loaded at the first map
+// load and kept for the session.
+void PreloadRowAssets()
+{
+    std::vector<std::wstring> done;
+    for (const auto& row : State.Config.AnimSets)
+    {
+        std::vector<std::wstring> paths = row.Preload;
+        paths.insert(paths.end(), row.PackAssets.begin(), row.PackAssets.end());
+        for (const auto& path : paths)
+        {
+            if (std::any_of(done.begin(), done.end(), [&](const std::wstring& p) { return SkelCompat::PathEquals(p, path); })) { continue; }
+            done.push_back(path);
+            UObject* object = FindObjectByPath(path.c_str());
+            const bool found = object != nullptr;
+            if (!object) { object = LoadBlocking(path); }
+            if (object)
+            {
+                object->SetRootSet();
+                Log.Line(L"Preload: " + path + (found ? L" (already loaded) kept" : L" loaded and kept"));
+            }
+            else
+            {
+                Log.Line(L"Preload: " + path + L" NOT found");
+            }
+        }
+    }
+}
+
+void SetUpAbilities()
+{
+    std::wstring rows;
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.Abilities.empty()) { continue; }
+        std::wstring packs;
+        for (const auto& entry : row.Abilities) { packs += (packs.empty() ? L"" : L", ") + entry.Pack; }
+        rows += (rows.empty() ? L"" : L"; ") + ShortNameOfPath(row.Characters.front()) + L" (" + row.Player + L": " + packs + L")";
+    }
+    if (rows.empty()) { return; }
+    State.SetPrimaryAnimPack = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:SetPrimaryAnimPack");
+    State.ResetPrimaryAnimPack = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:ResetPrimaryAnimPack");
+    State.GetCharaSpecName = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:GetCharaSpecName");
+    State.BattleApi = FindObjectByPath(L"/Script/EndGame.Default__EndBattleAPI");
+    State.AbilitiesWanted = State.SetPrimaryAnimPack && State.ResetPrimaryAnimPack && State.GetCharaSpecName && State.BattleApi;
+    State.GetPlayerLevel = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndMenuBPAPI:BPGetPlayerLevel");
+    State.GetPlayerExperience = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndMenuBPAPI:BPGetPlayerExperience");
+    State.SetPlayerExperience = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndMenuBPAPI:BPSetPlayerExperience");
+    State.MenuApi = FindObjectByPath(L"/Script/EndGame.Default__EndMenuBPAPI");
+    const bool recalculate = State.GetPlayerLevel && State.GetPlayerExperience && State.SetPlayerExperience && State.MenuApi;
+    Log.Line(L"Abilities per animation pack: " + rows + L"; EndBattleAPI " +
+             (State.AbilitiesWanted ? std::wstring(L"found, packs switch the lists")
+                                    : std::wstring(L"functions NOT found (") + (State.SetPrimaryAnimPack ? L"" : L"SetPrimaryAnimPack ") +
+                                          (State.ResetPrimaryAnimPack ? L"" : L"ResetPrimaryAnimPack ") + (State.GetCharaSpecName ? L"" : L"GetCharaSpecName ") +
+                                          (State.BattleApi ? L"" : L"Default__EndBattleAPI") + L"): abilities stay as the tables have them") +
+             L"; EndMenuBPAPI level / EXP functions " + (recalculate ? L"found (status recalculation after a switch, EXP and level kept)" : L"NOT found: switched lists show when the game next recalculates"));
+}
+
+std::wstring AbilityReport()
+{
+    std::wstring text;
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.Abilities.empty()) { continue; }
+        text += L"  " + ShortNameOfPath(row.Characters.front()) + L" -> " + row.Player +
+                (row.RefreshAbilities ? std::wstring{} : std::wstring(L" (refresh_abilities off)")) + L"\n";
+        for (const auto& entry : row.Abilities)
+        {
+            std::wstring weapons;
+            for (const auto& [weapon, ability] : entry.Weapons) { weapons += (weapons.empty() ? L"" : L", ") + weapon + L" -> " + ability; }
+            text += L"    " + entry.Pack + L": commands " +
+                    (entry.HasCommands ? (entry.Commands.empty() ? std::wstring(L"(none)") : SkelCompat::Detail::Joined(entry.Commands)) : std::wstring(L"-")) +
+                    L"; limits " + (entry.HasLimits ? (entry.Limits.empty() ? std::wstring(L"(none)") : SkelCompat::Detail::Joined(entry.Limits)) : std::wstring(L"-")) +
+                    (entry.HasWeapons ? L"; weapon abilities " + (weapons.empty() ? std::wstring(L"the weapons' own") : weapons) : std::wstring{}) + L"\n";
+        }
+    }
+    if (text.empty()) { return {}; }
+    std::wstring out = L"\nAbilities per animation pack: " + std::wstring(State.AbilitiesWanted ? L"active" : L"OFF (EndBattleAPI functions not found)") +
+                       (State.GetPlayerLevel && State.GetPlayerExperience && State.SetPlayerExperience && State.MenuApi
+                            ? (State.RefreshProblem ? L", status recalculation SWITCHED OFF (" + State.RefreshText + L")" : std::wstring(L", status recalculation after a switch (EXP and level kept)"))
+                            : std::wstring(L", no status recalculation (EndMenuBPAPI level / EXP functions not found)")) +
+                       L" (the game lists 5 commands and 3 limits from a player row)\n  List getters: " + ListGetters::Status + L"\n  Weapon abilities: " +
+                       WeaponAbilities::Status + L"\n" + text;
+    out += L"  Last switches:\n";
+    for (const auto& line : State.AbilityLines) { out += L"    " + line + L"\n"; }
+    return out;
+}
+
+namespace Forms
+{
+std::wstring Report();
+}
+
+void WriteReport()
+{
+    std::vector<ReboundMesh> rebound;
+    std::vector<UObject*> pending;
+    std::vector<std::wstring> rooted;
+    {
+        std::lock_guard lock(State.Mutex);
+        rebound = State.Rebound;
+        pending = State.Pending;
+        for (const auto& [key, skeleton] : State.Rooted) { rooted.push_back(key); }
+    }
+    std::wstring text = L"RebirthSkelCompat " + std::wstring(ModVersionText) + L" report\n\n";
+    text += State.Faulted.load() ? L"STATE: switched off after an error (see RebirthSkelCompat.log)\n\n" : L"STATE: active\n\n";
+    text += L"JSON pairs:\n";
+    for (const auto& pair : State.Config.Pairs)
+    {
+        text += L"  " + std::wstring(pair.Use == SkelCompat::Method::Mesh ? L"mesh" : L"animations") + L", receiving " + pair.Receiving +
+                (pair.FamilyHub.empty() ? std::wstring{} : L"  (family of " + ShortNameOfPath(pair.FamilyHub) + L")") + L"  [" + pair.Origin + L"]\n";
+        for (const auto& animation : pair.Animation) { text += L"    animation " + animation + L"\n"; }
+        for (const auto& name : pair.RequiresPaks) { text += L"    requires " + name + L" (installed)\n"; }
+        if (pair.KeepProportions) { text += L"    proportions kept\n"; }
+    }
+    if (!State.ProportionSkeletons.empty())
+    {
+        text += L"\nProportions:\n";
+        for (const auto& path : State.ProportionSkeletons) { text += L"  " + path + L"\n"; }
+        for (const auto& line : State.ProportionLines) { text += L"  " + line + L"\n"; }
+        text += L"  cutscene animations that keep every body's build: " + std::to_wstring(State.CutsceneProportioned.load()) +
+                (State.OffSeqIgnoreRetarget < 0 ? L" (bIgnoreTranslationRetargeting not found)" : (!State.Config.CutsceneProportions ? L" (cutscene_proportions is off)" : L"")) + L"\n";
+        if (!State.PosesToAdd.empty()) { text += L"  " + std::to_wstring(State.PosesToAdd.size()) + L" retarget pose(s) waiting for a safe point\n"; }
+    }
+    text += L"\nResident skeletons (" + std::to_wstring(rooted.size()) + L"):\n";
+    for (const auto& key : rooted) { text += L"  " + key + L"\n"; }
+    text += L"\nAnimation adoption (KH3 mode):\n";
+    if (const AdoptionTable* table = State.Adoption.load(std::memory_order_acquire))
+    {
+        for (const auto& plan : table->Plans)
+        {
+            text += L"  " + plan->FromPath + L"\n    -> " + plan->ToPath + L"\n    " + plan->Summary + L"\n    adopted " +
+                    std::to_wstring(plan->Adopted.load()) + L", refused " + std::to_wstring(plan->Refused.load()) + L"; curve tracks left out: " +
+                    std::to_wstring(plan->CurvesDropped.load()) + L" in " + std::to_wstring(plan->AssetsDroppingCurves.load()) + L" adopted asset(s)" +
+                    (plan->RetargetReplaced.load() ? L"; " + std::to_wstring(plan->RetargetReplaced.load()) + L" sequence(s) had their own retarget source replaced"
+                                                   : std::wstring{}) +
+                    L"\n";
+        }
+        std::vector<std::wstring> waiting;
+        {
+            std::lock_guard lock(State.AdoptMutex);
+            for (const auto& entry : State.Waiting) { waiting.push_back(entry.Path); }
+        }
+        text += L"  Hooks: " + std::wstring(State.AnimHooksInstalled ? L"animation PostLoad hooked" : L"animation PostLoad NOT hooked (map loads only)") +
+                L", frame safe point " + (State.ViewportSafePoint.load() ? L"available" : L"not seen (late passes only where nothing plays the old skeleton)") +
+                L", late passes so far " + std::to_wstring(State.LatePasses) + L"\n";
+        text += L"  Containers waiting for their animations (" + std::to_wstring(waiting.size()) + L"):\n";
+        const size_t shown = std::min<size_t>(waiting.size(), 50);
+        for (size_t k = 0; k < shown; ++k) { text += L"    " + waiting[k] + L"\n"; }
+        if (waiting.size() > shown) { text += L"    (+" + std::to_wstring(waiting.size() - shown) + L" more)\n"; }
+    }
+    else
+    {
+        text += L"  none active\n";
+    }
+    text += L"\nRebound meshes (" + std::to_wstring(rebound.size()) + L"):\n";
+    std::vector<UObject*> meshes;
+    for (const auto& r : rebound)
+    {
+        text += L"  " + r.MeshPath + (r.Late ? L"  (late)" : L"") + L"\n    -> " + r.ToSkeleton + L"\n    " +
+                (r.Diagnosed ? r.Diagnosis : L"(not checked yet)") + L"\n";
+        if (!r.HierarchyNote.empty()) { text += L"    hierarchy fix: " + r.HierarchyNote + L"\n"; }
+        if (!r.SocketNote.empty()) { text += L"    " + r.SocketNote + L"\n"; }
+        if (Alive(r.Mesh)) { meshes.push_back(r.Mesh); }
+    }
+    text += L"\nWaiting for an animation skeleton (" + std::to_wstring(pending.size()) + L"):\n";
+    for (UObject* mesh : pending) { text += L"  " + PathOf(mesh) + L"\n"; }
+    text += L"\nLive components using rebound meshes:\n";
+    for (const ComponentView& view : ComponentsUsing(meshes))
+    {
+        UObject* animSkeleton = view.AnimClass ? TargetSkeletonOf(view.AnimClass) : nullptr;
+        UObject* meshSkeleton = view.Mesh ? RawMeshSkeleton(view.Mesh) : nullptr;
+        text += L"  " + ObjectPath(view.Component) + L"\n    AnimClass " + (view.AnimClass ? PathOf(view.AnimClass) : L"none") +
+                (animSkeleton ? L" (for " + ShortName(animSkeleton) + L")" : std::wstring{}) + L", mesh on " +
+                (meshSkeleton ? ShortName(meshSkeleton) : std::wstring(L"?")) + L", AnimBlueprint instance " +
+                (view.AnimInstance ? L"running" : (animSkeleton && meshSkeleton && animSkeleton != meshSkeleton
+                                                       ? L"NONE (refused: the AnimBlueprint is made for another skeleton)"
+                                                       : L"NONE (refused or not using an AnimBlueprint)")) +
+                L"\n";
+    }
+    {
+        std::lock_guard lock(State.AbpMutex);
+        text += L"\nAnimBlueprints moved to their family's hub (" + std::to_wstring(State.AbpMoved.size()) + L"):\n";
+        for (const auto& line : State.AbpLines) { text += L"  " + line + L"\n"; }
+    }
+    text += L"\nAnimBlueprints re-initialised so far: " + std::to_wstring(State.Repaired + State.AbpRepaired) + L"\n";
+    text += L"PostLoad hook: " + PostLoadStats() + L"\n";
+    if (!State.Config.AnimSets.empty())
+    {
+        text += L"\nAnimation set rows (" + std::to_wstring(State.Config.AnimSets.size()) + L"): " +
+                (State.PackHookInstalled ? (State.SetsReady.load() ? std::wstring(L"active") : std::wstring(L"waiting for the first map load"))
+                                         : std::wstring(L"OFF (see RebirthSkelCompat.log)")) +
+                L", " + std::to_wstring(State.PacksMerged.load()) + L" pack load(s) merged\n";
+        std::vector<std::wstring> merges;
+        {
+            std::lock_guard lock(State.PackMutex);
+            merges = State.MergeLines;
+        }
+        for (const auto& line : State.SetLines) { text += L"  " + line + L"\n"; }
+        text += L"  Packs merged (" + std::to_wstring(merges.size()) + L" shown):\n";
+        for (const auto& line : merges) { text += L"  " + line + L"\n"; }
+    }
+    text += AbilityReport();
+    text += L"\n" + Forms::Report() + L"\n";
+    if (!State.Config.Messages.empty())
+    {
+        text += L"\nConfig messages:\n";
+        for (const auto& m : State.Config.Messages) { text += L"  " + m + L"\n"; }
+    }
+    const fs::path path = State.ModDirectory / L"RebirthSkelCompat.report.txt";
+    std::ofstream file(path, std::ios::binary | std::ios::trunc);
+    const std::string utf8 = SkelCompat::Narrow(text);
+    file.write(utf8.data(), static_cast<std::streamsize>(utf8.size()));
+    Log.Line(L"Report written to " + path.wstring());
+}
+
+struct BusyScope
+{
+    BusyScope() { State.Busy = true; }
+    ~BusyScope() { State.Busy = false; }
+};
+
+namespace LuaPump { bool RangeOk(uintptr_t at, size_t size, bool write); } // (3.7.9's checked memory ranges, defined below)
+
+// 3.8: a row's "field_actions" goes into its characters' CharaSpec rows (AnimationSetParentFolder) while the game runs, so
+// the game takes their field-action and level sets from that motion folder without a CharaSpec table in a pak (which would
+// fight the one another mod ships). Game thread; once the table is loaded, again after each map load.
+void ApplyFieldActionFolders(bool mapLoad)
+{
+    static bool done = false;
+    static bool told = false;
+    if (done && !mapLoad) { return; }
+    if (State.Config.AnimSets.empty())
+    {
+        done = true;
+        return;
+    }
+    FrozenTable table;
+    std::wstring why;
+    if (!OpenTable(CharaSpecTablePath, table, why)) { return; }   // not loaded yet: the next pump asks again
+    const SkelCompat::Frozen::Field* field = SkelCompat::Frozen::Find(table.Fields, L"AnimationSetParentFolder");
+    if (!field || field->Array || field->Type != 11)
+    {
+        if (!told) { Log.Line(L"field_actions: the CharaSpec table has no AnimationSetParentFolder name field, its rows stay as they are"); }
+        told = done = true;
+        return;
+    }
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.FieldActions.empty()) { continue; }
+        const RawName want = RawNameOf(FName(row.FieldActions.c_str(), FNAME_Add));
+        for (const auto& character : row.Characters)
+        {
+            // (a row's characters are their CharaSpec packs, CharaSpec_<row>; the table's rows are named <row>)
+            std::wstring spec = SkelCompat::ObjectNameOfPath(character);
+            if (SkelCompat::StartsWithFolded(spec, L"CharaSpec_")) { spec.erase(0, 10); }
+            const uintptr_t at = TableRow(table, ExistingName(spec));
+            if (!at)
+            {
+                if (!told) { Log.Line(L"field_actions " + row.FieldActions + L": the CharaSpec table has no row " + spec); }
+                continue;
+            }
+            const uintptr_t slot = at + static_cast<uintptr_t>(field->Offset);
+            RawName have{};
+            if (!SafeCopy(&have, reinterpret_cast<const void*>(slot), sizeof(have)) || SameName(have, want)) { continue; }
+            if (!LuaPump::RangeOk(slot, sizeof(want), true))
+            {
+                Log.Line(L"field_actions " + row.FieldActions + L": CharaSpec row " + spec + L" cannot be written");
+                continue;
+            }
+            const std::wstring before = (have.Comparison || have.Number) ? NameText(KeyOf(have)) : std::wstring(L"None");
+            std::memcpy(reinterpret_cast<void*>(slot), &want, sizeof(want));
+            Log.Line(L"CharaSpec " + spec + L": AnimationSetParentFolder " + before + L" -> " + row.FieldActions + L" (field_actions)");
+        }
+    }
+    told = done = true;
+}
+
+// `mapLoad`: called from the map-load callback, a safe point for the late adoption pass.
+void PumpBody(bool report, bool mapLoad)
+{
+    LoadQueuedSkeletons();
+    ApplyFieldActionFolders(mapLoad);   // (3.8)
+    BuildAdoptionPlans();
+    CheckProportions();
+    if (mapLoad && State.ProportionsWanted.load(std::memory_order_acquire)) { ApplyProportions(); }
+    if (State.SetsReady.load(std::memory_order_acquire))
+    {
+        bool queued = false;
+        {
+            std::lock_guard lock(State.PackMutex);
+            queued = !State.PacksToMerge.empty();
+        }
+        if (queued) { MergeQueuedPacks(); }
+    }
+    if (mapLoad)
+    {
+        // Every map load (behind a loading screen) also catches animations that slipped past the PostLoad hook.
+        if (State.Adoption.load(std::memory_order_acquire)) { LatePass(true); }
+    }
+    else
+    {
+        CheckWaiting(false);
+        MaybeLatePass(false);
+    }
+    ProcessPending();
+    if (mapLoad) { MoveLoadedAnimBlueprints(); }
+    RepairMovedAnimBlueprints();
+    Diagnose();
+    {
+        std::lock_guard lock(State.Mutex);
+        const bool more = (!State.Pending.empty() && State.PendingVersion != State.RootedVersion) || !State.LoadQueue.empty() ||
+                          std::any_of(State.Rebound.begin(), State.Rebound.end(), [](const ReboundMesh& r) { return !r.Diagnosed; });
+        if (more) { State.Work.store(true, std::memory_order_release); }
+    }
+    if (report) { WriteReport(); }
+}
+
+void Pump(bool force)
+{
+    if (State.Busy || GetCurrentThreadId() != State.GameThread.load(std::memory_order_acquire)) { return; }
+    const bool report = State.ReportRequested.load(std::memory_order_acquire);
+    // Without the frame safe point the late adoption pass runs from here (only for skeletons nothing plays on).
+    const bool late = (State.LatePassWanted.load(std::memory_order_acquire) || State.WaitingCount.load(std::memory_order_relaxed) > 0) &&
+                      !State.ViewportSafePoint.load(std::memory_order_relaxed);
+    if (!force && !report && !late && !State.Work.load(std::memory_order_acquire)) { return; }
+    const uint64_t now = GetTickCount64();
+    if (!force && !report && now < State.NextPumpMs) { return; }
+    if (!force && !report && late && !State.Work.load(std::memory_order_acquire) && now < State.LatePassNotBefore &&
+        now < State.NextWaitingCheck)
+    {
+        return;
+    }
+    State.NextPumpMs = now + PumpIntervalMs;
+    State.Work.store(false, std::memory_order_release);
+    BusyScope busy;
+    PumpBody(report && State.ReportRequested.exchange(false), false);
+}
+
+// ---------------------------------------------------------------------------------------
+// 3.7: the controller, for the shooter. The game reads its controller itself: a DualSense or DualShock 4 as HID input
+// reports (ReadFile on the device, overlapped, then GetOverlappedResult(Ex), on a thread of its own), an XInput pad with
+// XInputGetState, all through its own import table, and it sends a DualSense its lights, rumble and trigger effects with
+// WriteFile. The mod's functions take the place of those in the game's import table (only there: nothing else in the
+// process is touched). They read what each report holds (the shooter reads the controller from there), take the
+// shooter's buttons out of it before the game sees it (Block), move the right stick toward its middle while aiming (the
+// slower aim), and put the shooter's trigger effects in the game's own output reports, or write a report of their own
+// when the game sends none. They are put in at the first map load only when a row has a shooter.
+// 3.7.1: a device is looked at whatever the size of the game's read (3.7 took only 64, 78 and 547 bytes, and read
+// nothing of the game's), and once a handle is known to be no HID device it is not looked at again for 10 s; the
+// devices the game opens (CreateFile) and the HID reports of raw input are looked at too, and the log says what the
+// game did with its controller ("Pad: the game's reads ...").
+// 3.7.2: the game opens every HID device to look at it and closes it again, and Windows hands the closed handles' numbers
+// out again: 3.7.0 and 3.7.1 kept what a handle was the first time (a mouse receiver) for the DualSense opened under the
+// same number later, and read none of its reports. CloseHandle is hooked too, and a handle is forgotten as it closes
+// and looked at again when a device is opened under it.
+// ---------------------------------------------------------------------------------------
+namespace Pad
+{
+using SkelCompat::Shooter::PadKind;
+using SkelCompat::Shooter::PadRead;
+
+using ReadFileFn = BOOL(WINAPI*)(HANDLE, LPVOID, DWORD, LPDWORD, LPOVERLAPPED);
+using WriteFileFn = BOOL(WINAPI*)(HANDLE, LPCVOID, DWORD, LPDWORD, LPOVERLAPPED);
+using ResultFn = BOOL(WINAPI*)(HANDLE, LPOVERLAPPED, LPDWORD, BOOL);
+using ResultExFn = BOOL(WINAPI*)(HANDLE, LPOVERLAPPED, LPDWORD, DWORD, BOOL);
+using XGetFn = DWORD(WINAPI*)(DWORD, void*);
+using CreateWFn = HANDLE(WINAPI*)(LPCWSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
+using CreateAFn = HANDLE(WINAPI*)(LPCSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
+using RawDataFn = UINT(WINAPI*)(HRAWINPUT, UINT, LPVOID, PUINT, UINT);
+using RawInfoFn = UINT(WINAPI*)(HANDLE, UINT, LPVOID, PUINT);
+using CloseFn = BOOL(WINAPI*)(HANDLE);
+
+ReadFileFn RealRead = nullptr;
+WriteFileFn RealWrite = nullptr;
+ResultFn RealResult = nullptr;
+ResultExFn RealResultEx = nullptr;
+XGetFn RealXGet = nullptr;
+CreateWFn RealCreateW = nullptr;
+CreateAFn RealCreateA = nullptr;
+RawDataFn RealRawData = nullptr;
+RawInfoFn RawInfo = nullptr;   // user32 GetRawInputDeviceInfoW (looked up: the mod links only kernel32)
+CloseFn RealClose = nullptr;   // (3.7.2)
+
+// hid.dll (the game has it loaded; looked up)
+struct HidAttributes
+{
+    ULONG Size;
+    USHORT VendorID;
+    USHORT ProductID;
+    USHORT VersionNumber;
+};
+struct HidCaps
+{
+    USHORT Usage, UsagePage, InputReportByteLength, OutputReportByteLength, FeatureReportByteLength;
+    USHORT Reserved[17];
+    USHORT Rest[10];
+};
+using HidAttrFn = BOOLEAN(__stdcall*)(HANDLE, HidAttributes*);
+using HidPrepFn = BOOLEAN(__stdcall*)(HANDLE, void**);
+using HidFreeFn = BOOLEAN(__stdcall*)(void*);
+using HidCapsFn = LONG(__stdcall*)(void*, HidCaps*);
+HidAttrFn HidAttr = nullptr;
+HidPrepFn HidPrep = nullptr;
+HidFreeFn HidFree = nullptr;
+HidCapsFn HidGetCaps = nullptr;
+
+std::atomic<bool> Hooked{false};           // the hooks are in
+std::atomic<uint32_t> Block{0};            // buttons the game is not to see now (Bit() of SkelCompat::Shooter::Button)
+std::atomic<uint32_t> Force{0};            // (3.7.3) buttons the game is to see held now (the guard while aiming)
+std::atomic<uint32_t> StickPermille{1000}; // the right stick's reach for the game, in thousandths (the slower aim)
+
+// What the controller says: the reading thread writes, the game thread reads.
+struct Source
+{
+    std::atomic<uint32_t> Down{0};
+    std::atomic<uint32_t> Triggers{0};   // L2 | R2 << 8 (0 to 255)
+    std::atomic<uint64_t> At{0};         // GetTickCount64 of its last report
+    std::atomic<uint64_t> Count{0};
+};
+Source Hid, XPad;
+std::atomic<uint8_t> HidKind{0};
+std::atomic<int32_t> XUser{-1};            // the XInput pad read (the first one connected)
+std::atomic<uint64_t> LateReports{0};      // read only at the next read (the game did not ask GetOverlappedResult)
+// what the game does with its controller (the log)
+std::atomic<uint64_t> ReadCalls{0}, HidReads{0}, WriteCalls{0}, HidWrites{0}, XCalls{0}, XConnected{0}, RawHid{0}, RawPad{0}, HidOpens{0}, Looks{0};
+
+// While the mod's own work runs inside a hook (its log file, the device checks), the hooks let calls straight through.
+thread_local int Depth = 0;
+struct Quiet
+{
+    Quiet() { ++Depth; }
+    ~Quiet() { --Depth; }
+    Quiet(const Quiet&) = delete;
+    Quiet& operator=(const Quiet&) = delete;
+};
+
+struct Device
+{
+    HANDLE Handle = nullptr;
+    PadKind Kind = PadKind::None;            // None: a HID device the shooter does not read
+    uint16_t Vendor = 0, Product = 0;
+    uint16_t In = 0, Out = 0;                // its report lengths
+    bool Overlapped = false;                 // the game reads it overlapped
+    bool Said = false;
+    uint64_t Seen = 0;
+    uint64_t Reads = 0, Writes = 0;
+    uint32_t ReadSize = 0, WriteSize = 0;    // the game's last ones
+};
+std::mutex Lock;                             // the devices, the reads in flight, the trigger effects, the lines below
+Device Devices[16];                          // the HID devices the game read or wrote
+struct NotHid
+{
+    HANDLE Handle = nullptr;
+    uint64_t Seen = 0;
+};
+NotHid NotHids[512];                         // handles that are no HID device (looked at again after 10 s: handles are reused)
+std::vector<std::wstring> Lines;             // log lines made under the lock, written after it
+struct Waiting
+{
+    const OVERLAPPED* Ov = nullptr;
+    uint8_t* Buffer = nullptr;
+    DWORD Size = 0;
+    PadKind Kind = PadKind::None;
+};
+Waiting Reads[16];
+std::atomic<int32_t> ReadsWaiting{0};
+struct RawDevice
+{
+    HANDLE Handle = nullptr;
+    PadKind Kind = PadKind::None;
+};
+RawDevice RawDevices[8];                     // raw input devices looked at
+
+// the trigger effects (a DualSense)
+uint8_t WantRight[11]{0x05}, WantLeft[11]{0x05};
+uint32_t WantSerial = 0;                     // changes with the wanted effects
+uint32_t Delivered = 0;                      // the serial the controller has (a report of the game's or the mod's took it)
+bool ReleaseOnDelivery = false;              // the effects are off: once the controller has that, the game's own go through
+std::atomic<bool> EffectsActive{false};      // the game's output reports are patched
+std::atomic<HANDLE> DualSense{nullptr};      // its handle, and the game's output report length (a cheap check in WriteFile)
+std::atomic<uint32_t> DualSenseOut{0};
+uint8_t Sequence = 0;                        // (Bluetooth reports count)
+std::atomic<uint64_t> Patched{0}, OwnWritten{0}, OwnFailed{0};
+HANDLE WriterWake = nullptr;
+HANDLE WriteDone = nullptr;
+OVERLAPPED WriterOv{};
+bool WriterStarted = false;
+
+bool PlausibleSize(DWORD n) { return n == 64 || n == 78 || n == 547; }
+
+const wchar_t* KindText(PadKind k) { return SkelCompat::Shooter::PadKindText(k); }
+
+std::wstring Hex4(unsigned v)
+{
+    wchar_t text[8];
+    swprintf(text, 8, L"%04X", v & 0xFFFFu);
+    return text;
+}
+
+PadKind KindFor(uint16_t vendor, uint16_t product, unsigned inLength)
+{
+    if (vendor != 0x054C) { return PadKind::None; }
+    const bool bluetooth = inLength > 64;
+    if (product == 0x0CE6 || product == 0x0DF2) { return bluetooth ? PadKind::DualSenseBt : PadKind::DualSenseUsb; }
+    if (product == 0x05C4 || product == 0x09CC || product == 0x0BA0) { return bluetooth ? PadKind::DualShock4Bt : PadKind::DualShock4Usb; }
+    return PadKind::None;
+}
+
+// The HID device this handle is (Lock held), looked at once (a handle that is none: again after 10 s).
+Device* DeviceOf(HANDLE h)
+{
+    if (!h || h == INVALID_HANDLE_VALUE) { return nullptr; }
+    for (auto& d : Devices)
+    {
+        if (d.Handle == h) { return &d; }
+    }
+    const uint64_t now = GetTickCount64();
+    NotHid& no = NotHids[(reinterpret_cast<uintptr_t>(h) >> 2) % 512];
+    if (no.Handle == h && now - no.Seen < 10000) { return nullptr; }
+    if (!HidAttr) { return nullptr; }
+    Looks.fetch_add(1, std::memory_order_relaxed);
+    HidAttributes attributes{};
+    attributes.Size = sizeof(attributes);
+    if (!HidAttr(h, &attributes))
+    {
+        no.Handle = h;
+        no.Seen = now;
+        return nullptr;
+    }
+    // a HID device: a slot of its own (an empty one, else the oldest that is not a controller)
+    Device* slot = nullptr;
+    for (auto& d : Devices)
+    {
+        if (!d.Handle) { slot = &d; break; }
+    }
+    if (!slot)
+    {
+        for (auto& d : Devices)
+        {
+            if (d.Kind == PadKind::None && (!slot || d.Seen < slot->Seen)) { slot = &d; }
+        }
+    }
+    if (!slot) { return nullptr; }
+    *slot = Device{};
+    slot->Handle = h;
+    slot->Seen = now;
+    slot->Vendor = attributes.VendorID;
+    slot->Product = attributes.ProductID;
+    if (HidPrep && HidFree && HidGetCaps)
+    {
+        void* prepared = nullptr;
+        if (HidPrep(h, &prepared) && prepared)
+        {
+            HidCaps caps{};
+            if (HidGetCaps(prepared, &caps) == 0x00110000)   // HIDP_STATUS_SUCCESS
+            {
+                slot->In = caps.InputReportByteLength;
+                slot->Out = caps.OutputReportByteLength;
+            }
+            HidFree(prepared);
+        }
+    }
+    slot->Kind = slot->In ? KindFor(slot->Vendor, slot->Product, slot->In) : PadKind::None;
+    if (slot->Kind == PadKind::DualSenseUsb || slot->Kind == PadKind::DualSenseBt)
+    {
+        DualSense.store(h, std::memory_order_relaxed);
+        DualSenseOut.store(slot->Out, std::memory_order_relaxed);
+    }
+    if (Lines.size() < 32)
+    {
+        Lines.push_back(L"Pad: HID device " + Hex4(slot->Vendor) + L":" + Hex4(slot->Product) + L" (input reports " + std::to_wstring(slot->In) + L" bytes, output " +
+                        std::to_wstring(slot->Out) + L"): " +
+                        (slot->Kind != PadKind::None ? std::wstring(L"a ") + KindText(slot->Kind) : std::wstring(L"not a controller the shooter reads")));
+    }
+    return slot;
+}
+
+// (3.7.2) A handle the game closed or opened again: what the mod knew of it goes (Lock held). Windows hands a closed
+// handle's number out again, and the game opens every HID device to look at it and closes it: 3.7.0 and 3.7.1 kept the
+// first one's (a mouse receiver) for the controller the game then opened under the same number, and read none of its
+// reports.
+void Forget(HANDLE h)
+{
+    for (auto& d : Devices)
+    {
+        if (d.Handle != h) { continue; }
+        if (DualSense.load(std::memory_order_relaxed) == h)
+        {
+            DualSense.store(nullptr, std::memory_order_relaxed);
+            DualSenseOut.store(0, std::memory_order_relaxed);
+        }
+        d = Device{};
+    }
+    NotHid& no = NotHids[(reinterpret_cast<uintptr_t>(h) >> 2) % 512];
+    if (no.Handle == h) { no = NotHid{}; }
+}
+
+// The log lines made under the lock (Lock NOT held).
+void Flush()
+{
+    std::vector<std::wstring> lines;
+    {
+        std::lock_guard lock(Lock);
+        lines.swap(Lines);
+    }
+    for (const auto& line : lines) { Log.Line(line); }
+}
+
+// What a report of the controller holds, read (and the shooter's buttons taken out of it). `late`: the game has read it
+// already (only what it holds is read).
+void Take(PadKind kind, uint8_t* report, size_t n, bool late)
+{
+    PadRead read;
+    const uint32_t block = late ? 0u : Block.load(std::memory_order_relaxed);
+    const uint32_t force = late ? 0u : Force.load(std::memory_order_relaxed);   // (3.7.3)
+    const float stick = late ? 1.0f : static_cast<float>(StickPermille.load(std::memory_order_relaxed)) / 1000.0f;
+    if (!SkelCompat::Shooter::ReadPadReport(report, n, kind, block, read, stick, force)) { return; }
+    Hid.Down.store(read.Down, std::memory_order_relaxed);
+    const uint32_t l2 = static_cast<uint32_t>(std::lround(read.L2 * 255.0f)), r2 = static_cast<uint32_t>(std::lround(read.R2 * 255.0f));
+    Hid.Triggers.store(l2 | r2 << 8, std::memory_order_relaxed);
+    Hid.At.store(GetTickCount64(), std::memory_order_relaxed);
+    Hid.Count.fetch_add(1, std::memory_order_relaxed);
+    HidKind.store(static_cast<uint8_t>(kind), std::memory_order_relaxed);
+    if (late) { LateReports.fetch_add(1, std::memory_order_relaxed); }
+}
+
+BOOL WINAPI OnReadFile(HANDLE h, LPVOID buffer, DWORD size, LPDWORD read, LPOVERLAPPED ov)
+{
+    if (!Hooked.load(std::memory_order_relaxed) || Depth || !buffer || !size) { return RealRead(h, buffer, size, read, ov); }
+    ReadCalls.fetch_add(1, std::memory_order_relaxed);
+    // a device's report: an overlapped read of up to 4 KB, or a direct one of a controller's report size
+    if (ov ? size > 4096 : !PlausibleSize(size)) { return RealRead(h, buffer, size, read, ov); }
+    Quiet quiet;
+    PadKind kind = PadKind::None;
+    std::wstring said;
+    bool lines = false;
+    {
+        std::lock_guard lock(Lock);
+        if (Device* d = DeviceOf(h))
+        {
+            ++d->Reads;
+            d->ReadSize = size;
+            if (ov) { d->Overlapped = true; }
+            HidReads.fetch_add(1, std::memory_order_relaxed);
+            if (d->Kind != PadKind::None && size >= d->In)
+            {
+                kind = d->Kind;
+                if (!d->Said)
+                {
+                    d->Said = true;
+                    said = std::wstring(L"Pad: the game reads its ") + KindText(d->Kind) + L": " + std::to_wstring(d->In) + L"-byte reports into " + std::to_wstring(size) +
+                           L" bytes" + (ov ? L", overlapped" : L", directly");
+                }
+            }
+        }
+        // a read of this OVERLAPPED that nothing asked GetOverlappedResult about: its report was read by the game
+        // already; what it held is read now, before the next one fills the buffer
+        if (kind != PadKind::None && ov && ReadsWaiting.load(std::memory_order_relaxed) > 0)
+        {
+            for (auto& w : Reads)
+            {
+                if (w.Ov != ov) { continue; }
+                if (ov->Internal != static_cast<ULONG_PTR>(0x103)/* STATUS_PENDING */ && ov->InternalHigh > 0 && ov->InternalHigh <= w.Size)
+                {
+                    Take(w.Kind, w.Buffer, static_cast<size_t>(ov->InternalHigh), true);
+                }
+                w = Waiting{};
+                ReadsWaiting.fetch_sub(1, std::memory_order_relaxed);
+                break;
+            }
+        }
+        lines = !Lines.empty();
+    }
+    if (lines) { Flush(); }
+    if (!said.empty()) { Log.Line(said); }
+    const BOOL ok = RealRead(h, buffer, size, read, ov);
+    if (kind == PadKind::None) { return ok; }
+    const DWORD error = GetLastError();
+    if (ok)
+    {
+        const DWORD n = ov ? static_cast<DWORD>(ov->InternalHigh) : (read ? *read : 0);
+        if (n > 0 && n <= size) { Take(kind, static_cast<uint8_t*>(buffer), n, false); }
+    }
+    else if (error == ERROR_IO_PENDING && ov)
+    {
+        std::lock_guard lock(Lock);
+        for (auto& w : Reads)
+        {
+            if (w.Ov) { continue; }
+            w.Ov = ov;
+            w.Buffer = static_cast<uint8_t*>(buffer);
+            w.Size = size;
+            w.Kind = kind;
+            ReadsWaiting.fetch_add(1, std::memory_order_relaxed);
+            break;
+        }
+    }
+    SetLastError(error);
+    return ok;
+}
+
+// A read the game asked about: when it is done, its report is read before the game looks at it.
+void Finish(LPOVERLAPPED ov, BOOL ok)
+{
+    if (!ov || Depth || ReadsWaiting.load(std::memory_order_relaxed) <= 0) { return; }
+    const DWORD error = GetLastError();
+    Waiting done;
+    {
+        std::lock_guard lock(Lock);
+        for (auto& w : Reads)
+        {
+            if (w.Ov != ov) { continue; }
+            if (!ok && error == ERROR_IO_INCOMPLETE) { break; }   // (not done yet: asked again later)
+            done = w;
+            w = Waiting{};
+            ReadsWaiting.fetch_sub(1, std::memory_order_relaxed);
+            break;
+        }
+    }
+    if (ok && done.Ov && ov->InternalHigh > 0 && ov->InternalHigh <= done.Size) { Take(done.Kind, done.Buffer, static_cast<size_t>(ov->InternalHigh), false); }
+    SetLastError(error);
+}
+
+BOOL WINAPI OnResult(HANDLE h, LPOVERLAPPED ov, LPDWORD transferred, BOOL wait)
+{
+    const BOOL ok = RealResult(h, ov, transferred, wait);
+    Finish(ov, ok);
+    return ok;
+}
+
+BOOL WINAPI OnResultEx(HANDLE h, LPOVERLAPPED ov, LPDWORD transferred, DWORD ms, BOOL alertable)
+{
+    const BOOL ok = RealResultEx(h, ov, transferred, ms, alertable);
+    Finish(ov, ok);
+    return ok;
+}
+
+// The game's output report to its DualSense (a copy is not made: the report is the game's buffer, patched in place): its
+// lights and rumble stay, the trigger effects are the shooter's. A report of the game's that sets no trigger effect is
+// left alone once the controller has the shooter's.
+BOOL WINAPI OnWriteFile(HANDLE h, LPCVOID buffer, DWORD size, LPDWORD written, LPOVERLAPPED ov)
+{
+    if (!Hooked.load(std::memory_order_relaxed) || Depth || !buffer) { return RealWrite(h, buffer, size, written, ov); }
+    WriteCalls.fetch_add(1, std::memory_order_relaxed);
+    auto* r = static_cast<uint8_t*>(const_cast<void*>(buffer));
+    // an output report of a controller: 0x02 / 0x31 (a DualSense over USB / Bluetooth), 0x05 / 0x11 (a DualShock 4)
+    if (size >= 32 && size <= 1024 && (r[0] == 0x02 || r[0] == 0x31 || r[0] == 0x05 || r[0] == 0x11))
+    {
+        Quiet quiet;
+        bool lines = false;
+        {
+            std::lock_guard lock(Lock);
+            if (Device* d = DeviceOf(h))
+            {
+                ++d->Writes;
+                d->WriteSize = size;
+                if (ov) { d->Overlapped = true; }
+                HidWrites.fetch_add(1, std::memory_order_relaxed);
+                if (d->Kind == PadKind::DualSenseUsb || d->Kind == PadKind::DualSenseBt)
+                {
+                    DualSense.store(h, std::memory_order_relaxed);
+                    DualSenseOut.store(size, std::memory_order_relaxed);
+                }
+            }
+            if (EffectsActive.load(std::memory_order_relaxed) && h == DualSense.load(std::memory_order_relaxed) && size == DualSenseOut.load(std::memory_order_relaxed))
+            {
+                const bool theirs = (r[0] == 0x02 && size >= 48 && (r[1] & 0x0C)) || (r[0] == 0x31 && size >= 78 && (r[3] & 0x0C));
+                if ((theirs || Delivered != WantSerial) && SkelCompat::Shooter::PatchTriggerReport(r, size, WantRight, WantLeft))
+                {
+                    Delivered = WantSerial;
+                    Patched.fetch_add(1, std::memory_order_relaxed);
+                    if (ReleaseOnDelivery)
+                    {
+                        ReleaseOnDelivery = false;
+                        EffectsActive.store(false, std::memory_order_relaxed);
+                    }
+                }
+            }
+            lines = !Lines.empty();
+        }
+        if (lines) { Flush(); }
+    }
+    return RealWrite(h, buffer, size, written, ov);
+}
+
+DWORD WINAPI OnXGet(DWORD user, void* state)
+{
+    const DWORD result = RealXGet(user, state);
+    if (!Hooked.load(std::memory_order_relaxed) || Depth || !state) { return result; }
+    XCalls.fetch_add(1, std::memory_order_relaxed);
+    int32_t chosen = XUser.load(std::memory_order_relaxed);
+    if (result != ERROR_SUCCESS)
+    {
+        if (chosen == static_cast<int32_t>(user)) { XUser.store(-1, std::memory_order_relaxed); }
+        return result;
+    }
+    XConnected.fetch_add(1, std::memory_order_relaxed);
+    if (chosen < 0 || static_cast<int32_t>(user) < chosen)
+    {
+        XUser.store(static_cast<int32_t>(user), std::memory_order_relaxed);
+        chosen = static_cast<int32_t>(user);
+    }
+    PadRead read;
+    const float stick = static_cast<float>(StickPermille.load(std::memory_order_relaxed)) / 1000.0f;
+    SkelCompat::Shooter::ReadXInputPad(static_cast<uint8_t*>(state) + 4, Block.load(std::memory_order_relaxed), read, stick,
+                                       Force.load(std::memory_order_relaxed));   // (XINPUT_STATE: a packet number, then the pad)
+    if (chosen == static_cast<int32_t>(user))
+    {
+        XPad.Down.store(read.Down, std::memory_order_relaxed);
+        const uint32_t l2 = static_cast<uint32_t>(std::lround(read.L2 * 255.0f)), r2 = static_cast<uint32_t>(std::lround(read.R2 * 255.0f));
+        XPad.Triggers.store(l2 | r2 << 8, std::memory_order_relaxed);
+        XPad.At.store(GetTickCount64(), std::memory_order_relaxed);
+        XPad.Count.fetch_add(1, std::memory_order_relaxed);
+    }
+    return result;
+}
+
+// A HID device path ("\\?\hid#vid_054c&pid_0ce6...").
+bool HidPath(const wchar_t* path)
+{
+    if (!path || path[0] != L'\\' || path[1] != L'\\') { return false; }
+    for (const wchar_t* p = path; p[0] && p[1] && p[2] && p[3]; ++p)
+    {
+        if ((p[0] | 0x20) == L'h' && (p[1] | 0x20) == L'i' && (p[2] | 0x20) == L'd' && (p[3] == L'#' || p[3] == L'\\')) { return true; }
+    }
+    return false;
+}
+
+void Opened(HANDLE h, const std::wstring& path)
+{
+    HidOpens.fetch_add(1, std::memory_order_relaxed);
+    Quiet quiet;
+    const DWORD error = GetLastError();
+    {
+        std::lock_guard lock(Lock);
+        Forget(h);   // (3.7.2: a number used before is this device now)
+        const Device* d = DeviceOf(h);
+        if (Lines.size() < 32)
+        {
+            Lines.push_back(L"Pad: the game opened " + path.substr(0, 160) +
+                            (d ? L" (" + Hex4(d->Vendor) + L":" + Hex4(d->Product) + (d->Kind != PadKind::None ? L", a " + std::wstring(KindText(d->Kind)) : std::wstring{}) + L")"
+                               : std::wstring{}));
+        }
+    }
+    Flush();
+    SetLastError(error);
+}
+
+// (3.7.2) A handle the game closes: forgotten (its number goes to whatever is opened next).
+BOOL WINAPI OnClose(HANDLE h)
+{
+    if (Hooked.load(std::memory_order_relaxed) && !Depth && h && h != INVALID_HANDLE_VALUE)
+    {
+        bool known = false;
+        for (const auto& d : Devices)   // (a quick look without the lock; the lock is taken only for one of them)
+        {
+            if (d.Handle == h)
+            {
+                known = true;
+                break;
+            }
+        }
+        if (known)
+        {
+            Quiet quiet;
+            std::lock_guard lock(Lock);
+            Forget(h);
+        }
+    }
+    return RealClose(h);
+}
+
+// (3.7.2) Another file opened under a number a device had: forgotten.
+void OpenedOther(HANDLE h)
+{
+    for (const auto& d : Devices)
+    {
+        if (d.Handle == h)
+        {
+            Quiet quiet;
+            const DWORD error = GetLastError();
+            {
+                std::lock_guard lock(Lock);
+                Forget(h);
+            }
+            SetLastError(error);
+            return;
+        }
+    }
+}
+
+HANDLE WINAPI OnCreateW(LPCWSTR name, DWORD access, DWORD share, LPSECURITY_ATTRIBUTES sa, DWORD disposition, DWORD flags, HANDLE templ)
+{
+    const HANDLE h = RealCreateW(name, access, share, sa, disposition, flags, templ);
+    if (Hooked.load(std::memory_order_relaxed) && !Depth && h != INVALID_HANDLE_VALUE)
+    {
+        if (HidPath(name)) { Opened(h, name); }
+        else { OpenedOther(h); }
+    }
+    return h;
+}
+
+HANDLE WINAPI OnCreateA(LPCSTR name, DWORD access, DWORD share, LPSECURITY_ATTRIBUTES sa, DWORD disposition, DWORD flags, HANDLE templ)
+{
+    const HANDLE h = RealCreateA(name, access, share, sa, disposition, flags, templ);
+    if (Hooked.load(std::memory_order_relaxed) && !Depth && h != INVALID_HANDLE_VALUE)
+    {
+        bool hid = false;
+        if (name && name[0] == '\\' && name[1] == '\\')
+        {
+            std::wstring wide;
+            for (const char* p = name; *p && wide.size() < 260; ++p) { wide.push_back(static_cast<wchar_t>(static_cast<unsigned char>(*p))); }
+            if (HidPath(wide.c_str()))
+            {
+                hid = true;
+                Opened(h, wide);
+            }
+        }
+        if (!hid) { OpenedOther(h); }
+    }
+    return h;
+}
+
+// Raw input's HID reports (WM_INPUT): a controller's are read (and its buttons taken out of the copy the game gets).
+PadKind RawKindOf(HANDLE device, DWORD reportSize)
+{
+    std::lock_guard lock(Lock);
+    for (auto& d : RawDevices)
+    {
+        if (d.Handle == device) { return d.Kind; }
+    }
+    RawDevice* slot = &RawDevices[0];
+    for (auto& d : RawDevices)
+    {
+        if (!d.Handle) { slot = &d; break; }
+    }
+    *slot = RawDevice{};
+    slot->Handle = device;
+    if (RawInfo)
+    {
+        RID_DEVICE_INFO info{};
+        info.cbSize = sizeof(info);
+        UINT size = sizeof(info);
+        if (RawInfo(device, RIDI_DEVICEINFO, &info, &size) != static_cast<UINT>(-1) && info.dwType == RIM_TYPEHID)
+        {
+            slot->Kind = KindFor(static_cast<uint16_t>(info.hid.dwVendorId), static_cast<uint16_t>(info.hid.dwProductId), reportSize);
+            if (Lines.size() < 32)
+            {
+                Lines.push_back(L"Pad: raw input HID device " + Hex4(info.hid.dwVendorId) + L":" + Hex4(info.hid.dwProductId) + L" (reports of " + std::to_wstring(reportSize) +
+                                L" bytes): " + (slot->Kind != PadKind::None ? std::wstring(L"a ") + KindText(slot->Kind) : std::wstring(L"not a controller the shooter reads")));
+            }
+        }
+    }
+    return slot->Kind;
+}
+
+UINT WINAPI OnRawData(HRAWINPUT raw, UINT command, LPVOID data, PUINT size, UINT header)
+{
+    const UINT result = RealRawData(raw, command, data, size, header);
+    if (!Hooked.load(std::memory_order_relaxed) || Depth || command != RID_INPUT || !data || result == static_cast<UINT>(-1) || result < sizeof(RAWINPUTHEADER)) { return result; }
+    auto* input = static_cast<RAWINPUT*>(data);
+    if (input->header.dwType != RIM_TYPEHID) { return result; }
+    RawHid.fetch_add(1, std::memory_order_relaxed);
+    Quiet quiet;
+    const DWORD error = GetLastError();
+    RAWHID& hid = input->data.hid;
+    const size_t need = offsetof(RAWINPUT, data.hid.bRawData) + static_cast<size_t>(hid.dwCount) * hid.dwSizeHid;
+    if (hid.dwSizeHid && hid.dwCount && need <= result)
+    {
+        const PadKind kind = RawKindOf(input->header.hDevice, hid.dwSizeHid);
+        Flush();
+        if (kind != PadKind::None)
+        {
+            RawPad.fetch_add(1, std::memory_order_relaxed);
+            for (DWORD k = 0; k < hid.dwCount && k < 8; ++k) { Take(kind, hid.bRawData + static_cast<size_t>(k) * hid.dwSizeHid, hid.dwSizeHid, false); }
+        }
+    }
+    SetLastError(error);
+    return result;
+}
+
+// The mod's own report with only the trigger effects, when the game sends the DualSense none for a moment.
+bool WriteOwn(HANDLE h, const uint8_t* report, DWORD n, bool overlapped)
+{
+    DWORD written = 0;
+    if (!overlapped) { return RealWrite(h, report, n, &written, nullptr) && written == n; }
+    if (!WriteDone) { return false; }
+    WriterOv = OVERLAPPED{};
+    WriterOv.hEvent = WriteDone;
+    ResetEvent(WriteDone);
+    if (RealWrite(h, report, n, nullptr, &WriterOv)) { return true; }
+    if (GetLastError() != ERROR_IO_PENDING) { return false; }
+    if (WaitForSingleObject(WriteDone, 250) != WAIT_OBJECT_0)
+    {
+        CancelIoEx(h, &WriterOv);
+        RealResult(h, &WriterOv, &written, TRUE);   // (the OVERLAPPED stays the mod's until the write is over)
+        return false;
+    }
+    return RealResult(h, &WriterOv, &written, FALSE) != 0;
+}
+
+DWORD WINAPI WriterMain(void*)
+{
+    Depth = 1;   // (this thread is the mod's: its calls go straight through the hooks)
+    std::vector<uint8_t> report(1024);
+    for (;;)
+    {
+        WaitForSingleObject(WriterWake, 250);
+        Sleep(20);   // (a report of the game's may take the effects first)
+        HANDLE h = nullptr;
+        bool overlapped = false, bluetooth = false;
+        uint32_t serial = 0;
+        size_t length = 0;
+        {
+            std::lock_guard lock(Lock);
+            if (Delivered == WantSerial || !EffectsActive.load(std::memory_order_relaxed)) { continue; }
+            for (auto& d : Devices)
+            {
+                if (d.Handle && (d.Kind == PadKind::DualSenseUsb || d.Kind == PadKind::DualSenseBt) && d.Out >= 48 && d.Out <= report.size())
+                {
+                    h = d.Handle;
+                    overlapped = d.Overlapped;
+                    bluetooth = d.Kind == PadKind::DualSenseBt;
+                    length = SkelCompat::Shooter::TriggerReport(bluetooth, Sequence, WantRight, WantLeft, report.data(), d.Out);
+                    break;
+                }
+            }
+            if (!h || !length) { continue; }
+            Sequence = static_cast<uint8_t>((Sequence + 1) & 0x0f);
+            serial = WantSerial;
+        }
+        const bool ok = WriteOwn(h, report.data(), static_cast<DWORD>(length), overlapped);
+        const uint64_t count = ok ? OwnWritten.fetch_add(1) + 1 : OwnFailed.fetch_add(1) + 1;
+        if (count == 1)
+        {
+            Log.Line(std::wstring(L"Pad: the trigger effects ") + (ok ? L"went to the DualSense in a report of the mod's" : L"could NOT be written to the DualSense (error ") +
+                     (ok ? std::wstring{} : std::to_wstring(GetLastError()) + L")") + (bluetooth ? L" (Bluetooth, " : L" (USB, ") + std::to_wstring(length) + L" bytes)");
+        }
+        if (ok)
+        {
+            std::lock_guard lock(Lock);
+            if (serial == WantSerial)
+            {
+                Delivered = serial;
+                if (ReleaseOnDelivery)
+                {
+                    ReleaseOnDelivery = false;
+                    EffectsActive.store(false, std::memory_order_relaxed);
+                }
+            }
+        }
+    }
+}
+
+// The trigger effects the DualSense is to have (game thread). `release`: these are "off", and once the controller has
+// them, the game's own effects go through again.
+void SetTriggers(const SkelCompat::Shooter::TriggerEffect& right, const SkelCompat::Shooter::TriggerEffect& left, bool release)
+{
+    if (!Hooked.load(std::memory_order_relaxed)) { return; }
+    uint8_t r[11], l[11];
+    SkelCompat::Shooter::EncodeTrigger(right, r);
+    SkelCompat::Shooter::EncodeTrigger(left, l);
+    {
+        std::lock_guard lock(Lock);
+        if (release && !EffectsActive.load(std::memory_order_relaxed)) { return; }
+        if (std::memcmp(r, WantRight, 11) == 0 && std::memcmp(l, WantLeft, 11) == 0 && EffectsActive.load(std::memory_order_relaxed))
+        {
+            ReleaseOnDelivery = release;
+            if (release && Delivered == WantSerial)
+            {
+                ReleaseOnDelivery = false;
+                EffectsActive.store(false, std::memory_order_relaxed);
+            }
+            return;
+        }
+        std::memcpy(WantRight, r, 11);
+        std::memcpy(WantLeft, l, 11);
+        ++WantSerial;
+        ReleaseOnDelivery = release;
+        EffectsActive.store(true, std::memory_order_relaxed);
+    }
+    if (!WriterStarted)
+    {
+        WriterStarted = true;
+        WriterWake = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+        WriteDone = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+        HANDLE thread = WriterWake && WriteDone ? CreateThread(nullptr, 0, &WriterMain, nullptr, 0, nullptr) : nullptr;
+        if (thread) { CloseHandle(thread); }
+        else { Log.Line(L"Pad: the trigger writer did not start (the effects go only in the game's own reports)"); }
+    }
+    if (WriterWake) { SetEvent(WriterWake); }
+}
+
+// The pad as it is now: the source updated last (a report in the last second), else nothing.
+struct Now_
+{
+    bool Fresh = false;
+    bool FromHid = false;
+    uint32_t Down = 0;
+    float L2 = 0.0f, R2 = 0.0f;
+    PadKind Kind = PadKind::None;
+};
+
+Now_ Now()
+{
+    Now_ out;
+    const uint64_t tick = GetTickCount64();
+    const uint64_t hid = Hid.At.load(std::memory_order_relaxed), x = XPad.At.load(std::memory_order_relaxed);
+    const bool hidFresh = hid && tick - hid < 1000, xFresh = x && tick - x < 1000;
+    if (!hidFresh && !xFresh) { return out; }
+    const Source& s = hidFresh && (!xFresh || hid >= x) ? Hid : XPad;
+    out.Fresh = true;
+    out.FromHid = &s == &Hid;
+    out.Down = s.Down.load(std::memory_order_relaxed);
+    const uint32_t t = s.Triggers.load(std::memory_order_relaxed);
+    out.L2 = static_cast<float>(t & 0xff) / 255.0f;
+    out.R2 = static_cast<float>((t >> 8) & 0xff) / 255.0f;
+    out.Kind = out.FromHid ? static_cast<PadKind>(HidKind.load(std::memory_order_relaxed)) : PadKind::None;
+    return out;
+}
+
+// One entry of the game's import table, by name or ordinal (`ordinal` 0: by name). Several DLL names may serve (an API
+// set for kernel32's functions).
+void** ImportSlot(std::initializer_list<const char*> dlls, const char* name, WORD ordinal)
+{
+    auto* base = reinterpret_cast<uint8_t*>(GetModuleHandleW(nullptr));
+    if (!base) { return nullptr; }
+    const auto* dos = reinterpret_cast<const IMAGE_DOS_HEADER*>(base);
+    const auto* nt = reinterpret_cast<const IMAGE_NT_HEADERS64*>(base + dos->e_lfanew);
+    const IMAGE_DATA_DIRECTORY& dir = nt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT];
+    if (!dir.VirtualAddress) { return nullptr; }
+    for (auto* d = reinterpret_cast<const IMAGE_IMPORT_DESCRIPTOR*>(base + dir.VirtualAddress); d->Name; ++d)
+    {
+        const char* dll = reinterpret_cast<const char*>(base + d->Name);
+        if (std::none_of(dlls.begin(), dlls.end(), [&](const char* want) { return _stricmp(dll, want) == 0; })) { continue; }
+        if (!d->OriginalFirstThunk || !d->FirstThunk) { continue; }
+        auto* names = reinterpret_cast<const IMAGE_THUNK_DATA64*>(base + d->OriginalFirstThunk);
+        auto* slots = reinterpret_cast<IMAGE_THUNK_DATA64*>(base + d->FirstThunk);
+        for (; names->u1.AddressOfData; ++names, ++slots)
+        {
+            bool match = false;
+            if (IMAGE_SNAP_BY_ORDINAL64(names->u1.Ordinal)) { match = ordinal && IMAGE_ORDINAL64(names->u1.Ordinal) == ordinal; }
+            else if (name)
+            {
+                const auto* byName = reinterpret_cast<const IMAGE_IMPORT_BY_NAME*>(base + names->u1.AddressOfData);
+                match = std::strcmp(reinterpret_cast<const char*>(byName->Name), name) == 0;
+            }
+            if (match) { return reinterpret_cast<void**>(&slots->u1.Function); }
+        }
+    }
+    return nullptr;
+}
+
+// The entry put to `hook`; `original` keeps what it was.
+bool PatchImport(std::initializer_list<const char*> dlls, const char* name, WORD ordinal, void* hook, void** original)
+{
+    void** entry = ImportSlot(dlls, name, ordinal);
+    if (!entry) { return false; }
+    DWORD was = 0;
+    if (!VirtualProtect(entry, sizeof(void*), PAGE_READWRITE, &was)) { return false; }
+    *original = *entry;
+    InterlockedExchangePointer(entry, hook);
+    VirtualProtect(entry, sizeof(void*), was, &was);
+    FlushInstructionCache(GetCurrentProcess(), entry, sizeof(void*));
+    return true;
+}
+
+// The file name of the module some code is in ("?" when none).
+std::wstring ModuleOf(const void* code)
+{
+    HMODULE module = nullptr;
+    if (!code || !GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, static_cast<LPCWSTR>(code), &module) || !module)
+    {
+        return L"?";
+    }
+    wchar_t path[MAX_PATH] = {};
+    GetModuleFileNameW(module, path, MAX_PATH);
+    const wchar_t* slash = std::wcsrchr(path, L'\\');
+    return slash ? slash + 1 : path;
+}
+
+struct Hooking
+{
+    std::initializer_list<const char*> Dlls;
+    const char* Name;
+    WORD Ordinal;
+    void* Hook;
+    void** Original;
+    const wchar_t* Label;
+};
+const std::initializer_list<const char*> Kernel = {"KERNEL32.dll", "api-ms-win-core-file-l1-1-0.dll", "api-ms-win-core-file-l1-2-0.dll",
+                                                   "api-ms-win-core-io-l1-1-0.dll", "api-ms-win-core-io-l1-1-1.dll",
+                                                   "api-ms-win-core-handle-l1-1-0.dll"};
+const std::initializer_list<const char*> XInput = {"XINPUT1_3.dll", "XINPUT1_4.dll", "XINPUT9_1_0.dll"};
+const std::initializer_list<const char*> User = {"USER32.dll"};
+
+std::vector<Hooking> Hookings()
+{
+    return {{Kernel, "GetOverlappedResult", 0, reinterpret_cast<void*>(&OnResult), reinterpret_cast<void**>(&RealResult), L"GetOverlappedResult"},
+            {Kernel, "GetOverlappedResultEx", 0, reinterpret_cast<void*>(&OnResultEx), reinterpret_cast<void**>(&RealResultEx), L"GetOverlappedResultEx"},
+            {Kernel, "ReadFile", 0, reinterpret_cast<void*>(&OnReadFile), reinterpret_cast<void**>(&RealRead), L"ReadFile"},
+            {Kernel, "WriteFile", 0, reinterpret_cast<void*>(&OnWriteFile), reinterpret_cast<void**>(&RealWrite), L"WriteFile"},
+            {Kernel, "CreateFileW", 0, reinterpret_cast<void*>(&OnCreateW), reinterpret_cast<void**>(&RealCreateW), L"CreateFileW"},
+            {Kernel, "CreateFileA", 0, reinterpret_cast<void*>(&OnCreateA), reinterpret_cast<void**>(&RealCreateA), L"CreateFileA"},
+            {Kernel, "CloseHandle", 0, reinterpret_cast<void*>(&OnClose), reinterpret_cast<void**>(&RealClose), L"CloseHandle"},
+            {User, "GetRawInputData", 0, reinterpret_cast<void*>(&OnRawData), reinterpret_cast<void**>(&RealRawData), L"GetRawInputData"},
+            {XInput, "XInputGetState", 2, reinterpret_cast<void*>(&OnXGet), reinterpret_cast<void**>(&RealXGet), L"XInputGetState"}};
+}
+
+// Puts the mod's functions in the game's import table (game thread, once).
+void Install()
+{
+    if (Hooked.load()) { return; }
+    HMODULE hid = GetModuleHandleW(L"hid.dll");
+    if (!hid) { hid = LoadLibraryW(L"hid.dll"); }
+    if (hid)
+    {
+        HidAttr = reinterpret_cast<HidAttrFn>(reinterpret_cast<void*>(GetProcAddress(hid, "HidD_GetAttributes")));
+        HidPrep = reinterpret_cast<HidPrepFn>(reinterpret_cast<void*>(GetProcAddress(hid, "HidD_GetPreparsedData")));
+        HidFree = reinterpret_cast<HidFreeFn>(reinterpret_cast<void*>(GetProcAddress(hid, "HidD_FreePreparsedData")));
+        HidGetCaps = reinterpret_cast<HidCapsFn>(reinterpret_cast<void*>(GetProcAddress(hid, "HidP_GetCaps")));
+    }
+    HMODULE kernel = GetModuleHandleW(L"kernel32.dll");
+    HMODULE user = GetModuleHandleW(L"user32.dll");
+    // the originals first (a hook's call of its original must find it set; the import table's entry replaces it)
+    RealRead = reinterpret_cast<ReadFileFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "ReadFile")));
+    RealWrite = reinterpret_cast<WriteFileFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "WriteFile")));
+    RealResult = reinterpret_cast<ResultFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "GetOverlappedResult")));
+    RealResultEx = reinterpret_cast<ResultExFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "GetOverlappedResultEx")));
+    RealCreateW = reinterpret_cast<CreateWFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "CreateFileW")));
+    RealCreateA = reinterpret_cast<CreateAFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "CreateFileA")));
+    RealClose = reinterpret_cast<CloseFn>(reinterpret_cast<void*>(GetProcAddress(kernel, "CloseHandle")));
+    if (user)
+    {
+        RealRawData = reinterpret_cast<RawDataFn>(reinterpret_cast<void*>(GetProcAddress(user, "GetRawInputData")));
+        RawInfo = reinterpret_cast<RawInfoFn>(reinterpret_cast<void*>(GetProcAddress(user, "GetRawInputDeviceInfoW")));
+    }
+    if (!RealRead || !RealWrite || !RealResult || !RealResultEx || !RealCreateW || !RealCreateA || !RealClose)
+    {
+        Log.Line(L"Pad: kernel32's file functions not found: the controller is read through the game's input only");
+        return;
+    }
+    Hooked.store(true);   // (the hooks look at nothing until this is set)
+    std::wstring in, out, others;
+    for (const auto& h : Hookings())
+    {
+        if (h.Original == reinterpret_cast<void**>(&RealRawData) && !RealRawData) { out += (out.empty() ? L"" : L", ") + std::wstring(h.Label); continue; }
+        // (PatchImport keeps the entry's function in *Original before the hook goes in: a call at once finds it)
+        if (PatchImport(h.Dlls, h.Name, h.Ordinal, h.Hook, h.Original) && *h.Original)
+        {
+            const void* was = *h.Original;
+            in += (in.empty() ? L"" : L", ") + std::wstring(h.Label);
+            const std::wstring module = ModuleOf(was);
+            if (_wcsicmp(module.c_str(), L"kernel32.dll") != 0 && _wcsicmp(module.c_str(), L"KERNELBASE.dll") != 0 && _wcsicmp(module.c_str(), L"user32.dll") != 0 &&
+                _wcsicmp(module.c_str(), L"win32u.dll") != 0 && _wcsnicmp(module.c_str(), L"xinput", 6) != 0)   // (3.7.2: XInput's own DLL is no other mod)
+            {
+                others += (others.empty() ? L"" : L", ") + std::wstring(h.Label) + L" (" + module + L")";
+            }
+        }
+        else { out += (out.empty() ? L"" : L", ") + std::wstring(h.Label); }
+    }
+    Log.Line(L"Pad: the game's controller reads go through the mod (" + (in.empty() ? std::wstring(L"none") : in) + L")" +
+             (out.empty() ? std::wstring{} : L"; NOT in its import table: " + out) +
+             (others.empty() ? std::wstring{} : L"; another mod had them first: " + others) +
+             (HidAttr && HidGetCaps ? std::wstring{} : std::wstring(L"; hid.dll's functions NOT found (DualSense / DualShock 4 reports not read)")));
+}
+
+// What the game did with its controller so far (the log, the report).
+std::wstring Summary()
+{
+    std::wstring text = L"Pad: the game's reads " + std::to_wstring(ReadCalls.load()) + L" (" + std::to_wstring(HidReads.load()) + L" of a HID device, " +
+                        std::to_wstring(Hid.Count.load()) + L" controller reports read, " + std::to_wstring(LateReports.load()) + L" of them late), writes " +
+                        std::to_wstring(WriteCalls.load()) + L" (" + std::to_wstring(HidWrites.load()) + L" to a HID device), XInput calls " + std::to_wstring(XCalls.load()) +
+                        L" (" + std::to_wstring(XConnected.load()) + L" with a pad), raw input HID reports " + std::to_wstring(RawHid.load()) + L" (" + std::to_wstring(RawPad.load()) +
+                        L" of a controller), HID devices opened " + std::to_wstring(HidOpens.load()) + L", handles looked at " + std::to_wstring(Looks.load());
+    {
+        std::lock_guard lock(Lock);
+        for (const auto& d : Devices)
+        {
+            if (!d.Handle) { continue; }
+            text += L"; " + Hex4(d.Vendor) + L":" + Hex4(d.Product) + (d.Kind != PadKind::None ? L" (" + std::wstring(KindText(d.Kind)) + L")" : std::wstring{}) + L" read " +
+                    std::to_wstring(d.Reads) + L" times (" + std::to_wstring(d.ReadSize) + L" bytes" + (d.Overlapped ? L", overlapped" : L"") + L"), written " +
+                    std::to_wstring(d.Writes) + L" (" + std::to_wstring(d.WriteSize) + L" bytes)";
+        }
+    }
+    if (Hooked.load())
+    {
+        for (const auto& h : Hookings())
+        {
+            void** entry = ImportSlot(h.Dlls, h.Name, h.Ordinal);
+            if (entry && *entry != h.Hook) { text += L"; NOTE: " + std::wstring(h.Label) + L" no longer goes through the mod (now " + ModuleOf(*entry) + L")"; }
+        }
+    }
+    return text;
+}
+
+std::wstring Report()
+{
+    const Now_ now = Now();
+    std::wstring text = L"Pad: " + std::wstring(Hooked.load() ? L"reading the controller" : L"not hooked") + L"; HID reports " + std::to_wstring(Hid.Count.load()) + L" (" +
+                        KindText(static_cast<PadKind>(HidKind.load())) + L", " + std::to_wstring(LateReports.load()) + L" read late), XInput states " +
+                        std::to_wstring(XPad.Count.load()) + L"; trigger effects: " + std::to_wstring(Patched.load()) + L" in the game's reports, " +
+                        std::to_wstring(OwnWritten.load()) + L" of the mod's (" + std::to_wstring(OwnFailed.load()) + L" failed)";
+    if (now.Fresh) { text += L"; now held: " + SkelCompat::Shooter::LabelsOf(now.Down); }
+    return text + L"\n    " + Summary();
+}
+} // namespace Pad
+
+
+// ---------------------------------------------------------------------------------------
+// 3.6: forms (SkelCompat::FormSettings, a row's "forms"). The character you control in battle changes form through the
+// forms menu: hold the row's button (Triangle by default) and a command window in the game's own menu art (the Paper2D
+// sprites of /Game/Menu/Resident/Texture, drawn with UMG widgets the mod builds) lists the character's forms, 7 at a time
+// (up to 13: the list scrolls), the one it is in marked with a blue square. Up and down on the left stick, the D-pad or
+// the arrow keys move the cursor; letting go of the button switches to the form under it (the one it is in: nothing).
+// A form plays its animation pack (EndBattleAPI SetPrimaryAnimPack; the normal form ResetPrimaryAnimPack) and changes
+// what goes with it: the row's parts (material slots of the model) shown or hidden, another model (with its
+// AnimBlueprint, size and added parts), the weapons hidden, effects and sounds as it switches, effects kept while it
+// lasts, real flying. A form is whatever pack the character plays: a switch made by anything else (a Lua mod, the game)
+// changes its form too. When the battle ends every character goes back to its normal form. Everything here runs on the
+// game thread, from FrameWork (once a frame) and the pack switch callback.
+// ---------------------------------------------------------------------------------------
+namespace Forms
+{
+using SkelCompat::Form;
+using SkelCompat::FormEffect;
+using SkelCompat::FormSettings;
+
+uint64_t NowMs()
+{
+    static LARGE_INTEGER frequency{};
+    if (!frequency.QuadPart) { QueryPerformanceFrequency(&frequency); }
+    LARGE_INTEGER now{};
+    QueryPerformanceCounter(&now);
+    return static_cast<uint64_t>(now.QuadPart * 1000 / (frequency.QuadPart ? frequency.QuadPart : 1));
+}
+
+uint64_t NowUs()
+{
+    static LARGE_INTEGER frequency{};
+    if (!frequency.QuadPart) { QueryPerformanceFrequency(&frequency); }
+    LARGE_INTEGER now{};
+    QueryPerformanceCounter(&now);
+    const int64_t f = frequency.QuadPart ? frequency.QuadPart : 1;
+    return static_cast<uint64_t>((now.QuadPart / f) * 1000000 + (now.QuadPart % f) * 1000000 / f);
+}
+
+// ---- calling UFunctions ----------------------------------------------------------------
+// A value for one parameter, given in the order the function declares its parameters (its return value left out).
+struct Arg
+{
+    enum class Kind : uint8_t { Object, Name, Float, Int, Bool, Byte, Struct, Text };
+    Kind What = Kind::Int;
+    uint64_t Bits = 0;
+    std::array<uint8_t, 48> Data{};
+    uint8_t Size = 0;       // Struct: how many bytes of Data are given
+    bool Prefix = false;    // Struct: the parameter may be bigger (the rest stays zero)
+
+    static Arg Obj(const void* object) { Arg a; a.What = Kind::Object; a.Bits = reinterpret_cast<uint64_t>(object); return a; }
+    static Arg Nm(uint64_t raw) { Arg a; a.What = Kind::Name; a.Bits = raw; return a; }
+    static Arg F(float value) { Arg a; a.What = Kind::Float; std::memcpy(&a.Bits, &value, sizeof(value)); return a; }
+    static Arg I(int32_t value) { Arg a; a.What = Kind::Int; a.Bits = static_cast<uint32_t>(value); return a; }
+    static Arg B(bool value) { Arg a; a.What = Kind::Bool; a.Bits = value ? 1 : 0; return a; }
+    static Arg U8(uint8_t value) { Arg a; a.What = Kind::Byte; a.Bits = value; return a; }
+    // An FText parameter (TextProperty, not a struct): the text's bytes, as UE4SS's FText holds them (its constructor's
+    // reference is kept, so the text the callee copies stays alive)
+    static Arg Tx(const FText& text)
+    {
+        static_assert(sizeof(FText) <= 48);
+        Arg a;
+        a.What = Kind::Text;
+        std::memcpy(a.Data.data(), &text, sizeof(FText));
+        a.Size = static_cast<uint8_t>(sizeof(FText));
+        return a;
+    }
+    template <class T>
+    static Arg S(const T& value, bool prefix = false)
+    {
+        static_assert(sizeof(T) <= 48);
+        Arg a;
+        a.What = Kind::Struct;
+        std::memcpy(a.Data.data(), &value, sizeof(T));
+        a.Size = static_cast<uint8_t>(sizeof(T));
+        a.Prefix = prefix;
+        return a;
+    }
+};
+
+struct Vec2 { float X = 0, Y = 0; };
+struct Vec3 { float X = 0, Y = 0, Z = 0; };
+struct Color { float R = 0, G = 0, B = 0, A = 1; };
+struct Anchors { Vec2 Minimum; Vec2 Maximum; };
+struct SlateColorArg { Color Specified; uint8_t Rule = 0; }; // FSlateColor: SpecifiedColor, ColorUseRule (UseColor_Specified)
+struct KeyArg { RawName Name; };                               // FKey: KeyName (then its details, left empty)
+
+// The parameter buffer of one call, 16-byte aligned (FTransform parameters are read with aligned loads).
+struct Block
+{
+    UFunction* Function = nullptr;
+    std::vector<uint8_t> Storage;
+    uint8_t* Bytes = nullptr;
+    bool Ok = false;
+
+    explicit Block(UFunction* function) : Function(function), Ok(function != nullptr)
+    {
+        const size_t size = function ? std::max<size_t>(static_cast<size_t>(function->GetParmsSize()), 16) : 16;
+        Storage.assign(size + 48, 0);
+        Bytes = reinterpret_cast<uint8_t*>((reinterpret_cast<uintptr_t>(Storage.data()) + 15) & ~uintptr_t{15});
+    }
+
+    FProperty* Param(const wchar_t* name) const { return Function ? FindField(Function, name) : nullptr; }
+
+    // The return value's bytes when it is `size` bytes big, or null.
+    const uint8_t* Return(int32_t size) const
+    {
+        FProperty* property = Param(L"ReturnValue");
+        if (!property || property->GetElementSize() != size) { return nullptr; }
+        const int32_t offset = property->GetOffset_Internal();
+        return offset >= 0 && offset + size <= Function->GetParmsSize() ? Bytes + offset : nullptr;
+    }
+    template <class T>
+    T Get(const T& fallback = T{}) const
+    {
+        const uint8_t* at = Return(static_cast<int32_t>(sizeof(T)));
+        if (!at) { return fallback; }
+        T out{};
+        std::memcpy(&out, at, sizeof(T));
+        return out;
+    }
+    uint8_t* Named(const wchar_t* name, int32_t size)
+    {
+        FProperty* property = Param(name);
+        if (!property || (size > 0 && property->GetElementSize() != size)) { return nullptr; }
+        const int32_t offset = property->GetOffset_Internal();
+        return offset >= 0 && offset + property->GetElementSize() <= Function->GetParmsSize() ? Bytes + offset : nullptr;
+    }
+};
+
+std::vector<std::wstring> SaidCalls; // functions whose parameters did not fit, logged once each
+
+std::wstring Signature(UFunction* function)
+{
+    std::wstring text;
+    for (FProperty* property : function->ForEachPropertyInChain())
+    {
+        if (!property) { continue; }
+        text += (text.empty() ? L"" : L", ") + property->GetName() + L":" + TypeOf(property) + L"/" + std::to_wstring(property->GetElementSize());
+    }
+    return text;
+}
+
+// Fills `block` with `args` in parameter order (the return value skipped). False (logged once per function) when an
+// argument does not fit its parameter, or there are more arguments than parameters.
+bool Fill(Block& block, std::initializer_list<Arg> args)
+{
+    if (!block.Function) { return false; }
+    auto next = args.begin();
+    bool ok = true;
+    std::wstring why;
+    for (FProperty* property : block.Function->ForEachPropertyInChain())
+    {
+        if (!property || property->GetName() == L"ReturnValue") { continue; }
+        if (next == args.end()) { break; } // (the rest keep their zeros)
+        const Arg& arg = *next++;
+        const std::wstring type = TypeOf(property);
+        const int32_t size = property->GetElementSize();
+        const int32_t offset = property->GetOffset_Internal();
+        if (offset < 0 || offset + size > block.Function->GetParmsSize()) { ok = false; why = L"a parameter outside its block"; break; }
+        uint8_t* at = block.Bytes + offset;
+        bool fits = false;
+        switch (arg.What)
+        {
+        case Arg::Kind::Object: fits = (type == L"ObjectProperty" || type == L"ClassProperty") && size == 8; break;
+        case Arg::Kind::Name: fits = type == L"NameProperty" && size == 8; break;
+        case Arg::Kind::Float: fits = type == L"FloatProperty" && size == 4; break;
+        case Arg::Kind::Int: fits = (type == L"IntProperty" || (type == L"EnumProperty" && size == 4)) && size == 4; break;
+        case Arg::Kind::Bool: fits = type == L"BoolProperty" && size == 1; break;
+        case Arg::Kind::Byte: fits = (type == L"ByteProperty" && size == 1) || (type == L"EnumProperty" && (size == 1 || size == 2 || size == 4)); break;
+        case Arg::Kind::Struct: fits = type == L"StructProperty" && (size == arg.Size || (arg.Prefix && size > arg.Size)); break;
+        case Arg::Kind::Text: fits = type == L"TextProperty" && size == arg.Size; break;
+        }
+        if (!fits)
+        {
+            ok = false;
+            why = L"parameter " + property->GetName() + L" (" + type + L", " + std::to_wstring(size) + L" bytes) does not take argument " +
+                  std::to_wstring(static_cast<int>(next - args.begin()));
+            break;
+        }
+        if (arg.What == Arg::Kind::Struct || arg.What == Arg::Kind::Text) { std::memcpy(at, arg.Data.data(), arg.Size); }
+        else { std::memcpy(at, &arg.Bits, static_cast<size_t>(size)); }
+    }
+    if (ok && next != args.end()) { ok = false; why = L"more arguments than parameters"; }
+    if (!ok)
+    {
+        const std::wstring name = ObjectPath(block.Function);
+        if (std::find(SaidCalls.begin(), SaidCalls.end(), name) == SaidCalls.end() && SaidCalls.size() < 64)
+        {
+            SaidCalls.push_back(name);
+            Log.Line(L"Forms: " + name + L" not called: " + why + L" (it takes: " + Signature(block.Function) + L")");
+        }
+    }
+    block.Ok = ok;
+    return ok;
+}
+
+// Calls `function` on `target` with `args` in parameter order; the block keeps what it returned.
+Block Invoke(UObject* target, UFunction* function, std::initializer_list<Arg> args)
+{
+    Block block(function);
+    if (!target || !function || !Fill(block, args)) { block.Ok = false; return block; }
+    target->ProcessEvent(function, block.Bytes);
+    return block;
+}
+
+UFunction* Fn(const wchar_t* path) { return UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, path); }
+
+uint64_t Name(const std::wstring& text) { return text.empty() ? 0 : KeyOf(RawNameOf(FName(text.c_str(), FNAME_Add))); }
+
+Arg Key(const std::wstring& key)
+{
+    const uint64_t raw = Name(key);
+    KeyArg value;
+    std::memcpy(&value.Name, &raw, sizeof(value.Name));
+    return Arg::S(value, true);
+}
+
+// An object that is still the one it was: in the object array, not being destroyed, of its class (3.6.8: in constant
+// time, IsLive).
+bool StillThere(UObject* object, UClass* cls)
+{
+    if (!object || !IsLive(object) || object->HasAnyFlags(DeadFlags)) { return false; }
+    return !cls || object->GetClassPrivate() == cls;
+}
+
+// ---- what the forms use, found once ---------------------------------------------------
+struct Api
+{
+    bool Looked = false;
+    bool Usable = false;
+    UObject* Battle = nullptr;               // Default__EndBattleAPI
+    UFunction* IsInBattle = nullptr;
+    UFunction* GetPartyLeader = nullptr;
+    UFunction* GetCurrentAbilityID = nullptr;
+    UFunction* SetDisableReaction = nullptr; // super armor (a form's "super_armor")
+    UFunction* SetDisableDamageHit = nullptr;// (3.6.6) no damage while an entrance plays
+    UFunction* GetCharaHP = nullptr;         // (a timed or armoured form ends when the character is knocked out)
+    UObject* Statics = nullptr;              // Default__GameplayStatics
+    UFunction* GetTimeSeconds = nullptr;     // game time, for the forms' time limits and cooldowns
+    UFunction* GetPlayerController = nullptr;
+    UFunction* GetPlayerCharacter = nullptr;
+    UFunction* SpawnEmitterAttached = nullptr;
+    UFunction* KeyTimeDown = nullptr;        // PlayerController
+    UFunction* KeyDown = nullptr;
+    UFunction* AnalogKey = nullptr;
+    UFunction* IgnoreMoveInput = nullptr;    // Controller:SetIgnoreMoveInput
+    UObject* Niagara = nullptr;              // Default__NiagaraFunctionLibrary
+    UFunction* SpawnSystemAttached = nullptr;
+    UClass* NiagaraSystem = nullptr;
+    UObject* Sead = nullptr;                 // Default__SQEXSEADStatics
+    UFunction* SpawnSound = nullptr;
+    UFunction* SoundInBank = nullptr;
+    // components and actors
+    UFunction* Deactivate = nullptr;
+    UFunction* DestroyComponent = nullptr;
+    UFunction* SetRelativeScale = nullptr;
+    UFunction* AttachTo = nullptr;           // SceneComponent:K2_AttachToComponent
+    UFunction* GetMaterialIndex = nullptr;
+    UFunction* ShowSection = nullptr;
+    UFunction* SectionShown = nullptr;
+    UFunction* NumLods = nullptr;
+    UFunction* MakeMid = nullptr;            // PrimitiveComponent:CreateDynamicMaterialInstance
+    UFunction* SetScalar = nullptr;          // MaterialInstanceDynamic:SetScalarParameterValue
+    UFunction* SetMesh = nullptr;            // SkinnedMeshComponent:SetSkeletalMesh
+    UFunction* MasterPose = nullptr;
+    UFunction* ActiveMontage = nullptr;      // AnimInstance:GetCurrentActiveMontage (the log)
+    UFunction* AddComponent = nullptr;       // Actor:AddComponentByClass
+    UFunction* ActorLocation = nullptr;      // Actor:K2_GetActorLocation
+    UFunction* AttachedActors = nullptr;     // Actor:GetAttachedActors
+    UFunction* HideActor = nullptr;          // Actor:SetActorHiddenInGame
+    UFunction* SetMovementMode = nullptr;
+    UClass* SkeletalMeshComponent = nullptr;
+    int32_t OffCharMesh = -1;                // Character.Mesh
+    int32_t OffCharMovement = -1;            // Character.CharacterMovement
+    int32_t OffMovementMode = -1;            // CharacterMovementComponent.MovementMode
+    int32_t OffVelocity = -1;                // MovementComponent.Velocity
+    int32_t OffMaxFly = -1;                  // CharacterMovementComponent.MaxFlySpeed
+    int32_t OffMaxWalk = -1;                 // CharacterMovementComponent.MaxWalkSpeed
+    int32_t OffRelScale = -1;                // SceneComponent.RelativeScale3D
+    // (3.6.6) the entrances
+    UFunction* PlaySlotAnim = nullptr;       // AnimInstance:PlaySlotAnimationAsDynamicMontage
+    UFunction* StopSlotAnim = nullptr;       // AnimInstance:StopSlotAnimation
+    UFunction* SetViewTarget = nullptr;      // PlayerController:SetViewTargetWithBlend
+    UFunction* GetViewTarget = nullptr;      // Controller:GetViewTarget
+    UFunction* IgnoreLookInput = nullptr;    // Controller:SetIgnoreLookInput
+    UFunction* CameraFade = nullptr;         // PlayerCameraManager:StartCameraFade
+    UFunction* CameraAt = nullptr;           // PlayerCameraManager:GetCameraLocation (the log)
+    UFunction* BeginSpawn = nullptr;         // GameplayStatics:BeginDeferredActorSpawnFromClass
+    UFunction* FinishSpawn = nullptr;        // GameplayStatics:FinishSpawningActor
+    UFunction* DestroyActor = nullptr;       // Actor:K2_DestroyActor
+    UFunction* PlaceActor = nullptr;         // Actor:K2_SetActorLocationAndRotation
+    UFunction* ActorForward = nullptr;       // Actor:GetActorForwardVector
+    UFunction* SocketAt = nullptr;           // SceneComponent:GetSocketLocation
+    UFunction* ComponentAt = nullptr;        // SceneComponent:K2_GetComponentLocation
+    UFunction* SetRelativeLocation = nullptr;// SceneComponent:K2_SetRelativeLocation
+    UFunction* SetFov = nullptr;             // CameraComponent:SetFieldOfView
+    UFunction* SetAspect = nullptr;          // CameraComponent:SetAspectRatio
+    UFunction* SetAspectOn = nullptr;        // CameraComponent:SetConstraintAspectRatio
+    // (3.6.7) cutscene entrances
+    UFunction* ComponentScale = nullptr;     // SceneComponent:K2_GetComponentScale
+    UFunction* SpawnSystemAtLocation = nullptr;   // NiagaraFunctionLibrary:SpawnSystemAtLocation
+    UFunction* SpawnEmitterAtLocation = nullptr;  // GameplayStatics:SpawnEmitterAtLocation
+    int PlaySlotAnimParams = 0;              // PlaySlotAnimationAsDynamicMontage's parameters (8: it takes a start time)
+    UClass* CameraActor = nullptr;
+    int32_t OffCameraComponent = -1;         // CameraActor.CameraComponent
+    int32_t OffCameraManager = -1;           // PlayerController.PlayerCameraManager
+    int32_t OffRelLocation = -1;             // SceneComponent.RelativeLocation
+    // UMG
+    UClass* UserWidget = nullptr;
+    UClass* WidgetTree = nullptr;
+    UClass* Canvas = nullptr;
+    UClass* Image = nullptr;
+    UClass* Border = nullptr;
+    UClass* Text = nullptr;
+    int32_t OffWidgetTree = -1;              // UserWidget.WidgetTree
+    int32_t OffRootWidget = -1;              // WidgetTree.RootWidget
+    int32_t OffTextFont = -1;                // TextBlock.Font (FSlateFontInfo)
+    int32_t OffFontObject = -1, OffFontSize = -1, OffFontFace = -1, OffFontOutline = -1; // in FSlateFontInfo
+    UFunction* AddToViewport = nullptr;
+    UFunction* InViewport = nullptr;
+    UFunction* SetVisibility = nullptr;      // Widget
+    UFunction* SetAngle = nullptr;           // Widget:SetRenderTransformAngle
+    UFunction* AddChild = nullptr;           // CanvasPanel:AddChildToCanvas
+    UFunction* SlotAnchors = nullptr, *SlotAlignment = nullptr, *SlotPosition = nullptr, *SlotSize = nullptr, *SlotAutoSize = nullptr;
+    UFunction* ImageResource = nullptr, *ImageSize = nullptr, *ImageColor = nullptr;
+    UFunction* BorderColor = nullptr;
+    UFunction* SetText = nullptr, *TextColor = nullptr, *TextShadowOffset = nullptr, *TextShadowColor = nullptr;
+    UObject* WidgetLayout = nullptr;         // (3.6.8) Default__WidgetLayoutLibrary
+    UFunction* ViewportSize = nullptr;       //        WidgetLayoutLibrary:GetViewportSize (the cinema bars' height)
+    std::wstring Missing;
+};
+Api A;
+
+void LookUp()
+{
+    if (A.Looked) { return; }
+    A.Looked = true;
+    std::wstring missing;
+    const auto need = [&](auto* found, const wchar_t* what) {
+        if (!found) { missing += (missing.empty() ? L"" : L", ") + std::wstring(what); }
+        return found;
+    };
+    A.Battle = need(FindObjectByPath(L"/Script/EndGame.Default__EndBattleAPI"), L"EndBattleAPI");
+    A.IsInBattle = need(Fn(L"/Script/EndGame.EndBattleAPI:IsInBattle"), L"IsInBattle");
+    A.GetPartyLeader = need(Fn(L"/Script/EndGame.EndBattleAPI:GetPartyLeader"), L"GetPartyLeader");
+    A.GetCurrentAbilityID = Fn(L"/Script/EndGame.EndBattleAPI:GetCurrentAbilityID");
+    A.SetDisableReaction = Fn(L"/Script/EndGame.EndBattleAPI:SetDisableReaction");
+    A.SetDisableDamageHit = Fn(L"/Script/EndGame.EndBattleAPI:SetDisableDamageHit");
+    A.GetCharaHP = Fn(L"/Script/EndGame.EndBattleAPI:GetCharaHP");
+    A.Statics = need(FindObjectByPath(L"/Script/Engine.Default__GameplayStatics"), L"GameplayStatics");
+    A.GetTimeSeconds = Fn(L"/Script/Engine.GameplayStatics:GetTimeSeconds");
+    A.GetPlayerController = need(Fn(L"/Script/Engine.GameplayStatics:GetPlayerController"), L"GetPlayerController");
+    A.GetPlayerCharacter = Fn(L"/Script/Engine.GameplayStatics:GetPlayerCharacter");
+    A.SpawnEmitterAttached = Fn(L"/Script/Engine.GameplayStatics:SpawnEmitterAttached");
+    A.KeyTimeDown = need(Fn(L"/Script/Engine.PlayerController:GetInputKeyTimeDown"), L"GetInputKeyTimeDown");
+    A.KeyDown = need(Fn(L"/Script/Engine.PlayerController:IsInputKeyDown"), L"IsInputKeyDown");
+    A.AnalogKey = Fn(L"/Script/Engine.PlayerController:GetInputAnalogKeyState");
+    A.IgnoreMoveInput = Fn(L"/Script/Engine.Controller:SetIgnoreMoveInput");
+    A.Niagara = FindObjectByPath(L"/Script/Niagara.Default__NiagaraFunctionLibrary");
+    A.SpawnSystemAttached = Fn(L"/Script/Niagara.NiagaraFunctionLibrary:SpawnSystemAttached");
+    A.NiagaraSystem = FindClass(L"/Script/Niagara.NiagaraSystem");
+    A.Sead = FindObjectByPath(L"/Script/SQEXSEAD.Default__SQEXSEADStatics");
+    A.SpawnSound = Fn(L"/Script/SQEXSEAD.SQEXSEADStatics:SpawnSoundAttachedByName");
+    A.SoundInBank = Fn(L"/Script/SQEXSEAD.SQEXSEADStatics:IsExistSoundInBank");
+    A.Deactivate = Fn(L"/Script/Engine.ActorComponent:Deactivate");
+    A.DestroyComponent = Fn(L"/Script/Engine.ActorComponent:K2_DestroyComponent");
+    A.SetRelativeScale = Fn(L"/Script/Engine.SceneComponent:SetRelativeScale3D");
+    A.AttachTo = Fn(L"/Script/Engine.SceneComponent:K2_AttachToComponent");
+    A.GetMaterialIndex = Fn(L"/Script/Engine.PrimitiveComponent:GetMaterialIndex");
+    if (!A.GetMaterialIndex) { A.GetMaterialIndex = Fn(L"/Script/Engine.MeshComponent:GetMaterialIndex"); }
+    A.ShowSection = Fn(L"/Script/Engine.SkinnedMeshComponent:ShowMaterialSection");
+    A.SectionShown = Fn(L"/Script/Engine.SkinnedMeshComponent:IsMaterialSectionShown");
+    A.NumLods = Fn(L"/Script/Engine.SkinnedMeshComponent:GetNumLODs");
+    A.MakeMid = Fn(L"/Script/Engine.PrimitiveComponent:CreateDynamicMaterialInstance");
+    A.SetScalar = Fn(L"/Script/Engine.MaterialInstanceDynamic:SetScalarParameterValue");
+    A.SetMesh = Fn(L"/Script/Engine.SkinnedMeshComponent:SetSkeletalMesh");
+    A.MasterPose = Fn(L"/Script/Engine.SkinnedMeshComponent:SetMasterPoseComponent");
+    A.ActiveMontage = Fn(L"/Script/Engine.AnimInstance:GetCurrentActiveMontage");
+    A.AddComponent = Fn(L"/Script/Engine.Actor:AddComponentByClass");
+    A.ActorLocation = Fn(L"/Script/Engine.Actor:K2_GetActorLocation");
+    A.AttachedActors = Fn(L"/Script/Engine.Actor:GetAttachedActors");
+    A.HideActor = Fn(L"/Script/Engine.Actor:SetActorHiddenInGame");
+    A.SetMovementMode = Fn(L"/Script/Engine.CharacterMovementComponent:SetMovementMode");
+    A.SkeletalMeshComponent = FindClass(L"/Script/Engine.SkeletalMeshComponent");
+    if (UClass* character = FindClass(L"/Script/Engine.Character"))
+    {
+        A.OffCharMesh = FieldOffset(character, L"Mesh", {L"ObjectProperty"}, 8);
+        A.OffCharMovement = FieldOffset(character, L"CharacterMovement", {L"ObjectProperty"}, 8);
+    }
+    if (UClass* movement = FindClass(L"/Script/Engine.CharacterMovementComponent"))
+    {
+        A.OffMovementMode = FieldOffset(movement, L"MovementMode", {L"ByteProperty", L"EnumProperty"}, 1);
+        A.OffVelocity = FieldOffset(movement, L"Velocity", {L"StructProperty"}, 12);
+        A.OffMaxFly = FieldOffset(movement, L"MaxFlySpeed", {L"FloatProperty"}, 4);
+        A.OffMaxWalk = FieldOffset(movement, L"MaxWalkSpeed", {L"FloatProperty"}, 4);
+    }
+    if (UClass* scene = FindClass(L"/Script/Engine.SceneComponent"))
+    {
+        A.OffRelScale = FieldOffset(scene, L"RelativeScale3D", {L"StructProperty"}, 12);
+        A.OffRelLocation = FieldOffset(scene, L"RelativeLocation", {L"StructProperty"}, 12);   // (3.6.6)
+    }
+    need(A.OffCharMesh >= 0 ? A.Battle : nullptr, L"Character.Mesh");
+    // (3.6.6) the entrances
+    A.PlaySlotAnim = Fn(L"/Script/Engine.AnimInstance:PlaySlotAnimationAsDynamicMontage");
+    A.StopSlotAnim = Fn(L"/Script/Engine.AnimInstance:StopSlotAnimation");
+    A.SetViewTarget = Fn(L"/Script/Engine.PlayerController:SetViewTargetWithBlend");
+    A.GetViewTarget = Fn(L"/Script/Engine.Controller:GetViewTarget");
+    A.IgnoreLookInput = Fn(L"/Script/Engine.Controller:SetIgnoreLookInput");
+    A.CameraFade = Fn(L"/Script/Engine.PlayerCameraManager:StartCameraFade");
+    A.CameraAt = Fn(L"/Script/Engine.PlayerCameraManager:GetCameraLocation");
+    A.BeginSpawn = Fn(L"/Script/Engine.GameplayStatics:BeginDeferredActorSpawnFromClass");
+    A.FinishSpawn = Fn(L"/Script/Engine.GameplayStatics:FinishSpawningActor");
+    A.DestroyActor = Fn(L"/Script/Engine.Actor:K2_DestroyActor");
+    A.PlaceActor = Fn(L"/Script/Engine.Actor:K2_SetActorLocationAndRotation");
+    A.ActorForward = Fn(L"/Script/Engine.Actor:GetActorForwardVector");
+    A.SocketAt = Fn(L"/Script/Engine.SceneComponent:GetSocketLocation");
+    A.ComponentAt = Fn(L"/Script/Engine.SceneComponent:K2_GetComponentLocation");
+    A.SetRelativeLocation = Fn(L"/Script/Engine.SceneComponent:K2_SetRelativeLocation");
+    A.SetFov = Fn(L"/Script/Engine.CameraComponent:SetFieldOfView");
+    A.SetAspect = Fn(L"/Script/Engine.CameraComponent:SetAspectRatio");
+    A.SetAspectOn = Fn(L"/Script/Engine.CameraComponent:SetConstraintAspectRatio");
+    // (3.6.7) cutscene entrances
+    A.ComponentScale = Fn(L"/Script/Engine.SceneComponent:K2_GetComponentScale");
+    A.SpawnSystemAtLocation = Fn(L"/Script/Niagara.NiagaraFunctionLibrary:SpawnSystemAtLocation");
+    A.SpawnEmitterAtLocation = Fn(L"/Script/Engine.GameplayStatics:SpawnEmitterAtLocation");
+    if (A.PlaySlotAnim)
+    {
+        for (FProperty* property : A.PlaySlotAnim->ForEachPropertyInChain())
+        {
+            if (property && property->GetName() != L"ReturnValue") { ++A.PlaySlotAnimParams; }
+        }
+    }
+    A.CameraActor = FindClass(L"/Script/Engine.CameraActor");
+    if (A.CameraActor) { A.OffCameraComponent = FieldOffset(A.CameraActor, L"CameraComponent", {L"ObjectProperty"}, 8); }
+    if (UClass* player = FindClass(L"/Script/Engine.PlayerController")) { A.OffCameraManager = FieldOffset(player, L"PlayerCameraManager", {L"ObjectProperty"}, 8); }
+    // UMG
+    A.UserWidget = FindClass(L"/Script/UMG.UserWidget");
+    A.WidgetTree = FindClass(L"/Script/UMG.WidgetTree");
+    A.Canvas = FindClass(L"/Script/UMG.CanvasPanel");
+    A.Image = FindClass(L"/Script/UMG.Image");
+    A.Border = FindClass(L"/Script/UMG.Border");
+    A.Text = FindClass(L"/Script/UMG.TextBlock");
+    if (A.UserWidget) { A.OffWidgetTree = FieldOffset(A.UserWidget, L"WidgetTree", {L"ObjectProperty"}, 8); }
+    if (A.WidgetTree) { A.OffRootWidget = FieldOffset(A.WidgetTree, L"RootWidget", {L"ObjectProperty"}, 8); }
+    if (A.Text)
+    {
+        if (UStruct* font = StructField(A.Text, L"Font", A.OffTextFont))
+        {
+            A.OffFontObject = FieldOffset(font, L"FontObject", {L"ObjectProperty"}, 8);
+            A.OffFontSize = FieldOffset(font, L"Size", {L"IntProperty"}, 4);
+            A.OffFontFace = FieldOffset(font, L"TypefaceFontName", {L"NameProperty"}, 8);
+            int32_t outline = -1;
+            if (UStruct* settings = StructField(font, L"OutlineSettings", outline))
+            {
+                const int32_t size = FieldOffset(settings, L"OutlineSize", {L"IntProperty"}, 4);
+                if (outline >= 0 && size >= 0) { A.OffFontOutline = outline + size; }
+            }
+        }
+    }
+    A.AddToViewport = Fn(L"/Script/UMG.UserWidget:AddToViewport");
+    A.InViewport = Fn(L"/Script/UMG.UserWidget:IsInViewport");
+    A.SetVisibility = Fn(L"/Script/UMG.Widget:SetVisibility");
+    A.SetAngle = Fn(L"/Script/UMG.Widget:SetRenderTransformAngle");
+    A.AddChild = Fn(L"/Script/UMG.CanvasPanel:AddChildToCanvas");
+    A.SlotAnchors = Fn(L"/Script/UMG.CanvasPanelSlot:SetAnchors");
+    A.SlotAlignment = Fn(L"/Script/UMG.CanvasPanelSlot:SetAlignment");
+    A.SlotPosition = Fn(L"/Script/UMG.CanvasPanelSlot:SetPosition");
+    A.SlotSize = Fn(L"/Script/UMG.CanvasPanelSlot:SetSize");
+    A.SlotAutoSize = Fn(L"/Script/UMG.CanvasPanelSlot:SetAutoSize");
+    A.ImageResource = Fn(L"/Script/UMG.Image:SetBrushResourceObject");
+    A.ImageSize = Fn(L"/Script/UMG.Image:SetBrushSize");
+    A.ImageColor = Fn(L"/Script/UMG.Image:SetColorAndOpacity");
+    A.BorderColor = Fn(L"/Script/UMG.Border:SetBrushColor");
+    A.WidgetLayout = FindObjectByPath(L"/Script/UMG.Default__WidgetLayoutLibrary");   // (3.6.8)
+    A.ViewportSize = Fn(L"/Script/UMG.WidgetLayoutLibrary:GetViewportSize");
+    A.SetText = Fn(L"/Script/UMG.TextBlock:SetText");
+    A.TextColor = Fn(L"/Script/UMG.TextBlock:SetColorAndOpacity");
+    A.TextShadowOffset = Fn(L"/Script/UMG.TextBlock:SetShadowOffset");
+    A.TextShadowColor = Fn(L"/Script/UMG.TextBlock:SetShadowColorAndOpacity");
+    A.Missing = missing;
+    A.Usable = missing.empty() && State.SetPrimaryAnimPack && State.ResetPrimaryAnimPack && State.GetCharaSpecName;
+    std::wstring optional;
+    for (const auto& [found, what] : std::initializer_list<std::pair<const void*, const wchar_t*>>{
+             {A.SpawnSystemAttached, L"Niagara effects"}, {A.SpawnEmitterAttached, L"Cascade effects"}, {A.SpawnSound, L"sounds (SQEX SEAD)"},
+             {A.ShowSection, L"parts"}, {A.MakeMid, L"part fades"}, {A.SetMesh, L"models"}, {A.AddComponent, L"added model parts"},
+             {A.SetMovementMode, L"flying"}, {A.UserWidget, L"the menu (UMG)"}, {A.AttachedActors, L"hiding weapons"},
+             {A.SetDisableReaction, L"super armor"}, {A.GetTimeSeconds, L"game time (time limits count real time)"}, {A.GetCharaHP, L"knock-out checks"},
+             {A.PlaySlotAnim, L"entrance animations"}, {A.CameraFade && A.OffCameraManager >= 0 ? A.CameraFade : nullptr, L"entrance flashes"},
+             {A.SetRelativeLocation && A.OffRelLocation >= 0 ? A.SetRelativeLocation : nullptr, L"entrance descents"},
+             {A.CameraActor && A.BeginSpawn && A.FinishSpawn && A.SetViewTarget && A.PlaceActor ? A.SetViewTarget : nullptr, L"entrance cameras"}})
+    {
+        if (!found) { optional += (optional.empty() ? L"" : L", ") + std::wstring(what); }
+    }
+    Log.Line(L"Forms: " + (A.Usable ? std::wstring(L"ready") : L"OFF (not found: " + (missing.empty() ? std::wstring(L"EndBattleAPI pack switches") : missing) + L")") +
+             (optional.empty() ? std::wstring{} : L"; without " + optional));
+}
+
+// ---- small helpers --------------------------------------------------------------------
+UObject* ObjectAt(UObject* owner, int32_t offset)
+{
+    if (!owner || offset < 0) { return nullptr; }
+    return Field<UObject*>(owner, offset);
+}
+
+UObject* MeshOf(UObject* character) { return ObjectAt(character, A.OffCharMesh); }
+
+bool InBattle()
+{
+    Block result = Invoke(A.Battle, A.IsInBattle, {});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+UObject* Leader()
+{
+    Block result = Invoke(A.Battle, A.GetPartyLeader, {});
+    return result.Ok ? result.Get<UObject*>() : nullptr;
+}
+
+UObject* World = nullptr; // the game instance (a world context outside battle), found once per map
+
+UObject* FieldCharacter()
+{
+    if (!A.GetPlayerCharacter) { return nullptr; }
+    if (!World) { World = UObjectGlobals::FindFirstOf(L"GameInstance"); }
+    Block result = Invoke(A.Statics, A.GetPlayerCharacter, {Arg::Obj(World), Arg::I(0)});
+    return result.Ok ? result.Get<UObject*>() : nullptr;
+}
+
+UObject* Controller(UObject* worldContext)
+{
+    Block result = Invoke(A.Statics, A.GetPlayerController, {Arg::Obj(worldContext), Arg::I(0)});
+    return result.Ok ? result.Get<UObject*>() : nullptr;
+}
+
+float KeySeconds(UObject* controller, const std::wstring& key)
+{
+    if (!controller || key.empty()) { return 0.0f; }
+    Block result = Invoke(controller, A.KeyTimeDown, {Key(key)});
+    const float seconds = result.Ok ? result.Get<float>() : 0.0f;
+    return std::isfinite(seconds) && seconds > 0.0f ? seconds : 0.0f;
+}
+
+bool KeyIsDown(UObject* controller, const std::wstring& key)
+{
+    if (!controller || key.empty()) { return false; }
+    Block result = Invoke(controller, A.KeyDown, {Key(key)});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+float Axis(UObject* controller, const std::wstring& key)
+{
+    if (!controller || !A.AnalogKey) { return 0.0f; }
+    Block result = Invoke(controller, A.AnalogKey, {Key(key)});
+    const float value = result.Ok ? result.Get<float>() : 0.0f;
+    return std::isfinite(value) ? value : 0.0f;
+}
+
+std::wstring AbilityOf(UObject* character)
+{
+    if (!A.GetCurrentAbilityID) { return {}; }
+    Block result = Invoke(A.Battle, A.GetCurrentAbilityID, {Arg::Obj(character)});
+    if (!result.Ok) { return {}; }
+    const uint64_t raw = result.Get<uint64_t>();
+    return raw ? NameText(raw) : std::wstring{};
+}
+
+Vec3 LocationOf(UObject* actor)
+{
+    Block result = Invoke(actor, A.ActorLocation, {});
+    return result.Ok ? result.Get<Vec3>() : Vec3{};
+}
+
+// Game time in seconds (the world's: it stops while the game is paused and slows with it), for the forms' time limits;
+// real time when the game's is not to be had.
+double GameSeconds(UObject* context)
+{
+    if (A.GetTimeSeconds && context)
+    {
+        Block result = Invoke(A.Statics, A.GetTimeSeconds, {Arg::Obj(context)});
+        const float seconds = result.Ok ? result.Get<float>(-1.0f) : -1.0f;
+        if (std::isfinite(seconds) && seconds >= 0.0f) { return seconds; }
+    }
+    return static_cast<double>(NowMs()) / 1000.0;
+}
+
+// The character's HP (-1: not known).
+int32_t HitPoints(UObject* character)
+{
+    if (!A.GetCharaHP || !character) { return -1; }
+    Block result = Invoke(A.Battle, A.GetCharaHP, {Arg::Obj(character)});
+    return result.Ok ? result.Get<int32_t>(-1) : -1;
+}
+
+// "m:ss" for a number of seconds (rounded up).
+std::wstring Clock(double seconds)
+{
+    const int whole = static_cast<int>(std::ceil(std::max(0.0, seconds) - 1e-6));
+    const int minutes = whole / 60, rest = whole % 60;
+    return std::to_wstring(minutes) + (rest < 10 ? L":0" : L":") + std::to_wstring(rest);
+}
+
+// The button's name for the menu's hint.
+std::wstring ButtonLabel(const std::wstring& key)
+{
+    static const std::pair<const wchar_t*, const wchar_t*> names[] = {
+        {L"Gamepad_FaceButton_Top", L"Triangle"}, {L"Gamepad_FaceButton_Right", L"Circle"}, {L"Gamepad_FaceButton_Bottom", L"Cross"},
+        {L"Gamepad_FaceButton_Left", L"Square"},  {L"Gamepad_LeftShoulder", L"L1"},        {L"Gamepad_RightShoulder", L"R1"},
+        {L"Gamepad_LeftTrigger", L"L2"},           {L"Gamepad_RightTrigger", L"R2"},        {L"Gamepad_LeftThumbstick", L"L3"},
+        {L"Gamepad_RightThumbstick", L"R3"},       {L"Gamepad_Special_Left", L"Touchpad"},  {L"Gamepad_Special_Right", L"Options"}};
+    for (const auto& [name, label] : names)
+    {
+        if (SkelCompat::NameEquals(key, name)) { return label; }
+    }
+    return key;
+}
+
+// An object of the game, found (or, `load`, loaded: the first map load only) and kept (rooted), cached by path. Null when
+// it is not there. In battle nothing is loaded: the frame work can run inside the game's loading callbacks.
+std::unordered_map<std::wstring, UObject*> Loaded;
+
+UObject* Need(const std::wstring& path, bool load = false)
+{
+    if (path.empty()) { return nullptr; }
+    const std::wstring key = Folded(path);
+    if (const auto it = Loaded.find(key); it != Loaded.end() && it->second) { return it->second; }
+    UObject* object = FindObjectByPath(path.c_str());
+    if (!object && load) { object = LoadBlocking(path); }
+    if (object)
+    {
+        object->SetRootSet();
+        Loaded[key] = object;
+    }
+    return object;
+}
+
+// ---- effects and sounds --------------------------------------------------------------
+enum class Group : uint8_t { Switch, Keep, Part, Ability, Entrance };   // (Entrance: a cutscene entrance's own, 3.6.7)
+
+struct Playing
+{
+    UObject* Character = nullptr;
+    UObject* Component = nullptr;
+    UClass* Class = nullptr;
+    Group Kind = Group::Switch;
+    uint64_t StopAt = 0;     // 0: kept until stopped
+    uint64_t RemoveAt = 0;   // set once stopped
+    std::wstring Label;
+};
+std::vector<Playing> Effects;
+constexpr uint64_t FadeOutMs = 2000;
+constexpr size_t MaxEffects = 12;
+
+void StopEffect(Playing& entry, uint64_t now)
+{
+    if (entry.RemoveAt) { return; }
+    entry.RemoveAt = now + FadeOutMs;
+    if (A.Deactivate && StillThere(entry.Component, entry.Class)) { Invoke(entry.Component, A.Deactivate, {}); }
+}
+
+// Effects whose time is up stop; stopped ones go once their last particles had time to fade.
+void UpdateEffects(uint64_t now)
+{
+    for (auto it = Effects.begin(); it != Effects.end();)
+    {
+        if (it->RemoveAt && now >= it->RemoveAt)
+        {
+            if (A.DestroyComponent && StillThere(it->Component, it->Class)) { Invoke(it->Component, A.DestroyComponent, {Arg::Obj(it->Component)}); }
+            it = Effects.erase(it);
+            continue;
+        }
+        if (!it->RemoveAt && it->StopAt && now >= it->StopAt) { StopEffect(*it, now); }
+        ++it;
+    }
+}
+
+void StopEffects(UObject* character, Group kind, uint64_t now)
+{
+    for (auto& entry : Effects)
+    {
+        if (entry.Character == character && entry.Kind == kind) { StopEffect(entry, now); }
+    }
+}
+
+// (3.6.8) A step of the mod's that took a frame's worth of time or more (12 ms), logged (30 times a session at most).
+void NoteSlow(const std::wstring& what, uint64_t ms)
+{
+    static int said = 0;
+    if (ms < 12 || said >= 30) { return; }
+    ++said;
+    Log.Line(L"Forms: " + what + L" took " + std::to_wstring(ms) + L" ms");
+}
+
+// An effect on the character's mesh (Niagara or Cascade) for `seconds` (0: until stopped).
+void PlayEffect(UObject* character, UObject* mesh, const FormEffect& effect, Group kind, float seconds, uint64_t now)
+{
+    const uint64_t began = NowMs();   // (3.6.8)
+    UObject* system = Need(effect.Path);
+    if (!system || !mesh)
+    {
+        Log.Line(L"Forms: effect " + ShortNameOfPath(effect.Path) + (system ? L" has no mesh to play on" : L" not found"));
+        return;
+    }
+    size_t playing = 0;
+    for (const auto& e : Effects) { if (!e.RemoveAt) { ++playing; } }
+    for (auto& e : Effects)
+    {
+        if (playing < MaxEffects) { break; }
+        if (!e.RemoveAt && e.Kind != Group::Keep) { StopEffect(e, now); --playing; }
+    }
+    const uint64_t socket = effect.Socket.empty() ? 0 : Name(effect.Socket);
+    const Vec3 here{};
+    const Vec3 turn{};
+    UObject* component = nullptr;
+    const bool niagara = A.NiagaraSystem && system->IsA(A.NiagaraSystem);
+    if (niagara && A.Niagara && A.SpawnSystemAttached)
+    {
+        // SpawnSystemAttached(System, AttachTo, Socket, Location, Rotation, SnapToTarget, bAutoDestroy, bAutoActivate, no pooling, bPreCullCheck)
+        Block result = Invoke(A.Niagara, A.SpawnSystemAttached, {Arg::Obj(system), Arg::Obj(mesh), Arg::Nm(socket), Arg::S(here), Arg::S(turn), Arg::U8(2),
+                                                                 Arg::B(false), Arg::B(true), Arg::U8(0), Arg::B(false)});
+        if (result.Ok) { component = result.Get<UObject*>(); }
+    }
+    else if (!niagara && A.SpawnEmitterAttached)
+    {
+        const Vec3 one{1, 1, 1};
+        // SpawnEmitterAttached(System, AttachTo, Socket, Location, Rotation, Scale, SnapToTarget, bAutoDestroy, no pooling, bAutoActivate)
+        Block result = Invoke(A.Statics, A.SpawnEmitterAttached, {Arg::Obj(system), Arg::Obj(mesh), Arg::Nm(socket), Arg::S(here), Arg::S(turn), Arg::S(one),
+                                                                  Arg::U8(2), Arg::B(false), Arg::U8(0), Arg::B(true)});
+        if (result.Ok) { component = result.Get<UObject*>(); }
+    }
+    if (!component)
+    {
+        Log.Line(L"Forms: effect " + ShortNameOfPath(effect.Path) + L" did not start");
+        return;
+    }
+    if (effect.Scale > 0.0f && effect.Scale != 1.0f && A.SetRelativeScale)
+    {
+        const Vec3 scale{effect.Scale, effect.Scale, effect.Scale};
+        Invoke(component, A.SetRelativeScale, {Arg::S(scale)});
+    }
+    Playing entry;
+    entry.Character = character;
+    entry.Component = component;
+    entry.Class = component->GetClassPrivate();
+    entry.Kind = kind;
+    entry.StopAt = seconds > 0.0f ? now + static_cast<uint64_t>(seconds * 1000.0f) : 0;
+    entry.Label = ShortNameOfPath(effect.Path);
+    Effects.push_back(entry);
+    NoteSlow(L"starting effect " + entry.Label, NowMs() - began);
+}
+
+void PlayEffects(UObject* character, UObject* mesh, const std::vector<FormEffect>& list, Group kind, float seconds, uint64_t now)
+{
+    for (const auto& effect : list)
+    {
+        try
+        {
+            PlayEffect(character, mesh, effect, kind, kind == Group::Keep ? 0.0f : (effect.Seconds > 0.0f ? effect.Seconds : seconds), now);
+        }
+        catch (...)
+        {
+            Log.Line(L"Forms: effect " + ShortNameOfPath(effect.Path) + L": error");
+        }
+    }
+}
+
+constexpr const wchar_t* VoiceLanguages[] = {L"US", L"JP", L"FR", L"DE", L"ES", L"IT", L"KO", L"CN", L"TW", L"BR"};
+
+std::wstring InLanguage(const std::wstring& pattern, const std::wstring& language)
+{
+    std::wstring path = pattern;
+    const size_t at = path.find(L"{language}");
+    if (at != std::wstring::npos) { path.replace(at, 10, language); }
+    return path;
+}
+
+// A voice bank pattern ({language}) -> the bank, while the game has it loaded (in whichever language folder it is
+// under: the game asks for the JP one and plays the voice language's package in its place). Null when the game has not
+// loaded it.
+//
+// 3.6.3: the mod never loads a voice bank itself. Voice banks are localized packages the game's sound system loads
+// and streams; 3.6.2 loaded them by path (every language, and a cutscene's voice packs, also from the frame work) and
+// the game's loading thread crashed in the middle of one, half a minute into the game (the game's thread was in the
+// mod's load of Sephiroth's voice bank). A form's voice line plays while the game has its bank loaded (a party member's
+// voices; a cutscene's lines only while that cutscene's are), else it is left out and the log says so once.
+UObject* VoiceBank(const std::wstring& pattern)
+{
+    for (const wchar_t* language : VoiceLanguages)
+    {
+        UObject* bank = FindObjectByPath(InLanguage(pattern, language).c_str());
+        if (FlagsReady(bank)) { return bank; }   // (not one the game is still loading)
+    }
+    return nullptr;
+}
+
+// The sound component (null: it did not play). `start`: seconds into the sound it starts at (3.6.7; below 0: the sound's
+// own "start", 3.7.1). Its "volume" is the volume it plays at (3.7.1).
+UObject* PlaySound(UObject* mesh, const SkelCompat::FormSound& sound, float start = -1.0f)
+{
+    if (!A.Sead || !A.SpawnSound || !mesh) { return nullptr; }
+    if (start < 0.0f) { start = sound.Start; }
+    const float volume = std::isfinite(sound.Volume) && sound.Volume >= 0.0f ? sound.Volume : 1.0f;
+    const uint64_t began = NowMs();   // (3.6.8)
+    const bool voice = sound.Bank.find(L"{language}") != std::wstring::npos;
+    UObject* bank = voice ? VoiceBank(sound.Bank) : Need(sound.Bank);
+    if (!bank)
+    {
+        if (!voice)
+        {
+            Log.Line(L"Forms: sound " + sound.Cue + L": " + ShortNameOfPath(sound.Bank) + L" not found");
+            return nullptr;
+        }
+        static std::vector<std::wstring> said;   // (once a session for each line)
+        if (std::find(said.begin(), said.end(), sound.Cue) == said.end())
+        {
+            said.push_back(sound.Cue);
+            Log.Line(L"Forms: voice line " + sound.Cue + L" left out: the game has not loaded its voice bank " + ShortNameOfPath(sound.Bank) +
+                     L" (the mod does not load voice banks: the game's sound system does)");
+        }
+        return nullptr;
+    }
+    const uint64_t cue = Name(sound.Cue);
+    if (A.SoundInBank)
+    {
+        Block exists = Invoke(A.Sead, A.SoundInBank, {Arg::Obj(bank), Arg::Nm(cue)});
+        if (exists.Ok && exists.Get<uint8_t>(1) == 0)
+        {
+            Log.Line(L"Forms: sound " + sound.Cue + L" is not in " + ShortName(bank));
+            return nullptr;
+        }
+    }
+    const Vec3 here{};
+    const Vec3 turn{};
+    // SpawnSoundAttachedByName(Bank, AttachTo, Cue, SwitchValue, ZeroOneSlot, ZeroOneValue, ExternalID, Socket, Location, Rotation,
+    //   SnapToTarget, bStopWhenAttachedToDestroyed, bVirtualizePlay, bUISound, Volume, Pitch, StartTime, Attenuation, Concurrency,
+    //   bAutoDestroy, bRecycle, VibrationVolume, OutputPort, VoiceEffect)
+    Block result = Invoke(A.Sead, A.SpawnSound, {Arg::Obj(bank), Arg::Obj(mesh), Arg::Nm(cue), Arg::F(0.0f), Arg::I(0), Arg::F(0.0f), Arg::I(0), Arg::Nm(0),
+                                                Arg::S(here), Arg::S(turn), Arg::U8(2), Arg::B(true), Arg::B(false), Arg::B(false), Arg::F(volume),
+                                                Arg::F(1.0f), Arg::F(start), Arg::Obj(nullptr), Arg::Obj(nullptr), Arg::B(true), Arg::B(false), Arg::F(1.0f),
+                                                Arg::U8(0), Arg::U8(0)});
+    if (!result.Ok) { Log.Line(L"Forms: sound " + sound.Cue + L" did not play"); }
+    NoteSlow(L"playing sound " + sound.Cue, NowMs() - began);
+    return result.Ok ? result.Get<UObject*>() : nullptr;
+}
+
+// ---- parts (material slots shown or hidden) ------------------------------------------
+int32_t SlotIndex(UObject* mesh, const std::wstring& slot)
+{
+    if (!mesh || !A.GetMaterialIndex) { return -1; }
+    Block result = Invoke(mesh, A.GetMaterialIndex, {Arg::Nm(Name(slot))});
+    return result.Ok ? result.Get<int32_t>(-1) : -1;
+}
+
+int32_t Lods(UObject* mesh)
+{
+    Block result = Invoke(mesh, A.NumLods, {});
+    const int32_t count = result.Ok ? result.Get<int32_t>() : 0;
+    return count > 0 && count <= 16 ? count : 8; // (the engine skips levels the model lacks)
+}
+
+void ShowSection(UObject* mesh, int32_t index, bool shown)
+{
+    if (!A.ShowSection || index < 0) { return; }
+    const int32_t lods = Lods(mesh);
+    for (int32_t lod = 0; lod < lods; ++lod) { Invoke(mesh, A.ShowSection, {Arg::I(index), Arg::I(-1), Arg::B(shown), Arg::I(lod)}); }
+}
+
+int SectionShown(UObject* mesh, int32_t index) // 1 shown, 0 hidden, -1 unknown
+{
+    if (!A.SectionShown || index < 0) { return -1; }
+    Block result = Invoke(mesh, A.SectionShown, {Arg::I(index), Arg::I(0)});
+    return result.Ok ? (result.Get<uint8_t>() ? 1 : 0) : -1;
+}
+
+// A part's fade: the scalar of a copy of its material (kept in its slot) goes from 0 to 1 (in) or 1 to 0 (out).
+struct Fade
+{
+    UObject* Character = nullptr;
+    UObject* Mesh = nullptr;
+    int32_t Index = -1;
+    UObject* Mid = nullptr;
+    float From = 0, To = 1;
+    uint64_t Start = 0, Length = 1;
+    bool HideAtEnd = false;
+};
+std::vector<Fade> Fades;
+std::unordered_map<uint64_t, UObject*> FadeMids; // (mesh, slot) -> its copy of the slot's material
+std::wstring FadeProblem;
+
+uint64_t MidKey(UObject* mesh, int32_t index) { return (reinterpret_cast<uint64_t>(mesh) << 8) ^ static_cast<uint64_t>(static_cast<uint32_t>(index)); }
+
+UObject* KnownMid(UObject* mesh, int32_t index)
+{
+    const auto it = FadeMids.find(MidKey(mesh, index));
+    return it == FadeMids.end() ? nullptr : it->second;
+}
+
+UObject* FadeMid(UObject* mesh, int32_t index, const std::wstring& parameter)
+{
+    const uint64_t key = MidKey(mesh, index);
+    if (const auto it = FadeMids.find(key); it != FadeMids.end()) { return it->second; }
+    UObject* mid = nullptr;
+    if (A.MakeMid && A.SetScalar)
+    {
+        // CreateDynamicMaterialInstance(ElementIndex, [LayerIndex,] SourceMaterial (none: the slot's own), OptionalName)
+        Block block(A.MakeMid);
+        uint8_t* element = block.Named(L"ElementIndex", 4);
+        uint8_t* name = block.Named(L"OptionalName", 8);
+        if (element)
+        {
+            std::memcpy(element, &index, sizeof(index));
+            if (name)
+            {
+                const uint64_t raw = Name(L"CreateACharacterSystemFade");
+                std::memcpy(name, &raw, sizeof(raw));
+            }
+            mesh->ProcessEvent(A.MakeMid, block.Bytes);
+            mid = block.Get<UObject*>();
+        }
+        else if (FadeProblem.empty()) { FadeProblem = L"CreateDynamicMaterialInstance takes: " + Signature(A.MakeMid); }
+    }
+    (void)parameter;
+    FadeMids[key] = mid;
+    return mid;
+}
+
+void SetFadeValue(UObject* mid, const std::wstring& parameter, float value)
+{
+    Invoke(mid, A.SetScalar, {Arg::Nm(Name(parameter)), Arg::F(value)});
+}
+
+// ---- the character's state -----------------------------------------------------------
+struct Added
+{
+    UObject* Component = nullptr;
+    UClass* Class = nullptr;
+};
+
+// (3.6.4) An anim instance a character's model changes keep (rooted): its own, made when it spawned, or a form's.
+struct KeptInstance
+{
+    UObject* Instance = nullptr;
+    UObject* Class = nullptr;              // its AnimBlueprint class
+    std::vector<UObject*> Linked;          // its linked anim instances while it is off the mesh (rooted)
+};
+
+struct Tracked
+{
+    UObject* Character = nullptr;
+    UClass* Class = nullptr;
+    const SkelCompat::AnimSetRow* Row = nullptr;
+    std::wstring Spec;
+    int Form = 0;
+    // the model it had before a form changed it
+    bool Swapped = false;
+    UObject* Mesh = nullptr;                 // its mesh component
+    UObject* OwnModel = nullptr;
+    UObject* OwnAnimClass = nullptr;
+    Vec3 OwnScale{1, 1, 1};
+    UObject* WornModel = nullptr;            // what the form put on (to see when the game puts something else on)
+    std::vector<Added> Parts;                // model parts the form added
+    std::vector<std::pair<UObject*, UClass*>> HiddenWeapons;
+    // flying
+    bool Flying = false;
+    float BaseZ = 0.0f;
+    float Height = 0.0f;
+    float OwnMaxFly = -1.0f;
+    uint64_t LastFlyMs = 0;
+    int FlyResets = 0;
+    // parts
+    std::vector<int8_t> PartShown;           // per row part: 1 shown, 0 hidden, -1 unknown / not on the model
+    int PartResets = 0;
+    std::wstring Ability;                    // its ability, for "after" and the ability effects
+    std::wstring AbilityFx;                  // the ability whose effects play (empty: none)
+    uint64_t NextKeepMs = 0;
+    // time limits, cooldowns, super armor
+    double Since = -1.0;                     // game time the form began (-1: not known)
+    std::vector<double> ReadyAt;             // per form: the game time it can be chosen again from (its cooldown)
+    bool Armored = false;                    // the mod turned its hit reactions off
+    uint64_t NextArmorMs = 0;                // (super armor is set again every second: the game can turn hit reactions back on)
+    uint64_t NextHpMs = 0;
+    bool TimeUpSaid = false;                 // its time is up and it waits for its ability to end
+    bool Alive = true;                       // (not in charge: looked at every 2 s, the object array walk being slow)
+    uint64_t NextAliveMs = 0;
+    bool Down = false;                       // knocked out in a timed or armoured form
+    struct
+    {
+        bool Saved = false;                  // looked at, before the first model change
+        bool Running = false;                // it ran for the character's own model then
+        bool OwnerIsInstance = false;        // what it ran for was the character's own anim instance
+        uint64_t Asset = 0;                  // the mesh asset its bone tables were of (raw FWeakObjectPtr)
+        uint64_t Owner = 0;                  // what it ran for (raw FWeakObjectPtr)
+    } MeshTick;                              // its mesh tick as its own model had it (see SettleMeshTick)
+    std::deque<KeptInstance> Kept;           // (3.6.4) anim instances its model changes keep (a deque: entries stay put)
+    uint64_t TickCheckAt = 0;                // (3.7.8, the log) when to look at its mesh tick after a model change
+    uint64_t MontageAt = 0;                  // (the log) when to look at what its anim instance plays in an ability
+    std::wstring MontageFor;
+    // (3.6.5) a form's model as a look of the game's (the frog's way: see the game's look changes)
+    bool ByLook = false;                     // the form's model went on as a look
+    bool LookWaiting = false;                // a look of the game's is on (a status): the form's model goes on after it
+    int32_t LookSlot = -1;                   // the form's look entry while it is on (just past the game's list)
+    std::vector<uint8_t> KeptLook;           // what the game kept of its own look as the form's went on (KeepKeptLook)
+    std::vector<uint8_t> KeptBody;           // the hit body kept with it
+    std::vector<UObject*> LookRooted;        // what the kept look holds, rooted while the form's look is on
+    void* LookSets = nullptr;                // (3.7.6) the form's look entry's AnimSets (the mod's allocation, freed with the next look)
+    // (3.8.2) a form's weapon ("weapon"): spawned and put in the slot of the character's own, which waits hidden meanwhile
+    UObject* OwnWeapon = nullptr;
+    UClass* OwnWeaponClass = nullptr;
+    UObject* FormWeapon = nullptr;
+    UClass* FormWeaponClass = nullptr;
+    std::wstring FormWeaponPath;
+    uint8_t WeaponSlot = 0;
+    uint64_t NextWeaponMs = 0;
+    int WeaponSaid = 0;
+    // (3.9.0) the normal form's own pack ("pack" on the first form): on in this battle, and how often it went on again
+    bool BaseOn = false;
+    uint64_t BaseAt = 0;
+    int BaseTimes = 0;
+};
+std::deque<Tracked> Characters; // (a deque: pointers to its entries stay valid as it grows)
+bool VoicesDirty = true;        // (3.9.0) a form, or the characters tracked, changed: the voices are planned again at once
+
+Tracked* TrackedOf(UObject* character)
+{
+    for (auto& t : Characters)
+    {
+        if (t.Character == character) { return &t; }
+    }
+    return nullptr;
+}
+
+const SkelCompat::AnimSetRow* RowOf(const std::wstring& spec)
+{
+    if (spec.empty()) { return nullptr; }
+    const SkelCompat::AnimSetRow* row = State.Config.FindAnimSetRow(SkelCompat::CharacterPackPath(spec));
+    return row && row->Forms.HasList() ? row : nullptr;
+}
+
+void ApplyParts(Tracked& t, const Form& form, bool cue, uint64_t now);
+
+// The character, tracked from now on when its row has forms (its normal form's parts go on: hidden ones hide).
+Tracked* Track(UObject* character)
+{
+    if (Tracked* known = TrackedOf(character)) { return known; }
+    const std::wstring spec = CharaSpecRowOf(character);
+    const SkelCompat::AnimSetRow* row = RowOf(spec);
+    if (!row) { return nullptr; }
+    Tracked t;
+    t.Character = character;
+    t.Class = character->GetClassPrivate();
+    t.Row = row;
+    t.Spec = spec;
+    t.Mesh = MeshOf(character);
+    t.PartShown.assign(row->Forms.Parts.size(), -1);
+    t.ReadyAt.assign(row->Forms.List.size(), 0.0);
+    t.Since = GameSeconds(character);
+    Characters.push_back(std::move(t));
+    Tracked& added = Characters.back();
+    VoicesDirty = true;   // (3.9.0)
+    Log.Line(L"Forms: " + spec + L" has " + std::to_wstring(row->Forms.List.size()) + L" forms (" + ShortName(character) + L")");
+    ApplyParts(added, row->Forms.List.front(), false, NowMs());
+    return &added;
+}
+
+// Shows or hides the row's parts for a form (fading when the row says so); effects play as parts come out or go.
+void ApplyParts(Tracked& t, const Form& form, bool cue, uint64_t now)
+{
+    const FormSettings& forms = t.Row->Forms;
+    UObject* mesh = MeshOf(t.Character);
+    if (!mesh || forms.Parts.empty()) { return; }
+    bool cameOut = false, went = false;
+    for (size_t k = 0; k < forms.Parts.size(); ++k)
+    {
+        const std::wstring& slot = forms.Parts[k];
+        const int32_t index = SlotIndex(mesh, slot);
+        if (index < 0)
+        {
+            t.PartShown[k] = -1;
+            continue;
+        }
+        const bool want = std::any_of(form.Show.begin(), form.Show.end(), [&](const std::wstring& s) { return SkelCompat::NameEquals(s, slot); });
+        const int before = SectionShown(mesh, index);
+        const bool changes = before != (want ? 1 : 0);
+        Fades.erase(std::remove_if(Fades.begin(), Fades.end(), [&](const Fade& f) { return f.Mesh == mesh && f.Index == index; }), Fades.end());
+        UObject* mid = (cue && changes && forms.FadeSeconds > 0.0f) ? FadeMid(mesh, index, forms.FadeParameter) : nullptr;
+        if (mid)
+        {
+            if (want) { ShowSection(mesh, index, true); }
+            SetFadeValue(mid, forms.FadeParameter, want ? 0.0f : 1.0f);
+            Fades.push_back(Fade{t.Character, mesh, index, mid, want ? 0.0f : 1.0f, want ? 1.0f : 0.0f, now,
+                                 std::max<uint64_t>(1, static_cast<uint64_t>(forms.FadeSeconds * 1000.0f)), !want});
+        }
+        else
+        {
+            if (UObject* existing = KnownMid(mesh, index)) { SetFadeValue(existing, forms.FadeParameter, 1.0f); }
+            ShowSection(mesh, index, want);
+        }
+        t.PartShown[k] = want ? 1 : 0;
+        if (changes && before >= 0) { (want ? cameOut : went) = true; }
+    }
+    if (cue && cameOut) { PlayEffects(t.Character, mesh, forms.ShowEffects, Group::Part, forms.EffectSeconds, now); }
+    if (cue && went) { PlayEffects(t.Character, mesh, forms.HideEffects, Group::Part, forms.EffectSeconds, now); }
+}
+
+void UpdateFades(uint64_t now)
+{
+    for (auto it = Fades.begin(); it != Fades.end();)
+    {
+        const Tracked* t = TrackedOf(it->Character);
+        if (!t || MeshOf(it->Character) != it->Mesh)
+        {
+            it = Fades.erase(it);
+            continue;
+        }
+        const float x = std::min(1.0f, static_cast<float>(now - it->Start) / static_cast<float>(it->Length));
+        SetFadeValue(it->Mid, t->Row->Forms.FadeParameter, it->From + (it->To - it->From) * x);
+        if (x >= 1.0f)
+        {
+            if (it->HideAtEnd) { ShowSection(it->Mesh, it->Index, false); }
+            it = Fades.erase(it);
+            continue;
+        }
+        ++it;
+    }
+}
+
+// The game can reset the model's sections (a new mesh, a costume): parts go back to how the form wants them.
+void KeepParts(Tracked& t)
+{
+    const FormSettings& forms = t.Row->Forms;
+    UObject* mesh = MeshOf(t.Character);
+    if (!mesh || forms.Parts.empty()) { return; }
+    for (size_t k = 0; k < forms.Parts.size(); ++k)
+    {
+        if (t.PartShown[k] < 0) { continue; }
+        if (std::any_of(Fades.begin(), Fades.end(), [&](const Fade& f) { return f.Mesh == mesh; })) { return; }
+        const int32_t index = SlotIndex(mesh, forms.Parts[k]);
+        const int now = SectionShown(mesh, index);
+        if (now >= 0 && now != t.PartShown[k])
+        {
+            ShowSection(mesh, index, t.PartShown[k] == 1);
+            if (++t.PartResets <= 5) { Log.Line(L"Forms: " + t.Spec + L": part " + forms.Parts[k] + L" put back (the game had reset it)"); }
+        }
+    }
+}
+
+// ---- the game's animation controller, kept anim instances, the mesh tick (3.6.4) ---------------------------------
+// EndGame gives a character a C++ animation controller (at character + 0x1420; not reflected) when the character is
+// made. The controller takes the anim instance the mesh has then (its start, slot 1: slot 3 the attach, slots 4 and 5
+// the bone indices it keeps of the mesh), and the character then copies two lists from the instance (+0xB08, +0xB18,
+// 16-byte entries) into its own +0x1488 and +0x1498 (once: its flag +0x1480). The attach binds the controller to the
+// mesh's instance (its first step: the controller's +0x18 and +0x20), keeps it (+0x160, weak), hands itself to it
+// (+0xCC0), sets the instance up (its flag +0xCA5, the game's anim manager, its rotation updater at +0x1088, its
+// AnimBlueprint's resident blends as layers of its set container at +0x12D0) and ends with a refresh (its last step).
+// Each set put on the character (its CharaSpec's, and each pack a switch puts on: SetPrimaryAnimPack) is an entry of
+// the character's set map (+0x11B8: TMap<uint8, TArray<0x1C-byte entry>>: the set's name, the set (weak), ...) that the
+// game registers into the instance its controller holds (the call the pack switch makes after adding the entry), then
+// it asks the instance for a pose change (+0x10C7, +0x10C8).
+//
+// An anim instance the engine makes later (SetAnimClass, or a mesh of another skeleton) gets none of that. 3.6.0
+// crashed on it (the rotation updater's empty owner). 3.6.1 - 3.6.3 had the controller start again, and the game took
+// the instance, but moves did not play on it, Sephiroth's own AnimBlueprint included once he was back in his own model
+// ("puts his hand in the air"), and 3.6.2's copy of set layers moved none.
+//
+// 3.6.4 keeps anim instances instead: the character's own (the one the game set up when it spawned) and each form's
+// (one per AnimBlueprint), rooted while kept (let go before a map load: rooted, they would keep the old world from
+// being collected). A model change keeps the instance on the mesh, clears the mesh the engine's way (SetAnimClass(None):
+// it waits for the mesh's animation work) and puts back a kept instance of the form's AnimBlueprint (the class and
+// instance fields, then the model with no re-initialization: InitAnim keeps an instance of the right class and
+// skeleton), the controller bound to it again without the set-up it had when it was made (that would add its resident
+// blends a second time). An instance of a form's AnimBlueprint made for the first time is set up by the controller's
+// start and then given every set of the character with the game's own registration, and the pose change. Either way the
+// character's two lists are copied again from the instance now on. A kept instance's linked anim instances are taken
+// out of the mesh's list while it is off (the engine's clear would end them).
+//
+// The mesh tick. A character has a tick of the game's (at character + 0xF40: its work at +0x30, itself at +0x58) that
+// reads bone tables built from its mesh: +0xCC the mesh component, +0xD4 the mesh asset the tables were built from,
+// +0xDC what it runs for (it stops when that goes), +0xE4 / +0xEC a re-build asked for (mesh component, what it runs
+// for). 3.6.2 stopped it while another mesh was on (3.6.1: Bizarro's tables on Sephiroth's mesh after the switch back,
+// a crash 90 s later), and nothing started it again. 3.6.4 asks the game to build the tables for the mesh now on (as the
+// game itself did for Bizarro's mesh in 3.6.1), with what it runs for: the instance now on, when it ran for the
+// character's own instance.
+constexpr size_t OffCharAnimController = 0x1420;   // AEndCharacter: its animation controller (C++)
+constexpr size_t OffCtrlMesh = 0x10;               // controller: its mesh (FWeakObjectPtr: object index, serial)
+constexpr size_t OffCtrlInstance = 0x160;          // controller: the anim instance it took (FWeakObjectPtr)
+constexpr size_t CtrlSize = 0xB60;                 // (what the game allocates for one)
+constexpr size_t OffInstanceCtrl = 0xCC0;          // UEndCharacterAnimInstance: its controller
+constexpr size_t OffInstanceSetUp = 0xCA5;         // UEndCharacterAnimInstance: set up by its controller (byte)
+constexpr size_t OffInstanceUpdater = 0x1088;      // UEndCharacterAnimInstance: its rotation updater's owner (weak)
+constexpr size_t OffInstancePoseChange = 0x10C7;   // UEndCharacterAnimInstance: a pose change asked for (byte; its blend at +1)
+constexpr size_t OffInstanceLayers = 0x1500;       // UEndCharacterAnimInstance: its set container's layers (32 bytes each, name first)
+constexpr size_t OffInstanceListA = 0xB08;         // UEndCharacterAnimInstance: the two lists the character copies (16-byte entries)
+constexpr size_t OffInstanceListB = 0xB18;
+constexpr size_t OffCharListsCopied = 0x1480;      // AEndCharacter: the lists copied (byte), the lists at +0x1488, +0x1498
+constexpr size_t OffCharListA = 0x1488;
+constexpr size_t OffCharListB = 0x1498;
+constexpr size_t OffCharSetInterface = 0x4D0;      // AEndCharacter: its anim set interface (vtable slot 2: the pack switch)
+constexpr size_t OffCharSetMap = 0x11B8;           // AEndCharacter: its sets (TMap<uint8, TArray<entry>>, 32-byte map elements)
+constexpr size_t SetEntrySize = 0x1C;              // an entry: the set's name, the set (weak), ...
+constexpr size_t OffCharMeshTick = 0xF40;          // AEndCharacter: its mesh tick
+
+// The controller's attach (its slot 3) as this build has it ('?': its calls, not compared): +0x2B its first step (the
+// controller binds to the mesh's anim instance), +0x34 FWeakObjectPtr::Get, +0x67 FWeakObjectPtr = object, +0x92 the
+// instance's set-up, +0x9A its last step.
+constexpr uint8_t AttachCode[] = {
+    0x48, 0x89, 0x5C, 0x24, 0x08, 0x48, 0x89, 0x74, 0x24, 0x10, 0x57, 0xB8, 0x20, 0x00, 0x00, 0x00,
+    0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x2B, 0xE0, 0x48, 0x8B, 0xF9, 0x48, 0x83, 0xC1, 0x10, 0xE8,
+    0x00, 0x00, 0x00, 0x00, 0x84, 0xC0, 0x74, 0x77, 0x48, 0x8B, 0xCF, 0xE8, 0x00, 0x00, 0x00, 0x00,
+    0x48, 0x8D, 0x4F, 0x10, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x98, 0x30, 0x08, 0x00, 0x00,
+    0x48, 0x85, 0xDB, 0x74, 0x6A, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x4B, 0x10, 0x48, 0x8B,
+    0xD0, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x84, 0xC0, 0x74, 0x55, 0x48, 0x8D, 0xB7, 0x60, 0x01, 0x00,
+    0x00, 0x48, 0x8B, 0xD3, 0x48, 0x8B, 0xCE, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0xCE, 0xE8,
+    0x00, 0x00, 0x00, 0x00, 0x84, 0xC0, 0x74, 0x27, 0x48, 0x8B, 0xCE, 0xE8, 0x00, 0x00, 0x00, 0x00,
+    0x48, 0x8B, 0xCE, 0x48, 0x89, 0xB8, 0xC0, 0x0C, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48,
+    0x8B, 0xC8, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0xCF, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48,
+    0x8B, 0x5C, 0x24, 0x30, 0x48, 0x8B, 0x74, 0x24, 0x38, 0x48, 0x83, 0xC4, 0x20, 0x5F, 0xC3, 0x33,
+    0xDB, 0xEB, 0xA7,
+};
+constexpr char AttachMask[] =
+    "xxxxxxxxxxxxxxxxx????xxxxxxxxxxx????xxxxxxxx????xxxxx????xxxxxxxxxxxxx????xxxxxxxx????xxxxxxxxxx"
+    "xxxxxxxx????xxxx????xxxxxxxx????xxxxxxxxxxx????xxxx????xxxx????xxxxxxxxxxxxxxxxxxxx";
+static_assert(sizeof(AttachCode) == sizeof(AttachMask) - 1);
+
+// The pack switch (the character's anim set interface's slot 2) as this build has it: +0xB9 the registration of a set
+// into the instance the controller holds (character, its set entry, the set).
+constexpr uint8_t PackSwitchCode[] = {
+    0x48, 0x89, 0x5C, 0x24, 0x18, 0x48, 0x89, 0x6C, 0x24, 0x20, 0x88, 0x54, 0x24, 0x10, 0x56, 0x57,
+    0x41, 0x56, 0xB8, 0x20, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x2B, 0xE0, 0x49,
+    0x8B, 0xD8, 0x0F, 0xB6, 0xD2, 0x48, 0x8B, 0xF9, 0x4C, 0x8D, 0x44, 0x24, 0x48, 0x48, 0x81, 0xC1,
+    0xE8, 0x0C, 0x00, 0x00, 0x41, 0x8A, 0xE9, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x4C, 0x8B, 0xF0, 0x48,
+    0x63, 0x70, 0x08, 0x8D, 0x56, 0x01, 0x89, 0x50, 0x08, 0x3B, 0x50, 0x0C, 0x7E, 0x08, 0x48, 0x8B,
+    0xC8, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x49, 0x8B, 0x0E, 0x48, 0x8B, 0xD3, 0x48, 0x6B, 0xF6, 0x1C,
+    0x48, 0xC7, 0x44, 0x24, 0x40, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x44, 0x24, 0x40, 0x48, 0x89,
+    0x1C, 0x31, 0xC7, 0x44, 0x31, 0x08, 0xFF, 0xFF, 0xFF, 0xFF, 0xC7, 0x44, 0x31, 0x0C, 0x00, 0x00,
+    0x00, 0x00, 0x48, 0x89, 0x44, 0x31, 0x10, 0x40, 0x88, 0x6C, 0x31, 0x18, 0x66, 0xC7, 0x44, 0x31,
+    0x19, 0x00, 0x00, 0xC6, 0x44, 0x31, 0x1B, 0x00, 0x48, 0x8D, 0x8F, 0x68, 0x09, 0x00, 0x00, 0xE8,
+    0x00, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC0, 0x74, 0x15, 0x49, 0x8B, 0x16, 0x48, 0x8D, 0x8F, 0x30,
+    0xFB, 0xFF, 0xFF, 0x48, 0x03, 0xD6, 0x4C, 0x8B, 0xC0, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8D,
+    0x4F, 0xE8, 0x48, 0x8B, 0x01, 0xFF, 0x90, 0x90, 0x00, 0x00, 0x00, 0x84, 0xC0, 0x74, 0x14, 0xC5,
+    0xFA, 0x10, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x8F, 0x50, 0x0F, 0x00, 0x00, 0xE8, 0x00,
+    0x00, 0x00, 0x00, 0x48, 0x8B, 0x5C, 0x24, 0x50, 0x48, 0x8B, 0x6C, 0x24, 0x58, 0x48, 0x83, 0xC4,
+    0x20, 0x41, 0x5E, 0x5F, 0x5E, 0xC3,
+};
+constexpr char PackSwitchMask[] =
+    "xxxxxxxxxxxxxxxxxxxxxxxx????xxxxxxxxxxxxxxxxxxxxxxxxxxxx????xxxxxxxxxxxxxxxxxxxxxx????xxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx????xxxxxxxxxxxxxxxxxxxxxx????xx"
+    "xxxxxxxxxxxxxxxxxxx????xxxxxxxx????xxxxxxxxxxxxxxxxxxx";
+static_assert(sizeof(PackSwitchCode) == sizeof(PackSwitchMask) - 1);
+
+struct GameAnimCode
+{
+    bool Looked = false;
+    std::wstring Why;                                                   // why kept instances are not used (empty: they are)
+    void (*Bind)(void* controller) = nullptr;                           // the attach's first step
+    UObject* (*WeakGet)(const void* weak) = nullptr;
+    void (*WeakSet)(void* weak, UObject* object) = nullptr;
+    void (*AfterAttach)(void* controller) = nullptr;                    // the attach's last step
+    void (*AddSet)(void* character, void* entry, UObject* set) = nullptr; // a set into the controller's instance
+};
+GameAnimCode G;
+
+bool CodeIs(const uint8_t* at, const uint8_t* code, const char* mask, size_t size)
+{
+    std::vector<uint8_t> copy(size);
+    if (!SafeCopy(copy.data(), at, size)) { return false; }
+    for (size_t i = 0; i < size; ++i)
+    {
+        if (mask[i] == 'x' && copy[i] != code[i]) { return false; }
+    }
+    return true;
+}
+
+template <typename F>
+F CallTargetAt(const uint8_t* call)
+{
+    int32_t rel = 0;
+    if (!SafeCopy(&rel, call + 1, sizeof(rel))) { return nullptr; }
+    return reinterpret_cast<F>(const_cast<uint8_t*>(call + 5 + rel));
+}
+
+// The game's functions a kept instance needs, found once by the code of the controller's attach and the pack switch.
+void LookAtGameAnimCode(UObject* character, void* controller)
+{
+    if (G.Looked) { return; }
+    G.Looked = true;
+    const ImageRange image = MainImage();
+    void** table = nullptr;
+    const uint8_t* attach = nullptr;
+    if (!ReadAt(controller, 0, table) || !image.Contains(table) || !ReadAt(table, 24, attach) || !image.Contains(attach) ||
+        !CodeIs(attach, AttachCode, AttachMask, sizeof(AttachCode)))
+    {
+        G.Why = L"the game's controller attach is not the one this mod knows (another game version?)";
+        Log.Line(L"Forms: WARNING: " + G.Why + L": model changes make new anim instances as in 3.6.3");
+        return;
+    }
+    G.Bind = CallTargetAt<void (*)(void*)>(attach + 0x2B);
+    G.WeakGet = CallTargetAt<UObject* (*)(const void*)>(attach + 0x34);
+    G.WeakSet = CallTargetAt<void (*)(void*, UObject*)>(attach + 0x67);
+    G.AfterAttach = CallTargetAt<void (*)(void*)>(attach + 0x9A);
+    void** sets = nullptr;
+    const uint8_t* packSwitch = nullptr;
+    if (!ReadAt(character, OffCharSetInterface, sets) || !image.Contains(sets) || !ReadAt(sets, 16, packSwitch) || !image.Contains(packSwitch) ||
+        !CodeIs(packSwitch, PackSwitchCode, PackSwitchMask, sizeof(PackSwitchCode)))
+    {
+        G.Why = L"the game's pack switch is not the one this mod knows (another game version?)";
+        Log.Line(L"Forms: WARNING: " + G.Why + L": model changes make new anim instances as in 3.6.3");
+        return;
+    }
+    G.AddSet = CallTargetAt<void (*)(void*, void*, UObject*)>(packSwitch + 0xB9);
+    const void* found[] = {reinterpret_cast<const void*>(G.Bind), reinterpret_cast<const void*>(G.WeakGet), reinterpret_cast<const void*>(G.WeakSet),
+                           reinterpret_cast<const void*>(G.AfterAttach), reinterpret_cast<const void*>(G.AddSet)};
+    if (std::any_of(std::begin(found), std::end(found), [&](const void* f) { return !f || !image.Contains(f); }))
+    {
+        G.Why = L"the game's attach steps are not in its code (another game version?)";
+        Log.Line(L"Forms: WARNING: " + G.Why + L": model changes make new anim instances as in 3.6.3");
+        return;
+    }
+    const auto at = [&](const void* f) { return Hex(reinterpret_cast<uintptr_t>(f) - image.Begin); };
+    Log.Line(L"Forms: the game's controller attach steps are at " + at(found[0]) + L" and " + at(found[3]) + L", its set registration at " + at(found[4]));
+}
+
+// (no C++ objects in these: the game's code runs under a structured exception guard)
+bool GuardedStart(void (*start)(void*), void* controller)
+{
+    __try
+    {
+        start(controller);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+bool GuardedCall(void (*fn)(void*), void* argument)
+{
+    __try
+    {
+        fn(argument);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+bool GuardedWeakSet(void (*fn)(void*, UObject*), void* weak, UObject* object)
+{
+    __try
+    {
+        fn(weak, object);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+UObject* GuardedWeakGet(UObject* (*fn)(const void*), const void* weak)
+{
+    __try
+    {
+        return fn(weak);
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return nullptr;
+    }
+}
+
+bool GuardedAddSet(void (*fn)(void*, void*, UObject*), void* character, void* entry, UObject* set)
+{
+    __try
+    {
+        fn(character, entry, set);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+bool GuardedSlot(void* controller, size_t slot)
+{
+    __try
+    {
+        void** table = *static_cast<void***>(controller);
+        reinterpret_cast<void (*)(void*)>(table[slot])(controller);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+int32_t ObjectIndexOf(const void* object)
+{
+    int32_t index = -1;
+    return ReadAt(object, 0xC, index) ? index : -1;   // UObjectBase::InternalIndex
+}
+
+// An object's FWeakObjectPtr (object index, serial), as the game makes one (0: none).
+uint64_t WeakOf(UObject* object)
+{
+    uint64_t weak = 0;
+    return (object && G.WeakSet && GuardedWeakSet(G.WeakSet, &weak, object)) ? weak : 0;
+}
+
+UObject* AnimInstanceOf(UObject* mesh) { return State.OffCompAnimInstance >= 0 ? ObjectAt(mesh, State.OffCompAnimInstance) : nullptr; }
+
+// An anim instance of the game's character kind (UEndCharacterAnimInstance or a class made from it).
+bool IsCharacterAnimInstance(UObject* instance)
+{
+    int depth = 0;
+    for (UStruct* cls = instance ? instance->GetClassPrivate() : nullptr; cls && depth < 32; cls = cls->GetSuperStruct(), ++depth)
+    {
+        if (cls->GetName() == L"EndCharacterAnimInstance") { return true; }
+    }
+    return false;
+}
+
+// The controller's start: calls its slots 3, 4 and 5 in turn (call [rax+18h], call [rax+20h], jmp [rax+28h]).
+bool CallsAttachSteps(const uint8_t* code, size_t size)
+{
+    const uint8_t steps[3][3] = {{0xFF, 0x50, 0x18}, {0xFF, 0x50, 0x20}, {0xFF, 0x60, 0x28}};
+    size_t at = 0;
+    for (const auto& step : steps)
+    {
+        bool found = false;
+        for (; at + 3 <= size; ++at)
+        {
+            if (std::memcmp(code + at, step, 3) == 0)
+            {
+                at += 3;
+                found = true;
+                break;
+            }
+        }
+        if (!found) { return false; }
+    }
+    return true;
+}
+
+struct AnimController
+{
+    void* Object = nullptr;
+    void (*Start)(void*) = nullptr;   // its slot 1 (attach, then its bone indices of the mesh)
+};
+
+// The controller of `character`, checked against its mesh and the anim instance the mesh has (`instance`; null: the
+// mesh has none of the game's kind, and only the mesh is checked); null with `why` if it is not found that way.
+AnimController AnimControllerOf(UObject* character, UObject* mesh, UObject* instance, std::wstring& why)
+{
+    AnimController found;
+    void* controller = nullptr;
+    if (!ReadAt(character, OffCharAnimController, controller) || !controller)
+    {
+        why = L"it has no animation controller";
+        return found;
+    }
+    const ImageRange image = MainImage();
+    void** table = nullptr;
+    void* start = nullptr;
+    void* attach = nullptr;
+    uint8_t code[64]{};
+    if (!ReadAt(controller, 0, table) || !image.Contains(table) || !ReadAt(table, 8, start) || !ReadAt(table, 24, attach) ||
+        !image.Contains(start) || !image.Contains(attach) || !SafeCopy(code, start, sizeof(code)) || !CallsAttachSteps(code, sizeof(code)))
+    {
+        why = L"its animation controller is not the one this mod knows (another game version?)";
+        return found;
+    }
+    int32_t ofMesh = -1, ofInstance = -1;
+    void* back = nullptr;
+    if (!ReadAt(controller, OffCtrlMesh, ofMesh) || ofMesh != ObjectIndexOf(mesh))
+    {
+        why = L"its animation controller is not its mesh's";
+        return found;
+    }
+    if (instance && (!ReadAt(controller, OffCtrlInstance, ofInstance) || ofInstance != ObjectIndexOf(instance) || !ReadAt(instance, OffInstanceCtrl, back) ||
+                     back != controller))
+    {
+        why = L"its animation controller does not hold the anim instance its mesh has";
+        return found;
+    }
+    found.Object = controller;
+    found.Start = reinterpret_cast<void (*)(void*)>(start);
+    return found;
+}
+
+// The controller takes a kept instance again: the attach without the set-up it ran when the instance was made (its
+// first step, the instance in the controller's +0x160 and the controller in the instance's +0xCC0, its last step),
+// then the bone indices of the mesh (slots 4 and 5).
+bool RebindController(void* controller, UObject* instance)
+{
+    if (!G.Bind || !G.WeakSet || !G.AfterAttach) { return false; }
+    if (!GuardedCall(G.Bind, controller)) { return false; }
+    if (!GuardedWeakSet(G.WeakSet, static_cast<uint8_t*>(controller) + OffCtrlInstance, instance)) { return false; }
+    void* self = controller;
+    std::memcpy(reinterpret_cast<uint8_t*>(instance) + OffInstanceCtrl, &self, sizeof(self));
+    if (!GuardedCall(G.AfterAttach, controller)) { return false; }
+    return GuardedSlot(controller, 4) && GuardedSlot(controller, 5);
+}
+
+int32_t LayerCountOf(UObject* instance)
+{
+    RawArray layers{};
+    return ReadAt(instance, OffInstanceLayers, layers) ? layers.Num : -1;
+}
+
+// An instance's layers for the log: their count and names.
+std::wstring LayerNames(UObject* instance)
+{
+    RawArray layers{};
+    if (!ReadAt(instance, OffInstanceLayers, layers) || layers.Num < 0 || layers.Num > 512 || (layers.Num > 0 && !layers.Data)) { return L"not readable"; }
+    std::wstring names;
+    for (int32_t i = 0; i < layers.Num && i < 16; ++i)
+    {
+        uint64_t key = 0;
+        if (!ReadAt(layers.Data, static_cast<size_t>(i) * 32, key)) { break; }
+        names += (names.empty() ? L"" : L", ") + NameText(key);
+    }
+    return std::to_wstring(layers.Num) + (names.empty() ? std::wstring{} : L" (" + names + (layers.Num > 16 ? L", ..." : L"") + L")");
+}
+
+// Where `holder` (its first `size` bytes) has `target`'s address or its weak pointer, for the log.
+std::wstring ReferencesIn(const void* holder, size_t size, UObject* target, uint64_t weak)
+{
+    std::vector<uint8_t> copy(size);
+    if (!size || !SafeCopy(copy.data(), holder, size)) { return L" (not readable)"; }
+    std::wstring found;
+    int count = 0;
+    for (size_t at = 0; at + 8 <= size && count < 24; at += 8)
+    {
+        uint64_t value = 0;
+        std::memcpy(&value, copy.data() + at, sizeof(value));
+        if (value == reinterpret_cast<uint64_t>(target))
+        {
+            found += L" +" + Hex(at) + L" (pointer)";
+            ++count;
+        }
+        else if (weak && value == weak)
+        {
+            found += L" +" + Hex(at) + L" (weak)";
+            ++count;
+        }
+    }
+    return found.empty() ? L" nothing" : found;
+}
+
+// ---- kept instances
+KeptInstance* KeptOf(Tracked& t, UObject* instance)
+{
+    for (auto& k : t.Kept)
+    {
+        if (k.Instance == instance) { return &k; }
+    }
+    return nullptr;
+}
+
+KeptInstance* KeptFor(Tracked& t, UObject* cls)
+{
+    for (auto& k : t.Kept)
+    {
+        if (k.Class == cls) { return &k; }
+    }
+    return nullptr;
+}
+
+KeptInstance& Keep(Tracked& t, UObject* instance)
+{
+    if (KeptInstance* k = KeptOf(t, instance)) { return *k; }
+    instance->SetRootSet();
+    KeptInstance k;
+    k.Instance = instance;
+    k.Class = instance->GetClassPrivate();
+    t.Kept.push_back(std::move(k));
+    return t.Kept.back();
+}
+
+void Unkeep(Tracked& t)
+{
+    for (auto& k : t.Kept)
+    {
+        if (k.Instance) { k.Instance->ClearRootSet(); }
+        for (UObject* linked : k.Linked)
+        {
+            if (linked) { linked->ClearRootSet(); }
+        }
+    }
+    t.Kept.clear();
+}
+
+// The mesh's linked anim instances (its LinkedInstances), taken out of its list (rooted: they go with the instance
+// being kept; the engine's clear would end them).
+std::vector<UObject*> TakeLinked(UObject* mesh)
+{
+    std::vector<UObject*> taken;
+    if (State.OffCompLinked < 0) { return taken; }
+    uint8_t* at = reinterpret_cast<uint8_t*>(mesh) + State.OffCompLinked;
+    RawArray list{};
+    std::memcpy(&list, at, sizeof(list));
+    if (list.Num <= 0 || list.Num > 64 || !list.Data) { return taken; }
+    for (int32_t i = 0; i < list.Num; ++i)
+    {
+        UObject* linked = static_cast<UObject**>(list.Data)[i];
+        if (!linked) { continue; }
+        linked->SetRootSet();
+        taken.push_back(linked);
+    }
+    list.Num = 0;
+    std::memcpy(at, &list, sizeof(list));
+    return taken;
+}
+
+// A kept instance's linked anim instances back in the mesh's list.
+bool PutLinked(UObject* mesh, std::vector<UObject*>& linked)
+{
+    if (linked.empty()) { return true; }
+    if (State.OffCompLinked < 0) { return false; }
+    uint8_t* at = reinterpret_cast<uint8_t*>(mesh) + State.OffCompLinked;
+    RawArray list{};
+    std::memcpy(&list, at, sizeof(list));
+    if (list.Num < 0 || list.Max < list.Num) { return false; }
+    const int32_t needed = list.Num + static_cast<int32_t>(linked.size());
+    if (needed > list.Max)
+    {
+        void* grown = FMemory::Realloc(list.Data, static_cast<SIZE_T>(needed) * sizeof(UObject*));
+        if (!grown) { return false; }
+        list.Data = grown;
+        list.Max = needed;
+    }
+    for (size_t i = 0; i < linked.size(); ++i) { static_cast<UObject**>(list.Data)[static_cast<size_t>(list.Num) + i] = linked[i]; }
+    list.Num = needed;
+    std::memcpy(at, &list, sizeof(list));
+    for (UObject* l : linked) { l->ClearRootSet(); }   // (the mesh's list holds them again)
+    linked.clear();
+    return true;
+}
+
+// ---- what the game gives an instance when the character spawns
+// Whether element `index` of a TSet / TMap's sparse array is in use.
+bool InUse(const NameMapHeader& map, int32_t index)
+{
+    uint32_t word = 0;
+    if (map.HeapFlags)
+    {
+        if (!ReadAt(map.HeapFlags, static_cast<size_t>(index / 32) * sizeof(uint32_t), word)) { return false; }
+    }
+    else
+    {
+        if (index / 32 >= 4) { return false; }
+        word = map.InlineFlags[index / 32];
+    }
+    return ((word >> (index % 32)) & 1u) != 0;
+}
+
+// Every set of the character (each entry of its set map) registered into the instance its controller holds, with the
+// game's own registration (as each was when it was put on; the form's pack last, as the game's own switch left it), then
+// the pose change the game asks for after one. Returns how many sets were given (-1: none could be, with `why`), their
+// names in `names`.
+int GiveSets(Tracked& t, UObject* instance, std::wstring& why, std::wstring& names)
+{
+    if (!G.AddSet || !G.WeakGet)
+    {
+        why = G.Why.empty() ? std::wstring(L"the game's set registration was not found") : G.Why;
+        return -1;
+    }
+    NameMapHeader map{};
+    if (!ReadAt(t.Character, OffCharSetMap, map) || map.Elements.Num < 0 || map.Elements.Num > 64 || (map.Elements.Num > 0 && !map.Elements.Data))
+    {
+        why = L"its set map is not where this mod looks";
+        return -1;
+    }
+    void* container = PackSets::ContainerOffset >= 0 ? reinterpret_cast<uint8_t*>(t.Character) + PackSets::ContainerOffset : nullptr;
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(std::clamp(t.Form, 0, static_cast<int>(t.Row->Forms.List.size()) - 1))];
+    const uint64_t pack = form.Pack.empty() ? 0 : Name(form.Pack);
+    int given = 0, failed = 0;
+    for (int pass = 0; pass < 2; ++pass)
+    {
+        for (int32_t i = 0; i < map.Elements.Num; ++i)
+        {
+            if (map.NumFree > 0 && !InUse(map, i)) { continue; }
+            const uint8_t* element = static_cast<const uint8_t*>(map.Elements.Data) + static_cast<size_t>(i) * 32;
+            RawArray entries{};
+            if (!ReadAt(element, 8, entries) || entries.Num < 0 || entries.Num > 64 || (entries.Num > 0 && !entries.Data)) { continue; }
+            for (int32_t k = 0; k < entries.Num; ++k)
+            {
+                uint8_t* entry = static_cast<uint8_t*>(entries.Data) + static_cast<size_t>(k) * SetEntrySize;
+                uint64_t name = 0;
+                ReadAt(entry, 0, name);
+                if ((pass == 0) == (pack && name == pack)) { continue; }   // (the form's pack in the second pass)
+                UObject* set = GuardedWeakGet(G.WeakGet, entry + 8);
+                if (!set && name && container) { set = PackSets::Thunk(container, name); }   // (a pack a switch put on: by its name)
+                if (!set) { continue; }
+                if (GuardedAddSet(G.AddSet, t.Character, entry, set))
+                {
+                    ++given;
+                    if (given <= 12) { names += (names.empty() ? L"" : L", ") + (name ? NameText(name) : ShortName(set)); }
+                }
+                else { ++failed; }
+            }
+        }
+    }
+    const float blend = 1.0f;
+    const uint8_t asked = 1;
+    std::memcpy(reinterpret_cast<uint8_t*>(instance) + OffInstancePoseChange + 1, &blend, sizeof(blend));
+    std::memcpy(reinterpret_cast<uint8_t*>(instance) + OffInstancePoseChange, &asked, sizeof(asked));
+    if (failed) { Log.Line(L"Forms: WARNING: " + t.Spec + L": " + std::to_wstring(failed) + L" set(s) stopped with an error as they were given to its anim instance"); }
+    return given;
+}
+
+// An array of plain entries copied over another (as the game copies the two lists: entry by entry).
+int32_t CopyEntries(uint8_t* to, const uint8_t* from, size_t stride)
+{
+    RawArray source{}, target{};
+    if (!ReadAt(from, 0, source) || !ReadAt(to, 0, target) || source.Num < 0 || source.Num > 4096 || (source.Num > 0 && !source.Data) ||
+        target.Num < 0 || target.Max < target.Num)
+    {
+        return -1;
+    }
+    if (source.Num > target.Max)
+    {
+        void* grown = FMemory::Realloc(target.Data, static_cast<SIZE_T>(source.Num) * stride);
+        if (!grown) { return -1; }
+        target.Data = grown;
+        target.Max = source.Num;
+    }
+    if (source.Num > 0 && !SafeCopy(target.Data, source.Data, static_cast<size_t>(source.Num) * stride)) { return -1; }
+    target.Num = source.Num;
+    std::memcpy(to, &target, sizeof(target));
+    return source.Num;
+}
+
+// The two lists the game copies from the anim instance into the character when its controller is made, copied again
+// from the instance now on (only when the game copied them: its flag).
+std::wstring CopyLists(UObject* character, UObject* instance)
+{
+    uint8_t copied = 0;
+    if (!ReadAt(character, OffCharListsCopied, copied) || !copied) { return {}; }
+    auto* c = reinterpret_cast<uint8_t*>(character);
+    const auto* i = reinterpret_cast<const uint8_t*>(instance);
+    const int32_t a = CopyEntries(c + OffCharListA, i + OffInstanceListA, 16);
+    const int32_t b = CopyEntries(c + OffCharListB, i + OffInstanceListB, 16);
+    const auto count = [](int32_t n) { return n < 0 ? std::wstring(L"NOT copied") : std::to_wstring(n); };
+    return L"; its two lists from the anim instance (" + count(a) + L" and " + count(b) + L" entries)";
+}
+
+// ---- the mesh tick
+// The character's mesh tick, when it is the one this mod knows (its work in the game's code, itself at +0x58).
+uint8_t* MeshTickOf(UObject* character)
+{
+    uint8_t* tick = reinterpret_cast<uint8_t*>(character) + OffCharMeshTick;
+    void* self = nullptr;
+    void* work = nullptr;
+    if (!ReadAt(tick, 0x58, self) || self != tick || !ReadAt(tick, 0x30, work) || !MainImage().Contains(work)) { return nullptr; }
+    return tick;
+}
+
+bool WeakSet(const uint8_t* weak)
+{
+    int32_t index = -1, serial = 0;
+    return ReadAt(weak, 0, index) && ReadAt(weak, 4, serial) && index >= 0 && serial != 0;
+}
+
+void WriteWeak(uint8_t* weak, uint64_t value)
+{
+    int32_t index = -1, serial = 0;
+    std::memcpy(&index, &value, sizeof(index));
+    std::memcpy(&serial, reinterpret_cast<const uint8_t*>(&value) + 4, sizeof(serial));
+    // the serial last: a weak pointer counts only once its serial is there
+    std::memcpy(weak, &index, sizeof(index));
+    std::memcpy(weak + 4, &serial, sizeof(serial));
+}
+
+void ClearWeak(uint8_t* weak)
+{
+    const int32_t none = -1, zero = 0;
+    std::memcpy(weak + 4, &zero, sizeof(zero));   // (the serial first: invalid at once)
+    std::memcpy(weak, &none, sizeof(none));
+}
+
+// After a model change: the tick builds its bone tables for the mesh now on (the game does it when a re-build is
+// asked for: mesh component and what it runs for), or runs again when they are of it. Returns what to add to the log.
+std::wstring SettleMeshTick(Tracked& t, UObject* mesh, UObject* instance)
+{
+    uint8_t* tick = MeshTickOf(t.Character);
+    if (!tick || !t.MeshTick.Running) { return {}; }
+    int32_t ofMesh = -1;
+    if (!ReadAt(tick, 0xCC, ofMesh) || ofMesh != ObjectIndexOf(mesh)) { return {}; }
+    if (WeakSet(tick + 0xE4) && WeakSet(tick + 0xEC)) { return L"; its mesh tick builds its bone tables again (the game asked)"; }
+    // what it runs for: the instance now on, when it ran for the character's own instance; else what it ran for then
+    uint64_t owner = t.MeshTick.Owner;
+    if (t.MeshTick.OwnerIsInstance)
+    {
+        const uint64_t weak = WeakOf(instance);
+        if (!weak) { return L"; its mesh tick NOT settled (no weak pointer to its anim instance)"; }
+        owner = weak;
+    }
+    UObject* asset = ObjectAt(mesh, State.OffCompMesh);
+    int32_t ofAsset = -1;
+    ReadAt(tick, 0xD4, ofAsset);
+    if (ofAsset == ObjectIndexOf(asset))
+    {
+        if (WeakSet(tick + 0xDC)) { return {}; }
+        WriteWeak(tick + 0xDC, owner);
+        return L"; its mesh tick runs again";
+    }
+    uint64_t meshWeak = 0;
+    ReadAt(tick, 0xCC, meshWeak);
+    ClearWeak(tick + 0xDC);       // (until the tables are built, it does not run on the other mesh's)
+    WriteWeak(tick + 0xEC, owner);  // (the object first: the re-build starts once both are there)
+    WriteWeak(tick + 0xE4, meshWeak);
+    return L"; its mesh tick asked to build its bone tables for this mesh";
+}
+
+// ---- a model change
+// A model change of a form, between Begin (before the mesh or AnimBlueprint changes) and Settle (after).
+struct AnimSwap
+{
+    UObject* Before = nullptr;          // the mesh's anim instance before the change
+    AnimController Controller;          // its controller (when Before is the game's character kind)
+    bool Allowed = true;                // false: the game's instance has no controller the mod can bind again
+    std::wstring Why;
+};
+
+AnimSwap BeginAnimSwap(Tracked& t, UObject* mesh)
+{
+    AnimSwap swap;
+    swap.Before = AnimInstanceOf(mesh);
+    // (an instance of the game's kind is checked against the controller; else only the mesh is, and the change goes on
+    // whether a controller is found or not: nothing of the game's kind ran without one)
+    const bool gameKind = IsCharacterAnimInstance(swap.Before);
+    swap.Controller = AnimControllerOf(t.Character, mesh, gameKind ? swap.Before : nullptr, swap.Why);
+    swap.Allowed = !gameKind || swap.Controller.Object != nullptr;
+    if (swap.Controller.Object) { LookAtGameAnimCode(t.Character, swap.Controller.Object); }
+    if (!t.MeshTick.Saved)
+    {
+        // the mesh tick as the character's own model had it (once: before the first change)
+        int32_t ownerIndex = -1;
+        if (uint8_t* tick = MeshTickOf(t.Character))
+        {
+            int32_t ofMesh = -1;
+            if (ReadAt(tick, 0xCC, ofMesh) && ofMesh == ObjectIndexOf(mesh) && WeakSet(tick + 0xDC))
+            {
+                ReadAt(tick, 0xD4, t.MeshTick.Asset);
+                ReadAt(tick, 0xDC, t.MeshTick.Owner);
+                std::memcpy(&ownerIndex, &t.MeshTick.Owner, sizeof(ownerIndex));
+                t.MeshTick.OwnerIsInstance = swap.Before && ownerIndex == ObjectIndexOf(swap.Before);
+                t.MeshTick.Running = true;
+            }
+        }
+        t.MeshTick.Saved = true;
+        // (once, for the log: what of the character and its controller refers to the instance the game made)
+        if (swap.Before)
+        {
+            const uint64_t weak = WeakOf(swap.Before);
+            const int32_t classSize = t.Class ? t.Class->GetPropertiesSize() : 0;
+            const size_t size = static_cast<size_t>(std::clamp(classSize, 0, 0x8000));
+            Log.Line(L"Forms: " + t.Spec + L": its anim instance " + ShortName(swap.Before) + L" (the game's) is referred to by the character at" +
+                     ReferencesIn(t.Character, size, swap.Before, weak) +
+                     (swap.Controller.Object ? L"; by its controller at" + ReferencesIn(swap.Controller.Object, CtrlSize, swap.Before, weak) : std::wstring{}) +
+                     L"; its mesh tick runs for " +
+                     (!t.MeshTick.Running ? std::wstring(L"nothing") : (t.MeshTick.OwnerIsInstance ? std::wstring(L"it") : L"object #" + std::to_wstring(ownerIndex))));
+        }
+    }
+    if (swap.Before) { Log.Line(L"Forms: " + t.Spec + L": layers of its anim instance before the change: " + LayerNames(swap.Before)); }
+    return swap;
+}
+
+// What a model change left on the mesh.
+struct Worn
+{
+    UObject* Instance = nullptr;   // the mesh's anim instance after the change
+    bool Changed = false;          // another instance than before
+    bool Reused = false;           // a kept one put back
+    std::wstring Text;
+};
+
+// `model` and the AnimBlueprint `cls` on the mesh. Another AnimBlueprint means another instance: the one on now is
+// kept, and a kept instance of `cls` goes back on (else the engine makes one).
+Worn Wear(Tracked& t, UObject* mesh, UObject* model, UObject* cls)
+{
+    Worn w;
+    UObject* before = AnimInstanceOf(mesh);
+    UObject* beforeClass = ObjectAt(mesh, State.OffCompAnimClass);
+    UObject* beforeModel = ObjectAt(mesh, State.OffCompMesh);
+    const bool newModel = model && model != beforeModel;
+    if (!cls || cls == beforeClass || !State.SetAnimClass || !A.SetMesh)
+    {
+        // the same AnimBlueprint: the model alone (the engine keeps the instance when the skeleton is the same)
+        if (newModel && A.SetMesh) { Invoke(mesh, A.SetMesh, {Arg::Obj(model), Arg::B(true)}); }
+        w.Instance = AnimInstanceOf(mesh);
+        w.Changed = w.Instance != before;
+        return w;
+    }
+    KeptInstance* kept = KeptFor(t, cls);
+    const bool reuse = kept && kept->Instance != before && newModel && G.Looked && G.Why.empty() && State.OffCompAnimInstance >= 0 &&
+                       State.OffCompAnimClass >= 0;
+    if (before)
+    {
+        KeptInstance& off = Keep(t, before);
+        off.Linked = TakeLinked(mesh);
+        if (!off.Linked.empty()) { w.Text += L"; " + std::to_wstring(off.Linked.size()) + L" linked anim instance(s) kept with " + ShortName(before); }
+    }
+    // the engine's clear (it waits for the mesh's animation work and ends the instance's notify states)
+    Invoke(mesh, State.SetAnimClass, {Arg::Obj(nullptr)});
+    if (reuse)
+    {
+        UObject* instance = kept->Instance;
+        std::memcpy(reinterpret_cast<uint8_t*>(mesh) + State.OffCompAnimClass, &cls, sizeof(cls));
+        std::memcpy(reinterpret_cast<uint8_t*>(mesh) + State.OffCompAnimInstance, &instance, sizeof(instance));
+        if (!PutLinked(mesh, kept->Linked)) { w.Text += L"; its linked anim instances NOT put back"; }
+        Invoke(mesh, A.SetMesh, {Arg::Obj(model), Arg::B(false)});   // (InitAnim keeps an instance of the class and skeleton)
+        w.Instance = AnimInstanceOf(mesh);
+        w.Reused = w.Instance == instance;
+        if (!w.Reused) { w.Text += L"; the engine did NOT keep the kept anim instance (it made a new one)"; }
+    }
+    else
+    {
+        if (newModel) { Invoke(mesh, A.SetMesh, {Arg::Obj(model), Arg::B(true)}); }
+        Invoke(mesh, State.SetAnimClass, {Arg::Obj(cls)});
+        w.Instance = AnimInstanceOf(mesh);
+    }
+    w.Changed = w.Instance != before;
+    return w;
+}
+
+// After the change: the controller takes the instance now on (a kept one: bound to it again; a new one: its start,
+// then the character's sets), the character's two lists, the mesh tick. Returns what to add to the log line.
+std::wstring Settle(Tracked& t, const AnimSwap& swap, UObject* mesh, const Worn& worn)
+{
+    UObject* after = worn.Instance;
+    std::wstring text = worn.Text;
+    if (!worn.Changed) { return text + SettleMeshTick(t, mesh, after); }
+    if (!after) { return text + L"; the mesh has no anim instance now" + SettleMeshTick(t, mesh, after); }
+    if (!IsCharacterAnimInstance(after)) { return text + L"; its anim instance (" + ShortName(after->GetClassPrivate()) + L") is not the game's character kind"; }
+    void* controller = swap.Controller.Object;
+    if (!controller)
+    {
+        Log.Line(L"Forms: WARNING: " + t.Spec + L": its anim instance has no controller to take it (" +
+                 (swap.Why.empty() ? std::wstring(L"none was found") : swap.Why) + L"): the game may not take it");
+        return text + L"; its anim instance is NOT set up";
+    }
+    const int32_t had = LayerCountOf(after);
+    if (worn.Reused)
+    {
+        if (!RebindController(controller, after))
+        {
+            Log.Line(L"Forms: WARNING: " + t.Spec + L": the game's animation controller stopped with an error taking " + ShortName(after) + L" again");
+            return text + L"; its kept anim instance is NOT bound again (error)";
+        }
+    }
+    else if (!GuardedStart(swap.Controller.Start, controller))
+    {
+        Log.Line(L"Forms: WARNING: " + t.Spec + L": the game's animation controller stopped with an error starting on " + ShortName(after));
+        return text + L"; its new anim instance is NOT set up (error)";
+    }
+    int32_t taken = -1, owner = -1;
+    void* back = nullptr;
+    uint8_t setUp = 0;
+    const int32_t index = ObjectIndexOf(after);
+    const bool ok = ReadAt(controller, OffCtrlInstance, taken) && taken == index && ReadAt(after, OffInstanceCtrl, back) && back == controller &&
+                    ReadAt(after, OffInstanceSetUp, setUp) && setUp != 0 && ReadAt(after, OffInstanceUpdater, owner) && owner == index;
+    if (!ok)
+    {
+        Log.Line(L"Forms: WARNING: " + t.Spec + L": the game's animation controller did not take " + ShortName(after) + L" (controller " +
+                 std::to_wstring(taken) + L", back " + (back == controller ? L"yes" : L"no") + L", set up " + std::to_wstring(setUp) + L", owner " +
+                 std::to_wstring(owner) + L", instance " + std::to_wstring(index) + L")");
+        return text + L"; its anim instance is NOT set up";
+    }
+    if (worn.Reused)
+    {
+        text += L"; its kept anim instance " + ShortName(after) + L" back on (the game's animation controller bound to it again)";
+    }
+    else
+    {
+        text += L"; the game's animation controller took its new anim instance " + ShortName(after);
+        std::wstring why, names;
+        const int given = GiveSets(t, after, why, names);
+        text += given < 0 ? L"; its sets NOT given (" + why + L")"
+                          : L"; " + std::to_wstring(given) + L" set(s) given to it by the game's registration" + (names.empty() ? std::wstring{} : L" (" + names + L")") +
+                                L", layers " + std::to_wstring(had) + L" -> " + std::to_wstring(LayerCountOf(after));
+    }
+    text += CopyLists(t.Character, after);
+    text += SettleMeshTick(t, mesh, after);
+    Log.Line(L"Forms: " + t.Spec + L": layers of its anim instance now: " + LayerNames(after));
+    return text;
+}
+
+// ---- the game's look changes: the frog's (3.6.5) ---------------------------------------------------------------------
+// The Toad status is the game's own model change, and the game makes it properly. Each playable character
+// (AEndChangeAppearanceCharacter) has a list of looks (ChangeAppearanceSettings: a mesh, its material pack, an
+// AnimBlueprint, anim sets, a body control rig, two sound banks, an effect pack, a capsule size and hit-body shapes; the
+// frog is entry 0), the look it had before one went on (AppearanceResetSetting, with the hit body it had), and two
+// indexes that are not reflected: the look asked for and the look on (-1: its own). The status stops the character's
+// moves (its animation controller's actions), asks for the frog's look and has it put on at once. Putting a look on
+// keeps the character's own look first (when its own is on), then: SetAnimClass(None), the mesh, the material pack, the
+// look's AnimBlueprint and, the mesh being another, it destroys the character's animation controller and makes a new
+// one for the new anim instance (with its bindings), sets the mesh tick up for the mesh and puts the look's hit body on
+// (one capsule of the look's size on the mesh when the look has no shapes of its own). Asking for -1 puts the kept look
+// back the same way. The new controller is what 3.6.1 - 3.6.4 never had: they kept the one the game made for the old
+// anim instance (bound to the new one, or started again), and moves did not play through it.
+//
+// While a look of the list is on, the game treats the character as a toad in places: its camera takes the "Toad"
+// setting, sync actions take the frog's damage source, a check for a toad in the party. A form's look is an entry of
+// its own just past the list's count: the list holds it and the game does not count it. Only while the game puts it on
+// is it counted, so the new controller is made as for any look (no body control rig or facial set-up of the
+// character's own: they are for his skeleton), and the count goes back right after (the change waited for the mesh's
+// animation work; the new anim instance first runs at the mesh's next tick: nothing reads the count meanwhile).
+constexpr size_t LookStride = 0x68;        // FEndChangeAppearanceSetting, as the game's code steps through the list
+constexpr size_t KeptShapeStride = 0x60;   // one shape of the hit body kept with the kept look (the game's code: index * 0x60)
+
+// RequestChangeAppearance's C++ (Index, bImmediately): +0x13 the list's count, +0x1B the look on, +0x21 / +0x29 the look
+// asked for, +0x32 the call that puts the look asked for on.
+constexpr uint8_t RequestCode[] = {
+    0x85, 0xD2, 0x78, 0x00, 0xB8, 0x28, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x2B,
+    0xE0, 0x3B, 0x91, 0x00, 0x00, 0x00, 0x00, 0x7D, 0x00, 0x8B, 0x81, 0x00, 0x00, 0x00, 0x00, 0x39,
+    0x81, 0x00, 0x00, 0x00, 0x00, 0x75, 0x00, 0x89, 0x91, 0x00, 0x00, 0x00, 0x00, 0x45, 0x84, 0xC0,
+    0x74, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x83, 0xC4, 0x28, 0xC3,
+};
+constexpr char RequestMask[] = "xxx?xxxxxx????xxxxx????x?xx????xx????x?xx????xxxx?x????xxxxx";
+static_assert(sizeof(RequestCode) == sizeof(RequestMask) - 1);
+
+// The apply (the character): +0x0F the look asked for, +0x15 the look on, +0x19 the jump to its work when they differ.
+constexpr uint8_t ApplyCode[] = {
+    0xB8, 0x28, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x2B, 0xE0, 0x8B, 0x91, 0x00,
+    0x00, 0x00, 0x00, 0x3B, 0x91, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x85, 0x00, 0x00, 0x00, 0x00, 0x48,
+    0x83, 0xC4, 0x28, 0xC3,
+};
+constexpr char ApplyMask[] = "xxxxxx????xxxxx????xx????xx????xxxxx";
+static_assert(sizeof(ApplyCode) == sizeof(ApplyMask) - 1);
+
+// Its work: a look asked for goes on; -1 (+0x11 the kept hit body, +0x17 the look on, +0x22 the kept look) the kept one.
+constexpr uint8_t ApplyColdCode[] = {
+    0x83, 0xFA, 0xFF, 0x74, 0x00, 0x48, 0x83, 0xC4, 0x28, 0xE9, 0x00, 0x00, 0x00, 0x00, 0x4C, 0x8D,
+    0x81, 0x00, 0x00, 0x00, 0x00, 0xC7, 0x81, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x48,
+    0x8D, 0x91, 0x00, 0x00, 0x00, 0x00, 0x48, 0x83, 0xC4, 0x28, 0xE9, 0x00, 0x00, 0x00, 0x00,
+};
+constexpr char ApplyColdMask[] = "xxxx?xxxxx????xxx????xx????xxxxxxx????xxxxx????";
+static_assert(sizeof(ApplyColdCode) == sizeof(ApplyColdMask) - 1);
+
+// RequestChangeAppearance_ForceFinishAbility's C++ (its start), and its step that stops the controller's moves (the
+// controller from the character's interface, then the call): the frog's first step.
+constexpr uint8_t ForceCode[] = {
+    0x85, 0xD2, 0x0F, 0x88, 0x00, 0x00, 0x00, 0x00, 0x48, 0x89, 0x5C, 0x24, 0x08, 0x57, 0xB8, 0x20,
+    0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x2B, 0xE0, 0x48, 0x8B, 0xF9, 0x3B, 0x91,
+    0x00, 0x00, 0x00, 0x00, 0x7D, 0x00, 0x8B, 0x81, 0x00, 0x00, 0x00, 0x00, 0x39, 0x81, 0x00, 0x00,
+    0x00, 0x00, 0x75, 0x00, 0x89, 0x91, 0x00, 0x00, 0x00, 0x00,
+};
+constexpr char ForceMask[] = "xxxx????xxxxxxxxxxxx????xxxxxxxx????x?xx????xx????x?xx????";
+static_assert(sizeof(ForceCode) == sizeof(ForceMask) - 1);
+
+constexpr uint8_t StopStepCode[] = {
+    0xFF, 0x90, 0xA0, 0x00, 0x00, 0x00, 0x48, 0x8B, 0xC8, 0xB2, 0x01, 0xE8, 0x00, 0x00, 0x00, 0x00,
+};
+constexpr char StopStepMask[] = "xxxxxxxxxxxx????";
+static_assert(sizeof(StopStepCode) == sizeof(StopStepMask) - 1);
+
+constexpr uint8_t StopMovesCode[] = {
+    0x48, 0x89, 0x5C, 0x24, 0x08, 0x57, 0xB8, 0x20, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00,
+    0x48, 0x2B, 0xE0, 0x40, 0x8A, 0xFA, 0x48, 0x8B, 0xD9, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x84, 0xC0,
+    0x74, 0x00, 0x48, 0x8B, 0x4B, 0x20, 0x48, 0x8B, 0x01, 0xFF, 0x90, 0xB8, 0x01, 0x00, 0x00, 0x48,
+    0x8B, 0xC8, 0x40, 0x8A, 0xD7, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x5C, 0x24, 0x30, 0x48,
+    0x83, 0xC4, 0x20, 0x5F, 0xC3,
+};
+constexpr char StopMovesMask[] = "xxxxxxxxxxxx????xxxxxxxxxx????xxx?xxxxxxxxxxxxxxxxxxxx????xxxxxxxxxxx";
+static_assert(sizeof(StopMovesCode) == sizeof(StopMovesMask) - 1);
+
+struct GameLooks
+{
+    bool Looked = false;
+    std::wstring Why;                          // why a form's model does not go on as a look (empty: it does)
+    UClass* Class = nullptr;                   // AEndChangeAppearanceCharacter
+    int32_t OffList = -1;                      // ChangeAppearanceSettings
+    int32_t OffKept = -1;                      // AppearanceResetSetting
+    int32_t OffAsked = -1, OffOn = -1;         // the look asked for, the look on (from the game's code)
+    int32_t OffKeptBody = -1;                  // the hit body kept with the kept look (from the game's code)
+    int32_t Mesh = -1, Materials = -1, AnimClass = -1, AnimSets = -1, BodyRig = -1, Sound = -1, AutoSound = -1,
+            EffectPack = -1, Capsule = -1, KeepCapsule = -1, Shapes = -1;   // in a look
+    int32_t OffRoot = -1;                      // Actor.RootComponent
+    int32_t OffHalfHeight = -1, OffRadius = -1;  // CapsuleComponent
+    int32_t OffRelLocation = -1;               // SceneComponent.RelativeLocation
+    int32_t OffAttachParent = -1;              // SceneComponent.AttachParent
+    UClass* HitBodyClass = nullptr;            // EndBodyCollisionPrimitive (the shapes of the hit body)
+    UFunction* ComponentsByClass = nullptr;    // Actor:K2_GetComponentsByClass
+    UFunction* SetAbsolute = nullptr;          // SceneComponent:SetAbsolute
+    UFunction* SetRelLocation = nullptr;       // SceneComponent:K2_SetRelativeLocation
+    void (*Apply)(void* character) = nullptr;               // puts the look asked for on
+    void (*StopMoves)(void* controller, bool now) = nullptr; // the frog's first step
+};
+GameLooks Looks;
+
+bool GuardedStop(void (*fn)(void*, bool), void* controller, bool now)
+{
+    __try
+    {
+        fn(controller, now);
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        return false;
+    }
+}
+
+// The target of a jump with a 32-bit offset that ends `length` bytes after `jump`.
+const uint8_t* JumpTargetAt(const uint8_t* jump, size_t length)
+{
+    int32_t rel = 0;
+    if (!SafeCopy(&rel, jump + length - 4, sizeof(rel))) { return nullptr; }
+    return jump + length + rel;
+}
+
+// The C++ function the exec of `function` calls: the target of its call that has `code` (null when none has).
+const uint8_t* NativeOf(UFunction* function, const uint8_t* code, const char* mask, size_t size)
+{
+    if (!function) { return nullptr; }
+    const ImageRange image = MainImage();
+    const auto* exec = reinterpret_cast<const uint8_t*>(function->GetFuncPtr());
+    if (!image.Contains(exec)) { return nullptr; }   // (another mod's hook on it, or not the game's)
+    size_t length = 0x400;
+    DWORD64 base = 0;
+    if (const PRUNTIME_FUNCTION entry = RtlLookupFunctionEntry(reinterpret_cast<DWORD64>(exec), &base, nullptr); entry && base)
+    {
+        const uintptr_t begin = static_cast<uintptr_t>(base) + entry->BeginAddress;
+        const uintptr_t end = static_cast<uintptr_t>(base) + entry->EndAddress;
+        if (begin == reinterpret_cast<uintptr_t>(exec) && end > begin) { length = std::min<size_t>(end - begin, 0x1000); }
+    }
+    std::vector<uint8_t> body(length);
+    if (!SafeCopy(body.data(), exec, length)) { return nullptr; }
+    for (size_t i = 0; i + 5 <= length; ++i)
+    {
+        if (body[i] != 0xE8) { continue; }
+        int32_t rel = 0;
+        std::memcpy(&rel, body.data() + i + 1, sizeof(rel));
+        const uint8_t* target = exec + i + 5 + rel;
+        if (image.Contains(target) && CodeIs(target, code, mask, size)) { return target; }
+    }
+    return nullptr;
+}
+
+int32_t CodeInt(const uint8_t* code, size_t offset)
+{
+    int32_t value = INT32_MIN;
+    ReadAt(code, offset, value);
+    return value;
+}
+
+bool LooksOff(const std::wstring& why)
+{
+    Looks.Why = why;
+    Looks.Apply = nullptr;
+    Log.Line(L"Forms: WARNING: " + why + L": a form's model with an AnimBlueprint of its own goes on the mod's own way (3.6.4's)");
+    return false;
+}
+
+// What a form's look needs, found once (reflection, then the game's code, each checked against the other).
+bool LookAtGameLooks()
+{
+    if (Looks.Looked) { return Looks.Why.empty(); }
+    Looks.Looked = true;
+    Looks.Class = FindClass(L"/Script/EndGame.EndChangeAppearanceCharacter");
+    if (!Looks.Class) { return LooksOff(L"the game has no EndChangeAppearanceCharacter"); }
+    int32_t stride = 0, kept = -1;
+    UStruct* setting = ArrayStructField(Looks.Class, L"ChangeAppearanceSettings", Looks.OffList, stride);
+    UStruct* keptType = StructField(Looks.Class, L"AppearanceResetSetting", kept);
+    if (!setting || keptType != setting || stride != static_cast<int32_t>(LookStride)) { return LooksOff(L"the characters' look list is not the one this mod knows"); }
+    Looks.OffKept = kept;
+    Looks.Mesh = FieldOffset(setting, L"SkeletalMesh", {L"ObjectProperty"}, 8);
+    Looks.Materials = FieldOffset(setting, L"MaterialPack", {L"ObjectProperty"}, 8);
+    Looks.AnimClass = FieldOffset(setting, L"AnimInstance", {L"ClassProperty"}, 8);
+    Looks.AnimSets = FieldOffset(setting, L"AnimSets", {L"ArrayProperty"}, 16);
+    Looks.BodyRig = FieldOffset(setting, L"BodyControlRig", {L"ObjectProperty"}, 8);
+    Looks.Sound = FieldOffset(setting, L"SoundSE", {L"ObjectProperty"}, 8);
+    Looks.AutoSound = FieldOffset(setting, L"SoundAutoSE", {L"ObjectProperty"}, 8);
+    Looks.EffectPack = FieldOffset(setting, L"EffectPack", {L"ObjectProperty"}, 8);
+    Looks.Capsule = FieldOffset(setting, L"RootCapsuleSize", {L"StructProperty"}, 12);
+    Looks.KeepCapsule = FieldOffset(setting, L"bDisableChangeCapsuleSize", {L"BoolProperty"}, 1);
+    Looks.Shapes = FieldOffset(setting, L"CustomEndChangeAppearanceBodyPrimitiveSettings", {L"ArrayProperty"}, 16);
+    // (where the game's code reads them)
+    const int32_t found[] = {Looks.Mesh, Looks.Materials, Looks.AnimClass, Looks.AnimSets, Looks.BodyRig, Looks.Sound,
+                             Looks.AutoSound, Looks.EffectPack, Looks.Capsule, Looks.KeepCapsule, Looks.Shapes};
+    constexpr int32_t known[] = {0x00, 0x08, 0x10, 0x18, 0x28, 0x30, 0x38, 0x40, 0x48, 0x54, 0x58};
+    static_assert(sizeof(found) / sizeof(found[0]) == sizeof(known) / sizeof(known[0]));
+    if (!std::equal(std::begin(found), std::end(found), std::begin(known))) { return LooksOff(L"a look's fields are not where the game's code reads them"); }
+    if (UClass* actor = FindClass(L"/Script/Engine.Actor")) { Looks.OffRoot = FieldOffset(actor, L"RootComponent", {L"ObjectProperty"}, 8); }
+    if (UClass* capsule = FindClass(L"/Script/Engine.CapsuleComponent"))
+    {
+        Looks.OffHalfHeight = FieldOffset(capsule, L"CapsuleHalfHeight", {L"FloatProperty"}, 4);
+        Looks.OffRadius = FieldOffset(capsule, L"CapsuleRadius", {L"FloatProperty"}, 4);
+    }
+    if (UClass* scene = FindClass(L"/Script/Engine.SceneComponent"))
+    {
+        Looks.OffRelLocation = FieldOffset(scene, L"RelativeLocation", {L"StructProperty"}, 12);
+        Looks.OffAttachParent = FieldOffset(scene, L"AttachParent", {L"ObjectProperty"}, 8);
+    }
+    if (Looks.OffRoot < 0 || Looks.OffHalfHeight < 0 || Looks.OffRadius < 0) { return LooksOff(L"the characters' capsule size is not found"); }
+    Looks.HitBodyClass = FindClass(L"/Script/EndGame.EndBodyCollisionPrimitive");
+    Looks.ComponentsByClass = Fn(L"/Script/Engine.Actor:K2_GetComponentsByClass");
+    Looks.SetAbsolute = Fn(L"/Script/Engine.SceneComponent:SetAbsolute");
+    Looks.SetRelLocation = Fn(L"/Script/Engine.SceneComponent:K2_SetRelativeLocation");
+    // the game's code: RequestChangeAppearance's C++, the apply it calls, the apply's work
+    const ImageRange image = MainImage();
+    const uint8_t* request = NativeOf(Fn(L"/Script/EndGame.EndChangeAppearanceCharacter:RequestChangeAppearance"), RequestCode, RequestMask, sizeof(RequestCode));
+    if (!request) { return LooksOff(L"RequestChangeAppearance's code is not the one this mod knows (another game version?)"); }
+    const int32_t count = CodeInt(request, 0x13), on = CodeInt(request, 0x1B), asked = CodeInt(request, 0x21);
+    if (count != Looks.OffList + 8 || asked != CodeInt(request, 0x29) || on <= Looks.OffKept || asked <= Looks.OffKept)
+    {
+        return LooksOff(L"RequestChangeAppearance does not use the look list this mod found");
+    }
+    const uint8_t* apply = CallTargetAt<const uint8_t*>(request + 0x32);
+    if (!apply || !image.Contains(apply) || !CodeIs(apply, ApplyCode, ApplyMask, sizeof(ApplyCode)) || CodeInt(apply, 0x0F) != asked || CodeInt(apply, 0x15) != on)
+    {
+        return LooksOff(L"the game's look apply is not the one this mod knows");
+    }
+    const uint8_t* work = JumpTargetAt(apply + 0x19, 6);
+    if (!work || !image.Contains(work) || !CodeIs(work, ApplyColdCode, ApplyColdMask, sizeof(ApplyColdCode)) || CodeInt(work, 0x17) != on ||
+        CodeInt(work, 0x22) != Looks.OffKept || CodeInt(work, 0x11) <= Looks.OffKept)
+    {
+        return LooksOff(L"the game's look apply does not put the kept look back the way this mod knows");
+    }
+    Looks.OffAsked = asked;
+    Looks.OffOn = on;
+    Looks.OffKeptBody = CodeInt(work, 0x11);
+    Looks.Apply = reinterpret_cast<void (*)(void*)>(const_cast<uint8_t*>(apply));
+    // the frog's first step (RequestChangeAppearance_ForceFinishAbility has it too)
+    if (const uint8_t* force = NativeOf(Fn(L"/Script/EndGame.EndChangeAppearanceCharacter:RequestChangeAppearance_ForceFinishAbility"), ForceCode, ForceMask,
+                                        sizeof(ForceCode)))
+    {
+        for (size_t i = sizeof(ForceCode); i < 0xA0; ++i)
+        {
+            if (!CodeIs(force + i, StopStepCode, StopStepMask, sizeof(StopStepCode))) { continue; }
+            const uint8_t* stop = CallTargetAt<const uint8_t*>(force + i + 11);
+            if (stop && image.Contains(stop) && CodeIs(stop, StopMovesCode, StopMovesMask, sizeof(StopMovesCode)))
+            {
+                Looks.StopMoves = reinterpret_cast<void (*)(void*, bool)>(const_cast<uint8_t*>(stop));
+            }
+            break;
+        }
+    }
+    const auto at = [&](const void* f) { return Hex(reinterpret_cast<uintptr_t>(f) - image.Begin); };
+    Log.Line(L"Forms: the game's look changes (the frog's) found: the list at +" + Hex(static_cast<uintptr_t>(Looks.OffList)) + L", the look asked for and on at +" +
+             Hex(static_cast<uintptr_t>(asked)) + L" and +" + Hex(static_cast<uintptr_t>(on)) + L", the apply at " + at(apply) +
+             (Looks.StopMoves ? L", the moves' stop at " + at(reinterpret_cast<const void*>(Looks.StopMoves))
+                              : std::wstring(L"; the moves' stop NOT found (a look goes on without it)")) +
+             (Looks.HitBodyClass && Looks.ComponentsByClass && Looks.SetAbsolute && Looks.SetRelLocation ? std::wstring{}
+                                                                                                          : std::wstring(L"; a look's hit body is NOT placed (not found)")));
+    return true;
+}
+
+// Whether `character` is one of the game's characters with looks.
+bool HasLooks(UObject* character)
+{
+    if (!character || !Looks.Class) { return false; }
+    int depth = 0;
+    for (UStruct* cls = character->GetClassPrivate(); cls && depth < 32; cls = cls->GetSuperStruct(), ++depth)
+    {
+        if (cls == Looks.Class) { return true; }
+    }
+    return false;
+}
+
+RawArray LookList(UObject* character)
+{
+    RawArray list{};
+    ReadAt(character, static_cast<size_t>(Looks.OffList), list);
+    return list;
+}
+
+int32_t LookIndex(UObject* character, int32_t offset)
+{
+    int32_t value = INT32_MIN;
+    ReadAt(character, static_cast<size_t>(offset), value);
+    return value;
+}
+
+void SetLookIndex(UObject* character, int32_t offset, int32_t value)
+{
+    std::memcpy(reinterpret_cast<uint8_t*>(character) + offset, &value, sizeof(value));
+}
+
+// A look of the game's list is on (the frog's: a status).
+bool GameLookOn(UObject* character)
+{
+    if (!Looks.Apply || !character) { return false; }
+    const int32_t on = LookIndex(character, Looks.OffOn);
+    return on >= 0 && on < LookList(character).Num;
+}
+
+void* ControllerAt(UObject* character)
+{
+    void* controller = nullptr;
+    ReadAt(character, OffCharAnimController, controller);
+    return controller;
+}
+
+// Whether the character's animation controller holds `instance` and it the controller (what the game's making of a
+// controller for an anim instance leaves), for the log.
+std::wstring ControllerText(UObject* character, UObject* instance)
+{
+    void* controller = ControllerAt(character);
+    if (!controller) { return L"NO animation controller"; }
+    if (!instance) { return L"NO anim instance"; }
+    int32_t took = -1;
+    void* back = nullptr;
+    const bool holds = ReadAt(controller, OffCtrlInstance, took) && took == ObjectIndexOf(instance);
+    const bool knows = IsCharacterAnimInstance(instance) && ReadAt(instance, OffInstanceCtrl, back) && back == controller;
+    return (holds && knows ? L"its animation controller made for its anim instance " : L"its anim instance NOT taken by its animation controller: ") + ShortName(instance);
+}
+
+// A look change puts the look's material pack on (none: the mesh's own materials): the copies of the slots' materials
+// the parts' fades made are off the mesh then (and go with the next garbage collection), so they are forgotten.
+void ForgetFades(UObject* mesh)
+{
+    const auto key = reinterpret_cast<uint64_t>(mesh);
+    for (auto it = FadeMids.begin(); it != FadeMids.end();)
+    {
+        if ((it->first >> 8) == key) { it = FadeMids.erase(it); }
+        else { ++it; }
+    }
+    Fades.erase(std::remove_if(Fades.begin(), Fades.end(), [&](const Fade& f) { return f.Mesh == mesh; }), Fades.end());
+}
+
+// What the game kept of the character's own look as the form's went on (its plain fields, and the hit body), and
+// what it holds rooted while the form's look is on (the kept look is what holds them else): a look of the game's put
+// on over the form's (a status) keeps the form's in its place, and this puts his own back.
+void KeepKeptLook(Tracked& t)
+{
+    const auto* kept = reinterpret_cast<const uint8_t*>(t.Character) + Looks.OffKept;
+    t.KeptLook.assign(kept, kept + LookStride);
+    t.KeptBody.clear();
+    RawArray body{};
+    if (ReadAt(t.Character, static_cast<size_t>(Looks.OffKeptBody), body) && body.Num > 0 && body.Num <= 64 && body.Data)
+    {
+        t.KeptBody.resize(static_cast<size_t>(body.Num) * KeptShapeStride);
+        if (!SafeCopy(t.KeptBody.data(), body.Data, t.KeptBody.size())) { t.KeptBody.clear(); }
+    }
+    for (const int32_t off : {Looks.Mesh, Looks.Materials, Looks.AnimClass, Looks.BodyRig, Looks.Sound, Looks.AutoSound, Looks.EffectPack})
+    {
+        UObject* object = Field<UObject*>(kept, off);
+        if (object && !object->HasAnyInternalFlags(EInternalObjectFlags::RootSet))
+        {
+            object->SetRootSet();
+            t.LookRooted.push_back(object);
+        }
+    }
+}
+
+void LetGoOfKeptLook(Tracked& t)
+{
+    for (UObject* object : t.LookRooted)
+    {
+        if (object) { object->ClearRootSet(); }
+    }
+    t.LookRooted.clear();
+}
+
+void PutBackKeptLook(Tracked& t)
+{
+    if (t.KeptLook.size() != LookStride) { return; }
+    auto* kept = reinterpret_cast<uint8_t*>(t.Character) + Looks.OffKept;
+    for (const int32_t off : {Looks.Mesh, Looks.Materials, Looks.AnimClass, Looks.BodyRig, Looks.Sound, Looks.AutoSound, Looks.EffectPack})
+    {
+        std::memcpy(kept + off, t.KeptLook.data() + off, sizeof(UObject*));
+    }
+    std::memcpy(kept + Looks.Capsule, t.KeptLook.data() + Looks.Capsule, sizeof(Vec3));
+    kept[Looks.KeepCapsule] = t.KeptLook[static_cast<size_t>(Looks.KeepCapsule)];
+    if (t.KeptBody.empty()) { return; }
+    RawArray body{};
+    if (!ReadAt(t.Character, static_cast<size_t>(Looks.OffKeptBody), body) || body.Num < 0 || body.Max < body.Num) { return; }
+    const auto count = static_cast<int32_t>(t.KeptBody.size() / KeptShapeStride);
+    if (body.Max < count)
+    {
+        void* grown = FMemory::Realloc(body.Data, t.KeptBody.size());
+        if (!grown) { return; }
+        body.Data = grown;
+        body.Max = count;
+    }
+    std::memcpy(body.Data, t.KeptBody.data(), t.KeptBody.size());
+    body.Num = count;
+    std::memcpy(reinterpret_cast<uint8_t*>(t.Character) + Looks.OffKeptBody, &body, sizeof(body));
+}
+
+// The form's look (`model`, its AnimBlueprint `abp`) on the character the game's way. False (with `text`; the character
+// as it was) when it does not go on.
+// (3.7.6) A set called `name` with the animations of `source` (constructed from it: every setting and its map), inside it,
+// rooted: found again (and kept) on a later switch. Null when the engine does not make it.
+struct AliasMade
+{
+    UObject* Source = nullptr;
+    std::wstring Name;
+    UObject* Set = nullptr;   // (rooted)
+};
+std::vector<AliasMade> Aliases;
+
+UObject* AliasSet(UObject* source, const std::wstring& name)
+{
+    if (!source || !State.AnimSetClass || !source->IsA(State.AnimSetClass)) { return nullptr; }
+    for (const AliasMade& made : Aliases)
+    {
+        if (made.Source == source && SkelCompat::NameEquals(made.Name, name) && made.Set && made.Set->GetOuterPrivate() == source && made.Set->IsA(State.AnimSetClass))
+        {
+            return made.Set;
+        }
+    }
+    const std::wstring path = PathOf(source) + L"." + name;
+    if (UObject* found = FindObjectByPath(path.c_str()); found && found->IsA(State.AnimSetClass) && found->GetOuterPrivate() == source)
+    {
+        Aliases.push_back({source, name, found});
+        return found;
+    }
+    const RawName setName = RawNameOf(FName(name.c_str(), FNAME_Add));
+    FStaticConstructObjectParameters params(State.AnimSetClass, source);
+    std::memcpy(static_cast<void*>(&params.Name), &setName, sizeof(setName));
+    params.SetFlags = RF_Transient;
+    params.Template = source;   // (its settings and its map: the engine copies them)
+    UObject* set = UObjectGlobals::StaticConstructObject(params);
+    if (!set || !set->IsA(State.AnimSetClass)) { return nullptr; }
+    if (State.OffSetDisplayName >= 0) { std::memcpy(reinterpret_cast<uint8_t*>(set) + State.OffSetDisplayName, &setName, sizeof(setName)); }
+    set->SetRootSet();
+    Aliases.push_back({source, name, set});
+    return set;
+}
+
+// (3.7.6) The sets of a form's look (its AnimSets). While a look is on (another model on the mesh), the game looks the
+// character's animations up in its look's sets only: by animation name, in their order (the first that has it), or in
+// the one of a set name (the toad's look has the toad's own Battle00 and Neutral00). So the form's look has a set of each
+// name its "sets" give (Battle00 -> Battle07: a set called Battle00 with Battle07's animations; Battle00 -> its pack when
+// "sets" names no Battle00), then those sets themselves. 3.6.5 - 3.7.5 gave a form's look none: the model's own
+// AnimBlueprint found no idle, walk or run (its moves, which the game finds another way, played).
+// (3.7.8) Every set of the character's own (its set map: each pack's entries, as GiveSets walks them), for a look with
+// the character's own AnimBlueprint ("as_look"): while a look is on, the game looks animations up in the look's sets only.
+std::vector<UObject*> OwnSets(Tracked& t, void* container, std::wstring& names)
+{
+    std::vector<UObject*> sets;
+    NameMapHeader map{};
+    if (!ReadAt(t.Character, OffCharSetMap, map) || map.Elements.Num < 0 || map.Elements.Num > 64 || (map.Elements.Num > 0 && !map.Elements.Data))
+    {
+        names = L"NOT made (its set map is not where this mod looks)";
+        return sets;
+    }
+    // (not the other forms' packs and sets: a beast's Battle07 has animations of the names of Battle00's, and the game
+    // looks a look's sets up by animation name)
+    std::vector<uint64_t> others;
+    for (const Form& other : t.Row->Forms.List)
+    {
+        if (!other.Pack.empty() && !SkelCompat::NameEquals(other.Pack, SkelCompat::DefaultAbilityPack())) { others.push_back(Name(other.Pack)); }
+        for (const auto& [from, to] : other.Sets) { others.push_back(Name(to)); }
+    }
+    int skipped = 0;
+    for (int32_t i = 0; i < map.Elements.Num; ++i)
+    {
+        if (map.NumFree > 0 && !InUse(map, i)) { continue; }
+        const uint8_t* element = static_cast<const uint8_t*>(map.Elements.Data) + static_cast<size_t>(i) * 32;
+        RawArray entries{};
+        if (!ReadAt(element, 8, entries) || entries.Num < 0 || entries.Num > 64 || (entries.Num > 0 && !entries.Data)) { continue; }
+        for (int32_t k = 0; k < entries.Num; ++k)
+        {
+            const uint8_t* entry = static_cast<const uint8_t*>(entries.Data) + static_cast<size_t>(k) * SetEntrySize;
+            uint64_t name = 0;
+            ReadAt(entry, 0, name);
+            if (name && std::find(others.begin(), others.end(), name) != others.end())
+            {
+                ++skipped;
+                continue;
+            }
+            UObject* set = G.WeakGet ? GuardedWeakGet(G.WeakGet, entry + 8) : nullptr;
+            if (!set && name && container) { set = PackSets::Thunk(container, name); }   // (a pack a switch put on: by its name)
+            if (!set || std::find(sets.begin(), sets.end(), set) != sets.end()) { continue; }
+            sets.push_back(set);
+            if (sets.size() <= 16) { names += (names.empty() ? L"" : L", ") + (name ? NameText(name) : ShortName(set)); }
+        }
+    }
+    if (sets.size() > 16) { names += L" (+" + std::to_wstring(sets.size() - 16) + L" more)"; }
+    if (skipped) { names += L"; " + std::to_wstring(skipped) + L" of other forms left out"; }
+    if (sets.empty()) { names = L"NONE found (its set map is empty)"; }
+    return sets;
+}
+
+std::vector<UObject*> LookSets(Tracked& t, const Form& form, std::wstring& names)
+{
+    std::vector<UObject*> sets;
+    void* container = PackSets::ContainerOffset >= 0 ? reinterpret_cast<uint8_t*>(t.Character) + PackSets::ContainerOffset : nullptr;
+    if (!container) { names = L"NOT made (the character's sets not found)"; return sets; }
+    // (3.7.8) the character's own AnimBlueprint on the game's way ("as_look", no "pack" or "sets"): its own sets, every one
+    if (form.AsLook && form.AnimClass.empty() && form.Pack.empty() && form.Sets.empty()) { return OwnSets(t, container, names); }
+    std::vector<std::pair<std::wstring, std::wstring>> aliases = form.Sets;
+    if (!form.Pack.empty() && std::none_of(aliases.begin(), aliases.end(), [](const auto& a) { return SkelCompat::NameEquals(a.first, L"Battle00"); }))
+    {
+        aliases.insert(aliases.begin(), {L"Battle00", form.Pack});
+    }
+    std::vector<UObject*> sources;
+    for (const auto& [from, to] : aliases)
+    {
+        UObject* source = PackSets::Thunk(container, Name(to));
+        if (!source)
+        {
+            names += (names.empty() ? L"" : L", ") + from + L" (" + to + L" NOT found)";
+            continue;
+        }
+        if (std::find(sources.begin(), sources.end(), source) == sources.end()) { sources.push_back(source); }
+        if (SkelCompat::NameEquals(ShortName(source), from))
+        {
+            sets.push_back(source);   // (its own name already)
+            names += (names.empty() ? L"" : L", ") + from;
+            continue;
+        }
+        UObject* alias = AliasSet(source, from);
+        if (!alias)
+        {
+            names += (names.empty() ? L"" : L", ") + from + L" (" + to + L"'s: NOT made)";
+            continue;
+        }
+        sets.push_back(alias);
+        names += (names.empty() ? L"" : L", ") + from + L" (" + to + L"'s)";
+    }
+    for (UObject* source : sources)
+    {
+        if (std::find(sets.begin(), sets.end(), source) == sets.end())
+        {
+            sets.push_back(source);
+            names += (names.empty() ? L"" : L", ") + ShortName(source);
+        }
+    }
+    return sets;
+}
+
+bool PutOnLook(Tracked& t, const Form& form, UObject* mesh, UObject* model, UObject* abp, std::wstring& text)
+{
+    UObject* c = t.Character;
+    auto* bytes = reinterpret_cast<uint8_t*>(c);
+    RawArray list = LookList(c);
+    if (list.Num < 0 || list.Num > 64 || list.Max < list.Num || (list.Num > 0 && !list.Data))
+    {
+        text = L"its look list is not readable";
+        return false;
+    }
+    const int32_t asked = LookIndex(c, Looks.OffAsked), on = LookIndex(c, Looks.OffOn);
+    if (asked != on)
+    {
+        text = L"the game is changing its look (look " + std::to_wstring(asked) + L" asked for)";
+        return false;
+    }
+    if (on != -1)
+    {
+        text = (on >= 0 && on < list.Num) ? L"a look of the game's is on (look " + std::to_wstring(on) + L": a status)" : L"another look is on (" + std::to_wstring(on) + L")";
+        return false;
+    }
+    // its entry: just past the list's count (room made for it the first time)
+    const int32_t slot = list.Num;
+    if (list.Max < slot + 1)
+    {
+        void* grown = FMemory::Realloc(list.Data, static_cast<SIZE_T>(slot + 1) * LookStride);
+        if (!grown)
+        {
+            text = L"no room for its look";
+            return false;
+        }
+        list.Data = grown;
+        list.Max = slot + 1;
+        std::memcpy(bytes + Looks.OffList, &list, sizeof(list));
+    }
+    uint8_t* entry = static_cast<uint8_t*>(list.Data) + static_cast<size_t>(slot) * LookStride;
+    if (t.LookSets)
+    {
+        FMemory::Free(t.LookSets);   // (the last look's sets: the entry is the mod's, past the game's list)
+        t.LookSets = nullptr;
+    }
+    std::memset(entry, 0, LookStride);
+    std::memcpy(entry + Looks.Mesh, &model, sizeof(model));
+    std::memcpy(entry + Looks.AnimClass, &abp, sizeof(abp));
+    // (3.7.6) its sets: the animations the model's AnimBlueprint finds while the look is on
+    std::wstring setNames;
+    const std::vector<UObject*> sets = LookSets(t, form, setNames);
+    if (!sets.empty() && Looks.AnimSets >= 0)
+    {
+        void* data = FMemory::Malloc(sets.size() * sizeof(UObject*));
+        if (data)
+        {
+            std::memcpy(data, sets.data(), sets.size() * sizeof(UObject*));
+            const RawArray array{data, static_cast<int32_t>(sets.size()), static_cast<int32_t>(sets.size())};
+            std::memcpy(entry + Looks.AnimSets, &array, sizeof(array));
+            t.LookSets = data;
+        }
+    }
+    // the capsule he has (kept: no capsule change); his hit body one capsule of that size
+    UObject* root = ObjectAt(c, Looks.OffRoot);
+    const Vec3 capsule{root ? Field<float>(root, Looks.OffRadius) : 0.0f, 0.0f, root ? Field<float>(root, Looks.OffHalfHeight) : 0.0f};
+    if (!(capsule.X > 0.0f && capsule.Z > 0.0f && capsule.X < 10000.0f && capsule.Z < 10000.0f))
+    {
+        text = L"its capsule's size is not known";
+        return false;
+    }
+    std::memcpy(entry + Looks.Capsule, &capsule, sizeof(capsule));
+    entry[Looks.KeepCapsule] = 1;
+    void* before = ControllerAt(c);
+    std::wstring notes;
+    if (before && Looks.StopMoves && !GuardedStop(Looks.StopMoves, before, true)) { notes += L"; its moves NOT stopped first (error)"; }
+    // counted while the game puts it on, then not again
+    const int32_t counted = slot + 1;
+    std::memcpy(bytes + Looks.OffList + offsetof(RawArray, Num), &counted, sizeof(counted));
+    SetLookIndex(c, Looks.OffAsked, slot);
+    const bool ran = GuardedCall(Looks.Apply, c);
+    std::memcpy(bytes + Looks.OffList + offsetof(RawArray, Num), &slot, sizeof(slot));
+    ForgetFades(mesh);
+    const int32_t nowOn = LookIndex(c, Looks.OffOn), nowAsked = LookIndex(c, Looks.OffAsked);
+    UObject* worn = ObjectAt(mesh, State.OffCompMesh);
+    UObject* instance = AnimInstanceOf(mesh);
+    if (nowOn == slot)
+    {
+        t.LookSlot = slot;
+        KeepKeptLook(t);
+    }
+    else if (nowAsked == slot)
+    {
+        SetLookIndex(c, Looks.OffAsked, nowOn);   // (not taken: not asked for any more)
+    }
+    if (!ran || nowOn != slot || worn != model)
+    {
+        text = std::wstring(!ran ? L"the game's look change stopped with an error" : L"the game's look change did not put it on") + L" (look on " +
+               std::to_wstring(nowOn) + L", model " + ShortName(worn) + L")" + notes;
+        if (nowOn == slot) { Log.Line(L"Forms: WARNING: " + t.Spec + L": " + text + L"; it comes off at the switch back"); }
+        return nowOn == slot;
+    }
+    text = L"; the game's look change (the frog's) put it on (look " + std::to_wstring(slot) + L", past the game's " + std::to_wstring(slot) + L"): " +
+           ControllerText(c, instance) + L"; its look's sets: " + (setNames.empty() ? std::wstring(L"none") : setNames) + notes;
+    return true;
+}
+
+// The character's own look back the game's way (the look it kept as the form's went on). False (with `text`) when
+// the form's look was not on.
+bool TakeOffLook(Tracked& t, UObject* mesh, std::wstring& text)
+{
+    UObject* c = t.Character;
+    const int32_t slot = t.LookSlot;
+    t.LookSlot = -1;
+    if (slot < 0)
+    {
+        LetGoOfKeptLook(t);
+        text = L"; (its look had come off already: his own comes back as the game's look ends)";
+        return false;
+    }
+    const int32_t asked = LookIndex(c, Looks.OffAsked), on = LookIndex(c, Looks.OffOn);
+    if (on != slot || asked != on)
+    {
+        LetGoOfKeptLook(t);
+        text = L"; its look was NOT on (look on " + std::to_wstring(on) + L", asked for " + std::to_wstring(asked) + L")";
+        return false;
+    }
+    void* before = ControllerAt(c);
+    std::wstring notes;
+    if (before && Looks.StopMoves && !GuardedStop(Looks.StopMoves, before, true)) { notes += L"; its moves NOT stopped first (error)"; }
+    SetLookIndex(c, Looks.OffAsked, -1);
+    const bool ran = GuardedCall(Looks.Apply, c);
+    if (mesh) { ForgetFades(mesh); }
+    LetGoOfKeptLook(t);
+    const int32_t nowOn = LookIndex(c, Looks.OffOn);
+    UObject* worn = ObjectAt(mesh, State.OffCompMesh);
+    UObject* instance = AnimInstanceOf(mesh);
+    if (!ran || nowOn != -1)
+    {
+        text = L"; the game's look change did NOT put his own back (" + std::wstring(!ran ? L"error, " : L"") + L"look on " + std::to_wstring(nowOn) + L")" + notes;
+        Log.Line(L"Forms: WARNING: " + t.Spec + text);
+        return false;
+    }
+    text = L"; the game's look change put it back: " + ControllerText(c, instance) +
+           (worn != t.OwnModel ? L"; the model on is " + ShortName(worn) + L", NOT its own" : std::wstring{}) + notes;
+    return true;
+}
+
+// The look's hit body (one capsule of his size on the mesh's origin, the mesh's size applying to it) his size again, at
+// the middle of his capsule, on a model made another size (a form's "scale").
+std::wstring PlaceHitBody(Tracked& t, UObject* mesh)
+{
+    if (!Looks.HitBodyClass || !Looks.ComponentsByClass || !Looks.SetAbsolute || !Looks.SetRelLocation || Looks.OffAttachParent < 0 || Looks.OffRelLocation < 0 ||
+        A.OffRelScale < 0)
+    {
+        return L"; its hit body NOT placed (not found)";
+    }
+    Block found = Invoke(t.Character, Looks.ComponentsByClass, {Arg::Obj(Looks.HitBodyClass)});
+    const uint8_t* result = found.Ok ? found.Return(static_cast<int32_t>(sizeof(RawArray))) : nullptr;
+    if (!result) { return L"; its hit body NOT placed (its shapes not found)"; }
+    RawArray shapes{};
+    std::memcpy(&shapes, result, sizeof(shapes));
+    const Vec3 location = Field<Vec3>(mesh, Looks.OffRelLocation);
+    const Vec3 scale = Field<Vec3>(mesh, A.OffRelScale);
+    // (the middle of his capsule in the mesh's space: the mesh sits its relative location away from it)
+    const Vec3 middle{0.0f, 0.0f, std::fabs(scale.Z) > 1e-4f ? -location.Z / scale.Z : 0.0f};
+    int placed = 0;
+    for (int32_t i = 0; i < shapes.Num && i < 64 && shapes.Data; ++i)
+    {
+        UObject* shape = static_cast<UObject**>(shapes.Data)[i];
+        if (!shape || ObjectAt(shape, Looks.OffAttachParent) != mesh) { continue; }
+        Invoke(shape, Looks.SetAbsolute, {Arg::B(false), Arg::B(false), Arg::B(true)});   // (its own size: not the mesh's)
+        Invoke(shape, Looks.SetRelLocation, {Arg::S(middle), Arg::B(false)});
+        ++placed;
+    }
+    if (shapes.Data) { FMemory::Free(shapes.Data); }
+    return placed ? L"; its hit body " + std::to_wstring(placed) + L" capsule(s) of his size at his middle" : std::wstring(L"; its hit body NOT placed (no shape on the mesh)");
+}
+
+// (each 200 ms) A look of the game's put on over the form's (a status): the game kept the form's look as his own; his
+// own goes back in its place (the game puts it back as its look ends, and the form's goes on again then).
+void WatchLook(Tracked& t)
+{
+    if (!t.ByLook || t.LookSlot < 0 || !Looks.Apply) { return; }
+    const int32_t on = LookIndex(t.Character, Looks.OffOn);
+    if (on == t.LookSlot) { return; }
+    if (!StillThere(t.Character, t.Class)) { return; }
+    const RawArray list = LookList(t.Character);
+    if (on >= 0 && on < list.Num)
+    {
+        PutBackKeptLook(t);
+        Log.Line(L"Forms: " + t.Spec + L": the game put its look " + std::to_wstring(on) + L" on (a status) over its form's; its own look is what the game puts back after it");
+    }
+    else { Log.Line(L"Forms: " + t.Spec + L": its form's look was taken off by the game (look on " + std::to_wstring(on) + L")"); }
+    t.LookSlot = -1;
+}
+
+// The mesh tick as a look change left it (the game sets it up for the mesh), for the log.
+std::wstring MeshTickText(UObject* character, UObject* mesh)
+{
+    uint8_t* tick = MeshTickOf(character);
+    if (!tick) { return L"; its mesh tick not known"; }
+    int32_t ofMesh = -1, ofAsset = -1;
+    ReadAt(tick, 0xCC, ofMesh);
+    ReadAt(tick, 0xD4, ofAsset);
+    UObject* asset = ObjectAt(mesh, State.OffCompMesh);
+    const bool asked = WeakSet(tick + 0xE4) && WeakSet(tick + 0xEC);
+    const wchar_t* tables = ofMesh != ObjectIndexOf(mesh) ? L"of another mesh component"
+                            : ofAsset == ObjectIndexOf(asset) ? L"bone tables of this model"
+                            : asked ? L"bone tables of this model asked for"
+                                    : L"bone tables of ANOTHER model";
+    return std::wstring(L"; its mesh tick: ") + tables + (WeakSet(tick + 0xDC) ? L", running" : L", NOT running");
+}
+
+// ---- models -------------------------------------------------------------------------
+void RemoveParts(Tracked& t)
+{
+    for (const auto& part : t.Parts)
+    {
+        if (A.DestroyComponent && StillThere(part.Component, part.Class)) { Invoke(part.Component, A.DestroyComponent, {Arg::Obj(part.Component)}); }
+    }
+    t.Parts.clear();
+}
+
+void RestoreModel(Tracked& t)
+{
+    RemoveParts(t);
+    t.LookWaiting = false;
+    if (!t.Swapped) { return; }
+    t.Swapped = false;
+    UObject* mesh = MeshOf(t.Character);
+    if (t.ByLook)
+    {
+        // (3.6.5) its own look back the game's way (its own size first: the hit body the game puts back is made at it)
+        t.ByLook = false;
+        if (mesh && A.SetRelativeScale) { Invoke(mesh, A.SetRelativeScale, {Arg::S(t.OwnScale)}); }
+        std::wstring text;
+        TakeOffLook(t, mesh, text);
+        t.WornModel = nullptr;
+        t.TickCheckAt = NowMs() + 800;   // (3.7.8)
+        Log.Line(L"Forms: " + t.Spec + L": its own model back (" + ShortName(t.OwnModel) + L")" + text + (mesh ? MeshTickText(t.Character, mesh) : std::wstring{}));
+        return;
+    }
+    if (!mesh) { return; }
+    // (its own model comes back even when the controller is not found: the log says so)
+    const AnimSwap swap = BeginAnimSwap(t, mesh);
+    const Worn worn = Wear(t, mesh, t.OwnModel, t.OwnAnimClass);
+    if (A.SetRelativeScale) { Invoke(mesh, A.SetRelativeScale, {Arg::S(t.OwnScale)}); }
+    const std::wstring settled = Settle(t, swap, mesh, worn);
+    t.WornModel = nullptr;
+    t.TickCheckAt = NowMs() + 800;   // (3.7.8)
+    Log.Line(L"Forms: " + t.Spec + L": its own model back (" + ShortName(t.OwnModel) + L")" + settled);
+}
+
+// The parts a form adds to the model (each a mesh of its own on it, following its pose when the form says so).
+int AddParts(Tracked& t, const Form& form, UObject* mesh, std::wstring& text)
+{
+    int added = 0;
+    for (const auto& part : form.Meshes)
+    {
+        UObject* partMesh = Need(part.Mesh);
+        if (!partMesh || !A.AddComponent || !A.SkeletalMeshComponent || !A.SetMesh)
+        {
+            text += L"; part " + ShortNameOfPath(part.Mesh) + (partMesh ? L" NOT added (no AddComponentByClass)" : L" NOT found");
+            continue;
+        }
+        // AddComponentByClass(Class, bManualAttachment, RelativeTransform (identity), bDeferredFinish)
+        struct Transform { float Rotation[4]{0, 0, 0, 1}; float Translation[4]{0, 0, 0, 0}; float Scale[4]{1, 1, 1, 0}; } identity;
+        Block made = Invoke(t.Character, A.AddComponent, {Arg::Obj(A.SkeletalMeshComponent), Arg::B(true), Arg::S(identity), Arg::B(false)});
+        UObject* component = made.Ok ? made.Get<UObject*>() : nullptr;
+        if (!component)
+        {
+            text += L"; part " + ShortNameOfPath(part.Mesh) + L" NOT added";
+            continue;
+        }
+        Invoke(component, A.SetMesh, {Arg::Obj(partMesh), Arg::B(true)});
+        if (A.AttachTo)
+        {
+            // K2_AttachToComponent(Parent, Socket, SnapToTarget x3, bWeldSimulatedBodies)
+            Invoke(component, A.AttachTo, {Arg::Obj(mesh), Arg::Nm(part.Socket.empty() ? 0 : Name(part.Socket)), Arg::U8(2), Arg::U8(2), Arg::U8(2), Arg::B(true)});
+        }
+        if (part.FollowPose && A.MasterPose) { Invoke(component, A.MasterPose, {Arg::Obj(mesh), Arg::B(true)}); }
+        t.Parts.push_back(Added{component, component->GetClassPrivate()});
+        ++added;
+    }
+    return added;
+}
+
+// (3.6.5) Whether a form's model goes on as a look of the game's: a model with an AnimBlueprint of its own (another
+// than the character's), on one of the game's characters with looks, the game's look changes found. (3.7.8) Or a model
+// whose form asks for it ("as_look"), with the character's own AnimBlueprint: a model swapped under the game's feet keeps
+// the bone tables the game built for the character's own model (its physics and KDI by bone index), which land on other
+// bones of a model whose bones are in another order (Chaos: the wings put in the middle of Vincent's bones).
+bool GoesOnAsLook(Tracked& t, UObject* mesh, const Form& form)
+{
+    if (form.Model.empty() || !LookAtGameLooks() || !HasLooks(t.Character)) { return false; }
+    if (form.AnimClass.empty()) { return form.AsLook; }
+    UObject* abp = Need(form.AnimClass);
+    UObject* own = t.Swapped ? t.OwnAnimClass : ObjectAt(mesh, State.OffCompAnimClass);
+    return abp && (abp != own || form.AsLook);
+}
+
+// (3.6.5) A form's model with an AnimBlueprint of its own, on as a look of the game's: then its size, its hit body,
+// the character's sets given to the new anim instance (as 3.6.4 gave them: the game's registration), its parts.
+void ApplyModelAsLook(Tracked& t, const Form& form, UObject* mesh)
+{
+    UObject* model = Need(form.Model);
+    UObject* abp = form.AnimClass.empty() ? nullptr : Need(form.AnimClass);   // (3.7.8: none named: the character's own, below)
+    if (!model || (!form.AnimClass.empty() && !abp))
+    {
+        Log.Line(L"Forms: " + t.Spec + L" keeps its own model in " + form.Name + L": " + (!model ? L"model " + ShortNameOfPath(form.Model) : L"AnimBlueprint " + ShortNameOfPath(form.AnimClass)) +
+                 L" NOT found");
+        return;
+    }
+    if (t.Swapped) { RestoreModel(t); }   // (another model of a form's on: its own back first)
+    t.OwnModel = ObjectAt(mesh, State.OffCompMesh);
+    t.OwnAnimClass = ObjectAt(mesh, State.OffCompAnimClass);
+    if (A.OffRelScale >= 0) { t.OwnScale = Field<Vec3>(mesh, A.OffRelScale); }
+    if (!abp) { abp = t.OwnAnimClass; }   // (3.7.8) "as_look" with the character's own AnimBlueprint
+    if (!abp)
+    {
+        Log.Line(L"Forms: " + t.Spec + L" keeps its own model in " + form.Name + L": its own AnimBlueprint is not known (its mesh runs none)");
+        return;
+    }
+    std::wstring text;
+    UObject* instanceBefore = AnimInstanceOf(mesh);   // (3.7.8: the character's own AnimBlueprint may keep its instance)
+    if (!PutOnLook(t, form, mesh, model, abp, text))
+    {
+        if (GameLookOn(t.Character))
+        {
+            if (!t.LookWaiting) { Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s model goes on once the game's look is off (" + text + L")"); }
+            t.LookWaiting = true;
+        }
+        else { Log.Line(L"Forms: " + t.Spec + L" keeps its own model in " + form.Name + L": " + text); }
+        return;
+    }
+    t.Swapped = true;
+    t.ByLook = true;
+    t.LookWaiting = false;
+    t.WornModel = model;
+    if (A.SetRelativeScale)
+    {
+        const Vec3 scale = form.Scale > 0.0f ? Vec3{t.OwnScale.X * form.Scale, t.OwnScale.Y * form.Scale, t.OwnScale.Z * form.Scale} : t.OwnScale;
+        Invoke(mesh, A.SetRelativeScale, {Arg::S(scale)});
+    }
+    text += PlaceHitBody(t, mesh);
+    UObject* instance = AnimInstanceOf(mesh);
+    if (instance && instance == instanceBefore)
+    {
+        // (3.7.8) the character's own anim instance kept (its own AnimBlueprint): it has its sets the way it had them
+        text += L"; its own anim instance kept";
+    }
+    else if (instance && IsCharacterAnimInstance(instance))
+    {
+        const int32_t had = LayerCountOf(instance);
+        if (had == 0)
+        {
+            // (the sets' layers, as 3.6.4 gave them: the game's own registration of each set into the new instance)
+            if (void* controller = ControllerAt(t.Character)) { LookAtGameAnimCode(t.Character, controller); }
+            std::wstring why, names;
+            const int given = GiveSets(t, instance, why, names);
+            text += given < 0 ? L"; its sets NOT given (" + why + L")"
+                              : L"; " + std::to_wstring(given) + L" set(s) given to it by the game's registration" + (names.empty() ? std::wstring{} : L" (" + names + L")") +
+                                    L", layers 0 -> " + std::to_wstring(LayerCountOf(instance));
+        }
+        else { text += L"; its anim instance has its layers already (" + LayerNames(instance) + L")"; }
+    }
+    else if (instance) { text += L"; its anim instance (" + ShortName(instance->GetClassPrivate()) + L") is not the game's character kind: no sets given"; }
+    text += MeshTickText(t.Character, mesh);
+    t.TickCheckAt = NowMs() + 800;   // (3.7.8, the log: what the game made of it a moment later)
+    const int added = AddParts(t, form, mesh, text);
+    Log.Line(L"Forms: " + t.Spec + L" wears " + ShortName(model) + L" with " + ShortName(abp) + (form.AnimClass.empty() ? L" (its own, the game's look change)" : L"") +
+             (form.Scale > 0.0f ? L", size " + Fixed(form.Scale) : std::wstring{}) + (added ? L", " + std::to_wstring(added) + L" part(s) added" : std::wstring{}) + text);
+}
+
+void ApplyModel(Tracked& t, const Form& form)
+{
+    UObject* mesh = MeshOf(t.Character);
+    if (!mesh) { return; }
+    const bool wants = !form.Model.empty() || !form.AnimClass.empty() || form.Scale > 0.0f || !form.Meshes.empty();
+    if (!wants)
+    {
+        RestoreModel(t);
+        return;
+    }
+    t.LookWaiting = false;
+    if (GoesOnAsLook(t, mesh, form))
+    {
+        ApplyModelAsLook(t, form, mesh);
+        return;
+    }
+    if (t.Swapped && t.ByLook) { RestoreModel(t); }   // (a form's look on: off first, the game's way)
+    // a model or AnimBlueprint of the form's can leave the mesh with another anim instance: the game's controller of the
+    // character has to be found first, to bind it after (else the form keeps the character's own model)
+    const AnimSwap swap = BeginAnimSwap(t, mesh);
+    if (!swap.Allowed && (!form.Model.empty() || !form.AnimClass.empty()))
+    {
+        Log.Line(L"Forms: " + t.Spec + L" keeps its own model in " + form.Name + L": " + swap.Why);
+        return;
+    }
+    if (!t.Swapped)
+    {
+        t.OwnModel = ObjectAt(mesh, State.OffCompMesh);
+        t.OwnAnimClass = ObjectAt(mesh, State.OffCompAnimClass);
+        if (A.OffRelScale >= 0) { t.OwnScale = Field<Vec3>(mesh, A.OffRelScale); }
+        t.Swapped = true;
+    }
+    RemoveParts(t);
+    std::wstring text;
+    UObject* model = form.Model.empty() ? t.OwnModel : Need(form.Model);
+    if (!form.Model.empty() && !model) { text += L"; model " + ShortNameOfPath(form.Model) + L" NOT found"; }
+    UObject* abp = form.AnimClass.empty() ? t.OwnAnimClass : Need(form.AnimClass);
+    if (!form.AnimClass.empty() && !abp) { text += L"; AnimBlueprint " + ShortNameOfPath(form.AnimClass) + L" NOT found"; }
+    t.WornModel = model;
+    const Worn worn = Wear(t, mesh, model, abp);
+    if (A.SetRelativeScale)
+    {
+        const Vec3 scale = form.Scale > 0.0f ? Vec3{t.OwnScale.X * form.Scale, t.OwnScale.Y * form.Scale, t.OwnScale.Z * form.Scale} : t.OwnScale;
+        Invoke(mesh, A.SetRelativeScale, {Arg::S(scale)});
+    }
+    text += Settle(t, swap, mesh, worn);
+    t.TickCheckAt = NowMs() + 800;   // (3.7.8, the log: whether the game built its mesh tick's tables for the model)
+    const int added = AddParts(t, form, mesh, text);
+    Log.Line(L"Forms: " + t.Spec + L" wears " + ShortName(model) + (abp != t.OwnAnimClass ? L" with " + ShortName(abp) : std::wstring{}) +
+             (form.Scale > 0.0f ? L", size " + Fixed(form.Scale) : std::wstring{}) + (added ? L", " + std::to_wstring(added) + L" part(s) added" : std::wstring{}) + text);
+}
+
+// The game can put the character's own model back (a costume, a cutscene): the form's goes on again.
+void KeepModel(Tracked& t, const Form& form)
+{
+    if (t.LookWaiting)
+    {
+        // (3.6.5) the form's model waits for the game's look (a status) to come off
+        if (!GameLookOn(t.Character)) { ApplyModel(t, form); }
+        return;
+    }
+    if (!t.Swapped || form.Model.empty() || !t.WornModel) { return; }
+    UObject* mesh = MeshOf(t.Character);
+    if (!mesh || ObjectAt(mesh, State.OffCompMesh) == t.WornModel) { return; }
+    if (t.ByLook && GameLookOn(t.Character)) { return; }   // (the game's look is on over the form's: the form's goes on again after it)
+    Log.Line(L"Forms: " + t.Spec + L": the game changed its model; " + form.Name + L"'s goes on again");
+    ApplyModel(t, form);
+}
+
+void ShowWeapons(Tracked& t)
+{
+    for (const auto& [actor, cls] : t.HiddenWeapons)
+    {
+        if (A.HideActor && StillThere(actor, cls)) { Invoke(actor, A.HideActor, {Arg::B(false)}); }
+    }
+    t.HiddenWeapons.clear();
+}
+
+// A weapon of the game: its class (or a class it is made from) has "weapon" in its name, or is named like the game's
+// weapon models (WE0010_00_Sephiroth_Masamune_C).
+bool IsWeapon(UObject* actor)
+{
+    int depth = 0;
+    for (UStruct* cls = actor->GetClassPrivate(); cls && depth < 24; cls = cls->GetSuperStruct(), ++depth)
+    {
+        const std::wstring name = ShortName(cls);
+        if (Folded(name).find(L"weapon") != std::wstring::npos) { return true; }
+        if (depth == 0 && name.size() > 7 && (name[0] == L'W' || name[0] == L'w') && (name[1] == L'E' || name[1] == L'e') &&
+            std::all_of(name.begin() + 2, name.begin() + 6, [](wchar_t c) { return c >= L'0' && c <= L'9'; }) && name[6] == L'_')
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// (3.7.2) One of the game's damage sources (the actor of a hit or a bullet, attached to the character while it lasts):
+// its class may say "weapon", but it is no weapon to put in a hand (3.7.1 put one in Vincent's).
+bool IsDamageSource(UObject* actor)
+{
+    int depth = 0;
+    for (UStruct* cls = actor->GetClassPrivate(); cls && depth < 24; cls = cls->GetSuperStruct(), ++depth)
+    {
+        if (Folded(ShortName(cls)).find(L"damagesource") != std::wstring::npos) { return true; }
+    }
+    return false;
+}
+
+// (3.7.8) AActor::bHidden, for the weapons a look of the game's hides (the Toad status's look change can)
+struct
+{
+    bool Looked = false;
+    int32_t At = -1;
+    uint8_t Mask = 0;
+} HiddenFlag;
+
+bool ActorHidden(UObject* actor)
+{
+    if (!HiddenFlag.Looked)
+    {
+        HiddenFlag.Looked = true;
+        if (UClass* cls = FindClass(L"/Script/Engine.Actor"))
+        {
+            if (FProperty* flag = FindField(cls, L"bHidden"); flag && TypeOf(flag) == L"BoolProperty")
+            {
+                auto* boolean = static_cast<FBoolProperty*>(flag);
+                const int32_t at = flag->GetOffset_Internal() + static_cast<int32_t>(boolean->GetByteOffset());
+                const uint8_t mask = static_cast<uint8_t>(boolean->GetFieldMask());
+                if (at >= 0 && at < cls->GetPropertiesSize() && mask != 0)
+                {
+                    HiddenFlag.At = at;
+                    HiddenFlag.Mask = mask;
+                }
+            }
+        }
+    }
+    uint8_t byte = 0;
+    return HiddenFlag.At >= 0 && ReadAt(actor, static_cast<size_t>(HiddenFlag.At), byte) && (byte & HiddenFlag.Mask) != 0;
+}
+
+// (3.7.8) The character's weapons (attached actors that are weapons, not damage sources), each with whether it is hidden.
+std::vector<std::pair<UObject*, bool>> WeaponsOf(UObject* character)
+{
+    std::vector<std::pair<UObject*, bool>> out;
+    if (!A.AttachedActors || !character) { return out; }
+    Block block(A.AttachedActors);
+    uint8_t* list = block.Named(L"OutActors", 16);
+    if (uint8_t* reset = block.Named(L"bResetArray", 1)) { *reset = 1; }
+    if (!list) { return out; }
+    character->ProcessEvent(A.AttachedActors, block.Bytes);
+    RawArray actors{};
+    std::memcpy(&actors, list, sizeof(actors));
+    for (int32_t k = 0; k < actors.Num && k < 64 && actors.Data; ++k)
+    {
+        UObject* actor = static_cast<UObject**>(actors.Data)[k];
+        if (actor && IsWeapon(actor) && !IsDamageSource(actor)) { out.emplace_back(actor, ActorHidden(actor)); }
+    }
+    if (actors.Data) { FMemory::Free(actors.Data); }
+    return out;
+}
+
+// (3.7.8) After a form's look went on (the game's look change): the weapons it hid come out again, for a form that keeps
+// them (Chaos's gun).
+void ShowWeaponsTheLookHid(Tracked& t, const std::vector<std::pair<UObject*, bool>>& before)
+{
+    if (!A.HideActor || HiddenFlag.At < 0) { return; }
+    int shown = 0;
+    for (const auto& [actor, hidden] : WeaponsOf(t.Character))
+    {
+        if (!hidden) { continue; }
+        const auto was = std::find_if(before.begin(), before.end(), [&](const auto& b) { return b.first == actor; });
+        if (was != before.end() && was->second) { continue; }   // (hidden before the change: the game's or another form's)
+        Invoke(actor, A.HideActor, {Arg::B(false)});
+        ++shown;
+    }
+    if (shown) { Log.Line(L"Forms: " + t.Spec + L": " + std::to_wstring(shown) + L" weapon(s) the game's look change hid shown again"); }
+}
+
+void HideWeapons(Tracked& t)
+{
+    if (!A.AttachedActors || !A.HideActor) { return; }
+    Block block(A.AttachedActors);
+    uint8_t* list = block.Named(L"OutActors", 16);
+    if (uint8_t* reset = block.Named(L"bResetArray", 1)) { *reset = 1; }
+    if (!list) { return; }
+    t.Character->ProcessEvent(A.AttachedActors, block.Bytes);
+    RawArray actors{};
+    std::memcpy(&actors, list, sizeof(actors));
+    for (int32_t k = 0; k < actors.Num && k < 64 && actors.Data; ++k)
+    {
+        UObject* actor = static_cast<UObject**>(actors.Data)[k];
+        if (!actor || !IsWeapon(actor)) { continue; }
+        Invoke(actor, A.HideActor, {Arg::B(true)});
+        t.HiddenWeapons.emplace_back(actor, actor->GetClassPrivate());
+    }
+    if (actors.Data) { FMemory::Free(actors.Data); }
+    if (!t.HiddenWeapons.empty()) { Log.Line(L"Forms: " + t.Spec + L": " + std::to_wstring(t.HiddenWeapons.size()) + L" weapon(s) hidden"); }
+}
+
+// ---- flying ----------------------------------------------------------------------------
+constexpr uint8_t ModeFalling = 3;
+constexpr uint8_t ModeFlying = 5;
+
+UObject* MovementOf(UObject* character) { return ObjectAt(character, A.OffCharMovement); }
+
+void StartFlying(Tracked& t, const Form& form)
+{
+    UObject* movement = MovementOf(t.Character);
+    if (!movement || !A.SetMovementMode) { return; }
+    t.Flying = true;
+    t.BaseZ = LocationOf(t.Character).Z;
+    t.Height = form.Fly.Height;
+    t.FlyResets = 0;
+    if (A.OffMaxFly >= 0 && A.OffMaxWalk >= 0)
+    {
+        t.OwnMaxFly = Field<float>(movement, A.OffMaxFly);
+        const float walk = Field<float>(movement, A.OffMaxWalk);
+        if (walk > t.OwnMaxFly) { std::memcpy(reinterpret_cast<uint8_t*>(movement) + A.OffMaxFly, &walk, sizeof(walk)); }
+    }
+    Invoke(movement, A.SetMovementMode, {Arg::U8(ModeFlying), Arg::U8(0)});
+    Log.Line(L"Forms: " + t.Spec + L" flies (" + Fixed(form.Fly.Height) + L" cm up; " + form.Fly.Up + L" / " + form.Fly.Down + L" raise and lower it)");
+}
+
+void StopFlying(Tracked& t)
+{
+    if (!t.Flying) { return; }
+    t.Flying = false;
+    UObject* movement = MovementOf(t.Character);
+    if (!movement) { return; }
+    if (A.OffMaxFly >= 0 && t.OwnMaxFly >= 0.0f) { std::memcpy(reinterpret_cast<uint8_t*>(movement) + A.OffMaxFly, &t.OwnMaxFly, sizeof(float)); }
+    if (A.OffMovementMode >= 0 && Field<uint8_t>(movement, A.OffMovementMode) == ModeFlying) { Invoke(movement, A.SetMovementMode, {Arg::U8(ModeFalling), Arg::U8(0)}); }
+}
+
+// Hovering: up and down move the height; the movement flies again when the game set it walking or falling (not while an
+// ability plays: abilities move the character themselves).
+void Fly(Tracked& t, const Form& form, UObject* controller, bool menuOpen, uint64_t now)
+{
+    UObject* movement = MovementOf(t.Character);
+    if (!movement || A.OffMovementMode < 0 || A.OffVelocity < 0) { return; }
+    const float dt = t.LastFlyMs ? std::min(0.1f, static_cast<float>(now - t.LastFlyMs) / 1000.0f) : 0.0f;
+    t.LastFlyMs = now;
+    if (!menuOpen && controller)
+    {
+        const float up = KeyIsDown(controller, form.Fly.Up) ? 1.0f : 0.0f;
+        const float down = KeyIsDown(controller, form.Fly.Down) ? 1.0f : 0.0f;
+        t.Height = std::clamp(t.Height + (up - down) * form.Fly.Speed * dt, 0.0f, form.Fly.Max);
+    }
+    const uint8_t mode = Field<uint8_t>(movement, A.OffMovementMode);
+    if (mode != ModeFlying)
+    {
+        const std::wstring ability = AbilityOf(t.Character);
+        if (!ability.empty() && ability != L"None") { return; }
+        Invoke(movement, A.SetMovementMode, {Arg::U8(ModeFlying), Arg::U8(0)});
+        if (++t.FlyResets <= 5) { Log.Line(L"Forms: " + t.Spec + L" flies again (the game had set its movement to mode " + std::to_wstring(mode) + L")"); }
+        return;
+    }
+    const float z = LocationOf(t.Character).Z;
+    const float wanted = t.BaseZ + t.Height;
+    Vec3 velocity = Field<Vec3>(movement, A.OffVelocity);
+    velocity.Z = std::clamp((wanted - z) * 5.0f, -1500.0f, 1500.0f);
+    std::memcpy(reinterpret_cast<uint8_t*>(movement) + A.OffVelocity, &velocity, sizeof(velocity));
+}
+
+// ---- (3.6.6) entrances ------------------------------------------------------------------
+// A form's entrance, as the character in charge switches to it: its animation as a slot montage over everything else,
+// the screen white and fading back (the camera manager's fade), the character coming down from above (its mesh raised
+// under its capsule and lowered: nothing of the game's movement changes), effects, and a camera actor of the mod's as the
+// view target: low in front of the character looking up at its face, moving in close to it, then a blend back to the
+// view target the game had. An ability it starts, another form, another character in charge or the battle's end end it
+// early. A part whose functions the game lacks is left out (the log says which).
+using SkelCompat::FormEntrance;
+
+struct Rot { float Pitch = 0, Yaw = 0, Roll = 0; };                      // FRotator
+struct alignas(16) Xform { float Rotation[4]{0, 0, 0, 1}; float Translation[4]{}; float Scale[4]{1, 1, 1, 0}; }; // FTransform
+static_assert(sizeof(Xform) == 48);
+
+// (3.8.2) a form's weapon: the cutscene weapons' helpers (further down) put it in the slot the game's way
+namespace CutWeapons
+{
+extern int32_t OffRoot;
+extern UObject* Scene;
+extern UFunction* AttachWeapon;
+bool LookUpOnce();
+std::vector<std::pair<uint64_t, uint8_t>> OwnSockets(UObject* instance);
+bool OnSocket(UObject* root, UObject*& parent, uint64_t& socket);
+} // namespace CutWeapons
+
+// ---- (3.8.2) a form's weapon ------------------------------------------------------------
+// A form with "weapon" fights with that weapon (Young Sephiroth's Masamune in WINGED, FLYING and KH2, his Nameless the
+// rest of the time): a true swap. The form's weapon blueprint is spawned (owned by the character) and put in the slot of
+// the character's own weapon with the game's EndSceneAPI AttachWeapon, as the game's scene scripts put weapons in slots: the
+// slot's weapon is that one now (its sockets, effects and the game's showing and hiding of the weapon go by it). The
+// character's own waits hidden, still attached. Leaving the form (to one without a weapon of its own, the battle's end),
+// the own weapon goes back in its slot and is shown, and the form's is destroyed. Four times a second, while the form is
+// on: the form's weapon still there and in the slot, the own one still hidden (the game can put its own back: a cutscene).
+void FormWeaponSay(Tracked& t, const std::wstring& line)
+{
+    if (t.WeaponSaid >= 24) { return; }
+    ++t.WeaponSaid;
+    Log.Line(L"Forms: " + t.Spec + L": " + line + (t.WeaponSaid == 24 ? std::wstring(L" (no more of these lines for it this session)") : std::wstring{}));
+}
+
+// The slot a weapon is in: the one of the character's AnimBlueprint weapon settings whose socket it is on (else the first).
+uint8_t WeaponSlotOf(Tracked& t, UObject* weapon)
+{
+    if (!CutWeapons::LookUpOnce() || CutWeapons::OffRoot < 0) { return 0; }
+    UObject* mesh = MeshOf(t.Character);
+    UObject* instance = mesh ? AnimInstanceOf(mesh) : nullptr;
+    UObject* root = ObjectAt(weapon, CutWeapons::OffRoot);
+    UObject* parent = nullptr;
+    uint64_t socket = 0;
+    if (!instance || !IsLive(instance) || !root || !IsLive(root) || !CutWeapons::OnSocket(root, parent, socket)) { return 0; }
+    for (const auto& [rule, slot] : CutWeapons::OwnSockets(instance))
+    {
+        if (rule == socket) { return slot; }
+    }
+    return 0;
+}
+
+bool PutInSlot(Tracked& t, UObject* weapon)
+{
+    if (!CutWeapons::LookUpOnce() || !CutWeapons::Scene || !CutWeapons::AttachWeapon) { return false; }
+    return Invoke(CutWeapons::Scene, CutWeapons::AttachWeapon, {Arg::Obj(t.Character), Arg::Obj(weapon), Arg::U8(t.WeaponSlot)}).Ok;
+}
+
+// The character's own weapon back in its slot and shown; the form's destroyed.
+void PutBackOwnWeapon(Tracked& t, const wchar_t* why)
+{
+    if (!t.FormWeapon && !t.OwnWeapon) { return; }
+    const bool worn = t.FormWeapon && StillThere(t.FormWeapon, t.FormWeaponClass);
+    const bool own = t.OwnWeapon && StillThere(t.OwnWeapon, t.OwnWeaponClass);
+    const bool character = StillThere(t.Character, t.Class);
+    if (own && character)
+    {
+        PutInSlot(t, t.OwnWeapon);
+        if (A.HideActor) { Invoke(t.OwnWeapon, A.HideActor, {Arg::B(false)}); }
+    }
+    if (worn && A.DestroyActor) { Invoke(t.FormWeapon, A.DestroyActor, {}); }
+    else if (worn && A.HideActor) { Invoke(t.FormWeapon, A.HideActor, {Arg::B(true)}); }
+    FormWeaponSay(t, (own ? ShortName(t.OwnWeapon) + L" back in its slot" : std::wstring(L"its own weapon is gone")) + L" (" + why + L")" +
+                     (worn ? L"; " + ShortNameOfPath(t.FormWeaponPath) + L" " + (A.DestroyActor ? L"destroyed" : L"hidden") : std::wstring{}));
+    t.FormWeapon = nullptr;
+    t.FormWeaponClass = nullptr;
+    t.FormWeaponPath.clear();
+    t.OwnWeapon = nullptr;
+    t.OwnWeaponClass = nullptr;
+}
+
+// The form's weapon spawned and put in the slot of the character's own (hidden).
+bool PutOnFormWeapon(Tracked& t, const Form& form)
+{
+    const bool wornNow = t.FormWeapon && StillThere(t.FormWeapon, t.FormWeaponClass);
+    if (wornNow && SkelCompat::PathEquals(t.FormWeaponPath, form.Weapon)) { return true; }
+    if (t.FormWeapon || t.OwnWeapon) { PutBackOwnWeapon(t, L"another form's weapon"); }
+    if (!A.BeginSpawn || !A.FinishSpawn || !A.Statics || !A.HideActor || !CutWeapons::LookUpOnce() || !CutWeapons::Scene || !CutWeapons::AttachWeapon)
+    {
+        FormWeaponSay(t, form.Name + L" keeps its own weapon: the game's actor spawning or AttachWeapon was not found");
+        return false;
+    }
+    UObject* cls = Need(form.Weapon);
+    if (!cls)
+    {
+        FormWeaponSay(t, form.Name + L" keeps its own weapon: " + ShortNameOfPath(form.Weapon) + L" is not loaded (its pak is not installed?)");
+        return false;
+    }
+    UObject* own = nullptr;
+    for (const auto& [actor, hidden] : WeaponsOf(t.Character))
+    {
+        if (!hidden) { own = actor; break; }
+        if (!own) { own = actor; }
+    }
+    if (!own)
+    {
+        FormWeaponSay(t, form.Name + L"'s weapon NOT put on: the character has no weapon of its own attached (no slot to put it in)");
+        return false;
+    }
+    t.OwnWeapon = own;
+    t.OwnWeaponClass = own->GetClassPrivate();
+    t.WeaponSlot = WeaponSlotOf(t, own);
+    Xform place;
+    Block begun = Invoke(A.Statics, A.BeginSpawn, {Arg::Obj(t.Character), Arg::Obj(cls), Arg::S(place), Arg::U8(1), Arg::Obj(t.Character)});
+    UObject* weapon = begun.Ok ? begun.Get<UObject*>() : nullptr;
+    if (!weapon)
+    {
+        FormWeaponSay(t, form.Name + L"'s weapon " + ShortNameOfPath(form.Weapon) + L" NOT spawned");
+        t.OwnWeapon = nullptr;
+        t.OwnWeaponClass = nullptr;
+        return false;
+    }
+    Block finished = Invoke(A.Statics, A.FinishSpawn, {Arg::Obj(weapon), Arg::S(place)});
+    if (finished.Ok && finished.Get<UObject*>()) { weapon = finished.Get<UObject*>(); }
+    t.FormWeapon = weapon;
+    t.FormWeaponClass = weapon->GetClassPrivate();
+    t.FormWeaponPath = form.Weapon;
+    Invoke(own, A.HideActor, {Arg::B(true)});
+    const bool put = PutInSlot(t, weapon);
+    FormWeaponSay(t, form.Name + L" fights with " + ShortName(weapon) + L" (slot " + std::to_wstring(t.WeaponSlot + 1) + L", the game's AttachWeapon" +
+                     (put ? L"" : L" FAILED") + L"; its own " + ShortName(own) + L" hidden until it leaves the form)");
+    return true;
+}
+
+// While a form with a weapon is on: its weapon still there and in the slot, the own one still hidden.
+void KeepFormWeapon(Tracked& t, const Form& form, uint64_t now)
+{
+    if (now < t.NextWeaponMs) { return; }
+    t.NextWeaponMs = now + 250;
+    if (form.Weapon.empty())
+    {
+        if (t.FormWeapon || t.OwnWeapon) { PutBackOwnWeapon(t, L"its form fights with its own"); }
+        return;
+    }
+    if (!StillThere(t.Character, t.Class)) { return; }
+    const bool worn = t.FormWeapon && StillThere(t.FormWeapon, t.FormWeaponClass);
+    if (!worn)
+    {
+        if (t.FormWeapon) { FormWeaponSay(t, form.Name + L"'s weapon was gone (the game's doing?): spawned again"); }
+        t.FormWeapon = nullptr;
+        PutOnFormWeapon(t, form);
+        return;
+    }
+    if (t.OwnWeapon && StillThere(t.OwnWeapon, t.OwnWeaponClass) && !ActorHidden(t.OwnWeapon))
+    {
+        Invoke(t.OwnWeapon, A.HideActor, {Arg::B(true)});
+        PutInSlot(t, t.FormWeapon);
+        FormWeaponSay(t, L"the game showed its own " + ShortName(t.OwnWeapon) + L" again in " + form.Name + L": hidden, " + ShortName(t.FormWeapon) + L" in the slot again");
+    }
+}
+
+Vec3 VAdd(const Vec3& a, const Vec3& b) { return {a.X + b.X, a.Y + b.Y, a.Z + b.Z}; }
+Vec3 VSub(const Vec3& a, const Vec3& b) { return {a.X - b.X, a.Y - b.Y, a.Z - b.Z}; }
+Vec3 VMul(const Vec3& a, float k) { return {a.X * k, a.Y * k, a.Z * k}; }
+Vec3 VMix(const Vec3& a, const Vec3& b, float t) { return VAdd(a, VMul(VSub(b, a), t)); }
+float Ease(float x)
+{
+    x = std::clamp(x, 0.0f, 1.0f);
+    return x * x * (3.0f - 2.0f * x);
+}
+
+enum class EntranceEnd : uint8_t { Done, Skipped, Cut, Leave, Abort };   // (Leave: another character in charge, 3.6.7)
+
+struct Entering
+{
+    bool On = false;
+    bool Ending = false;                 // the shot is over: the camera blends back, the character finishes coming down
+    UObject* Character = nullptr;
+    UClass* CharacterClass = nullptr;
+    std::wstring Spec;
+    int FormIndex = -1;
+    const FormEntrance* Plan = nullptr;
+    double Start = 0.0;                  // game time it began (s)
+    double Length = 6.0;                 // the shot (s)
+    double Last = 0.0;                   // the game time of the frame before
+    uint64_t StartMs = 0;
+    uint64_t NextLookMs = 0;             // abilities and the view target, 10 times a second
+    uint64_t NextAliveMs = 0;
+    std::wstring StartAbility;           // the ability it began in (only another one skips it)
+    // the animation
+    UObject* Animation = nullptr;
+    bool Tried = false;
+    UObject* Instance = nullptr;         // the anim instance it plays on
+    UClass* InstanceClass = nullptr;
+    uint64_t Slot = 0;
+    // the descent
+    UObject* Mesh = nullptr;
+    float Raised = 0.0f;                 // how far up the mod has the mesh now (cm)
+    float RaisedZ = 0.0f;                // the relative height it gave the mesh then
+    float DescendSeconds = 0.0f;
+    bool Hurry = false;                  // ended early: it comes down the rest of the way in a moment
+    double HurryAt = 0.0;
+    float HurryFrom = 0.0f;
+    // the camera
+    UObject* Controller = nullptr;
+    UClass* ControllerClass = nullptr;
+    UObject* Camera = nullptr;           // the mod's camera actor
+    UClass* CameraClass = nullptr;
+    UObject* Lens = nullptr;             // its camera component
+    UObject* Previous = nullptr;         // the view target the game had
+    UClass* PreviousClass = nullptr;
+    uint64_t Face = 0;                   // the face bone's name
+    Vec3 Ground{}, Forward{1, 0, 0}, Right{0, 1, 0};
+    Vec3 Look{};                         // where it looks (the face, followed smoothly)
+    bool LookSet = false;
+    float Fov = 0.0f;
+    Vec3 At{};                           // where it is
+    bool ViewSaid = false;
+    uint64_t RemoveAtMs = 0;             // the camera actor goes once the blend back is over
+    // input
+    UObject* IgnoringMove = nullptr;
+    UObject* IgnoringLook = nullptr;
+    bool Invincible = false;             // the mod turned the character's damage off for it
+    // (3.6.7) a cutscene's shots
+    bool Shots = false;                  // the plan's shots play (not the one shot above)
+    size_t Shot = SIZE_MAX;              // the shot playing
+    double ShotStart = 0.0;              // where it starts (s into the entrance)
+    std::vector<uint8_t> EffectsDone, SoundsDone;
+    std::vector<std::pair<UObject*, UClass*>> StopSounds;   // its sounds that stop as it ends
+    bool ShotAnimation = false;          // its animation is still to be played
+    bool Prelude = false;                // the shots before the switch are playing: the form it comes from is still on
+    int PendingIndex = -1;               // the form it switches to after them
+    uint64_t SwitchMs = 0;               // when the form went on (its AnimBlueprint takes a moment)
+    float ModelBelow = 0.0f;             // (the log) how far below the character's middle its model stands
+    // (3.6.8) how smoothly it played (the log, as it is over): its frames, from the one it started in
+    uint64_t FrameAt = 0;                // when the last frame began
+    uint32_t Frames = 0, Over50 = 0, Over100 = 0;
+    uint64_t FrameSum = 0, FrameWorst = 0, WorstAtMs = 0;
+    std::vector<uint16_t> PerSecond;     // frames in each second of it
+    uint64_t ModMs = 0, ModWorst = 0;    // the mod's own work in them
+    float BeforeFps = 0.0f;              // the frames a second before it
+};
+Entering En;
+bool ContinuingEntrance = false;         // (3.6.7) the switch after an entrance's first shots: the entrance goes on
+bool QuietEntrance = false;              // (3.6.7) a switch without its entrance (the first shots were skipped)
+
+// The character's mesh `height` cm above where the game has it (its relative place moved by the difference). `jump`: a
+// teleport (its physics, the hair and feathers, start over there instead of flying after it).
+void RaiseMesh(float height, bool jump = false)
+{
+    if (!En.Mesh || A.OffRelLocation < 0 || !A.SetRelativeLocation) { return; }
+    const Vec3 at = Field<Vec3>(En.Mesh, A.OffRelLocation);
+    // (the game put it somewhere else since the mod last did, a model change of its: where it is now is the game's place)
+    if (En.Raised != 0.0f && std::fabs(at.Z - En.RaisedZ) > 0.5f) { En.Raised = 0.0f; }
+    if (std::fabs(height - En.Raised) < 0.01f) { return; }
+    Vec3 to = at;
+    to.Z += height - En.Raised;
+    struct NoHit { uint8_t Bytes[8]{}; };   // (the out hit result: zeros, the rest of it too)
+    // K2_SetRelativeLocation(NewLocation, bSweep, SweepHitResult, bTeleport)
+    Invoke(En.Mesh, A.SetRelativeLocation, {Arg::S(to), Arg::B(false), Arg::S(NoHit{}, true), Arg::B(jump)});
+    En.Raised = height;
+    En.RaisedZ = to.Z;
+}
+
+void HoldEntranceInput(UObject* controller, bool hold)
+{
+    if (hold)
+    {
+        if (!controller) { return; }
+        if (!En.IgnoringMove && A.IgnoreMoveInput)
+        {
+            Invoke(controller, A.IgnoreMoveInput, {Arg::B(true)});
+            En.IgnoringMove = controller;
+        }
+        if (!En.IgnoringLook && A.IgnoreLookInput)
+        {
+            Invoke(controller, A.IgnoreLookInput, {Arg::B(true)});
+            En.IgnoringLook = controller;
+        }
+        return;
+    }
+    // (the controller's ignore counts go back down: the forms menu keeps its own)
+    if (En.IgnoringMove && StillThere(En.IgnoringMove, En.ControllerClass)) { Invoke(En.IgnoringMove, A.IgnoreMoveInput, {Arg::B(false)}); }
+    if (En.IgnoringLook && StillThere(En.IgnoringLook, En.ControllerClass)) { Invoke(En.IgnoringLook, A.IgnoreLookInput, {Arg::B(false)}); }
+    En.IgnoringMove = En.IgnoringLook = nullptr;
+}
+
+UObject* ViewTargetOf(UObject* controller)
+{
+    if (!controller || !A.GetViewTarget) { return nullptr; }
+    Block result = Invoke(controller, A.GetViewTarget, {});
+    return result.Ok ? result.Get<UObject*>() : nullptr;
+}
+
+// Where the camera is `t` seconds into the shot: low in front of the character, its face in the middle of the picture,
+// moving in a little while it comes down; from "close_at" on, moving in to just in front of the face, zooming in.
+void PlaceCamera(double t)
+{
+    if (!En.Camera || !A.PlaceActor) { return; }
+    const SkelCompat::FormEntranceCamera& c = En.Plan->Camera;
+    Vec3 face = VAdd(En.Ground, Vec3{0, 0, 150});
+    if (A.SocketAt && En.Mesh)
+    {
+        Block socket = Invoke(En.Mesh, A.SocketAt, {Arg::Nm(En.Face)});
+        if (socket.Ok) { face = socket.Get<Vec3>(); }
+    }
+    const float dt = static_cast<float>(std::clamp(t - En.Last, 0.0, 0.1));
+    if (!En.LookSet)
+    {
+        En.Look = face;
+        En.LookSet = true;
+    }
+    else { En.Look = VMix(En.Look, face, 1.0f - std::exp(-dt * 6.0f)); }
+    const Vec3 up{0, 0, 1};
+    const auto wide = [&](float p) {
+        return VAdd(VAdd(VAdd(En.Ground, VMul(En.Forward, c.Distance + (c.Distance * 0.8f - c.Distance) * p)),
+                         VMul(En.Right, c.Side + (c.Side * 0.7f - c.Side) * p)),
+                    VMul(up, c.Height + (c.Height * 1.5f - c.Height) * p));
+    };
+    const double wideEnd = En.Length * static_cast<double>(c.CloseAt);
+    Vec3 at;
+    float fov = c.Fov;
+    if (t < wideEnd) { at = wide(Ease(static_cast<float>(t / wideEnd))); }
+    else
+    {
+        const float q = En.Length > wideEnd ? Ease(static_cast<float>((t - wideEnd) / (En.Length - wideEnd))) : 1.0f;
+        const Vec3 close = VAdd(VAdd(VAdd(En.Look, VMul(En.Forward, c.Close)), VMul(En.Right, c.Side * 0.1f)), VMul(up, -c.Close * 0.12f));
+        at = VMix(wide(1.0f), close, q);
+        fov = c.Fov + (c.CloseFov - c.Fov) * q;
+    }
+    const Vec3 d = VSub(En.Look, at);
+    const float flat = std::sqrt(d.X * d.X + d.Y * d.Y);
+    Rot turn;
+    turn.Yaw = std::atan2(d.Y, d.X) * 57.29578f;
+    turn.Pitch = std::atan2(d.Z, std::max(flat, 0.001f)) * 57.29578f;
+    // K2_SetActorLocationAndRotation(NewLocation, NewRotation, bSweep, SweepHitResult, bTeleport)
+    Invoke(En.Camera, A.PlaceActor, {Arg::S(at), Arg::S(turn), Arg::B(false)});
+    En.At = at;
+    if (En.Lens && A.SetFov && std::fabs(fov - En.Fov) > 0.01f)
+    {
+        Invoke(En.Lens, A.SetFov, {Arg::F(fov)});
+        En.Fov = fov;
+    }
+}
+
+void PlaceShotCamera(const SkelCompat::EntranceShot& shot, double s);   // (3.6.7)
+bool ShowBars(float ratio, UObject* context);                            // (3.6.8) the cinema bars, drawn by the mod
+void RetractBars(float seconds, uint64_t now);
+void HideBars();
+
+// The camera actor, made the view target at once (under the flash).
+bool StartEntranceCamera(UObject* controller, std::wstring& text)
+{
+    const SkelCompat::FormEntranceCamera& c = En.Plan->Camera;
+    if (!A.CameraActor || !A.BeginSpawn || !A.FinishSpawn || !A.SetViewTarget || !A.PlaceActor)
+    {
+        text += L"; its camera NOT made (the game lacks CameraActor spawning or SetViewTargetWithBlend)";
+        return false;
+    }
+    En.Previous = ViewTargetOf(controller);
+    En.PreviousClass = En.Previous ? En.Previous->GetClassPrivate() : nullptr;
+    Xform place;
+    const Vec3 start = VAdd(VAdd(En.Ground, VMul(En.Forward, c.Distance)), Vec3{0, 0, c.Height});
+    place.Translation[0] = start.X;
+    place.Translation[1] = start.Y;
+    place.Translation[2] = start.Z;
+    // BeginDeferredActorSpawnFromClass(WorldContextObject, ActorClass, SpawnTransform, CollisionHandlingOverride (always
+    // spawn), Owner), then FinishSpawningActor(Actor, SpawnTransform)
+    Block begun = Invoke(A.Statics, A.BeginSpawn, {Arg::Obj(En.Character), Arg::Obj(A.CameraActor), Arg::S(place), Arg::U8(1), Arg::Obj(nullptr)});
+    UObject* camera = begun.Ok ? begun.Get<UObject*>() : nullptr;
+    if (!camera)
+    {
+        text += L"; its camera NOT made (the spawn failed)";
+        return false;
+    }
+    Block finished = Invoke(A.Statics, A.FinishSpawn, {Arg::Obj(camera), Arg::S(place)});
+    if (finished.Ok && finished.Get<UObject*>()) { camera = finished.Get<UObject*>(); }
+    En.Camera = camera;
+    En.CameraClass = camera->GetClassPrivate();
+    En.Lens = A.OffCameraComponent >= 0 ? ObjectAt(camera, A.OffCameraComponent) : nullptr;
+    // the picture's shape: (3.6.8) cinema bars of the mod's over the screen, so the game keeps rendering at its own size;
+    // the camera's aspect ratio only when they cannot be made. (A CameraActor's camera keeps 16:9 unless told otherwise:
+    // it is told, either way.)
+    const bool lensBars = c.Bars > 0.0f && !ShowBars(c.Bars, En.Character);
+    if (En.Lens && A.SetAspectOn)
+    {
+        if (lensBars && A.SetAspect) { Invoke(En.Lens, A.SetAspect, {Arg::F(c.Bars)}); }
+        Invoke(En.Lens, A.SetAspectOn, {Arg::B(lensBars)});
+    }
+    En.Face = Name(c.Face);
+    if (!En.Shots) { PlaceCamera(0.0); }
+    else
+    {
+        // (3.6.7) the first shot's camera (the one it starts in)
+        size_t first = 0;
+        double start = 0.0;
+        const double t = GameSeconds(En.Character) - En.Start;
+        while (first + 1 < En.Plan->Shots.size() && t >= start + En.Plan->Shots[first].Seconds) { start += En.Plan->Shots[first++].Seconds; }
+        PlaceShotCamera(En.Plan->Shots[first], std::max(0.0, t - start));
+    }
+    // SetViewTargetWithBlend(NewViewTarget, BlendTime (a cut), BlendFunc, BlendExp, bLockOutgoing)
+    Invoke(controller, A.SetViewTarget, {Arg::Obj(camera), Arg::F(0.0f), Arg::U8(0), Arg::F(0.0f), Arg::B(false)});
+    UObject* now = ViewTargetOf(controller);
+    text += L"; its camera " + ShortName(camera) + (now == camera ? L" is the view now" : L" is NOT the view (the view target is " + (now ? ShortName(now) : std::wstring(L"none")) + L")") +
+            L" (the game's was " + (En.Previous ? ShortName(En.Previous) : std::wstring(L"none")) + L")";
+    return true;
+}
+
+void RemoveEntranceCamera()
+{
+    if (En.Camera && A.DestroyActor && StillThere(En.Camera, En.CameraClass)) { Invoke(En.Camera, A.DestroyActor, {}); }
+    En.Camera = En.Lens = nullptr;
+    HideBars();   // (3.6.8)
+}
+
+// ---- (3.6.8) how smoothly an entrance plays: its frames, logged as it is over -----------------------------------------
+std::array<uint16_t, 128> RecentFrames{};   // the frames before (ms each, the last 128)
+size_t RecentAt = 0;
+uint64_t RecentLast = 0;
+
+void NoteRecentFrame(uint64_t now)
+{
+    if (RecentLast && now > RecentLast) { RecentFrames[RecentAt++ % RecentFrames.size()] = static_cast<uint16_t>(std::min<uint64_t>(now - RecentLast, 60000)); }
+    RecentLast = now;
+}
+
+// Frames a second over the last second (0: not known).
+float RecentFps()
+{
+    uint64_t sum = 0;
+    uint32_t n = 0;
+    for (size_t k = 0; k < RecentFrames.size() && k < RecentAt && sum < 1000; ++k)
+    {
+        sum += RecentFrames[(RecentAt - 1 - k) % RecentFrames.size()];
+        ++n;
+    }
+    return sum > 0 ? 1000.0f * static_cast<float>(n) / static_cast<float>(sum) : 0.0f;
+}
+
+void NoteEntranceFrame(uint64_t now)
+{
+    if (!En.On) { return; }
+    if (En.FrameAt && now > En.FrameAt)
+    {
+        const uint64_t d = now - En.FrameAt;
+        ++En.Frames;
+        En.FrameSum += d;
+        if (d > En.FrameWorst)
+        {
+            En.FrameWorst = d;
+            En.WorstAtMs = En.FrameAt - En.StartMs;
+        }
+        if (d > 50) { ++En.Over50; }
+        if (d > 100) { ++En.Over100; }
+    }
+    En.FrameAt = now;
+    const uint64_t second = now >= En.StartMs ? (now - En.StartMs) / 1000 : 0;
+    if (second < 120)
+    {
+        if (En.PerSecond.size() <= second) { En.PerSecond.resize(static_cast<size_t>(second) + 1, 0); }
+        ++En.PerSecond[static_cast<size_t>(second)];
+    }
+}
+
+// The mod's own work in a frame (FrameWork): counted while an entrance plays.
+void NoteModWork(uint64_t ms)
+{
+    if (!En.On) { return; }
+    En.ModMs += ms;
+    En.ModWorst = std::max(En.ModWorst, ms);
+}
+
+void ReportFrames()
+{
+    if (!En.On || En.Frames == 0) { return; }
+    const float seconds = static_cast<float>(En.FrameSum) / 1000.0f;
+    std::wstring each;
+    for (size_t k = 0; k < En.PerSecond.size(); ++k) { each += (k ? L" " : L"") + std::to_wstring(En.PerSecond[k]); }
+    Log.Line(L"Forms: " + En.Spec + L"'s entrance played at " + Fixed(seconds > 0.0f ? static_cast<float>(En.Frames) / seconds : 0.0f) + L" fps (" +
+             std::to_wstring(En.Frames) + L" frames in " + Fixed(seconds) + L" s" +
+             (En.BeforeFps > 0.0f ? L"; " + Fixed(En.BeforeFps) + L" fps before it" : std::wstring{}) + L"); its longest frame " +
+             std::to_wstring(En.FrameWorst) + L" ms (" + Fixed(static_cast<float>(En.WorstAtMs) / 1000.0f) + L" s in); " + std::to_wstring(En.Over50) +
+             L" frame(s) over 50 ms, " + std::to_wstring(En.Over100) + L" over 100 ms; frames in each second: " + each + L"; the mod's own work " +
+             std::to_wstring(En.ModMs) + L" ms in all, " + std::to_wstring(En.ModWorst) + L" ms at most in a frame");
+}
+
+// ---- (3.6.7) a cutscene's shots
+void EndEntrance(const wchar_t* why, EntranceEnd how, uint64_t now);
+
+// Where the character's model stands (its mesh component's place), the way the character faces (yaw, degrees) and the
+// model's size (its mesh's scale in the world): what the shots' offsets are relative to.
+struct Anchor
+{
+    Vec3 At{};
+    float Yaw = 0.0f;
+    float Size = 1.0f;
+};
+
+Anchor AnchorOf(UObject* character, UObject* mesh)
+{
+    Anchor a;
+    if (!character) { return a; }
+    a.At = LocationOf(character);
+    if (mesh && A.ComponentAt)
+    {
+        Block at = Invoke(mesh, A.ComponentAt, {});
+        if (at.Ok) { a.At = at.Get<Vec3>(); }
+    }
+    if (A.ActorForward)
+    {
+        Block forward = Invoke(character, A.ActorForward, {});
+        if (forward.Ok)
+        {
+            const Vec3 f = forward.Get<Vec3>();
+            if (std::fabs(f.X) + std::fabs(f.Y) > 0.01f) { a.Yaw = std::atan2(f.Y, f.X) * 57.29578f; }
+        }
+    }
+    Vec3 scale{1, 1, 1};
+    if (mesh && A.ComponentScale)
+    {
+        Block got = Invoke(mesh, A.ComponentScale, {});
+        if (got.Ok) { scale = got.Get<Vec3>(); }
+    }
+    else if (mesh && A.OffRelScale >= 0) { scale = Field<Vec3>(mesh, A.OffRelScale); }
+    if (std::isfinite(scale.Z) && scale.Z > 0.0001f) { a.Size = scale.Z; }
+    return a;
+}
+
+// A place `forward`, `right` and `up` of where the model stands (cm for a character of the shot's size: times `k`).
+Vec3 AnchorPlace(const Anchor& a, float forward, float right, float up, float k)
+{
+    const float yaw = a.Yaw * 0.01745329f;
+    const float c = std::cos(yaw), s = std::sin(yaw);
+    return {a.At.X + (forward * c - right * s) * k, a.At.Y + (forward * s + right * c) * k, a.At.Z + up * k};
+}
+
+float AngleMix(float from, float to, float t)
+{
+    float d = std::fmod(to - from, 360.0f);
+    if (d > 180.0f) { d -= 360.0f; }
+    else if (d < -180.0f) { d += 360.0f; }
+    return from + d * t;
+}
+
+// Where the shot's camera is `s` seconds into it (its keys, followed in a straight line from one to the next).
+void PlaceShotCamera(const SkelCompat::EntranceShot& shot, double s)
+{
+    if (!En.Camera || !A.PlaceActor || shot.Camera.empty()) { return; }
+    const auto& keys = shot.Camera;
+    size_t k = 0;
+    while (k + 1 < keys.size() && keys[k + 1].T <= s) { ++k; }
+    SkelCompat::EntranceKey key = keys[k];
+    if (k + 1 < keys.size() && s > keys[k].T)
+    {
+        const SkelCompat::EntranceKey& next = keys[k + 1];
+        const float span = next.T - key.T;
+        const float q = span > 0.0001f ? std::clamp(static_cast<float>((s - key.T) / span), 0.0f, 1.0f) : 1.0f;
+        key.X += (next.X - key.X) * q;
+        key.Y += (next.Y - key.Y) * q;
+        key.Z += (next.Z - key.Z) * q;
+        key.Fov += (next.Fov - key.Fov) * q;
+        key.Pitch = AngleMix(key.Pitch, next.Pitch, q);
+        key.Yaw = AngleMix(key.Yaw, next.Yaw, q);
+        key.Roll = AngleMix(key.Roll, next.Roll, q);
+    }
+    const Anchor a = AnchorOf(En.Character, En.Mesh);
+    const Vec3 at = AnchorPlace(a, key.X, key.Y, key.Z, a.Size / std::max(shot.Scale, 0.001f));
+    Rot turn;
+    turn.Pitch = key.Pitch;
+    turn.Yaw = a.Yaw + key.Yaw;
+    turn.Roll = key.Roll;
+    // K2_SetActorLocationAndRotation(NewLocation, NewRotation, bSweep, SweepHitResult, bTeleport)
+    Invoke(En.Camera, A.PlaceActor, {Arg::S(at), Arg::S(turn), Arg::B(false)});
+    En.At = at;
+    if (En.Lens && A.SetFov && std::fabs(key.Fov - En.Fov) > 0.01f)
+    {
+        Invoke(En.Lens, A.SetFov, {Arg::F(key.Fov)});
+        En.Fov = key.Fov;
+    }
+}
+
+// An effect placed in the world (not attached): `where`, turned `yaw`, `size` times its own size; for `seconds`.
+void PlayEffectAt(UObject* character, const FormEffect& effect, const Vec3& where, float yaw, float size, float seconds, uint64_t now)
+{
+    const uint64_t began = NowMs();   // (3.6.8)
+    UObject* system = Need(effect.Path);
+    if (!system)
+    {
+        Log.Line(L"Forms: effect " + ShortNameOfPath(effect.Path) + L" not found");
+        return;
+    }
+    size_t playing = 0;
+    for (const auto& e : Effects) { if (!e.RemoveAt) { ++playing; } }
+    for (auto& e : Effects)
+    {
+        if (playing < MaxEffects) { break; }
+        if (!e.RemoveAt && e.Kind != Group::Keep) { StopEffect(e, now); --playing; }
+    }
+    Rot turn;
+    turn.Yaw = yaw;
+    const Vec3 scale{size, size, size};
+    UObject* component = nullptr;
+    const bool niagara = A.NiagaraSystem && system->IsA(A.NiagaraSystem);
+    if (niagara && A.Niagara && A.SpawnSystemAtLocation)
+    {
+        // SpawnSystemAtLocation(WorldContextObject, SystemTemplate, Location, Rotation, Scale, bAutoDestroy, bAutoActivate, no pooling, bPreCullCheck)
+        Block result = Invoke(A.Niagara, A.SpawnSystemAtLocation, {Arg::Obj(character), Arg::Obj(system), Arg::S(where), Arg::S(turn), Arg::S(scale),
+                                                                    Arg::B(false), Arg::B(true), Arg::U8(0), Arg::B(false)});
+        if (result.Ok) { component = result.Get<UObject*>(); }
+    }
+    else if (!niagara && A.SpawnEmitterAtLocation)
+    {
+        // SpawnEmitterAtLocation(WorldContextObject, EmitterTemplate, Location, Rotation, Scale, bAutoDestroy, no pooling, bAutoActivateSystem)
+        Block result = Invoke(A.Statics, A.SpawnEmitterAtLocation, {Arg::Obj(character), Arg::Obj(system), Arg::S(where), Arg::S(turn), Arg::S(scale),
+                                                                     Arg::B(false), Arg::U8(0), Arg::B(true)});
+        if (result.Ok) { component = result.Get<UObject*>(); }
+    }
+    if (!component)
+    {
+        Log.Line(L"Forms: effect " + ShortNameOfPath(effect.Path) + L" did not start (placed)");
+        return;
+    }
+    Playing entry;
+    entry.Character = character;
+    entry.Component = component;
+    entry.Class = component->GetClassPrivate();
+    entry.Kind = Group::Entrance;
+    entry.StopAt = seconds > 0.0f ? now + static_cast<uint64_t>(seconds * 1000.0f) : 0;
+    entry.Label = ShortNameOfPath(effect.Path);
+    Effects.push_back(entry);
+    NoteSlow(L"starting effect " + entry.Label + L" (placed)", NowMs() - began);
+}
+
+void StopShotSounds()
+{
+    for (const auto& [component, cls] : En.StopSounds)
+    {
+        if (!StillThere(component, cls)) { continue; }
+        if (A.Deactivate) { Invoke(component, A.Deactivate, {}); }
+        if (A.DestroyComponent) { Invoke(component, A.DestroyComponent, {Arg::Obj(component)}); }
+    }
+    En.StopSounds.clear();
+}
+
+double ShotStartOf(const SkelCompat::FormEntrance& plan, size_t index)
+{
+    double start = 0.0;
+    for (size_t k = 0; k < index && k < plan.Shots.size(); ++k) { start += plan.Shots[k].Seconds; }
+    return start;
+}
+
+void Flash(float seconds, const float color[3])
+{
+    UObject* manager = En.Controller && A.OffCameraManager >= 0 ? ObjectAt(En.Controller, A.OffCameraManager) : nullptr;
+    if (!manager || !A.CameraFade || seconds <= 0.0f) { return; }
+    const Color tint{color[0], color[1], color[2], 1.0f};
+    // StartCameraFade(FromAlpha, ToAlpha, Duration, Color, bShouldFadeAudio, bHoldWhenFinished)
+    Invoke(manager, A.CameraFade, {Arg::F(1.0f), Arg::F(0.0f), Arg::F(seconds), Arg::S(tint), Arg::B(false), Arg::B(false)});
+}
+
+// The shot `index` starts: the sounds of the one before that stop with it stop, its flash, its animation to come.
+void EnterShot(size_t index, uint64_t now)
+{
+    StopShotSounds();
+    const SkelCompat::EntranceShot& shot = En.Plan->Shots[index];
+    En.Shot = index;
+    En.ShotStart = ShotStartOf(*En.Plan, index);
+    En.EffectsDone.assign(shot.Effects.size(), 0);
+    En.SoundsDone.assign(shot.Sounds.size(), 0);
+    En.ShotAnimation = !shot.Animation.empty();
+    if (shot.Flash > 0.0f) { Flash(shot.Flash, shot.FlashColor); }
+    Log.Line(L"Forms: " + En.Spec + L"'s entrance: shot " + std::to_wstring(index + 1) + L"/" + std::to_wstring(En.Plan->Shots.size()) +
+             (shot.Name.empty() ? std::wstring{} : L" " + shot.Name) + L" (" + Fixed(shot.Seconds) + L" s" + (En.Prelude ? L", before the switch" : L"") +
+             (shot.Camera.empty() ? L", no camera keys" : L"") + L")");
+}
+
+// The shot's animation, played once the model's anim instance is the one it is for (after the switch: the form's
+// AnimBlueprint, 1.5 s at most), from as far into it as the shot is by then.
+void ShotAnimation(const SkelCompat::EntranceShot& shot, double s, uint64_t now)
+{
+    UObject* animation = Need(shot.Animation);
+    if (!animation)
+    {
+        En.ShotAnimation = false;
+        Log.Line(L"Forms: " + En.Spec + L"'s entrance: animation " + ShortNameOfPath(shot.Animation) + L" NOT found");
+        return;
+    }
+    UObject* instance = En.Mesh ? AnimInstanceOf(En.Mesh) : nullptr;
+    if (!En.Prelude)
+    {
+        const Tracked* tracked = TrackedOf(En.Character);
+        const std::wstring abp = tracked ? tracked->Row->Forms.List[static_cast<size_t>(En.FormIndex)].AnimClass : std::wstring{};
+        UObject* wanted = abp.empty() ? nullptr : Need(abp);
+        const bool ready = instance && (!wanted || instance->GetClassPrivate() == wanted);
+        if (now < En.SwitchMs + 60 || (!ready && now < En.SwitchMs + 1500)) { return; }
+    }
+    En.ShotAnimation = false;
+    UObject* montage = nullptr;
+    const float from = shot.AnimationStart + static_cast<float>(std::max(0.0, s)) * shot.Rate;
+    if (instance && A.PlaySlotAnim)
+    {
+        // PlaySlotAnimationAsDynamicMontage(Asset, SlotNodeName, BlendInTime, BlendOutTime, InPlayRate, LoopCount, BlendOutTriggerTime,
+        //   InTimeToStartMontageAt)
+        Block played = A.PlaySlotAnimParams >= 8
+                           ? Invoke(instance, A.PlaySlotAnim, {Arg::Obj(animation), Arg::Nm(En.Slot), Arg::F(0.1f), Arg::F(0.3f), Arg::F(shot.Rate), Arg::I(1),
+                                                               Arg::F(-1.0f), Arg::F(from)})
+                           : Invoke(instance, A.PlaySlotAnim, {Arg::Obj(animation), Arg::Nm(En.Slot), Arg::F(0.1f), Arg::F(0.3f), Arg::F(shot.Rate), Arg::I(1),
+                                                               Arg::F(-1.0f)});
+        montage = played.Ok ? played.Get<UObject*>() : nullptr;
+        En.Instance = instance;
+        En.InstanceClass = instance->GetClassPrivate();
+    }
+    Log.Line(L"Forms: " + En.Spec + L"'s entrance: " + ShortName(animation) +
+             (montage ? L" plays in " + En.Plan->Slot + L" of " + ShortName(instance) + L" from " + Fixed(A.PlaySlotAnimParams >= 8 ? from : 0.0f) + L" s"
+                      : (instance ? L" did NOT play (its skeleton, or the AnimBlueprint has no " + En.Plan->Slot + L" slot?)" : std::wstring(L" did NOT play (no anim instance)"))));
+}
+
+void SwitchTo(Tracked& t, int index, const wchar_t* why, bool cue, uint64_t now);
+
+// After the first shots: the switch to the form (the entrance goes on with the others).
+void SwitchAfterPrelude(uint64_t now)
+{
+    Tracked* t = TrackedOf(En.Character);
+    const int index = En.PendingIndex;
+    if (!t || index < 0 || index >= static_cast<int>(t->Row->Forms.List.size()))
+    {
+        En.Prelude = false;
+        EndEntrance(L"the switch after its first shots is not possible", EntranceEnd::Cut, NowMs());
+        return;
+    }
+    StopShotSounds();
+    ContinuingEntrance = true;
+    try
+    {
+        SwitchTo(*t, index, L"its entrance's first shots are over", true, now);
+    }
+    catch (...)
+    {
+        ContinuingEntrance = false;
+        throw;
+    }
+    ContinuingEntrance = false;
+    if (En.On && En.Prelude)
+    {
+        En.Prelude = false;
+        EndEntrance(L"the switch after its first shots did not happen", EntranceEnd::Cut, now);
+    }
+}
+
+// The entrance ends during its first shots: the switch the character was making happens now, without the rest.
+void SwitchWithoutEntrance(uint64_t now)
+{
+    if (!En.Prelude) { return; }
+    En.Prelude = false;
+    Tracked* t = TrackedOf(En.Character);
+    const int index = En.PendingIndex;
+    En.PendingIndex = -1;
+    if (!t || index < 0 || index >= static_cast<int>(t->Row->Forms.List.size())) { return; }
+    QuietEntrance = true;
+    try
+    {
+        SwitchTo(*t, index, L"its entrance ended before the switch", true, now);
+    }
+    catch (...)
+    {
+        QuietEntrance = false;
+        throw;
+    }
+    QuietEntrance = false;
+}
+
+// Once a frame while the shots play (not ending): which shot, the switch after the first ones, the shot's animation,
+// effects, sounds and camera.
+void UpdateShots(double t, uint64_t now)
+{
+    const auto& shots = En.Plan->Shots;
+    size_t k = 0;
+    double start = 0.0;
+    while (k + 1 < shots.size() && t >= start + shots[k].Seconds)
+    {
+        start += shots[k].Seconds;
+        ++k;
+    }
+    if (En.Prelude && k >= En.Plan->PreludeShots())
+    {
+        SwitchAfterPrelude(now);
+        if (!En.On || En.Ending) { return; }
+    }
+    if (k != En.Shot) { EnterShot(k, now); }
+    const SkelCompat::EntranceShot& shot = shots[En.Shot];
+    const double s = t - En.ShotStart;
+    if (En.ShotAnimation) { ShotAnimation(shot, s, now); }
+    if (En.Mesh)
+    {
+        const Anchor a = AnchorOf(En.Character, En.Mesh);
+        const float k2 = a.Size / std::max(shot.Scale, 0.001f);
+        for (size_t e = 0; e < shot.Effects.size(); ++e)
+        {
+            const SkelCompat::EntranceEffect& cue = shot.Effects[e];
+            if (En.EffectsDone[e] || s < cue.At) { continue; }
+            En.EffectsDone[e] = 1;
+            const float seconds = cue.Effect.Seconds > 0.0f ? cue.Effect.Seconds : static_cast<float>(shot.Seconds - cue.At);
+            try
+            {
+                if (!cue.Effect.Socket.empty()) { PlayEffect(En.Character, En.Mesh, cue.Effect, Group::Entrance, seconds, now); }
+                else
+                {
+                    PlayEffectAt(En.Character, cue.Effect, AnchorPlace(a, cue.Offset[0], cue.Offset[1], cue.Offset[2], k2), a.Yaw + cue.Yaw,
+                                 cue.Effect.Scale * k2, seconds, now);
+                }
+            }
+            catch (...)
+            {
+                Log.Line(L"Forms: effect " + ShortNameOfPath(cue.Effect.Path) + L": error");
+            }
+        }
+        for (size_t c = 0; c < shot.Sounds.size(); ++c)
+        {
+            const SkelCompat::EntranceSound& cue = shot.Sounds[c];
+            if (En.SoundsDone[c] || s < cue.At) { continue; }
+            En.SoundsDone[c] = 1;
+            UObject* component = PlaySound(En.Mesh, cue.Sound, cue.Start + static_cast<float>(s - cue.At));
+            if (component && cue.StopAtEnd && IsLive(component)) { En.StopSounds.emplace_back(component, component->GetClassPrivate()); }
+        }
+    }
+    PlaceShotCamera(shot, s);
+}
+
+// The shot ends: the camera blends back to the game's (when it is still the view), the character comes down the rest of the
+// way, its animation stops when it is skipped. The camera actor goes once the blend back is over (UpdateEntrance).
+void EndEntrance(const wchar_t* why, EntranceEnd how, uint64_t now)
+{
+    if (!En.On || (En.Ending && how != EntranceEnd::Abort)) { return; }   // (ending already: an abort does the rest at once)
+    const bool alive = StillThere(En.Character, En.CharacterClass);
+    const double t = alive ? GameSeconds(En.Character) - En.Start : En.Last;
+    En.Ending = true;
+    StopShotSounds();   // (3.6.7)
+    if (how != EntranceEnd::Done && alive) { StopEffects(En.Character, Group::Entrance, now); }
+    HoldEntranceInput(nullptr, false);
+    // it can be hurt again (as the camera goes back)
+    if (En.Invincible)
+    {
+        En.Invincible = false;
+        // SetDisableDamageHit(Character, Disable)
+        if (alive && A.SetDisableDamageHit) { Invoke(A.Battle, A.SetDisableDamageHit, {Arg::Obj(En.Character), Arg::B(false)}); }
+    }
+    // its animation: stopped when skipped (the game's ability plays then), if it is still the anim instance it played on
+    if (how == EntranceEnd::Skipped && En.Instance && A.StopSlotAnim && alive && En.Mesh && AnimInstanceOf(En.Mesh) == En.Instance)
+    {
+        // StopSlotAnimation(InBlendOutTime, SlotNodeName)
+        Invoke(En.Instance, A.StopSlotAnim, {Arg::F(0.2f), Arg::Nm(En.Slot)});
+    }
+    // the descent
+    if (En.Raised > 0.0f)
+    {
+        if (!alive) { En.Raised = 0.0f; }
+        else if (how == EntranceEnd::Cut || how == EntranceEnd::Leave || how == EntranceEnd::Abort) { RaiseMesh(0.0f, true); }
+        else
+        {
+            En.Hurry = true;
+            En.HurryAt = t;
+            En.HurryFrom = En.Raised;
+        }
+    }
+    // the camera
+    float blend = 0.0f;
+    if (En.Camera)
+    {
+        UObject* controller = En.Controller && StillThere(En.Controller, En.ControllerClass) ? En.Controller : nullptr;
+        if (controller && ViewTargetOf(controller) == En.Camera)
+        {
+            UObject* back = En.Previous && StillThere(En.Previous, En.PreviousClass) ? En.Previous : (alive ? En.Character : nullptr);
+            blend = how == EntranceEnd::Done ? En.Plan->Camera.BlendBack
+                                             : (how == EntranceEnd::Skipped ? 0.5f : (how == EntranceEnd::Cut || how == EntranceEnd::Leave ? 0.3f : 0.0f));
+            // SetViewTargetWithBlend(NewViewTarget, BlendTime, BlendFunc (VTBlend_EaseInOut), BlendExp, bLockOutgoing)
+            Invoke(controller, A.SetViewTarget, {Arg::Obj(back), Arg::F(blend), Arg::U8(4), Arg::F(2.0f), Arg::B(false)});
+        }
+        if (how == EntranceEnd::Abort) { RemoveEntranceCamera(); }
+    }
+    RetractBars(how == EntranceEnd::Abort ? 0.0f : blend, now);   // (3.6.8: with the camera's blend back)
+    En.RemoveAtMs = now + static_cast<uint64_t>(blend * 1000.0f) + 400;
+    Log.Line(L"Forms: " + En.Spec + L"'s entrance ends (" + why + L", " + Fixed(static_cast<float>(t)) + L" s in)" +
+             (blend > 0.0f ? L"; the camera blends back in " + Fixed(blend) + L" s" : std::wstring{}));
+    // (3.6.7) ended during the shots before the switch (skipped, or another character in charge): the switch the player
+    // chose still happens, without the rest of the entrance
+    if (En.Prelude)
+    {
+        if (alive && (how == EntranceEnd::Skipped || how == EntranceEnd::Leave)) { SwitchWithoutEntrance(now); }
+        En.Prelude = false;
+        En.PendingIndex = -1;
+    }
+    if (how == EntranceEnd::Abort || (!En.Camera && !En.Hurry))
+    {
+        ReportFrames();   // (3.6.8)
+        En = Entering{};
+    }
+}
+
+// The entrance of form `index` begins. `prelude` (3.6.7): its first shots, before the switch, on the form the character
+// is in (form `index` goes on when they are over).
+void BeginEntrance(Tracked& t, int index, uint64_t now, bool prelude)
+{
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(index)];
+    const FormEntrance& plan = form.Entrance;
+    UObject* mesh = MeshOf(t.Character);
+    UObject* controller = Controller(t.Character);
+    En = Entering{};
+    En.On = true;
+    En.Character = t.Character;
+    En.CharacterClass = t.Class;
+    En.Spec = t.Spec;
+    En.FormIndex = prelude ? t.Form : index;
+    En.Plan = &plan;
+    En.Shots = !plan.Shots.empty();
+    En.Prelude = prelude;
+    En.PendingIndex = prelude ? index : -1;
+    // (shots: after a switch made without the first shots, it starts where they end)
+    En.Start = GameSeconds(t.Character) - (En.Shots && !prelude ? plan.PreludeSeconds() : 0.0);
+    En.Last = 0.0;
+    En.StartMs = now;
+    En.SwitchMs = now;
+    En.FrameAt = now;            // (3.6.8: its first frame is the one it begins in)
+    En.BeforeFps = RecentFps();
+    En.NextLookMs = now + 100;
+    En.NextAliveMs = now + 1000;
+    En.StartAbility = AbilityOf(t.Character);
+    En.Mesh = mesh;
+    En.Controller = controller;
+    En.ControllerClass = controller ? controller->GetClassPrivate() : nullptr;
+    En.Slot = Name(plan.Slot);
+    std::wstring text;
+    if (En.Shots)
+    {
+        En.Length = plan.ShotsSeconds();
+        const Vec3 middle = LocationOf(t.Character);
+        const Anchor a = AnchorOf(t.Character, mesh);
+        En.ModelBelow = middle.Z - a.At.Z;
+        text += L"; " + std::to_wstring(plan.Shots.size()) + L" shots" +
+                (prelude ? L", the first " + std::to_wstring(plan.PreludeShots()) + L" (" + Fixed(plan.PreludeSeconds()) + L" s) before the switch" :
+                           (plan.PreludeShots() ? L", from shot " + std::to_wstring(plan.PreludeShots() + 1) + L" (the switch was made without the first)" : L"")) +
+                L"; its model stands " + Fixed(En.ModelBelow) + L" cm below the character's middle, size " + Fixed(a.Size);
+    }
+    else
+    {
+        // its animation (played a moment later, on the form's anim instance) and how long the shot is
+        float length = 0.0f;
+        if (!plan.Animation.empty())
+        {
+            En.Animation = Need(plan.Animation);
+            if (!En.Animation) { text += L"; its animation " + ShortNameOfPath(plan.Animation) + L" NOT found"; }
+            else if (State.OffSeqLength >= 0 && State.AnimSequenceBaseClass && En.Animation->IsA(State.AnimSequenceBaseClass))
+            {
+                ReadAt(En.Animation, static_cast<size_t>(State.OffSeqLength), length);
+            }
+        }
+        En.Length = plan.Seconds > 0.0f ? plan.Seconds : (length > 0.0f && length < 600.0f ? length / plan.Rate : 6.0f);
+    }
+    // where it stands and which way it faces (before it is raised)
+    En.Ground = LocationOf(t.Character);
+    En.Ground.Z -= 90.0f;
+    if (mesh && A.ComponentAt)
+    {
+        Block at = Invoke(mesh, A.ComponentAt, {});
+        if (at.Ok) { En.Ground = at.Get<Vec3>(); }
+    }
+    if (A.ActorForward)
+    {
+        Block forward = Invoke(t.Character, A.ActorForward, {});
+        Vec3 f = forward.Ok ? forward.Get<Vec3>() : Vec3{1, 0, 0};
+        f.Z = 0.0f;
+        const float size = std::sqrt(f.X * f.X + f.Y * f.Y);
+        En.Forward = size > 0.01f ? VMul(f, 1.0f / size) : Vec3{1, 0, 0};
+    }
+    En.Right = Vec3{-En.Forward.Y, En.Forward.X, 0.0f};
+    if (!En.Shots)
+    {
+        // the flash: the screen white at once, fading back
+        if (plan.Flash > 0.0f)
+        {
+            UObject* manager = controller && A.OffCameraManager >= 0 ? ObjectAt(controller, A.OffCameraManager) : nullptr;
+            if (manager && A.CameraFade)
+            {
+                const Color white{plan.FlashColor[0], plan.FlashColor[1], plan.FlashColor[2], 1.0f};
+                // StartCameraFade(FromAlpha, ToAlpha, Duration, Color, bShouldFadeAudio, bHoldWhenFinished)
+                Block fade = Invoke(manager, A.CameraFade, {Arg::F(1.0f), Arg::F(0.0f), Arg::F(plan.Flash), Arg::S(white), Arg::B(false), Arg::B(false)});
+                text += fade.Ok ? L"; a " + Fixed(plan.Flash) + L" s flash" : L"; its flash NOT shown";
+            }
+            else { text += L"; its flash NOT shown (no camera manager)"; }
+        }
+        // its effects
+        if (!plan.Effects.empty()) { PlayEffects(t.Character, mesh, plan.Effects, Group::Switch, static_cast<float>(En.Length), now); }
+        // its descent: up at once, down over its time
+        En.DescendSeconds = plan.DescendSeconds > 0.0f ? plan.DescendSeconds : static_cast<float>(En.Length * 0.7);
+        if (plan.Descend > 0.0f)
+        {
+            if (mesh && A.SetRelativeLocation && A.OffRelLocation >= 0)
+            {
+                RaiseMesh(plan.Descend, true);
+                text += L"; it comes down " + Fixed(plan.Descend) + L" cm in " + Fixed(En.DescendSeconds) + L" s";
+            }
+            else { text += L"; its descent left out (no K2_SetRelativeLocation)"; }
+        }
+    }
+    // its camera
+    if (plan.Camera.On)
+    {
+        if (controller) { StartEntranceCamera(controller, text); }
+        else { text += L"; its camera NOT made (no player controller)"; }
+    }
+    if (plan.HoldInput) { HoldEntranceInput(controller, true); }
+    // no damage while it plays (EndBattleAPI SetDisableDamageHit, as the Meteor cinematic has it)
+    if (plan.Invincible)
+    {
+        if (A.SetDisableDamageHit)
+        {
+            Invoke(A.Battle, A.SetDisableDamageHit, {Arg::Obj(t.Character), Arg::B(true)});
+            En.Invincible = true;
+            text += L"; no damage while it plays";
+        }
+        else { text += L"; it can be hurt meanwhile (EndBattleAPI SetDisableDamageHit not found)"; }
+    }
+    Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s entrance (" + Fixed(static_cast<float>(En.Length)) + L" s)" + text);
+}
+
+// After the switch to form `index` (the form's model on): its entrance, when it has one and the character is in charge.
+void StartEntrance(Tracked& t, int index, uint64_t now)
+{
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(index)];
+    const FormEntrance& plan = form.Entrance;
+    if (!plan.On) { return; }
+    // (3.6.7) the switch after the entrance's first shots: it goes on, with the form's model
+    if (ContinuingEntrance && En.On && En.Prelude && En.Character == t.Character && En.PendingIndex == index)
+    {
+        En.Prelude = false;
+        En.PendingIndex = -1;
+        En.FormIndex = index;
+        En.Mesh = MeshOf(t.Character);
+        En.SwitchMs = now;
+        Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L" is on; its entrance goes on");
+        return;
+    }
+    if (QuietEntrance) { return; }   // (3.6.7: the first shots were skipped: the switch, without the rest)
+    if (En.On) { EndEntrance(L"another entrance starts", EntranceEnd::Abort, now); }
+    if (t.Character != Leader())
+    {
+        Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s entrance is left out (it is not the character in charge)");
+        return;
+    }
+    BeginEntrance(t, index, now, false);
+}
+
+// (3.6.7) Form `index`'s entrance, when its first shots play before the switch: they begin now, on the model the
+// character has (the switch comes when they are over). False when they cannot: the switch goes on at once (their animation
+// is for another skeleton than the model's, it is not loaded, the character is not in charge).
+bool StartPrelude(Tracked& t, int index, uint64_t now)
+{
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(index)];
+    const FormEntrance& plan = form.Entrance;
+    if (!plan.On || plan.Shots.empty() || plan.PreludeShots() == 0 || !plan.Camera.On || t.Character != Leader()) { return false; }
+    UObject* mesh = MeshOf(t.Character);
+    UObject* asset = mesh && State.OffCompMesh >= 0 ? ObjectAt(mesh, State.OffCompMesh) : nullptr;
+    UObject* skeleton = asset && State.OffMeshSkeleton >= 0 ? RawMeshSkeleton(asset) : nullptr;
+    for (size_t k = 0; k < plan.PreludeShots(); ++k)
+    {
+        const SkelCompat::EntranceShot& shot = plan.Shots[k];
+        if (shot.Animation.empty()) { continue; }
+        UObject* animation = Need(shot.Animation);
+        UObject* of = animation && State.OffAnimSkeleton >= 0 ? Field<UObject*>(animation, State.OffAnimSkeleton) : nullptr;
+        if (!animation || !skeleton || of != skeleton)
+        {
+            Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s first shots are left out (" +
+                     (!animation ? L"animation " + ShortNameOfPath(shot.Animation) + L" not loaded" :
+                                   L"its animation is for " + (of ? ShortName(of) : std::wstring(L"no skeleton")) + L", the model is on " +
+                                       (skeleton ? ShortName(skeleton) : std::wstring(L"an unknown skeleton"))) + L")");
+            return false;
+        }
+    }
+    if (En.On) { EndEntrance(L"another entrance starts", EntranceEnd::Abort, now); }
+    BeginEntrance(t, index, now, true);
+    return true;
+}
+
+// Once a frame: the animation once the form's anim instance is on, the descent, the camera; the end of the shot.
+void UpdateEntrance(uint64_t now)
+{
+    if (!En.On) { return; }
+    NoteEntranceFrame(now);   // (3.6.8)
+    if (now >= En.NextAliveMs)
+    {
+        En.NextAliveMs = now + 1000;   // (once a second)
+        if (!StillThere(En.Character, En.CharacterClass))
+        {
+            En.Raised = 0.0f;
+            EndEntrance(L"the character is gone", EntranceEnd::Abort, now);
+            return;
+        }
+    }
+    const double t = GameSeconds(En.Character) - En.Start;
+    if (En.Mesh && MeshOf(En.Character) != En.Mesh) { En.Mesh = MeshOf(En.Character); En.Raised = 0.0f; }   // (another mesh component: the raise went with the old one)
+    // its animation, a moment after the switch, once the form's AnimBlueprint runs (1.5 s at most)
+    if (!En.Shots && !En.Ending && En.Animation && !En.Tried && now >= En.StartMs + 60)
+    {
+        UObject* instance = En.Mesh ? AnimInstanceOf(En.Mesh) : nullptr;
+        const Tracked* tracked = TrackedOf(En.Character);
+        const std::wstring abp = tracked ? tracked->Row->Forms.List[static_cast<size_t>(En.FormIndex)].AnimClass : std::wstring{};
+        UObject* wanted = abp.empty() ? nullptr : Need(abp);
+        if (!instance || !wanted || instance->GetClassPrivate() == wanted || now >= En.StartMs + 1500)
+        {
+            En.Tried = true;
+            UObject* montage = nullptr;
+            if (instance && A.PlaySlotAnim)
+            {
+                // PlaySlotAnimationAsDynamicMontage(Asset, SlotNodeName, BlendInTime, BlendOutTime, InPlayRate, LoopCount, BlendOutTriggerTime)
+                Block played = Invoke(instance, A.PlaySlotAnim, {Arg::Obj(En.Animation), Arg::Nm(En.Slot), Arg::F(0.15f), Arg::F(0.5f), Arg::F(En.Plan->Rate),
+                                                                 Arg::I(1), Arg::F(-1.0f)});
+                montage = played.Ok ? played.Get<UObject*>() : nullptr;
+                En.Instance = instance;
+                En.InstanceClass = instance->GetClassPrivate();
+            }
+            Log.Line(L"Forms: " + En.Spec + L"'s entrance: " + ShortName(En.Animation) +
+                     (montage ? L" plays in " + En.Plan->Slot + L" of " + ShortName(instance) + (wanted && instance->GetClassPrivate() != wanted ? L" (NOT the form's AnimBlueprint)" : L"")
+                              : (instance ? L" did NOT play (its skeleton, or the AnimBlueprint has no " + En.Plan->Slot + L" slot?)" : std::wstring(L" did NOT play (no anim instance)"))));
+        }
+    }
+    // the checks, 10 times a second: the form, the character in charge, the view, an ability started (a skip)
+    if (!En.Ending && now >= En.NextLookMs)
+    {
+        En.NextLookMs = now + 100;
+        const Tracked* tracked = TrackedOf(En.Character);
+        if (!tracked || tracked->Form != En.FormIndex)
+        {
+            EndEntrance(L"its form changed", EntranceEnd::Cut, now);
+        }
+        else if (Leader() != En.Character)
+        {
+            EndEntrance(L"another character in charge", EntranceEnd::Leave, now);
+        }
+        else if (En.Camera && En.Controller && ViewTargetOf(En.Controller) != En.Camera)
+        {
+            Log.Line(L"Forms: " + En.Spec + L"'s entrance: the game took the view back from its camera");
+            RemoveEntranceCamera();
+        }
+        else if (En.Plan->Skip && now >= En.StartMs + 400)   // (0.4 s in)
+        {
+            const std::wstring ability = AbilityOf(En.Character);
+            if (!ability.empty() && ability != L"None" && ability != En.StartAbility) { EndEntrance((L"skipped: " + ability).c_str(), EntranceEnd::Skipped, now); }
+        }
+    }
+    if (!En.On) { return; }
+    // the camera manager's view, once (the log: whether the game shows the mod's camera)
+    if (!En.ViewSaid && En.Camera && now >= En.StartMs + 300 && A.CameraAt && En.Controller && A.OffCameraManager >= 0)
+    {
+        En.ViewSaid = true;
+        if (UObject* manager = ObjectAt(En.Controller, A.OffCameraManager))
+        {
+            Block at = Invoke(manager, A.CameraAt, {});
+            if (at.Ok)
+            {
+                const Vec3 seen = at.Get<Vec3>();
+                const Vec3 d = VSub(seen, En.At);
+                const float off = std::sqrt(d.X * d.X + d.Y * d.Y + d.Z * d.Z);
+                Log.Line(L"Forms: " + En.Spec + L"'s entrance: the view is " + (off < 50.0f ? L"its camera's" : L"NOT its camera's (" + Fixed(off) + L" cm away)"));
+            }
+        }
+    }
+    // the descent
+    if (!En.Shots && (En.Raised > 0.0f || (En.Plan->Descend > 0.0f && !En.Ending && t < En.DescendSeconds)))
+    {
+        float height = 0.0f;
+        if (En.Hurry) { height = En.HurryFrom * (1.0f - Ease(static_cast<float>((t - En.HurryAt) / 0.35))); }
+        else if (t < En.DescendSeconds) { height = En.Plan->Descend * (1.0f - Ease(static_cast<float>(t / En.DescendSeconds))); }
+        RaiseMesh(height);
+    }
+    // (3.6.7) the shots: which one, the switch after the first ones, their animations, effects, sounds and cameras
+    if (En.Shots && !En.Ending)
+    {
+        UpdateShots(t, now);
+        if (!En.On) { return; }
+    }
+    // the camera
+    else if (En.Camera && !En.Shots) { PlaceCamera(t); }
+    En.Last = t;
+    // the end of the shot (its hold on the face after it), then of the rest
+    if (!En.Ending && t >= En.Length + (En.Camera ? En.Plan->Camera.Hold : 0.0f)) { EndEntrance(L"done", EntranceEnd::Done, now); }
+    if (En.Ending && now >= En.RemoveAtMs && En.Raised <= 0.0f)
+    {
+        RemoveEntranceCamera();
+        ReportFrames();   // (3.6.8)
+        En = Entering{};
+    }
+}
+
+// ---- switching -----------------------------------------------------------------------
+bool Switching = false; // the mod's own SetPrimaryAnimPack / ResetPrimaryAnimPack is running
+
+void PlayPack(UObject* character, const Form& form)
+{
+    Switching = true;
+    try
+    {
+        if (form.Pack.empty() || SkelCompat::NameEquals(form.Pack, SkelCompat::DefaultAbilityPack()))
+        {
+            Invoke(A.Battle, State.ResetPrimaryAnimPack, {Arg::Obj(character)});
+        }
+        else
+        {
+            // SetPrimaryAnimPack(Character, Pack, the bool the game's own calls pass false)
+            Block block(State.SetPrimaryAnimPack);
+            bool character_ = false, pack = false;
+            for (FProperty* property : State.SetPrimaryAnimPack->ForEachPropertyInChain())
+            {
+                if (!property || property->GetName() == L"ReturnValue") { continue; }
+                const std::wstring type = TypeOf(property);
+                uint8_t* at = block.Bytes + property->GetOffset_Internal();
+                if (!character_ && type == L"ObjectProperty") { std::memcpy(at, &character, sizeof(character)); character_ = true; }
+                else if (!pack && type == L"NameProperty")
+                {
+                    const uint64_t raw = Name(form.Pack);
+                    std::memcpy(at, &raw, sizeof(raw));
+                    pack = true;
+                }
+            }
+            if (character_ && pack) { A.Battle->ProcessEvent(State.SetPrimaryAnimPack, block.Bytes); }
+        }
+    }
+    catch (...)
+    {
+        Switching = false;
+        throw;
+    }
+    Switching = false;
+}
+
+// (3.9.0) The form plays a pack of its own: not the character's default one (Battle00, or none). On the normal form: the
+// character's base moves are that pack in battle.
+bool HasOwnPack(const Form& form) { return !form.Pack.empty() && !SkelCompat::NameEquals(form.Pack, SkelCompat::DefaultAbilityPack()); }
+
+// (3.9.0) The character's own pack back on (ResetPrimaryAnimPack).
+void ResetPack(UObject* character)
+{
+    Switching = true;
+    try
+    {
+        Invoke(A.Battle, State.ResetPrimaryAnimPack, {Arg::Obj(character)});
+    }
+    catch (...)
+    {
+        Switching = false;
+        throw;
+    }
+    Switching = false;
+}
+
+// (3.9.0) The normal form's own pack on (the battle's start; the game put the character's own pack back). At most once
+// in half a second and 40 times a battle: the game may put its own back on itself for a while (a cutscene's moves).
+void PutOnBasePack(Tracked& t, const wchar_t* why, uint64_t now)
+{
+    const Form& base = t.Row->Forms.List.front();
+    if (t.BaseAt && now - t.BaseAt < 500) { return; }   // (it goes on a moment later)
+    t.BaseOn = true;
+    if (t.BaseTimes >= 40)
+    {
+        if (t.BaseTimes++ == 40) { Log.Line(L"Forms: " + t.Spec + L": " + base.Name + L"'s pack " + base.Pack + L" went on 40 times in this battle; the game's own pack is left on from now on"); }
+        return;
+    }
+    t.BaseAt = now;
+    ++t.BaseTimes;
+    PlayPack(t.Character, base);
+    if (t.BaseTimes <= 6) { Log.Line(L"Forms: " + t.Spec + L": " + base.Name + L" plays its own pack " + base.Pack + L" (" + why + L")"); }
+}
+
+// Super armor: the character's hit reactions off (hits still hurt; it is not knocked about) or on again.
+void SetArmor(Tracked& t, bool on, const std::wstring& why)
+{
+    if (!A.SetDisableReaction) { return; }
+    // SetDisableReaction(Character, Disable)
+    Invoke(A.Battle, A.SetDisableReaction, {Arg::Obj(t.Character), Arg::B(on)});
+    if (t.Armored != on)
+    {
+        t.Armored = on;
+        Log.Line(L"Forms: " + t.Spec + (on ? L": super armor on (" : L": super armor off (") + why + L")");
+    }
+}
+
+// (3.7.5) The "sets" of the form the character is in end (before its pack switches: the game looks up the sets it
+// switches to by their names).
+void EndSets(Tracked& t)
+{
+    const std::wstring did = PackSets::Unredirect(t.Character);
+    if (!did.empty()) { Log.Line(L"Forms: " + t.Spec + L": " + did); }
+}
+
+// Everything of form `index` on the character (its pack already plays). `cue`: its switch effects and sounds play.
+void Become(Tracked& t, int index, bool cue, uint64_t now)
+{
+    const FormSettings& forms = t.Row->Forms;
+    if (index < 0 || index >= static_cast<int>(forms.List.size())) { return; }
+    const Form& form = forms.List[static_cast<size_t>(index)];
+    const int was = t.Form;
+    // (3.7.5) its "sets" (its pack plays already; before its model, whose anim instance takes the character's sets)
+    EndSets(t);
+    if (!form.Sets.empty()) { Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s sets: " + PackSets::RedirectSets(t.Character, t.Spec, form.Sets)); }
+    // (3.6.6) an entrance of the form it leaves ends
+    if (!ContinuingEntrance && En.On && !En.Ending && En.Character == t.Character && En.FormIndex != index) { EndEntrance(L"its form changed", EntranceEnd::Cut, now); }
+    // the form it leaves can be chosen again after its cooldown; the new one's time starts
+    const double game = GameSeconds(t.Character);
+    if (t.ReadyAt.size() != forms.List.size()) { t.ReadyAt.assign(forms.List.size(), 0.0); }
+    if (was != index && was >= 0 && was < static_cast<int>(forms.List.size()))
+    {
+        const Form& left = forms.List[static_cast<size_t>(was)];
+        if (left.Cooldown > 0.0f) { t.ReadyAt[static_cast<size_t>(was)] = game + left.Cooldown; }
+    }
+    t.Since = game;
+    t.TimeUpSaid = false;
+    t.Down = false;
+    t.Form = index;
+    VoicesDirty = true;   // (3.9.0: the form's voice)
+    StopEffects(t.Character, Group::Keep, now);
+    StopEffects(t.Character, Group::Ability, now);
+    t.AbilityFx.clear();
+    if (cue) { StopEffects(t.Character, Group::Switch, now); }
+    StopFlying(t);
+    ShowWeapons(t);
+    const uint64_t modelAt = NowMs();   // (3.6.8)
+    const bool asLook = !form.HideWeapon && !form.Model.empty();   // (3.7.8: a form that keeps its weapons, maybe a look)
+    const auto weaponsBefore = asLook ? WeaponsOf(t.Character) : std::vector<std::pair<UObject*, bool>>{};
+    ApplyModel(t, form);
+    if (asLook && t.ByLook) { ShowWeaponsTheLookHid(t, weaponsBefore); }   // (3.7.8)
+    NoteSlow(L"putting on " + form.Name + L"'s model", NowMs() - modelAt);
+    ApplyParts(t, form, cue, now);
+    // (3.8.2) its weapon: the form's own, or the character's back
+    if (!form.Weapon.empty()) { PutOnFormWeapon(t, form); }
+    else if (t.FormWeapon || t.OwnWeapon) { PutBackOwnWeapon(t, L"its form fights with its own"); }
+    t.NextWeaponMs = NowMs() + 250;
+    if (form.HideWeapon) { HideWeapons(t); }
+    // (3.6.6) its entrance (not for quiet switches: the battle's end, another's switch), before its effects: they go up
+    // with the model
+    if (cue && form.Entrance.On && was != index) { StartEntrance(t, index, now); }
+    UObject* mesh = MeshOf(t.Character);
+    if (cue)
+    {
+        PlayEffects(t.Character, mesh, form.Effects, Group::Switch, forms.EffectSeconds, now);
+        for (const auto& sound : form.Sounds) { PlaySound(mesh, sound); }
+    }
+    PlayEffects(t.Character, mesh, form.Keep, Group::Keep, 0.0f, now);
+    if (form.Fly.On) { StartFlying(t, form); }
+    if (form.SuperArmor)
+    {
+        SetArmor(t, true, form.Name);
+        t.NextArmorMs = now + 1000;
+    }
+    else if (t.Armored)
+    {
+        SetArmor(t, false, form.Name);
+    }
+    Log.Line(L"Forms: " + t.Spec + L": " + forms.List[static_cast<size_t>(std::clamp(was, 0, static_cast<int>(forms.List.size()) - 1))].Name + L" -> " + form.Name +
+             (form.Pack.empty() ? std::wstring(L" (its own pack)") : L" (" + form.Pack + L")") + (cue ? L"" : L", quietly") +
+             (form.Limited() ? L"; " + Clock(form.Seconds) + L" until it turns back into " + forms.List[static_cast<size_t>(form.RevertIndex)].Name : std::wstring{}) +
+             (form.SuperArmor ? std::wstring(L"; super armor") : std::wstring{}));
+}
+
+void SwitchTo(Tracked& t, int index, const wchar_t* why, bool cue, uint64_t now)
+{
+    if (index == t.Form) { return; }
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(index)];
+    // (3.6.7) an entrance whose first shots play before the switch: they start, and the switch comes after them
+    if (cue && !ContinuingEntrance && !QuietEntrance && form.Entrance.On && form.Entrance.PreludeShots() > 0)
+    {
+        if (En.On && En.Prelude && En.Character == t.Character && En.PendingIndex == index) { return; }   // (on its way already)
+        if (StartPrelude(t, index, now))
+        {
+            Log.Line(L"Forms: " + t.Spec + L" switches to " + form.Name + L" (" + why + L") after its entrance's first shots");
+            return;
+        }
+    }
+    Log.Line(L"Forms: " + t.Spec + L" switches to " + form.Name + L" (" + why + L")");
+    const uint64_t began = NowMs();   // (3.6.8)
+    // (3.6.4) Leaving a form's model, the character's own anim instance goes back on first, so the pack switch is the
+    // game's own on it. Then the pack, then the new form's model: a form's AnimBlueprint is given the sets the
+    // character has then (its pack's among them).
+    if (t.Swapped)
+    {
+        RestoreModel(t);
+        NoteSlow(L"putting the character's own model back", NowMs() - began);
+    }
+    EndSets(t);   // (3.7.5: before the pack switch)
+    PlayPack(t.Character, form);
+    if (index == 0 && HasOwnPack(form))   // (3.9.0: the normal form's own pack is on)
+    {
+        t.BaseOn = true;
+        t.BaseAt = now;
+    }
+    Become(t, index, cue, now);
+    NoteSlow(L"the switch to " + form.Name + L" (all of it)", NowMs() - began);
+}
+
+// A switch made by something else (a Lua mod, the game): the character's form follows its pack.
+struct Observed
+{
+    UObject* Character = nullptr;
+    std::wstring Pack;
+    bool Reset = false;
+};
+std::vector<Observed> ObservedSwitches;
+
+// ---- the menu -------------------------------------------------------------------------
+constexpr float Scale = 1.2f;
+constexpr int Visible = 7;
+const wchar_t* const Art = L"/Game/Menu/Resident/Texture/";
+struct Sprite { const wchar_t* Name; float W, H; };
+constexpr Sprite WindowArt{L"U_Command_Base_11", 365, 202};
+constexpr Sprite RowArt{L"U_Command_BtnBase_06", 365, 41};
+constexpr Sprite LitArt{L"U_Command_Base_03", 326, 41};
+constexpr Sprite AccentArt{L"U_Command_Header_02", 4, 30};
+constexpr Sprite ChevronArt{L"U_Command_Arrow_01", 20, 13};
+constexpr Sprite CursorArt{L"U_TargetCursor_Arrow_00", 32, 35};
+constexpr Sprite NowArt{L"U_Command_BtnBase_08", 14, 14};
+const Sprite* const AllArt[] = {&WindowArt, &RowArt, &LitArt, &AccentArt, &ChevronArt, &CursorArt, &NowArt};
+
+constexpr uint8_t VisibilityCollapsed = 1, VisibilityHidden = 2, VisibilityShown = 3; // ESlateVisibility (HitTestInvisible: never takes input)
+const Color Plain{0.80f, 0.82f, 0.86f, 1.0f}, Now_{0.55f, 0.82f, 1.0f, 1.0f}, Lit{1.0f, 1.0f, 1.0f, 1.0f}, Title{0.92f, 0.95f, 1.0f, 1.0f},
+    Hint{0.78f, 0.80f, 0.84f, 0.95f}, WindowPlain{0.02f, 0.03f, 0.06f, 0.78f}, RowPlain{0.10f, 0.11f, 0.13f, 0.85f},
+    LitPlain{0.10f, 0.42f, 0.85f, 0.95f}, RowTint{1.0f, 1.0f, 1.0f, 0.92f}, Dim{0.47f, 0.49f, 0.54f, 1.0f},
+    Hurry{1.0f, 0.62f, 0.25f, 1.0f};
+
+struct Piece
+{
+    UObject* Widget = nullptr;
+    UObject* Slot = nullptr;
+};
+
+struct Menu
+{
+    UObject* Widget = nullptr;          // the UserWidget (rooted)
+    const SkelCompat::AnimSetRow* Row = nullptr;
+    int Rows = 0;                       // slots shown (min(7, forms))
+    Piece Lit[Visible], NowMark[Visible], Text[Visible], Cursor, Up, Down;
+    float RowY[Visible]{};
+    float CursorX = 0;
+    int Top = -1;                       // the first form shown
+    int ShownCursor = -1, ShownCurrent = -1;
+    std::wstring Shown[Visible];        // each row's words as shown (a form's time left changes them)
+    int ShownColor[Visible]{-1, -1, -1, -1, -1, -1, -1};
+    std::wstring Broken;                // why it could not be built (then holding the button cycles the forms)
+    int ArtDrawn = 0, ArtPlain = 0;
+};
+Menu M;
+
+// Whether form `k` waits out its cooldown (the character left it a moment ago).
+bool Waiting(const Tracked& t, int k, double game)
+{
+    return k >= 0 && static_cast<size_t>(k) < t.ReadyAt.size() && t.ReadyAt[static_cast<size_t>(k)] > game;
+}
+
+// The time form `k` has left (the character is in it, and it is timed), or a negative number.
+double TimeLeft(const Tracked& t, double game)
+{
+    const Form& form = t.Row->Forms.List[static_cast<size_t>(t.Form)];
+    if (!form.Limited() || t.Since < 0.0) { return -1.0; }
+    return std::max(0.0, static_cast<double>(form.Seconds) - (game - t.Since));
+}
+
+// A form's line on the menu: its name, the time it has left (the character's form) or until it can be chosen again.
+std::wstring Label(const Tracked* t, int k, double game, bool& waiting)
+{
+    const Form& form = M.Row->Forms.List[static_cast<size_t>(k)];
+    waiting = false;
+    if (!t || t->Row != M.Row) { return form.Name; }
+    if (k == t->Form)
+    {
+        const double left = TimeLeft(*t, game);
+        return left >= 0.0 ? form.Name + L"   " + Clock(left) : form.Name;
+    }
+    if (Waiting(*t, k, game))
+    {
+        waiting = true;
+        return form.Name + L"   ready in " + Clock(t->ReadyAt[static_cast<size_t>(k)] - game);
+    }
+    return form.Name;
+}
+
+UObject* Construct(UClass* cls, UObject* outer, const wchar_t* what)
+{
+    if (!cls) { throw std::runtime_error(SkelCompat::Narrow(std::wstring(what) + L" class not found")); }
+    UObject* object = UObjectGlobals::StaticConstructObject(FStaticConstructObjectParameters(cls, outer));
+    if (!object) { throw std::runtime_error(SkelCompat::Narrow(std::wstring(L"the engine made no ") + what)); }
+    return object;
+}
+
+void SetVisible(UObject* widget, bool shown)
+{
+    if (widget) { Invoke(widget, A.SetVisibility, {Arg::U8(shown ? VisibilityShown : VisibilityHidden)}); }
+}
+
+// A child of the canvas centred on (x, y) from the middle of the screen (`anchor`: from that point of the screen instead,
+// in fractions of it; `align`: the child's point there), at a size (else its own).
+UObject* Place(UObject* canvas, UObject* child, float x, float y, const Vec2* size, Vec2 align = {0.5f, 0.5f}, Vec2 anchor = {0.5f, 0.5f})
+{
+    Block made = Invoke(canvas, A.AddChild, {Arg::Obj(child)});
+    UObject* slot = made.Ok ? made.Get<UObject*>() : nullptr;
+    if (!slot) { throw std::runtime_error("the canvas gave no slot"); }
+    Invoke(slot, A.SlotAnchors, {Arg::S(Anchors{anchor, anchor})});
+    Invoke(slot, A.SlotAlignment, {Arg::S(align)});
+    Invoke(slot, A.SlotPosition, {Arg::S(Vec2{x, y})});
+    if (size)
+    {
+        Invoke(slot, A.SlotAutoSize, {Arg::B(false)});
+        Invoke(slot, A.SlotSize, {Arg::S(*size)});
+    }
+    else
+    {
+        Invoke(slot, A.SlotAutoSize, {Arg::B(true)});
+    }
+    return slot;
+}
+
+// A sprite of the game's menu art at (x, y), `w` x `h` (0: its own size times Scale); a plain panel in `plain` when the art
+// is not there (`plain` null: nothing).
+Piece Art_(UObject* tree, UObject* canvas, const Sprite& sprite, float x, float y, float w, float h, const Color* plain, Vec2 align = {0.5f, 0.5f})
+{
+    const Vec2 size{w > 0 ? w : sprite.W * Scale, h > 0 ? h : sprite.H * Scale};
+    UObject* art = Need(std::wstring(Art) + sprite.Name + L"." + sprite.Name, false);
+    Piece piece;
+    if (art && A.Image && A.ImageResource)
+    {
+        piece.Widget = Construct(A.Image, tree, L"Image");
+        Invoke(piece.Widget, A.ImageResource, {Arg::Obj(art)});
+        Invoke(piece.Widget, A.ImageSize, {Arg::S(size)});
+        ++M.ArtDrawn;
+    }
+    else if (plain && A.Border)
+    {
+        piece.Widget = Construct(A.Border, tree, L"Border");
+        Invoke(piece.Widget, A.BorderColor, {Arg::S(*plain)});
+        ++M.ArtPlain;
+    }
+    else
+    {
+        ++M.ArtPlain;
+        return piece;
+    }
+    piece.Slot = Place(canvas, piece.Widget, x, y, &size, align);
+    return piece;
+}
+
+UObject* FontObject = nullptr;
+
+// Text in the engine's font, bold with a dark outline, written into the text block before it is on screen.
+Piece Words(UObject* tree, UObject* canvas, const std::wstring& words, int32_t size, const Color& color, float x, float y, Vec2 align,
+            Vec2 anchor = {0.5f, 0.5f})
+{
+    Piece piece;
+    piece.Widget = Construct(A.Text, tree, L"TextBlock");
+    if (A.OffTextFont >= 0)
+    {
+        auto* font = reinterpret_cast<uint8_t*>(piece.Widget) + A.OffTextFont;
+        if (A.OffFontObject >= 0 && !Field<UObject*>(font, A.OffFontObject) && FontObject) { std::memcpy(font + A.OffFontObject, &FontObject, sizeof(UObject*)); }
+        if (A.OffFontSize >= 0) { std::memcpy(font + A.OffFontSize, &size, sizeof(size)); }
+        if (A.OffFontFace >= 0)
+        {
+            const uint64_t bold = Name(L"Bold");
+            std::memcpy(font + A.OffFontFace, &bold, sizeof(bold));
+        }
+        if (A.OffFontOutline >= 0)
+        {
+            const int32_t outline = 1;
+            std::memcpy(font + A.OffFontOutline, &outline, sizeof(outline));
+        }
+    }
+    Invoke(piece.Widget, A.SetText, {Arg::Tx(FText(words.c_str()))});
+    Invoke(piece.Widget, A.TextShadowOffset, {Arg::S(Vec2{1.5f, 1.5f})});
+    Invoke(piece.Widget, A.TextShadowColor, {Arg::S(Color{0, 0, 0, 0.75f})});
+    Invoke(piece.Widget, A.TextColor, {Arg::S(SlateColorArg{color, 0}, true)});
+    piece.Slot = Place(canvas, piece.Widget, x, y, nullptr, align, anchor);
+    return piece;
+}
+
+void SetWords(const Piece& piece, const std::wstring& words)
+{
+    if (piece.Widget) { Invoke(piece.Widget, A.SetText, {Arg::Tx(FText(words.c_str()))}); }
+}
+
+void SetWordsColor(const Piece& piece, const Color& color)
+{
+    if (piece.Widget) { Invoke(piece.Widget, A.TextColor, {Arg::S(SlateColorArg{color, 0}, true)}); }
+}
+
+// What the mod's widgets need: UMG, an owner (the game instance), the engine's font. Throws when it is not there.
+UObject* WidgetOwner()
+{
+    if (!A.UserWidget || !A.WidgetTree || !A.Canvas || !A.Text || A.OffWidgetTree < 0 || A.OffRootWidget < 0 || !A.AddToViewport || !A.AddChild ||
+        !A.SetVisibility)
+    {
+        throw std::runtime_error("UMG is not usable");
+    }
+    // (3.6.8) the game instance found before, while it is live (FindFirstOf walks the whole object array)
+    UObject* owner = World && IsLive(World) ? World : nullptr;
+    if (!owner && (owner = UObjectGlobals::FindFirstOf(L"GameInstance"))) { World = owner; }
+    if (!owner) { owner = UObjectGlobals::FindFirstOf(L"PlayerController"); }
+    if (!owner) { throw std::runtime_error("no game instance to own it"); }
+    if (!FontObject)
+    {
+        if (UObject* engine = UObjectGlobals::FindFirstOf(L"Engine"))
+        {
+            for (const wchar_t* which : {L"LargeFont", L"MediumFont", L"SubtitleFont", L"SmallFont"})
+            {
+                const int32_t at = FieldOffset(engine->GetClassPrivate(), which, {L"ObjectProperty"}, 8);
+                if (at >= 0 && (FontObject = Field<UObject*>(engine, at))) { break; }
+            }
+        }
+    }
+    return owner;
+}
+
+// The menu for a row (built again for another row or after a map load took it off the screen).
+void Build(const SkelCompat::AnimSetRow& row)
+{
+    UObject* owner = WidgetOwner();
+    if (M.Widget) { M.Widget->ClearRootSet(); } // (the old one goes with the next garbage collection)
+    Menu fresh;
+    fresh.Broken = M.Broken;
+    M = fresh;
+    UObject* widget = Construct(A.UserWidget, owner, L"UserWidget");
+    widget->SetRootSet();
+    UObject* tree = Construct(A.WidgetTree, widget, L"WidgetTree");
+    std::memcpy(reinterpret_cast<uint8_t*>(widget) + A.OffWidgetTree, &tree, sizeof(tree));
+    UObject* canvas = Construct(A.Canvas, tree, L"CanvasPanel");
+    std::memcpy(reinterpret_cast<uint8_t*>(tree) + A.OffRootWidget, &canvas, sizeof(canvas));
+    M.Widget = widget;
+    M.Row = &row;
+    const FormSettings& forms = row.Forms;
+    M.Rows = std::min<int>(Visible, static_cast<int>(forms.List.size()));
+    const float W = WindowArt.W * Scale, rowH = RowArt.H * Scale, headerH = 39.0f * Scale;
+    const float H = headerH + rowH * static_cast<float>(M.Rows) + 14.0f * Scale;
+    const float left = -W / 2, top = -H / 2;
+    Art_(tree, canvas, WindowArt, 0, 0, W, H, &WindowPlain);
+    const float accentX = left + 16 * Scale, headerY = top + headerH / 2 + 4;
+    Art_(tree, canvas, AccentArt, accentX, headerY, 0, 0, nullptr);
+    Words(tree, canvas, forms.Title, 22, Title, accentX + 12 * Scale, headerY, {0.0f, 0.5f});
+    for (int k = 0; k < M.Rows; ++k)
+    {
+        const float y = top + headerH + rowH * static_cast<float>(k) + rowH / 2;
+        M.RowY[k] = y;
+        Piece bar = Art_(tree, canvas, RowArt, 0, y, W, rowH, &RowPlain);
+        if (bar.Widget && Need(std::wstring(Art) + RowArt.Name + L"." + RowArt.Name, false)) { Invoke(bar.Widget, A.ImageColor, {Arg::S(RowTint)}); }
+        const float litW = LitArt.W * Scale;
+        M.Lit[k] = Art_(tree, canvas, LitArt, left + W - litW / 2, y, litW, rowH - 2, &LitPlain);
+        M.NowMark[k] = Art_(tree, canvas, NowArt, left + 20 * Scale, y, 0, 0, &Now_);
+        M.Text[k] = Words(tree, canvas, L"", 26, Plain, left + 52 * Scale, y, {0.0f, 0.5f});
+        SetVisible(M.Lit[k].Widget, false);
+        SetVisible(M.NowMark[k].Widget, false);
+    }
+    // more forms above / below: chevrons at the window's top and bottom edges
+    M.Up = Art_(tree, canvas, ChevronArt, left + W - 26 * Scale, top + headerH - 8, 0, 0, nullptr);
+    M.Down = Art_(tree, canvas, ChevronArt, left + W - 26 * Scale, top + H - 8, 0, 0, nullptr);
+    if (M.Down.Widget && A.SetAngle) { Invoke(M.Down.Widget, A.SetAngle, {Arg::F(180.0f)}); }
+    SetVisible(M.Up.Widget, false);
+    SetVisible(M.Down.Widget, false);
+    M.CursorX = left - 14 * Scale;
+    M.Cursor = Art_(tree, canvas, CursorArt, M.CursorX, 0, 0, 0, nullptr);
+    if (M.Cursor.Widget && A.SetAngle) { Invoke(M.Cursor.Widget, A.SetAngle, {Arg::F(-90.0f)}); }
+    SetVisible(M.Cursor.Widget, false);
+    Words(tree, canvas, L"Up / Down: choose        Let go of " + ButtonLabel(forms.Button) + L": switch", 17, Hint, 0, H / 2 + 24, {0.5f, 0.5f});
+    Invoke(widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)});
+    Invoke(widget, A.AddToViewport, {Arg::I(60)});
+    Log.Line(L"Forms: menu built for " + ShortNameOfPath(row.Characters.front()) + L" (" + std::to_wstring(forms.List.size()) + L" forms, " +
+             std::to_wstring(M.ArtDrawn) + L" pieces of the game's menu art" + (M.ArtPlain ? L", " + std::to_wstring(M.ArtPlain) + L" plain" : std::wstring{}) + L")");
+}
+
+bool OnScreen()
+{
+    if (!M.Widget || !A.InViewport) { return false; }
+    Block result = Invoke(M.Widget, A.InViewport, {});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+// The rows for cursor `cursor` (the list scrolls to keep it shown), the current form marked; `t` (the character the menu
+// is for): a timed form shows the time it has left, a form cooling down when it can be chosen again (dimmed). Only what
+// changed is written again, so it is called again while the menu is open to count the time down.
+void Draw(int cursor, int current, const Tracked* t)
+{
+    const FormSettings& forms = M.Row->Forms;
+    const int count = static_cast<int>(forms.List.size());
+    int top = M.Top < 0 ? 0 : M.Top;
+    if (cursor < top) { top = cursor; }
+    if (cursor >= top + M.Rows) { top = cursor - M.Rows + 1; }
+    top = std::clamp(top, 0, std::max(0, count - M.Rows));
+    const bool scrolled = top != M.Top;
+    if (scrolled)
+    {
+        M.Top = top;
+        SetVisible(M.Up.Widget, top > 0);
+        SetVisible(M.Down.Widget, top + M.Rows < count);
+    }
+    const double game = t ? GameSeconds(t->Character) : 0.0;
+    const bool marks = scrolled || cursor != M.ShownCursor || current != M.ShownCurrent;
+    for (int k = 0; k < M.Rows; ++k)
+    {
+        const int form = top + k;
+        bool waiting = false;
+        const std::wstring words = Label(t, form, game, waiting);
+        if (words != M.Shown[k])
+        {
+            SetWords(M.Text[k], words);
+            M.Shown[k] = words;
+        }
+        const int color = form == cursor ? 2 : (form == current ? 1 : (waiting ? 3 : 0));
+        if (color != M.ShownColor[k])
+        {
+            SetWordsColor(M.Text[k], color == 2 ? Lit : (color == 1 ? Now_ : (color == 3 ? Dim : Plain)));
+            M.ShownColor[k] = color;
+        }
+        if (marks)
+        {
+            SetVisible(M.Lit[k].Widget, form == cursor);
+            SetVisible(M.NowMark[k].Widget, form == current);
+        }
+    }
+    if (marks)
+    {
+        const int row = cursor - top;
+        if (M.Cursor.Slot && row >= 0 && row < M.Rows) { Invoke(M.Cursor.Slot, A.SlotPosition, {Arg::S(Vec2{M.CursorX, M.RowY[row]})}); }
+        SetVisible(M.Cursor.Widget, row >= 0 && row < M.Rows);
+        M.ShownCursor = cursor;
+        M.ShownCurrent = current;
+    }
+}
+
+bool Open(const SkelCompat::AnimSetRow& row, int cursor, int current, const Tracked* t)
+{
+    if (!M.Broken.empty()) { return false; }
+    try
+    {
+        if (!M.Widget || M.Row != &row || !OnScreen()) { Build(row); }
+        M.Top = -1;
+        M.ShownCursor = M.ShownCurrent = -1;
+        Draw(cursor, current, t);
+        Invoke(M.Widget, A.SetVisibility, {Arg::U8(VisibilityShown)});
+        return true;
+    }
+    catch (const std::exception& e)
+    {
+        M.Broken = SkelCompat::Widen(e.what());
+    }
+    catch (...)
+    {
+        M.Broken = L"error";
+    }
+    Log.Line(L"Forms: the menu could not be built (" + M.Broken + L"): holding the button switches to the next form instead");
+    return false;
+}
+
+void Close()
+{
+    if (M.Widget) { Invoke(M.Widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)}); }
+}
+
+// ---- input ------------------------------------------------------------------------------
+struct Input
+{
+    bool Open = false;
+    bool HoldUsed = false;              // this hold opened the menu (or switched) already
+    UObject* Character = nullptr;
+    int Cursor = 0;
+    int Step = 0;                       // the direction held (-1 up, 1 down)
+    uint64_t NextRepeat = 0;
+    UObject* IgnoringController = nullptr; // the controller the mod asked to ignore move input (while the menu is open)
+};
+Input In;
+
+// -1 up, 1 down, 0 none: the left stick, the D-pad, the arrow keys.
+int Direction(UObject* controller)
+{
+    if (KeyIsDown(controller, L"Gamepad_DPad_Up") || KeyIsDown(controller, L"Up")) { return -1; }
+    if (KeyIsDown(controller, L"Gamepad_DPad_Down") || KeyIsDown(controller, L"Down")) { return 1; }
+    const float y = Axis(controller, L"Gamepad_LeftY");
+    if (y > 0.55f) { return -1; }
+    if (y < -0.55f) { return 1; }
+    return 0;
+}
+
+void IgnoreMove(UObject* controller, bool ignore)
+{
+    if (!A.IgnoreMoveInput) { return; }
+    if (ignore && !In.IgnoringController && controller)
+    {
+        Invoke(controller, A.IgnoreMoveInput, {Arg::B(true)});
+        In.IgnoringController = controller;
+    }
+    else if (!ignore && In.IgnoringController)
+    {
+        Invoke(In.IgnoringController, A.IgnoreMoveInput, {Arg::B(false)});
+        In.IgnoringController = nullptr;
+    }
+}
+
+void CloseMenu(const wchar_t* why)
+{
+    if (!In.Open) { return; }
+    In.Open = false;
+    Close();
+    IgnoreMove(nullptr, false);
+    if (why) { Log.Line(std::wstring(L"Forms: menu closed (") + why + L")"); }
+}
+
+// ---- a timed form's time left, on screen in battle ------------------------------------------
+struct Hud
+{
+    UObject* Widget = nullptr;                  // the UserWidget (rooted)
+    const FormSettings* For = nullptr;          // the forms whose place it is drawn at
+    Piece Text;
+    std::wstring Shown;
+    int ShownColor = -1;
+    bool Visible = false;
+    std::wstring Notice;                        // a short message in its place ("BIZARRO ready in 0:25")
+    uint64_t NoticeUntil = 0;
+    std::wstring Broken;                        // why it could not be built (then it is not shown)
+};
+Hud H;
+
+bool HudOnScreen()
+{
+    if (!H.Widget || !A.InViewport) { return false; }
+    Block result = Invoke(H.Widget, A.InViewport, {});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+void BuildHud(const FormSettings& forms)
+{
+    UObject* owner = WidgetOwner();
+    if (H.Widget) { H.Widget->ClearRootSet(); }
+    Hud fresh;
+    fresh.Broken = H.Broken;
+    fresh.Notice = H.Notice;
+    fresh.NoticeUntil = H.NoticeUntil;
+    H = fresh;
+    UObject* widget = Construct(A.UserWidget, owner, L"UserWidget");
+    widget->SetRootSet();
+    UObject* tree = Construct(A.WidgetTree, widget, L"WidgetTree");
+    std::memcpy(reinterpret_cast<uint8_t*>(widget) + A.OffWidgetTree, &tree, sizeof(tree));
+    UObject* canvas = Construct(A.Canvas, tree, L"CanvasPanel");
+    std::memcpy(reinterpret_cast<uint8_t*>(tree) + A.OffRootWidget, &canvas, sizeof(canvas));
+    H.Widget = widget;
+    H.For = &forms;
+    // right of the middle: its right edge at the point; left of it: its left edge
+    const Vec2 align{forms.TimerX > 0.66f ? 1.0f : (forms.TimerX < 0.34f ? 0.0f : 0.5f), 0.5f};
+    H.Text = Words(tree, canvas, L"", 28, Title, 0, 0, align, Vec2{forms.TimerX, forms.TimerY});
+    Invoke(widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)});
+    Invoke(widget, A.AddToViewport, {Arg::I(55)});
+    Log.Line(L"Forms: time left shown at " + Fixed(forms.TimerX) + L", " + Fixed(forms.TimerY) + L" of the screen");
+}
+
+// `color`: 0 plain, 1 hurry (little time left), 2 a notice.
+void ShowHud(const FormSettings& forms, const std::wstring& words, int color)
+{
+    if (!forms.Timer || !H.Broken.empty()) { return; }
+    try
+    {
+        if (!H.Widget || H.For != &forms || (!H.Visible && !HudOnScreen())) { BuildHud(forms); }
+        if (words != H.Shown)
+        {
+            SetWords(H.Text, words);
+            H.Shown = words;
+        }
+        if (color != H.ShownColor)
+        {
+            SetWordsColor(H.Text, color == 1 ? Hurry : (color == 2 ? Hint : Title));
+            H.ShownColor = color;
+        }
+        if (!H.Visible)
+        {
+            Invoke(H.Widget, A.SetVisibility, {Arg::U8(VisibilityShown)});
+            H.Visible = true;
+        }
+    }
+    catch (const std::exception& e)
+    {
+        H.Broken = SkelCompat::Widen(e.what());
+    }
+    catch (...)
+    {
+        H.Broken = L"error";
+    }
+    if (!H.Broken.empty()) { Log.Line(L"Forms: the time left could not be shown (" + H.Broken + L")"); }
+}
+
+void HideHud()
+{
+    if (H.Visible && H.Widget) { Invoke(H.Widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)}); }
+    H.Visible = false;
+}
+
+// A message where the time left shows, for a moment.
+void Notice(const FormSettings& forms, const std::wstring& words, uint64_t now)
+{
+    H.Notice = words;
+    H.NoticeUntil = now + 2500;
+    ShowHud(forms, words, 2);
+}
+
+// ---- (3.6.8) cinema bars: two black panels of the mod's over the top and the bottom of the screen ------------------
+// 3.6.6 - 3.6.7 gave the entrance camera an aspect ratio (CameraComponent's constraint): the game then renders a smaller
+// picture, so its render targets (and an upscaler's) were made again as the bars came and as they went, a hitch each
+// time. The panels change nothing of how the game renders.
+struct Letterbox
+{
+    UObject* Widget = nullptr;          // the UserWidget (rooted)
+    UObject* Top = nullptr;             // the panels' canvas slots
+    UObject* Bottom = nullptr;
+    float Part = 0.0f;                  // each panel's part of the screen's height
+    float From = 0.0f;                  // (going) the part they go from
+    uint64_t GoFromMs = 0, GoneAtMs = 0;
+    bool Shown = false;
+    std::wstring Broken;                // why they could not be made (then the camera's aspect ratio makes them)
+};
+Letterbox Bars;
+
+bool BarsOnScreen()
+{
+    if (!Bars.Widget || !A.InViewport) { return false; }
+    Block result = Invoke(Bars.Widget, A.InViewport, {});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+void PlaceBars(float part)
+{
+    part = std::clamp(part, 0.0f, 0.5f);
+    Bars.Part = part;
+    if (Bars.Top) { Invoke(Bars.Top, A.SlotAnchors, {Arg::S(Anchors{Vec2{0.0f, 0.0f}, Vec2{1.0f, part}})}); }
+    if (Bars.Bottom) { Invoke(Bars.Bottom, A.SlotAnchors, {Arg::S(Anchors{Vec2{0.0f, 1.0f - part}, Vec2{1.0f, 1.0f}})}); }
+}
+
+void BuildBars()
+{
+    UObject* owner = WidgetOwner();
+    if (!A.Border || !A.BorderColor || !A.SlotAnchors || !A.SlotPosition || !A.SlotSize) { throw std::runtime_error("UMG's Border or canvas slots are not usable"); }
+    if (Bars.Widget) { Bars.Widget->ClearRootSet(); }
+    Letterbox fresh;
+    Bars = fresh;
+    UObject* widget = Construct(A.UserWidget, owner, L"UserWidget");
+    widget->SetRootSet();
+    UObject* tree = Construct(A.WidgetTree, widget, L"WidgetTree");
+    std::memcpy(reinterpret_cast<uint8_t*>(widget) + A.OffWidgetTree, &tree, sizeof(tree));
+    UObject* canvas = Construct(A.Canvas, tree, L"CanvasPanel");
+    std::memcpy(reinterpret_cast<uint8_t*>(tree) + A.OffRootWidget, &canvas, sizeof(canvas));
+    Bars.Widget = widget;
+    for (UObject** slot : {&Bars.Top, &Bars.Bottom})
+    {
+        UObject* panel = Construct(A.Border, tree, L"Border");
+        Invoke(panel, A.BorderColor, {Arg::S(Color{0.0f, 0.0f, 0.0f, 1.0f})});
+        Block made = Invoke(canvas, A.AddChild, {Arg::Obj(panel)});
+        *slot = made.Ok ? made.Get<UObject*>() : nullptr;
+        if (!*slot) { throw std::runtime_error("the canvas gave no slot"); }
+        // stretched between its anchors: no offsets (SetPosition: left and top, SetSize: right and bottom)
+        Invoke(*slot, A.SlotAlignment, {Arg::S(Vec2{0.0f, 0.0f})});
+        if (A.SlotAutoSize) { Invoke(*slot, A.SlotAutoSize, {Arg::B(false)}); }
+        Invoke(*slot, A.SlotPosition, {Arg::S(Vec2{0.0f, 0.0f})});
+        Invoke(*slot, A.SlotSize, {Arg::S(Vec2{0.0f, 0.0f})});
+    }
+    PlaceBars(0.0f);
+    Invoke(widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)});
+    Invoke(widget, A.AddToViewport, {Arg::I(50)});
+}
+
+// The bars for a picture of shape `ratio` (2.39): on at once. False when they cannot be made (the caller uses the camera's
+// aspect ratio then). `context`: a world object (the screen's size).
+bool ShowBars(float ratio, UObject* context)
+{
+    if (ratio <= 0.0f) { return true; }
+    if (!Bars.Broken.empty()) { return false; }
+    try
+    {
+        if (!Bars.Widget || !BarsOnScreen()) { BuildBars(); }
+        Vec2 screen{16.0f, 9.0f};
+        if (A.WidgetLayout && A.ViewportSize && context)
+        {
+            Block size = Invoke(A.WidgetLayout, A.ViewportSize, {Arg::Obj(context)});
+            if (size.Ok)
+            {
+                const Vec2 got = size.Get<Vec2>();
+                if (got.X > 1.0f && got.Y > 1.0f) { screen = got; }
+            }
+        }
+        const float wide = screen.X / screen.Y;
+        PlaceBars(wide < ratio ? (1.0f - wide / ratio) * 0.5f : 0.0f);
+        Bars.GoneAtMs = 0;
+        Invoke(Bars.Widget, A.SetVisibility, {Arg::U8(VisibilityShown)});
+        Bars.Shown = true;
+        return true;
+    }
+    catch (const std::exception& error)
+    {
+        Bars.Broken = SkelCompat::Widen(error.what());
+    }
+    catch (...)
+    {
+        Bars.Broken = L"error";
+    }
+    Log.Line(L"Forms: the entrances' cinema bars are NOT drawn by the mod (" + Bars.Broken + L"): the camera's aspect ratio makes them");
+    return false;
+}
+
+void HideBars()
+{
+    if (Bars.Shown && Bars.Widget) { Invoke(Bars.Widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)}); }
+    Bars.Shown = false;
+    Bars.GoneAtMs = 0;
+}
+
+// The bars go (back to the game's picture) in `seconds`, easing, as the camera blends back.
+void RetractBars(float seconds, uint64_t now)
+{
+    if (!Bars.Shown) { return; }
+    if (seconds <= 0.0f) { HideBars(); return; }
+    Bars.From = Bars.Part;
+    Bars.GoFromMs = now;
+    Bars.GoneAtMs = now + static_cast<uint64_t>(seconds * 1000.0f);
+}
+
+void UpdateBars(uint64_t now)
+{
+    if (!Bars.Shown || !Bars.GoneAtMs) { return; }
+    if (now >= Bars.GoneAtMs)
+    {
+        HideBars();
+        return;
+    }
+    const float q = static_cast<float>(now - Bars.GoFromMs) / static_cast<float>(std::max<uint64_t>(1, Bars.GoneAtMs - Bars.GoFromMs));
+    PlaceBars(Bars.From * (1.0f - Ease(q)));
+}
+
+// ---- the frame --------------------------------------------------------------------------
+bool Wanted = false;       // a row has forms
+bool Off = false;          // switched off after an error
+bool WasInBattle = false;
+uint64_t NextBattleCheck = 0, NextAbilityCheck = 0, NextOthers = 0, NextKeep = 0, NextField = 0, NextMenuDraw = 0;
+UObject* LastLeader = nullptr;
+std::vector<UObject*> OthersHidden;
+
+void BackToNormal(bool quiet, uint64_t now)
+{
+    for (auto& t : Characters)
+    {
+        const bool base = HasOwnPack(t.Row->Forms.List.front());   // (3.9.0: out of battle the character's own pack goes back on)
+        const bool baseOn = t.BaseOn;
+        t.BaseOn = false;
+        t.BaseAt = 0;
+        t.BaseTimes = 0;
+        if (t.Form == 0 && !t.Swapped && !t.Flying && !(base && baseOn)) { continue; }
+        if (!StillThere(t.Character, t.Class)) { continue; }
+        try
+        {
+            if (t.Form == 0 && !t.Swapped && !t.Flying)
+            {
+                ResetPack(t.Character);   // (3.9.0: only its pack: it is in its normal form)
+                continue;
+            }
+            RestoreModel(t);   // (3.6.4: its own anim instance back first, so its pack goes back on it)
+            EndSets(t);        // (3.7.5: before the pack switch)
+            if (base) { ResetPack(t.Character); }
+            else if (t.Form != 0) { PlayPack(t.Character, t.Row->Forms.List.front()); }
+            Become(t, 0, !quiet, now);
+        }
+        catch (...)
+        {
+            Log.Line(L"Forms: " + t.Spec + L" could not go back to its normal form (error)");
+        }
+    }
+}
+
+// In battle, 10 times a second: the characters in timed or armoured forms (whether in charge or not). Super armor is set
+// again every second; a character knocked out leaves the form at once; a form whose time is up turns back into the one
+// it names (its "revert_to") once the ability the character is in ends (8 s at most).
+uint64_t NextTimers = 0;
+
+void Timers(UObject* leader, uint64_t now)
+{
+    if (now < NextTimers) { return; }
+    NextTimers = now + 100;
+    for (auto& t : Characters)
+    {
+        const FormSettings& forms = t.Row->Forms;
+        const Form& form = forms.List[static_cast<size_t>(t.Form)];
+        if (!form.Sets.empty())   // (3.7.5: the log says which of its sets the game looks up, the first time it does)
+        {
+            const std::wstring hits = PackSets::NewHits(t.Character);
+            if (!hits.empty()) { Log.Line(L"Forms: " + t.Spec + L" in " + form.Name + L": " + hits); }
+        }
+        if (!form.Weapon.empty() || t.FormWeapon || t.OwnWeapon) { KeepFormWeapon(t, form, now); }   // (3.8.2)
+        if (!form.Limited() && !form.SuperArmor) { continue; }
+        if (t.Character != leader)
+        {
+            if (now >= t.NextAliveMs)
+            {
+                t.NextAliveMs = now + 2000;
+                t.Alive = StillThere(t.Character, t.Class);
+            }
+            if (!t.Alive) { continue; }
+        }
+        // knocked out: its super armor goes (the game's knock-out plays as usual) and its time stops; back on its feet,
+        // the form ends
+        if (now >= t.NextHpMs)
+        {
+            t.NextHpMs = now + 250;
+            const int32_t hp = HitPoints(t.Character);
+            if (hp == 0 && !t.Down)
+            {
+                t.Down = true;
+                if (In.Open && In.Character == t.Character) { CloseMenu(L"knocked out"); }
+                if (t.Armored) { SetArmor(t, false, L"knocked out"); }
+                Log.Line(L"Forms: " + t.Spec + L" was knocked out in " + form.Name + L"; the form ends when it is back on its feet");
+            }
+            else if (hp > 0 && t.Down)
+            {
+                t.Down = false;
+                SwitchTo(t, form.RevertIndex, L"it was knocked out", true, now);
+                continue;
+            }
+        }
+        if (t.Down) { continue; }
+        if (form.SuperArmor && now >= t.NextArmorMs)
+        {
+            t.NextArmorMs = now + 1000;
+            SetArmor(t, true, form.Name);
+        }
+        if (!form.Limited()) { continue; }
+        const double over = GameSeconds(t.Character) - t.Since - static_cast<double>(form.Seconds);
+        if (over < 0.0) { continue; }
+        const std::wstring ability = AbilityOf(t.Character);
+        if (!ability.empty() && ability != L"None" && over < 8.0)
+        {
+            if (!t.TimeUpSaid)
+            {
+                t.TimeUpSaid = true;
+                Log.Line(L"Forms: " + t.Spec + L": " + form.Name + L"'s time is up; it turns back once " + ability + L" ends");
+            }
+            continue;
+        }
+        if (In.Open && In.Character == t.Character) { CloseMenu(L"the form's time is up"); }
+        SwitchTo(t, form.RevertIndex, L"its time is up", true, now);
+    }
+}
+
+// The time left of the character in charge (else of another in a timed form) on screen; a notice for a moment instead.
+uint64_t NextHud = 0;
+
+void UpdateHud(UObject* leader, uint64_t now)
+{
+    if (now < NextHud) { return; }
+    NextHud = now + 100;
+    const Tracked* shown = nullptr;
+    double left = -1.0;
+    for (const auto& t : Characters)
+    {
+        if (t.Character != leader && !t.Alive) { continue; }
+        const Form& form = t.Row->Forms.List[static_cast<size_t>(t.Form)];
+        if (!form.Limited() || !t.Row->Forms.Timer) { continue; }
+        const double l = TimeLeft(t, GameSeconds(t.Character));
+        if (l >= 0.0 && (!shown || t.Character == leader))
+        {
+            shown = &t;
+            left = l;
+        }
+    }
+    if (now < H.NoticeUntil && H.For)
+    {
+        ShowHud(*H.For, H.Notice, 2);
+        return;
+    }
+    if (!shown)
+    {
+        HideHud();
+        return;
+    }
+    const Form& form = shown->Row->Forms.List[static_cast<size_t>(shown->Form)];
+    ShowHud(shown->Row->Forms, form.Name + L"   " + Clock(left), left <= 10.0 ? 1 : 0);
+}
+
+// Other copies of a character's model (cutscenes, the menus' 3D views) keep the parts hidden. (3.6.8) They are looked for
+// a few blocks of the object array a frame - enough for all of it in about 120 frames, and no more than a quarter of a
+// millisecond's worth in a frame: 3.6.7 had UE4SS's FindAllOf walk all of it at once every 3 s, a hitch of tens of
+// milliseconds in battle and in the field (looking at an object reads it from memory: the walk's time is that).
+int32_t OthersCursor = 0;                  // where the next block starts: a multiple of OthersBlock
+constexpr int32_t OthersBlock = 2048;      // divides the array's chunks (64K objects): a block never runs from one chunk into the next
+constexpr int32_t OthersFrames = 120;      // frames for the whole array
+constexpr uint64_t OthersBudgetUs = 250;   // a frame's most (after its first block)
+
+void HideOnOthers()
+{
+    std::vector<UClass*> classes;
+    for (const auto& t : Characters)
+    {
+        if (t.Row->Forms.HideOnOthers && !t.Row->Forms.Parts.empty() && std::find(classes.begin(), classes.end(), t.Class) == classes.end()) { classes.push_back(t.Class); }
+    }
+    if (classes.empty()) { return; }
+    const int32_t total = UObjectArray::GetNumElements();
+    if (total <= 0) { return; }
+    if (OthersCursor < 0 || OthersCursor >= total || OthersCursor % OthersBlock) { OthersCursor = 0; }
+    const int32_t blocks = std::max(1, (total + OthersBlock * OthersFrames - 1) / (OthersBlock * OthersFrames));
+    const uint64_t started = NowUs();
+    std::vector<UObject*> all;
+    for (int32_t b = 0; b < blocks; ++b)
+    {
+        const int32_t end = std::min(total, OthersCursor + OthersBlock);
+        UObjectGlobals::ForEachUObjectInRange(OthersCursor, end, [&](UObject* object, int32, int32) -> LoopAction {   // (live objects only)
+            if (object && std::find(classes.begin(), classes.end(), object->GetClassPrivate()) != classes.end()) { all.push_back(object); }
+            return LoopAction::Continue;
+        });
+        OthersCursor = end >= total ? 0 : end;
+        if (OthersCursor == 0 || NowUs() - started >= OthersBudgetUs) { break; }
+    }
+    for (UObject* object : all)
+    {
+        if (object->HasAnyFlags(TemplateFlags) || TrackedOf(object)) { continue; }
+        if (std::find(OthersHidden.begin(), OthersHidden.end(), object) != OthersHidden.end()) { continue; }
+        const Tracked* owner = nullptr;
+        for (const auto& t : Characters) { if (t.Class == object->GetClassPrivate()) { owner = &t; break; } }
+        if (!owner) { continue; }
+        OthersHidden.push_back(object);
+        UObject* mesh = MeshOf(object);
+        int hidden = 0;
+        for (const auto& slot : owner->Row->Forms.Parts)
+        {
+            const int32_t index = SlotIndex(mesh, slot);
+            if (index >= 0)
+            {
+                ShowSection(mesh, index, false);
+                ++hidden;
+            }
+        }
+        if (hidden) { Log.Line(L"Forms: parts hidden on another copy of " + owner->Spec + L"'s model (" + PathOf(object) + L")"); }
+    }
+    if (OthersHidden.size() > 256) { OthersHidden.erase(OthersHidden.begin(), OthersHidden.begin() + 128); }
+}
+
+// ---- (3.6.9) the character you control: the level sets it is given --------------------------------------------------
+// Four times a second: the level or field-action set of the montage it plays, outside battle (FillEmptyEntries goes by it),
+// and the set names the game's lookup had no set for (SetWatch). Such a name, for a character with forms: the set of that
+// name in its row's folders (a level or field-action set: /Game/Motion/Level/<name>/<folder>,
+// /Game/Motion/FieldAction/<name>/<folder>) is found, or loaded (blocking from a tick only: the frame work can also run
+// inside the game's loading callbacks; 3.6.12: elsewhere in the background), and given by the mod's lookup from then on.
+// The log says who you control, once per character, model and AnimBlueprint. (3.6.13: the rest of the log 3.6.9 - 3.6.11
+// kept for the burning Nibelheim T-pose is gone: the sets in its map, its set entries and layers, every set lookup of every
+// character, the calls the game makes on it, the game's animation set functions.)
+namespace Watch
+{
+UObject* Player = nullptr;        // (game thread) the character you control, its model and AnimBlueprint, as the log said them
+UObject* Model = nullptr;
+UObject* AnimClass = nullptr;
+uint64_t Next = 0;
+bool FromTick = false;            // this frame's work runs from a tick callback
+UFunction* ActiveMontage = nullptr;
+bool Looked = false;
+std::vector<std::pair<void*, uint64_t>> Pending;   // set names to give (container, name), waiting for a load
+std::vector<std::pair<void*, uint64_t>> Done;      // looked for (given or not)
+std::wstring MontageSet;          // (3.6.11) the level or field-action set of the last such montage seen on it ("Level/DmgWalk00")
+uint64_t MontageSetAt = 0;        // (3.6.13) when it was last seen
+
+void Reset()
+{
+    Player = Model = AnimClass = nullptr;
+    MontageSet.clear();
+    MontageSetAt = 0;
+    Next = 0;
+    Pending.clear();
+    Done.clear();
+}
+} // namespace Watch
+
+// (3.6.12) Level and field-action sets: those a blocking load could not load (not tried again) and those asked to load in
+// the background (when, how often; until the next map).
+std::vector<std::wstring> Unloadable;
+struct AskedLoad
+{
+    std::wstring Path;
+    uint64_t At = 0;
+    int Times = 0;
+    std::wstring Why;   // why it could not be asked (then it is not asked again)
+};
+std::vector<AskedLoad> AskedLoads;
+constexpr int AskTimes = 5;            // (a set loaded in the background and not kept is gone with the next garbage collection:
+constexpr uint64_t AskAgainMs = 3000;  //  it is asked for again)
+
+// The first of `paths` that is loaded (and done loading) as an animation set. Else, from a tick, the first that a
+// blocking load loads; elsewhere (the frame work can run inside the game's loading callbacks) each is asked to load in the
+// background, and a later look finds it. `note` says what was done (the same words while nothing changes).
+UObject* FindOrLoadSet(const std::vector<std::wstring>& paths, UObject* context, std::wstring& from, std::wstring& note)
+{
+    for (const auto& path : paths)
+    {
+        UObject* set = FindObjectByPath(path.c_str());
+        if (!set) { continue; }
+        if (InPipeline(set) || !FlagsReady(set))
+        {
+            note += L"; " + path + L" still loading";
+            continue;
+        }
+        if (set->GetClassPrivate()->GetName() != L"EndAnimSet")
+        {
+            note += L"; " + path + L" is not an animation set";
+            continue;
+        }
+        from = path;
+        return set;
+    }
+    if (Watch::FromTick)
+    {
+        for (const auto& path : paths)
+        {
+            if (std::find(Unloadable.begin(), Unloadable.end(), path) != Unloadable.end())
+            {
+                note += L"; " + path + L" could NOT be loaded";
+                continue;
+            }
+            UObject* set = LoadBlocking(path);
+            if (set && FlagsReady(set) && set->GetClassPrivate()->GetName() == L"EndAnimSet")
+            {
+                from = path;
+                return set;
+            }
+            Unloadable.push_back(path);
+            note += L"; " + path + L" could NOT be loaded";
+        }
+        return nullptr;
+    }
+    const uint64_t now = NowMs();
+    for (const auto& path : paths)
+    {
+        auto it = std::find_if(AskedLoads.begin(), AskedLoads.end(), [&](const AskedLoad& a) { return a.Path == path; });
+        if (it == AskedLoads.end())
+        {
+            AskedLoads.push_back(AskedLoad{path, 0, 0, {}});
+            it = AskedLoads.end() - 1;
+        }
+        if (it->Why.empty() && it->Times < AskTimes && (it->Times == 0 || now - it->At >= AskAgainMs))
+        {
+            std::wstring why;
+            if (LoadInBackground(path, context, why))
+            {
+                ++it->Times;
+                it->At = now;
+            }
+            else { it->Why = why.empty() ? std::wstring(L"?") : why; }
+        }
+        if (!it->Why.empty()) { note += L"; " + path + L" could not be asked to load (" + it->Why + L")"; }
+        else if (it->Times < AskTimes || now - it->At < AskAgainMs)
+        {
+            note += L"; " + path + L" asked to load in the background (" + std::to_wstring(it->Times) + L")";
+        }
+        else { note += L"; " + path + L" did not load (asked " + std::to_wstring(it->Times) + L" times)"; }
+    }
+    return nullptr;
+}
+
+// Gives `t` the set `key` of its folders, when there is one. False: it waits for a tick or a background load.
+bool GiveFolderSet(const Tracked& t, void* container, uint64_t key)
+{
+    const std::wstring name = NameText(key);
+    std::vector<std::wstring> folders;
+    for (const auto& source : t.Row->Field)
+    {
+        if (!source.Folder) { continue; }
+        const size_t slash = source.Path.find_last_of(L'/');
+        const std::wstring folder = slash == std::wstring::npos ? source.Path : source.Path.substr(slash + 1);
+        if (!folder.empty() && std::find(folders.begin(), folders.end(), folder) == folders.end()) { folders.push_back(folder); }
+    }
+    std::vector<std::wstring> paths;
+    if (!name.empty() && name != L"None")
+    {
+        for (const auto& folder : folders)
+        {
+            for (const wchar_t* kind : {L"Level", L"FieldAction"})
+            {
+                paths.push_back(L"/Game/Motion/" + std::wstring(kind) + L"/" + name + L"/" + folder + L"." + folder);
+            }
+        }
+    }
+    std::wstring from, note;
+    UObject* set = paths.empty() ? nullptr : FindOrLoadSet(paths, t.Character, from, note);
+    // (3.6.12) it waits until each was asked to load in the background AskTimes times (or, when it cannot be asked, for a
+    // tick)
+    const bool waiting = !set && !Watch::FromTick && !std::all_of(paths.begin(), paths.end(), [&](const std::wstring& path) {
+        const auto it = std::find_if(AskedLoads.begin(), AskedLoads.end(), [&](const AskedLoad& a) { return a.Path == path; });
+        return it != AskedLoads.end() && it->Why.empty() && it->Times >= AskTimes && NowMs() - it->At >= AskAgainMs;
+    });
+    if (waiting) { return false; }
+    std::wstring list;
+    for (const auto& folder : folders) { list += (list.empty() ? L"" : L", ") + folder; }
+    if (!set)
+    {
+        Log.Line(L"Watch: " + t.Spec + L" was asked for set " + name + L", which neither the game nor the mod has; its folders (" + list +
+                 L") have no level or field-action set of that name" + note);
+        return true;
+    }
+    set->SetRootSet();
+    PackSets::Remember(container, key, set);
+    Log.Line(L"Watch: " + t.Spec + L" was asked for set " + name + L", which the game does not have: the mod gives it " + from);
+    return true;
+}
+
+// (3.6.11) The level or field-action set a montage or its animations are of ("Level/DmgWalk00" for
+// /Game/Motion/Level/DmgWalk00/PC0000_Cloud/N_Idle01_1), else empty.
+std::wstring MontageLevelSet(UObject* montage)
+{
+    const auto setOf = [](const std::wstring& path) -> std::wstring {
+        for (const wchar_t* kind : {L"/Game/Motion/Level/", L"/Game/Motion/FieldAction/"})
+        {
+            if (path.rfind(kind, 0) != 0) { continue; }
+            const size_t begin = std::wcslen(L"/Game/Motion/");
+            const size_t slash = path.find(L'/', std::wcslen(kind));
+            return slash == std::wstring::npos ? std::wstring{} : path.substr(begin, slash - begin);
+        }
+        return {};
+    };
+    if (std::wstring own = setOf(PathOf(montage)); !own.empty()) { return own; }
+    if (State.OffMontageSlots < 0 || State.SlotTrack < 0 || State.TrackSegments < 0 || State.SegmentRef < 0 || State.SlotStride <= 0 ||
+        State.SegmentStride <= 0)
+    {
+        return {};
+    }
+    RawArray slots{};
+    if (!ReadAt(montage, static_cast<size_t>(State.OffMontageSlots), slots) || slots.Num <= 0 || slots.Num > 8 || !slots.Data) { return {}; }
+    for (int32_t i = 0; i < slots.Num; ++i)
+    {
+        const uint8_t* slot = static_cast<const uint8_t*>(slots.Data) + static_cast<size_t>(i) * static_cast<size_t>(State.SlotStride);
+        RawArray segments{};
+        if (!ReadAt(slot, static_cast<size_t>(State.SlotTrack + State.TrackSegments), segments) || segments.Num <= 0 || segments.Num > 16 ||
+            !segments.Data)
+        {
+            continue;
+        }
+        for (int32_t k = 0; k < segments.Num; ++k)
+        {
+            UObject* anim = nullptr;
+            ReadAt(static_cast<const uint8_t*>(segments.Data) + static_cast<size_t>(k) * static_cast<size_t>(State.SegmentStride),
+                   static_cast<size_t>(State.SegmentRef), anim);
+            if (!anim || !IsLive(anim)) { continue; }
+            if (std::wstring set = setOf(PathOf(anim)); !set.empty()) { return set; }
+        }
+    }
+    return {};
+}
+
+// ---- (3.6.11) a set entry the game made for a level set and could not fill ------------------------------------------
+// In chapter 1's burning Nibelheim the game puts a level set on the character you control (DmgWalk00: an entry of its set
+// map under key 2, named after the set's object, "PC0010_Sephiroth" for Sephiroth's folder) but the entry stays empty:
+// the character has nothing to walk or stand with (the T-pose, and no walk: the walk moves him). The mod fills such an
+// entry with the game's own registration, then the pose change the game asks for after one (as the forms' kept instances
+// are given their sets). The level set it is for is the one of the montage the character played as the entry was made
+// (the cutscene's last pose: /Game/Motion/Level/DmgWalk00/PC0000_Cloud/N_Idle01_1 -> DmgWalk00; seen at most 5 s before
+// the entry was, or 2 s after). 3.6.12: the set is that one of the entry's folder (the data pak's copy) or, when that is
+// not loaded, of the row's folders (Cloud's, which the level loads), and when none is loaded each is asked to load (in the
+// background unless the frame work runs from a tick: FindOrLoadSet) and a later look gives the first that is. (3.6.13:
+// what 3.6.11 also went by found nothing in either test and is gone: the row's level set names held by the character, its
+// anim instance or its controller, and entry +0x10, which is not the set's name.)
+struct Filled
+{
+    UObject* Character = nullptr;
+    uint64_t Name = 0;
+    uint8_t Key = 0;      // (3.6.13) its key in the set map
+    uint64_t Since = 0;   // (3.6.13) when it was first seen empty
+    std::wstring Set;     // (3.6.13) the level set it is for, as the montage named it ("Level/DmgWalk00")
+    std::wstring Said;    // what the log said last for it
+    bool ByLoads = false;     // (3.6.14) the set is the level set that loaded last (no montage named it)
+    std::wstring LoadsNote;   // (3.6.14) the level sets that had loaded, newest first, as it was chosen (or first looked)
+};
+std::vector<Filled> FilledLog;
+constexpr uint64_t MontageBeforeMs = 5000;
+constexpr uint64_t MontageAfterMs = 2000;
+constexpr uint64_t EmptyWaitMs = 1500;   // (3.6.14) how long an entry no montage names stays empty before the loads decide
+
+// (3.6.14) Every level set the game has (any character's folder; /Game/Motion/Level/<name>/<folder>): for the sets that
+// loaded before the mod noted loads (the first map's).
+constexpr const wchar_t* GameLevelSets[] = {
+    L"3DBattler00", L"ArmsCross00", L"Balloon00", L"BizarroSephiroth00", L"Bowl00", L"Box00", L"Briefcase00", L"BuggyShooting00",
+    L"CactusBox00", L"Camera00", L"Capture00", L"Ch13LifeStream00", L"Ch13Monument00", L"ChocoboRace00", L"ChocoboRace31",
+    L"ChocoboRace32", L"ChocoboRace34", L"ChocoboRace35", L"CondorFort00", L"CondorFort01", L"CondorFort02", L"CondorFort03",
+    L"Cowbell00", L"Crane00", L"Cry00", L"DeckBrush00", L"DmgWalk00", L"DolphinJump00", L"Escape00", L"FeelerWalk00", L"FireWalk00",
+    L"FireWalk01", L"Flower00", L"FlowerBasket00", L"GBike00", L"GBike00_Buggy", L"GBike01", L"GBike02", L"GBike04", L"Gbike03",
+    L"Guide00", L"HandLight00", L"HandMike01", L"HandlePuzzle00", L"Icecream00", L"IrukaJump00", L"LifeStreamDamage00",
+    L"LockerRoom00", L"Loudspeaker00", L"LowWalk00", L"LureRope00", L"MoogleCapture00", L"MoogleCapture01", L"MoogleCapture02",
+    L"Muscle00", L"MushPickUp00", L"Panic00", L"Patrol00", L"PhotoPose00", L"PhotoSpot00", L"Piano00", L"PopCorn00", L"Pray00",
+    L"Puppet00", L"PushBMantle00", L"Resist00", L"RunWild00", L"SaboSearch00", L"Sack00", L"ShakeOff00", L"ShootingGallery00",
+    L"ShopNpcNegative00", L"ShopNpcPositive00", L"Shuriken00", L"Spear01", L"Stick00", L"TalkWalk00", L"ThrowBox00", L"Torch00",
+    L"ToroccoShooting00", L"Totebag00", L"Waitress00", L"Wheelie00",
+};
+
+// (3.6.14) The folders of sources ("PC0010_Sephiroth", "PC0000_Cloud"): a folder source's last part, a set source's
+// folder; added to `folders` when not there yet.
+void SourceFolders(const std::vector<SkelCompat::SetSource>& sources, std::vector<std::wstring>& folders)
+{
+    for (const auto& source : sources)
+    {
+        std::wstring path = source.Path;
+        if (!source.Folder)   // a set's object path: the folder it is in
+        {
+            path = path.substr(0, path.find(L'.'));
+            const size_t up = path.find_last_of(L'/');
+            path = up == std::wstring::npos ? std::wstring{} : path.substr(0, up);
+        }
+        const size_t last = path.find_last_of(L'/');
+        const std::wstring name = last == std::wstring::npos ? path : path.substr(last + 1);
+        if (!name.empty() && std::none_of(folders.begin(), folders.end(), [&](const std::wstring& f) { return SkelCompat::NameEquals(f, name); }))
+        {
+            folders.push_back(name);
+        }
+    }
+}
+
+// (3.6.14) The folders of a row's field sources.
+std::vector<std::wstring> FieldFolders(const Tracked& t)
+{
+    std::vector<std::wstring> folders;
+    if (t.Row) { SourceFolders(t.Row->Field, folders); }
+    return folders;
+}
+
+// (3.6.15) A CharaSpec row's AnimationSetParentFolder ("PC0010_Sephiroth"), empty when unknown. Read from the table once
+// per row (once it could be read).
+std::wstring CharaSpecFolder(const std::wstring& spec)
+{
+    static std::vector<std::pair<std::wstring, std::wstring>> known;
+    if (spec.empty()) { return {}; }
+    for (const auto& [row, folder] : known)
+    {
+        if (row == spec) { return folder; }
+    }
+    FrozenTable table;
+    std::wstring why;
+    if (!OpenTable(CharaSpecTablePath, table, why)) { return {}; }   // (not loaded yet: asked again next time)
+    std::wstring folder;
+    const uintptr_t at = TableRow(table, ExistingName(spec));
+    const SkelCompat::Frozen::Field* field = SkelCompat::Frozen::Find(table.Fields, L"AnimationSetParentFolder");
+    if (at && field && !field->Array && field->Type == 11)
+    {
+        RawName name{};
+        if (SafeCopy(&name, reinterpret_cast<const void*>(at + static_cast<uintptr_t>(field->Offset)), sizeof(name)) && (name.Comparison || name.Number))
+        {
+            folder = NameText(KeyOf(name));
+            if (folder == L"None") { folder.clear(); }
+        }
+    }
+    known.emplace_back(spec, folder);
+    return folder;
+}
+
+// (3.6.15) Whether a set entry's name is one of the character's motion folders: its row's battle and field sources and
+// "field_actions", its CharaSpec row's AnimationSetParentFolder. The game names a level set's entry after the set's object
+// (/Game/Motion/Level/<set>/<folder>.<folder>: "[2] PC0010_Sephiroth" in burning Nibelheim, "[0] PC0010_Sephiroth" in the
+// chocobo wrangling), so only such an entry can be one waiting for a level set. A form's pack entry is not ("[3] Battle05":
+// the name of the pack the form switched to, with no set in it, as the game keeps it): 3.6.14 gave it the level set that
+// had loaded last (ShakeOff00), and the form's moves were gone about 10 s after every switch.
+bool IsFolderEntry(const Tracked& t, const std::wstring& name)
+{
+    if (name.empty() || name == L"None" || !t.Row) { return false; }
+    std::vector<std::wstring> folders;
+    SourceFolders(t.Row->Field, folders);
+    SourceFolders(t.Row->Battle, folders);
+    if (!t.Row->FieldActions.empty()) { folders.push_back(t.Row->FieldActions); }
+    if (const std::wstring own = CharaSpecFolder(t.Spec); !own.empty()) { folders.push_back(own); }
+    return std::any_of(folders.begin(), folders.end(), [&](const std::wstring& f) { return SkelCompat::NameEquals(f, name); });
+}
+
+// (3.6.14) Game thread: the log says each level or field-action set whose animations loaded, once.
+void TellLevelLoads()
+{
+    std::vector<std::wstring> lines;
+    {
+        LevelLoads::Exclusive lock;
+        for (auto& l : LevelLoads::Loads)
+        {
+            if (l.Told) { continue; }
+            l.Told = true;
+            lines.push_back(l.Name + L" of " + l.Folder + L" (" + l.Kind + L")");
+        }
+    }
+    for (const auto& line : lines) { Log.Line(L"Level sets: " + line + L" loaded (its animations)"); }
+}
+
+// (3.6.14) The level set of `folders` whose animations loaded last (not after `before`) and whose set is still loaded:
+// "Level/LureRope00", else empty. A set of theirs loaded before the mod noted loads counts as the oldest. `note` lists
+// what had loaded, newest first.
+std::wstring NewestLevelLoad(const std::vector<std::wstring>& folders, uint64_t before, uint64_t now, std::wstring& note)
+{
+    struct Candidate
+    {
+        std::wstring Name;
+        std::wstring Folder;
+        uint64_t At = 0;   // 0: loaded before the mod noted loads
+    };
+    std::vector<Candidate> candidates;
+    {
+        LevelLoads::Exclusive lock;
+        for (const auto& l : LevelLoads::Loads)
+        {
+            if (l.Kind != L"Level" || l.At > before) { continue; }
+            if (std::none_of(folders.begin(), folders.end(), [&](const std::wstring& f) { return SkelCompat::NameEquals(f, l.Folder); })) { continue; }
+            candidates.push_back(Candidate{l.Name, l.Folder, l.At});
+        }
+    }
+    std::sort(candidates.begin(), candidates.end(), [](const Candidate& a, const Candidate& b) { return a.At > b.At; });
+    const auto isSet = [](const std::wstring& name, const std::wstring& folder) {
+        const std::wstring path = L"/Game/Motion/Level/" + name + L"/" + folder + L"." + folder;
+        UObject* set = FindObjectByPath(path.c_str());
+        return set && set->GetClassPrivate() && set->GetClassPrivate()->GetName() == L"EndAnimSet";
+    };
+    for (const auto& folder : folders)
+    {
+        for (const wchar_t* name : GameLevelSets)
+        {
+            if (std::any_of(candidates.begin(), candidates.end(), [&](const Candidate& c) { return c.Name == name && SkelCompat::NameEquals(c.Folder, folder); }))
+            {
+                continue;
+            }
+            if (isSet(name, folder)) { candidates.push_back(Candidate{name, folder, 0}); }
+        }
+    }
+    std::wstring chosen;
+    size_t listed = 0;
+    for (const auto& c : candidates)
+    {
+        const bool loaded = c.At == 0 || isSet(c.Name, c.Folder);
+        if (listed < 6)
+        {
+            note += std::wstring(listed ? L", " : L"") + c.Name + L" of " + c.Folder + L" (" +
+                    (c.At ? Fixed(static_cast<float>(now - c.At) / 1000.0f) + L" s ago" : std::wstring(L"before the mod looked")) +
+                    (loaded ? L"" : L", no longer loaded") + L")";
+            ++listed;
+        }
+        if (loaded && chosen.empty()) { chosen = L"Level/" + c.Name; }
+    }
+    if (candidates.size() > listed) { note += L" (+" + std::to_wstring(candidates.size() - listed) + L" more)"; }
+    return chosen;
+}
+
+void FillEmptyEntries(Tracked& t, UObject* instance, uint64_t now)
+{
+    // the entries of its set map with a name and no set
+    struct Empty
+    {
+        uint8_t Key = 0;
+        uint8_t* Entry = nullptr;
+        uint64_t Name = 0;
+    };
+    std::vector<Empty> empty;
+    NameMapHeader map{};
+    const bool readable = ReadAt(t.Character, OffCharSetMap, map) && map.Elements.Num > 0 && map.Elements.Num <= 64 && map.Elements.Data;
+    for (int32_t i = 0; readable && i < map.Elements.Num; ++i)
+    {
+        if (map.NumFree > 0 && !InUse(map, i)) { continue; }
+        const uint8_t* element = static_cast<const uint8_t*>(map.Elements.Data) + static_cast<size_t>(i) * 32;
+        uint8_t key = 0;
+        RawArray entries{};
+        if (!ReadAt(element, 0, key) || !ReadAt(element, 8, entries) || entries.Num <= 0 || entries.Num > 64 || !entries.Data) { continue; }
+        for (int32_t k = 0; k < entries.Num; ++k)
+        {
+            uint8_t raw[SetEntrySize]{};
+            uint8_t* entry = static_cast<uint8_t*>(entries.Data) + static_cast<size_t>(k) * SetEntrySize;
+            if (!SafeCopy(raw, entry, SetEntrySize)) { break; }
+            uint64_t name = 0;
+            std::memcpy(&name, raw, sizeof(name));
+            FWeakObjectPtr weak{};
+            std::memcpy(static_cast<void*>(&weak), raw + 8, sizeof(weak));
+            // (3.6.15) only an entry named after one of its motion folders is a level set's (not a form's pack entry)
+            if (name && !weak.Get() && IsFolderEntry(t, NameText(name))) { empty.push_back(Empty{key, entry, name}); }
+        }
+    }
+    // (3.6.13) an entry no longer empty (given) is forgotten: a later empty one of that name is another level set's
+    FilledLog.erase(std::remove_if(FilledLog.begin(), FilledLog.end(),
+                                   [&](const Filled& f) {
+                                       return f.Character == t.Character &&
+                                              std::none_of(empty.begin(), empty.end(), [&](const Empty& e) { return e.Name == f.Name && e.Key == f.Key; });
+                                   }),
+                    FilledLog.end());
+    if (empty.empty()) { return; }
+    void* controller = nullptr;
+    ReadAt(t.Character, OffCharAnimController, controller);
+    for (const auto& e : empty)
+    {
+        // (3.6.15) how long each step took: the log says it when the entry took a tenth of a second or more
+        const uint64_t startedUs = NowUs();
+        uint64_t loadsUs = 0, findUs = 0, giveUs = 0;
+        auto it = std::find_if(FilledLog.begin(), FilledLog.end(),
+                               [&](const Filled& f) { return f.Character == t.Character && f.Name == e.Name && f.Key == e.Key; });
+        if (it == FilledLog.end())
+        {
+            FilledLog.push_back(Filled{t.Character, e.Name, e.Key, now, {}, {}});
+            it = FilledLog.end() - 1;
+        }
+        // the set it is for: that of the montage it played as the entry was made
+        if (it->Set.empty() && !Watch::MontageSet.empty() && Watch::MontageSetAt + MontageBeforeMs >= it->Since &&
+            Watch::MontageSetAt <= it->Since + MontageAfterMs)
+        {
+            it->Set = Watch::MontageSet;
+        }
+        const std::wstring folder = NameText(e.Name);
+        // (3.6.14) no montage named it: once it has been empty EmptyWaitMs (the game had its chance), the level set of the
+        // row's other folders whose animations loaded last (the level loads Cloud's version of its set)
+        if (it->Set.empty() && now >= it->Since + EmptyWaitMs && now >= it->Since + MontageAfterMs)
+        {
+            std::vector<std::wstring> others;
+            for (const auto& f : FieldFolders(t))
+            {
+                if (!SkelCompat::NameEquals(f, folder)) { others.push_back(f); }
+            }
+            std::wstring note;
+            const uint64_t loadsAt = NowUs();
+            const std::wstring newest = others.empty() ? std::wstring{} : NewestLevelLoad(others, it->Since + MontageAfterMs, now, note);
+            loadsUs = NowUs() - loadsAt;
+            if (!newest.empty() || it->LoadsNote.empty())
+            {
+                it->LoadsNote = note.empty() ? std::wstring(L"none") : note;
+            }
+            if (!newest.empty())
+            {
+                it->Set = newest;
+                it->ByLoads = true;
+            }
+        }
+        std::wstring text = L"[" + std::to_wstring(e.Key) + L"] " + folder;
+        const size_t slash = it->Set.find(L'/');
+        UObject* set = nullptr;
+        std::wstring from;
+        if (slash == std::wstring::npos)
+        {
+            text += L": no level set to go by (no level or field-action montage played as it was made";
+            text += it->LoadsNote.empty() ? std::wstring(L")") : L"; level sets loaded: " + it->LoadsNote + L")";
+        }
+        else
+        {
+            const std::wstring kind = it->Set.substr(0, slash);
+            const std::wstring setName = it->Set.substr(slash + 1);
+            text += L": " + setName + (it->ByLoads ? L" (the level set that loaded last: " + it->LoadsNote + L")" : std::wstring(L" (the set of the montage it played)"));
+            // that set of the entry's folder (the data pak's copy), else of the row's folders (Cloud's)
+            std::vector<std::wstring> folders{folder};
+            for (const auto& name : FieldFolders(t))
+            {
+                if (std::none_of(folders.begin(), folders.end(), [&](const std::wstring& f) { return SkelCompat::NameEquals(f, name); }))
+                {
+                    folders.push_back(name);
+                }
+            }
+            std::vector<std::wstring> paths;
+            for (const auto& f : folders) { paths.push_back(L"/Game/Motion/" + kind + L"/" + setName + L"/" + f + L"." + f); }
+            std::wstring note;
+            const uint64_t findAt = NowUs();
+            set = FindOrLoadSet(paths, t.Character, from, note);
+            findUs = NowUs() - findAt;
+            text += note;
+        }
+        if (set)
+        {
+            const uint64_t giveAt = NowUs();
+            if (!G.Looked && controller) { LookAtGameAnimCode(t.Character, controller); }
+            if (!G.AddSet || !G.WeakSet) { text += L"; " + from + L" found, but the game's set registration was not (" + G.Why + L")"; }
+            else
+            {
+                set->SetRootSet();
+                const bool weak = GuardedWeakSet(G.WeakSet, e.Entry + 8, set);
+                const bool added = weak && GuardedAddSet(G.AddSet, t.Character, e.Entry, set);
+                if (added && instance)
+                {
+                    const float blend = 1.0f;
+                    const uint8_t asked = 1;
+                    std::memcpy(reinterpret_cast<uint8_t*>(instance) + OffInstancePoseChange + 1, &blend, sizeof(blend));
+                    std::memcpy(reinterpret_cast<uint8_t*>(instance) + OffInstancePoseChange, &asked, sizeof(asked));
+                }
+                text += added ? L"; GIVEN " + from : L"; " + from + L" could NOT be given (an error in the game's registration)";
+            }
+            giveUs = NowUs() - giveAt;
+        }
+        // the log: once per entry and outcome
+        if (it->Said != text)
+        {
+            it->Said = text;
+            Log.Line(L"Level sets: " + t.Spec + L"'s set entry " + text);
+        }
+        // (3.6.15) a slow entry (the game froze for 9 s in 3.6.14's misplaced fills, during the forms' entrances)
+        static int slowSaid = 0;
+        const uint64_t tookUs = NowUs() - startedUs;
+        if (tookUs >= 100000 && slowSaid < 20)
+        {
+            ++slowSaid;
+            const auto ms = [](uint64_t us) { return std::to_wstring(us / 1000) + L" ms"; };
+            Log.Line(L"Level sets: " + t.Spec + L"'s set entry [" + std::to_wstring(e.Key) + L"] " + folder + L" took " + ms(tookUs) +
+                     L" (the loads " + ms(loadsUs) + L", finding the set " + ms(findUs) + L", giving it " + ms(giveUs) + L")");
+        }
+    }
+}
+
+void WatchPlayer(uint64_t now)
+{
+    for (size_t k = 0; k < Watch::Pending.size();)   // (sets waiting for a load)
+    {
+        UObject* character = static_cast<UObject*>(static_cast<void*>(static_cast<uint8_t*>(Watch::Pending[k].first) - PackSets::ContainerOffset));
+        const Tracked* t = TrackedOf(character);
+        if (!t || !IsLive(character) || GiveFolderSet(*t, Watch::Pending[k].first, Watch::Pending[k].second))
+        {
+            Watch::Pending.erase(Watch::Pending.begin() + static_cast<std::ptrdiff_t>(k));
+        }
+        else { ++k; }
+    }
+    if (now < Watch::Next) { return; }
+    Watch::Next = now + 250;   // (3.6.10: four times a second, for short montages)
+    TellLevelLoads();          // (3.6.14)
+    UObject* player = FieldCharacter();
+    if (!player || !IsLive(player)) { return; }
+    UObject* mesh = MeshOf(player);
+    if (mesh && !IsLive(mesh)) { mesh = nullptr; }
+    UObject* instance = mesh ? ObjectAt(mesh, State.OffCompAnimInstance) : nullptr;
+    if (instance && !IsLive(instance)) { instance = nullptr; }
+    // (the log) who you control: once per character, model and AnimBlueprint
+    UObject* animClass = mesh ? ObjectAt(mesh, State.OffCompAnimClass) : nullptr;
+    UObject* model = mesh ? ObjectAt(mesh, State.OffCompMesh) : nullptr;
+    if (player != Watch::Player || model != Watch::Model || animClass != Watch::AnimClass)
+    {
+        Watch::Player = player;
+        Watch::Model = model;
+        Watch::AnimClass = animClass;
+        const std::wstring spec = CharaSpecRowOf(player);
+        Log.Line(L"Watch: you control " + ShortName(player) + L" (" + (spec.empty() ? std::wstring(L"no CharaSpec row") : spec) + L"): model " +
+                 PathOf(model) + L", AnimBlueprint " + PathOf(animClass));
+    }
+    // (3.6.11) the level or field-action set of the montage it plays (FillEmptyEntries goes by it), outside battle
+    if (instance && !WasInBattle)
+    {
+        if (!Watch::Looked)
+        {
+            Watch::Looked = true;
+            Watch::ActiveMontage = Fn(L"/Script/Engine.AnimInstance:GetCurrentActiveMontage");
+        }
+        if (Watch::ActiveMontage)
+        {
+            Block result = Invoke(instance, Watch::ActiveMontage, {});
+            UObject* playing = result.Ok ? result.Get<UObject*>() : nullptr;
+            if (playing && IsLive(playing))
+            {
+                const std::wstring set = MontageLevelSet(playing);
+                if (!set.empty())
+                {
+                    Watch::MontageSet = set;
+                    Watch::MontageSetAt = now;
+                }
+            }
+        }
+    }
+    if (!PackSets::Hooked || PackSets::ContainerOffset < 0) { return; }
+    void* container = reinterpret_cast<uint8_t*>(player) + PackSets::ContainerOffset;
+    SetWatch::Watch(container);
+    std::vector<uint64_t> missed;
+    SetWatch::Missed(container, missed);
+    Tracked* t = TrackedOf(player);
+    if (!t) { return; }
+    try
+    {
+        FillEmptyEntries(*t, instance, now);   // (3.6.11)
+    }
+    catch (...)
+    {
+        Log.Line(L"Level sets: an error while filling " + t->Spec + L"'s set entries");
+    }
+    for (const uint64_t key : missed)
+    {
+        const auto item = std::make_pair(container, key);
+        if (std::find(Watch::Done.begin(), Watch::Done.end(), item) != Watch::Done.end()) { continue; }
+        Watch::Done.push_back(item);
+        if (!GiveFolderSet(*t, container, key)) { Watch::Pending.push_back(item); }
+    }
+}
+
+// The character's ability changed (in battle, its form `form`): the effects of the ability it ended stop, those of the new
+// one play (until it ends).
+void AbilityEffects(Tracked& t, const Form& form, const std::wstring& ability, uint64_t now)
+{
+    if (!t.AbilityFx.empty())
+    {
+        StopEffects(t.Character, Group::Ability, now);
+        t.AbilityFx.clear();
+    }
+    if (ability.empty() || form.AbilityEffects.empty()) { return; }
+    UObject* mesh = MeshOf(t.Character);
+    int played = 0;
+    for (const auto& entry : form.AbilityEffects)
+    {
+        if (!entry.Matches(ability)) { continue; }
+        PlayEffects(t.Character, mesh, entry.Effects, Group::Ability, 0.0f, now);
+        played += static_cast<int>(entry.Effects.size());
+    }
+    if (played)
+    {
+        t.AbilityFx = ability;
+        static int said = 0;
+        if (++said <= 20) { Log.Line(L"Forms: " + t.Spec + L": " + std::to_wstring(played) + L" effect(s) while " + ability + L" runs (" + form.Name + L")"); }
+    }
+}
+
+// ---- (3.6.16) a form's battle camera ("camera", "ability_cameras") ------------------------------------------------------
+// A big body (Bizarro Sephiroth) fills the screen at the game's camera distance. While the character in charge is in a form
+// with a camera, a camera modifier of the mod's (UCameraModifier, added to the player's camera manager with
+// AddNewCameraModifier) moves the game's camera back along its view and up, and widens it; while one of the form's
+// "ability_cameras" abilities runs (a summon called: M_SMN_*) by that entry's amounts instead. The game runs the modifier's
+// BlueprintModifyCamera every frame through ProcessEvent (after it placed the camera, cutscene cameras of battle included):
+// the mod's ProcessEvent callback writes the moved view into its out parameters. The amounts blend in and out (each
+// camera's "blend" seconds). A trace from the game's camera to the moved one (the camera collision channel) keeps it in
+// front of walls.
+namespace Dirge   // (3.7: the shooter's camera goes through FormCam's modifier)
+{
+bool OwnsCamera();
+void Camera(uint8_t* p);
+} // namespace Dirge
+
+namespace FormCam
+{
+using SkelCompat::FormCamera;
+bool Looked = false;
+bool Usable = false;
+UClass* ModifierClass = nullptr;   // /Script/Engine.CameraModifier
+UFunction* AddModifier = nullptr;  // PlayerCameraManager:AddNewCameraModifier
+UFunction* RemoveModifier = nullptr;   // PlayerCameraManager:RemoveCameraModifier
+UFunction* Modify = nullptr;       // CameraModifier:BlueprintModifyCamera (the game calls it every frame)
+UFunction* Trace = nullptr;        // KismetSystemLibrary:LineTraceSingle
+UObject* Kismet = nullptr;
+int32_t OffDelta = -1, OffNewLocation = -1, OffNewRotation = -1, OffNewFov = -1;   // in BlueprintModifyCamera's parameters
+int32_t OffHitTime = -1;           // FHitResult.Time
+UObject* Modifier = nullptr;       // ours, on Manager
+UObject* Manager = nullptr;
+UObject* Character = nullptr;      // the character in charge (the trace ignores it)
+FormCamera Want;                   // what the frame work asks for (Set false: the game's camera)
+float Blend = 0.6f;                // the blend going on (the last camera's, for the way back)
+float Distance = 0.0f, Height = 0.0f, Fov = 0.0f;   // the amounts on now
+uint64_t Calls = 0;                // BlueprintModifyCamera calls on ours
+uint64_t AddedAt = 0;
+bool QuietSaid = false;
+std::wstring Said;                 // the log's last camera line
+
+bool LookUpOnce()
+{
+    if (Looked) { return Usable; }
+    Looked = true;
+    ModifierClass = FindClass(L"/Script/Engine.CameraModifier");
+    AddModifier = Fn(L"/Script/Engine.PlayerCameraManager:AddNewCameraModifier");
+    RemoveModifier = Fn(L"/Script/Engine.PlayerCameraManager:RemoveCameraModifier");
+    Modify = Fn(L"/Script/Engine.CameraModifier:BlueprintModifyCamera");
+    Trace = Fn(L"/Script/Engine.KismetSystemLibrary:LineTraceSingle");
+    Kismet = FindObjectByPath(L"/Script/Engine.Default__KismetSystemLibrary");
+    const auto param = [](UFunction* fn, const wchar_t* name, int32_t size) {
+        FProperty* property = fn ? FindField(fn, name) : nullptr;
+        if (!property || (size > 0 && property->GetElementSize() != size)) { return -1; }
+        const int32_t offset = property->GetOffset_Internal();
+        return offset >= 0 && offset + property->GetElementSize() <= fn->GetParmsSize() ? offset : -1;
+    };
+    OffDelta = param(Modify, L"DeltaTime", 4);
+    OffNewLocation = param(Modify, L"NewViewLocation", 12);
+    OffNewRotation = param(Modify, L"NewViewRotation", 12);
+    OffNewFov = param(Modify, L"NewFOV", 4);
+    if (Trace)
+    {
+        if (FProperty* hit = FindField(Trace, L"OutHit"); hit && TypeOf(hit) == L"StructProperty")
+        {
+            if (UStruct* type = static_cast<FStructProperty*>(hit)->GetStruct())
+            {
+                const int32_t time = FieldOffset(type, L"Time", {L"FloatProperty"}, 4);
+                if (time >= 0) { OffHitTime = hit->GetOffset_Internal() + time; }
+            }
+        }
+    }
+    std::wstring missing;
+    for (const auto& [found, what] : std::initializer_list<std::pair<bool, const wchar_t*>>{
+             {ModifierClass != nullptr, L"CameraModifier"}, {AddModifier != nullptr, L"AddNewCameraModifier"},
+             {Modify != nullptr && OffDelta >= 0 && OffNewLocation >= 0 && OffNewRotation >= 0 && OffNewFov >= 0, L"BlueprintModifyCamera"},
+             {A.OffCameraManager >= 0, L"PlayerController.PlayerCameraManager"}})
+    {
+        if (!found) { missing += (missing.empty() ? L"" : L", ") + std::wstring(what); }
+    }
+    Usable = missing.empty();
+    Log.Line(L"Forms camera: " + (Usable ? std::wstring(L"ready") : L"OFF (not found: " + missing + L")") +
+             (Trace && Kismet && OffHitTime >= 0 ? std::wstring{} : std::wstring(L"; without the wall check (LineTraceSingle)")));
+    return Usable;
+}
+
+bool IsOurs(UObject* context) { return context && context == Modifier; }
+
+std::wstring Text(const FormCamera& c)
+{
+    return Fixed(c.Distance) + L" cm back, " + Fixed(c.Height) + L" cm up" + (c.Fov != 0.0f ? L", " + Fixed(c.Fov) + L" degrees wider" : std::wstring{});
+}
+
+// The frame work: what the camera should be now (the character in charge, its form and ability). `hold`: a form's entrance
+// shot plays (its own camera: the game's view as the entrance has it).
+void Frame(UObject* leader, const Tracked* t, bool hold, uint64_t now)
+{
+    FormCamera want;
+    std::wstring why;
+    if (hold)
+    {
+        Distance = Height = Fov = 0.0f;
+    }
+    else if (t && t->Row && t->Form >= 0 && static_cast<size_t>(t->Form) < t->Row->Forms.List.size())
+    {
+        const Form& form = t->Row->Forms.List[static_cast<size_t>(t->Form)];
+        want = form.Camera;
+        why = form.Name;
+        for (const auto& entry : form.AbilityCameras)
+        {
+            if (entry.Matches(t->Ability))
+            {
+                want = entry.Camera;
+                why = form.Name + L" " + t->Ability;
+                break;
+            }
+        }
+    }
+    const bool wanted = want.Set && (want.Distance != 0.0f || want.Height != 0.0f || want.Fov != 0.0f);
+    const bool on = Distance != 0.0f || Height != 0.0f || Fov != 0.0f;
+    const bool shooter = Dirge::OwnsCamera();   // (3.7)
+    if (!wanted && !on && !shooter && !Modifier) { return; }
+    if (!LookUpOnce()) { return; }
+    if (wanted) { Blend = want.Blend; }
+    Want = wanted ? want : FormCamera{};
+    Character = leader;
+    const std::wstring line = (wanted ? why + L": " + Text(want) : std::wstring(L"the game's camera")) + (shooter ? L" (the shooter's view over it)" : L"");
+    if (line != Said)
+    {
+        Said = line;
+        static int said = 0;
+        if (said++ < 40) { Log.Line(L"Forms camera: " + line); }
+    }
+    // the modifier, on the camera manager of the moment
+    if (!World || !IsLive(World)) { World = UObjectGlobals::FindFirstOf(L"GameInstance"); }
+    UObject* controller = World ? Controller(World) : nullptr;
+    UObject* manager = controller && IsLive(controller) ? ObjectAt(controller, A.OffCameraManager) : nullptr;
+    if (manager && !IsLive(manager)) { manager = nullptr; }
+    if (Modifier && (!IsLive(Modifier) || Manager != manager))
+    {
+        Modifier = nullptr;   // (a new map, a new camera manager)
+        Distance = Height = Fov = 0.0f;
+    }
+    if (!Modifier && (wanted || shooter) && manager)
+    {
+        Block made = Invoke(manager, AddModifier, {Arg::Obj(ModifierClass)});
+        Modifier = made.Ok ? made.Get<UObject*>() : nullptr;
+        Manager = manager;
+        Calls = 0;
+        AddedAt = now;
+        QuietSaid = false;
+        Log.Line(L"Forms camera: " + (Modifier ? L"a camera modifier on " + ShortName(manager) + L" (" + ShortName(Modifier) + L")"
+                                               : std::wstring(L"the camera manager made no camera modifier: the game's camera stays")));
+    }
+    if (Modifier && !QuietSaid && Calls == 0 && now - AddedAt > 3000)
+    {
+        QuietSaid = true;
+        Log.Line(L"Forms camera: the game has not run the camera modifier in 3 s (its camera does not go through camera modifiers?)");
+    }
+    // back to the game's camera, all the way: the modifier goes
+    if (Modifier && !wanted && !on && !shooter)
+    {
+        if (RemoveModifier && Manager && IsLive(Manager)) { Invoke(Manager, RemoveModifier, {Arg::Obj(Modifier)}); }
+        Modifier = nullptr;
+        Manager = nullptr;
+    }
+}
+
+// The form's camera: the view moved back and up from the game's.
+void ApplyForm(uint8_t* p, float dt)
+{
+    const float tau = std::max(0.02f, Blend / 3.0f);   // (95% there after the blend's seconds)
+    const float k = Blend <= 0.0f ? 1.0f : 1.0f - std::exp(-dt / tau);
+    Distance += (Want.Distance - Distance) * k;
+    Height += (Want.Height - Height) * k;
+    Fov += (Want.Fov - Fov) * k;
+    if (!Want.Set && std::fabs(Distance) < 0.5f && std::fabs(Height) < 0.5f && std::fabs(Fov) < 0.05f)
+    {
+        Distance = Height = Fov = 0.0f;
+        return;
+    }
+    Vec3 at{};
+    float rotation[3]{};   // FRotator: Pitch, Yaw, Roll
+    float fov = 0.0f;
+    std::memcpy(&at, p + OffNewLocation, sizeof(at));
+    std::memcpy(rotation, p + OffNewRotation, sizeof(rotation));
+    std::memcpy(&fov, p + OffNewFov, sizeof(fov));
+    if (!std::isfinite(at.X) || !std::isfinite(at.Y) || !std::isfinite(at.Z) || !std::isfinite(rotation[0]) || !std::isfinite(rotation[1])) { return; }
+    constexpr float Rad = 3.14159265f / 180.0f;
+    const float cp = std::cos(rotation[0] * Rad), sp = std::sin(rotation[0] * Rad), cy = std::cos(rotation[1] * Rad), sy = std::sin(rotation[1] * Rad);
+    Vec3 moved{at.X - cp * cy * Distance, at.Y - cp * sy * Distance, at.Z - sp * Distance + Height};
+    // a wall between the game's camera and the moved one: in front of it
+    if (Trace && Kismet && OffHitTime >= 0 && Character && IsLive(Character))
+    {
+        Block block(Trace);
+        uint8_t* context = block.Named(L"WorldContextObject", 8);
+        uint8_t* start = block.Named(L"Start", 12);
+        uint8_t* end = block.Named(L"End", 12);
+        uint8_t* channel = block.Named(L"TraceChannel", 1);
+        uint8_t* self = block.Named(L"bIgnoreSelf", 1);
+        if (context && start && end && channel && self)
+        {
+            std::memcpy(context, &Character, sizeof(Character));
+            std::memcpy(start, &at, sizeof(at));
+            std::memcpy(end, &moved, sizeof(moved));
+            *channel = 1;   // TraceTypeQuery2: the camera channel
+            *self = 1;      // (the character in charge is not a wall)
+            Kismet->ProcessEvent(Trace, block.Bytes);
+            if (block.Get<uint8_t>())
+            {
+                float time = 1.0f;
+                std::memcpy(&time, block.Bytes + OffHitTime, sizeof(time));
+                const float dx = moved.X - at.X, dy = moved.Y - at.Y, dz = moved.Z - at.Z;
+                const float length = std::sqrt(dx * dx + dy * dy + dz * dz);
+                if (std::isfinite(time) && length > 1.0f)
+                {
+                    const float keep = std::clamp((time * length - 30.0f) / length, 0.0f, 1.0f);   // (30 cm in front of the wall)
+                    moved = Vec3{at.X + dx * keep, at.Y + dy * keep, at.Z + dz * keep};
+                }
+            }
+        }
+    }
+    std::memcpy(p + OffNewLocation, &moved, sizeof(moved));
+    const float wider = std::clamp(fov + Fov, 5.0f, 170.0f);
+    std::memcpy(p + OffNewFov, &wider, sizeof(wider));
+}
+
+// The game's call of BlueprintModifyCamera on the mod's modifier (ProcessEvent, after it): the view moved.
+void Apply(void* params)
+{
+    if (!params || OffNewLocation < 0) { return; }
+    ++Calls;
+    auto* p = static_cast<uint8_t*>(params);
+    float dt = 0.0f;
+    std::memcpy(&dt, p + OffDelta, sizeof(dt));
+    if (!std::isfinite(dt) || dt < 0.0f) { dt = 0.0f; }
+    dt = std::min(dt, 0.25f);
+    ApplyForm(p, dt);
+    if (Dirge::OwnsCamera()) { Dirge::Camera(p); }   // (3.7) the shooter's view, over the game's and the form's
+}
+
+void Reset()
+{
+    Modifier = nullptr;
+    Manager = nullptr;
+    Character = nullptr;
+    Want = FormCamera{};
+    Distance = Height = Fov = 0.0f;
+    Said.clear();
+}
+} // namespace FormCam
+
+// (3.7.1) the cutscene weapons' helpers (defined further down) hold the shooter's gun in hand
+namespace CutWeapons
+{
+extern int32_t OffRoot, OffAttachParent, OffAttachSocket;
+extern UFunction* SocketExists;
+extern UObject* Scene;
+extern UFunction* AttachWeapon;
+bool LookUpOnce();
+std::vector<UObject*> WeaponsOf(UObject* character);
+std::vector<std::pair<uint64_t, uint8_t>> OwnSockets(UObject* instance);
+bool OnSocket(UObject* root, UObject*& parent, uint64_t& socket);
+void Attach(UObject* root, UObject* parent, uint64_t socket);
+} // namespace CutWeapons
+
+// ---------------------------------------------------------------------------------------
+// 3.7: the shooter. The character in charge fights the way Vincent does in Dirge of Cerberus (SkelCompat::Shooter).
+// The camera goes over its right shoulder: the game's camera still turns with the right stick, and the mod puts the view
+// behind the character's shoulder at its own distance (in the camera modifier FormCam adds), closer and narrower while
+// aiming, narrower still zoomed. In the middle of the screen is Dirge of Cerberus' reticle for the gun in hand, red over an
+// enemy and gold when a shot connects; at the bottom right its bullet counter (the sprites are PNG files in the mod's
+// folder, loaded with the game's ImportFileAsTexture2D). A shot is one of the game's own: a gunner's bullet damage source
+// made at the enemy under the reticle (EndBattleAPI CreateDamageSource: the game makes the bullet, the damage and the
+// reaction; the bullet starts at the row's part of the weapon: its muzzle), with a muzzle flash and a gunshot at the gun
+// (3.7.1: Vincent's own, slices of a cutscene's sound tracks). Each gun has a clip that empties and reloads (the ammo never
+// runs out), and the guns are switched between. The gun is in the character's hand while it is on (3.7.1). While it aims
+// or shoots, the character turns where it aims (3.7.1: on the move too), and Dirge of Cerberus' motions play in a slot of
+// its AnimBlueprint: its stance, walk and run (3.7.1; aiming: the aim stance and the run by direction) with the shot,
+// reload and switch motions over them. While it is on, the game does not see the shooter's buttons (Pad::Block), and a
+// DualSense's triggers pull like the gun in hand. In menus and the battle menu's slow motion the game gets every button
+// back; while a spell, a limit break or a summon runs, the game's camera has the view (and the game's rules the gun).
+// ---------------------------------------------------------------------------------------
+
+namespace Dirge
+{
+namespace Sh = SkelCompat::Shooter;
+
+struct Fns
+{
+    bool Looked = false;
+    UFunction* CreateDamage = nullptr;     // EndBattleAPI:CreateDamageSource
+    UFunction* Enemies = nullptr;          // EndBattleAPI:GetEnemyMembersRef (out TArray<AEndCharacter*>)
+    int32_t EnemiesOut = -1;
+    UFunction* TargetOff = nullptr;        // EndBattleAPI:IsDisableTarget
+    UFunction* TargetOf = nullptr;         // (3.7.6) EndBattleAPI:GetTargetCharacter (the game's target of a character)
+    UFunction* IsPlayer = nullptr;         // (3.7.6) EndBattleAPI:IsPlayer
+    UFunction* Bounds = nullptr;           // (3.7.6) Actor:GetActorBounds (an enemy's body zone)
+    UFunction* InDamage = nullptr;         // EndBattleAPI:IsDamage (a hit reaction)
+    UFunction* CameraRotation = nullptr;   // PlayerCameraManager:GetCameraRotation
+    UFunction* Dilation = nullptr;         // GameplayStatics:GetGlobalTimeDilation
+    UFunction* ComponentOf = nullptr;      // Actor:GetComponentByClass
+    UFunction* SetRotation = nullptr;      // Actor:K2_SetActorRotation
+    UFunction* GetRotation = nullptr;      // Actor:K2_GetActorRotation
+    UObject* Rendering = nullptr;          // Default__KismetRenderingLibrary
+    UFunction* ImportPng = nullptr;        // KismetRenderingLibrary:ImportFileAsTexture2D
+    UFunction* BrushTexture = nullptr;     // Image:SetBrushFromTexture
+    UFunction* Width = nullptr;            // Texture2D:Blueprint_GetSizeX
+    UFunction* Height = nullptr;           // Texture2D:Blueprint_GetSizeY
+    UFunction* SetPlayRate = nullptr;      // (3.7.1) AnimInstance:Montage_SetPlayRate
+    UFunction* MontagePlaying = nullptr;   // (3.7.1) AnimInstance:Montage_IsPlaying
+    UFunction* FadeOut = nullptr;          // (3.7.1) AudioComponent:FadeOut
+    UClass* AudioComponent = nullptr;
+    int32_t OffOrient = -1;                // (3.7.1) CharacterMovementComponent.bOrientRotationToMovement: its byte and mask
+    uint8_t OrientMask = 0;
+    // (3.7.3) the log: what the game makes of the shots and the guard
+    UFunction* IsGuard = nullptr;          // EndBattleAPI:IsGuard
+    UFunction* CharaHp = nullptr;          // EndBattleAPI:GetCharaHP
+    UFunction* SourceCount = nullptr;      // EndBattleAPI:GetDamageSourceCount
+    UFunction* SourceRow = nullptr;        // EndBattleAPI:GetDataObjectBattleDamageSource
+    // (3.7.4) the guns' upgrades: how many of each part the player holds
+    UObject* ItemApi = nullptr;            // Default__EndDataBaseDataBaseAPI
+    UFunction* ItemNum = nullptr;          // EndDataBaseDataBaseAPI:GetItemNumBP
+    int ItemBy = 0;                        // what it takes: 0 not looked at yet, 1 the item's name, 2 its id, 3 its name as a string, -1 neither
+    // (3.7.7) a form's gun model: the materials the game put over the gun's own (MeshComponent.OverrideMaterials), taken off
+    UFunction* SetMaterial = nullptr;      // PrimitiveComponent:SetMaterial
+    int32_t OffOverrides = -1;
+};
+Fns F;
+
+struct Marks
+{
+    UObject* Widget = nullptr;             // the UserWidget (rooted)
+    std::vector<Piece> Reticles;           // one per gun
+    Piece Scope, Frame, Icon, Digits[2], Ammo, Gun, Reload;
+    bool Sprites = false;                  // the bullet counter is made of the sprites (else words)
+    bool Visible = false;
+    int ShownGun = -1, ShownColor = -1, ShownAmmo = -1;
+    bool ShownScope = false, ShownReload = false;
+    uint64_t NextCheck = 0;                // (now and then: still on the screen?)
+    std::wstring Broken;                   // why it could not be shown (then it is not)
+};
+
+
+// (3.7.6) An enemy's hit zones, as the shooter last made them.
+struct Zoned
+{
+    UObject* Enemy = nullptr;
+    Sh::HitZone Zone;
+    bool Head = false;      // its crit spot is its head bone (else the top of its bounds)
+    bool Bounds = false;    // its body zone is its bounds (else a default size at its location)
+    uint64_t Ms = 0;
+};
+
+struct StateT
+{
+    bool Wanted = false;                   // a row has a shooter
+    bool Active = false;                   // on for the character in charge
+    UObject* Character = nullptr;
+    UClass* CharacterClass = nullptr;
+    const SkelCompat::AnimSetRow* Row = nullptr;
+    const Sh::Settings* Set = nullptr;
+    std::wstring Spec;
+    UObject* Gun = nullptr;                // the gun's mesh (where the muzzle flash goes), else the character's
+    UClass* GunClass = nullptr;
+    int Weapon = 0;
+    std::vector<int> Ammo;                 // each gun's clip (kept from battle to battle)
+    std::vector<Sh::Weapon> Guns;          // (3.7.4) the guns with the parts the player holds (made as it comes on)
+    std::vector<int> Clips;                // (3.7.4) the clip sizes the ammo was counted with (a bigger clip is filled)
+    std::vector<std::wstring> SaidUpgrades;   // (3.7.4) the upgrade lines in the log (each once, unless it changes)
+    double ReloadAt = -1.0, SwitchAt = -1.0, NextShot = 0.0, KickUntil = 0.0, HitUntil = 0.0, LastShot = -10.0;   // real seconds
+    bool FireHeld = false, Aiming = false, Zoomed = false;
+    bool Paused = false;                   // a menu or slow motion: the game has every button
+    bool Busy = false;                     // an ability or a hit reaction: no shot
+    bool Guarding = false;                 // (3.7.3) the ability it runs is the guard's ("guard_abilities"): the shots go on
+    bool Strafing = false;                 // (3.7.3) aiming: the game sees its guard button held (its guard-walk)
+    uint64_t StrafeSince = 0;              // when the guard button went on for the game
+    int SaidStrafes = 0, SaidGuards = 0, SaidChecks = 0, SaidCounts = 0;
+    // (3.7.3) the first hits: the enemy's HP as the shot left, looked at again a moment later
+    struct HitCheck
+    {
+        UObject* Enemy = nullptr;
+        UClass* Class = nullptr;
+        int32_t Before = -1;
+        uint64_t At = 0;
+        std::wstring Gun;
+    };
+    std::vector<HitCheck> HitChecks;
+    std::vector<std::wstring> CheckedRows; // (3.7.3) the guns' bullet rows looked for in the game's tables (once each)
+    bool Cinematic = false;                // an ability the shooter's camera does not stay on through: the game's camera
+    bool GameMontage = false;              // a montage of the game's plays: none of the shooter's motions
+    std::wstring Ability;
+    uint32_t LastDown = 0;
+    // the camera (FormCam's modifier calls Camera)
+    float Blend = 0.0f, AimBlend = 0.0f, ZoomBlend = 0.0f;
+    uint64_t CameraMs = 0;
+    bool ViewKnown = false;
+    Vec3 ViewAt;
+    float ViewYaw = 0.0f, ViewPitch = 0.0f;
+    uint64_t ViewMs = 0;
+    float Recoil = 0.0f;
+    // enemies
+    std::vector<UObject*> Enemies;
+    uint64_t EnemiesMs = 0;
+    int Target = -1;
+    // (3.7.6) each enemy's hit zones (made every 100 ms at most), the log of what it found, critical hits
+    std::vector<Zoned> Zones;
+    int64_t SaidEnemyKey = -1;
+    int SaidEnemies = 0, SaidZones = 0, SaidCrits = 0, Crits = 0;
+    double CritUntil = 0.0;
+    // the slot motion it plays (empty: none)
+    std::wstring Playing;
+    UObject* Montage = nullptr;            // the montage the last one made (a montage that is not it is the game's)
+    uint64_t PlayingUntil = 0;             // (0: a loop)
+    float PlayingRate = 1.0f;              // (3.7.1) the rate the loop plays at
+    uint64_t NextRateMs = 0, NextMontageMs = 0;
+    std::wstring FailedMotion;             // (3.7.1) a loop that did not play, and when it is tried again
+    uint64_t FailedUntil = 0;
+    int SaidMotions = 0;
+    // (3.7.1) facing where it aims on the move: the movement's turn-where-it-goes flag, off meanwhile
+    bool OrientOff = false, OrientWas = false;
+    float FacedYaw = 0.0f;                 // the yaw it was turned to last
+    bool Faced = false;
+    int Fights = 0;                        // frames the game turned it away from the aim on the move
+    bool NoStrafe = false;                 // the game keeps turning it where it goes: it does not face the aim on the move
+    // (3.7.1) the gun in hand: the weapons put on the gun socket, and where the game had them
+    struct HeldWeapon
+    {
+        UObject* Weapon = nullptr;
+        UClass* Class = nullptr;
+        UObject* Parent = nullptr;
+        uint64_t Socket = 0;
+    };
+    std::vector<HeldWeapon> HeldWeapons;
+    std::vector<UObject*> Weapons;         // the character's weapons (looked at twice a second)
+    uint64_t WeaponsMs = 0;
+    uint64_t OnMs = 0;                     // (3.7.2) when the shooter came on (the log: a gun found late, or none)
+    bool NoGunSaid = false;
+    int SaidGuns = 0;
+    uint64_t GunSocket = 0;                // the gun socket (0: none, or the model has none)
+    bool GunSocketChecked = false;
+    int GunMoves = 0, SaidHolds = 0;
+    // (3.7.1) the gunshots playing (slices of longer sounds stop after their length)
+    struct ShotSound
+    {
+        UObject* Component = nullptr;
+        UClass* Class = nullptr;
+        uint64_t StopAt = 0;
+    };
+    std::vector<ShotSound> Sounds;
+    uint64_t PadSummaryAt = 0;             // (3.7.1) the controller's summary in the log, 10 s after it comes on
+    // (3.7.7) a form's gun model ("gun_mesh") on the gun while its shooter is on: the gun's component, its own model, and
+    // the materials the game had put over its own model's (off meanwhile, kept to put back)
+    UObject* GunWorn = nullptr;
+    UClass* GunWornClass = nullptr;
+    UObject* GunModelWas = nullptr;
+    std::vector<UObject*> GunOverrides;
+    uint64_t NextGunCheckMs = 0;
+    int SaidGunModels = 0;
+    bool PlayingAir = false;               // (3.7.7) the loop playing is the one for the air
+    // timing
+    uint64_t LastMs = 0, NextWatchMs = 0, NextSpecMs = 0;
+    double LastGame = -1.0;
+    uint64_t GameStillSince = 0;
+    // the log
+    uint64_t Shots = 0, Hits = 0, CameraCalls = 0, Reloads = 0, Switches = 0;
+    int SaidShots = 0, SaidPauses = 0, SaidViews = 0, SaidMontages = 0;
+    bool CameraSaid = false, PadSaid = false;
+    std::vector<std::wstring> SaidAbilities, MissingClips;
+    UObject* LastView = nullptr;
+    std::wstring Broken;                   // switched off after an error
+};
+StateT S;
+Marks R;
+std::unordered_map<std::wstring, UObject*> Textures;   // <ui folder>/<name> -> texture (rooted; null: not there)
+
+// (3.7.4) gun k with the parts the player holds (the settings' gun until the shooter has come on)
+const Sh::Weapon& GunAt(size_t k)
+{
+    if (k < S.Guns.size()) { return S.Guns[k]; }
+    return S.Set->Weapons[std::min(k, S.Set->Weapons.size() - 1)];
+}
+const Sh::Weapon& InHand() { return GunAt(static_cast<size_t>(std::max(0, S.Weapon))); }
+
+float Wrap180(float a)
+{
+    a = std::fmod(a, 360.0f);
+    if (a > 180.0f) { a -= 360.0f; }
+    if (a < -180.0f) { a += 360.0f; }
+    return a;
+}
+
+Color ColorOf(const float c[4]) { return Color{c[0], c[1], c[2], c[3]}; }
+
+// ---- what it uses, found once ----
+void LookUpOnce()
+{
+    if (F.Looked) { return; }
+    F.Looked = true;
+    F.CreateDamage = Fn(L"/Script/EndGame.EndBattleAPI:CreateDamageSource");
+    F.Enemies = Fn(L"/Script/EndGame.EndBattleAPI:GetEnemyMembersRef");
+    if (F.Enemies)
+    {
+        for (FProperty* property : F.Enemies->ForEachPropertyInChain())
+        {
+            if (property && TypeOf(property) == L"ArrayProperty" && property->GetElementSize() == static_cast<int32_t>(sizeof(RawArray)))
+            {
+                F.EnemiesOut = property->GetOffset_Internal();
+                break;
+            }
+        }
+    }
+    F.TargetOff = Fn(L"/Script/EndGame.EndBattleAPI:IsDisableTarget");
+    F.TargetOf = Fn(L"/Script/EndGame.EndBattleAPI:GetTargetCharacter");
+    F.IsPlayer = Fn(L"/Script/EndGame.EndBattleAPI:IsPlayer");
+    F.Bounds = Fn(L"/Script/Engine.Actor:GetActorBounds");
+    F.InDamage = Fn(L"/Script/EndGame.EndBattleAPI:IsDamage");
+    F.CameraRotation = Fn(L"/Script/Engine.PlayerCameraManager:GetCameraRotation");
+    F.Dilation = Fn(L"/Script/Engine.GameplayStatics:GetGlobalTimeDilation");
+    F.ComponentOf = Fn(L"/Script/Engine.Actor:GetComponentByClass");
+    F.SetRotation = Fn(L"/Script/Engine.Actor:K2_SetActorRotation");
+    F.GetRotation = Fn(L"/Script/Engine.Actor:K2_GetActorRotation");
+    F.Rendering = FindObjectByPath(L"/Script/Engine.Default__KismetRenderingLibrary");
+    F.ImportPng = Fn(L"/Script/Engine.KismetRenderingLibrary:ImportFileAsTexture2D");
+    F.BrushTexture = Fn(L"/Script/UMG.Image:SetBrushFromTexture");
+    F.Width = Fn(L"/Script/Engine.Texture2D:Blueprint_GetSizeX");
+    F.Height = Fn(L"/Script/Engine.Texture2D:Blueprint_GetSizeY");
+    F.SetPlayRate = Fn(L"/Script/Engine.AnimInstance:Montage_SetPlayRate");
+    F.MontagePlaying = Fn(L"/Script/Engine.AnimInstance:Montage_IsPlaying");
+    F.FadeOut = Fn(L"/Script/Engine.AudioComponent:FadeOut");
+    F.AudioComponent = FindClass(L"/Script/Engine.AudioComponent");
+    F.IsGuard = Fn(L"/Script/EndGame.EndBattleAPI:IsGuard");                                  // (3.7.3)
+    F.CharaHp = Fn(L"/Script/EndGame.EndBattleAPI:GetCharaHP");
+    F.SourceCount = Fn(L"/Script/EndGame.EndBattleAPI:GetDamageSourceCount");
+    F.SourceRow = Fn(L"/Script/EndGame.EndBattleAPI:GetDataObjectBattleDamageSource");
+    F.ItemApi = FindObjectByPath(L"/Script/EndDataBase.Default__EndDataBaseDataBaseAPI");    // (3.7.4)
+    F.ItemNum = Fn(L"/Script/EndDataBase.EndDataBaseDataBaseAPI:GetItemNumBP");
+    F.SetMaterial = Fn(L"/Script/Engine.PrimitiveComponent:SetMaterial");                    // (3.7.7)
+    if (State.ComponentClass) { F.OffOverrides = FieldOffset(State.ComponentClass, L"OverrideMaterials", {L"ArrayProperty"}, static_cast<int32_t>(sizeof(RawArray))); }
+    if (UClass* movement = FindClass(L"/Script/Engine.CharacterMovementComponent"))
+    {
+        if (FProperty* flag = FindField(movement, L"bOrientRotationToMovement"); flag && TypeOf(flag) == L"BoolProperty")
+        {
+            auto* boolean = static_cast<FBoolProperty*>(flag);
+            const int32_t at = flag->GetOffset_Internal() + static_cast<int32_t>(boolean->GetByteOffset());
+            const uint8_t mask = static_cast<uint8_t>(boolean->GetFieldMask());
+            if (at >= 0 && at < movement->GetPropertiesSize() && mask != 0)
+            {
+                F.OffOrient = at;
+                F.OrientMask = mask;
+            }
+        }
+    }
+    CutWeapons::LookUpOnce();   // (the attachment fields: the gun in hand)
+    std::wstring missing;
+    for (const auto& [found, what] : std::initializer_list<std::pair<bool, const wchar_t*>>{
+             {F.CreateDamage != nullptr, L"CreateDamageSource (the shots do no damage)"},
+             {F.Enemies != nullptr && F.EnemiesOut >= 0, L"GetEnemyMembersRef (no enemy under the reticle)"},
+             {F.CameraRotation != nullptr, L"GetCameraRotation"},
+             {F.Dilation != nullptr, L"GetGlobalTimeDilation (the battle menu's slow motion is not seen)"},
+             {F.ImportPng != nullptr && F.Rendering != nullptr && F.BrushTexture != nullptr, L"ImportFileAsTexture2D / SetBrushFromTexture (the reticle in words)"},
+             {F.SetRotation != nullptr && F.GetRotation != nullptr, L"the actor's rotation (it does not turn to aim)"},
+             {F.ComponentOf != nullptr, L"GetComponentByClass (the muzzle flash at the character)"},
+             {F.OffOrient >= 0, L"bOrientRotationToMovement (it does not face the aim on the move)"},
+             {CutWeapons::OffRoot >= 0 && CutWeapons::OffAttachParent >= 0 && CutWeapons::OffAttachSocket >= 0 && A.AttachTo != nullptr,
+              L"the attachment fields (the gun stays where the game puts it)"},
+             {FormCam::LookUpOnce(), L"the camera modifier (the game's camera stays)"}})
+    {
+        if (!found) { missing += (missing.empty() ? L"" : L", ") + std::wstring(what); }
+    }
+    Log.Line(L"Shooter: ready" + (missing.empty() ? std::wstring{} : L"; NOT found: " + missing));
+}
+
+bool Configured()
+{
+    return std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) {
+        return r.Shooting.On ||
+               std::any_of(r.Forms.List.begin(), r.Forms.List.end(), [](const SkelCompat::Form& f) { return f.ShooterSet && f.ShooterSet->On; });   // (3.7.7)
+    });
+}
+
+// The shooter of the character (its row's, unless the form it is in has none, or (3.7.7) one of its own), its row and
+// CharaSpec row.
+const Sh::Settings* SettingsOf(UObject* character, const SkelCompat::AnimSetRow*& row, std::wstring& spec)
+{
+    row = nullptr;
+    spec = CharaSpecRowOf(character);
+    if (spec.empty()) { return nullptr; }
+    const SkelCompat::AnimSetRow* found = State.Config.FindAnimSetRow(SkelCompat::CharacterPackPath(spec));
+    if (!found) { return nullptr; }
+    const Sh::Settings* set = found->Shooting.On && !found->Shooting.Weapons.empty() ? &found->Shooting : nullptr;
+    if (const Tracked* t = TrackedOf(character); t && t->Row == found && t->Form >= 0 && static_cast<size_t>(t->Form) < found->Forms.List.size())
+    {
+        const SkelCompat::Form& form = found->Forms.List[static_cast<size_t>(t->Form)];
+        if (form.Shooting == 0) { return nullptr; }
+        if (form.ShooterSet && form.ShooterSet->On && !form.ShooterSet->Weapons.empty()) { set = form.ShooterSet.get(); }   // (3.7.7)
+    }
+    if (!set) { return nullptr; }
+    row = found;
+    return set;
+}
+
+// ---- the pictures ----
+// A PNG of the mod's folder as a texture of the game's (kept), or null.
+UObject* Texture(const std::wstring& ui, const std::wstring& name)
+{
+    const std::wstring key = Folded(ui + L"/" + name);
+    if (const auto it = Textures.find(key); it != Textures.end()) { return it->second; }
+    UObject* texture = nullptr;
+    std::wstring why;
+    const fs::path file = State.ModDirectory / ui / (name + L".png");
+    std::error_code ec;
+    if (!F.ImportPng || !F.Rendering) { why = L"the game's ImportFileAsTexture2D was not found"; }
+    else if (!fs::exists(file, ec)) { why = L"not there"; }
+    else
+    {
+        Block block(F.ImportPng);
+        uint8_t* context = block.Named(L"WorldContextObject", 8);
+        uint8_t* path = block.Named(L"Filename", static_cast<int32_t>(sizeof(RawArray)));
+        if (!context || !path) { why = L"ImportFileAsTexture2D takes other parameters"; }
+        else
+        {
+            UObject* who = S.Character ? S.Character : World;   // (it does not use it)
+            std::memcpy(context, &who, sizeof(who));
+            new (path) FString(file.wstring().c_str());
+            F.Rendering->ProcessEvent(F.ImportPng, block.Bytes);
+            reinterpret_cast<FString*>(path)->~FString();
+            texture = block.Get<UObject*>();
+            if (!texture) { why = L"the game could not read it"; }
+        }
+    }
+    if (texture) { texture->SetRootSet(); }
+    else { Log.Line(L"Shooter: picture " + file.wstring() + L": " + why); }
+    Textures[key] = texture;
+    return texture;
+}
+
+Vec2 SizeOf(UObject* texture, float scale)
+{
+    float w = 128.0f, h = 128.0f;
+    if (texture && F.Width && F.Height)
+    {
+        Block bw = Invoke(texture, F.Width, {});
+        Block bh = Invoke(texture, F.Height, {});
+        if (bw.Ok && bh.Ok && bw.Get<int32_t>() > 0 && bh.Get<int32_t>() > 0)
+        {
+            w = static_cast<float>(bw.Get<int32_t>());
+            h = static_cast<float>(bh.Get<int32_t>());
+        }
+    }
+    return Vec2{w * scale, h * scale};
+}
+
+// A picture at (x, y) from the `anchor` point of the screen (fractions of it), its `align` point there.
+Piece Picture(UObject* tree, UObject* canvas, UObject* texture, float x, float y, Vec2 size, Vec2 align, Vec2 anchor)
+{
+    Piece piece;
+    piece.Widget = Construct(A.Image, tree, L"Image");
+    Invoke(piece.Widget, F.BrushTexture, {Arg::Obj(texture), Arg::B(false)});
+    Invoke(piece.Widget, A.ImageSize, {Arg::S(size)});
+    piece.Slot = Place(canvas, piece.Widget, x, y, &size, align, anchor);
+    return piece;
+}
+
+bool MarksOnScreen()
+{
+    if (!R.Widget || !A.InViewport) { return R.Widget != nullptr; }
+    Block result = Invoke(R.Widget, A.InViewport, {});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+// The guns' reticles, the scope, the bullet counter.
+void BuildMarks()
+{
+    UObject* owner = WidgetOwner();
+    if (R.Widget) { R.Widget->ClearRootSet(); }
+    const std::wstring broken = R.Broken;
+    R = Marks{};
+    R.Broken = broken;
+    const Sh::Settings& set = *S.Set;
+    UObject* widget = Construct(A.UserWidget, owner, L"UserWidget");
+    widget->SetRootSet();
+    R.Widget = widget;
+    UObject* tree = Construct(A.WidgetTree, widget, L"WidgetTree");
+    std::memcpy(reinterpret_cast<uint8_t*>(widget) + A.OffWidgetTree, &tree, sizeof(tree));
+    UObject* canvas = Construct(A.Canvas, tree, L"CanvasPanel");
+    std::memcpy(reinterpret_cast<uint8_t*>(tree) + A.OffRootWidget, &canvas, sizeof(canvas));
+    const bool pictures = A.Image && F.BrushTexture && A.ImageSize;
+    const Vec2 middle{0.5f, 0.5f};
+    const float hud = set.HudScale;
+    // the scope (under the reticle), zoomed
+    if (UObject* scope = pictures ? Texture(set.Ui, L"scope_ring") : nullptr) { R.Scope = Picture(tree, canvas, scope, 0, 0, SizeOf(scope, 1.15f * hud), middle, middle); }
+    // a reticle for each gun
+    for (const auto& w : set.Weapons)
+    {
+        UObject* texture = pictures ? Texture(set.Ui, w.Reticle) : nullptr;
+        R.Reticles.push_back(texture ? Picture(tree, canvas, texture, 0, 0, SizeOf(texture, set.ReticleScale * hud), middle, middle)
+                                     : Words(tree, canvas, L"+", static_cast<int32_t>(40 * hud), Plain, 0, 0, middle, middle));
+    }
+    // the bullet counter at the bottom right: its frame, a bullet, two digits
+    const Vec2 corner{1.0f, 1.0f};
+    UObject* frame = pictures ? Texture(set.Ui, L"counter_frame") : nullptr;
+    UObject* icon = pictures ? Texture(set.Ui, L"bullet_icon") : nullptr;
+    bool digits = pictures;
+    for (int d = 0; d < 10 && digits; ++d) { digits = Texture(set.Ui, L"digit_" + std::to_wstring(d)) != nullptr; }
+    const float k = 0.75f * hud, margin = 40.0f * hud;
+    if (set.Ammo && frame && icon && digits)
+    {
+        const Vec2 frameSize = SizeOf(frame, k);
+        R.Frame = Picture(tree, canvas, frame, -margin, -margin, frameSize, corner, corner);
+        const float left = -margin - frameSize.X, row = -margin - frameSize.Y * 0.5f;
+        R.Icon = Picture(tree, canvas, icon, left + 22.0f * hud, row, SizeOf(icon, 0.6f * hud), Vec2{0.0f, 0.5f}, corner);
+        UObject* zero = Texture(set.Ui, L"digit_0");
+        const Vec2 digit = SizeOf(zero, k);
+        for (int d = 0; d < 2; ++d) { R.Digits[d] = Picture(tree, canvas, zero, left + 70.0f * hud + d * (digit.X - 2.0f * hud), row - 1.0f * hud, digit, Vec2{0.0f, 0.5f}, corner); }
+        R.Sprites = true;
+        R.Gun = Words(tree, canvas, L"", static_cast<int32_t>(20 * hud), Title, -margin, -margin - frameSize.Y - 6.0f * hud, corner, corner);
+    }
+    else
+    {
+        if (set.Ammo) { R.Ammo = Words(tree, canvas, L"", static_cast<int32_t>(30 * hud), Title, -margin, -margin, corner, corner); }
+        R.Gun = Words(tree, canvas, L"", static_cast<int32_t>(20 * hud), Title, -margin, -margin - 40.0f * hud, corner, corner);
+    }
+    R.Reload = Words(tree, canvas, L"RELOAD", static_cast<int32_t>(22 * hud), Hint, 0, 70.0f * hud, middle, middle);
+    SetVisible(R.Reload.Widget, false);
+    SetVisible(R.Scope.Widget, false);
+    for (auto& piece : R.Reticles) { SetVisible(piece.Widget, false); }
+    Invoke(widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)});
+    Invoke(widget, A.AddToViewport, {Arg::I(50)});
+    const size_t drawn = static_cast<size_t>(std::count_if(R.Reticles.begin(), R.Reticles.end(), [](const Piece& p) { return p.Widget && p.Widget->IsA(A.Image); }));
+    Log.Line(L"Shooter: the reticles (" + std::to_wstring(drawn) + L" of " + std::to_wstring(R.Reticles.size()) + L" Dirge of Cerberus sprites" +
+             (R.Scope.Widget ? L", the scope" : L"") + L") and the bullet counter (" + (R.Sprites ? L"sprites" : L"words") + L") from " +
+             (State.ModDirectory / set.Ui).wstring());
+}
+
+void HideMarks()
+{
+    if (R.Visible && R.Widget) { Invoke(R.Widget, A.SetVisibility, {Arg::U8(VisibilityCollapsed)}); }
+    R.Visible = false;
+}
+
+void SetDigit(const Piece& piece, int digit)
+{
+    if (!piece.Widget) { return; }
+    if (UObject* texture = Texture(S.Set->Ui, L"digit_" + std::to_wstring(digit))) { Invoke(piece.Widget, F.BrushTexture, {Arg::Obj(texture), Arg::B(false)}); }
+}
+
+void ShowMarks(double t, uint64_t now)
+{
+    if (!R.Broken.empty() || !A.UserWidget) { return; }
+    try
+    {
+        if (R.Widget && now >= R.NextCheck)
+        {
+            R.NextCheck = now + 1000;
+            if (!IsLive(R.Widget) || !MarksOnScreen()) { R.Widget = nullptr; }   // (the game took it off the screen)
+        }
+        if (!R.Widget)
+        {
+            BuildMarks();
+            R.NextCheck = now + 1000;
+        }
+        const Sh::Settings& set = *S.Set;
+        const Sh::Weapon& w = InHand();
+        if (S.Weapon != R.ShownGun)
+        {
+            for (size_t k = 0; k < R.Reticles.size(); ++k) { SetVisible(R.Reticles[k].Widget, static_cast<int>(k) == S.Weapon); }
+            SetWords(R.Gun, w.Name);
+            R.ShownGun = S.Weapon;
+            R.ShownColor = -1;
+        }
+        const int color = t < S.CritUntil ? 3 : (t < S.HitUntil ? 2 : (S.Target >= 0 ? 1 : 0));
+        if (color != R.ShownColor && static_cast<size_t>(S.Weapon) < R.Reticles.size())
+        {
+            const Color c = ColorOf(color == 3 ? set.CritColor : (color == 2 ? set.HitColor : (color == 1 ? set.EnemyColor : set.ReticleColor)));
+            const Piece& mark = R.Reticles[static_cast<size_t>(S.Weapon)];
+            if (mark.Widget && mark.Widget->IsA(A.Image)) { Invoke(mark.Widget, A.ImageColor, {Arg::S(c)}); }
+            else { SetWordsColor(mark, c); }
+            R.ShownColor = color;
+        }
+        const bool scope = S.Aiming && S.Zoomed;
+        if (scope != R.ShownScope)
+        {
+            SetVisible(R.Scope.Widget, scope);
+            R.ShownScope = scope;
+        }
+        const bool reloading = S.ReloadAt >= 0.0;
+        if (reloading != R.ShownReload)
+        {
+            SetVisible(R.Reload.Widget, reloading);
+            R.ShownReload = reloading;
+        }
+        const int ammo = std::clamp(S.Ammo[static_cast<size_t>(S.Weapon)], 0, 99);
+        if (set.Ammo && ammo != R.ShownAmmo)
+        {
+            if (R.Sprites)
+            {
+                SetDigit(R.Digits[0], ammo / 10);
+                SetDigit(R.Digits[1], ammo % 10);
+            }
+            else { SetWords(R.Ammo, std::to_wstring(ammo) + L" / \x221E"); }
+            R.ShownAmmo = ammo;
+        }
+        if (!R.Visible)
+        {
+            Invoke(R.Widget, A.SetVisibility, {Arg::U8(VisibilityShown)});
+            R.Visible = true;
+        }
+    }
+    catch (const std::exception& e)
+    {
+        R.Broken = SkelCompat::Widen(e.what());
+    }
+    catch (...)
+    {
+        R.Broken = L"error";
+    }
+    if (!R.Broken.empty()) { Log.Line(L"Shooter: the reticle cannot be shown (" + R.Broken + L")"); }
+}
+
+// ---- where the reticle points ----
+// The view: the shooter's camera's last frame, else the game's camera.
+bool View(Vec3& at, float& yaw, float& pitch)
+{
+    if (S.ViewKnown && NowMs() - S.ViewMs < 250)
+    {
+        at = S.ViewAt;
+        yaw = S.ViewYaw;
+        pitch = S.ViewPitch;
+        return true;
+    }
+    UObject* controller = Controller(S.Character);
+    UObject* manager = controller && A.OffCameraManager >= 0 ? ObjectAt(controller, A.OffCameraManager) : nullptr;
+    if (!manager || !IsLive(manager) || !A.CameraAt || !F.CameraRotation) { return false; }
+    Block location = Invoke(manager, A.CameraAt, {});
+    Block rotation = Invoke(manager, F.CameraRotation, {});
+    if (!location.Ok || !rotation.Ok) { return false; }
+    at = location.Get<Vec3>();
+    const Rot r = rotation.Get<Rot>();
+    yaw = r.Yaw;
+    pitch = Wrap180(r.Pitch);
+    return true;
+}
+
+// (3.7.6) Whether a character is one of the party (the game's IsPlayer).
+bool IsPlayerChara(UObject* character)
+{
+    if (!F.IsPlayer || !A.Battle || !character) { return false; }
+    Block result = Invoke(A.Battle, F.IsPlayer, {Arg::Obj(character)});
+    return result.Ok && result.Get<uint8_t>() != 0;
+}
+
+void RefreshEnemies(uint64_t now)
+{
+    if (now < S.EnemiesMs) { return; }
+    S.EnemiesMs = now + 250;
+    S.Enemies.clear();
+    int listed = -1, dead = 0, off = 0;
+    if (F.Enemies && F.EnemiesOut >= 0 && A.Battle)
+    {
+        Block block(F.Enemies);
+        A.Battle->ProcessEvent(F.Enemies, block.Bytes);
+        RawArray list{};
+        std::memcpy(&list, block.Bytes + F.EnemiesOut, sizeof(list));
+        listed = list.Data ? list.Num : 0;
+        for (int32_t k = 0; k < list.Num && k < 64 && list.Data; ++k)
+        {
+            UObject* enemy = static_cast<UObject**>(list.Data)[k];
+            if (!StillThere(enemy, nullptr)) { continue; }
+            if (HitPoints(enemy) == 0)   // (one whose HP the game does not give, -1, stays)
+            {
+                ++dead;
+                continue;
+            }
+            if (F.TargetOff)
+            {
+                Block isOff = Invoke(A.Battle, F.TargetOff, {Arg::Obj(enemy)});
+                if (isOff.Ok && isOff.Get<uint8_t>() != 0)
+                {
+                    ++off;
+                    continue;
+                }
+            }
+            S.Enemies.push_back(enemy);
+        }
+        if (list.Data) { FMemory::Free(list.Data); }
+    }
+    // (3.7.6) none from the game's list (empty or not read; not when it has enemies the game says are not to be targeted):
+    // the game's own target of the character, when that is an enemy of the game's (EN..., EB...: not a summon, SU..., which
+    // the game can give as the target while it is out, nor the party)
+    UObject* theirs = nullptr;
+    if (S.Enemies.empty() && listed <= 0 && F.TargetOf && A.Battle && S.Character)
+    {
+        Block got = Invoke(A.Battle, F.TargetOf, {Arg::Obj(S.Character)});
+        theirs = got.Ok ? got.Get<UObject*>() : nullptr;
+        if (theirs == S.Character || !StillThere(theirs, nullptr) || HitPoints(theirs) == 0 || IsPlayerChara(theirs)) { theirs = nullptr; }
+        if (theirs)
+        {
+            const std::wstring name = ShortName(theirs);
+            if (name.rfind(L"EN", 0) != 0 && name.rfind(L"EB", 0) != 0) { theirs = nullptr; }
+        }
+        if (theirs) { S.Enemies.push_back(theirs); }
+    }
+    // the log: what it has to shoot at, when that changes (the first 12 changes)
+    const int64_t key = (static_cast<int64_t>(listed + 1) << 40) | (static_cast<int64_t>(dead) << 30) | (static_cast<int64_t>(off) << 20) |
+                        (static_cast<int64_t>(S.Enemies.size()) << 4) | (theirs ? 1 : 0);
+    if (key != S.SaidEnemyKey && S.SaidEnemies < 12)
+    {
+        S.SaidEnemyKey = key;
+        ++S.SaidEnemies;
+        std::wstring names;
+        for (size_t k = 0; k < S.Enemies.size() && k < 6; ++k) { names += (names.empty() ? L"" : L", ") + ShortName(S.Enemies[k]); }
+        Log.Line(L"Shooter: enemies: the game's list " + (listed < 0 ? std::wstring(F.Enemies ? L"NOT read" : L"NOT found (GetEnemyMembersRef)") : std::to_wstring(listed)) +
+                 (dead ? L", " + std::to_wstring(dead) + L" with no HP" : std::wstring{}) + (off ? L", " + std::to_wstring(off) + L" not to be targeted" : std::wstring{}) +
+                 (theirs ? L"; the game's target of the character instead: " + ShortName(theirs) : std::wstring{}) + L"; " + std::to_wstring(S.Enemies.size()) +
+                 L" to shoot at" + (names.empty() ? std::wstring{} : L" (" + names + L")"));
+    }
+}
+
+// (3.7.6) An enemy's hit zones: its body a capsule of its bounds (its colliding parts', else all of it; times "hit_scale"),
+// its crit spot its head bone (C_Head_a, C_Head or Head), else the top of its bounds.
+Zoned MakeZone(UObject* enemy)
+{
+    const Sh::Settings& set = *S.Set;
+    Zoned made;
+    made.Enemy = enemy;
+    Vec3 origin = LocationOf(enemy), extent{50.0f, 50.0f, 90.0f};
+    if (F.Bounds)
+    {
+        for (const bool colliding : {true, false})
+        {
+            Block block(F.Bounds);
+            uint8_t* only = block.Named(L"bOnlyCollidingComponents", 1);
+            uint8_t* at = block.Named(L"Origin", 12);
+            uint8_t* size = block.Named(L"BoxExtent", 12);
+            if (!only || !at || !size) { break; }
+            *only = colliding ? 1 : 0;
+            enemy->ProcessEvent(F.Bounds, block.Bytes);
+            Vec3 o{}, e{};
+            std::memcpy(&o, at, sizeof(o));
+            std::memcpy(&e, size, sizeof(e));
+            const bool fine = std::isfinite(o.X) && std::isfinite(o.Y) && std::isfinite(o.Z) && e.X > 5.0f && e.Y > 5.0f && e.Z > 5.0f && e.X < 5000.0f &&
+                              e.Y < 5000.0f && e.Z < 5000.0f;
+            if (fine)
+            {
+                origin = o;
+                extent = e;
+                made.Bounds = true;
+                break;
+            }
+        }
+    }
+    const float wide = std::max(extent.X, extent.Y);
+    const float radius = std::max(50.0f, wide * 0.9f) * set.HitScale;
+    const float half = std::max(0.0f, extent.Z * set.HitScale - radius * 0.5f);
+    made.Zone.Bottom = Sh::V3{origin.X, origin.Y, origin.Z - half};
+    made.Zone.Top = Sh::V3{origin.X, origin.Y, origin.Z + half};
+    made.Zone.Radius = radius;
+    if (set.Crit)
+    {
+        Vec3 spot{origin.X, origin.Y, origin.Z + extent.Z * 0.75f};
+        UObject* mesh = MeshOf(enemy);
+        if (mesh && A.SocketAt && A.ComponentAt)
+        {
+            Block base = Invoke(mesh, A.ComponentAt, {});
+            const Vec3 root = base.Ok ? base.Get<Vec3>() : Vec3{};
+            for (const wchar_t* bone : {L"C_Head_a", L"C_Head", L"Head"})
+            {
+                Block at = Invoke(mesh, A.SocketAt, {Arg::Nm(Name(bone))});
+                if (!at.Ok) { continue; }
+                const Vec3 p = at.Get<Vec3>();
+                const Vec3 d = VSub(p, root);
+                // (a bone the mesh does not have gives its root)
+                if (!std::isfinite(p.X) || !std::isfinite(p.Y) || !std::isfinite(p.Z) || d.X * d.X + d.Y * d.Y + d.Z * d.Z < 1.0f) { continue; }
+                spot = p;
+                made.Head = true;
+                break;
+            }
+        }
+        made.Zone.Crit = Sh::V3{spot.X, spot.Y, spot.Z};
+        made.Zone.CritRadius = std::max(22.0f, std::min(wide, extent.Z) * 0.3f) * set.CritScale;
+    }
+    return made;
+}
+
+const Sh::HitZone& ZoneFor(UObject* enemy, uint64_t now)
+{
+    for (auto& z : S.Zones)
+    {
+        if (z.Enemy != enemy) { continue; }
+        if (now < z.Ms + 100) { return z.Zone; }
+        z = MakeZone(enemy);
+        z.Ms = now;
+        return z.Zone;
+    }
+    if (S.Zones.size() >= 64) { S.Zones.erase(S.Zones.begin()); }
+    S.Zones.push_back(MakeZone(enemy));
+    Zoned& z = S.Zones.back();
+    z.Ms = now;
+    if (S.SaidZones < 6)
+    {
+        ++S.SaidZones;
+        Log.Line(L"Shooter: " + ShortName(enemy) + L"'s hit zones: its body " + Fixed(z.Zone.Radius) + L" cm around, " +
+                 Fixed(z.Zone.Top.Z - z.Zone.Bottom.Z + 2.0f * z.Zone.Radius) + L" cm tall (" + (z.Bounds ? L"its bounds" : L"NO bounds: a default size") +
+                 L"); its crit spot " + (S.Set->Crit ? Fixed(z.Zone.CritRadius) + L" cm around " + (z.Head ? L"its head" : L"the top of its bounds") : std::wstring(L"off")));
+    }
+    return z.Zone;
+}
+
+// The enemy a line from `eye` along `dir` goes to (its body, else within `assist` degrees of it), whether through its
+// crit spot (3.7.6), or none (-1).
+Sh::Picked PickEnemy(const Vec3& eye, const Sh::V3& dir, float assist, float range, uint64_t now)
+{
+    RefreshEnemies(now);
+    std::vector<Sh::HitZone> zones;
+    zones.reserve(S.Enemies.size());
+    for (UObject* enemy : S.Enemies) { zones.push_back(ZoneFor(enemy, now)); }
+    return Sh::PickZone(Sh::V3{eye.X, eye.Y, eye.Z}, dir, zones, assist, range);
+}
+
+// How far along from -> to the first wall is (0 to 1), or a negative number (none, or no trace).
+float WallAt(const Vec3& from, const Vec3& to)
+{
+    if (!FormCam::Trace || !FormCam::Kismet || FormCam::OffHitTime < 0 || !S.Character) { return -1.0f; }
+    Block block(FormCam::Trace);
+    uint8_t* context = block.Named(L"WorldContextObject", 8);
+    uint8_t* start = block.Named(L"Start", 12);
+    uint8_t* end = block.Named(L"End", 12);
+    uint8_t* channel = block.Named(L"TraceChannel", 1);
+    uint8_t* self = block.Named(L"bIgnoreSelf", 1);
+    if (!context || !start || !end || !channel || !self) { return -1.0f; }
+    UObject* who = S.Character;
+    std::memcpy(context, &who, sizeof(who));
+    std::memcpy(start, &from, sizeof(from));
+    std::memcpy(end, &to, sizeof(to));
+    *channel = 1;   // TraceTypeQuery2: the camera channel
+    *self = 1;      // (the character is not a wall)
+    FormCam::Kismet->ProcessEvent(FormCam::Trace, block.Bytes);
+    if (!block.Get<uint8_t>()) { return -1.0f; }
+    float time = -1.0f;
+    std::memcpy(&time, block.Bytes + FormCam::OffHitTime, sizeof(time));
+    return std::isfinite(time) ? std::clamp(time, 0.0f, 1.0f) : -1.0f;
+}
+
+// ---- the gun ----
+// The gun's mesh (a weapon actor on the character), else the character's mesh.
+UObject* GunOf(UObject* character)
+{
+    UObject* gun = nullptr;
+    if (A.AttachedActors && F.ComponentOf && A.SkeletalMeshComponent)
+    {
+        Block block(A.AttachedActors);
+        uint8_t* list = block.Named(L"OutActors", static_cast<int32_t>(sizeof(RawArray)));
+        if (uint8_t* reset = block.Named(L"bResetArray", 1)) { *reset = 1; }
+        if (list)
+        {
+            character->ProcessEvent(A.AttachedActors, block.Bytes);
+            RawArray actors{};
+            std::memcpy(&actors, list, sizeof(actors));
+            for (int32_t k = 0; k < actors.Num && k < 64 && actors.Data && !gun; ++k)
+            {
+                UObject* actor = static_cast<UObject**>(actors.Data)[k];
+                if (!StillThere(actor, nullptr) || !IsWeapon(actor) || IsDamageSource(actor)) { continue; }
+                Block found = Invoke(actor, F.ComponentOf, {Arg::Obj(A.SkeletalMeshComponent)});
+                if (found.Ok) { gun = found.Get<UObject*>(); }
+            }
+            if (actors.Data) { FMemory::Free(actors.Data); }
+        }
+    }
+    return gun ? gun : MeshOf(character);
+}
+
+// (3.7.2) What is attached to a character (the log, when it has no gun to hold).
+std::wstring AttachedNames(UObject* character)
+{
+    if (!A.AttachedActors || !character) { return L"?"; }
+    Block block(A.AttachedActors);
+    uint8_t* list = block.Named(L"OutActors", static_cast<int32_t>(sizeof(RawArray)));
+    if (uint8_t* reset = block.Named(L"bResetArray", 1)) { *reset = 1; }
+    if (!list) { return L"?"; }
+    character->ProcessEvent(A.AttachedActors, block.Bytes);
+    RawArray actors{};
+    std::memcpy(&actors, list, sizeof(actors));
+    std::wstring text;
+    int shown = 0, more = 0;
+    for (int32_t k = 0; k < actors.Num && k < 64 && actors.Data; ++k)
+    {
+        UObject* actor = static_cast<UObject**>(actors.Data)[k];
+        if (!StillThere(actor, nullptr)) { continue; }
+        if (shown >= 12)
+        {
+            ++more;
+            continue;
+        }
+        ++shown;
+        text += (text.empty() ? L"" : L", ") + ShortName(actor) + (IsDamageSource(actor) ? L" (a damage source)" : IsWeapon(actor) ? L" (a weapon)" : L"");
+    }
+    if (actors.Data) { FMemory::Free(actors.Data); }
+    if (more) { text += L" (+" + std::to_wstring(more) + L" more)"; }
+    return text.empty() ? std::wstring(L"nothing") : text;
+}
+
+float LengthOf(UObject* animation, float fallback)
+{
+    if (!animation || State.OffSeqLength < 0) { return fallback; }
+    const float length = Field<float>(animation, State.OffSeqLength);
+    return std::isfinite(length) && length > 0.01f ? length : fallback;
+}
+
+// (3.7.7) The character flies (a form's "fly").
+bool Flying()
+{
+    const Tracked* t = S.Character ? TrackedOf(S.Character) : nullptr;
+    return t && t->Flying;
+}
+
+// (3.7.7) A motion's animation: in the air, the stance of the air (its whole name, "fly_stance") and the gun's shot and
+// reload of its fly set; else the gun's own (its set's).
+std::wstring MotionPath(const std::wstring& motion)
+{
+    const Sh::Weapon& w = InHand();
+    if (Flying())
+    {
+        if (!S.Set->FlyStance.empty() && motion == S.Set->FlyStance) { return S.Set->Plain(motion); }
+        if (!w.FlySet.empty() && (motion == S.Set->Shot || motion == S.Set->Reloading)) { return S.Set->FlyClip(w, motion); }
+    }
+    return S.Set->Clip(w, motion);
+}
+
+// A Dirge of Cerberus motion of the gun in hand in the shooter's slot (`loop`: until it is stopped).
+bool PlayMotion(const std::wstring& motion, float rate, bool loop, uint64_t now)
+{
+    if (!S.Set->Motions || !A.PlaySlotAnim || motion.empty() || S.Busy || S.GameMontage) { return false; }
+    const std::wstring path = MotionPath(motion);   // (3.7.7: the air's in the air)
+    UObject* animation = Need(path);
+    if (!animation)
+    {
+        if (std::find(S.MissingClips.begin(), S.MissingClips.end(), path) == S.MissingClips.end() && S.MissingClips.size() < 16)
+        {
+            S.MissingClips.push_back(path);
+            Log.Line(L"Shooter: motion " + ShortNameOfPath(path) + L" is not loaded (VincentDirgeMotions_P not installed?)");
+        }
+        return false;
+    }
+    UObject* instance = AnimInstanceOf(MeshOf(S.Character));
+    if (!instance) { return false; }
+    const uint64_t slot = Name(S.Set->Slot);
+    // PlaySlotAnimationAsDynamicMontage(Asset, SlotNodeName, BlendInTime, BlendOutTime, InPlayRate, LoopCount, BlendOutTriggerTime[, InTimeToStartMontageAt])
+    Block played = A.PlaySlotAnimParams >= 8
+                       ? Invoke(instance, A.PlaySlotAnim, {Arg::Obj(animation), Arg::Nm(slot), Arg::F(0.08f), Arg::F(0.2f), Arg::F(rate), Arg::I(loop ? 9999 : 1),
+                                                           Arg::F(-1.0f), Arg::F(0.0f)})
+                       : Invoke(instance, A.PlaySlotAnim, {Arg::Obj(animation), Arg::Nm(slot), Arg::F(0.08f), Arg::F(0.2f), Arg::F(rate), Arg::I(loop ? 9999 : 1),
+                                                           Arg::F(-1.0f)});
+    if (!played.Ok) { return false; }
+    S.Montage = played.Get<UObject*>();
+    S.Playing = motion;
+    S.PlayingAir = Flying();   // (3.7.7)
+    S.PlayingRate = rate;
+    S.PlayingUntil = loop ? 0 : now + static_cast<uint64_t>(std::max(0.05f, LengthOf(animation, 1.0f) / std::max(rate, 0.05f)) * 1000.0f);
+    if (S.SaidMotions < 16)
+    {
+        ++S.SaidMotions;
+        Log.Line(L"Shooter: plays " + ShortNameOfPath(path) + (loop ? L" (a loop" : L" (once") + L", rate " + Fixed(rate) + L")" +
+                 (S.Montage ? std::wstring{} : std::wstring(L"; the game made NO montage of it (its slot " + S.Set->Slot + L"?)")));
+    }
+    return true;
+}
+
+void StopMotion(float blend = 0.2f)
+{
+    if (S.Playing.empty()) { return; }
+    S.Playing.clear();
+    S.PlayingUntil = 0;
+    UObject* instance = StillThere(S.Character, S.CharacterClass) ? AnimInstanceOf(MeshOf(S.Character)) : nullptr;
+    if (instance && A.StopSlotAnim) { Invoke(instance, A.StopSlotAnim, {Arg::F(blend), Arg::Nm(Name(S.Set->Slot))}); }
+}
+
+float Speed()
+{
+    UObject* movement = ObjectAt(S.Character, A.OffCharMovement);
+    if (!movement || A.OffVelocity < 0) { return 0.0f; }
+    const Vec3 v = Field<Vec3>(movement, A.OffVelocity);
+    return std::sqrt(v.X * v.X + v.Y * v.Y);
+}
+
+// ---- (3.7.1) the motion that goes with how it moves ----
+// Standing still, its stance (aiming: the aim stance); moving, Dirge of Cerberus' walk or run (aiming: forward, back, left
+// or right of where it faces), played as fast as it goes. Each frame work while no shot, reload or switch motion plays.
+void Locomote(uint64_t now)
+{
+    // (3.7.7) in the air: its stance of the air, however it drifts (a form's flight; none: the motions on the ground)
+    const bool air = Flying();
+    if (air && !S.Set->FlyStance.empty())
+    {
+        const std::wstring& want = S.Set->FlyStance;
+        if (want == S.Playing && S.PlayingAir) { return; }
+        if (want == S.FailedMotion && now < S.FailedUntil) { return; }
+        if (!PlayMotion(want, 1.0f, true, now))
+        {
+            S.FailedMotion = want;
+            S.FailedUntil = now + 1000;
+        }
+        return;
+    }
+    // (3.7.3) aiming with the game's guard-walk: its guard and strafing walk play (the row's "moves" make them Dirge of
+    // Cerberus' aim stance and aim-runs), none of the shooter's loops
+    if (S.Set->Strafe && S.Aiming)
+    {
+        if (!S.Playing.empty()) { StopMotion(); }
+        return;
+    }
+    UObject* movement = ObjectAt(S.Character, A.OffCharMovement);
+    Vec3 v{};
+    if (movement && A.OffVelocity >= 0) { v = Field<Vec3>(movement, A.OffVelocity); }
+    const float speed = std::sqrt(v.X * v.X + v.Y * v.Y);
+    float faceYaw = 0.0f;
+    if (F.GetRotation)
+    {
+        Block got = Invoke(S.Character, F.GetRotation, {});
+        if (got.Ok) { faceYaw = got.Get<Rot>().Yaw; }
+    }
+    const float moveYaw = speed > 1.0f ? std::atan2(v.Y, v.X) * 57.29578f : faceYaw;
+    float rate = 1.0f;
+    // (aiming on the move while the game turns it where it goes: it faces the way it goes, so its forward motion)
+    const std::wstring want = Sh::LocomotionFor(*S.Set, S.Aiming, speed, moveYaw, S.Aiming && S.NoStrafe ? moveYaw : faceYaw, rate);
+    if (want.empty())
+    {
+        if (!S.Playing.empty()) { StopMotion(); }
+        return;
+    }
+    if (want != S.Playing || S.PlayingAir != air)   // (3.7.7: a loop of the air ends as it lands)
+    {
+        if (want == S.FailedMotion && now < S.FailedUntil) { return; }   // (one that did not play: again in a second)
+        if (!PlayMotion(want, rate, true, now))
+        {
+            S.FailedMotion = want;
+            S.FailedUntil = now + 1000;
+            return;
+        }
+        S.NextRateMs = now + 150;
+        return;
+    }
+    if (S.Montage && F.SetPlayRate && std::fabs(rate - S.PlayingRate) > 0.08f && now >= S.NextRateMs)
+    {
+        S.NextRateMs = now + 150;
+        if (UObject* instance = AnimInstanceOf(MeshOf(S.Character)))
+        {
+            Invoke(instance, F.SetPlayRate, {Arg::Obj(S.Montage), Arg::F(rate)});
+            S.PlayingRate = rate;
+        }
+    }
+}
+
+// The movement's turn-where-it-goes flag (bOrientRotationToMovement): off while it faces the aim on the move, as it was after.
+void SetOrient(bool on)
+{
+    if (F.OffOrient < 0 || !S.Character) { return; }
+    UObject* movement = ObjectAt(S.Character, A.OffCharMovement);
+    if (!movement || !IsLive(movement)) { return; }
+    uint8_t* flags = reinterpret_cast<uint8_t*>(movement) + F.OffOrient;
+    if (!on && !S.OrientOff)
+    {
+        S.OrientWas = (*flags & F.OrientMask) != 0;
+        *flags = static_cast<uint8_t>(*flags & ~F.OrientMask);
+        S.OrientOff = true;
+    }
+    else if (on && S.OrientOff)
+    {
+        if (S.OrientWas) { *flags = static_cast<uint8_t>(*flags | F.OrientMask); }
+        S.OrientOff = false;
+    }
+}
+
+// ---- (3.7.1) the gun in hand ----
+// While the shooter is on, the character's weapons go on its gun socket (the game's own rules for them put Vincent's gun
+// in its holster in battle; the bullets start at the gun's muzzle, so it has to be in hand). An ability the shooter's
+// camera does not stay on through (a limit break, a spell) and the shooter going off put them back.
+bool CanHold()
+{
+    return S.Set && !S.Set->GunSocket.empty() && CutWeapons::OffRoot >= 0 && CutWeapons::OffAttachParent >= 0 && CutWeapons::OffAttachSocket >= 0 &&
+           A.AttachTo && A.AttachedActors;
+}
+
+void HoldGun(uint64_t now)
+{
+    if (!CanHold()) { return; }
+    UObject* mesh = MeshOf(S.Character);
+    if (!mesh || !IsLive(mesh)) { return; }
+    if (!S.GunSocketChecked)
+    {
+        S.GunSocketChecked = true;
+        S.GunSocket = Name(S.Set->GunSocket);
+        if (CutWeapons::SocketExists)
+        {
+            Block result = Invoke(mesh, CutWeapons::SocketExists, {Arg::Nm(S.GunSocket)});
+            if (result.Ok && !result.Get<uint8_t>())
+            {
+                Log.Line(L"Shooter: " + S.Spec + L"'s model has no socket " + S.Set->GunSocket + L": the gun stays where the game puts it");
+                S.GunSocket = 0;
+            }
+        }
+    }
+    if (!S.GunSocket) { return; }
+    if (now >= S.WeaponsMs)
+    {
+        S.WeaponsMs = now + 500;
+        S.Weapons = CutWeapons::WeaponsOf(S.Character);
+        // (3.7.2) a gun that was not on the character as the shooter came on, or one the game made anew: the flash and the
+        // gunshot go to it from now on (3.7.1 kept the character's own mesh for them all battle)
+        if (!S.Weapons.empty() && (S.Gun == mesh || !StillThere(S.Gun, S.GunClass)))
+        {
+            UObject* gun = GunOf(S.Character);
+            if (gun && gun != mesh)
+            {
+                S.Gun = gun;
+                S.GunClass = gun->GetClassPrivate();
+                if (S.SaidGuns < 4)
+                {
+                    ++S.SaidGuns;
+                    Log.Line(L"Shooter: the gun " + ShortName(S.Weapons.front()) + L" found " + Fixed(static_cast<float>(now - S.OnMs) / 1000.0f) +
+                             L" s after the shooter came on (the flash and the gunshot go to it)");
+                }
+            }
+        }
+        else if (S.Weapons.empty() && !S.NoGunSaid && now >= S.OnMs + 3000)
+        {
+            S.NoGunSaid = true;
+            Log.Line(L"Shooter: no gun on " + S.Spec + L" 3 s after the shooter came on (attached to it: " + AttachedNames(S.Character) + L")");
+        }
+    }
+    for (UObject* weapon : S.Weapons)
+    {
+        if (!weapon || !IsLive(weapon) || weapon->HasAnyFlags(DeadFlags)) { continue; }
+        UObject* root = ObjectAt(weapon, CutWeapons::OffRoot);
+        UObject* parent = nullptr;
+        uint64_t socket = 0;
+        if (!root || !IsLive(root) || !CutWeapons::OnSocket(root, parent, socket) || !parent) { continue; }   // (not attached: left alone)
+        if (parent == mesh && socket == S.GunSocket) { continue; }
+        if (std::none_of(S.HeldWeapons.begin(), S.HeldWeapons.end(), [&](const StateT::HeldWeapon& h) { return h.Weapon == weapon; }))
+        {
+            S.HeldWeapons.push_back(StateT::HeldWeapon{weapon, weapon->GetClassPrivate(), parent, socket});
+        }
+        CutWeapons::Attach(root, mesh, S.GunSocket);
+        ++S.GunMoves;
+        if (S.SaidHolds < 6)
+        {
+            ++S.SaidHolds;
+            uint64_t after = 0;
+            UObject* now_parent = nullptr;
+            CutWeapons::OnSocket(root, now_parent, after);
+            Log.Line(L"Shooter: " + ShortName(weapon) + L" from " + (socket ? NameText(socket) : std::wstring(L"no socket")) + L" to " +
+                     (after == S.GunSocket && now_parent == mesh ? S.Set->GunSocket : NameText(after) + L" (NOT " + S.Set->GunSocket + L")") + L" (" + S.Spec +
+                     L"'s hand)");
+        }
+    }
+}
+
+void ReleaseGun(const wchar_t* why)
+{
+    if (S.HeldWeapons.empty()) { return; }
+    UObject* mesh = StillThere(S.Character, S.CharacterClass) ? MeshOf(S.Character) : nullptr;
+    UObject* instance = mesh ? AnimInstanceOf(mesh) : nullptr;
+    const auto own = instance && IsLive(instance) ? CutWeapons::OwnSockets(instance) : std::vector<std::pair<uint64_t, uint8_t>>{};
+    for (const auto& h : S.HeldWeapons)
+    {
+        if (!mesh || !StillThere(h.Weapon, h.Class)) { continue; }
+        UObject* root = ObjectAt(h.Weapon, CutWeapons::OffRoot);
+        UObject* parent = nullptr;
+        uint64_t socket = 0;
+        if (!root || !IsLive(root) || !CutWeapons::OnSocket(root, parent, socket)) { continue; }
+        if (socket != S.GunSocket || parent != mesh) { continue; }   // (the game moved it already)
+        std::wstring how;
+        if (CutWeapons::Scene && CutWeapons::AttachWeapon)
+        {
+            uint8_t slot = 0;
+            for (const auto& [rule, n] : own)
+            {
+                if (rule == h.Socket)
+                {
+                    slot = n;
+                    break;
+                }
+            }
+            Invoke(CutWeapons::Scene, CutWeapons::AttachWeapon, {Arg::Obj(S.Character), Arg::Obj(h.Weapon), Arg::U8(slot)});
+            CutWeapons::OnSocket(root, parent, socket);
+            if (socket != S.GunSocket) { how = L"the game's AttachWeapon"; }
+        }
+        if (how.empty() && h.Parent && IsLive(h.Parent))
+        {
+            CutWeapons::Attach(root, h.Parent, h.Socket);
+            CutWeapons::OnSocket(root, parent, socket);
+            how = L"where it was";
+        }
+        if (S.SaidHolds < 12)
+        {
+            ++S.SaidHolds;
+            Log.Line(L"Shooter: " + ShortName(h.Weapon) + L" back to " + (socket ? NameText(socket) : std::wstring(L"no socket")) + L" (" + why + L"; " +
+                     (how.empty() ? std::wstring(L"left") : how) + L"; put in hand " + std::to_wstring(S.GunMoves) + L" time(s))");
+        }
+    }
+    S.HeldWeapons.clear();
+}
+
+// ---- (3.7.7) a form's gun model ----
+// While a shooter with "gun_mesh" is on (Chaos's Death Penalty), the gun's model is that one; the gun's own goes back on
+// when it goes off. The materials the game put over the gun's own model's (its component's override materials: the old
+// model's slots) are taken off meanwhile, kept (rooted: nothing else holds them then) and put back after.
+void TakeOverrides(UObject* gun)
+{
+    if (F.OffOverrides < 0 || !F.SetMaterial) { return; }
+    RawArray list{};
+    std::memcpy(&list, reinterpret_cast<uint8_t*>(gun) + F.OffOverrides, sizeof(list));
+    if (list.Num <= 0 || list.Num > 64 || !list.Data) { return; }
+    std::vector<UObject*> found(static_cast<size_t>(list.Num));
+    std::memcpy(found.data(), list.Data, found.size() * sizeof(UObject*));
+    int taken = 0;
+    for (size_t k = 0; k < found.size(); ++k)
+    {
+        UObject* material = found[k];
+        if (!material) { continue; }
+        if (S.GunOverrides.size() <= k) { S.GunOverrides.resize(k + 1, nullptr); }
+        if (S.GunOverrides[k] && S.GunOverrides[k] != material) { S.GunOverrides[k]->ClearRootSet(); }   // (a newer one of the game's: that one goes back)
+        material->SetRootSet();
+        S.GunOverrides[k] = material;
+        Invoke(gun, F.SetMaterial, {Arg::I(static_cast<int32_t>(k)), Arg::Obj(nullptr)});
+        ++taken;
+    }
+    if (taken && S.SaidGunModels < 8)
+    {
+        ++S.SaidGunModels;
+        Log.Line(L"Shooter: " + std::to_wstring(taken) + L" material(s) the game put over the gun's own taken off (they are its own model's); kept to put back");
+    }
+}
+
+void RestoreGun(const wchar_t* why)
+{
+    const bool there = S.GunWorn && StillThere(S.GunWorn, S.GunWornClass);
+    if (there && S.GunModelWas && A.SetMesh && State.OffCompMesh >= 0 && ObjectAt(S.GunWorn, State.OffCompMesh) != S.GunModelWas)
+    {
+        Invoke(S.GunWorn, A.SetMesh, {Arg::Obj(S.GunModelWas), Arg::B(true)});
+        Log.Line(L"Shooter: the gun's own model " + ShortName(S.GunModelWas) + L" back on (" + why + L")");
+    }
+    for (size_t k = 0; k < S.GunOverrides.size(); ++k)
+    {
+        UObject* material = S.GunOverrides[k];
+        if (!material) { continue; }
+        if (there && F.SetMaterial) { Invoke(S.GunWorn, F.SetMaterial, {Arg::I(static_cast<int32_t>(k)), Arg::Obj(material)}); }
+        material->ClearRootSet();
+    }
+    S.GunOverrides.clear();
+    S.GunWorn = nullptr;
+    S.GunWornClass = nullptr;
+    S.GunModelWas = nullptr;
+}
+
+void WearGun(uint64_t now)
+{
+    if (!S.Set || S.Set->GunMesh.empty() || !A.SetMesh || State.OffCompMesh < 0 || now < S.NextGunCheckMs) { return; }
+    S.NextGunCheckMs = now + 250;
+    UObject* gun = StillThere(S.Gun, S.GunClass) ? S.Gun : nullptr;
+    if (!gun || gun == MeshOf(S.Character) || !IsLive(gun)) { return; }   // (no gun found yet: the character's own mesh is not it)
+    if (S.GunWorn && S.GunWorn != gun) { RestoreGun(L"another gun"); }
+    UObject* model = Need(S.Set->GunMesh);
+    if (!model)
+    {
+        if (S.SaidGunModels < 8)
+        {
+            ++S.SaidGunModels;
+            Log.Line(L"Shooter: the gun model " + ShortNameOfPath(S.Set->GunMesh) + L" is not loaded (its pak is not installed?): the gun keeps its own");
+        }
+        S.NextGunCheckMs = now + 5000;
+        return;
+    }
+    UObject* current = ObjectAt(gun, State.OffCompMesh);
+    if (current != model)
+    {
+        if (S.GunWorn != gun)
+        {
+            S.GunWorn = gun;
+            S.GunWornClass = gun->GetClassPrivate();
+            S.GunModelWas = current;
+        }
+        Invoke(gun, A.SetMesh, {Arg::Obj(model), Arg::B(true)});
+        const bool worn = ObjectAt(gun, State.OffCompMesh) == model;
+        if (S.SaidGunModels < 8)
+        {
+            ++S.SaidGunModels;
+            Log.Line(L"Shooter: " + S.Spec + L"'s gun " + ShortName(gun) + (worn ? L" wears " : L" did NOT take ") + ShortName(model) + L" (its own: " +
+                     (current ? ShortName(current) : std::wstring(L"none")) + L")");
+        }
+    }
+    TakeOverrides(gun);
+}
+
+// ---- (3.7.1) the gunshot ----
+// Each of the gun's sounds plays at the gun; a slice of a longer one (a cutscene's sound track) stops after its length.
+void StopShotSound(const StateT::ShotSound& sound)
+{
+    if (!StillThere(sound.Component, sound.Class)) { return; }
+    if (F.FadeOut && F.AudioComponent && sound.Component->IsA(F.AudioComponent))
+    {
+        Invoke(sound.Component, F.FadeOut, {Arg::F(0.06f), Arg::F(0.0f), Arg::U8(0)});   // FadeOut(FadeOutDuration, FadeVolumeLevel, FadeCurve)
+        return;
+    }
+    if (A.Deactivate) { Invoke(sound.Component, A.Deactivate, {}); }
+    if (A.DestroyComponent) { Invoke(sound.Component, A.DestroyComponent, {Arg::Obj(sound.Component)}); }
+}
+
+void UpdateShotSounds(uint64_t now)
+{
+    for (auto it = S.Sounds.begin(); it != S.Sounds.end();)
+    {
+        if (now >= it->StopAt)
+        {
+            StopShotSound(*it);
+            it = S.Sounds.erase(it);
+        }
+        else { ++it; }
+    }
+}
+
+void PlayShot(const Sh::Weapon& w, uint64_t now)
+{
+    static bool said = false;
+    UObject* at = StillThere(S.Gun, S.GunClass) ? S.Gun : MeshOf(S.Character);   // (3.7.2: a gun the game took away: at the character)
+    if (!at) { return; }
+    for (const auto& sound : w.Sounds)
+    {
+        if (sound.Bank.empty() || !Need(sound.Bank)) { continue; }
+        UObject* component = PlaySound(at, sound);
+        if (!component) { continue; }
+        if (!said)
+        {
+            said = true;
+            Log.Line(L"Shooter: the gunshot plays as " + ShortName(component->GetClassPrivate()) + L" (" + std::to_wstring(w.Sounds.size()) + L" sound(s): " + sound.Cue +
+                     L" from " + Fixed(sound.Start) + L" s" + (sound.Length > 0.0f ? L" for " + Fixed(sound.Length) + L" s" : std::wstring{}) + L"...; slices end " +
+                     (F.FadeOut && F.AudioComponent && component->IsA(F.AudioComponent) ? L"fading" : L"stopped") + L")");
+        }
+        if (!(sound.Length > 0.0f)) { continue; }
+        if (S.Sounds.size() >= 24)
+        {
+            StopShotSound(S.Sounds.front());
+            S.Sounds.erase(S.Sounds.begin());
+        }
+        S.Sounds.push_back(StateT::ShotSound{component, component->GetClassPrivate(), now + static_cast<uint64_t>(sound.Length * 1000.0f)});
+    }
+}
+
+// ---- the camera: BlueprintModifyCamera of FormCam's modifier, after the game's view and the form's camera ----
+bool OwnsCamera() { return S.Character && S.Set && (S.Active || S.Blend > 0.001f) && !En.On; }
+
+void Camera(uint8_t* p)
+{
+    ++S.CameraCalls;
+    if (!S.Set || FormCam::OffNewLocation < 0 || FormCam::OffNewRotation < 0 || FormCam::OffNewFov < 0) { return; }
+    const Sh::Settings& set = *S.Set;
+    const uint64_t now = NowMs();
+    const float dt = S.CameraMs ? std::min(0.1f, static_cast<float>(now - S.CameraMs) / 1000.0f) : 0.0f;   // (real time: slow motion does not slow it)
+    S.CameraMs = now;
+    Vec3 at{};
+    float rotation[3]{};   // FRotator: Pitch, Yaw, Roll
+    float fov = 0.0f;
+    std::memcpy(&at, p + FormCam::OffNewLocation, sizeof(at));
+    std::memcpy(rotation, p + FormCam::OffNewRotation, sizeof(rotation));
+    std::memcpy(&fov, p + FormCam::OffNewFov, sizeof(fov));
+    if (!std::isfinite(at.X) || !std::isfinite(at.Y) || !std::isfinite(at.Z) || !std::isfinite(rotation[0]) || !std::isfinite(rotation[1]) || !std::isfinite(fov)) { return; }
+    const auto toward = [dt](float& value, float target, float seconds) {
+        const float k = seconds <= 0.0f ? 1.0f : 1.0f - std::exp(-dt / std::max(0.02f, seconds / 3.0f));   // (95% there after `seconds`)
+        value += (target - value) * k;
+    };
+    const bool on = S.Active && !S.Paused && !S.Cinematic;
+    toward(S.Blend, on ? 1.0f : 0.0f, 0.35f);
+    toward(S.AimBlend, on && S.Aiming ? 1.0f : 0.0f, set.CameraBlend);
+    toward(S.ZoomBlend, on && S.Aiming && S.Zoomed ? 1.0f : 0.0f, set.CameraBlend);
+    S.Recoil *= std::exp(-dt / 0.12f);
+    if (S.Blend < 0.002f)
+    {
+        if (!on) { S.Blend = 0.0f; }
+        S.ViewKnown = false;
+        return;
+    }
+    if (!StillThere(S.Character, S.CharacterClass)) { return; }
+    const Vec3 ground = LocationOf(S.Character);
+    const Vec3 pivot{ground.X, ground.Y, ground.Z + set.Pivot};
+    const float yaw = rotation[1];
+    const float gamePitch = Wrap180(rotation[0]);
+    const float pitch = std::clamp(gamePitch, set.PitchMin, set.PitchMax);
+    const float a = S.AimBlend, z = S.ZoomBlend;
+    const Sh::V3 placed = Sh::ShoulderCamera(Sh::V3{pivot.X, pivot.Y, pivot.Z}, yaw, pitch, set.Distance + (set.AimDistance - set.Distance) * a,
+                                             set.Side + (set.AimSide - set.Side) * a, set.Height + (set.AimHeight - set.Height) * a);
+    Vec3 shoulder{placed.X, placed.Y, placed.Z};
+    // a wall between the character and the camera: the camera in front of it
+    const float wall = WallAt(pivot, shoulder);
+    if (wall >= 0.0f)
+    {
+        const Vec3 d = VSub(shoulder, pivot);
+        const float length = std::sqrt(d.X * d.X + d.Y * d.Y + d.Z * d.Z);
+        if (length > 1.0f) { shoulder = VAdd(pivot, VMul(d, std::clamp((wall * length - 20.0f) / length, 0.0f, 1.0f))); }
+    }
+    const float b = S.Blend;
+    const Vec3 moved = VMix(at, shoulder, b);
+    const float viewPitch = gamePitch + (pitch + S.Recoil - gamePitch) * b;
+    // the view: narrower aiming, narrower still zoomed
+    const Sh::Weapon& w = InHand();
+    const float base = set.Fov > 0.0f ? set.Fov : fov;
+    float wanted = base + ((w.AimFov > 0.0f ? w.AimFov : set.AimFov) - base) * a;
+    wanted += (set.ZoomFov - wanted) * z;
+    const float viewFov = std::clamp(fov + (wanted - fov) * b, 5.0f, 170.0f);
+    std::memcpy(p + FormCam::OffNewLocation, &moved, sizeof(moved));
+    const float out[3] = {viewPitch, yaw, rotation[2]};
+    std::memcpy(p + FormCam::OffNewRotation, out, sizeof(out));
+    std::memcpy(p + FormCam::OffNewFov, &viewFov, sizeof(viewFov));
+    S.ViewAt = moved;
+    S.ViewYaw = yaw;
+    S.ViewPitch = viewPitch;
+    S.ViewKnown = true;
+    S.ViewMs = now;
+    if (!S.CameraSaid && b > 0.95f)
+    {
+        S.CameraSaid = true;
+        Log.Line(L"Shooter: the view is the shooter's (the game's camera modifier runs): the character at " + Fixed(ground.X) + L", " + Fixed(ground.Y) + L", " +
+                 Fixed(ground.Z) + L"; the view at " + Fixed(moved.X) + L", " + Fixed(moved.Y) + L", " + Fixed(moved.Z) + L" (the game's at " + Fixed(at.X) + L", " +
+                 Fixed(at.Y) + L", " + Fixed(at.Z) + L"), pitch " + Fixed(viewPitch) + L", " + Fixed(viewFov) + L" degrees (the game's " + Fixed(fov) + L")" +
+                 (wall >= 0.0f ? L"; a wall pulls it in" : L""));
+    }
+}
+
+// ---- turning to aim ----
+// It turns where it aims while it aims or shoots, standing or (3.7.1) on the move: the movement's turn-where-it-goes is off
+// meanwhile. When the game still turns it where it goes on the move, it stops trying there (its forward motions then).
+void Face(float dt, double t)
+{
+    const bool moving = Speed() > 60.0f;
+    // (3.7.3) on the move only while it guard-walks for the aim ("strafe"): running, it runs where it goes and its shots
+    // go where it aims (turned toward the aim, the game's run carried it that way)
+    const bool wanted = S.Set->TurnActor && F.SetRotation && F.GetRotation && !S.Busy && !S.Paused && !S.Cinematic && (S.Aiming || t - S.LastShot <= 0.6) &&
+                        (!moving || S.Strafing || !S.Set->Strafe || Flying());   // (3.7.7: in the air it turns to aim as it drifts)
+    SetOrient(!(wanted && moving && !S.NoStrafe));
+    if (!wanted || (moving && S.NoStrafe))
+    {
+        S.Faced = false;
+        S.Fights = 0;
+        return;
+    }
+    Vec3 eye{};
+    float yaw = 0.0f, pitch = 0.0f;
+    if (!View(eye, yaw, pitch)) { return; }
+    Block got = Invoke(S.Character, F.GetRotation, {});
+    if (!got.Ok) { return; }
+    Rot turn = got.Get<Rot>();
+    if (moving && S.Faced)
+    {
+        // turned since by the game (not where it was turned): it turns it where it goes
+        if (std::fabs(Wrap180(turn.Yaw - S.FacedYaw)) > 4.0f)
+        {
+            if (++S.Fights >= 20)
+            {
+                S.NoStrafe = true;
+                SetOrient(true);
+                Log.Line(L"Shooter: the game keeps turning " + S.Spec + L" where it goes: on the move it faces that way (its forward run while aiming)");
+                return;
+            }
+        }
+        else if (S.Fights > 0) { --S.Fights; }
+    }
+    const float d = Wrap180(yaw - turn.Yaw);
+    if (std::fabs(d) >= 0.5f)
+    {
+        const float step = (moving ? 1440.0f : 900.0f) * dt;
+        turn.Yaw += std::clamp(d, -step, step);
+        turn.Pitch = 0.0f;
+        turn.Roll = 0.0f;
+        Invoke(S.Character, F.SetRotation, {Arg::S(turn), Arg::B(false)});
+    }
+    S.FacedYaw = turn.Yaw;
+    S.Faced = true;
+}
+
+// ---- the guns ----
+void StartReload(double t, uint64_t now)
+{
+    const Sh::Weapon& w = InHand();
+    S.ReloadAt = t + w.Reload;
+    ++S.Reloads;
+    if (!w.ReloadSound.Bank.empty() && Need(w.ReloadSound.Bank) && StillThere(S.Gun, S.GunClass)) { PlaySound(S.Gun, w.ReloadSound); }
+    const std::wstring& motion = Flying() ? S.Set->Reloading : Sh::ReloadFor(*S.Set, Speed());   // (3.7.1: on the move too; 3.7.7: in the air its own)
+    if (!motion.empty())
+    {
+        const float length = LengthOf(Need(MotionPath(motion)), 1.3f);
+        PlayMotion(motion, std::clamp(length / std::max(0.1f, w.Reload), 0.25f, 4.0f), false, now);
+    }
+}
+
+void SwitchWeapon(double t, uint64_t now)
+{
+    StopMotion(0.1f);
+    S.Weapon = (S.Weapon + 1) % static_cast<int>(S.Set->Weapons.size());
+    S.ReloadAt = -1.0;   // (a reload of the gun put away is left for later)
+    S.SwitchAt = t + 0.6;
+    S.Zoomed = false;
+    ++S.Switches;
+    const Sh::Weapon& w = InHand();
+    if (Speed() < 60.0f && !Flying())   // (3.7.7: none in the air)
+    {
+        const float length = LengthOf(Need(S.Set->Clip(w, S.Set->Switching)), 1.97f);
+        PlayMotion(S.Set->Switching, std::clamp(length / 0.6f, 0.5f, 5.0f), false, now);
+    }
+    if (S.Switches <= 12)
+    {
+        Log.Line(L"Shooter: " + S.Spec + L" switched to " + w.Name + L" (" + std::to_wstring(S.Ammo[static_cast<size_t>(S.Weapon)]) + L" in the clip)");
+    }
+}
+
+void Shoot(const Sh::Weapon& w, double t, uint64_t now)
+{
+    Vec3 eye{};
+    float yaw = 0.0f, pitch = 0.0f;
+    if (!View(eye, yaw, pitch)) { return; }
+    // where this shot goes: the reticle, give or take the gun's spread
+    static uint32_t seed = 0x9E3779B9u;
+    const auto random = [&]() {
+        seed = seed * 1664525u + 1013904223u;
+        return static_cast<float>((seed >> 8) & 0xffff) / 65535.0f * 2.0f - 1.0f;
+    };
+    const Sh::V3 dir = Sh::ForwardOf(yaw + random() * w.Spread, pitch + random() * w.Spread);
+    const Sh::Picked pick = PickEnemy(eye, dir, S.Set->Assist, w.Range, now);
+    UObject* target = pick.Index >= 0 ? S.Enemies[static_cast<size_t>(pick.Index)] : nullptr;
+    const bool crit = target && pick.Crit && S.Set->Crit;
+    bool made = false;
+    if (target && F.CreateDamage)
+    {
+        // CreateDamageSource(DamageSourceID, ownerCharacter, TargetCharacter, AbilityId, bOverrideDamage, OverrideDamage);
+        // (3.7.6) a shot through the enemy's crit spot (its head) is "crit" "hits" bullets
+        const int bullets = crit ? std::clamp(S.Set->CritHits, 1, 4) : 1;
+        for (int k = 0; k < bullets; ++k)
+        {
+            Block result = Invoke(A.Battle, F.CreateDamage, {Arg::Nm(Name(w.DamageSource)), Arg::Obj(S.Character), Arg::Obj(target),
+                                                             Arg::Nm(w.Ability.empty() ? 0 : Name(w.Ability)), Arg::B(false), Arg::I(0)});
+            made = made || result.Ok;
+        }
+        if (made)
+        {
+            ++S.Hits;
+            S.HitUntil = t + S.Set->HitSeconds;
+            if (crit)
+            {
+                ++S.Crits;
+                S.CritUntil = t + std::max(0.25f, S.Set->HitSeconds * 2.0f);
+                if (S.SaidCrits < 6)
+                {
+                    ++S.SaidCrits;
+                    Log.Line(L"Shooter: " + w.Name + L": a critical hit on " + ShortName(target) + L" (through its crit spot: " + std::to_wstring(bullets) + L" bullets)");
+                }
+            }
+            // (3.7.3) the log, the first few: did the game make the bullet, and does the enemy lose HP
+            if (F.SourceCount && S.SaidCounts < 6)
+            {
+                ++S.SaidCounts;
+                Block count = Invoke(A.Battle, F.SourceCount, {Arg::Nm(Name(w.DamageSource))});
+                Log.Line(L"Shooter: " + w.Name + L"'s bullet " + w.DamageSource + L": " + (count.Ok ? std::to_wstring(count.Get<int32_t>(-1)) : std::wstring(L"?")) +
+                         L" of them in the battle as it left (0: the game did not make it)");
+            }
+            if (F.CharaHp && S.SaidChecks + static_cast<int>(S.HitChecks.size()) < 6)
+            {
+                Block hp = Invoke(A.Battle, F.CharaHp, {Arg::Obj(target)});
+                if (hp.Ok) { S.HitChecks.push_back({target, target->GetClassPrivate(), hp.Get<int32_t>(-1), now + 900, w.Name}); }
+            }
+        }
+    }
+    else if (!target && !w.Impact.Path.empty() && Need(w.Impact.Path))
+    {
+        // a shot at no one: where it lands
+        const Vec3 end = VAdd(eye, VMul(Vec3{dir.X, dir.Y, dir.Z}, w.Range));
+        const float wall = WallAt(eye, end);
+        if (wall >= 0.0f)
+        {
+            PlayEffectAt(S.Character, w.Impact, VMix(eye, end, wall), yaw, w.Impact.Scale > 0.0f ? w.Impact.Scale : 1.0f, w.Impact.Seconds > 0.0f ? w.Impact.Seconds : 1.0f,
+                         now);
+        }
+    }
+    if (StillThere(S.Gun, S.GunClass))
+    {
+        if (!w.Muzzle.Path.empty() && Need(w.Muzzle.Path)) { PlayEffect(S.Character, S.Gun, w.Muzzle, Group::Ability, w.Muzzle.Seconds > 0.0f ? w.Muzzle.Seconds : 0.15f, now); }
+        PlayShot(w, now);   // (3.7.1: Vincent's gunshot)
+    }
+    --S.Ammo[static_cast<size_t>(S.Weapon)];
+    ++S.Shots;
+    S.NextShot = t + w.Interval;
+    S.KickUntil = t + w.KickSeconds;
+    S.LastShot = t;
+    S.Recoil = std::min(S.Recoil + w.Recoil, 12.0f);
+    // standing: the shot motion over its stance (a loop) or the last shot; on the move its run goes on
+    // (an automatic gun's shot motion plays through while it keeps firing)
+    if ((Speed() < 60.0f || Flying()) && (S.Playing.empty() || !S.PlayingUntil || (S.Playing == S.Set->Shot && !w.Automatic)))   // (3.7.7: in the air too)
+    {
+        PlayMotion(S.Set->Shot, 1.0f, false, now);
+    }
+    if (S.SaidShots < 8)
+    {
+        ++S.SaidShots;
+        Log.Line(L"Shooter: " + w.Name + L" fired " +
+                 (target ? (made ? std::wstring(L"at ") : std::wstring(L"(no damage source made) at ")) + ShortName(target) + L" (" + w.DamageSource + L")"
+                         : L"at no one (" + std::to_wstring(S.Enemies.size()) + L" enemies)") +
+                 L"; " + std::to_wstring(S.Ammo[static_cast<size_t>(S.Weapon)]) + L" left in the clip");
+    }
+}
+
+// ---- the frame ----
+// A menu or slow motion (the battle menu): the game's time slow or still, or the forms menu open.
+bool PausedNow(uint64_t now)
+{
+    if (In.Open) { return true; }
+    float dilation = 1.0f;
+    if (F.Dilation)
+    {
+        Block block = Invoke(A.Statics, F.Dilation, {Arg::Obj(S.Character)});
+        if (block.Ok) { dilation = block.Get<float>(1.0f); }
+    }
+    const double game = GameSeconds(S.Character);
+    if (S.LastGame >= 0.0 && game == S.LastGame)
+    {
+        if (!S.GameStillSince) { S.GameStillSince = now; }
+    }
+    else { S.GameStillSince = 0; }
+    S.LastGame = game;
+    return (std::isfinite(dilation) && dilation < 0.5f) || (S.GameStillSince && now - S.GameStillSince > 150);
+}
+
+// What the character does (10 times a second): an ability (no shot; the game's camera for one the shooter's camera does not
+// stay on through), a hit reaction, a montage of the game's.
+void Watch(uint64_t now)
+{
+    if (now < S.NextWatchMs) { return; }
+    S.NextWatchMs = now + 100;
+    const Sh::Settings& set = *S.Set;
+    const std::wstring ability = AbilityOf(S.Character);
+    const bool acting = !ability.empty() && ability != L"None";
+    bool damaged = false;
+    if (F.InDamage)
+    {
+        Block block = Invoke(A.Battle, F.InDamage, {Arg::Obj(S.Character)});
+        damaged = block.Ok && block.Get<uint8_t>() != 0;
+    }
+    S.Guarding = acting && Sh::BoneMatches(ability, set.GuardAbilities);   // (3.7.3: the shots go on through the guard)
+    S.Busy = (acting && !S.Guarding) || damaged;
+    S.Cinematic = acting && !Sh::BoneMatches(ability, set.CameraAbilities);
+    if (acting && ability != S.Ability && S.SaidAbilities.size() < 24 &&
+        std::find(S.SaidAbilities.begin(), S.SaidAbilities.end(), ability) == S.SaidAbilities.end())
+    {
+        S.SaidAbilities.push_back(ability);
+        Log.Line(L"Shooter: " + S.Spec + L" runs " + ability + (S.Cinematic ? L": the game's camera while it runs" : L": the shooter's camera stays"));
+    }
+    S.Ability = acting ? ability : std::wstring{};
+    // a montage that is not the shooter's: the game's (an attack, a reaction)
+    S.GameMontage = false;
+    if (A.ActiveMontage)
+    {
+        if (UObject* instance = AnimInstanceOf(MeshOf(S.Character)))
+        {
+            Block playing = Invoke(instance, A.ActiveMontage, {});
+            UObject* montage = playing.Ok ? playing.Get<UObject*>() : nullptr;
+            // (when the game did not say which montage it made the shooter's, one playing while a shooter's motion plays is its)
+            S.GameMontage = montage && montage != S.Montage && (S.Montage || S.Playing.empty());
+            if (S.GameMontage && S.SaidMontages < 8)
+            {
+                ++S.SaidMontages;
+                Log.Line(L"Shooter: the game's montage " + ShortName(montage) + L" plays on " + S.Spec + L" (the shooter's motions wait)");
+            }
+        }
+    }
+    if ((S.GameMontage || S.Busy) && !S.Playing.empty()) { StopMotion(0.1f); }   // (the game's motion has the slot: the shooter's goes, if it is still there)
+    // the game's view target (the log: what a cutscene of the game's does)
+    if (A.GetViewTarget && S.SaidViews < 12)
+    {
+        UObject* controller = Controller(S.Character);
+        UObject* target = nullptr;
+        if (controller)
+        {
+            Block view = Invoke(controller, A.GetViewTarget, {});
+            if (view.Ok) { target = view.Get<UObject*>(); }
+        }
+        if (target != S.LastView)
+        {
+            ++S.SaidViews;
+            Log.Line(L"Shooter: the game's view target is " + (target ? ShortName(target) : std::wstring(L"none")) + (S.Ability.empty() ? L"" : L" (" + S.Ability + L" runs)"));
+            S.LastView = target;
+        }
+    }
+}
+
+bool Held(Sh::Button b, uint32_t down, float l2, float r2, float pull)
+{
+    if (b == Sh::Button::None) { return false; }
+    if (b == Sh::Button::R2) { return r2 >= pull; }
+    if (b == Sh::Button::L2) { return l2 >= pull; }
+    return (down & Sh::Bit(b)) != 0;
+}
+
+std::wstring Two(float value)
+{
+    wchar_t text[32];
+    std::swprintf(text, 32, L"%.2f", static_cast<double>(value));
+    return text;
+}
+
+// (3.7.4) How many of an upgrade's item the player holds, by the game's GetItemNumBP (what it takes is looked at once and
+// logged: the item's name, its id or its name as a string; an object parameter gets the character). -1: unknown.
+int32_t ItemCount(const Sh::Upgrade& u)
+{
+    UFunction* fn = F.ItemNum;
+    if (!fn || !F.ItemApi) { return -1; }
+    if (F.ItemBy == 0)
+    {
+        F.ItemBy = -1;
+        for (FProperty* p : fn->ForEachPropertyInChain())
+        {
+            if (!p || p->GetName() == L"ReturnValue") { continue; }
+            const std::wstring type = TypeOf(p);
+            const int32_t size = p->GetElementSize();
+            if (type == L"NameProperty" && size == 8) { F.ItemBy = 1; break; }
+            if (type == L"IntProperty" && size == 4) { F.ItemBy = 2; break; }
+            if (type == L"StrProperty" && size == static_cast<int32_t>(sizeof(RawArray))) { F.ItemBy = 3; break; }
+        }
+        Log.Line(L"Shooter: the game's item count GetItemNumBP(" + Signature(fn) + L"): " +
+                 (F.ItemBy == 1 ? std::wstring(L"by the item's name") : F.ItemBy == 2 ? std::wstring(L"by the item's id") :
+                  F.ItemBy == 3 ? std::wstring(L"by the item's name (a string)") : std::wstring(L"takes neither a name nor an id (no upgrades)")));
+    }
+    if (F.ItemBy < 0 || (F.ItemBy == 2 && u.Id <= 0)) { return -1; }
+    Block block(fn);
+    bool keyed = false;
+    int32_t stringAt = -1, outAt = -1, outSize = 0;
+    std::wstring outType;
+    for (FProperty* p : fn->ForEachPropertyInChain())
+    {
+        if (!p) { continue; }
+        const std::wstring type = TypeOf(p);
+        const int32_t size = p->GetElementSize();
+        const int32_t at = p->GetOffset_Internal();
+        if (at < 0 || size <= 0 || at + size > fn->GetParmsSize()) { return -1; }
+        if (p->GetName() == L"ReturnValue") { continue; }
+        if (!keyed && F.ItemBy == 1 && type == L"NameProperty" && size == 8)
+        {
+            const uint64_t raw = Name(u.Item);
+            std::memcpy(block.Bytes + at, &raw, sizeof(raw));
+            keyed = true;
+        }
+        else if (!keyed && F.ItemBy == 2 && type == L"IntProperty" && size == 4)
+        {
+            const int32_t id = u.Id;
+            std::memcpy(block.Bytes + at, &id, sizeof(id));
+            keyed = true;
+        }
+        else if (!keyed && F.ItemBy == 3 && type == L"StrProperty" && size == static_cast<int32_t>(sizeof(RawArray)))
+        {
+            new (block.Bytes + at) FString(u.Item.c_str());
+            stringAt = at;
+            keyed = true;
+        }
+        else if (type == L"ObjectProperty" && size == 8)
+        {
+            UObject* context = S.Character;
+            std::memcpy(block.Bytes + at, &context, sizeof(context));
+        }
+        else if (keyed && outAt < 0 && (type == L"IntProperty" || type == L"Int64Property" || type == L"UInt32Property"))
+        {
+            outAt = at;   // (an out parameter after the item's: the count, if there is no return value)
+            outSize = size;
+            outType = type;
+        }
+    }
+    if (!keyed) { return -1; }
+    F.ItemApi->ProcessEvent(fn, block.Bytes);
+    if (stringAt >= 0) { reinterpret_cast<FString*>(block.Bytes + stringAt)->~FString(); }
+    if (FProperty* ret = block.Param(L"ReturnValue"))
+    {
+        outAt = ret->GetOffset_Internal();
+        outSize = ret->GetElementSize();
+        outType = TypeOf(ret);
+    }
+    if (outAt < 0) { return -1; }
+    int64_t count = 0;
+    if ((outType == L"IntProperty" || outType == L"UInt32Property") && outSize == 4)
+    {
+        int32_t v = 0;
+        std::memcpy(&v, block.Bytes + outAt, 4);
+        count = v;
+    }
+    else if ((outType == L"Int64Property" || outType == L"UInt64Property") && outSize == 8) { std::memcpy(&count, block.Bytes + outAt, 8); }
+    else if ((outType == L"Int16Property" || outType == L"UInt16Property") && outSize == 2)
+    {
+        int16_t v = 0;
+        std::memcpy(&v, block.Bytes + outAt, 2);
+        count = v;
+    }
+    else if ((outType == L"ByteProperty" || outType == L"BoolProperty") && outSize == 1) { count = block.Bytes[outAt]; }
+    else { return -1; }
+    return static_cast<int32_t>(std::clamp<int64_t>(count, -1, 1000000000));
+}
+
+// (3.7.4) The guns with the parts the player holds (read as the shooter comes on: each battle); the log says each gun's levels
+// whenever they change.
+void MakeGuns(const Sh::Settings* set)
+{
+    std::vector<Sh::Weapon> guns;
+    for (const auto& base : set->Weapons)
+    {
+        if (base.Upgrades.empty())
+        {
+            guns.push_back(base);
+            continue;
+        }
+        std::vector<int> owned;
+        bool unknown = false;
+        for (const auto& u : base.Upgrades)
+        {
+            const int32_t n = ItemCount(u);
+            unknown = unknown || n < 0;
+            owned.push_back(std::max(0, n));
+        }
+        std::vector<int> levels;
+        Sh::Weapon w = Sh::Upgraded(base, owned, &levels);
+        bool rowThere = true;
+        if (w.DamageSource != base.DamageSource && F.SourceRow)   // (the bullet row of those levels: when the game has it, else the gun's own)
+        {
+            Block row = Invoke(A.Battle, F.SourceRow, {Arg::Nm(Name(w.DamageSource))});
+            rowThere = row.Ok && row.Get<uint8_t>() != 0;
+        }
+        const std::wstring upgradedRow = w.DamageSource;
+        if (!rowThere) { w.DamageSource = base.DamageSource; }
+        std::wstring parts;
+        for (size_t k = 0; k < base.Upgrades.size(); ++k)
+        {
+            parts += (k ? L", " : L"") + base.Upgrades[k].Item + L" " + std::to_wstring(k < levels.size() ? levels[k] : 0) + L"/" +
+                     std::to_wstring(base.Upgrades[k].MaxLevel());
+        }
+        const std::wstring line = w.Name + L"'s parts: " + parts + (unknown ? L" (a count the game did not give: 0)" : L"") + L"; bullets " + w.DamageSource +
+                                  (rowThere ? L"" : L" (" + upgradedRow + L" is NOT in the game's damage tables)") + L", " + Two(w.Interval) +
+                                  L" s between shots, " + std::to_wstring(w.Clip) + L" rounds, " + Two(w.Reload) + L" s to reload, the aim's reach " +
+                                  Fixed(w.Range / 100.0f) + L" m";
+        if (std::find(S.SaidUpgrades.begin(), S.SaidUpgrades.end(), line) == S.SaidUpgrades.end() && S.SaidUpgrades.size() < 64)
+        {
+            S.SaidUpgrades.push_back(line);
+            Log.Line(L"Shooter: " + line);
+        }
+        guns.push_back(std::move(w));
+    }
+    S.Guns = std::move(guns);
+    // the clips: one of a new size is filled; none holds more than it can
+    S.Clips.resize(S.Guns.size(), 0);
+    S.Ammo.resize(S.Guns.size(), 0);
+    for (size_t k = 0; k < S.Guns.size(); ++k)
+    {
+        if (S.Clips[k] != S.Guns[k].Clip) { S.Ammo[k] = S.Guns[k].Clip; }
+        S.Ammo[k] = std::clamp(S.Ammo[k], 0, S.Guns[k].Clip);
+        S.Clips[k] = S.Guns[k].Clip;
+    }
+}
+
+void Start(UObject* who, const SkelCompat::AnimSetRow* row, const Sh::Settings* set, const std::wstring& spec)
+{
+    if (S.Set != set || S.Ammo.size() != set->Weapons.size())
+    {
+        S.Ammo.clear();
+        for (const auto& w : set->Weapons) { S.Ammo.push_back(w.Clip); }
+        S.Weapon = 0;
+        S.Clips.clear();
+    }
+    S.Active = true;
+    S.Character = who;
+    S.CharacterClass = who->GetClassPrivate();
+    S.Row = row;
+    S.Set = set;
+    S.Spec = spec;
+    MakeGuns(set);   // (3.7.4)
+    S.ReloadAt = S.SwitchAt = -1.0;
+    S.FireHeld = S.Aiming = S.Zoomed = S.Paused = S.Busy = S.Cinematic = S.GameMontage = false;
+    S.Ability.clear();
+    S.Playing.clear();
+    S.Montage = nullptr;
+    S.GameStillSince = 0;
+    S.LastGame = -1.0;
+    S.NextWatchMs = 0;
+    S.Gun = GunOf(who);
+    S.GunClass = S.Gun ? S.Gun->GetClassPrivate() : nullptr;
+    S.HeldWeapons.clear();
+    S.Weapons.clear();
+    S.WeaponsMs = 0;
+    S.GunSocket = 0;
+    S.GunSocketChecked = false;
+    S.OnMs = NowMs();
+    S.NoGunSaid = false;
+    S.OrientOff = S.Faced = S.NoStrafe = false;
+    S.Fights = 0;
+    S.PlayingRate = 1.0f;
+    S.PadSummaryAt = NowMs() + 10000;
+    // the gun's muzzle: where the bullets start (the rows' part name on the weapon) and the flash plays
+    std::wstring muzzle;
+    const std::wstring& muzzleSocket = set->Weapons[static_cast<size_t>(S.Weapon)].Muzzle.Socket;
+    if (S.Gun && S.Gun != MeshOf(who) && CutWeapons::SocketExists && !muzzleSocket.empty())
+    {
+        Block result = Invoke(S.Gun, CutWeapons::SocketExists, {Arg::Nm(Name(muzzleSocket))});
+        if (result.Ok) { muzzle = result.Get<uint8_t>() ? L" (its muzzle " + muzzleSocket + L")" : L" (NO " + muzzleSocket + L" on it: the bullets start at the gun)"; }
+    }
+    const Pad::Now_ pad = Pad::Now();
+    S.LastDown = pad.Down;   // (a button held as it comes on does nothing)
+    Pad::Block.store(set->Block);
+    Log.Line(L"Shooter: on for " + spec + L": fire " + Sh::LabelOf(set->Fire) + L", aim " + Sh::LabelOf(set->Aim) + L", reload " + Sh::LabelOf(set->Reload) +
+             L", switch " + Sh::LabelOf(set->Switch) + L", zoom " + Sh::LabelOf(set->Zoom) + L" (the game does not see " + Sh::LabelsOf(set->Block) + L"); " +
+             std::to_wstring(set->Weapons.size()) + L" guns, " + set->Weapons[static_cast<size_t>(S.Weapon)].Name + L" in hand; the gun " +
+             (S.Gun && S.Gun != MeshOf(who) ? ShortName(S.Gun) + muzzle : std::wstring(L"not found (the flash at the character)")) +
+             (set->GunSocket.empty() ? std::wstring(L", where the game puts it") : L", in hand on " + set->GunSocket) + L"; the controller " +
+             (!Pad::Hooked.load() ? std::wstring(L"not hooked") : (pad.Fresh ? (pad.FromHid ? std::wstring(Sh::PadKindText(pad.Kind)) : std::wstring(L"XInput")) : std::wstring(L"not read yet"))) +
+             (set->Strafe ? L"; aiming, the game sees " + std::wstring(Sh::LabelOf(set->StrafeButton)) + L" held (its guard-walk)" : std::wstring{}));
+    S.Strafing = S.Guarding = false;
+    S.StrafeSince = 0;
+    S.HitChecks.clear();
+    // (3.7.3) the guns' bullet rows in the game's damage tables (each once a session)
+    if (F.SourceRow)
+    {
+        for (const auto& w : S.Guns)   // (3.7.4: with the parts held)
+        {
+            if (std::find(S.CheckedRows.begin(), S.CheckedRows.end(), w.DamageSource) != S.CheckedRows.end()) { continue; }
+            S.CheckedRows.push_back(w.DamageSource);
+            Block row = Invoke(A.Battle, F.SourceRow, {Arg::Nm(Name(w.DamageSource))});
+            const bool found = row.Ok && row.Get<uint8_t>() != 0;
+            Log.Line(L"Shooter: " + w.Name + L"'s bullet row " + w.DamageSource +
+                     (found ? std::wstring(L" is in the game's damage tables") : std::wstring(L" is NOT in the game's damage tables (its shots do nothing)")));
+        }
+    }
+}
+
+void Stop(const wchar_t* why)
+{
+    if (!S.Active) { return; }
+    S.Active = false;
+    Pad::Block.store(0);
+    Pad::Force.store(0);   // (3.7.3)
+    S.Strafing = false;
+    S.HitChecks.clear();
+    Pad::StickPermille.store(1000);
+    Pad::SetTriggers(Sh::TriggerEffect{}, Sh::TriggerEffect{}, true);
+    StopMotion();
+    HideMarks();
+    S.Aiming = S.Zoomed = false;
+    if (StillThere(S.Character, S.CharacterClass))
+    {
+        ReleaseGun(why);   // (3.7.1)
+        SetOrient(true);
+    }
+    RestoreGun(why);   // (3.7.7)
+    S.HeldWeapons.clear();
+    S.OrientOff = false;
+    Log.Line(L"Shooter: off for " + S.Spec + L" (" + why + L"); " + std::to_wstring(S.Shots) + L" shots, " + std::to_wstring(S.Hits) + L" hits so far; the gun put in hand " +
+             std::to_wstring(S.GunMoves) + L" time(s)");
+    Log.Line(Pad::Summary());   // (3.7.1)
+}
+
+void Update(float dt, uint64_t now)
+{
+    const Sh::Settings& set = *S.Set;
+    const double t = static_cast<double>(now) / 1000.0;
+    const bool paused = PausedNow(now);
+    if (paused != S.Paused && S.SaidPauses < 8)
+    {
+        ++S.SaidPauses;
+        Log.Line(std::wstring(L"Shooter: ") + (paused ? L"a menu or slow motion: the game has every button" : L"back to the fight"));
+    }
+    S.Paused = paused;
+    Watch(now);
+    // (3.7.1) the gun in hand, but for an ability the shooter's camera does not stay on through
+    if (S.Cinematic) { ReleaseGun(L"an ability"); }
+    else if (En.On) { ReleaseGun(L"a form's entrance"); }
+    else { HoldGun(now); }
+    WearGun(now);   // (3.7.7: a form's gun model, held or not)
+    if (S.PadSummaryAt && now >= S.PadSummaryAt)
+    {
+        S.PadSummaryAt = 0;
+        Log.Line(Pad::Summary());
+    }
+    // the controller as the mod read it (else the game's input: the game sees the buttons then)
+    const Pad::Now_ pad = Pad::Now();
+    uint32_t down = pad.Down;
+    float l2 = pad.L2, r2 = pad.R2;
+    if (!pad.Fresh)
+    {
+        down = 0;
+        UObject* controller = Controller(S.Character);
+        for (Sh::Button b : {set.Fire, set.Aim, set.Reload, set.Switch, set.Zoom})
+        {
+            if (b != Sh::Button::None && *Sh::KeyNameOf(b) && KeyIsDown(controller, Sh::KeyNameOf(b))) { down |= Sh::Bit(b); }
+        }
+        l2 = Axis(controller, L"Gamepad_LeftTriggerAxis");
+        r2 = Axis(controller, L"Gamepad_RightTriggerAxis");
+        if (l2 <= 0.0f && (down & Sh::Bit(Sh::Button::L2))) { l2 = 1.0f; }
+        if (r2 <= 0.0f && (down & Sh::Bit(Sh::Button::R2))) { r2 = 1.0f; }
+        if (!S.PadSaid)
+        {
+            S.PadSaid = true;
+            Log.Line(L"Shooter: the mod has read no controller report: the buttons come from the game's input (and the game sees them too)");
+        }
+    }
+    const uint32_t pressed = S.Paused ? 0u : down & ~S.LastDown;
+    S.LastDown = down;
+    Pad::Block.store(S.Paused ? 0u : set.Block);
+    // aim and zoom
+    S.Aiming = !S.Paused && !S.Cinematic && Held(set.Aim, down, l2, r2, 0.3f);
+    if (!S.Aiming) { S.Zoomed = false; }
+    else if (pressed & Sh::Bit(set.Zoom)) { S.Zoomed = !S.Zoomed; }
+    Pad::StickPermille.store(S.Aiming ? static_cast<uint32_t>(std::lround(std::clamp(S.Zoomed ? set.ZoomScale : set.AimScale, 0.05f, 2.0f) * 1000.0f)) : 1000u);
+    // (3.7.3) aiming, the game sees its guard button held: its guard-walk, turned where it aims (Face). Not while a face
+    // button is held (the guard button and a face button make a synergy skill; let go of the guard, a dodge is a dodge), an
+    // ability other than the guard runs, it is hit, or a form's entrance plays.
+    {
+        const uint32_t faceButtons = Sh::Bit(Sh::Button::Square) | Sh::Bit(Sh::Button::Cross) | Sh::Bit(Sh::Button::Circle) | Sh::Bit(Sh::Button::Triangle);
+        const bool strafe = set.Strafe && set.StrafeButton != Sh::Button::None && pad.Fresh && S.Aiming && !S.Paused && !S.Cinematic && !S.Busy && !En.On &&
+                            !(down & faceButtons) && !Flying();   // (3.7.7: no guard-walk in the air)
+        if (strafe != S.Strafing)
+        {
+            S.Strafing = strafe;
+            S.StrafeSince = strafe ? now : 0;
+            if (S.SaidStrafes < 6)
+            {
+                ++S.SaidStrafes;
+                Log.Line(L"Shooter: " + S.Spec + (strafe ? L" aims: the game sees " + std::wstring(Sh::LabelOf(set.StrafeButton)) + L" held (its guard-walk)"
+                                                         : L": the game's " + std::wstring(Sh::LabelOf(set.StrafeButton)) + L" let go"));
+            }
+        }
+        Pad::Force.store(strafe ? Sh::Bit(set.StrafeButton) : 0u);
+        // does the game guard? (the log, half a second into the first few aims)
+        if (strafe && S.StrafeSince && now - S.StrafeSince >= 500)
+        {
+            S.StrafeSince = 0;
+            if (F.IsGuard && S.SaidGuards < 4)
+            {
+                ++S.SaidGuards;
+                Block block = Invoke(A.Battle, F.IsGuard, {Arg::Obj(S.Character)});
+                const bool guarding = block.Ok && block.Get<uint8_t>() != 0;
+                Log.Line(L"Shooter: " + S.Spec + (guarding ? std::wstring(L" guards as it aims (the game's IsGuard)")
+                                                           : L" does NOT guard as it aims (IsGuard false: is " + std::wstring(Sh::LabelOf(set.StrafeButton)) + L" the game's guard button? \"strafe_button\")") +
+                         L"; its ability " + (S.Ability.empty() ? std::wstring(L"none") : S.Ability) + L", " + std::to_wstring(static_cast<int>(Speed())) + L" cm/s");
+            }
+        }
+    }
+    // (3.7.3) the first hits: the enemy's HP a moment after the shot
+    for (size_t k = 0; k < S.HitChecks.size();)
+    {
+        const auto& c = S.HitChecks[k];
+        if (now < c.At) { ++k; continue; }
+        if (StillThere(c.Enemy, c.Class) && F.CharaHp && S.SaidChecks < 6)
+        {
+            ++S.SaidChecks;
+            Block hp = Invoke(A.Battle, F.CharaHp, {Arg::Obj(c.Enemy)});
+            const int32_t after = hp.Ok ? hp.Get<int32_t>(-1) : -1;
+            Log.Line(L"Shooter: " + c.Gun + L"'s shot at " + ShortName(c.Enemy) + L": its HP " + std::to_wstring(c.Before) + L" as it left, " + std::to_wstring(after) +
+                     L" 0.9 s later" + (after >= 0 && c.Before >= 0 ? (after < c.Before ? L" (" + std::to_wstring(c.Before - after) + L" lost)" : std::wstring(L" (NONE lost)")) : std::wstring{}));
+        }
+        S.HitChecks.erase(S.HitChecks.begin() + static_cast<std::ptrdiff_t>(k));
+    }
+    // reloads and switches
+    if (S.ReloadAt >= 0.0 && t >= S.ReloadAt)
+    {
+        S.Ammo[static_cast<size_t>(S.Weapon)] = InHand().Clip;
+        S.ReloadAt = -1.0;
+    }
+    if (S.SwitchAt >= 0.0 && t >= S.SwitchAt) { S.SwitchAt = -1.0; }
+    if ((pressed & Sh::Bit(set.Switch)) && set.Weapons.size() > 1 && S.SwitchAt < 0.0 && !S.Busy) { SwitchWeapon(t, now); }
+    else if ((pressed & Sh::Bit(set.Reload)) && S.ReloadAt < 0.0 && S.SwitchAt < 0.0 && !S.Busy &&
+             S.Ammo[static_cast<size_t>(S.Weapon)] < InHand().Clip)
+    {
+        StartReload(t, now);
+    }
+    // fire (a trigger fires past the gun's pull and stays held until it is let go a little)
+    const Sh::Weapon& w = InHand();
+    const bool fireHeld = !S.Paused && Held(set.Fire, down, l2, r2, S.FireHeld ? std::max(0.05f, w.FireAt - 0.15f) : w.FireAt);
+    const bool firePressed = fireHeld && !S.FireHeld;
+    S.FireHeld = fireHeld;
+    const bool ready = !S.Paused && !S.Busy && S.ReloadAt < 0.0 && S.SwitchAt < 0.0;
+    if (ready && S.Ammo[static_cast<size_t>(S.Weapon)] > 0 && t >= S.NextShot && (firePressed || (w.Automatic && fireHeld))) { Shoot(w, t, now); }
+    if (ready && S.Ammo[static_cast<size_t>(S.Weapon)] <= 0 && t >= S.NextShot) { StartReload(t, now); }   // (the clip empty: it reloads)
+    // what is under the reticle
+    {
+        Vec3 eye{};
+        float yaw = 0.0f, pitch = 0.0f;
+        S.Target = !S.Paused && !S.Cinematic && View(eye, yaw, pitch) ? PickEnemy(eye, Sh::ForwardOf(yaw, pitch), set.Assist, w.Range, now).Index : -1;
+    }
+    // the motions (3.7.1): its stance standing, its walk and run moving (aiming: the aim stance, strafing), the shot, reload
+    // and switch motions over them; the game's own while it acts
+    if (!S.Playing.empty() && S.PlayingUntil && now >= S.PlayingUntil) { S.Playing.clear(); }
+    if (!S.Playing.empty() && S.Montage && F.MontagePlaying && now >= S.NextMontageMs)
+    {
+        S.NextMontageMs = now + 200;
+        // (the game ended the shooter's montage: blended out by one of its own)
+        if (UObject* instance = AnimInstanceOf(MeshOf(S.Character)))
+        {
+            Block playing = Invoke(instance, F.MontagePlaying, {Arg::Obj(S.Montage)});
+            if (playing.Ok && !playing.Get<uint8_t>())
+            {
+                S.Playing.clear();
+                S.Montage = nullptr;
+            }
+        }
+    }
+    if (set.Motions && !S.Busy && !S.Paused && !S.GameMontage && (S.Playing.empty() || !S.PlayingUntil)) { Locomote(now); }
+    Face(dt, t);
+    // the triggers: the fire trigger pulls like the gun in hand (and kicks as it fires), the aim trigger resists a little
+    if (set.Triggers)
+    {
+        if (S.Paused) { Pad::SetTriggers(Sh::TriggerEffect{}, Sh::TriggerEffect{}, true); }   // (the game's own effects in its menus)
+        else
+        {
+            const bool canFire = !S.Busy && S.ReloadAt < 0.0 && S.SwitchAt < 0.0 && S.Ammo[static_cast<size_t>(S.Weapon)] > 0;
+            const auto effect = [&](Sh::Button b) {
+                if (b == set.Fire) { return t < S.KickUntil ? w.Kick : (canFire ? w.FireTrigger : Sh::TriggerEffect{}); }
+                if (b == set.Aim) { return set.AimTrigger; }
+                return Sh::TriggerEffect{};
+            };
+            Pad::SetTriggers(effect(Sh::Button::R2), effect(Sh::Button::L2), false);
+        }
+    }
+    // the reticle
+    if (S.Paused || S.Cinematic) { HideMarks(); }
+    else { ShowMarks(t, now); }
+}
+
+void Frame(uint64_t now)
+{
+    if (!S.Wanted || !S.Broken.empty()) { return; }
+    LookUp();
+    if (!A.Looked || !A.Battle || !A.Statics) { return; }
+    LookUpOnce();
+    const float dt = S.LastMs ? std::min(0.1f, static_cast<float>(now - S.LastMs) / 1000.0f) : 0.0f;
+    S.LastMs = now;
+    // the character in charge, and its shooter (4 times a second)
+    if (now >= S.NextSpecMs)
+    {
+        S.NextSpecMs = now + 250;
+        const bool battle = InBattle();
+        UObject* who = battle ? Leader() : FieldCharacter();
+        const SkelCompat::AnimSetRow* row = nullptr;
+        std::wstring spec;
+        const Sh::Settings* set = StillThere(who, nullptr) ? SettingsOf(who, row, spec) : nullptr;
+        if (set && !battle && !set->InField) { set = nullptr; }
+        if (S.Active && (who != S.Character || set != S.Set))
+        {
+            Stop(!battle && !S.Set->InField ? L"the battle ended"
+                                            : (who != S.Character ? L"another character in charge" : (set ? L"other settings" : L"its form has none")));
+        }
+        if (!S.Active && set) { Start(who, row, set, spec); }
+    }
+    // the camera modifier is FormCam's: the forms' frame work keeps it when it runs, else the shooter does (and the effects)
+    if (!Forms::Wanted || Forms::Off || !A.Usable)
+    {
+        FormCam::Frame(S.Character, nullptr, false, now);
+        UpdateEffects(now);
+    }
+    if (!S.Sounds.empty()) { UpdateShotSounds(now); }   // (3.7.1)
+    if (!S.Active) { return; }
+    if (!StillThere(S.Character, S.CharacterClass))
+    {
+        Stop(L"the character went");
+        S.Character = nullptr;
+        return;
+    }
+    Update(dt, now);
+}
+
+// The first map load: the motions, the guns' effects and sounds, and the HUD's pictures are loaded and kept (nothing
+// loads in battle).
+void Preload()
+{
+    S.Wanted = Configured();
+    if (!S.Wanted) { return; }
+    LookUp();
+    LookUpOnce();
+    int loaded = 0, missing = 0, pictures = 0, noPictures = 0;
+    std::wstring lost;
+    const auto want = [&](const std::wstring& path) {
+        if (path.empty()) { return; }
+        if (Need(path, true)) { ++loaded; }
+        else
+        {
+            ++missing;
+            if (missing <= 6) { lost += (lost.empty() ? L"" : L", ") + ShortNameOfPath(path); }
+        }
+    };
+    const auto picture = [&](const std::wstring& ui, const std::wstring& name) {
+        if (Texture(ui, name)) { ++pictures; }
+        else { ++noPictures; }
+    };
+    std::wstring rows;
+    const auto keep = [&](const Sh::Settings& set) {
+        for (const auto& w : set.Weapons)
+        {
+            if (set.Motions)
+            {
+                for (const std::wstring* motion : {&set.Idle, &set.Stand, &set.Walking, &set.Running, &set.Walk, &set.Run, &set.Back, &set.Left, &set.Right,
+                                                   &set.Shot, &set.Reloading, &set.WalkReload, &set.RunReload, &set.Switching})
+                {
+                    want(set.Clip(w, *motion));
+                }
+                if (!w.FlySet.empty())   // (3.7.7: its shot and reload in the air)
+                {
+                    want(set.FlyClip(w, set.Shot));
+                    want(set.FlyClip(w, set.Reloading));
+                }
+            }
+            want(w.Muzzle.Path);
+            want(w.Impact.Path);
+            for (const auto& sound : w.Sounds) { want(sound.Bank); }
+            want(w.ReloadSound.Bank);
+            picture(set.Ui, w.Reticle);
+        }
+        if (set.Motions) { want(set.Plain(set.FlyStance)); }   // (3.7.7)
+        want(set.GunMesh);                                     // (3.7.7)
+        for (const wchar_t* name : {L"scope_ring", L"counter_frame", L"bullet_icon"}) { picture(set.Ui, name); }
+        for (int d = 0; d < 10; ++d) { picture(set.Ui, L"digit_" + std::to_wstring(d)); }
+    };
+    std::vector<const Sh::Settings*> kept;   // (each form's once: the characters of a row have the same forms)
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.Shooting.On)
+        {
+            rows += (rows.empty() ? L"" : L", ") + ShortNameOfPath(row.Characters.front()) + L" (" + std::to_wstring(row.Shooting.Weapons.size()) + L" guns)";
+            keep(row.Shooting);
+        }
+        for (const auto& form : row.Forms.List)   // (3.7.7: a form's own shooter)
+        {
+            if (!form.ShooterSet || !form.ShooterSet->On) { continue; }
+            const bool same = std::any_of(kept.begin(), kept.end(), [&](const Sh::Settings* k) {
+                return k->Folder == form.ShooterSet->Folder && k->Prefix == form.ShooterSet->Prefix && k->GunMesh == form.ShooterSet->GunMesh &&
+                       k->Weapons.size() == form.ShooterSet->Weapons.size();
+            });
+            if (same) { continue; }
+            kept.push_back(form.ShooterSet.get());
+            rows += (rows.empty() ? L"" : L", ") + ShortNameOfPath(row.Characters.front()) + L" in " + form.Name + L" (" +
+                    std::to_wstring(form.ShooterSet->Weapons.size()) + L" guns" + (form.ShooterSet->GunMesh.empty() ? L"" : L", " + ShortNameOfPath(form.ShooterSet->GunMesh)) + L")";
+            keep(*form.ShooterSet);
+        }
+    }
+    Log.Line(L"Shooter: characters with a shooter: " + rows + L"; " + std::to_wstring(loaded) + L" assets kept" +
+             (missing ? L", " + std::to_wstring(missing) + L" NOT found (" + lost + L")" : std::wstring{}) + L"; " + std::to_wstring(pictures) + L" HUD pictures" +
+             (noPictures ? L", " + std::to_wstring(noPictures) + L" NOT there" : std::wstring{}));
+}
+
+// A map load (and before one): the character, its gun and the widgets are the old map's.
+void Reset()
+{
+    if (S.Active)
+    {
+        Pad::SetTriggers(Sh::TriggerEffect{}, Sh::TriggerEffect{}, true);
+        S.Active = false;
+    }
+    S.Character = nullptr;
+    S.CharacterClass = nullptr;
+    S.Gun = nullptr;
+    S.GunClass = nullptr;
+    S.Playing.clear();
+    S.Montage = nullptr;
+    S.HeldWeapons.clear();   // (3.7.1: the old map's)
+    S.Weapons.clear();
+    S.Sounds.clear();
+    for (UObject* material : S.GunOverrides)   // (3.7.7: the old map's gun is gone; the materials kept for it go too)
+    {
+        if (material) { material->ClearRootSet(); }
+    }
+    S.GunOverrides.clear();
+    S.GunWorn = nullptr;
+    S.GunWornClass = nullptr;
+    S.GunModelWas = nullptr;
+    S.NextGunCheckMs = 0;
+    S.OrientOff = S.Faced = false;
+    S.GunSocketChecked = false;
+    S.Enemies.clear();
+    S.EnemiesMs = S.NextSpecMs = S.NextWatchMs = S.CameraMs = 0;
+    S.Blend = S.AimBlend = S.ZoomBlend = S.Recoil = 0.0f;
+    S.ViewKnown = false;
+    S.LastView = nullptr;
+    Pad::Block.store(0);
+    Pad::Force.store(0);   // (3.7.3)
+    S.Strafing = S.Guarding = false;
+    S.HitChecks.clear();
+    Pad::StickPermille.store(1000);
+    if (R.Widget) { R.Widget->ClearRootSet(); }
+    const std::wstring broken = R.Broken;
+    R = Marks{};
+    R.Broken = broken;   // (the textures are kept: they are the transient package's)
+}
+
+void Off(const wchar_t* where)
+{
+    S.Broken = where;
+    try
+    {
+        Stop(L"an error");
+    }
+    catch (...)
+    {
+    }
+    Pad::Block.store(0);
+    Pad::Force.store(0);   // (3.7.3)
+    Pad::StickPermille.store(1000);
+    Log.Line(std::wstring(L"Shooter: switched off after an error in ") + where);
+}
+
+std::wstring Report()
+{
+    if (!S.Wanted) { return L"Shooter: none"; }
+    std::wstring text = L"Shooter: " + (!S.Broken.empty() ? L"off after an error in " + S.Broken : (S.Active ? L"on for " + S.Spec : std::wstring(L"waiting for its character"))) +
+                        L"; " + std::to_wstring(S.Shots) + L" shots, " + std::to_wstring(S.Hits) + L" damage sources made, " + std::to_wstring(S.Reloads) + L" reloads, " +
+                        std::to_wstring(S.Switches) + L" switches; the camera modifier ran it " + std::to_wstring(S.CameraCalls) + L" times";
+    if (S.Set)
+    {
+        for (size_t k = 0; k < S.Set->Weapons.size() && k < S.Ammo.size(); ++k)
+        {
+            text += L"\n    " + GunAt(k).Name + L": " + std::to_wstring(S.Ammo[k]) + L" / " + std::to_wstring(GunAt(k).Clip) +
+                    (static_cast<int>(k) == S.Weapon ? L" (in hand)" : L"");
+        }
+    }
+    text += L"\n    the gun put in hand " + std::to_wstring(S.GunMoves) + L" time(s)" + (S.NoStrafe ? L"; on the move it faces where it goes (the game turns it)" : L"") +
+            (S.GunWorn ? L"; the gun wears " + (S.Set ? ShortNameOfPath(S.Set->GunMesh) : std::wstring(L"?")) : std::wstring{}) + (Flying() ? L"; in the air" : L"");
+    if (!S.MissingClips.empty()) { text += L"\n    motions NOT loaded: " + std::to_wstring(S.MissingClips.size()) + L" (" + ShortNameOfPath(S.MissingClips.front()) + L"...)"; }
+    if (!R.Broken.empty()) { text += L"\n    reticle NOT shown: " + R.Broken; }
+    return text + L"\n    " + Pad::Report();
+}
+} // namespace Dirge
+
+
+void Frame(uint64_t now)
+{
+    if (!Wanted || Off) { return; }
+    NoteRecentFrame(now);   // (3.6.8)
+    LookUp();
+    if (!A.Usable) { return; }
+    // (3.6.16) the battle camera of the form of the character in charge
+    try
+    {
+        const Tracked* t = WasInBattle && LastLeader && StillThere(LastLeader, nullptr) ? TrackedOf(LastLeader) : nullptr;
+        FormCam::Frame(t ? LastLeader : nullptr, t, En.On && !En.Ending, now);
+    }
+    catch (...)
+    {
+        FormCam::Reset();
+    }
+    UpdateEffects(now);
+    UpdateFades(now);
+    UpdateEntrance(now);   // (3.6.6)
+    UpdateBars(now);       // (3.6.8)
+    HideOnOthers();        // (3.6.8: a few blocks of the object array a frame)
+    WatchPlayer(now);      // (3.6.9: the log)
+    // switches made by anything else
+    if (!ObservedSwitches.empty())
+    {
+        std::vector<Observed> list;
+        list.swap(ObservedSwitches);
+        for (const auto& o : list)
+        {
+            Tracked* t = TrackedOf(o.Character);
+            if (!t)
+            {
+                if (!StillThere(o.Character, nullptr)) { continue; }
+                t = Track(o.Character);
+                if (!t) { continue; }
+            }
+            const std::wstring pack = o.Reset ? std::wstring{} : o.Pack;
+            // (3.9.0) a normal form with a pack of its own: the character's own pack going back on (the game's reset, or its
+            // default pack) is its normal form, whose pack goes on again in battle (below, in the battle's part of the frame)
+            const Form& base = t->Row->Forms.List.front();
+            if (HasOwnPack(base) && (pack.empty() || SkelCompat::NameEquals(pack, SkelCompat::DefaultAbilityPack())) && !t->Row->Forms.Plays(t->Form, pack))
+            {
+                if (t->Form != 0)
+                {
+                    Log.Line(L"Forms: " + t->Spec + L" was switched to its own pack by something else: its form follows (" + base.Name + L")");
+                    Become(*t, 0, false, now);
+                }
+                t->BaseOn = false;
+                continue;
+            }
+            // (3.7.7: the form it is in plays that pack, a form on the character's own pack: it stays in it)
+            const int index = t->Row->Forms.Plays(t->Form, pack) ? t->Form : t->Row->Forms.IndexOfPack(pack);
+            if (index >= 0 && index != t->Form)
+            {
+                Log.Line(L"Forms: " + t->Spec + L" was switched to " + (o.Reset ? std::wstring(L"its own pack") : o.Pack) + L" by something else: its form follows");
+                Become(*t, index, false, now);
+            }
+        }
+    }
+    if (!In.Open && now < NextBattleCheck && !WasInBattle) { return; } // (outside battle: 4 times a second)
+    if (now >= NextBattleCheck || In.Open)
+    {
+        NextBattleCheck = now + 250;
+        const bool battle = InBattle();
+        if (!battle && WasInBattle)
+        {
+            CloseMenu(L"the battle ended");
+            EndEntrance(L"the battle ended", EntranceEnd::Cut, now);   // (3.6.6)
+            BackToNormal(true, now);
+        }
+        WasInBattle = battle;
+        if (!battle)
+        {
+            HideHud();
+            // the character you control in the field keeps its normal form's parts (a model with a wing hides it)
+            if (now >= NextField)
+            {
+                NextField = now + 1000;
+                if (UObject* character = FieldCharacter())
+                {
+                    if (Tracked* t = Track(character)) { KeepParts(*t); }
+                }
+            }
+            return;
+        }
+    }
+    UObject* leader = Leader();
+    Timers(leader, now);
+    UpdateHud(leader, now);
+    if (!leader)
+    {
+        CloseMenu(L"no character in charge");
+        return;
+    }
+    if (leader != LastLeader)
+    {
+        if (Tracked* before = LastLeader ? TrackedOf(LastLeader) : nullptr; before && !before->AbilityFx.empty())
+        {
+            StopEffects(before->Character, Group::Ability, now); // (its abilities are no longer read)
+            before->AbilityFx.clear();
+            before->Ability.clear();
+        }
+        LastLeader = leader;
+        CloseMenu(L"another character in charge");
+        Track(leader);
+    }
+    Tracked* t = TrackedOf(leader);
+    if (!t) { return; }
+    // (3.9.0) the normal form's own pack: on in battle for every character in its normal form (the battle's start, a
+    // character tracked in battle, the game's own pack put back on)
+    for (auto& other : Characters)
+    {
+        if (other.Form != 0 || other.BaseOn || !HasOwnPack(other.Row->Forms.List.front())) { continue; }
+        if (&other != t && !StillThere(other.Character, other.Class)) { continue; }
+        PutOnBasePack(other, other.BaseTimes == 0 ? L"the battle" : L"the game had put its own pack back on", now);
+    }
+    UObject* controller = Controller(leader);
+    const FormSettings& forms = t->Row->Forms;
+    const Form& form = forms.List[static_cast<size_t>(t->Form)];
+    // the button
+    const float held = std::max(KeySeconds(controller, forms.Button), KeySeconds(controller, forms.Key));
+    if (In.Open)
+    {
+        if (In.Character != leader) { CloseMenu(L"another character in charge"); }
+        else if (held > 0.0f)
+        {
+            const int step = Direction(controller);
+            const int count = static_cast<int>(forms.List.size());
+            if (step != 0 && (step != In.Step || now >= In.NextRepeat))
+            {
+                In.NextRepeat = now + (step != In.Step ? 380 : 120);
+                In.Cursor = (In.Cursor + step + count) % count;
+                Draw(In.Cursor, t->Form, t);
+                NextMenuDraw = now + 250;
+            }
+            else if (now >= NextMenuDraw)
+            {
+                NextMenuDraw = now + 250; // (the time left and the cooldowns count down)
+                Draw(In.Cursor, t->Form, t);
+            }
+            In.Step = step;
+        }
+        else
+        {
+            const int pick = In.Cursor;
+            CloseMenu(nullptr);
+            In.HoldUsed = false;
+            const double game = GameSeconds(leader);
+            if (pick == t->Form) { Log.Line(L"Forms: menu: " + forms.List[static_cast<size_t>(pick)].Name + L" is the form " + t->Spec + L" is in; no switch"); }
+            else if (Waiting(*t, pick, game))
+            {
+                const std::wstring words = forms.List[static_cast<size_t>(pick)].Name + L" is ready in " + Clock(t->ReadyAt[static_cast<size_t>(pick)] - game);
+                Log.Line(L"Forms: menu: " + words + L"; no switch");
+                Notice(forms, words, now);
+            }
+            else { SwitchTo(*t, pick, L"the forms menu", true, now); }
+        }
+    }
+    else if (held <= 0.0f)
+    {
+        In.HoldUsed = false;
+    }
+    else if (!In.HoldUsed && held >= forms.HoldSeconds)
+    {
+        In.HoldUsed = true;
+        if (Open(*t->Row, t->Form, t->Form, t))
+        {
+            In.Open = true;
+            In.Character = leader;
+            In.Cursor = t->Form;
+            In.Step = 0;
+            NextMenuDraw = now + 250;
+            IgnoreMove(controller, true);
+            Log.Line(L"Forms: menu open (" + t->Spec + L" is " + form.Name + L")");
+        }
+        else
+        {
+            // no menu: the next form that is not cooling down
+            const int count = static_cast<int>(forms.List.size());
+            const double game = GameSeconds(leader);
+            for (int step = 1; step < count; ++step)
+            {
+                const int next = (t->Form + step) % count;
+                if (Waiting(*t, next, game)) { continue; }
+                SwitchTo(*t, next, L"button held (no menu)", true, now);
+                break;
+            }
+        }
+    }
+    // "after": a form the character switches to when an ability ends; "ability_effects": effects while abilities run (the
+    // ability is read every frame then, so a sword is in the hand as the swing starts)
+    if (now >= NextAbilityCheck || !form.AbilityEffects.empty())
+    {
+        NextAbilityCheck = now + 200;
+        const std::wstring ability = AbilityOf(leader);
+        if (ability != t->Ability)
+        {
+            const std::wstring ended = t->Ability;
+            t->Ability = ability;
+            AbilityEffects(*t, form, ability, now);
+            // (3.6.4, the log: in another model, what its anim instance plays a moment into an ability)
+            if (t->Swapped && !ability.empty() && ability != L"None")
+            {
+                t->MontageAt = now + 400;
+                t->MontageFor = ability;
+            }
+            for (size_t k = 0; k < forms.List.size(); ++k)
+            {
+                if (!forms.List[k].After.empty() && SkelCompat::NameEquals(forms.List[k].After, ended) && static_cast<int>(k) != t->Form)
+                {
+                    SwitchTo(*t, static_cast<int>(k), (L"after " + ended).c_str(), true, now);
+                    break;
+                }
+            }
+        }
+    }
+    if (t->TickCheckAt && now >= t->TickCheckAt)
+    {
+        // (3.7.8, the log) the mesh tick a moment after a model change: tables of the model on (the game built them) or
+        // of another (its physics and KDI then land on bones of that one's order)
+        t->TickCheckAt = 0;
+        if (UObject* mesh = MeshOf(t->Character))
+        {
+            Log.Line(L"Forms: " + t->Spec + L": a moment after the model change (" + ShortName(ObjectAt(mesh, State.OffCompMesh)) + L" on)" +
+                     MeshTickText(t->Character, mesh));
+        }
+    }
+    if (t->MontageAt && now >= t->MontageAt)
+    {
+        t->MontageAt = 0;
+        static int said = 0;
+        if (said < 40 && A.ActiveMontage)
+        {
+            ++said;
+            UObject* mesh = MeshOf(t->Character);
+            UObject* instance = mesh ? AnimInstanceOf(mesh) : nullptr;
+            UObject* montage = nullptr;
+            if (instance)
+            {
+                Block playing = Invoke(instance, A.ActiveMontage, {});
+                if (playing.Ok) { montage = playing.Get<UObject*>(); }
+            }
+            Log.Line(L"Forms: " + t->Spec + L" runs " + t->MontageFor + L": its anim instance " + (instance ? ShortName(instance) : std::wstring(L"(none)")) +
+                     L" plays " + (montage ? PathOf(montage) : std::wstring(L"no montage")));
+        }
+    }
+    const Form& current = forms.List[static_cast<size_t>(t->Form)];
+    if (t->Flying) { Fly(*t, current, controller, In.Open, now); }
+    if (now >= NextKeep)
+    {
+        NextKeep = now + 200;
+        for (auto& other : Characters)
+        {
+            if (other.LookSlot >= 0 && (&other == t || other.Alive)) { WatchLook(other); }
+        }
+        KeepParts(*t);
+        KeepModel(*t, current);
+    }
+}
+
+// ---- (3.9.0) "voice": the voice lines of a character's animations in the voice of its row or its form -----------------
+// The game's animations say their voice lines with sound notifies (UEndAnimNotifyPlaySound, whose voice class is
+// UEndAnimNotifyPlayVoice; UEndAnimNotifyStatePlaySound for sounds that last). Each names a voice bank (SoundRef, a soft
+// reference: the bank's path in its source language, /Game/Sound/Voice/JP/...; the game loads the voice language's
+// package under that name) and a cue (SoundName and its branches: cues of that bank). The cue stays; the bank is the
+// voice's. The mod finds the sound notifies that name a bank a voice replaces (a few blocks of the object array a frame,
+// as HideOnOthers looks for models: all of it in about two seconds) and points each at the bank the character's voice
+// plays from now: the reference's path, its resolved object and its tag cleared (the game resolves the path again the
+// next time it plays it); and back at its own bank when the voice is the animations' own ("own", or none). A bank the
+// game has not loaded is never pointed at (the mod loads no voice banks: 3.6.3): the lines keep their own, the log says so.
+// A notify is its animation's, one for every character playing it: its bank follows the character in charge, else
+// another character the mod follows, each bank going to the first of them whose voice replaces it.
+namespace Voices
+{
+struct Line
+{
+    UObject* Notify = nullptr;
+    int32_t Offset = -1;   // its reference's offset in the notify
+    uint8_t Slot = 0;      // which of the notify's references (0 a notify's SoundRef, 1 a notify state's, 2 its OnEndSoundRef)
+    uint64_t Own = 0;      // the bank its animation names (the raw FName of the bank's object path)
+    uint64_t Now = 0;      // the bank it names now
+};
+bool Looked = false;
+bool Usable = false;
+UClass* SoundNotify = nullptr;                        // UEndAnimNotifyPlaySound
+UClass* SoundState = nullptr;                         // UEndAnimNotifyStatePlaySound
+UClass* SeadSound = nullptr;                          // USQEXSEADSound
+int32_t OffRef = -1;                                  // UEndAnimNotifyPlaySound::SoundRef (FSoftObjectPtr, 40 bytes)
+int32_t OffStateRef = -1, OffStateEndRef = -1;        // UEndAnimNotifyStatePlaySound::SoundRef, OnEndSoundRef
+int32_t OffDataList = -1;                             // UEndAssetDataAsset::AssetDataList
+int32_t OffEntryObjects = -1;                         // FEndAssetData::AssetUserData
+int32_t EntrySize = 0;                                // sizeof(FEndAssetData)
+constexpr int32_t RefTag = 8;                         // FSoftObjectPtr: FWeakObjectPtr at 0, TagAtLastTest at 8,
+constexpr int32_t RefPath = 16;                       // its FSoftObjectPath's AssetPathName (FName) at 16
+std::unordered_map<UClass*, uint8_t> Kinds;           // a class -> 0 not a sound notify, 1 a notify, 2 a notify state
+std::vector<Line> Lines;
+std::unordered_map<uint64_t, size_t> LineOf;          // (notify, which reference) -> its line
+std::vector<uint64_t> Watched;                        // the banks looked for: those voices replace, those they switch to
+std::vector<std::pair<uint64_t, uint64_t>> Map;       // a bank -> the bank its lines play from now
+std::vector<std::wstring> Said;                       // what the log said of each voice at the last plan
+std::vector<std::wstring> Missing;                    // voice banks the game had not loaded at the last plan
+int32_t Cursor = 0;
+uint64_t NextPlan = 0;
+size_t NewLines = 0, NewMoved = 0;                    // lines found in this pass of the object array (the log)
+constexpr int32_t ScanBlock = 2048;                   // (as HideOnOthers': a block never runs from one chunk into the next)
+constexpr int32_t ScanFrames = 120;
+constexpr uint64_t ScanBudgetUs = 200;
+
+uint64_t KeyOfLine(UObject* notify, int32_t slot) { return (static_cast<uint64_t>(reinterpret_cast<uintptr_t>(notify)) << 2) | static_cast<uint64_t>(slot & 3); }
+
+// A character's voice bank: /Game/Sound/Voice/<language>/Character/... (not a cutscene's lines, /Game/Sound/Voice/JP/Cut/...).
+bool IsCharacterVoicePath(const std::wstring& path)
+{
+    static const std::wstring root = L"/Game/Sound/Voice/";
+    static const std::wstring character = L"Character/";
+    if (path.size() <= root.size() || !SkelCompat::NameEquals(std::wstring_view(path).substr(0, root.size()), root)) { return false; }
+    const size_t slash = path.find(L'/', root.size());
+    return slash != std::wstring::npos && path.size() > slash + 1 + character.size() &&
+           SkelCompat::NameEquals(std::wstring_view(path).substr(slash + 1, character.size()), character);
+}
+
+uint8_t KindOf(UClass* type)
+{
+    if (!type) { return 0; }
+    if (const auto it = Kinds.find(type); it != Kinds.end()) { return it->second; }
+    const uint8_t kind = (SoundNotify && type->IsChildOf(SoundNotify)) ? 1 : (SoundState && type->IsChildOf(SoundState)) ? 2 : 0;
+    Kinds.emplace(type, kind);
+    return kind;
+}
+
+uint64_t BankAt(UObject* notify, int32_t offset) { return Field<uint64_t>(notify, offset + RefPath); }
+
+// The reference names `bank`: its path; its resolved object null (INDEX_NONE, serial 0) and its tag 0 (never the
+// current one): the game resolves the path again the next time it reads it.
+void PointAt(UObject* notify, int32_t offset, uint64_t bank)
+{
+    uint8_t* ref = reinterpret_cast<uint8_t*>(notify) + offset;
+    std::memcpy(ref + RefPath, &bank, sizeof(bank));
+    const int32_t none[2] = {-1, 0};
+    std::memcpy(ref, none, sizeof(none));
+    const int32_t tag = 0;
+    std::memcpy(ref + RefTag, &tag, sizeof(tag));
+}
+
+// The line's notify is still the one the mod knows: live, a sound notify, naming what the mod last saw it name.
+bool StillOurs(const Line& line)
+{
+    return IsLive(line.Notify) && !line.Notify->HasAnyFlags(DeadFlags) && KindOf(line.Notify->GetClassPrivate()) != 0 &&
+           BankAt(line.Notify, line.Offset) == line.Now;
+}
+
+uint64_t BankFor(uint64_t own)
+{
+    for (const auto& [from, to] : Map)
+    {
+        if (from == own) { return to; }
+    }
+    return own;
+}
+
+std::wstring BankLabel(uint64_t bank) { return ShortNameOfPath(NameText(bank)); }
+
+// The bank's object while the game has it loaded: at its path, else under another voice language's folder. Null: not loaded.
+UObject* LoadedBank(const std::wstring& path)
+{
+    if (UObject* bank = FindObjectByPath(path.c_str()); bank && FlagsReady(bank)) { return bank; }
+    static const std::wstring source = L"/Game/Sound/Voice/JP/";
+    if (path.size() <= source.size() || !SkelCompat::NameEquals(std::wstring_view(path).substr(0, source.size()), source)) { return nullptr; }
+    for (const wchar_t* language : VoiceLanguages)
+    {
+        const std::wstring other = L"/Game/Sound/Voice/" + std::wstring(language) + L"/" + path.substr(source.size());
+        if (UObject* bank = FindObjectByPath(other.c_str()); bank && FlagsReady(bank)) { return bank; }
+    }
+    return nullptr;
+}
+
+// The character voice banks a CharaSpec pack lists (its character's voice), as raw FNames of their paths.
+std::vector<uint64_t> PackBanks(const std::wstring& spec)
+{
+    std::vector<uint64_t> out;
+    if (spec.empty() || !SeadSound || OffDataList < 0 || OffEntryObjects < 0 || EntrySize < OffEntryObjects + 16) { return out; }
+    UObject* pack = FindObjectByPath(SkelCompat::CharacterPackPath(spec).c_str());
+    if (!pack || !FlagsReady(pack)) { return out; }
+    const RawArray list = Field<RawArray>(pack, OffDataList);
+    if (!list.Data || list.Num <= 0 || list.Num > 1024) { return out; }
+    for (int32_t i = 0; i < list.Num; ++i)
+    {
+        const uint8_t* entry = static_cast<const uint8_t*>(list.Data) + static_cast<size_t>(i) * static_cast<size_t>(EntrySize);
+        const RawArray objects = Field<RawArray>(entry, OffEntryObjects);
+        if (!objects.Data || objects.Num <= 0 || objects.Num > 4096) { continue; }
+        for (int32_t k = 0; k < objects.Num; ++k)
+        {
+            UObject* object = static_cast<UObject* const*>(objects.Data)[k];
+            if (!object || !IsLive(object) || !object->IsA(SeadSound)) { continue; }
+            const std::wstring path = object->GetPathName();
+            if (!IsCharacterVoicePath(path)) { continue; }
+            const uint64_t key = Name(path);
+            if (std::find(out.begin(), out.end(), key) == out.end()) { out.push_back(key); }
+        }
+    }
+    return out;
+}
+
+void LookUp()
+{
+    if (Looked) { return; }
+    Looked = true;
+    if (std::none_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) { return r.HasVoices(); })) { return; }
+    Forms::LookUp();
+    SoundNotify = FindClass(L"/Script/EndGame.EndAnimNotifyPlaySound");
+    SoundState = FindClass(L"/Script/EndGame.EndAnimNotifyStatePlaySound");
+    SeadSound = FindClass(L"/Script/SQEXSEAD.SQEXSEADSound");
+    if (SoundNotify) { OffRef = FieldOffset(SoundNotify, L"SoundRef", {L"SoftObjectProperty"}, 40); }
+    if (SoundState)
+    {
+        OffStateRef = FieldOffset(SoundState, L"SoundRef", {L"SoftObjectProperty"}, 40);
+        OffStateEndRef = FieldOffset(SoundState, L"OnEndSoundRef", {L"SoftObjectProperty"}, 40);
+    }
+    if (UClass* pack = FindClass(L"/Script/EndGame.EndAssetDataAsset")) { OffDataList = FieldOffset(pack, L"AssetDataList", {L"ArrayProperty"}, 16); }
+    if (UObject* entry = FindObjectByPath(L"/Script/EndGame.EndAssetData"); entry && entry->IsA<UScriptStruct>())
+    {
+        UStruct* type = static_cast<UStruct*>(static_cast<UScriptStruct*>(entry));
+        OffEntryObjects = FieldOffset(type, L"AssetUserData", {L"ArrayProperty"}, 16);
+        EntrySize = type->GetPropertiesSize();
+    }
+    if (OffStateRef < 0) { SoundState = nullptr; }
+    Usable = A.Usable && SoundNotify && OffRef >= 0;
+    std::wstring missing;
+    if (!A.Usable) { missing = L"the forms' battle functions"; }
+    else if (!SoundNotify) { missing = L"EndAnimNotifyPlaySound"; }
+    else if (OffRef < 0) { missing = L"EndAnimNotifyPlaySound's SoundRef"; }
+    Log.Line(L"Voices: " + (Usable ? std::wstring(L"ready (sound notifies") + (SoundState ? L" and notify states" : L"") + L"; " +
+                                         (OffEntryObjects >= 0 && OffDataList >= 0 && SeadSound ? L"a pack's voice banks are read from its lists)" : L"a voice replaces only the banks it names)")
+                                   : L"OFF (not found: " + missing + L")"));
+}
+
+// The characters whose voices count, the one in charge first: those the forms follow and, for a row with a voice and no
+// forms, the character you control.
+struct Speaker
+{
+    UObject* Character = nullptr;
+    const SkelCompat::AnimSetRow* Row = nullptr;
+    std::wstring Spec;
+    int Form = -1;
+};
+
+std::vector<Speaker> Speakers(bool battle)
+{
+    std::vector<Speaker> out;
+    const auto add = [&](UObject* character) {
+        if (!character || std::any_of(out.begin(), out.end(), [&](const Speaker& s) { return s.Character == character; })) { return; }
+        if (const Tracked* t = TrackedOf(character))
+        {
+            if (t->Row->HasVoices() && StillThere(t->Character, t->Class)) { out.push_back(Speaker{character, t->Row, t->Spec, t->Form}); }
+            return;
+        }
+        if (!StillThere(character, nullptr)) { return; }
+        const std::wstring spec = CharaSpecRowOf(character);
+        const SkelCompat::AnimSetRow* row = spec.empty() ? nullptr : State.Config.FindAnimSetRow(SkelCompat::CharacterPackPath(spec));
+        if (row && row->HasVoices()) { out.push_back(Speaker{character, row, spec, -1}); }
+    };
+    add(battle ? Leader() : FieldCharacter());
+    for (const auto& t : Characters) { add(t.Character); }
+    return out;
+}
+
+// Points every line the mod follows at the bank the plan gives its own (lines whose notify is gone are let go).
+size_t Apply()
+{
+    size_t moved = 0;
+    for (size_t i = 0; i < Lines.size();)
+    {
+        if (!StillOurs(Lines[i]))
+        {
+            LineOf.erase(KeyOfLine(Lines[i].Notify, Lines[i].Slot));
+            if (i + 1 != Lines.size())
+            {
+                Lines[i] = Lines.back();
+                LineOf[KeyOfLine(Lines[i].Notify, Lines[i].Slot)] = i;
+            }
+            Lines.pop_back();
+            continue;
+        }
+        Line& line = Lines[i];
+        const uint64_t want = BankFor(line.Own);
+        if (want != line.Now)
+        {
+            PointAt(line.Notify, line.Offset, want);
+            line.Now = want;
+            ++moved;
+        }
+        ++i;
+    }
+    return moved;
+}
+
+void MakePlan()
+{
+    const bool battle = InBattle();
+    std::vector<std::pair<uint64_t, uint64_t>> map;
+    std::vector<uint64_t> watched;
+    std::vector<std::wstring> said, missing;
+    const auto decided = [&](uint64_t bank) { return std::any_of(map.begin(), map.end(), [&](const auto& p) { return p.first == bank; }); };
+    const auto watch = [&](uint64_t bank) {
+        if (bank && std::find(watched.begin(), watched.end(), bank) == watched.end()) { watched.push_back(bank); }
+    };
+    for (const Speaker& s : Speakers(battle))
+    {
+        const SkelCompat::AnimSetRow& row = *s.Row;
+        std::vector<uint64_t> targets;
+        for (const auto& path : row.VoiceTargets()) { targets.push_back(Name(path)); }
+        std::vector<uint64_t> pack;
+        bool packRead = false;
+        const auto replaced = [&](const SkelCompat::Voice& v) {
+            std::vector<uint64_t> out;
+            if (!v.Replaces.empty())
+            {
+                for (const auto& path : v.Replaces) { out.push_back(Name(path)); }
+                return out;
+            }
+            if (!packRead)
+            {
+                pack = PackBanks(s.Spec);
+                packRead = true;
+            }
+            for (const uint64_t bank : pack)
+            {
+                if (std::find(targets.begin(), targets.end(), bank) == targets.end()) { out.push_back(bank); }
+            }
+            return out;
+        };
+        std::vector<uint64_t> own;   // the banks the row's voices replace
+        const auto addOwn = [&](const SkelCompat::Voice& v) {
+            if (!v.Set || v.Own) { return; }
+            for (const uint64_t bank : replaced(v))
+            {
+                if (std::find(own.begin(), own.end(), bank) == own.end()) { own.push_back(bank); }
+            }
+        };
+        addOwn(row.Speaks);
+        for (const auto& f : row.Forms.List) { addOwn(f.Speaks); }
+        for (const uint64_t bank : own) { watch(bank); }
+        for (const uint64_t bank : targets) { watch(bank); }
+        const SkelCompat::Voice& v = row.VoiceOf(s.Form);
+        const std::wstring where = s.Spec + (s.Form >= 0 && static_cast<size_t>(s.Form) < row.Forms.List.size() ? L" in " + row.Forms.List[static_cast<size_t>(s.Form)].Name : std::wstring{});
+        if (v.Set && !v.Own)
+        {
+            UObject* bank = LoadedBank(v.Bank);
+            if (!bank)
+            {
+                missing.push_back(v.Bank);
+                for (const uint64_t b : own) { if (!decided(b)) { map.emplace_back(b, b); } }
+                said.push_back(where + L": its animations' own voice (" + ShortNameOfPath(v.Bank) + L" is not loaded)");
+                continue;
+            }
+            const uint64_t to = Name(bank->GetPathName());
+            watch(to);
+            std::wstring from;
+            for (const uint64_t b : replaced(v))
+            {
+                if (decided(b)) { continue; }
+                map.emplace_back(b, to);
+                from += (from.empty() ? L"" : L", ") + BankLabel(b);
+            }
+            for (const uint64_t b : own) { if (!decided(b)) { map.emplace_back(b, b); } }
+            said.push_back(where + L": " + ShortName(bank) + (from.empty() ? std::wstring(L" (no bank of its own to replace)") : L" in place of " + from));
+        }
+        else
+        {
+            for (const uint64_t b : own) { if (!decided(b)) { map.emplace_back(b, b); } }
+            said.push_back(where + L": its animations' own voice");
+        }
+    }
+    for (const auto& m : missing)
+    {
+        if (std::find(Missing.begin(), Missing.end(), m) == Missing.end()) { Log.Line(L"Voices: " + ShortNameOfPath(m) + L" is not loaded (the game loads a voice bank with the character whose pack lists it; the mod loads none)"); }
+    }
+    for (const auto& m : Missing)
+    {
+        if (std::find(missing.begin(), missing.end(), m) == missing.end()) { Log.Line(L"Voices: " + ShortNameOfPath(m) + L" is loaded now"); }
+    }
+    Missing = std::move(missing);
+    const bool more = std::any_of(watched.begin(), watched.end(), [](uint64_t b) { return std::find(Watched.begin(), Watched.end(), b) == Watched.end(); });
+    Watched = std::move(watched);
+    if (more) { Cursor = 0; }   // (a bank looked for the first time: the object array from its start)
+    const bool changed = map != Map;
+    Map = std::move(map);
+    const size_t moved = changed ? Apply() : 0;
+    if (said != Said)
+    {
+        for (const auto& line : said)
+        {
+            if (std::find(Said.begin(), Said.end(), line) == Said.end()) { Log.Line(L"Voices: " + line + L" (" + std::to_wstring(moved) + L" of " + std::to_wstring(Lines.size()) + L" lines changed)"); }
+        }
+        Said = std::move(said);
+    }
+}
+
+// A few blocks of the object array: the sound notifies whose references name a bank looked for.
+void Scan()
+{
+    if (Watched.empty()) { return; }
+    const int32_t total = UObjectArray::GetNumElements();
+    if (total <= 0) { return; }
+    if (Cursor < 0 || Cursor >= total || Cursor % ScanBlock) { Cursor = 0; }
+    const int32_t blocks = std::max(1, (total + ScanBlock * ScanFrames - 1) / (ScanBlock * ScanFrames));
+    const uint64_t started = NowUs();
+    std::vector<std::pair<UObject*, uint8_t>> found;
+    bool passDone = false;
+    for (int32_t b = 0; b < blocks; ++b)
+    {
+        const int32_t end = std::min(total, Cursor + ScanBlock);
+        UObjectGlobals::ForEachUObjectInRange(Cursor, end, [&](UObject* object, int32, int32) -> LoopAction {   // (live objects only)
+            if (object)
+            {
+                if (const uint8_t kind = KindOf(object->GetClassPrivate())) { found.emplace_back(object, kind); }
+            }
+            return LoopAction::Continue;
+        });
+        Cursor = end >= total ? 0 : end;
+        if (Cursor == 0) { passDone = true; }
+        if (Cursor == 0 || NowUs() - started >= ScanBudgetUs) { break; }
+    }
+    for (const auto& [object, kind] : found)
+    {
+        if (!FlagsReady(object)) { continue; }   // (templates; one still loading names its bank once it has loaded)
+        const int32_t offsets[2] = {kind == 1 ? OffRef : OffStateRef, kind == 1 ? -1 : OffStateEndRef};
+        for (int k = 0; k < 2; ++k)
+        {
+            const int32_t offset = offsets[k];
+            if (offset < 0) { continue; }
+            const uint8_t slot = kind == 1 ? 0 : static_cast<uint8_t>(1 + k);
+            const uint64_t bank = BankAt(object, offset);
+            if (!bank || std::find(Watched.begin(), Watched.end(), bank) == Watched.end()) { continue; }
+            const uint64_t key = KeyOfLine(object, slot);
+            const uint64_t want = BankFor(bank);
+            if (const auto it = LineOf.find(key); it != LineOf.end())
+            {
+                Line& known = Lines[it->second];
+                if (known.Notify == object && known.Offset == offset && known.Now == bank) { continue; }   // (the one the mod knows)
+                known = Line{object, offset, slot, bank, bank};   // (another notify where one the mod knew was)
+            }
+            else
+            {
+                LineOf[key] = Lines.size();
+                Lines.push_back(Line{object, offset, slot, bank, bank});
+            }
+            ++NewLines;
+            if (want != bank)
+            {
+                PointAt(object, offset, want);
+                Lines[LineOf[key]].Now = want;
+                ++NewMoved;
+            }
+        }
+    }
+    if (passDone)
+    {
+        Apply();   // (lines whose notifies are gone let go)
+        if (NewLines)
+        {
+            Log.Line(L"Voices: " + std::to_wstring(NewLines) + L" voice line(s) found in the animations loaded, " + std::to_wstring(NewMoved) +
+                     L" of them in another voice now; " + std::to_wstring(Lines.size()) + L" followed");
+            NewLines = NewMoved = 0;
+        }
+    }
+}
+
+void Frame(uint64_t now)
+{
+    if (!Looked) { LookUp(); }
+    if (!Usable) { return; }
+    if (VoicesDirty || now >= NextPlan)
+    {
+        VoicesDirty = false;
+        NextPlan = now + 500;
+        MakePlan();
+    }
+    Scan();
+}
+
+// After an error: every line back in its own voice, and the voices off for the session.
+void Off(const wchar_t* why)
+{
+    if (!Usable) { return; }
+    Usable = false;
+    try
+    {
+        Map.clear();
+        Apply();
+    }
+    catch (...)
+    {
+    }
+    Log.Line(L"Voices: switched off after an error (" + std::wstring(why) + L"); the animations' lines play in their own voices");
+}
+} // namespace Voices
+
+// (3.7.5) SetPrimaryAnimPack / ResetPrimaryAnimPack of another's is about to run (game thread): when it switches the
+// character to another form's pack (or back to its own), the sets of the form it is in end first (the form follows the
+// switch at the next frame).
+void BeforeOthersSwitch(UObject* character, const std::wstring& pack, bool reset)
+{
+    if (!Wanted || Off || Switching || !character) { return; }
+    Tracked* t = TrackedOf(character);
+    if (!t || !t->Row) { return; }
+    const std::wstring wanted = reset ? std::wstring{} : pack;
+    if (t->Row->Forms.Plays(t->Form, wanted)) { return; }   // (3.7.7: it stays in the form it is in)
+    const int index = t->Row->Forms.IndexOfPack(wanted);
+    if (index < 0 || index == t->Form) { return; }
+    const std::wstring did = PackSets::Unredirect(character);
+    if (!did.empty()) { Log.Line(L"Forms: " + t->Spec + L" is switched to " + (reset ? std::wstring(L"its own pack") : pack) + L" by something else: " + did); }
+}
+
+// SetPrimaryAnimPack / ResetPrimaryAnimPack ran (game thread): another's switch changes the character's form at the next frame.
+void PackSwitched(UObject* character, const std::wstring& pack, bool reset)
+{
+    if (!Wanted || Off || Switching || !character) { return; }
+    if (ObservedSwitches.size() >= 16) { ObservedSwitches.erase(ObservedSwitches.begin()); }
+    ObservedSwitches.push_back(Observed{character, pack, reset});
+}
+
+// ---- (3.6.16) "cutscene_weapon_socket": a row's characters hold their weapons on that socket in cutscenes ------------
+// Evil Cloud plays Cloud's moves in Sephiroth's place: his AnimBlueprint (Cloud's) holds the sword in his right hand in
+// battle and on his back outside it, while the cutscenes he plays are Sephiroth's, which hold the Masamune in the left hand.
+// While a character of a row with "cutscene_weapon_socket" plays a cutscene (its anim instance's bPlayingCutScene), the
+// weapons attached to it go to that socket of its mesh. One the game puts back on a socket of its own rules during the
+// cutscene (the one it had before it, or one of its AnimBlueprint's WeaponSettingsOnNeutral / OnBattle) goes there again;
+// one the game puts elsewhere (a cutscene's own placement) is left there. When the cutscene ends, each goes where the
+// game's rules put it now (EndSceneAPI AttachWeapon, as the game's scene scripts do), else back where it was. Characters are
+// found as they tick (the actor tick callback: one class lookup per tick) and by their CharaSpec row.
+namespace CutWeapons
+{
+bool Wanted = false;                   // a row has a cutscene socket (looked at each map load)
+bool Looked = false;
+bool Usable = false;
+UClass* CharacterClass = nullptr;      // AEndCharacter
+UClass* InstanceClass = nullptr;       // UEndCharacterAnimInstance
+int32_t OffCutScene = -1;              // its bPlayingCutScene: the byte and its mask
+uint8_t CutSceneMask = 0;
+int32_t OffNeutral = -1, OffBattle = -1, SettingStride = 0;   // its WeaponSettingsOnNeutral / OnBattle
+int32_t OffSettingSlot = -1, OffSettingSocket = -1;            // in each: Slot, AttachSocketName
+int32_t OffRoot = -1;                  // Actor.RootComponent
+int32_t OffAttachParent = -1, OffAttachSocket = -1;             // SceneComponent.AttachParent, AttachSocketName
+UFunction* SocketExists = nullptr;     // SceneComponent:DoesSocketExist
+UObject* Scene = nullptr;              // Default__EndSceneAPI
+UFunction* AttachWeapon = nullptr;     // EndSceneAPI:AttachWeapon(CharacterActor, WeaponActor, Slot)
+
+struct Moved
+{
+    UObject* Weapon = nullptr;
+    UClass* Class = nullptr;
+    UObject* Parent = nullptr;   // where it was as the cutscene began: its parent component and socket
+    uint64_t Socket = 0;
+};
+struct Watched
+{
+    UObject* Character = nullptr;
+    UClass* Class = nullptr;
+    std::wstring Spec;
+    uint64_t Socket = 0;         // the row's cutscene socket
+    std::wstring SocketText;
+    bool InCut = false;
+    std::vector<Moved> Weapons;
+    int Said = 0;                // log lines this cutscene
+    int Moves = 0;               // weapons put on the socket this cutscene (the game putting one back each frame shows here)
+    bool NoSocketSaid = false;
+    uint64_t NextCheck = 0;      // (outside a cutscene: ten times a second; in one: every frame work)
+};
+std::vector<Watched> List;
+struct Seen
+{
+    UClass* Class = nullptr;
+    uint64_t RetryAt = 0;        // (no CharaSpec row yet: looked at again then)
+    int Tries = 0;
+    bool Done = false;
+    bool Queued = false;
+};
+std::unordered_map<UObject*, Seen> SeenActors;
+std::unordered_map<UClass*, bool> CharacterClasses;   // class -> an AEndCharacter
+std::unordered_map<UClass*, bool> InstanceClasses;    // class -> a UEndCharacterAnimInstance
+std::vector<UObject*> Pending;
+uint64_t LastFrame = 0;        // the frame work's last time (the tick callback goes by it: no clock read per tick)
+int LinesLeft = 80;
+
+void Say(const std::wstring& line)
+{
+    if (LinesLeft <= 0) { return; }
+    --LinesLeft;
+    Log.Line(L"Cutscene weapons: " + line + (LinesLeft == 0 ? std::wstring(L" (no more of these lines this session)") : std::wstring{}));
+}
+
+bool Derives(UClass* cls, UClass* base, std::unordered_map<UClass*, bool>& cache)
+{
+    if (!cls || !base) { return false; }
+    const auto known = cache.find(cls);
+    if (known != cache.end()) { return known->second; }
+    bool found = false;
+    int depth = 0;
+    for (UStruct* s = cls; s && depth < 32; s = s->GetSuperStruct(), ++depth)
+    {
+        if (s == base)
+        {
+            found = true;
+            break;
+        }
+    }
+    cache.emplace(cls, found);
+    return found;
+}
+
+// A map load: the characters are new. Whether any row has a cutscene socket.
+void Reset()
+{
+    List.clear();
+    SeenActors.clear();
+    Pending.clear();
+    CharacterClasses.clear();
+    InstanceClasses.clear();
+    Wanted = std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(),
+                         [](const SkelCompat::AnimSetRow& r) { return !r.CutsceneWeaponSocket.empty(); });
+}
+
+bool LookUpOnce()
+{
+    if (Looked) { return Usable; }
+    Looked = true;
+    LookUp();   // (the forms' functions: GetAttachedActors, K2_AttachToComponent, Character.Mesh)
+    std::wstring missing;
+    const auto need = [&](bool found, const wchar_t* what) {
+        if (!found) { missing += (missing.empty() ? L"" : L", ") + std::wstring(what); }
+    };
+    CharacterClass = FindClass(L"/Script/EndGame.EndCharacter");
+    InstanceClass = FindClass(L"/Script/EndGame.EndCharacterAnimInstance");
+    need(CharacterClass != nullptr, L"EndCharacter");
+    need(InstanceClass != nullptr, L"EndCharacterAnimInstance");
+    if (InstanceClass)
+    {
+        if (FProperty* flag = FindField(InstanceClass, L"bPlayingCutScene"); flag && TypeOf(flag) == L"BoolProperty")
+        {
+            auto* boolean = static_cast<FBoolProperty*>(flag);
+            const int32_t at = flag->GetOffset_Internal() + static_cast<int32_t>(boolean->GetByteOffset());
+            const uint8_t mask = static_cast<uint8_t>(boolean->GetFieldMask());
+            if (at >= 0 && at < InstanceClass->GetPropertiesSize() && mask != 0)
+            {
+                OffCutScene = at;
+                CutSceneMask = mask;
+            }
+        }
+        if (UStruct* setting = ArrayStructField(InstanceClass, L"WeaponSettingsOnNeutral", OffNeutral, SettingStride))
+        {
+            OffSettingSlot = FieldOffset(setting, L"Slot", {L"ByteProperty", L"EnumProperty"}, 1);
+            OffSettingSocket = FieldOffset(setting, L"AttachSocketName", {L"NameProperty"}, 8);
+        }
+        int32_t stride = 0;
+        if (!ArrayStructField(InstanceClass, L"WeaponSettingsOnBattle", OffBattle, stride) || stride != SettingStride) { OffBattle = -1; }
+    }
+    need(OffCutScene >= 0, L"bPlayingCutScene");
+    if (UClass* actor = FindClass(L"/Script/Engine.Actor")) { OffRoot = FieldOffset(actor, L"RootComponent", {L"ObjectProperty"}, 8); }
+    if (UClass* scene = FindClass(L"/Script/Engine.SceneComponent"))
+    {
+        OffAttachParent = FieldOffset(scene, L"AttachParent", {L"ObjectProperty"}, 8);
+        OffAttachSocket = FieldOffset(scene, L"AttachSocketName", {L"NameProperty"}, 8);
+    }
+    need(OffRoot >= 0 && OffAttachParent >= 0 && OffAttachSocket >= 0, L"the attachment fields");
+    need(A.AttachedActors != nullptr, L"GetAttachedActors");
+    need(A.AttachTo != nullptr, L"K2_AttachToComponent");
+    need(A.OffCharMesh >= 0, L"Character.Mesh");
+    need(State.OffCompAnimInstance >= 0, L"the anim instance field");
+    SocketExists = Fn(L"/Script/Engine.SceneComponent:DoesSocketExist");
+    Scene = FindObjectByPath(L"/Script/EndGame.Default__EndSceneAPI");
+    AttachWeapon = Fn(L"/Script/EndGame.EndSceneAPI:AttachWeapon");
+    Usable = missing.empty();
+    Log.Line(L"Cutscene weapons: " + (Usable ? std::wstring(L"ready") : L"OFF (not found: " + missing + L")") +
+             (Scene && AttachWeapon ? std::wstring{} : std::wstring(L"; without the game's AttachWeapon (a weapon goes back where it was)")) +
+             (OffSettingSocket >= 0 ? std::wstring{} : std::wstring(L"; without the AnimBlueprints' weapon settings")));
+    return Usable;
+}
+
+// The actor tick callback: a character not looked at yet waits for the frame work (its CharaSpec row).
+void Ticked(UObject* actor)
+{
+    const uint64_t now = LastFrame;
+    if (!Wanted || !Usable || !actor) { return; }
+    if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed)) { return; }
+    UClass* cls = actor->GetClassPrivate();
+    if (!Derives(cls, CharacterClass, CharacterClasses)) { return; }
+    Seen& seen = SeenActors[actor];
+    if (seen.Class != cls)   // (new, or another actor where one was)
+    {
+        seen = Seen{};
+        seen.Class = cls;
+    }
+    if (seen.Done || seen.Queued || now < seen.RetryAt || Pending.size() >= 256) { return; }
+    seen.Queued = true;
+    Pending.push_back(actor);
+}
+
+// The weapons attached to a character.
+std::vector<UObject*> WeaponsOf(UObject* character)
+{
+    std::vector<UObject*> out;
+    Block block(A.AttachedActors);
+    uint8_t* list = block.Named(L"OutActors", 16);
+    if (uint8_t* reset = block.Named(L"bResetArray", 1)) { *reset = 1; }
+    if (!list) { return out; }
+    character->ProcessEvent(A.AttachedActors, block.Bytes);
+    RawArray actors{};
+    std::memcpy(&actors, list, sizeof(actors));
+    for (int32_t k = 0; k < actors.Num && k < 64 && actors.Data; ++k)
+    {
+        UObject* actor = static_cast<UObject**>(actors.Data)[k];
+        if (actor && IsLive(actor) && IsWeapon(actor) && !IsDamageSource(actor)) { out.push_back(actor); }
+    }
+    if (actors.Data) { FMemory::Free(actors.Data); }
+    return out;
+}
+
+// The sockets of the AnimBlueprint's weapon rules (WeaponSettingsOnNeutral and OnBattle), with their slots.
+std::vector<std::pair<uint64_t, uint8_t>> OwnSockets(UObject* instance)
+{
+    std::vector<std::pair<uint64_t, uint8_t>> out;
+    if (!instance || OffSettingSocket < 0 || SettingStride <= 0) { return out; }
+    for (const int32_t at : {OffNeutral, OffBattle})
+    {
+        if (at < 0) { continue; }
+        RawArray header{};
+        std::vector<uint8_t> bytes;
+        if (!ReadArrayAt(reinterpret_cast<const uint8_t*>(instance) + at, static_cast<size_t>(SettingStride), 16, header, bytes)) { continue; }
+        for (int32_t k = 0; k < header.Num; ++k)
+        {
+            const uint8_t* element = bytes.data() + static_cast<size_t>(k) * static_cast<size_t>(SettingStride);
+            uint64_t socket = 0;
+            uint8_t slot = 0;
+            std::memcpy(&socket, element + OffSettingSocket, sizeof(socket));
+            if (OffSettingSlot >= 0) { slot = element[OffSettingSlot]; }
+            if (socket) { out.emplace_back(socket, slot); }
+        }
+    }
+    return out;
+}
+
+bool OnSocket(UObject* root, UObject*& parent, uint64_t& socket)
+{
+    parent = ObjectAt(root, OffAttachParent);
+    socket = 0;
+    return ReadAt(root, OffAttachSocket, socket);
+}
+
+void Attach(UObject* root, UObject* parent, uint64_t socket)
+{
+    // the location and rotation of the socket (as the game attaches weapons), the weapon's own scale
+    Invoke(root, A.AttachTo, {Arg::Obj(parent), Arg::Nm(socket), Arg::U8(2), Arg::U8(2), Arg::U8(0), Arg::B(false)});
+}
+
+// In a cutscene: the weapons to the row's socket.
+void Hold(Watched& w, UObject* mesh, UObject* instance)
+{
+    if (!w.InCut)
+    {
+        w.InCut = true;
+        w.Weapons.clear();
+        w.Said = 0;
+        w.Moves = 0;
+    }
+    if (SocketExists)
+    {
+        Block result = Invoke(mesh, SocketExists, {Arg::Nm(w.Socket)});
+        if (result.Ok && !result.Get<uint8_t>())
+        {
+            if (!w.NoSocketSaid)
+            {
+                w.NoSocketSaid = true;
+                Say(w.Spec + L"'s model has no socket " + w.SocketText + L": its weapons stay where the game puts them");
+            }
+            return;
+        }
+    }
+    const auto own = OwnSockets(instance);
+    for (UObject* weapon : WeaponsOf(w.Character))
+    {
+        UObject* root = ObjectAt(weapon, OffRoot);
+        UObject* parent = nullptr;
+        uint64_t socket = 0;
+        if (!root || !IsLive(root) || !OnSocket(root, parent, socket) || !parent) { continue; }   // (not attached: left alone)
+        if (socket == w.Socket && parent == mesh) { continue; }
+        auto known = std::find_if(w.Weapons.begin(), w.Weapons.end(), [&](const Moved& m) { return m.Weapon == weapon; });
+        if (known == w.Weapons.end())
+        {
+            w.Weapons.push_back(Moved{weapon, weapon->GetClassPrivate(), parent, socket});
+        }
+        else
+        {
+            // the game moved it since: again only from a socket of its own rules
+            const bool rule = socket == known->Socket || std::any_of(own.begin(), own.end(), [&](const auto& o) { return o.first == socket; });
+            if (!rule)
+            {
+                if (w.Said++ < 6) { Say(w.Spec + L"'s cutscene puts " + ShortName(weapon) + L" on " + NameText(socket) + L": left there"); }
+                known->Socket = w.Socket;   // (said once: its old socket is the cutscene's now)
+                continue;
+            }
+        }
+        Attach(root, mesh, w.Socket);
+        ++w.Moves;
+        uint64_t after = 0;
+        OnSocket(root, parent, after);
+        if (w.Said++ < 6)
+        {
+            Say(w.Spec + L" (" + ShortName(w.Character) + L") plays a cutscene: " + ShortName(weapon) + L" from " + (socket ? NameText(socket) : L"no socket") +
+                L" to " + (after == w.Socket ? w.SocketText : NameText(after) + L" (NOT " + w.SocketText + L")"));
+        }
+    }
+}
+
+// The cutscene ended: each weapon moved goes where the game's rules put it now, else back where it was.
+void Release(Watched& w, UObject* mesh, UObject* instance)
+{
+    w.InCut = false;
+    const auto own = OwnSockets(instance);
+    for (const auto& m : w.Weapons)
+    {
+        if (!StillThere(m.Weapon, m.Class)) { continue; }
+        UObject* root = ObjectAt(m.Weapon, OffRoot);
+        UObject* parent = nullptr;
+        uint64_t socket = 0;
+        if (!root || !IsLive(root) || !OnSocket(root, parent, socket)) { continue; }
+        if (socket != w.Socket || parent != mesh) { continue; }   // (the game moved it already)
+        std::wstring how;
+        if (Scene && AttachWeapon)
+        {
+            uint8_t slot = 0;
+            for (const auto& [s, n] : own)
+            {
+                if (s == m.Socket) { slot = n; break; }
+            }
+            Invoke(Scene, AttachWeapon, {Arg::Obj(w.Character), Arg::Obj(m.Weapon), Arg::U8(slot)});
+            OnSocket(root, parent, socket);
+            if (socket != w.Socket) { how = L"the game's AttachWeapon"; }
+        }
+        if (how.empty() && m.Parent && IsLive(m.Parent))
+        {
+            Attach(root, m.Parent, m.Socket);
+            OnSocket(root, parent, socket);
+            how = L"where it was";
+        }
+        Say(w.Spec + L"'s cutscene ended: " + ShortName(m.Weapon) + L" on " + (socket ? NameText(socket) : L"no socket") + L" (" +
+            (how.empty() ? std::wstring(L"left") : how) + L"; put on " + w.SocketText + L" " + std::to_wstring(w.Moves) + L" time(s) in it)");
+    }
+    w.Weapons.clear();
+}
+
+void Update(Watched& w)
+{
+    UObject* mesh = MeshOf(w.Character);
+    if (!mesh || !IsLive(mesh)) { return; }
+    UObject* instance = ObjectAt(mesh, State.OffCompAnimInstance);
+    bool cut = false;
+    if (instance && IsLive(instance) && Derives(instance->GetClassPrivate(), InstanceClass, InstanceClasses))
+    {
+        uint8_t flags = 0;
+        cut = ReadAt(instance, OffCutScene, flags) && (flags & CutSceneMask) != 0;
+    }
+    if (cut) { Hold(w, mesh, instance); }
+    else if (w.InCut) { Release(w, mesh, instance); }
+}
+
+// The frame work: the characters that ticked (their rows), then ten times a second the watched ones.
+void Frame(uint64_t now)
+{
+    if (!Wanted || !LookUpOnce()) { return; }
+    LastFrame = now;
+    if (!Pending.empty())
+    {
+        std::vector<UObject*> list;
+        list.swap(Pending);
+        for (UObject* actor : list)
+        {
+            auto seen = SeenActors.find(actor);
+            if (seen == SeenActors.end()) { continue; }
+            seen->second.Queued = false;
+            if (!IsLive(actor) || actor->HasAnyFlags(DeadFlags) || actor->HasAnyFlags(TemplateFlags) || actor->GetClassPrivate() != seen->second.Class)
+            {
+                seen->second.Done = true;
+                continue;
+            }
+            const std::wstring spec = CharaSpecRowOf(actor);
+            if (spec.empty())
+            {
+                if (++seen->second.Tries >= 10) { seen->second.Done = true; }
+                else { seen->second.RetryAt = now + 1000; }
+                continue;
+            }
+            seen->second.Done = true;
+            const SkelCompat::AnimSetRow* row = State.Config.FindAnimSetRow(SkelCompat::CharacterPackPath(spec));
+            if (!row || row->CutsceneWeaponSocket.empty()) { continue; }
+            if (std::any_of(List.begin(), List.end(), [&](const Watched& w) { return w.Character == actor; })) { continue; }
+            Watched w;
+            w.Character = actor;
+            w.Class = actor->GetClassPrivate();
+            w.Spec = spec;
+            w.Socket = Name(row->CutsceneWeaponSocket);
+            w.SocketText = row->CutsceneWeaponSocket;
+            List.push_back(std::move(w));
+            Say(spec + L" (" + ShortName(actor) + L"): its weapons go to " + row->CutsceneWeaponSocket + L" in cutscenes");
+        }
+    }
+    for (auto it = List.begin(); it != List.end();)
+    {
+        if (!it->InCut && now < it->NextCheck)
+        {
+            ++it;
+            continue;
+        }
+        it->NextCheck = now + 100;
+        if (!StillThere(it->Character, it->Class))
+        {
+            it = List.erase(it);
+            continue;
+        }
+        Update(*it);
+        ++it;
+    }
+}
+
+void Off(const wchar_t* where)
+{
+    Wanted = false;
+    Log.Line(std::wstring(L"Cutscene weapons: switched off after an error in ") + where);
+}
+} // namespace CutWeapons
+
+// (3.6.4) Before a map load: the kept anim instances are let go (rooted, they would keep the old world from being
+// collected, and the engine stops the game when an old world is not).
+void BeforeMapLoad()
+{
+    for (auto& t : Characters)
+    {
+        Unkeep(t);
+        LetGoOfKeptLook(t);   // (3.6.5)
+    }
+    En = Entering{};          // (3.6.6: its camera actor and the character go with the old map)
+    Dirge::Reset();           // (3.7)
+}
+
+// A map load: the characters, their components and the effects are new; widgets are off the screen.
+void MapLoaded()
+{
+    BeforeMapLoad();   // (in case the map came without the callback before it)
+    Characters.clear();
+    Effects.clear();
+    Fades.clear();
+    FadeMids.clear();
+    ObservedSwitches.clear();
+    OthersHidden.clear();
+    Watch::Reset();           // (3.6.9)
+    FilledLog.clear();        // (3.6.11)
+    AskedLoads.clear();       // (3.6.12)
+    CutWeapons::Reset();      // (3.6.16)
+    FormCam::Reset();         // (3.6.16)
+    Dirge::Reset();           // (3.7)
+    VoicesDirty = true;       // (3.9.0: the voice lines stay followed: their notifies are the animations', which outlive maps)
+    In = Input{};
+    LastLeader = nullptr;
+    WasInBattle = false;
+    NextBattleCheck = NextAbilityCheck = NextOthers = NextKeep = NextField = NextMenuDraw = NextTimers = NextHud = 0;
+    if (H.Widget) { H.Widget->ClearRootSet(); } // (off the screen with the old map; a new one is made when needed)
+    const std::wstring broken = H.Broken;
+    H = Hud{};
+    H.Broken = broken;
+}
+
+// The first map load: what the forms play is loaded and kept, so nothing loads in battle.
+void Preload()
+{
+    Wanted = std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) { return r.Forms.HasList(); });
+    if (!Wanted) { return; }
+    LookUp();
+    int loaded = 0, missing = 0;
+    std::wstring lost;
+    const auto want = [&](const std::wstring& path) {
+        if (path.empty() || path.find(L"{language}") != std::wstring::npos) { return; }
+        if (Need(path, true)) { ++loaded; }
+        else
+        {
+            ++missing;
+            if (missing <= 6) { lost += (lost.empty() ? L"" : L", ") + ShortNameOfPath(path); }
+        }
+    };
+    for (const Sprite* sprite : AllArt) { want(std::wstring(Art) + sprite->Name + L"." + sprite->Name); }
+    std::wstring rows;
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (!row.Forms.HasList()) { continue; }
+        rows += (rows.empty() ? L"" : L", ") + ShortNameOfPath(row.Characters.front()) + L" (" + std::to_wstring(row.Forms.List.size()) + L")";
+        for (const auto& e : row.Forms.ShowEffects) { want(e.Path); }
+        for (const auto& e : row.Forms.HideEffects) { want(e.Path); }
+        for (const auto& form : row.Forms.List)
+        {
+            want(form.Model);
+            want(form.AnimClass);
+            want(form.Weapon);   // (3.8.2)
+            for (const auto& part : form.Meshes) { want(part.Mesh); }
+            for (const auto& e : form.Effects) { want(e.Path); }
+            for (const auto& e : form.Keep) { want(e.Path); }
+            for (const auto& entry : form.AbilityEffects)
+            {
+                for (const auto& e : entry.Effects) { want(e.Path); }
+            }
+            for (const auto& s : form.Sounds) { want(s.Bank); }
+            want(form.Entrance.Animation);   // (3.6.6)
+            for (const auto& e : form.Entrance.Effects) { want(e.Path); }
+            for (const auto& shot : form.Entrance.Shots)   // (3.6.7)
+            {
+                want(shot.Animation);
+                for (const auto& e : shot.Effects) { want(e.Effect.Path); }
+                for (const auto& sound : shot.Sounds) { want(sound.Sound.Bank); }   // (not a {language} voice bank: the game loads those)
+            }
+        }
+    }
+    Log.Line(L"Forms: characters with forms: " + rows + L"; " + std::to_wstring(loaded) + L" assets kept" +
+             (missing ? L", " + std::to_wstring(missing) + L" NOT found (" + lost + L")" : std::wstring{}));
+}
+
+std::wstring Report()
+{
+    std::wstring text = L"Forms: " + std::wstring(!Wanted ? L"none" : (Off ? L"off after an error" : (A.Usable ? L"on" : L"unusable"))) +
+                        (M.Broken.empty() ? std::wstring{} : L"; menu: " + M.Broken);
+    for (const auto& t : Characters)
+    {
+        const Form& form = t.Row->Forms.List[static_cast<size_t>(t.Form)];
+        text += L"\n    " + t.Spec + L": " + form.Name + (t.Swapped ? (t.ByLook ? L", wearing another model (a look of the game's)" : L", wearing another model") : L"") + (t.Flying ? L", flying" : L"") +
+                (t.Armored ? L", super armor" : L"") +
+                (form.Limited() ? L", lasts " + Clock(form.Seconds) + L" then turns into " + t.Row->Forms.List[static_cast<size_t>(form.RevertIndex)].Name : std::wstring{});
+    }
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (!row.Forms.HasList()) { continue; }
+        for (const auto& form : row.Forms.List)
+        {
+            if (form.Entrance.On)   // (3.6.6)
+            {
+                const auto& e = form.Entrance;
+                text += L"\n    " + ShortNameOfPath(row.Characters.front()) + L" " + form.Name + L": an entrance" +
+                        (e.Shots.empty() ? std::wstring{} : L" of " + std::to_wstring(e.Shots.size()) + L" shots (" + Fixed(e.ShotsSeconds()) + L" s" +
+                                                                (e.PreludeShots() ? L", " + std::to_wstring(e.PreludeShots()) + L" before the switch" : L"") + L")") +
+                        (e.Animation.empty() ? std::wstring{} : L" (" + ShortNameOfPath(e.Animation) + L" in " + e.Slot + L")") +
+                        (e.Flash > 0.0f ? L", a " + Fixed(e.Flash) + L" s flash" : std::wstring{}) +
+                        (e.Descend > 0.0f ? L", down from " + Fixed(e.Descend) + L" cm" : std::wstring{}) +
+                        (e.Camera.On ? L", its camera on " + e.Camera.Face : std::wstring{});
+            }
+            if (!form.Sets.empty())   // (3.7.5)
+            {
+                std::wstring sets;
+                for (const auto& [from, to] : form.Sets) { sets += (sets.empty() ? L"" : L", ") + from + L" -> " + to; }
+                text += L"\n    " + ShortNameOfPath(row.Characters.front()) + L" " + form.Name + L": sets " + sets +
+                        (PackSets::Hooked ? std::wstring{} : L" (NOT usable: " + PackSets::Status + L")");
+            }
+            if (!form.Limited() && !form.SuperArmor && form.Cooldown <= 0.0f) { continue; }
+            text += L"\n    " + ShortNameOfPath(row.Characters.front()) + L" " + form.Name + L":" + (form.SuperArmor ? L" super armor" : L"") +
+                    (form.Limited() ? L" lasts " + Clock(form.Seconds) + L", then " + row.Forms.List[static_cast<size_t>(form.RevertIndex)].Name : std::wstring{}) +
+                    (form.Cooldown > 0.0f ? L"; " + Clock(form.Cooldown) + L" before it can be chosen again" : std::wstring{});
+        }
+    }
+    if (!H.Broken.empty()) { text += L"\n    time left NOT shown: " + H.Broken; }
+    if (!A.SetDisableReaction && A.Looked) { text += L"\n    super armor NOT available (EndBattleAPI SetDisableReaction not found)"; }
+    if (std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) { return r.Shooting.On; }))
+    {
+        text += L"\n" + Dirge::Report();
+    }
+    return text;
+}
+
+void Error(const wchar_t* where)
+{
+    Off = true;
+    CloseMenu(nullptr);
+    try
+    {
+        EndEntrance(L"the forms stopped", EntranceEnd::Abort, NowMs());   // (3.6.6: the game's camera back at once)
+    }
+    catch (...)
+    {
+        En = Entering{};
+    }
+    for (auto& t : Characters)
+    {
+        try
+        {
+            if (t.Armored && StillThere(t.Character, t.Class)) { SetArmor(t, false, L"the forms stopped"); }
+        }
+        catch (...)
+        {
+        }
+    }
+    try
+    {
+        HideHud();
+    }
+    catch (...)
+    {
+    }
+    Log.Line(std::wstring(L"Forms: switched off after an error in ") + where + L" (the characters keep the form they are in)");
+}
+} // namespace Forms
+
+// ---------------------------------------------------------------------------------------
+// 3.6: the mod's work once a frame, on the game thread: the Lua pump (3.5.3: it never ran, as this game's UE4SS calls
+// no viewport tick) and the forms. Every per-frame callback this UE4SS offers calls it (the viewport tick, actor ticks)
+// and ProcessEvent does too (on the game thread, at most every 8 ms), so it runs whichever of them the game has.
+// ---------------------------------------------------------------------------------------
+namespace Frames
+{
+uint64_t Last = 0;
+uint64_t LastTick = 0;     // the last time a tick callback ran it
+bool Running = false;
+const wchar_t* SaidFrom = nullptr;
+int Said = 0;
+uint64_t Runs = 0;
+} // namespace Frames
+
+namespace LuaPump
+{
+void Run();
+}
+
+// `tick`: called from a tick callback (between ticks). ProcessEvent (`tick` false: inside whatever the game is running)
+// only runs it while no tick callback has for half a second.
+void FrameWork(const wchar_t* from, bool tick)
+{
+    if (Frames::Running || State.Busy) { return; }
+    if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed)) { return; }
+    const uint64_t now = Forms::NowMs();
+    if (tick) { Frames::LastTick = now; }
+    else if (Frames::LastTick && now - Frames::LastTick < 500) { return; }
+    if (now - Frames::Last < 8) { return; }
+    Frames::Last = now;
+    Frames::Running = true;
+    ++Frames::Runs;
+    if (Frames::Said < 3 && (!Frames::SaidFrom || std::wcscmp(Frames::SaidFrom, from) != 0))
+    {
+        ++Frames::Said;
+        Frames::SaidFrom = from;
+        Log.Line(std::wstring(L"Frame work (the Lua pump, the forms) runs from ") + from);
+    }
+    LuaPump::Run();
+    try
+    {
+        Forms::Watch::FromTick = tick;   // (3.6.9: the mod loads a level set it gives only from a tick)
+        Forms::Frame(now);
+        Forms::NoteModWork(Forms::NowMs() - now);   // (3.6.8: an entrance's log says how much of its frames the mod took)
+    }
+    catch (...)
+    {
+        Forms::Error(L"the frame");
+    }
+    try
+    {
+        Forms::Dirge::Frame(now);   // (3.7) the shooter
+    }
+    catch (...)
+    {
+        Forms::Dirge::Off(L"the frame");
+    }
+    try
+    {
+        Forms::CutWeapons::Frame(now);   // (3.6.16)
+    }
+    catch (...)
+    {
+        Forms::CutWeapons::Off(L"the frame");
+    }
+    try
+    {
+        Forms::Voices::Frame(now);   // (3.9.0)
+    }
+    catch (...)
+    {
+        Forms::Voices::Off(L"the frame");
+    }
+    Frames::Running = false;
+}
+
+// ---------------------------------------------------------------------------------------
+// UE4SS callbacks. They capture no mod object: UE4SS c0a8 cannot unregister them.
+// ---------------------------------------------------------------------------------------
+bool LateInit();
+
+// Before the engine loads a map: the forms' kept anim instances are let go (3.6.4).
+std::pair<bool, bool> OnLoadMapPre(UEngine*, FWorldContext&, FURL, UPendingNetGame*, FString&)
+{
+    if (!State.Enabled.load(std::memory_order_acquire)) { return {false, false}; }
+    try
+    {
+        Forms::BeforeMapLoad();
+    }
+    catch (...)
+    {
+    }
+    return {false, false}; // (the native LoadMap runs)
+}
+
+std::pair<bool, bool> OnLoadMapPost(UEngine*, FWorldContext&, FURL, UPendingNetGame*, FString&)
+{
+    if (!State.Enabled.load(std::memory_order_acquire) || State.Busy) { return {false, false}; }
+    State.GameThread.store(GetCurrentThreadId(), std::memory_order_release);
+    BusyScope busy;
+    try
+    {
+        if (!State.LateInitDone)
+        {
+            State.LateInitDone = true;
+            if (!LateInit())
+            {
+                State.Enabled.store(false);
+                return {false, false};
+            }
+        }
+        if (!State.Active.load(std::memory_order_acquire)) { return {false, false}; }
+        PackSets::Clear(); // (a new map: new characters)
+        SetWatch::Clear(); // (3.6.9)
+        Forms::MapLoaded();
+        // Without the PostLoad hook every map load is rescanned, so new meshes are still found.
+        if (!State.StartupScanDone || !State.HookInstalled)
+        {
+            State.StartupScanDone = true;
+            StartupScan();
+        }
+        if (!State.PreloadDone)
+        {
+            State.PreloadDone = true;
+            PreloadAnimationSkeletons();
+            PreloadRowAssets();
+            try
+            {
+                Forms::Preload(); // 3.6: what the forms play, and the menu's art
+            }
+            catch (...)
+            {
+                Forms::Error(L"the preload");
+            }
+            // (3.7) the shooter's motions and pictures, and the controller hooks, only when a row is a shooter
+            if (std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) { return r.Shooting.On; }))
+            {
+                try { Forms::Dirge::Preload(); }
+                catch (...) { Forms::Dirge::Off(L"the preload"); }
+                try { Pad::Install(); }
+                catch (...) { Log.Line(L"Pad: the controller hooks could not be installed (the shooter reads the game's input only)"); }
+            }
+        }
+        if (!State.SetsPreloaded && State.PackHookInstalled)
+        {
+            State.SetsPreloaded = true;
+            // Plans first: the animations the source sets bring in are then adopted inside their own PostLoad.
+            LoadQueuedSkeletons();
+            BuildAdoptionPlans();
+            PreloadAnimationSets();
+            State.SetsReady.store(true, std::memory_order_release);
+            MergeLoadedPacks();
+        }
+        State.NextPumpMs = GetTickCount64() + PumpIntervalMs;
+        try
+        {
+            ApplyDefaultAbilities();
+        }
+        catch (...)
+        {
+            State.AbilitiesWanted = false;
+            Log.Line(L"Abilities per animation pack switched off after an error at map load (the tables keep their own lists)");
+        }
+        PumpBody(State.ReportRequested.exchange(false), true);
+        Log.Line(L"Map loaded. PostLoad hook so far: " + PostLoadStats());
+    }
+    catch (...)
+    {
+        Fault(L"map load callback");
+    }
+    return {false, false}; // keep the native LoadMap result
+}
+
+// After UGameViewportClient::Tick, i.e. after the world tick: every animation evaluation of the frame has finished
+// and the next has not started, so already-loaded animations can be rewritten. Runs every frame: one atomic load
+// unless there is work.
+// ---------------------------------------------------------------------------------------
+// 3.5.3: the Lua pump. UE4SS 3.0.1 runs a Lua mod's ExecuteInGameThread calls in whatever thread calls ProcessEvent next
+// (not only the game thread), and every call makes a new Lua thread in a table its other threads read without a lock (a
+// mod looping at frame rate crashes the game in time). For the Lua mods named here the mod calls their global function
+// RebirthSkelCompatPump itself, every frame, on the game thread (after the world tick), on a Lua thread of their own;
+// they stop their UE4SS loops once it runs. RebirthSkelCompatIsGameThread() tells a Lua mod whether it runs there.
+// ---------------------------------------------------------------------------------------
+namespace LuaPump
+{
+// 3.7.9: RebirthLiveLink (the End editor's live link to the game) is pumped too.
+constexpr const wchar_t* Mods[] = {L"SephirothForms", L"RebirthLiveLink"};
+constexpr const char* Function = "RebirthSkelCompatPump";
+
+struct Pumped
+{
+    LuaMadeSimple::Lua* Thread = nullptr; // the mod's own Lua thread (game thread only after it is set)
+    std::wstring Mod;
+    int Failures = 0;
+    uint64_t Calls = 0;
+    bool Said = false;
+};
+std::vector<Pumped> Targets;
+
+int IsGameThread(const LuaMadeSimple::Lua& lua)
+{
+    const DWORD game = State.GameThread.load(std::memory_order_relaxed);
+    lua.set_bool(game == 0 || GetCurrentThreadId() == game);
+    return 1;
+}
+
+// RebirthSkelCompatHasForms(): whether this mod's forms (3.6, a row's "forms") change the characters' forms, so a Lua
+// mod that did that itself leaves it to them.
+int HasForms(const LuaMadeSimple::Lua& lua)
+{
+    const bool any = std::any_of(State.Config.AnimSets.begin(), State.Config.AnimSets.end(), [](const SkelCompat::AnimSetRow& r) { return r.Forms.HasList(); });
+    lua.set_bool(any && !Forms::Off && State.Enabled.load(std::memory_order_relaxed));
+    return 1;
+}
+
+// ---------------------------------------------------------------------------------------
+// 3.7.9: memory access for the live link (an effect's frozen data has no UObject the Lua reflection could reach).
+// Every range is checked page by page with VirtualQuery first: unreadable or unwritable memory is refused, never
+// touched. Bytes travel as hex strings (no Lua tables cross the boundary).
+// ---------------------------------------------------------------------------------------
+bool RangeOk(uintptr_t at, size_t size, bool write)
+{
+    if (at == 0 || size == 0) { return false; }
+    const uintptr_t end = at + size;
+    if (end < at) { return false; }
+    uintptr_t p = at;
+    while (p < end)
+    {
+        MEMORY_BASIC_INFORMATION info{};
+        if (VirtualQuery(reinterpret_cast<LPCVOID>(p), &info, sizeof(info)) != sizeof(info)) { return false; }
+        if (info.State != MEM_COMMIT || (info.Protect & (PAGE_GUARD | PAGE_NOACCESS))) { return false; }
+        const DWORD readable = PAGE_READONLY | PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY;
+        const DWORD writable = PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY;
+        if (!(info.Protect & (write ? writable : readable))) { return false; }
+        const uintptr_t regionEnd = reinterpret_cast<uintptr_t>(info.BaseAddress) + info.RegionSize;
+        if (regionEnd <= p) { return false; }
+        p = regionEnd;
+    }
+    return true;
+}
+
+std::string ToHex(const uint8_t* data, size_t size)
+{
+    static const char* digits = "0123456789abcdef";
+    std::string out;
+    out.resize(size * 2);
+    for (size_t i = 0; i < size; ++i)
+    {
+        out[2 * i] = digits[data[i] >> 4];
+        out[2 * i + 1] = digits[data[i] & 15];
+    }
+    return out;
+}
+
+bool FromHex(std::string_view hex, std::vector<uint8_t>& out)
+{
+    if (hex.size() % 2) { return false; }
+    out.resize(hex.size() / 2);
+    auto nibble = [](char c) -> int {
+        if (c >= '0' && c <= '9') { return c - '0'; }
+        if (c >= 'a' && c <= 'f') { return c - 'a' + 10; }
+        if (c >= 'A' && c <= 'F') { return c - 'A' + 10; }
+        return -1;
+    };
+    for (size_t i = 0; i < out.size(); ++i)
+    {
+        const int hi = nibble(hex[2 * i]), lo = nibble(hex[2 * i + 1]);
+        if (hi < 0 || lo < 0) { return false; }
+        out[i] = static_cast<uint8_t>(hi * 16 + lo);
+    }
+    return true;
+}
+
+// RebirthSkelCompatReadMemory(address, count) -> hex string ("" when the range cannot be read). At most 1 MB.
+int ReadMemory(const LuaMadeSimple::Lua& lua)
+{
+    const int64_t at = lua.is_integer() ? lua.get_integer() : 0;
+    const int64_t count = lua.is_integer() ? lua.get_integer() : 0;
+    if (at <= 0 || count <= 0 || count > (1 << 20) || !RangeOk(static_cast<uintptr_t>(at), static_cast<size_t>(count), false))
+    {
+        lua.set_string("");
+        return 1;
+    }
+    lua.set_string(ToHex(reinterpret_cast<const uint8_t*>(at), static_cast<size_t>(count)));
+    return 1;
+}
+
+// RebirthSkelCompatWriteMemory(address, hex) -> true when written. At most 1 MB. Game thread only.
+int WriteMemory(const LuaMadeSimple::Lua& lua)
+{
+    const int64_t at = lua.is_integer() ? lua.get_integer() : 0;
+    std::string hex = lua.is_string() ? std::string(lua.get_string()) : std::string();
+    std::vector<uint8_t> bytes;
+    const DWORD game = State.GameThread.load(std::memory_order_relaxed);
+    if (at <= 0 || !FromHex(hex, bytes) || bytes.empty() || bytes.size() > (1u << 20) || (game != 0 && GetCurrentThreadId() != game) ||
+        !RangeOk(static_cast<uintptr_t>(at), bytes.size(), true))
+    {
+        lua.set_bool(false);
+        return 1;
+    }
+    std::memcpy(reinterpret_cast<void*>(at), bytes.data(), bytes.size());
+    lua.set_bool(true);
+    return 1;
+}
+
+// RebirthSkelCompatFindMemory(start, size, hexPattern) -> the address of the first match, or 0. At most 64 MB searched;
+// unreadable pages in the range are skipped.
+int FindMemory(const LuaMadeSimple::Lua& lua)
+{
+    const int64_t start = lua.is_integer() ? lua.get_integer() : 0;
+    const int64_t size = lua.is_integer() ? lua.get_integer() : 0;
+    std::string hex = lua.is_string() ? std::string(lua.get_string()) : std::string();
+    std::vector<uint8_t> pattern;
+    if (start <= 0 || size <= 0 || size > (64ll << 20) || !FromHex(hex, pattern) || pattern.empty())
+    {
+        lua.set_integer(0);
+        return 1;
+    }
+    const uintptr_t end = static_cast<uintptr_t>(start) + static_cast<uintptr_t>(size);
+    uintptr_t p = static_cast<uintptr_t>(start);
+    while (p < end)
+    {
+        MEMORY_BASIC_INFORMATION info{};
+        if (VirtualQuery(reinterpret_cast<LPCVOID>(p), &info, sizeof(info)) != sizeof(info)) { break; }
+        const uintptr_t regionEnd = (std::min)(end, reinterpret_cast<uintptr_t>(info.BaseAddress) + info.RegionSize);
+        const bool readable = info.State == MEM_COMMIT && !(info.Protect & (PAGE_GUARD | PAGE_NOACCESS)) &&
+            (info.Protect & (PAGE_READONLY | PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY));
+        if (readable && regionEnd > p && regionEnd - p >= pattern.size())
+        {
+            const uint8_t* first = reinterpret_cast<const uint8_t*>(p);
+            const uint8_t* last = reinterpret_cast<const uint8_t*>(regionEnd);
+            const uint8_t* hit = std::search(first, last, pattern.begin(), pattern.end());
+            if (hit != last)
+            {
+                lua.set_integer(static_cast<int64_t>(reinterpret_cast<uintptr_t>(hit)));
+                return 1;
+            }
+        }
+        if (regionEnd <= p) { break; }
+        p = regionEnd;
+    }
+    lua.set_integer(0);
+    return 1;
+}
+
+bool IsPumped(StringViewType mod)
+{
+    for (const wchar_t* name : Mods)
+    {
+        if (mod == name) { return true; }
+    }
+    return false;
+}
+
+// A Lua mod started (UE4SS calls this for every one).
+void Start(StringViewType mod, LuaMadeSimple::Lua& mainLua)
+{
+    try
+    {
+        mainLua.register_function("RebirthSkelCompatIsGameThread", &IsGameThread);
+        mainLua.register_function("RebirthSkelCompatHasForms", &HasForms);
+        mainLua.register_function("RebirthSkelCompatReadMemory", &ReadMemory);
+        mainLua.register_function("RebirthSkelCompatWriteMemory", &WriteMemory);
+        mainLua.register_function("RebirthSkelCompatFindMemory", &FindMemory);
+        if (!IsPumped(mod)) { return; }
+        // A Lua thread of the mod's own state for the pump (the main one is UE4SS's: its key binds run on it), kept
+        // from the garbage collector by a registry reference.
+        LuaMadeSimple::Lua& thread = mainLua.new_thread();
+        mainLua.registry().make_ref();
+        const std::wstring name(mod);
+        Targets.erase(std::remove_if(Targets.begin(), Targets.end(), [&](const Pumped& t) { return t.Mod == name; }), Targets.end());
+        Pumped target;
+        target.Thread = &thread;
+        target.Mod = name;
+        Targets.push_back(target);
+        Log.Line(L"Lua pump: " + name + L" is called every frame on the game thread (" + SkelCompat::Widen(Function) + L")");
+    }
+    catch (const std::exception& e)
+    {
+        const std::wstring name(mod);
+        Targets.erase(std::remove_if(Targets.begin(), Targets.end(), [&](const Pumped& t) { return t.Mod == name; }), Targets.end());
+        Log.Line(L"Lua pump: NOT set up for " + name + L" (" + SkelCompat::Widen(e.what()) + L")");
+    }
+}
+
+void Stop(StringViewType mod)
+{
+    const std::wstring name(mod);
+    const size_t before = Targets.size();
+    Targets.erase(std::remove_if(Targets.begin(), Targets.end(), [&](const Pumped& t) { return t.Mod == name; }), Targets.end());
+    if (Targets.size() != before) { Log.Line(L"Lua pump: " + name + L" stopped"); }
+}
+
+// Game thread, every frame.
+void Run()
+{
+    for (size_t i = 0; i < Targets.size();)
+    {
+        Pumped& target = Targets[i];
+        bool drop = false;
+        try
+        {
+            target.Thread->call_function(Function, 0, 0);
+            ++target.Calls;
+            target.Failures = 0;
+            if (!target.Said)
+            {
+                target.Said = true;
+                Log.Line(L"Lua pump: " + target.Mod + L"'s " + SkelCompat::Widen(Function) + L" runs");
+            }
+        }
+        catch (const std::exception& e)
+        {
+            ++target.Failures;
+            if (target.Failures <= 5 || target.Failures % 600 == 0) { Log.Line(L"Lua pump: " + target.Mod + L": " + SkelCompat::Widen(e.what())); }
+            if (target.Failures >= 1200)
+            {
+                drop = true;
+                Log.Line(L"Lua pump: " + target.Mod + L" left alone after 1200 failed calls in a row");
+            }
+        }
+        catch (...)
+        {
+            drop = true;
+            Log.Line(L"Lua pump: " + target.Mod + L" left alone after an error");
+        }
+        if (drop) { Targets.erase(Targets.begin() + static_cast<std::ptrdiff_t>(i)); }
+        else { ++i; }
+    }
+}
+} // namespace LuaPump
+
+void OnViewportTickPost(UGameViewportClient*, float)
+{
+    if (!State.Active.load(std::memory_order_relaxed)) { return; }
+    if (!State.ViewportSafePoint.load(std::memory_order_relaxed))
+    {
+        if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed)) { return; }
+        State.ViewportSafePoint.store(true, std::memory_order_relaxed);
+        Log.Line(L"Frame safe point available (after the world tick): late adoption runs there");
+    }
+    FrameWork(L"the viewport tick", true); // (3.6: the Lua pump and the forms)
+    const bool waiting = State.WaitingCount.load(std::memory_order_relaxed) > 0;
+    const bool proportions = State.ProportionsWanted.load(std::memory_order_relaxed);
+    if ((!State.LatePassWanted.load(std::memory_order_relaxed) && !waiting && !proportions) || State.Busy) { return; }
+    if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed)) { return; }
+    BusyScope busy;
+    try
+    {
+        if (proportions) { ApplyProportions(); }
+        CheckWaiting(true);
+        if (State.LatePassWanted.load(std::memory_order_relaxed) && GetTickCount64() >= State.LatePassNotBefore) { LatePass(true); }
+    }
+    catch (...)
+    {
+        Fault(L"late adoption (frame safe point)");
+    }
+}
+
+// 3.5: a pack switch is about to run: when the game's map of the character's sets has no set of that name, the mod
+// finds it in the character's pack first (PackSets).
+void OnProcessEventPre(UObject*, UFunction* function, void* params)
+{
+    if (!function || (function != State.SetPrimaryAnimPack && function != State.ResetPrimaryAnimPack)) { return; }
+    if (!State.Active.load(std::memory_order_relaxed)) { return; }
+    if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed)) { return; }
+    UObject* character = nullptr;
+    std::wstring pack;
+    bool reset = false;
+    if (!ReadPackCall(function, params, character, pack, reset)) { return; }
+    // (3.7.5) another's switch to another form's pack: the sets of the form the character is in end first
+    if (Forms::Wanted && PackSets::RedirectsOn.load(std::memory_order_acquire) != 0)
+    {
+        try
+        {
+            Forms::BeforeOthersSwitch(character, pack, reset);
+        }
+        catch (...)
+        {
+        }
+    }
+    if (!PackSets::Hooked || reset || function != State.SetPrimaryAnimPack) { return; }
+    const bool wasBusy = State.Busy; // (the row lookup below runs a UFunction: nothing of the mod's runs inside it)
+    State.Busy = true;
+    try
+    {
+        PackSets::Prepare(character, pack);
+    }
+    catch (...)
+    {
+        Log.Line(L"Animation sets: the set of a pack switch could not be looked for (error)");
+    }
+    State.Busy = wasBusy;
+}
+
+void OnProcessEventPost(UObject* context, UFunction* function, void* params)
+{
+    if (!State.Active.load(std::memory_order_relaxed)) { return; }
+    // 3.6.16: the game asks the mod's camera modifier for the view (a form's battle camera)
+    if (function && function == Forms::FormCam::Modify && Forms::FormCam::IsOurs(context))
+    {
+        const bool running = Frames::Running;
+        Frames::Running = true;   // (3.7: the calls the shooter's camera makes run no frame work inside it)
+        try
+        {
+            Forms::FormCam::Apply(params);
+        }
+        catch (...)
+        {
+        }
+        Frames::Running = running;
+        return;
+    }
+    if (GetCurrentThreadId() != State.GameThread.load(std::memory_order_relaxed))
+    {
+        if (function && (function == State.SetPrimaryAnimPack || function == State.ResetPrimaryAnimPack))
+        {
+            static std::atomic<int> said{0};
+            if (said.fetch_add(1, std::memory_order_relaxed) < 8)
+            {
+                Log.Line(L"Animation sets: a pack switch ran on thread " + std::to_wstring(GetCurrentThreadId()) + L", not the game thread (" +
+                         std::to_wstring(State.GameThread.load(std::memory_order_relaxed)) + L"): its abilities are left as they are");
+            }
+        }
+        return;
+    }
+    // 3.6: a pack switch made by anything but the forms: the character's form follows its pack (at the next frame).
+    if (Forms::Wanted && function && (function == State.SetPrimaryAnimPack || function == State.ResetPrimaryAnimPack))
+    {
+        UObject* character = nullptr;
+        std::wstring pack;
+        bool reset = false;
+        if (ReadPackCall(function, params, character, pack, reset)) { Forms::PackSwitched(character, pack, reset); }
+    }
+    // 3.3: a character's primary animation pack switched: its abilities follow. 3.4: a switch made while the mod is busy on
+    // this thread (a call of the mod's ran a script that switched packs) is applied as soon as the mod is free.
+    if (State.AbilitiesWanted && function && (function == State.SetPrimaryAnimPack || function == State.ResetPrimaryAnimPack))
+    {
+        UObject* character = nullptr;
+        std::wstring pack;
+        bool reset = false;
+        if (!ReadPackCall(function, params, character, pack, reset)) { return; }
+        PackSets::AfterSwitch(reset ? std::wstring(L"the default pack") : pack);
+        if (State.Busy)
+        {
+            if (State.QueuedPackCalls.size() >= 16) { State.QueuedPackCalls.erase(State.QueuedPackCalls.begin()); }
+            State.QueuedPackCalls.push_back(ModState::PackCall{character, pack, reset});
+            return;
+        }
+        BusyScope busy;
+        try
+        {
+            ApplyPackCall(character, pack, reset, false);
+        }
+        catch (...)
+        {
+            State.AbilitiesWanted = false;
+            Log.Line(L"Abilities per animation pack switched off after an error (the tables keep the lists they had)");
+        }
+        return;
+    }
+    if (!State.QueuedPackCalls.empty() && !State.Busy)
+    {
+        BusyScope busy;
+        std::vector<ModState::PackCall> calls;
+        calls.swap(State.QueuedPackCalls);
+        try
+        {
+            // only the last switch of each character counts
+            for (size_t k = 0; k < calls.size(); ++k)
+            {
+                const bool later = std::any_of(calls.begin() + static_cast<std::ptrdiff_t>(k) + 1, calls.end(),
+                                               [&](const ModState::PackCall& c) { return c.Character == calls[k].Character; });
+                if (!later && State.AbilitiesWanted) { ApplyPackCall(calls[k].Character, calls[k].Pack, calls[k].Reset, true); }
+            }
+        }
+        catch (...)
+        {
+            State.AbilitiesWanted = false;
+            Log.Line(L"Abilities per animation pack switched off after an error (the tables keep the lists they had)");
+        }
+    }
+    FrameWork(L"ProcessEvent", false); // 3.6: the Lua pump and the forms, when no tick callback runs them
+    if (!State.Work.load(std::memory_order_relaxed) && !State.ReportRequested.load(std::memory_order_relaxed) &&
+        !((State.LatePassWanted.load(std::memory_order_relaxed) || State.WaitingCount.load(std::memory_order_relaxed) > 0) &&
+          !State.ViewportSafePoint.load(std::memory_order_relaxed)))
+    {
+        return;
+    }
+    try
+    {
+        Pump(false);
+    }
+    catch (...)
+    {
+        Fault(L"background work");
+    }
+}
+
+// 3.6: after an actor's tick (every actor, every frame: one thread id and one timer read unless the frame work is due).
+void OnActorTickPost(AActor* actor, float)
+{
+    if (!State.Active.load(std::memory_order_relaxed)) { return; }
+    if (Forms::CutWeapons::Wanted)   // (3.6.16: the characters of rows with a cutscene weapon socket are found as they tick)
+    {
+        try
+        {
+            Forms::CutWeapons::Ticked(reinterpret_cast<UObject*>(actor));
+        }
+        catch (...)
+        {
+        }
+    }
+    FrameWork(L"actor ticks", true);
+}
+
+// ---------------------------------------------------------------------------------------
+// Configuration files
+// ---------------------------------------------------------------------------------------
+std::string ReadFileBytes(const fs::path& path)
+{
+    std::ifstream file(path, std::ios::binary);
+    if (!file) { return {}; }
+    std::string bytes((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    return bytes.size() > (1u << 20) ? std::string{} : bytes;
+}
+
+// Names a pair's requires_paks can match, folded: every .pak / .utoc under End\Content\Paks and End\Mods (file name
+// without extension), plus the folders directly inside ~mods and End\Mods (a mod installed as a folder).
+std::unordered_set<std::wstring> InstalledPaks()
+{
+    std::unordered_set<std::wstring> names;
+    std::error_code ec;
+    const auto scan = [&](const fs::path& root, int maxDepth, bool topFolders) {
+        if (!fs::is_directory(root, ec)) { return; }
+        for (auto it = fs::recursive_directory_iterator(root, fs::directory_options::skip_permission_denied, ec);
+             it != fs::recursive_directory_iterator(); it.increment(ec))
+        {
+            if (ec) { break; }
+            const fs::path& path = it->path();
+            if (it->is_directory(ec))
+            {
+                if (topFolders && it.depth() == 0) { names.insert(Folded(path.filename().wstring())); }
+                if (it.depth() >= maxDepth) { it.disable_recursion_pending(); }
+                continue;
+            }
+            const std::wstring extension = Folded(path.extension().wstring());
+            if (extension == L".pak" || extension == L".utoc") { names.insert(Folded(path.stem().wstring())); }
+        }
+    };
+    const fs::path paks = State.GameContentPaks.parent_path(); // End\Content\Paks
+    scan(paks, 3, false);
+    scan(State.GameContentPaks, 3, true);
+    scan(paks.parent_path().parent_path() / L"Mods", 5, true); // End\Mods (plugin mods)
+    return names;
+}
+
+void LoadConfiguration()
+{
+    std::vector<fs::path> files;
+    std::error_code ec;
+    const fs::path compat = State.ModDirectory / L"compat";
+    if (fs::is_directory(compat, ec))
+    {
+        for (const auto& entry : fs::directory_iterator(compat, ec))
+        {
+            if (entry.is_regular_file(ec) && SkelCompat::NameEquals(entry.path().extension().wstring(), L".json")) { files.push_back(entry.path()); }
+        }
+    }
+    // Mods can ship "<anything>.skelcompat.json" next to their pak in ~mods, or inside their plugin folder in End\Mods.
+    const fs::path pluginMods = State.GameContentPaks.parent_path().parent_path().parent_path() / L"Mods";
+    for (const fs::path& root : {State.GameContentPaks, pluginMods})
+    {
+        if (!fs::is_directory(root, ec)) { continue; }
+        for (auto it = fs::recursive_directory_iterator(root, fs::directory_options::skip_permission_denied, ec);
+             it != fs::recursive_directory_iterator(); it.increment(ec))
+        {
+            if (ec) { break; }
+            if (it.depth() > 3) { it.disable_recursion_pending(); continue; }
+            const std::wstring name = it->path().filename().wstring();
+            if (it->is_regular_file(ec) && name.size() > 16 &&
+                SkelCompat::NameEquals(std::wstring_view(name).substr(name.size() - 16), L".skelcompat.json"))
+            {
+                files.push_back(it->path());
+            }
+        }
+    }
+    std::sort(files.begin(), files.end());
+    for (const auto& file : files)
+    {
+        const std::string bytes = ReadFileBytes(file);
+        SkelCompat::AppendConfig(bytes, file.filename().wstring(), State.Config);
+        Log.Line(L"Read " + file.wstring());
+    }
+    // A pair tied to a swap pak (requires_paks) is only on while that pak is installed, so taking the pak out never
+    // leaves the original character without its animations. Chains and shared animation skeletons are settled after
+    // that, among the pairs that are on. The installed paks are only listed when a pair asks.
+    bool listed = false;
+    std::unordered_set<std::wstring> installed;
+    SkelCompat::FinishConfig(State.Config, [&](const std::wstring& name) {
+        if (!listed)
+        {
+            installed = InstalledPaks();
+            listed = true;
+        }
+        return installed.count(Folded(name)) > 0;
+    });
+    for (const auto& message : State.Config.Messages) { Log.Line(L"Config: " + message); }
+    for (const auto& pair : State.Config.Pairs)
+    {
+        std::wstring line;
+        if (!pair.FamilyHub.empty())
+        {
+            // Pairs made for a family: one block for the family, the member mesh pairs only register their skeleton.
+            if (pair.Use == SkelCompat::Method::Mesh)
+            {
+                State.ReceivingNames.insert(Folded(ShortNameOfPath(pair.Receiving)));
+                WantPair(pair);
+                continue;
+            }
+            line = L"Family (hub " + pair.Receiving + L"): these skeletons and the hub play each other's animations. Their animations are "
+                   L"adopted onto the hub and their meshes are rebound to it:";
+            for (const auto& a : pair.Animation) { line += L"\n    " + a; }
+            if (pair.KeepProportions) { line += L"\n    proportions: every character keeps its own bone lengths"; }
+            if (const SkelCompat::Pair* member = pair.Animation.empty() ? nullptr : State.Config.FindForSkeleton(pair.Animation.front()))
+            {
+                line += std::wstring(L"\n    hierarchy fix ") + (member->FixHierarchy ? L"on" : L"off") + L", own skeleton sockets " +
+                        (member->CarrySockets ? L"kept" : L"not kept");
+            }
+        }
+        else if (pair.Use == SkelCompat::Method::Animations)
+        {
+            line = L"Pair (animations, KH3 mode): " + pair.Receiving + L" adopts the animations of";
+            for (const auto& a : pair.Animation) { line += L"\n    " + a; }
+            if (!pair.AdoptPaths.empty())
+            {
+                line += L"\n    only under:";
+                for (const auto& p : pair.AdoptPaths) { line += L" " + p; }
+            }
+            if (!pair.Meshes.empty()) { line += L"\n    (receiving_meshes only applies to \"mesh\" pairs and is ignored here)"; }
+            if (pair.KeepProportions) { line += L"\n    proportions: the receiving characters keep their own bone lengths"; }
+        }
+        else
+        {
+            line = L"Pair (mesh): meshes on " + pair.Receiving + L" are rebound to and play animations of";
+            for (const auto& a : pair.Animation) { line += L"\n    " + a; }
+            if (!pair.Meshes.empty()) { line += L"\n    (limited to " + std::to_wstring(pair.Meshes.size()) + L" mesh(es))"; }
+            if (pair.KeepProportions) { line += L"\n    proportions: the rebound characters keep their own bone lengths"; }
+            State.ReceivingNames.insert(Folded(ShortNameOfPath(pair.Receiving)));
+        }
+        if (!pair.RequiresPaks.empty())
+        {
+            line += L"\n    on because these are installed:";
+            for (const auto& name : pair.RequiresPaks) { line += L" " + name; }
+        }
+        Log.Line(line);
+        WantPair(pair);
+    }
+    for (const auto& row : State.Config.AnimSets)
+    {
+        std::wstring line = L"Animation sets for " + row.Characters.front() + L"  [" + row.Origin + L"]";
+        const auto sources = [&](const wchar_t* label, const std::vector<SkelCompat::SetSource>& list) {
+            if (list.empty()) { return; }
+            line += std::wstring(L"\n    ") + label + L" (first wins):";
+            for (const auto& source : list)
+            {
+                line += L"\n      " + source.Path + (source.Folder ? L"  (folder)" : L"") + (source.As.empty() ? L"" : L"  as " + source.As);
+                switch (source.Auto)
+                {
+                case SkelCompat::AutoMatchMode::Basic: line += L"  [auto: basic attacks]"; break;
+                case SkelCompat::AutoMatchMode::Attacks: line += L"  [auto: attacks, abilities, limits]"; break;
+                case SkelCompat::AutoMatchMode::All: line += L"  [auto: whole set + attacks]"; break;
+                default: break;
+                }
+                if (source.Auto != SkelCompat::AutoMatchMode::Off && !source.Only.empty())
+                {
+                    line += L"  [only names with:";
+                    for (const auto& word : source.Only) { line += L" " + word; }
+                    line += L"]";
+                }
+            }
+        };
+        sources(L"battle sets from", row.Battle);
+        sources(L"field sets from", row.Field);
+        if (!row.Moves.empty())
+        {
+            const auto chains = std::count_if(row.Moves.begin(), row.Moves.end(), [](const SkelCompat::AnimMove& m) { return !m.Chain.empty(); });
+            line += L"\n    " + std::to_wstring(row.Moves.size()) + L" move(s)" + (chains ? L", " + std::to_wstring(chains) + L" of them chained" : std::wstring{});
+        }
+        if (!row.Sockets.empty())
+        {
+            line += L"\n    socket stand-ins on meshes of " + row.Skeleton + L":";
+            for (const auto& [wanted, use] : row.Sockets)
+            {
+                line += L" " + wanted + L" -> " + use;
+                for (const auto& [name, place] : row.SocketPlacements)   // (3.8.1)
+                {
+                    if (!SkelCompat::NameEquals(name, wanted)) { continue; }
+                    if (place.HasRotation) { line += L" rotation " + ScaleText(place.Rotation[0]) + L" " + ScaleText(place.Rotation[1]) + L" " + ScaleText(place.Rotation[2]); }
+                    if (place.HasLocation) { line += L" location " + ScaleText(place.Location[0]) + L" " + ScaleText(place.Location[1]) + L" " + ScaleText(place.Location[2]); }
+                    if (place.Hidden()) { line += L" (hidden)"; }
+                    else if (place.HasScale) { line += L" scale " + ScaleText(place.Scale[0]) + L" " + ScaleText(place.Scale[1]) + L" " + ScaleText(place.Scale[2]); }
+                }
+                line += L";";
+            }
+            State.AliasSkeletonNames.insert(Folded(ShortNameOfPath(row.Skeleton)));
+        }
+        if (row.KeepProportions) { line += L"\n    proportions: on for the pairs and families of " + row.Skeleton; }
+        if (!row.FieldActions.empty()) { line += L"\n    field actions: " + row.FieldActions + L" (CharaSpec AnimationSetParentFolder)"; }
+        if (!row.CutsceneWeaponSocket.empty()) { line += L"\n    weapons in cutscenes: " + row.CutsceneWeaponSocket; }   // (3.6.16)
+        if (!row.AnimBlueprintsFrom.empty()) { line += L"\n    AnimBlueprints made for " + row.AnimBlueprintsFrom + L" run on " + row.Skeleton; }   // (3.8)
+        if (!row.RequiresPaks.empty())
+        {
+            line += L"\n    on because these are installed:";
+            for (const auto& name : row.RequiresPaks) { line += L" " + name; }
+        }
+        Log.Line(line);
+        State.PackNames.insert(Folded(SkelCompat::ObjectNameOfPath(row.Characters.front())));
+    }
+    State.ProportionSkeletons = State.Config.ProportionSkeletons();
+    for (const auto& path : State.ProportionSkeletons) { Log.Line(L"Proportions: " + path + L" gets the proportion modes once it is loaded"); }
+    // Family members: their meshes go to the hub, and so do the AnimBlueprints made for them (3.2.1).
+    State.AbpHubs.clear();
+    for (const auto& pair : State.Config.Pairs)
+    {
+        if (pair.Use != SkelCompat::Method::Mesh || pair.FamilyHub.empty()) { continue; }
+        State.AbpHubs[Folded(pair.Receiving)] = pair.FamilyHub;
+        Log.Line(L"AnimBlueprints made for " + pair.Receiving + L" run on the hub " + pair.FamilyHub + L" (its meshes are rebound there)");
+    }
+    // 3.8: a row's "anim_blueprints_from": the slot's AnimBlueprints run on the character's own skeleton (its animations are
+    // all on that skeleton); nothing else moves.
+    for (const auto& row : State.Config.AnimSets)
+    {
+        if (row.AnimBlueprintsFrom.empty() || row.Skeleton.empty()) { continue; }
+        const std::wstring key = Folded(row.AnimBlueprintsFrom);
+        const auto it = State.AbpHubs.find(key);
+        if (it != State.AbpHubs.end())
+        {
+            if (!SkelCompat::PathEquals(it->second, row.Skeleton))
+            {
+                Log.Line(L"anim_blueprints_from of " + row.Characters.front() + L" ignored: AnimBlueprints made for " + row.AnimBlueprintsFrom +
+                         L" already run on " + it->second);
+            }
+            continue;
+        }
+        State.AbpHubs[key] = row.Skeleton;
+        Log.Line(L"AnimBlueprints made for " + row.AnimBlueprintsFrom + L" run on " + row.Skeleton + L" (anim_blueprints_from of " +
+                 row.Characters.front() + L"; no animation or mesh moves)");
+    }
+}
+
+fs::path ThisModuleDirectory()
+{
+    HMODULE module = nullptr;
+    GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                       reinterpret_cast<LPCWSTR>(&ThisModuleDirectory), &module);
+    std::vector<wchar_t> buffer(32768);
+    const DWORD length = GetModuleFileNameW(module, buffer.data(), static_cast<DWORD>(buffer.size()));
+    if (!length || length >= buffer.size()) { return {}; }
+    return fs::path(std::wstring(buffer.data(), length)).parent_path(); // ...\Mods\RebirthSkelCompat\dlls
+}
+
+void PinModule()
+{
+    // Vtable and callback pointers outlive any UE4SS hot reload; never let this DLL unload.
+    HMODULE pinned = nullptr;
+    GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN, reinterpret_cast<LPCWSTR>(&PinModule), &pinned);
+}
+
+// Startup, on UE4SS's thread: files and callback registration only, no UObject access.
+bool EarlyInit()
+{
+    const fs::path dlls = ThisModuleDirectory();
+    State.ModDirectory = dlls.has_parent_path() ? dlls.parent_path() : dlls;
+    Log.Open(State.ModDirectory / L"RebirthSkelCompat.log");
+    Log.Line(L"RebirthSkelCompat " + std::wstring(ModVersionText) + L" starting (UE4SS c0a8d4c SDK)");
+
+    if (fs::exists(State.ModDirectory / L"nohook.txt"))
+    {
+        Log.Line(L"nohook.txt present: mod stays off.");
+        return false;
+    }
+
+    wchar_t exe[MAX_PATH]{};
+    GetModuleFileNameW(nullptr, exe, MAX_PATH);
+    State.GameContentPaks = fs::path(exe).parent_path().parent_path().parent_path() / L"Content" / L"Paks" / L"~mods";
+
+    LoadConfiguration();
+    if (State.Config.Pairs.empty() && State.Config.AnimSets.empty())
+    {
+        Log.Line(L"No JSON pairs. Pairs declared in AssetUserData (BP_SkelCompatUserData) on skeletons or meshes still apply.");
+    }
+
+    PinModule();
+    State.Enabled.store(true, std::memory_order_release);
+    Hook::RegisterLoadMapPreCallback(&OnLoadMapPre);
+    Hook::RegisterLoadMapPostCallback(&OnLoadMapPost);
+    Log.Line(L"Waiting for the first map load to finish setting up on the game thread");
+    return true;
+}
+
+// Animation set rows: classes, layouts and the pack hook (the PostLoad slot was verified by the mesh hook).
+void SetUpAnimationSetRows()
+{
+    State.AnimSetClass = FindClass(L"/Script/EndGame.EndAnimSet");
+    State.PackClass = FindClass(L"/Script/EndGame.EndAssetDataAsset");
+    UStruct* entryType = nullptr;
+    if (State.AnimSetClass)
+    {
+        FProperty* assets = FindField(State.AnimSetClass, L"AnimationAssets");
+        if (assets && TypeOf(assets) == L"MapProperty" && assets->GetArrayDim() == 1 && assets->GetElementSize() == static_cast<int32_t>(sizeof(NameMapHeader)) &&
+            assets->GetOffset_Internal() >= 0 &&
+            assets->GetOffset_Internal() + static_cast<int32_t>(sizeof(NameMapHeader)) <= State.AnimSetClass->GetPropertiesSize())
+        {
+            State.OffSetAssets = assets->GetOffset_Internal();
+        }
+        State.OffSetDisplayName = FieldOffset(State.AnimSetClass, L"DisplayName", {L"NameProperty"}, 8);
+    }
+    if (State.PackClass)
+    {
+        entryType = ArrayStructField(State.PackClass, L"AssetDataList", State.OffPackList, State.PackEntryStride);
+        if (entryType) { State.OffEntryObjects = ObjectArrayField(entryType, L"AssetUserData"); }
+        if (State.OffEntryObjects < 0 || State.OffEntryObjects + static_cast<int32_t>(sizeof(RawArray)) > State.PackEntryStride) { State.OffEntryObjects = -1; }
+    }
+    const bool layout = State.AnimSetClass && State.PackClass && State.OffSetAssets >= 0 && State.OffPackList >= 0 && State.OffEntryObjects >= 0;
+    Log.Line(L"Animation set rows: EndAnimSet " + std::wstring(State.AnimSetClass ? L"found" : L"NOT found") + L", AnimationAssets " +
+             Hex(static_cast<uintptr_t>(State.OffSetAssets)) + L", DisplayName " + Hex(static_cast<uintptr_t>(State.OffSetDisplayName)) +
+             L"; EndAssetDataAsset " + (State.PackClass ? L"found" : L"NOT found") + L", AssetDataList " + Hex(static_cast<uintptr_t>(State.OffPackList)) +
+             L" (stride " + std::to_wstring(State.PackEntryStride) + L", AssetUserData " + Hex(static_cast<uintptr_t>(State.OffEntryObjects)) + L")");
+    if (!layout)
+    {
+        Log.Line(L"Animation set rows are off: the classes or their layout were not recognised");
+        return;
+    }
+    if (!State.HookInstalled)
+    {
+        Log.Line(L"Animation set rows are off: the PostLoad slot could not be verified");
+        return;
+    }
+    State.PackHookInstalled = InstallPackPostLoadHook();
+    if (!State.PackHookInstalled) { Log.Line(L"Animation set rows are off: the CharaSpec pack hook could not be installed"); }
+}
+
+// First map load, on the game thread: class lookups, offsets and the PostLoad hook.
+bool LateInit()
+{
+    State.SkeletonClass = FindClass(L"/Script/Engine.Skeleton");
+    State.MeshClass = FindClass(L"/Script/Engine.SkeletalMesh");
+    State.ComponentClass = FindClass(L"/Script/Engine.SkeletalMeshComponent");
+    State.SetAnimClass = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/Engine.SkeletalMeshComponent:SetAnimClass");
+    State.MakeSoftObjectPath = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/Engine.KismetSystemLibrary:MakeSoftObjectPath");
+    State.ConvertSoftObjectPath = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/Engine.KismetSystemLibrary:Conv_SoftObjPathToSoftObjRef");
+    State.LoadAssetBlocking = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/Engine.KismetSystemLibrary:LoadAsset_Blocking");
+    State.LoadAssetAsync = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/Engine.KismetSystemLibrary:LoadAsset");
+    State.LatentActionInfo = UObjectGlobals::StaticFindObject<UStruct*>(nullptr, nullptr, L"/Script/Engine.LatentActionInfo");
+    State.KismetSystemLibrary = FindObjectByPath(L"/Script/Engine.Default__KismetSystemLibrary");
+    if (!State.SkeletonClass || !State.MeshClass)
+    {
+        Log.Line(L"Disabled: Skeleton/SkeletalMesh classes not found");
+        return false;
+    }
+    // (3.6.8) object checks in constant time (instead of UE4SS's walk over the object array)
+    Log.Line(L"Object checks: " + LiveCheck::Check(State.SkeletonClass, State.MeshClass));
+    State.OffMeshSkeleton = FieldOffset(State.MeshClass, L"Skeleton", {L"ObjectProperty"}, 8);
+    State.OffSkelRefLocalPoses = FieldOffset(State.SkeletonClass, L"RefLocalPoses", {L"ArrayProperty"}, 16);
+    State.OffSkelVirtualBones = FieldOffset(State.SkeletonClass, L"VirtualBones", {L"ArrayProperty"}, 16);
+    State.OffSkelUserData = FieldOffset(State.SkeletonClass, L"AssetUserData", {L"ArrayProperty"}, 16);
+    State.OffMeshUserData = FieldOffset(State.MeshClass, L"AssetUserData", {L"ArrayProperty"}, 16);
+    if (State.ComponentClass)
+    {
+        State.OffCompMesh = FieldOffset(State.ComponentClass, L"SkeletalMesh", {L"ObjectProperty"}, 8);
+        State.OffCompAnimClass = FieldOffset(State.ComponentClass, L"AnimClass", {L"ClassProperty"}, 8);
+        State.OffCompAnimInstance = FieldOffset(State.ComponentClass, L"AnimScriptInstance", {L"ObjectProperty"}, 8);
+        State.OffCompLinked = FieldOffset(State.ComponentClass, L"LinkedInstances", {L"ArrayProperty"}, 16);
+    }
+    Log.Line(L"Offsets: SkeletalMesh.Skeleton " + Hex(static_cast<uintptr_t>(State.OffMeshSkeleton)) + L", Skeleton.RefLocalPoses " +
+             Hex(static_cast<uintptr_t>(State.OffSkelRefLocalPoses)) + L", Component.SkeletalMesh " +
+             Hex(static_cast<uintptr_t>(State.OffCompMesh)) + L", AnimClass " + Hex(static_cast<uintptr_t>(State.OffCompAnimClass)) +
+             L", AnimScriptInstance " + Hex(static_cast<uintptr_t>(State.OffCompAnimInstance)) + L", AssetUserData skeleton " +
+             Hex(static_cast<uintptr_t>(State.OffSkelUserData)) + L" / mesh " + Hex(static_cast<uintptr_t>(State.OffMeshUserData)) +
+             (State.SetAnimClass ? L", SetAnimClass found" : L", SetAnimClass missing (no repair)") + L", game thread " +
+             std::to_wstring(State.GameThread.load()));
+    if (State.OffMeshSkeleton < 0)
+    {
+        Log.Line(L"Disabled: SkeletalMesh.Skeleton property not found");
+        return false;
+    }
+    State.OffMeshSockets = ObjectArrayField(State.MeshClass, L"Sockets");
+    State.OffSkelSockets = ObjectArrayField(State.SkeletonClass, L"Sockets");
+    if (UClass* socketClass = FindClass(L"/Script/Engine.SkeletalMeshSocket"))
+    {
+        State.SocketClass = socketClass;
+        State.OffSocketName = FieldOffset(socketClass, L"SocketName", {L"NameProperty"}, 8);
+        State.OffSocketBone = FieldOffset(socketClass, L"BoneName", {L"NameProperty"}, 8);
+    }
+    Log.Line(L"Sockets: SkeletalMesh.Sockets " + Hex(static_cast<uintptr_t>(State.OffMeshSockets)) + L", Skeleton.Sockets " +
+             Hex(static_cast<uintptr_t>(State.OffSkelSockets)) + L", SocketName " + Hex(static_cast<uintptr_t>(State.OffSocketName)) + L", BoneName " +
+             Hex(static_cast<uintptr_t>(State.OffSocketBone)));
+
+    // Animation adoption (KH3 mode): classes and layouts. UAnimSequence::CompressedData directly follows the
+    // CurveCompressionSettings pointer (UE 4.26 AnimSequence.h) and is checked against the next property.
+    // Everything else is located through reflection; a layout that does not check out disables that part.
+    State.AnimAssetClass = FindClass(L"/Script/Engine.AnimationAsset");
+    State.AnimSequenceClass = FindClass(L"/Script/Engine.AnimSequence");
+    State.AnimCompositeClass = FindClass(L"/Script/Engine.AnimComposite");
+    State.AnimMontageClass = FindClass(L"/Script/Engine.AnimMontage");
+    State.BlendSpaceBaseClass = FindClass(L"/Script/Engine.BlendSpaceBase");
+    if (State.AnimAssetClass)
+    {
+        State.OffAnimSkeleton = FieldOffset(State.AnimAssetClass, L"Skeleton", {L"ObjectProperty"}, 8);
+        // UAnimationAsset: USkeleton* Skeleton; FGuid SkeletonGuid; FGuid SkeletonVirtualBoneGuid; TArray MetaData (reflected).
+        const int32_t metaData = FieldOffset(State.AnimAssetClass, L"MetaData", {L"ArrayProperty"}, 16);
+        if (State.OffAnimSkeleton >= 0 && metaData == State.OffAnimSkeleton + 0x28) { State.OffAnimVirtualBoneGuid = State.OffAnimSkeleton + 0x18; }
+    }
+    State.OffSkelVirtualBoneGuid = FieldOffset(State.SkeletonClass, L"VirtualBoneGuid", {L"StructProperty"}, 16);
+    if (UClass* sequenceBase = FindClass(L"/Script/Engine.AnimSequenceBase"))
+    {
+        State.AnimSequenceBaseClass = sequenceBase;
+        State.OffSeqBlendOut = FieldOffset(sequenceBase, L"OverrideBehaviorActionBlendOutSequence", {L"ObjectProperty"}, 8);
+        State.OffSeqLength = FieldOffset(sequenceBase, L"SequenceLength", {L"FloatProperty"}, 4);
+    }
+    if (State.AnimSequenceClass)
+    {
+        State.OffSeqRefPose = FieldOffset(State.AnimSequenceClass, L"RefPoseSeq", {L"ObjectProperty"}, 8);
+        const int32_t curveSettings = FieldOffset(State.AnimSequenceClass, L"CurveCompressionSettings", {L"ObjectProperty"}, 8);
+        const int32_t additive = FieldOffset(State.AnimSequenceClass, L"AdditiveAnimType", {L"ByteProperty", L"EnumProperty"}, 1);
+        State.OffSeqAdditiveType = additive;
+        State.OffSeqRetargetSource = FieldOffset(State.AnimSequenceClass, L"RetargetSource", {L"NameProperty"}, 8);
+        // 3.6.7: Rebirth's cutscene animations carry bIgnoreTranslationRetargeting (the proportion modes do not apply to them)
+        if (FProperty* ignore = FindField(State.AnimSequenceClass, L"bIgnoreTranslationRetargeting"); ignore && TypeOf(ignore) == L"BoolProperty")
+        {
+            auto* flag = static_cast<FBoolProperty*>(ignore);
+            const int32_t at = ignore->GetOffset_Internal() + static_cast<int32_t>(flag->GetByteOffset());
+            const uint8_t mask = static_cast<uint8_t>(flag->GetFieldMask());
+            if (at >= 0 && at < State.AnimSequenceClass->GetPropertiesSize() && mask != 0)
+            {
+                State.OffSeqIgnoreRetarget = at;
+                State.IgnoreRetargetMask = mask;
+            }
+        }
+        // FCompressedAnimSequence is about 0x78 bytes in a cooked 4.26 build; anything far off means a different layout.
+        if (curveSettings >= 0 && additive > curveSettings + 0x48 && additive <= curveSettings + 0xC0) { State.OffSeqCompressed = curveSettings + 8; }
+        State.OffSeqRawTracks = FieldOffset(State.AnimSequenceClass, L"TrackToSkeletonMapTable", {L"ArrayProperty"}, 16);
+        if (UStruct* attrs = ArrayStructField(State.AnimSequenceClass, L"BakedPerBoneCustomAttributeData", State.OffSeqCustomAttrs, State.SeqCustomAttrStride))
+        {
+            // An unknown element layout keeps AttrBone at -1: sequences that carry baked attributes are then refused.
+            State.AttrBone = FieldOffset(attrs, L"BoneTreeIndex", {L"IntProperty"}, 4);
+            const wchar_t* lists[] = {L"StringAttributes", L"IntAttributes", L"FloatAttributes"};
+            for (size_t k = 0; k < State.AttrArrays.size(); ++k) { State.AttrArrays[k] = FieldOffset(attrs, lists[k], {L"ArrayProperty"}, 16); }
+        }
+        else
+        {
+            State.OffSeqCustomAttrs = ArrayField(State.AnimSequenceClass, L"BakedPerBoneCustomAttributeData", State.SeqCustomAttrStride);
+        }
+        Log.Line(L"AnimSequence: CurveCompressionSettings " + Hex(static_cast<uintptr_t>(curveSettings)) + L", AdditiveAnimType " +
+                 Hex(static_cast<uintptr_t>(additive)) + L" -> CompressedData " +
+                 (State.OffSeqCompressed >= 0 ? Hex(static_cast<uintptr_t>(State.OffSeqCompressed)) : std::wstring(L"not recognised")));
+    }
+    // FSmartName must be { FName DisplayName; uint16 UID; } (12 bytes) for the curve tables.
+    UObject* smartName = FindObjectByPath(L"/Script/Engine.SmartName");
+    const bool smartNameOk = smartName && smartName->IsA<UScriptStruct>() &&
+                             static_cast<UStruct*>(static_cast<UScriptStruct*>(smartName))->GetPropertiesSize() == static_cast<int32_t>(SmartNameStride) &&
+                             FieldOffset(static_cast<UScriptStruct*>(smartName), L"DisplayName", {L"NameProperty"}, 8) == 0;
+    if (!smartNameOk) { State.OffSeqCompressed = -1; }
+    if (UClass* sequenceBase = FindClass(L"/Script/Engine.AnimSequenceBase"); sequenceBase && smartNameOk)
+    {
+        int32_t rawCurves = -1, floatCurves = -1;
+        if (UStruct* rawType = StructField(sequenceBase, L"RawCurveData", rawCurves))
+        {
+            if (UStruct* floatType = ArrayStructField(rawType, L"FloatCurves", floatCurves, State.FloatCurveStride))
+            {
+                int32_t nameAt = -1;
+                if (StructField(floatType, L"Name", nameAt) && nameAt >= 0 && nameAt + static_cast<int32_t>(SmartNameStride) <= State.FloatCurveStride)
+                {
+                    State.OffRawFloatCurves = rawCurves + floatCurves;
+                    State.FloatCurveName = nameAt;
+                }
+            }
+        }
+    }
+    int32_t trackSize = 0;
+    UStruct* trackType = nullptr;
+    if (State.AnimCompositeClass) { trackType = StructField(State.AnimCompositeClass, L"AnimationTrack", State.OffCompositeTrack); }
+    if (State.AnimMontageClass)
+    {
+        if (UStruct* slotType = ArrayStructField(State.AnimMontageClass, L"SlotAnimTracks", State.OffMontageSlots, State.SlotStride))
+        {
+            UStruct* slotTrack = StructField(slotType, L"AnimTrack", State.SlotTrack);
+            if (!trackType) { trackType = slotTrack; }
+            if (slotTrack != trackType) { State.SlotTrack = -1; }
+        }
+    }
+    if (trackType)
+    {
+        if (UStruct* segmentType = ArrayStructField(trackType, L"AnimSegments", State.TrackSegments, State.SegmentStride))
+        {
+            State.SegmentRef = FieldOffset(segmentType, L"AnimReference", {L"ObjectProperty"}, 8);
+            State.SegStartPos = FieldOffset(segmentType, L"StartPos", {L"FloatProperty"}, 4);
+            State.SegAnimStart = FieldOffset(segmentType, L"AnimStartTime", {L"FloatProperty"}, 4);
+            State.SegAnimEnd = FieldOffset(segmentType, L"AnimEndTime", {L"FloatProperty"}, 4);
+            State.SegPlayRate = FieldOffset(segmentType, L"AnimPlayRate", {L"FloatProperty"}, 4);
+            State.SegLooping = FieldOffset(segmentType, L"LoopingCount", {L"IntProperty"}, 4);
+            State.SegBlendTime = FieldOffset(segmentType, L"AnimBlendTime", {L"FloatProperty"}, 4);
+            State.SegTriggerNotify = FieldOffset(segmentType, L"bTriggerAnimReferenceNotify", {L"BoolProperty"}, 1);
+            // bValid is declared right after the last property (UE 4.26 AnimCompositeBase.h; Rebirth adds AnimBlendTime and
+            // bTriggerAnimReferenceNotify before it).
+            const int32_t valid = State.SegTriggerNotify >= 0 ? State.SegTriggerNotify + 1 : (State.SegLooping >= 0 ? State.SegLooping + 4 : -1);
+            if (valid > 0 && valid < State.SegmentStride) { State.SegValid = valid; }
+        }
+        trackSize = trackType->GetPropertiesSize();
+    }
+    if (State.BlendSpaceBaseClass)
+    {
+        if (UStruct* sampleType = ArrayStructField(State.BlendSpaceBaseClass, L"SampleData", State.OffBlendSamples, State.SampleStride))
+        {
+            State.SampleAnim = FieldOffset(sampleType, L"Animation", {L"ObjectProperty"}, 8);
+        }
+        UStruct* perBoneType = ArrayStructField(State.BlendSpaceBaseClass, L"PerBoneBlend", State.OffBlendPerBone, State.BlendPerBoneStride);
+        if (!perBoneType) { State.OffBlendPerBone = ArrayField(State.BlendSpaceBaseClass, L"PerBoneBlend", State.BlendPerBoneStride); }
+        if (perBoneType)
+        {
+            int32_t reference = -1;
+            UStruct* referenceType = StructField(perBoneType, L"BoneReference", reference);
+            // FBoneReference: FName BoneName; int32 BoneIndex:31; uint32 bUseSkeletonIndex:1; FCompactPoseBoneIndex (16 bytes).
+            if (referenceType && referenceType->GetPropertiesSize() == 16 && FieldOffset(referenceType, L"BoneName", {L"NameProperty"}, 8) == 0)
+            {
+                State.PerBoneRef = reference;
+            }
+        }
+    }
+    State.OffSkelSmartNames = FieldOffset(State.SkeletonClass, L"SmartNames", {L"StructProperty"}, static_cast<int32_t>(sizeof(NameMapHeader)));
+    // 3.2 proportions: USkeleton::BoneTree (reflected) and AnimRetargetSources, a native TMap declared right after
+    // Sockets and followed by the reflected SmartNames (UE 4.26 Skeleton.h); only trusted when those line up.
+    if (UStruct* node = ArrayStructField(State.SkeletonClass, L"BoneTree", State.OffSkelBoneTree, State.BoneNodeStride))
+    {
+        State.BoneNodeMode = FieldOffset(node, L"TranslationRetargetingMode", {L"ByteProperty", L"EnumProperty"}, 1);
+    }
+    // UE 4.26 declares it right after Sockets; Rebirth keeps 0x30 bytes of its own after it, before SmartNames (seen in
+    // 3.2.1's dump of Cloud's skeleton: an empty TMap at Sockets + 0x10). Each skeleton's map header is checked before
+    // the map is read or written (RetargetSourcesUsable, AddRetargetPoses).
+    if (State.OffSkelSockets >= 0 && State.OffSkelSmartNames >= State.OffSkelSockets + static_cast<int32_t>(sizeof(RawArray) + sizeof(NameMapHeader)))
+    {
+        State.OffSkelRetargetSources = State.OffSkelSockets + static_cast<int32_t>(sizeof(RawArray));
+    }
+    Log.Line(L"3.2 offsets: AnimSequenceBase.SequenceLength " + Hex(static_cast<uintptr_t>(State.OffSeqLength)) + L", AnimSequence.AdditiveAnimType " +
+             Hex(static_cast<uintptr_t>(State.OffSeqAdditiveType)) + L", AnimSequence.RetargetSource " + Hex(static_cast<uintptr_t>(State.OffSeqRetargetSource)) +
+             L", AnimSequence.bIgnoreTranslationRetargeting " +
+             (State.OffSeqIgnoreRetarget >= 0 ? Hex(static_cast<uintptr_t>(State.OffSeqIgnoreRetarget)) + L" mask " + Hex(State.IgnoreRetargetMask) : std::wstring(L"none")) +
+             L", Skeleton.BoneTree " + Hex(static_cast<uintptr_t>(State.OffSkelBoneTree)) + L" (stride " + std::to_wstring(State.BoneNodeStride) +
+             L", mode " + Hex(static_cast<uintptr_t>(State.BoneNodeMode)) + L"), Skeleton.AnimRetargetSources " +
+             (State.OffSkelRetargetSources >= 0 ? Hex(static_cast<uintptr_t>(State.OffSkelRetargetSources)) : std::wstring(L"NOT located")) +
+             L", SkeletalMeshSocket " + (State.SocketClass ? L"found" : L"NOT found"));
+    Log.Line(L"Animation adoption offsets: AnimationAsset.Skeleton " + Hex(static_cast<uintptr_t>(State.OffAnimSkeleton)) +
+             L", SkeletonVirtualBoneGuid " + Hex(static_cast<uintptr_t>(State.OffAnimVirtualBoneGuid)) + L", Skeleton.VirtualBoneGuid " +
+             Hex(static_cast<uintptr_t>(State.OffSkelVirtualBoneGuid)) + L", blend-out sequence " + Hex(static_cast<uintptr_t>(State.OffSeqBlendOut)) +
+             L", additive base " + Hex(static_cast<uintptr_t>(State.OffSeqRefPose)) +
+             L", AnimSequence raw tracks " + Hex(static_cast<uintptr_t>(State.OffSeqRawTracks)) + L", baked attributes " +
+             Hex(static_cast<uintptr_t>(State.OffSeqCustomAttrs)) + L" (stride " + std::to_wstring(State.SeqCustomAttrStride) +
+             L"), curve tracks " + Hex(static_cast<uintptr_t>(State.OffRawFloatCurves)) + L" (stride " + std::to_wstring(State.FloatCurveStride) +
+             L", name " + Hex(static_cast<uintptr_t>(State.FloatCurveName)) + L"), composite track " + Hex(static_cast<uintptr_t>(State.OffCompositeTrack)) +
+             L", montage slots " + Hex(static_cast<uintptr_t>(State.OffMontageSlots)) + L" (stride " + std::to_wstring(State.SlotStride) + L", track " +
+             Hex(static_cast<uintptr_t>(State.SlotTrack)) + L"), segments " + Hex(static_cast<uintptr_t>(State.TrackSegments)) + L" (stride " +
+             std::to_wstring(State.SegmentStride) + L", animation " + Hex(static_cast<uintptr_t>(State.SegmentRef)) + L", track size " +
+             std::to_wstring(trackSize) + L"), blend samples " + Hex(static_cast<uintptr_t>(State.OffBlendSamples)) + L" (stride " +
+             std::to_wstring(State.SampleStride) + L", animation " + Hex(static_cast<uintptr_t>(State.SampleAnim)) + L"), per-bone blend " +
+             Hex(static_cast<uintptr_t>(State.OffBlendPerBone)) + L" (stride " + std::to_wstring(State.BlendPerBoneStride) + L", bone " +
+             Hex(static_cast<uintptr_t>(State.PerBoneRef)) + L"), Skeleton.SmartNames " + Hex(static_cast<uintptr_t>(State.OffSkelSmartNames)) +
+             (smartNameOk ? L", FSmartName 12 bytes" : L", FSmartName layout NOT recognised (sequences are not adopted)"));
+
+    State.Active.store(true, std::memory_order_release);
+    State.HookInstalled = InstallPostLoadHook();
+    if (!State.HookInstalled)
+    {
+        Log.Line(L"PostLoad hook not installed: meshes are rebound late on each map load instead (repair still applies)");
+    }
+    const bool adoptionWanted = std::any_of(State.Config.Pairs.begin(), State.Config.Pairs.end(),
+                                            [](const SkelCompat::Pair& p) { return p.Use == SkelCompat::Method::Animations; });
+    if (adoptionWanted)
+    {
+        // The slot index was verified by the mesh hook; without that check nothing else is patched.
+        State.AnimHooksInstalled = State.HookInstalled && State.OffAnimSkeleton >= 0 && InstallAnimPostLoadHooks();
+        if (!State.AnimHooksInstalled)
+        {
+            Log.Line(L"Animation PostLoad hook not installed: animations are adopted on each map load instead");
+        }
+    }
+    if (!State.Config.AnimSets.empty())
+    {
+        SetUpAnimationSetRows();
+        SetUpAbilities();
+        // 3.5: every set of a character's pack can be switched to (not only those the game takes from its row's slots)
+        if (!State.SetPrimaryAnimPack)
+        {
+            State.SetPrimaryAnimPack = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:SetPrimaryAnimPack");
+            State.ResetPrimaryAnimPack = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:ResetPrimaryAnimPack");
+            State.GetCharaSpecName = UObjectGlobals::StaticFindObject<UFunction*>(nullptr, nullptr, L"/Script/EndGame.EndBattleAPI:GetCharaSpecName");
+            State.BattleApi = FindObjectByPath(L"/Script/EndGame.Default__EndBattleAPI");
+        }
+        if (State.SetPrimaryAnimPack && State.GetCharaSpecName && State.BattleApi)
+        {
+            PackSets::Install();
+            Log.Line(L"Animation sets: " + PackSets::Status);
+        }
+        else
+        {
+            Log.Line(L"Animation sets: EndBattleAPI SetPrimaryAnimPack / GetCharaSpecName NOT found: only the sets the game takes from a row's slots can be switched to");
+        }
+    }
+    if (!State.AbpHubs.empty())
+    {
+        State.AbpClass = FindClass(L"/Script/Engine.AnimBlueprintGeneratedClass");
+        if (State.AbpClass) { State.OffAbpTargetSkeleton = FieldOffset(State.AbpClass, L"TargetSkeleton", {L"ObjectProperty"}, 8); }
+        if (!State.AbpClass || State.OffAbpTargetSkeleton < 0)
+        {
+            Log.Line(L"AnimBlueprints of family members stay on their own skeleton: AnimBlueprintGeneratedClass.TargetSkeleton was not found "
+                     L"(a member character that uses its own AnimBlueprint T-poses)");
+        }
+        else
+        {
+            Log.Line(L"AnimBlueprintGeneratedClass.TargetSkeleton " + Hex(static_cast<uintptr_t>(State.OffAbpTargetSkeleton)) +
+                     L": AnimBlueprints of family members follow the hub");
+            if (!State.HookInstalled || !InstallAbpPostLoadHook())
+            {
+                Log.Line(L"AnimBlueprint PostLoad hook not installed: AnimBlueprints are moved on each map load instead (live components are re-initialised)");
+            }
+        }
+    }
+    // Registered here, on the game thread and outside any ProcessEvent or viewport tick, so UE4SS's callback
+    // lists are never extended while the game walks them.
+    Hook::RegisterProcessEventPostCallback(&OnProcessEventPost);
+    if (PackSets::Hooked) { Hook::RegisterProcessEventPreCallback(&OnProcessEventPre); }
+    Hook::RegisterGameViewportClientTickPostCallback(&OnViewportTickPost); // (late adoption, proportions, the frame work)
+    // 3.6: this game's UE4SS calls no viewport tick; actor ticks (and ProcessEvent) run the frame work instead
+    Hook::RegisterAActorTickPostCallback(&OnActorTickPost);
+    Log.Line(L"Ready. Press F9 in game to write RebirthSkelCompat.report.txt");
+    return true;
+}
+
+class RebirthSkelCompatMod final : public CppUserModBase
+{
+public:
+    RebirthSkelCompatMod()
+    {
+        ModName = L"RebirthSkelCompat";
+        ModVersion = ModVersionText;
+        ModDescription = L"KH3-style skeleton compatibility: a skeleton adopts the animations of other skeletons, or meshes are rebound to them.";
+        ModAuthors = L"Kade";
+        ModIntendedSDKVersion = L"3.0.1-c0a8d4c / UEPseudo-b4a6e7";
+    }
+
+    void on_unreal_init() override
+    {
+        static std::atomic<bool> started{false};
+        if (started.exchange(true)) { return; }
+        bool ok = false;
+        try
+        {
+            ok = EarlyInit();
+        }
+        catch (...)
+        {
+            Log.Line(L"Startup failed; mod disabled");
+            State.Enabled.store(false);
+            State.Active.store(false);
+        }
+        if (ok)
+        {
+            register_keydown_event(Input::Key::F9, [] { State.ReportRequested.store(true, std::memory_order_release); });
+        }
+    }
+
+    // 3.5.3: every Lua mod gets RebirthSkelCompatIsGameThread; the ones in LuaPump::Mods are called every frame.
+    void on_lua_start(StringViewType mod_name, LuaMadeSimple::Lua& lua, LuaMadeSimple::Lua& main_lua, LuaMadeSimple::Lua& async_lua,
+                      std::vector<LuaMadeSimple::Lua*>& hook_luas) override
+    {
+        (void)lua;
+        (void)async_lua;
+        (void)hook_luas;
+        LuaPump::Start(mod_name, main_lua);
+    }
+
+    void on_lua_stop(StringViewType mod_name, LuaMadeSimple::Lua& lua, LuaMadeSimple::Lua& main_lua, LuaMadeSimple::Lua& async_lua,
+                     std::vector<LuaMadeSimple::Lua*>& hook_luas) override
+    {
+        (void)lua;
+        (void)main_lua;
+        (void)async_lua;
+        (void)hook_luas;
+        LuaPump::Stop(mod_name);
+    }
+
+    ~RebirthSkelCompatMod() override
+    {
+        // Hooks cannot be removed in this UE4SS build; the pinned module keeps them valid.
+        // Rebinds already made stay in place until the meshes are unloaded.
+    }
+};
+} // namespace
+
+extern "C" __declspec(dllexport) RC::CppUserModBase* start_mod() { return new RebirthSkelCompatMod(); }
+extern "C" __declspec(dllexport) void uninstall_mod(RC::CppUserModBase* mod) { delete mod; }

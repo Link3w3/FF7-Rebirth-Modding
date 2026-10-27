@@ -1,0 +1,5792 @@
+{
+ "/Game/Effects/wep/w_so010/mat/Smt_frn_01a.smt_frn_01a": {
+  "name": "smt_frn_01a",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionMaterialFunctionCall_3",
+    null,
+    "MaterialExpressionDynamicParameter_0"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions02/Fresnel_Function.Fresnel_Function",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmi_sho_00a.jmi_sho_00a": {
+  "name": "jmi_sho_00a",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+    "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_05k.jmi_glt_05k": {
+  "name": "jmi_glt_05k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glw_01sk.jmi_glw_01sk": {
+  "name": "jmi_glw_01sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_01m_clamp.jtx_glw_01m_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_01m_clamp.jtx_glw_01m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/nmi_ora_01sla.nmi_ora_01sla": {
+  "name": "nmi_ora_01sla",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/ora/stx_ora_01m.stx_ora_01m"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/trescom/tex/ora/stx_ora_01m.stx_ora_01m"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/zmi_rng_00sa.zmi_rng_00sa": {
+  "name": "zmi_rng_00sa",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "bOverride_ShadingModel": true,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/trescom/mat/smt_rng_k0sa.smt_rng_k0sa",
+  "scalars": {
+   "\u30ea\u30f3\u30b0-\u30ac\u30f3\u30de": 0.25,
+   "\u4fb5\u98df-\u30ac\u30f3\u30de": 3.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/trescom/mat/smt_rng_k0sa.smt_rng_k0sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/tmi_fls_05a.tmi_fls_05a": {
+  "name": "tmi_fls_05a",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/fls/ttx_fls_02a.ttx_fls_02a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/trescom/tex/fls/ttx_fls_02a.ttx_fls_02a"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/zmi_crs_03csk.zmi_crs_03csk": {
+  "name": "zmi_crs_03csk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "Bright Add Emi": 0.0,
+   "Bright Multi Emi": 1.0880169868469238,
+   "U Tiling Emi": 2.0,
+   "V Tiling Emi": 2.0,
+   "Bright Add Opa": 0.0,
+   "Bright Multi Opa": 3.0,
+   "U Tiling Opa": 2.0,
+   "V Tiling Opa": 2.0,
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.25,
+    0.800000011920929,
+    1.1299999952316284,
+    1.0
+   ],
+   "2c White Color": [
+    1.100000023841858,
+    1.1200000047683716,
+    1.0800000429153442,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/zmi_glw_00sk.zmi_glw_00sk": {
+  "name": "zmi_glw_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "Bright Add Emi": 0.10000000149011612,
+   "Bright Multi Emi": 1.0,
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.30000001192092896,
+    0.699999988079071,
+    0.8999999761581421,
+    1.0
+   ],
+   "2c White Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/zmi_glw_01sk.zmi_glw_01sk": {
+  "name": "zmi_glw_01sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "Bright Add Emi": 0.10000000149011612,
+   "Bright Multi Emi": 1.0,
+   "U Tiling Emi": 2.0,
+   "V Tiling Emi": 2.0,
+   "U Tiling Opa": 2.0,
+   "V Tiling Opa": 2.0,
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.30000001192092896,
+    0.699999988079071,
+    0.8999999761581421,
+    1.0
+   ],
+   "2c White Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/glw/ztx_glt_00a.ztx_glt_00a",
+   "Tex Opa": "/Game/Effects/trescom/tex/glw/ztx_glt_00a.ztx_glt_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/trescom/tex/glw/ztx_glt_00a.ztx_glt_00a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_com/mat/jmt_loc_00sa.jmt_loc_00sa": {
+  "name": "jmt_loc_00sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithBeamTrails": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_34",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionTextureSample_1",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionVectorParameter_0",
+    null,
+    "MaterialExpressionVectorParameter_1",
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_3"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_loc_02.jtx_loc_02",
+    "/Game/Effects/wep/w_so010/tex/ttx_loc_00.ttx_loc_00"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmi_wht_k.jmi_wht_k": {
+  "name": "jmi_wht_k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_wht_k.jmb_wht_k",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_wht_k.jmb_wht_k",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/omi_fls_02k.omi_fls_02k": {
+  "name": "omi_fls_02k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glw_03a_clamp.jtx_glw_03a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a",
+    "/Game/Effects/texcom/tex/jtx_glw_03a_clamp.jtx_glw_03a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/PC_aqua/mat/smi_apu_sho_01sk.smi_apu_sho_01sk": {
+  "name": "smi_apu_sho_01sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+  "scalars": {
+   "U Tiling": 3.0,
+   "V Tiling": 0.4000000059604645,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/sho/stx_sho_01m.stx_sho_01m",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp",
+    "/Game/Effects/trescom/tex/sho/stx_sho_01m.stx_sho_01m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmi_mzl_00a.jmi_mzl_00a": {
+  "name": "jmi_mzl_00a",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_ca.jmb_bsc_ca",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_mzl_00c.jtx_mzl_00c",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_ca.jmb_bsc_ca"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a",
+    "/Game/Effects/texcom/tex/jtx_mzl_00c.jtx_mzl_00c"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_fls_00sk.jmi_fls_00sk": {
+  "name": "jmi_fls_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_fls_04sk.jmi_fls_04sk": {
+  "name": "jmi_fls_04sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_04a.jtx_fls_04a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_fls_04a.jtx_fls_04a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_mix_00k.jmi_glt_mix_00k": {
+  "name": "jmi_glt_mix_00k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_glt_mix_mk.jmb_glt_mix_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_glt_mix_mk.jmb_glt_mix_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_mix_00sk.jmi_glt_mix_00sk": {
+  "name": "jmi_glt_mix_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_glt_mix_msk.jmb_glt_mix_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_glt_mix_msk.jmb_glt_mix_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glw_01k_cfg15.jmi_glw_01k_cfg15": {
+  "name": "jmi_glw_01k_cfg15",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k",
+  "scalars": {
+   "Offset": 15.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/smi_hit_w_02sk.smi_hit_w_02sk": {
+  "name": "smi_hit_w_02sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_fls_00a.jtx_fls_00a"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/tmi_fls_03k.tmi_fls_03k": {
+  "name": "tmi_fls_03k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/fls/stx_hit_00m.stx_hit_00m"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/trescom/tex/fls/stx_hit_00m.stx_hit_00m"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_bbl_00a.fmi_bbl_00a": {
+  "name": "fmi_bbl_00a",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_bbl_00a.fmt_bbl_00a",
+  "scalars": {
+   "Bright Multi Emi Dist": 0.20000000298023224,
+   "U Tiling Opa Dist": 3.0,
+   "V Tiling Opa Dist": 3.0,
+   "U Speed Opa Dist": 2.0,
+   "V Speed Opa Dist": 2.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "Center Color": [
+    0.0,
+    0.0,
+    0.013701999559998512,
+    1.0
+   ],
+   "Edge Color": [
+    0.0019079999765381217,
+    0.0019079999765381217,
+    0.02500000037252903,
+    1.0
+   ],
+   "Hi light Color": [
+    0.06847800314426422,
+    0.06847800314426422,
+    0.20507900416851044,
+    1.0
+   ]
+  },
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_bbl_00a.fmt_bbl_00a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_dis_4.fmi_dis_4": {
+  "name": "fmi_dis_4",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_dis_05k.fmt_dis_05k",
+  "scalars": {
+   "Tex_Def A U": 0.699999988079071,
+   "Tex_Def A V": 0.699999988079071,
+   "Tex_Def B U": 2.0,
+   "Tex_Def B V": 2.0,
+   "Tex_Def Dot U": 1.5,
+   "Tex_Def Dot V": 1.5,
+   "Dist Max": 1.100000023841858,
+   "Dist Min": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Opa": "/Game/Effects/trescom/tex/ora/stx_ora_01n.stx_ora_01n",
+   "Tex Opa 2": "/Game/Effects/trescom/tex/ora/stx_ora_04n.stx_ora_04n",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp",
+   "Tex_Def A": "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+   "Tex_Def B": "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+   "Tex_Def Dot": "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_dis_05k.fmt_dis_05k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a",
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp",
+    "/Game/Effects/trescom/tex/ora/stx_ora_01n.stx_ora_01n",
+    "/Game/Effects/trescom/tex/ora/stx_ora_04n.stx_ora_04n"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_hole_02a1.fmi_hole_02a1": {
+  "name": "fmi_hole_02a1",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/level/tt/tt_40/task/mat/fmt_hole_00k.fmt_hole_00k",
+  "scalars": {
+   "Out_pow": 0.46445998549461365,
+   "out_ring": 2.302643060684204,
+   "Out_multi": 9.37162971496582,
+   "Tex Opa_s U": 4.0,
+   "Tex Opa_s V": 4.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.1778630018234253,
+    0.07128000259399414,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    1.5,
+    3.0,
+    1.5922529697418213,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Opa1": "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+   "Tex Opa2": "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+   "Tex Opa_s": "/Game/Effects/texcom/tex/jtx_ora_02a.jtx_ora_02a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/level/tt/tt_40/task/mat/fmt_hole_00k.fmt_hole_00k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_ora_02a.jtx_ora_02a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_hole_04k.fmi_hole_04k": {
+  "name": "fmi_hole_04k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_hole_03a.fmt_hole_03a",
+  "scalars": {
+   "Bright Add Emi": 5.0,
+   "Bright Multi Emi": 5.0,
+   "Bright Add Opa": 0.0,
+   "Bright Multi Opa": 2.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.2611120045185089,
+    0.6393370032310486,
+    10.0,
+    1.0
+   ],
+   "2c White Color": [
+    1.0,
+    1.0,
+    10.0,
+    1.0
+   ]
+  },
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_hole_03a.fmt_hole_03a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_hole_05a.fmi_hole_05a": {
+  "name": "fmi_hole_05a",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Translucent"
+   }
+  },
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_hole_05a.fmt_hole_05a",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_hole_05a.fmt_hole_05a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_wht_two_sk.jmb_wht_two_sk": {
+  "name": "jmb_wht_two_sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "bOverride_TwoSided": true,
+    "BlendMode": "BLEND_Additive",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_fle_00sk.fmi_fle_00sk": {
+  "name": "fmi_fle_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk",
+  "scalars": {
+   "U Tiling": 2.0,
+   "V Tiling": 2.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/prism/stx_fle_00c.stx_fle_00c",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/trescom/tex/prism/stx_fle_00c.stx_fle_00c"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_glw_00k1.fmi_glw_00k1": {
+  "name": "fmi_glw_00k1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/grd/ktx_lit_01a.ktx_lit_01a",
+   "Tex Opa": "/Game/Effects/trescom/tex/grd/ktx_lit_01a.ktx_lit_01a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/trescom/tex/grd/ktx_lit_01a.ktx_lit_01a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_ora_06ma.fmi_ora_06ma": {
+  "name": "fmi_ora_06ma",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Translucent",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma",
+  "scalars": {
+   "U Tiling": 1.0,
+   "V Tiling": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.0,
+    0.20000000298023224,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    0.9774259924888611,
+    2.229417085647583,
+    5.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_ora_03a.jtx_ora_03a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_ora_03a.jtx_ora_03a",
+    "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_ora_ble_00msk.fmi_ora_ble_00msk": {
+  "name": "fmi_ora_ble_00msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Translucent",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+  "scalars": {
+   "U Speed": 0.0,
+   "U Tiling": 1.0,
+   "V Speed": 1.0,
+   "V Tiling": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    5.0,
+    5.0,
+    5.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+   "Tex Mask": "/Game/Effects/trescom/tex/glw/htx_glw_00.htx_glw_00"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+    "/Game/Effects/trescom/tex/glw/htx_glw_00.htx_glw_00"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_pzm_00csk1.fmi_pzm_00csk1": {
+  "name": "fmi_pzm_00csk1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk",
+  "scalars": {
+   "Bright Multi Opa": 2.0,
+   "U Speed": -0.30000001192092896,
+   "U Tiling": 1.0,
+   "V Speed": 0.6000000238418579,
+   "V Tiling": 0.5,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_pzm_00c.jtx_pzm_00c",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_pzm_00c.jtx_pzm_00c"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_sho_00la2.fmi_sho_00la2": {
+  "name": "fmi_sho_00la2",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Translucent",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msla.jmb_uv_msk_msla",
+  "scalars": {
+   "U Tiling": 0.5,
+   "V Tiling": 0.10000000149011612,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_grdb_03a.jtx_grdb_03a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msla.jmb_uv_msk_msla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/texcom/tex/jtx_grdb_03a.jtx_grdb_03a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_sho_00msla.fmi_sho_00msla": {
+  "name": "fmi_sho_00msla",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Translucent",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+    "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_sho_01ma1.fmi_sho_01ma1": {
+  "name": "fmi_sho_01ma1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Translucent",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma",
+  "scalars": {
+   "U Speed": 1.0,
+   "U Tiling": 1.0,
+   "V Speed": 0.20000000298023224,
+   "V Tiling": 0.10000000149011612,
+   "Bright Add Emi": 0.5,
+   "Bright Multi Emi": 0.949999988079071,
+   "U Tiling Mask": 2.0,
+   "V Tiling Mask": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_sho_01a.jtx_sho_01a",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_sho_01a.jtx_sho_01a",
+   "Tex Mask": "/Game/Effects/wep/w_so010/tex/ftx_grdb_03ya.ftx_grdb_03ya"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_sho_01a.jtx_sho_01a",
+    "/Game/Effects/wep/w_so010/tex/ftx_grdb_03ya.ftx_grdb_03ya"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_vm_cri_rng_00sa2.fmi_vm_cri_rng_00sa2": {
+  "name": "fmi_vm_cri_rng_00sa2",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_vm_cri_rng_00sa.fmt_vm_cri_rng_00sa",
+  "scalars": {
+   "comp_switch": 1.0,
+   "U_speed_flash": 3.0,
+   "V_speed_flash": 0.0,
+   "U_tile_flash_mask": 1.0,
+   "V_tile_flash_mask": 1.0,
+   "U_tile_mask_move_A": 0.5,
+   "V_tile_mask_move_A": 0.5,
+   "Time_mask1": 0.25,
+   "U_speed_mask_move_A": 0.0,
+   "V_speed_mask_move_A": 1.0,
+   "U_tile_mask_move_A2": 1.0,
+   "V_tile_mask_move_A2": 1.0,
+   "cheap_cont_1": 0.0,
+   "FadeDistance": 200.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "flash_mask": "/Game/Effects/trescom/tex/grd/ttx_lin_00a.ttx_lin_00a",
+   "comp_mask": "/Game/Effects/texcom/tex/jtx_grdb_02a.jtx_grdb_02a",
+   "mask_move_A": "/Game/Effects/texcom/tex/jtx_grdb_07a_clamp.jtx_grdb_07a_clamp",
+   "mask_move_A2": "/Game/Effects/texcom/tex/jtx_grdb_03a_clamp.jtx_grdb_03a_clamp",
+   "mask_move_A3": "/Game/Effects/texcom/tex/jtx_grdb_02ya_clamp.jtx_grdb_02ya_clamp",
+   "mask_move_B": "/Game/Effects/texcom/tex/jtx_grdb_07a_clamp.jtx_grdb_07a_clamp",
+   "mask_move_B2": "/Game/Effects/texcom/tex/jtx_grdb_03a_clamp.jtx_grdb_03a_clamp",
+   "mask_move_B3": "/Game/Effects/texcom/tex/jtx_grdb_03ya_clamp.jtx_grdb_03ya_clamp",
+   "flash_mask2": "/Game/Effects/texcom/tex/jtx_grdb_05a.jtx_grdb_05a"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_vm_cri_rng_00sa.fmt_vm_cri_rng_00sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grdb_02a.jtx_grdb_02a",
+    "/Game/Effects/texcom/tex/jtx_grdb_02ya_clamp.jtx_grdb_02ya_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_03a_clamp.jtx_grdb_03a_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_03ya_clamp.jtx_grdb_03ya_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_05a.jtx_grdb_05a",
+    "/Game/Effects/texcom/tex/jtx_grdb_07a_clamp.jtx_grdb_07a_clamp",
+    "/Game/Effects/trescom/tex/grd/ttx_lin_00a.ttx_lin_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glw_01sa.jmi_glw_01sa": {
+  "name": "jmi_glw_01sa",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_01m_clamp.jtx_glw_01m_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_01m_clamp.jtx_glw_01m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/omi_fls_01k.omi_fls_01k": {
+  "name": "omi_fls_01k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "Bright Add Emi": 0.0,
+   "Bright Multi Emi": -1.0,
+   "Bright Add Opa": 0.0,
+   "Bright Multi Opa": 0.30000001192092896,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/glw/otx_grd_01m.otx_grd_01m",
+   "Tex Opa": "/Game/Effects/trescom/tex/fls/otx_fls_00m.otx_fls_00m"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/trescom/tex/fls/otx_fls_00m.otx_fls_00m",
+    "/Game/Effects/trescom/tex/glw/otx_grd_01m.otx_grd_01m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmi_mzl_00sk.jmi_mzl_00sk": {
+  "name": "jmi_mzl_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_csk.jmb_bsc_csk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_mzl_00c.jtx_mzl_00c",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_csk.jmb_bsc_csk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a",
+    "/Game/Effects/texcom/tex/jtx_mzl_00c.jtx_mzl_00c"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_05sk.jmi_glt_05sk": {
+  "name": "jmi_glt_05sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glw_00k.jmi_glw_00k": {
+  "name": "jmi_glw_00k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/omi_lne_brk00a.omi_lne_brk00a": {
+  "name": "omi_lne_brk00a",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_brk_msk.jmb_brk_msk",
+  "scalars": {
+   "Opa Blend Rate": 1.0,
+   "Smooth Range": 1.0,
+   "U Speed Mask": 0.0,
+   "U Tiling Mask": 3.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_grdb_06a.jtx_grdb_06a",
+   "Tex Mask": "/Game/Effects/trescom/tex/grd/otx_chigire.otx_chigire"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_brk_msk.jmb_brk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_grdb_06a.jtx_grdb_06a",
+    "/Game/Effects/trescom/tex/grd/otx_chigire.otx_chigire"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_fls_06k.jmi_fls_06k": {
+  "name": "jmi_fls_06k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_06a.jtx_fls_06a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_fls_06a.jtx_fls_06a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_05k_cfg8.jmi_glt_05k_cfg8": {
+  "name": "jmi_glt_05k_cfg8",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k",
+  "scalars": {
+   "Offset": 8.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/zmi_sho_00fsla.zmi_sho_00fsla": {
+  "name": "zmi_sho_00fsla",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_mfsla.jmb_uv_msk_mfsla",
+  "scalars": {
+   "Bright Multi Opa": 5.0,
+   "A Color": 1.0,
+   "B Color": 0.0,
+   "Base Opacity": 0.10000000149011612,
+   "Exponent": 0.4000000059604645,
+   "FadeDistance": 50.0,
+   "U Tiling": 3.0,
+   "V Tiling": 0.4000000059604645,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/sho/stx_sho_01m.stx_sho_01m",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_mfsla.jmb_uv_msk_mfsla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp",
+    "/Game/Effects/trescom/tex/sho/stx_sho_01m.stx_sho_01m"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/tmi_fls_00sk.tmi_fls_00sk": {
+  "name": "tmi_fls_00sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "FadeDistance": 100.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.6000000238418579,
+    0.41770198941230774,
+    0.1806430071592331,
+    1.0
+   ],
+   "2c White Color": [
+    10.0,
+    9.88940143585205,
+    6.150000095367432,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_05a.jtx_fls_05a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_fls_05a.jtx_fls_05a",
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_mcrs_sa.jmb_mcrs_sa": {
+  "name": "jmb_mcrs_sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_14",
+    "MaterialExpressionMaterialFunctionCall_15",
+    null,
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_0",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSampleParameter2D_1",
+    "MaterialExpressionMaterialFunctionCall_0",
+    null,
+    null,
+    null,
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.ScaleUVsByCenter",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_fls_01sk.jmi_fls_01sk": {
+  "name": "jmi_fls_01sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_fls_01a.jtx_fls_01a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_fls_01a.jtx_fls_01a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_gltg_01k.jmi_gltg_01k": {
+  "name": "jmi_gltg_01k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bscw_mk.jmb_bscw_mk",
+  "scalars": {
+   "Glow Opacity": 0.5,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.4000000059604645,
+    0.10000000149011612,
+    0.05000000074505806,
+    1.0
+   ],
+   "2c White Color": [
+    2.0,
+    1.2999999523162842,
+    0.5,
+    1.0
+   ],
+   "Glow Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glt_06a_clamp.jtx_glt_06a_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glt_06a_clamp.jtx_glt_06a_clamp"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bscw_mk.jmb_bscw_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_06a_clamp.jtx_glt_06a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/zmi_sho_02slk.zmi_sho_02slk": {
+  "name": "zmi_sho_02slk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_mslk.jmb_uv_mslk",
+  "scalars": {
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.5,
+    0.10000000149011612,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_mslk.jmb_uv_mslk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_sho_00a.jtx_sho_00a",
+    "/Game/Effects/texcom/tex/jtx_sho_00m.jtx_sho_00m"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/zmi_smk_002csa.zmi_smk_002csa": {
+  "name": "zmi_smk_002csa",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "BlendMode": "BLEND_Additive",
+    "ShadingModel": "MSM_Unlit",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa",
+  "scalars": {
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.05000000074505806,
+    0.05000000074505806,
+    0.05000000074505806,
+    1.0
+   ],
+   "2c White Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00.atx_expc_ver_01_00",
+   "Tex Opa": "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00_al.atx_expc_ver_01_00_al"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00.atx_expc_ver_01_00",
+    "/Game/Effects/trescom/tex/exp/atx_expc_ver_01_00_al.atx_expc_ver_01_00_al"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_07k_cfg8.jmi_glt_07k_cfg8": {
+  "name": "jmi_glt_07k_cfg8",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k",
+  "scalars": {
+   "Offset": 8.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glt_07a_clamp.jtx_glt_07a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_07a_clamp.jtx_glt_07a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_mdl/nmi_rng_c1k.nmi_rng_c1k": {
+  "name": "nmi_rng_c1k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "bOverride_TwoSided": true,
+    "BlendMode": "BLEND_Additive",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/trescom/mat/smt_rng_c0a.smt_rng_c0a",
+  "scalars": {
+   "\u30ea\u30f3\u30b0-\u30ac\u30f3\u30de": 1.399999976158142,
+   "\u4fb5\u98df-\u30ac\u30f3\u30de": 2.5,
+   "\u4fb5\u98df\u4f4d\u7f6e (-\u65b9\u5411)": 0.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/trescom/mat/smt_rng_c0a.smt_rng_c0a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/zmi_ami_00sa.zmi_ami_00sa": {
+  "name": "zmi_ami_00sa",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla",
+  "scalars": {
+   "U Tiling": 2.0,
+   "V Tiling": 2.0,
+   "Bright Add Emi": 0.6000000238418579,
+   "Bright Multi Emi": 1.0,
+   "Bright Add Opa": 0.05000000074505806,
+   "Bright Multi Opa": 1.0,
+   "FadeDistance": 50.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/trescom/tex/ora/mtx_ora_00.mtx_ora_00"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/trescom/tex/ora/mtx_ora_00.mtx_ora_00"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/zmi_gry_01mfa.zmi_gry_01mfa": {
+  "name": "zmi_gry_01mfa",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsk.jmb_2fresrnel_fsk",
+  "scalars": {
+   "Exponent": 1.0,
+   "In Fade Range": 0.0010000000474974513,
+   "In Power": 2.0,
+   "Out Fade Range": 0.6000000238418579,
+   "Out Power": 3.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsk.jmb_2fresrnel_fsk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/zmi_gry_02mfa.zmi_gry_02mfa": {
+  "name": "zmi_gry_02mfa",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa",
+  "scalars": {
+   "Exponent": 4.0,
+   "In Fade Range": 0.0,
+   "In Power": 0.20000000298023224,
+   "Out Fade Range": 0.15000000596046448,
+   "Out Power": 5.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/zmi_lne_mov00k.zmi_lne_mov00k": {
+  "name": "zmi_lne_mov00k",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/trescom/mat_part/omt_lin_mov_00k.omt_lin_mov_00k",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "black": [
+    1.0,
+    0.4000000059604645,
+    0.0,
+    1.0
+   ],
+   "white": [
+    2.0,
+    1.5,
+    0.0,
+    1.0
+   ]
+  },
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/trescom/mat_part/omt_lin_mov_00k.omt_lin_mov_00k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glw_00sa.jmi_glw_00sa": {
+  "name": "jmi_glw_00sa",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/omi_opq_unlit_fres.omi_opq_unlit_fres": {
+  "name": "omi_opq_unlit_fres",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/trescom/mat/tmt_fresnel_00o.tmt_fresnel_00o",
+  "scalars": {
+   "Exponent": 0.007000000216066837,
+   "Power": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "Acol": [
+    1.0,
+    0.699999988079071,
+    0.30000001192092896,
+    1.0
+   ],
+   "Bcol": [
+    1.0,
+    0.05000000074505806,
+    0.0010000000474974513,
+    1.0
+   ]
+  },
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/trescom/mat/tmt_fresnel_00o.tmt_fresnel_00o"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/smt_gtb_00k.smt_gtb_00k": {
+  "name": "smt_gtb_00k",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 320,
+   "Expressions": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_6",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_0",
+    "MaterialExpressionTextureSample_1",
+    "MaterialExpressionTextureSample_2",
+    null,
+    null,
+    "MaterialExpressionVectorParameter_0",
+    "MaterialExpressionVectorParameter_1",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_43",
+    "MaterialExpressionMaterialFunctionCall_46",
+    "MaterialExpressionMaterialFunctionCall_47",
+    "MaterialExpressionMaterialFunctionCall_19",
+    "MaterialExpressionMaterialFunctionCall_20"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_06a_clamp.jtx_glt_06a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_hole_02a.fmt_hole_02a": {
+  "name": "fmt_hole_02a",
+  "cls": "Material",
+  "props": {
+   "Metallic": "<StructProperty ScalarMaterialInput>",
+   "Specular": "<StructProperty ScalarMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 1056,
+   "EditorY": -128,
+   "Expressions": [
+    null,
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_14",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_45",
+    null,
+    "MaterialExpressionTextureSample_70",
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_11",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionVectorParameter_0",
+    "MaterialExpressionVectorParameter_1",
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_4",
+    "MaterialExpressionTextureSampleParameter2D_5",
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureObject_2",
+    "MaterialExpressionTextureObject_3",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionVectorParameter_5",
+    null,
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionVectorParameter_6",
+    null,
+    "MaterialExpressionMaterialFunctionCall_3",
+    null,
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionVectorParameter_2",
+    null,
+    "MaterialExpressionScalarParameter_3",
+    null,
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_0",
+    null,
+    "MaterialExpressionTextureSample_1",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_8",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionTextureSample_0",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSampleParameter2D_1",
+    "MaterialExpressionVectorParameter_3",
+    null,
+    null,
+    null,
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/d_magic/ariel/mf/fmf_olp_def_00.fmf_olp_def_00",
+    "/Game/Effects/d_magic/ariel/mf/fmf_uv_scr_03.fmf_uv_scr_03",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/texcom/tex/jtx_fir_02a.jtx_fir_02a",
+    "/Game/Effects/texcom/tex/jtx_grd_01a.jtx_grd_01a",
+    "/Game/Effects/texcom/tex/jtx_grdb_02a_clamp.jtx_grdb_02a_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_03a.jtx_grdb_03a",
+    "/Game/Effects/texcom/tex/jtx_grdb_05a_clamp.jtx_grdb_05a_clamp",
+    "/Game/Effects/texcom/tex/jtx_ora_00a.jtx_ora_00a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_hole_04k.fmt_hole_04k": {
+  "name": "fmt_hole_04k",
+  "cls": "Material",
+  "props": {
+   "Metallic": "<StructProperty ScalarMaterialInput>",
+   "Specular": "<StructProperty ScalarMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 1344,
+   "EditorY": -512,
+   "Expressions": [
+    null,
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_14",
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_11",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionVectorParameter_0",
+    "MaterialExpressionVectorParameter_1",
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_4",
+    "MaterialExpressionTextureSampleParameter2D_5",
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureObject_2",
+    "MaterialExpressionTextureObject_3",
+    null,
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionVectorParameter_5",
+    null,
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionVectorParameter_6",
+    null,
+    "MaterialExpressionMaterialFunctionCall_3",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_3",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionScalarParameter_5",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_8",
+    "MaterialExpressionScalarParameter_7",
+    "MaterialExpressionMaterialFunctionCall_12",
+    null,
+    "MaterialExpressionScalarParameter_4",
+    "MaterialExpressionScalarParameter_6"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/d_magic/ariel/mf/fmf_olp_def_00.fmf_olp_def_00",
+    "/Game/Effects/d_magic/ariel/mf/fmf_uv_scr_03.fmf_uv_scr_03",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_cam_fade.jmf_cam_fade",
+    "/Game/Effects/texcom/mf/jmf_fresnel2.jmf_fresnel2",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/texcom/tex/jtx_fir_02a.jtx_fir_02a",
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmi_wht_sk.jmi_wht_sk": {
+  "name": "jmi_wht_sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_wht_sk.jmb_wht_sk",
+  "scalars": {
+   "FadeDistance": 100.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_wht_sk.jmb_wht_sk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_hole_03a.fmi_hole_03a": {
+  "name": "fmi_hole_03a",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_hole_01a.fmt_hole_01a",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "inner_col": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outer_col": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_hole_01a.fmt_hole_01a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_lne_00sk5.fmi_lne_00sk5": {
+  "name": "fmi_lne_00sk5",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk",
+  "scalars": {
+   "Bright Add Opa": 0.0,
+   "FadeDistance": 50.0,
+   "U Speed": -4.0,
+   "U Tiling": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.14489300549030304,
+    0.0598130002617836,
+    0.36000001430511475,
+    1.0
+   ],
+   "2c White Color": [
+    0.18496699631214142,
+    0.4732950031757355,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m",
+   "Tex Opa": "/Game/Effects/wep/w_so010/tex/ftx_sin_01.ftx_sin_01"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m",
+    "/Game/Effects/wep/w_so010/tex/ftx_sin_01.ftx_sin_01"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_lne_00sk6.fmi_lne_00sk6": {
+  "name": "fmi_lne_00sk6",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk",
+  "scalars": {
+   "Bright Add Emi": 0.0,
+   "Bright Multi Emi": 2.0,
+   "Bright Multi Opa": 1.0,
+   "U Speed": 0.0,
+   "U Tiling": 0.20000000298023224,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.16949200630187988,
+    0.06823600083589554,
+    0.5249999761581421,
+    1.0
+   ],
+   "2c White Color": [
+    1.4601880311965942,
+    0.985526978969574,
+    5.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+   "Tex Opa": "/Game/Effects/wep/w_so010/tex/ftx_spr_100x10_03.ftx_spr_100x10_03"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/wep/w_so010/tex/ftx_spr_100x10_03.ftx_spr_100x10_03"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_mon_hed_00msa.fmi_mon_hed_00msa": {
+  "name": "fmi_mon_hed_00msa",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/wep/w_so010/tex/ftx_snake_00.ftx_snake_00"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/wep/w_so010/tex/ftx_snake_00.ftx_snake_00"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_sin_lin02sa.fmi_sin_lin02sa": {
+  "name": "fmi_sin_lin02sa",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/wep/w_so010/mat/fmt_sin_lin02sa.fmt_sin_lin02sa",
+  "scalars": {
+   "Bright Multi Emi": 1.0,
+   "FadeDistance": 50.0,
+   "U Speed": -1.0,
+   "U Tiling": 2.0,
+   "V Tiling": 2.0,
+   "intencity": 0.800000011920929,
+   "speed": -4.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.14489300549030304,
+    0.0598130002617836,
+    0.36000001430511475,
+    1.0
+   ],
+   "2c White Color": [
+    0.18496699631214142,
+    0.4732950031757355,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/wep/w_so010/mat/fmt_sin_lin02sa.fmt_sin_lin02sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_ora_03m.jtx_ora_03m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_crs_00k.jmi_crs_00k": {
+  "name": "jmi_crs_00k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+   "Tex Opa": "/Game/Effects/texcom/tex/jtx_crs_0a.jtx_crs_0a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_crs_0a.jtx_crs_0a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_part/jmi_glt_04k_cfg15.jmi_glt_04k_cfg15": {
+  "name": "jmi_glt_04k_cfg15",
+  "cls": "MaterialInstanceConstant",
+  "props": {},
+  "parent": "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k",
+  "scalars": {
+   "Offset": 15.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {
+   "Tex Emi": "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp"
+  },
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_01msk1.fmi_mdl_uv_01msk1": {
+  "name": "fmi_mdl_uv_01msk1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_mk.jmb_uv_msk_mk",
+  "scalars": {
+   "U Speed": 0.0,
+   "U Tiling": 1.0,
+   "V Speed": 0.0,
+   "V Tiling": 1.0,
+   "U Speed Mask": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.7524999976158142,
+    0.009999999776482582,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    0.5874999761581421,
+    0.009999999776482582,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+   "Tex Opa": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_mk.jmb_uv_msk_mk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+    "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_03msk2.fmi_mdl_uv_03msk2": {
+  "name": "fmi_mdl_uv_03msk2",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Additive",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+  "scalars": {
+   "U Speed": 5.0,
+   "U Tiling": 3.0,
+   "V Speed": 0.0,
+   "V Tiling": 1.0,
+   "U Speed Mask": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    0.7524999976158142,
+    0.009999999776482582,
+    1.0,
+    1.0
+   ],
+   "2c White Color": [
+    0.5874999761581421,
+    0.009999999776482582,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+   "Tex Opa": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+    "/Game/Effects/texcom/tex/jtx_mzl_00a.jtx_mzl_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_mdl/jmt_dst_00o.jmt_dst_00o": {
+  "name": "jmt_dst_00o",
+  "cls": "Material",
+  "props": {
+   "BaseColor": "<StructProperty ColorMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    null,
+    null,
+    null
+   ]
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ]
+  }
+ },
+ "/Game/Effects/PC_aqua/mat/smi_aqu_rng_c0sk.smi_aqu_rng_c0sk": {
+  "name": "smi_aqu_rng_c0sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/trescom/mat/smt_rng_c0sa.smt_rng_c0sa",
+  "scalars": {
+   "\u30ea\u30f3\u30b0-\u30ac\u30f3\u30de": 0.699999988079071,
+   "\u4fb5\u98df\u4f4d\u7f6e (-\u65b9\u5411)": -0.15840700268745422,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/trescom/mat/smt_rng_c0sa.smt_rng_c0sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_02msk1.fmi_mdl_uv_02msk1": {
+  "name": "fmi_mdl_uv_02msk1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Additive",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+  "scalars": {
+   "U Speed": 5.0,
+   "U Tiling": 1.0,
+   "V Speed": 0.0,
+   "V Tiling": 1.0,
+   "Bright Multi Opa": 0.4000000059604645,
+   "Bright Multi Mask": 0.5,
+   "U Speed Mask": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    5.0,
+    5.0,
+    5.0,
+    1.0
+   ],
+   "2c White Color": [
+    10.0,
+    10.0,
+    10.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+   "Tex Opa": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_mzl_02a.jtx_mzl_02a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+    "/Game/Effects/texcom/tex/jtx_mzl_02a.jtx_mzl_02a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_mdl_uv_03msk1.fmi_mdl_uv_03msk1": {
+  "name": "fmi_mdl_uv_03msk1",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "BlendMode": "BLEND_Additive",
+    "TwoSided": true
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+  "scalars": {
+   "U Speed": 5.0,
+   "U Tiling": 3.0,
+   "V Speed": 0.0,
+   "V Tiling": 1.0,
+   "U Speed Mask": 1.0,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    10.0,
+    10.0,
+    10.0,
+    1.0
+   ],
+   "2c White Color": [
+    20.0,
+    20.0,
+    20.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+   "Tex Opa": "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+   "Tex Mask": "/Game/Effects/texcom/tex/jtx_mzl_02a.jtx_mzl_02a"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02.ftx_ymk_02",
+    "/Game/Effects/enemy/e_ex027/tex/ftx_ymk_02c.ftx_ymk_02c",
+    "/Game/Effects/texcom/tex/jtx_mzl_02a.jtx_mzl_02a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmi_ora_03mfslk.fmi_ora_03mfslk": {
+  "name": "fmi_ora_03mfslk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "BasePropertyOverrides": {
+    "OpacityMaskClipValue": 0.33329999446868896,
+    "ShadingModel": "MSM_Unlit"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_mfslk.jmb_uv_mfslk",
+  "scalars": {
+   "A Color": 3.0,
+   "B Color": 0.0,
+   "Exponent": 0.10000000149011612,
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {
+   "2c Black Color": [
+    10.0,
+    10.0,
+    10.0,
+    1.0
+   ],
+   "2c White Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "textures": {
+   "Tex Emi": "/Game/Effects/trescom/tex/thd/otx_thd_zmn0.otx_thd_zmn0",
+   "Tex Opa": "/Game/Effects/trescom/tex/thd/otx_thd_zmn0.otx_thd_zmn0"
+  },
+  "imports": {
+   "MaterialInstanceConstant": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_mfslk.jmb_uv_mfslk",
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ],
+   "Texture2D": [
+    "/Game/Effects/trescom/tex/thd/otx_thd_zmn0.otx_thd_zmn0"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/smt_thd_lin0sa.smt_thd_lin0sa": {
+  "name": "smt_thd_lin0sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 160,
+   "EditorY": 16,
+   "Expressions": [
+    "MaterialExpressionTextureSample_3",
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_10",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_11",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_4",
+    null,
+    "MaterialExpressionMaterialFunctionCall_1",
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_0",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_21",
+    "MaterialExpressionMaterialFunctionCall_22"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_02a_clamp.jtx_glw_02a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_05a_clamp.jtx_glw_05a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_ma.jmb_uv_ma": {
+  "name": "jmb_uv_ma",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_mk.jmb_bsc_mk": {
+  "name": "jmb_bsc_mk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_ma.jmb_bsc_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_ma.jmb_bsc_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_msk.jmb_bsc_msk": {
+  "name": "jmb_bsc_msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla": {
+  "name": "jmb_uv_msla",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_18",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_ml.jtx_ic_uv_ml",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/smt_rng_k0sa.smt_rng_k0sa": {
+  "name": "smt_rng_k0sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 192,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_7",
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionTextureSample_16",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_6",
+    "MaterialExpressionTextureSample_0",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionMaterialFunctionCall_108",
+    "MaterialExpressionMaterialFunctionCall_13"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grdb_02a.jtx_grdb_02a",
+    "/Game/Effects/trescom/tex/stx_rng_00a.stx_rng_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_wht_k.jmb_wht_k": {
+  "name": "jmb_wht_k",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_wht_a.jmb_wht_a",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_wht_a.jmb_wht_a"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_msk.jmb_uv_msk_msk": {
+  "name": "jmb_uv_msk_msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_msa.jmb_uv_msk_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_msa.jmb_uv_msk_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_ca.jmb_bsc_ca": {
+  "name": "jmb_bsc_ca",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionTextureSampleParameter2D_18",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionMaterialFunctionCall_12",
+    "MaterialExpressionMaterialFunctionCall_14",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_19"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_emi.jmf_bright_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_c.jtx_ic_bsc_c",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_glt_mix_mk.jmb_glt_mix_mk": {
+  "name": "jmb_glt_mix_mk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_glt_mix_ma.jmb_glt_mix_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_glt_mix_ma.jmb_glt_mix_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_glt_mix_msk.jmb_glt_mix_msk": {
+  "name": "jmb_glt_mix_msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_glt_mix_msa.jmb_glt_mix_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_glt_mix_msa.jmb_glt_mix_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_frg_m1k.jmb_frg_m1k": {
+  "name": "jmb_frg_m1k",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionTextureObjectParameter_2",
+    "MaterialExpressionMaterialFunctionCall_8"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.ScaleUVsByCenter",
+    "/Engine/Functions/Engine_MaterialFunctions02/ScreenResolution.ScreenResolution",
+    "/Engine/Functions/Engine_MaterialFunctions02/Texturing/ScreenAlignedUVs.ScreenAlignedUVs",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_col_frg_mk.jmf_col_frg_mk",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_frg_m.jtx_ic_frg_m"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_bbl_00a.fmt_bbl_00a": {
+  "name": "fmt_bbl_00a",
+  "cls": "Material",
+  "props": {
+   "Normal": "<StructProperty VectorMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "bUsedWithStaticLighting": true,
+   "EditorX": 352,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_84",
+    "MaterialExpressionTextureSample_5",
+    "MaterialExpressionTextureSample_12",
+    null,
+    "MaterialExpressionTextureSample_10",
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_20",
+    "MaterialExpressionScalarParameter_19",
+    "MaterialExpressionScalarParameter_18",
+    "MaterialExpressionScalarParameter_17",
+    "MaterialExpressionScalarParameter_16",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionDynamicParameter_3",
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionVectorParameter_8",
+    "MaterialExpressionVectorParameter_7",
+    "MaterialExpressionVectorParameter_6",
+    "MaterialExpressionMaterialFunctionCall_9"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/trescom/mf/smf_tx_dist_awa0.smf_tx_dist_awa0"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glw_02a_clamp.jtx_glw_02a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_03a_clamp.jtx_glw_03a_clamp",
+    "/Game/Effects/trescom/tex/wat/stx_awa_00c.stx_awa_00c"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_dis_05k.fmt_dis_05k": {
+  "name": "fmt_dis_05k",
+  "cls": "Material",
+  "props": {
+   "Normal": "<StructProperty VectorMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "ShadingModel": "MSM_Unlit",
+   "Refraction": "<StructProperty ScalarMaterialInput>",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "bUsesDistortion": true,
+   "EditorX": 128,
+   "EditorY": -1136,
+   "Expressions": [
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_3",
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_12",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_21",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSampleParameter2D_1",
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_4",
+    "MaterialExpressionScalarParameter_5",
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_6",
+    "MaterialExpressionScalarParameter_7",
+    "MaterialExpressionTextureSampleParameter2D_2"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a",
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp",
+    "/Game/Effects/trescom/tex/ora/stx_ora_01n.stx_ora_01n",
+    "/Game/Effects/trescom/tex/ora/stx_ora_04n.stx_ora_04n"
+   ]
+  }
+ },
+ "/Game/Effects/level/tt/tt_40/task/mat/fmt_hole_00k.fmt_hole_00k": {
+  "name": "fmt_hole_00k",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": -2128,
+   "EditorY": -608,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_100",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_1",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_9",
+    "MaterialExpressionTextureSample_8",
+    "MaterialExpressionTextureSampleParameter2D_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_7",
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_7",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_6",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_4",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionScalarParameter_6",
+    "MaterialExpressionScalarParameter_7",
+    "MaterialExpressionScalarParameter_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_92",
+    "MaterialExpressionScalarParameter_57",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_108",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_9",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSampleParameter2D_1",
+    null,
+    "MaterialExpressionScalarParameter_10",
+    "MaterialExpressionScalarParameter_11"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_fresnel.jmf_fresnel",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_polar_coord.jmf_polar_coord",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/trescom/mf/smf_cir_msk0.smf_cir_msk0"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a",
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_glw_00a.jtx_glw_00a",
+    "/Game/Effects/texcom/tex/jtx_ora_02a.jtx_ora_02a"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_hole_03a.fmt_hole_03a": {
+  "name": "fmt_hole_03a",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": -1920,
+   "EditorY": -832,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_100",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_55",
+    "MaterialExpressionMaterialFunctionCall_88",
+    null,
+    "MaterialExpressionTextureSample_95",
+    "MaterialExpressionTextureSample_96",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_97",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_9",
+    "MaterialExpressionTextureSample_8",
+    "MaterialExpressionTextureSampleParameter2D_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_7",
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_7",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_6",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_101",
+    "MaterialExpressionTextureSample_100",
+    null,
+    "MaterialExpressionMaterialFunctionCall_92",
+    "MaterialExpressionScalarParameter_57",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_66",
+    "MaterialExpressionScalarParameter_67",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_105",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_108",
+    null,
+    "MaterialExpressionMaterialFunctionCall_109",
+    null,
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay.Blend_Overlay",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_polar_coord.jmf_polar_coord",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/trescom/mf/smf_cir_msk0.smf_cir_msk0"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_00a.jtx_dis_00a",
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a",
+    "/Game/Effects/texcom/tex/jtx_glw_00a.jtx_glw_00a",
+    "/Game/Effects/texcom/tex/jtx_ora_00a.jtx_ora_00a",
+    "/Game/Effects/texcom/tex/jtx_ora_02a.jtx_ora_02a",
+    "/Game/Effects/trescom/tex/grd/otx_bem_bem02.otx_bem_bem02"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_hole_05a.fmt_hole_05a": {
+  "name": "fmt_hole_05a",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": -1248,
+   "EditorY": -1744,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_100",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_55",
+    "MaterialExpressionMaterialFunctionCall_88",
+    null,
+    "MaterialExpressionTextureSample_95",
+    "MaterialExpressionTextureSample_96",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_7",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_101",
+    "MaterialExpressionTextureSample_100",
+    null,
+    "MaterialExpressionMaterialFunctionCall_92",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_67",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_105",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_108",
+    null,
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionVectorParameter_0",
+    "MaterialExpressionVectorParameter_1",
+    null,
+    "MaterialExpressionScalarParameter_3",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_0",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions01/ImageAdjustment/CheapContrast_RGB.CheapContrast_RGB",
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_polar_coord.jmf_polar_coord",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/trescom/mf/smf_cir_msk0.smf_cir_msk0"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/texcom/tex/jtx_ora_00a.jtx_ora_00a",
+    "/Game/Effects/trescom/tex/grd/otx_bem_bem02.otx_bem_bem02"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa": {
+  "name": "jmb_wht_sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionVectorParameter_0"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_csk.jmb_uv_csk": {
+  "name": "jmb_uv_csk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_csa.jmb_uv_csa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_csa.jmb_uv_csa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_msla.jmb_uv_msk_msla": {
+  "name": "jmb_uv_msk_msla",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_28",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_9"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_mask.jmf_bright_mask",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_ml.jtx_ic_uv_ml",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_dmy_alp.jtx_dmy_alp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma": {
+  "name": "jmb_uv_msk_ma",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_9"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_mask.jmf_bright_mask",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_dmy_alp.jtx_dmy_alp"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_vm_cri_rng_00sa.fmt_vm_cri_rng_00sa": {
+  "name": "fmt_vm_cri_rng_00sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 1456,
+   "EditorY": 544,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionDynamicParameter_5",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    null,
+    "MaterialExpressionMaterialFunctionCall_9",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_11",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_12",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_8",
+    "MaterialExpressionScalarParameter_9",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_10",
+    "MaterialExpressionScalarParameter_11",
+    "MaterialExpressionScalarParameter_12",
+    "MaterialExpressionTextureSampleParameter2D_6",
+    "MaterialExpressionTextureSampleParameter2D_7",
+    "MaterialExpressionTextureSampleParameter2D_8",
+    "MaterialExpressionMaterialFunctionCall_13",
+    "MaterialExpressionScalarParameter_13",
+    "MaterialExpressionTextureSampleParameter2D_9",
+    "MaterialExpressionTextureSampleParameter2D_5",
+    null,
+    "MaterialExpressionScalarParameter_6",
+    "MaterialExpressionScalarParameter_7",
+    null,
+    "MaterialExpressionScalarParameter_14",
+    "MaterialExpressionScalarParameter_15",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_18",
+    "MaterialExpressionScalarParameter_19",
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_21",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_19",
+    "MaterialExpressionMaterialFunctionCall_18",
+    null,
+    "MaterialExpressionTextureSampleParameter2D_3",
+    "MaterialExpressionTextureSampleParameter2D_4",
+    "MaterialExpressionTextureSampleParameter2D_10",
+    "MaterialExpressionTextureSampleParameter2D_11",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_20",
+    "MaterialExpressionScalarParameter_21",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_22",
+    "MaterialExpressionScalarParameter_23",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_24",
+    "MaterialExpressionScalarParameter_25",
+    null,
+    "MaterialExpressionScalarParameter_26",
+    "MaterialExpressionScalarParameter_27",
+    "MaterialExpressionScalarParameter_31",
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_32",
+    "MaterialExpressionScalarParameter_33",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_34",
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_35"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.LinearGradient",
+    "/Engine/Functions/Engine_MaterialFunctions01/ImageAdjustment/CheapContrast.CheapContrast",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grdb_02a.jtx_grdb_02a",
+    "/Game/Effects/texcom/tex/jtx_grdb_03a_clamp.jtx_grdb_03a_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_03ya_clamp.jtx_grdb_03ya_clamp",
+    "/Game/Effects/texcom/tex/jtx_grdb_05a.jtx_grdb_05a",
+    "/Game/Effects/texcom/tex/jtx_grdb_07a_clamp.jtx_grdb_07a_clamp",
+    "/Game/Effects/texcom/tex/jtx_pzm_00c.jtx_pzm_00c"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_msa.jmb_bsc_msa": {
+  "name": "jmb_bsc_msa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionTextureSampleParameter2D_12",
+    "MaterialExpressionTextureSampleParameter2D_13",
+    "MaterialExpressionMaterialFunctionCall_7",
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionMaterialFunctionCall_26",
+    "MaterialExpressionMaterialFunctionCall_27",
+    "MaterialExpressionMaterialFunctionCall_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_m.jtx_ic_bsc_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_csk.jmb_bsc_csk": {
+  "name": "jmb_bsc_csk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bsc_csa.jmb_bsc_csa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bsc_csa.jmb_bsc_csa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_brk_msk.jmb_brk_msk": {
+  "name": "jmb_brk_msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_brk_msa.jmb_brk_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_brk_msa.jmb_brk_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_mfsla.jmb_uv_msk_mfsla": {
+  "name": "jmb_uv_msk_mfsla",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_28",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_9",
+    "MaterialExpressionMaterialFunctionCall_25",
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_mask.jmf_bright_mask",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_fresnel.jmf_fresnel",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_ml.jtx_ic_uv_ml",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_dmy_alp.jtx_dmy_alp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bscw_mk.jmb_bscw_mk": {
+  "name": "jmb_bscw_mk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_bscw_ma.jmb_bscw_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_bscw_ma.jmb_bscw_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_mslk.jmb_uv_mslk": {
+  "name": "jmb_uv_mslk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msla.jmb_uv_msla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa": {
+  "name": "jmb_uv_msa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_18",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/smt_rng_c0a.smt_rng_c0a": {
+  "name": "smt_rng_c0a",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSample_16",
+    null,
+    "MaterialExpressionTextureSample_3",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_4",
+    "MaterialExpressionMaterialFunctionCall_105",
+    "MaterialExpressionMaterialFunctionCall_106"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp",
+    "/Game/Effects/trescom/tex/stx_rng_00a.stx_rng_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsk.jmb_2fresrnel_fsk": {
+  "name": "jmb_2fresrnel_fsk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_2fresrnel_fsa.jmb_2fresrnel_fsa": {
+  "name": "jmb_2fresrnel_fsa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_12",
+    "MaterialExpressionScalarParameter_10",
+    "MaterialExpressionScalarParameter_11",
+    "MaterialExpressionScalarParameter_12",
+    "MaterialExpressionScalarParameter_13",
+    "MaterialExpressionScalarParameter_14"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_fresnelx2.jmf_fresnelx2",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat_part/omt_lin_mov_00k.omt_lin_mov_00k": {
+  "name": "omt_lin_mov_00k",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Additive",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 608,
+   "EditorY": 32,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionMaterialFunctionCall_31",
+    "MaterialExpressionTextureSample_3",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionDynamicParameter_1",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_12",
+    "MaterialExpressionTextureSample_0",
+    null,
+    null,
+    "MaterialExpressionVectorParameter_1",
+    "MaterialExpressionTextureSample_8",
+    null,
+    null,
+    "MaterialExpressionTextureSample_9",
+    null,
+    null,
+    "MaterialExpressionVectorParameter_3",
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grd_01a.jtx_grd_01a",
+    "/Game/Effects/texcom/tex/jtx_grdb_04a_clamp.jtx_grdb_04a_clamp",
+    "/Game/Effects/trescom/tex/glw/stx_lin_glw2m.stx_lin_glw2m",
+    "/Game/Effects/trescom/tex/grd/ktx_turu_00a.ktx_turu_00a"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/tmt_fresnel_00o.tmt_fresnel_00o": {
+  "name": "tmt_fresnel_00o",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_10",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    null,
+    "MaterialExpressionVectorParameter_0",
+    "MaterialExpressionVectorParameter_1"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_wht_sk.jmb_wht_sk": {
+  "name": "jmb_wht_sk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_wht_sa.jmb_wht_sa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_hole_01a.fmt_hole_01a": {
+  "name": "fmt_hole_01a",
+  "cls": "Material",
+  "props": {
+   "Metallic": "<StructProperty ScalarMaterialInput>",
+   "Specular": "<StructProperty ScalarMaterialInput>",
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "DecalBlendMode": "DBM_SQEX_Overwrite",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableDecalZFadeManual": true,
+   "SQEXDecalZFadeSegment": 5.0,
+   "SQEXEnableDecalWorldTangent": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 320,
+   "EditorY": -1072,
+   "Expressions": [
+    null,
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_14",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_33",
+    null,
+    "MaterialExpressionTextureSample_45",
+    "MaterialExpressionTextureSample_44",
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_70",
+    "MaterialExpressionDynamicParameter_2",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_11",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_23",
+    "MaterialExpressionMaterialFunctionCall_28",
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionScalarParameter_2",
+    null,
+    null,
+    "MaterialExpressionTextureSampleParameter2D_4",
+    "MaterialExpressionTextureSampleParameter2D_5",
+    null,
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureObject_2",
+    "MaterialExpressionTextureObject_3",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionVectorParameter_5",
+    null,
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionVectorParameter_6",
+    null,
+    "MaterialExpressionMaterialFunctionCall_3",
+    null,
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionVectorParameter_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_0",
+    null,
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_0",
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+    "/Game/Effects/d_magic/ariel/mf/fmf_olp_def_00.fmf_olp_def_00",
+    "/Game/Effects/d_magic/ariel/mf/fmf_uv_scr_03.fmf_uv_scr_03",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_polar_coord.jmf_polar_coord",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot",
+    "/Game/Effects/trescom/mf/smf_cir_msk0.smf_cir_msk0"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_dis_02a.jtx_dis_02a",
+    "/Game/Effects/texcom/tex/jtx_fir_02a.jtx_fir_02a",
+    "/Game/Effects/texcom/tex/jtx_glt_01a_clamp.jtx_glt_01a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00a.jtx_glw_00a",
+    "/Game/Effects/texcom/tex/jtx_ora_00a.jtx_ora_00a",
+    "/Game/Effects/texcom/tex/jtx_ora_04a.jtx_ora_04a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk.jmb_uv_msk": {
+  "name": "jmb_uv_msk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msa.jmb_uv_msa"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/wep/w_so010/mat/fmt_sin_lin02sa.fmt_sin_lin02sa": {
+  "name": "fmt_sin_lin02sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "EditorX": 800,
+   "EditorY": -320,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_24",
+    "MaterialExpressionMaterialFunctionCall_25",
+    "MaterialExpressionMaterialFunctionCall_2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_5",
+    "MaterialExpressionMaterialFunctionCall_8",
+    null,
+    null,
+    "MaterialExpressionMaterialFunctionCall_26",
+    "MaterialExpressionDynamicParameter_2",
+    "MaterialExpressionMaterialFunctionCall_27",
+    "MaterialExpressionMaterialFunctionCall_28",
+    "MaterialExpressionTextureSampleParameter2D_5",
+    "MaterialExpressionMaterialFunctionCall_29",
+    "MaterialExpressionMaterialFunctionCall_30",
+    null,
+    null,
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSample_0",
+    null,
+    null,
+    null,
+    "MaterialExpressionTextureSample_1",
+    "MaterialExpressionMaterialFunctionCall_0",
+    null,
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_uv_rot.jmf_uv_rot"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m",
+    "/Game/Effects/texcom/tex/jtx_grd_01a.jtx_grd_01a",
+    "/Game/Effects/wep/w_so010/tex/ftx_sin_03.ftx_sin_03",
+    "/Game/Effects/wep/w_so010/tex/ftx_str_01.ftx_str_01"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_mk.jmb_uv_msk_mk": {
+  "name": "jmb_uv_msk_mk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_msk_ma.jmb_uv_msk_ma"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/trescom/mat/smt_rng_c0sa.smt_rng_c0sa": {
+  "name": "smt_rng_c0sa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureSample_2",
+    null,
+    "MaterialExpressionTextureSample_3",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_4",
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_4"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3",
+    "/Game/Effects/texcom/mf/jmf_soft_particle.jmf_soft_particle"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_grd_00a_clamp.jtx_grd_00a_clamp",
+    "/Game/Effects/trescom/tex/stx_rng_00a.stx_rng_00a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_mfslk.jmb_uv_mfslk": {
+  "name": "jmb_uv_mfslk",
+  "cls": "MaterialInstanceConstant",
+  "props": {
+   "bHasStaticPermutationResource": true,
+   "BasePropertyOverrides": {
+    "bOverride_BlendMode": true,
+    "BlendMode": "BLEND_Additive"
+   }
+  },
+  "parent": "/Game/Effects/texcom/mat_master/jmb_uv_mfsla.jmb_uv_mfsla",
+  "scalars": {
+   "RefractionDepthBias": 0.0
+  },
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Game/Effects/texcom/mat_master/jmb_uv_mfsla.jmb_uv_mfsla"
+   ],
+   "MaterialInstanceConstant": [
+    "/Script/Engine.Default__MaterialInstanceConstant"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_ma.jmb_bsc_ma": {
+  "name": "jmb_bsc_ma",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionTextureSampleParameter2D_12",
+    "MaterialExpressionTextureSampleParameter2D_13",
+    "MaterialExpressionMaterialFunctionCall_7",
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionMaterialFunctionCall_26",
+    "MaterialExpressionMaterialFunctionCall_27",
+    "MaterialExpressionMaterialFunctionCall_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_m.jtx_ic_bsc_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_wht_a.jmb_wht_a": {
+  "name": "jmb_wht_a",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionVectorParameter_0"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_msk_msa.jmb_uv_msk_msa": {
+  "name": "jmb_uv_msk_msa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_13",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionMaterialFunctionCall_3",
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionScalarParameter_5",
+    "MaterialExpressionScalarParameter_3",
+    "MaterialExpressionScalarParameter_8",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_9"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_mask.jmf_bright_mask",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_m.jtx_ic_uv_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_dmy_alp.jtx_dmy_alp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_glt_mix_ma.jmb_glt_mix_ma": {
+  "name": "jmb_glt_mix_ma",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "TranslucentMultipleScatteringExtinction": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_11",
+    null,
+    null,
+    null,
+    "MaterialExpressionVectorParameter_2",
+    null,
+    "MaterialExpressionVectorParameter_3",
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionTextureSampleParameter2D_1",
+    "MaterialExpressionTextureSampleParameter2D_4"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_07a_clamp.jtx_glt_07a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_glt_mix_msa.jmb_glt_mix_msa": {
+  "name": "jmb_glt_mix_msa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "TranslucentMultipleScatteringExtinction": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_11",
+    "MaterialExpressionMaterialFunctionCall_12",
+    null,
+    null,
+    null,
+    "MaterialExpressionVectorParameter_2",
+    null,
+    "MaterialExpressionVectorParameter_3",
+    "MaterialExpressionScalarParameter_0",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionTextureSampleParameter2D_3",
+    "MaterialExpressionTextureSampleParameter2D_5"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/jtx_glt_07a_clamp.jtx_glt_07a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00a_clamp.jtx_glw_00a_clamp",
+    "/Game/Effects/texcom/tex/jtx_glw_00m_clamp.jtx_glw_00m_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_csa.jmb_uv_csa": {
+  "name": "jmb_uv_csa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_16",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_18",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionMaterialFunctionCall_31"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_emi.jmf_bright_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uv_speed.jmf_uv_speed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_curve.jmf_uvs_curve",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_c.jtx_ic_uv_c",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bsc_csa.jmb_bsc_csa": {
+  "name": "jmb_bsc_csa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionTextureSampleParameter2D_18",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionMaterialFunctionCall_12",
+    "MaterialExpressionMaterialFunctionCall_14",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionMaterialFunctionCall_20"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_emi.jmf_bright_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_c.jtx_ic_bsc_c",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_brk_msa.jmb_brk_msa": {
+  "name": "jmb_brk_msa",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_18",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionDynamicParameter_2",
+    "MaterialExpressionScalarParameter_1",
+    "MaterialExpressionMaterialFunctionCall_1",
+    "MaterialExpressionMaterialFunctionCall_0",
+    "MaterialExpressionMaterialFunctionCall_2",
+    "MaterialExpressionTextureSampleParameter2D_0",
+    "MaterialExpressionScalarParameter_2",
+    "MaterialExpressionMaterialFunctionCall_6",
+    "MaterialExpressionScalarParameter_8",
+    "MaterialExpressionScalarParameter_7"
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_mask1.jmf_uvs_mask1",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_brk_sstep.jmf_brk_sstep",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_brk_m.jtx_ic_brk_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_dis_01a.jtx_dis_01a"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_bscw_ma.jmb_bscw_ma": {
+  "name": "jmb_bscw_ma",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    null,
+    "MaterialExpressionMaterialFunctionCall_6",
+    null,
+    "MaterialExpressionMaterialFunctionCall_8",
+    "MaterialExpressionTextureSampleParameter2D_12",
+    "MaterialExpressionTextureSampleParameter2D_13",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionMaterialFunctionCall_9",
+    "MaterialExpressionMaterialFunctionCall_26",
+    "MaterialExpressionMaterialFunctionCall_27",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_10",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionVectorParameter_6",
+    "MaterialExpressionScalarParameter_3",
+    null,
+    "MaterialExpressionScalarParameter_12",
+    null,
+    null,
+    null,
+    null,
+    null,
+    "MaterialExpressionScalarParameter_13",
+    null,
+    null,
+    null,
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_emi.jmf_tiling_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling_opa.jmf_tiling_opa",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_bsc_m.jtx_ic_bsc_m",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m",
+    "/Game/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp"
+   ]
+  }
+ },
+ "/Game/Effects/texcom/mat_master/jmb_uv_mfsla.jmb_uv_mfsla": {
+  "name": "jmb_uv_mfsla",
+  "cls": "Material",
+  "props": {
+   "EmissiveColor": "<StructProperty ColorMaterialInput>",
+   "Opacity": "<StructProperty ScalarMaterialInput>",
+   "BlendMode": "BLEND_Translucent",
+   "ShadingModel": "MSM_Unlit",
+   "TwoSided": true,
+   "SQEXEnableEmissiveRevEyeAdaptation": true,
+   "bUsedWithParticleSprites": true,
+   "bUsedWithBeamTrails": true,
+   "bUsedWithMeshParticles": true,
+   "Expressions": [
+    "MaterialExpressionMaterialFunctionCall_20",
+    "MaterialExpressionMaterialFunctionCall_28",
+    "MaterialExpressionMaterialFunctionCall_15",
+    "MaterialExpressionTextureSampleParameter2D_19",
+    "MaterialExpressionDynamicParameter_13",
+    "MaterialExpressionMaterialFunctionCall_38",
+    "MaterialExpressionMaterialFunctionCall_17",
+    "MaterialExpressionTextureSampleParameter2D_2",
+    "MaterialExpressionMaterialFunctionCall_4",
+    "MaterialExpressionMaterialFunctionCall_5",
+    "MaterialExpressionMaterialFunctionCall_25",
+    null
+   ],
+   "bCanMaskedBeAssumedOpaque": true
+  },
+  "parent": null,
+  "scalars": {},
+  "vectors": {},
+  "textures": {},
+  "imports": {
+   "Material": [
+    "/Script/Engine.Default__Material"
+   ],
+   "MaterialFunction": [
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_2color_emi.jmf_2color_emi",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_bright_opa.jmf_bright_opa",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_fresnel.jmf_fresnel",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_soft.jmf_soft",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_tiling.jmf_tiling",
+    "/Game/Effects/texcom/mat_master/mf_master/jmf_uvs_fixed.jmf_uvs_fixed",
+    "/Game/Effects/texcom/mf/jmf_basic.jmf_basic",
+    "/Game/Effects/texcom/mf/jmf_power2.jmf_power2",
+    "/Game/Effects/texcom/mf/jmf_power2_vec3.jmf_power2_vec3"
+   ],
+   "Texture2D": [
+    "/Game/Effects/texcom/tex/icon/jtx_ic_uv_ml.jtx_ic_uv_ml",
+    "/Game/Effects/texcom/tex/jtx_1dot_wht_00m.jtx_1dot_wht_00m"
+   ]
+  }
+ }
+}

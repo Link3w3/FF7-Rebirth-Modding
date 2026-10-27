@@ -1,0 +1,313 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Dissidia NT Safer Sephiroth (colour 3)",
+ "author": "",
+ "description": "DISSIDIA FINAL FANTASY NT's Safer Sephiroth appearance from the game's own files: on Rebirth Sephiroth's bones (the PC0010_00 family) with Rebirth's face rig, KawaiiPhysics hair, coat and wings. (Cloud's rows (the Fully Playable mods' Sephiroth))",
+ "characters": [
+  "PC0000_00_Cloud_Standard",
+  "PC0000_08_Cloud_SoldierNoHelmet",
+  "PC0000_09_Cloud_CostaClothing",
+  "PC0000_10_Cloud_CostaClothing2",
+  "PC0000_04_Cloud_ZackCostume",
+  "PC0000_12_Cloud_ZackCostumeDirty",
+  "PC0000_18_Cloud_ZackCostumeAge21",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+  "PC0000_23_Cloud_ZackCostumeWet"
+ ],
+ "model": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p3c.PC0010_19_DNT_3p3c",
+ "skeleton": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p1c_Skeleton.PC0010_19_DNT_3p1c_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "own",
+ "weapon": "",
+ "anim_blueprint": "",
+ "pack": "Battle12",
+ "meshes": [],
+ "worn": false,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p3c",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p3c.uasset",
+   "size": 9810690,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 14,
+   "imports": [
+    "6ff0ed52fc9bdab4",
+    "29aa4f34cecfcd77",
+    "a4e97f5af11b56d3",
+    "8992cdb435711e33",
+    "f8b195746d93a9c8",
+    "1851b8d93e614bf5",
+    "90deb7e37328b3d4",
+    "be9cf52799bb30c8",
+    "988d7da7331736fc",
+    "1074a0f88cd9ca55",
+    "b99df42e16d20f05",
+    "af7e74aededa41e7",
+    "bbcba42df9f44b3c"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p1c_Skeleton",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Model/PC0010_19_DNT_3p1c_Skeleton.uasset",
+   "size": 55030,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Material/3p3c/MI_PC0010_19_3p3c_DNT_Eye0",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Material/3p3c/MI_PC0010_19_3p3c_DNT_Eye0.uasset",
+   "size": 4593,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 13,
+   "imports": [
+    "86b41052bff55069",
+    "49ad6c58ecbdb808",
+    "5dee673e543135c3",
+    "ab13d254328417a3",
+    "a3cd8e6f6cb00210",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_C",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_C.uasset",
+   "size": 3866,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 10,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_N",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_N.uasset",
+   "size": 6941,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_O",
+   "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_O.uasset",
+   "size": 4076,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 5,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_19_DissidiaNT_Sephiroth/Texture/3p3c/PC0010_19_DNT_3p3c_M02_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00.uasset",
+   "size": 234776,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 8,
+   "imports": [
+    "ce871645f5f3c5cc",
+    "d60f4d002d13d0cb",
+    "88154847cf9bde3e"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00_Skeleton.uasset",
+   "size": 1892,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 7,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_00_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02.uasset",
+   "size": 427051,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 20,
+   "imports": [
+    "c6b7ff0ad326d7a9",
+    "1680ce429c574361",
+    "037a16b9b4b584f1",
+    "46dc58b10636d7e8"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02_Skeleton.uasset",
+   "size": 1892,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 11,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_02_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 19,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03.uasset",
+   "size": 293806,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 18,
+   "imports": [
+    "785e79a8a2cecfb7",
+    "65f3e89cb1b70531",
+    "076bec52cc3eae49"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03_Skeleton.uasset",
+   "size": 1892,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 17,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_03_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 9,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04.uasset",
+   "size": 315082,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 16,
+   "imports": [
+    "b623b12ed8fbd1f5",
+    "a82b9f7ef6835c33",
+    "149a07e576f8d1c3"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04_Skeleton.uasset",
+   "size": 1892,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 15,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_04_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 4,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05.uasset",
+   "size": 806490,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 12,
+   "imports": [
+    "e77bdaf739353e92",
+    "df5f0eb4418a2582",
+    "93aa16fa8d2bdb80"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05_Skeleton.uasset",
+   "size": 1892,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 6,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_19_DissidiaNT_Masamune/Model/WE001021_19_05_PhysicsAsset.uasset",
+   "size": 2110,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-27T07:37:21Z",
+ "built_with": "Create a Character System editor 1.21.0"
+}

@@ -1,0 +1,67 @@
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef KAWAIIPHYSICSED_AnimGraphNode_KawaiiPhysics_generated_h
+#error "already included"
+#endif
+#define KAWAIIPHYSICSED_AnimGraphNode_KawaiiPhysics_generated_h
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_SPARSE_DATA
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_RPC_WRAPPERS \
+
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
+
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUAnimGraphNode_KawaiiPhysics(); \
+	friend struct Z_Construct_UClass_UAnimGraphNode_KawaiiPhysics_Statics; \
+public: \
+	DECLARE_CLASS(UAnimGraphNode_KawaiiPhysics, UAnimGraphNode_SkeletalControlBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICSED"), NO_API) \
+	DECLARE_SERIALIZER(UAnimGraphNode_KawaiiPhysics)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_INCLASS \
+private: \
+	static void StaticRegisterNativesUAnimGraphNode_KawaiiPhysics(); \
+	friend struct Z_Construct_UClass_UAnimGraphNode_KawaiiPhysics_Statics; \
+public: \
+	DECLARE_CLASS(UAnimGraphNode_KawaiiPhysics, UAnimGraphNode_SkeletalControlBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICSED"), NO_API) \
+	DECLARE_SERIALIZER(UAnimGraphNode_KawaiiPhysics)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_STANDARD_CONSTRUCTORS \
+	NO_API UAnimGraphNode_KawaiiPhysics(const FObjectInitializer& ObjectInitializer); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UAnimGraphNode_KawaiiPhysics) \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UAnimGraphNode_KawaiiPhysics); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UAnimGraphNode_KawaiiPhysics); \
+private: \
+	NO_API UAnimGraphNode_KawaiiPhysics(UAnimGraphNode_KawaiiPhysics&&); \
+	NO_API UAnimGraphNode_KawaiiPhysics(const UAnimGraphNode_KawaiiPhysics&); \
+public:
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_ENHANCED_CONSTRUCTORS \
+	NO_API UAnimGraphNode_KawaiiPhysics(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+private: \
+	NO_API UAnimGraphNode_KawaiiPhysics(UAnimGraphNode_KawaiiPhysics&&); \
+	NO_API UAnimGraphNode_KawaiiPhysics(const UAnimGraphNode_KawaiiPhysics&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UAnimGraphNode_KawaiiPhysics); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UAnimGraphNode_KawaiiPhysics); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UAnimGraphNode_KawaiiPhysics)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_PRIVATE_PROPERTY_OFFSET
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_21_PROLOG
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_PRIVATE_PROPERTY_OFFSET \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_SPARSE_DATA \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_INCLASS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h_24_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+template<> KAWAIIPHYSICSED_API UClass* StaticClass<class UAnimGraphNode_KawaiiPhysics>();
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_AnimGraphNode_KawaiiPhysics_h
+PRAGMA_ENABLE_DEPRECATION_WARNINGS

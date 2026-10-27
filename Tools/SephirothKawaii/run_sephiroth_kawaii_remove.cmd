@@ -1,0 +1,40 @@
+@echo off
+title Sephiroth skins on KawaiiPhysics - removing
+rem Takes compat\SephirothKawaii.json out of Create a Character System (close the game first): it is moved to
+rem Tools\SephirothKawaii\removed, and the four Sephiroth skins are on their own Bonamik again.
+rem Status: build\remove_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\remove_status.txt"
+set "OUT=%~dp0removed"
+set "COMPAT=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH\End\Binaries\Win64\ue4ss\Mods\RebirthSkelCompat\compat"
+set "FILE=SephirothKawaii.json"
+echo Sephiroth skins on KawaiiPhysics, removal started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%COMPAT%\%FILE%" goto :none
+if not exist "%OUT%" mkdir "%OUT%"
+move /y "%COMPAT%\%FILE%" "%OUT%\%FILE%" >nul
+if exist "%COMPAT%\%FILE%" goto :stuck
+echo REMOVED: the file is in Tools\SephirothKawaii\removed; the Sephiroth skins use their Bonamik again>> "%STATUS%"
+goto :done
+
+:none
+echo nothing to remove: SephirothKawaii.json is not in the compat folder>> "%STATUS%"
+goto :done
+
+:stuck
+echo FAILED: the file could not be moved out of the compat folder ^(is the game still open?^)>> "%STATUS%"
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b

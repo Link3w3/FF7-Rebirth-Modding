@@ -1,0 +1,42 @@
+EndMaterial_Water                                                      vertex   cases 60 worst 0
+EndMaterial_Water                                                      depth    cases 60 worst 0
+EndMaterial_Water                                                      depth_1  cases 60 worst 0
+EndMaterial_Water                                                      depth_2  cases 60 worst 0
+EndMaterialInstance_Water_Early                                        vertex   cases 60 worst 0
+EndMaterialInstance_Water_Early                                        depth    cases 60 worst 0
+EndMaterialInstance_Water_Early                                        depth_1  cases 60 worst 0
+EndMaterialInstance_Water_Early                                        depth_2  cases 60 worst 0
+EndMaterialInstance_Water_FluidBody_Thickness_Early                    vertex   cases 60 worst 561
+                                                                                  o0: 1.77 1.84 1.88 0  nan-mismatch 0 0 0 0
+                                                                                  o1: 1.95 1.68 1.84 2  nan-mismatch 0 0 0 0
+                                                                                  o3: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Early                    depth    cases 60 worst 561
+                                                                                  o0: 1.77 1.84 1.88 0  nan-mismatch 0 0 0 0
+                                                                                  o1: 1.95 1.68 1.84 2  nan-mismatch 0 0 0 0
+                                                                                  o3: 282 324 271 0  nan-mismatch 0 0 0 0
+                                                                                  o4: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Early                    depth_1  cases 60 worst 561
+                                                                                  o0: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Early                    depth_2  cases 60 worst 561
+                                                                                  o1: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Edge_Early               vertex   cases 60 worst 561
+                                                                                  o0: 1.77 1.84 1.88 0  nan-mismatch 0 0 0 0
+                                                                                  o1: 1.95 1.68 1.84 2  nan-mismatch 0 0 0 0
+                                                                                  o3: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Edge_Early               depth    cases 60 worst 561
+                                                                                  o0: 1.77 1.84 1.88 0  nan-mismatch 0 0 0 0
+                                                                                  o1: 1.95 1.68 1.84 2  nan-mismatch 0 0 0 0
+                                                                                  o3: 282 324 271 0  nan-mismatch 0 0 0 0
+                                                                                  o4: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Edge_Early               depth_1  cases 60 worst 561
+                                                                                  o0: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_FluidBody_Thickness_Edge_Early               depth_2  cases 60 worst 561
+                                                                                  o1: 546 465 561 450  nan-mismatch 0 0 0 0
+EndMaterialInstance_Water_SoftBody_Environment                         vertex   cases 60 worst 0
+EndMaterialInstance_Water_SoftBody_Environment                         depth    cases 60 worst 0
+EndMaterialInstance_Water_SoftBody_Environment                         depth_1  cases 60 worst 0
+EndMaterialInstance_Water_SoftBody_Environment                         depth_2  cases 60 worst 0
+EndMaterialInstance_Water_Thickness_Earlier                            vertex   cases 60 worst 0
+EndMaterialInstance_Water_Thickness_Earlier                            depth    cases 60 worst 0
+EndMaterialInstance_Water_Thickness_Earlier                            depth_1  cases 60 worst 0
+EndMaterialInstance_Water_Thickness_Earlier                            depth_2  cases 60 worst 0

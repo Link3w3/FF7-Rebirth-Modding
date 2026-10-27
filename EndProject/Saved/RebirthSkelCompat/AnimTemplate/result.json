@@ -1,0 +1,522 @@
+{
+ "jobs": [
+  {
+   "job": {
+    "replace": true,
+    "template": "cloud",
+    "out": "C:\\FF7R2UProj\\Tools\\RebirthSkelCompat\\abp\\out",
+    "container": "CACS_AnimTemplateTest_P",
+    "package": "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation",
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0000_00_Cloud_Standard_Animation.template.json",
+    "asset": "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation.PC0000_00_Cloud_Standard_Animation",
+    "anim_class": "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation.PC0000_00_Cloud_Standard_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 10,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 15,
+    "errors": [],
+    "warnings": [],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on",
+     "the template: AnimGraphNode_LocalToComponentSpace and AnimGraphNode_ComponentToLocalSpace_1 (a conversion pair the left-out node leaves) are taken out"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   },
+   "cooked": {
+    "iostore_exit_code": 1,
+    "iostore_log": "C:/FF7R2UProj/Saved/RebirthSkelCompat/AnimTemplate/CACS_AnimTemplateTest_P/iostore.log",
+    "container": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/out/CACS_AnimTemplateTest_P.utoc",
+    "cooked_dir": "C:/FF7R2UProj/Saved/RebirthSkelCompat/AnimTemplate/CACS_AnimTemplateTest_P/Cooked/End/Content",
+    "ok": true,
+    "errors": [],
+    "cooked": [
+     "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation"
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0010_00_Sephiroth_Test_Animation",
+    "template": "sephiroth",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0010_00_Sephiroth_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0010_00_Sephiroth_Test_Animation.PC0010_00_Sephiroth_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0010_00_Sephiroth_Test_Animation.PC0010_00_Sephiroth_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 6,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0010_Sephiroth/Sephiroth_Default.Sephiroth_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0010_Sephiroth/Sephiroth_Loud.Sephiroth_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0010_Sephiroth/Sephiroth_Smile.Sephiroth_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0011_00_Vincent_Test_Animation",
+    "template": "vincent",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0011_00_Vincent_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0011_00_Vincent_Test_Animation.PC0011_00_Vincent_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/PC0011_00_Vincent_Test_Animation.PC0011_00_Vincent_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 4,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0011_Vincent/Vincent_Default.Vincent_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0011_Vincent/Vincent_Loud.Vincent_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0011_Vincent/Vincent_Smile.Vincent_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/Monster_Test_Animation",
+    "template": "monster",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/SU0004_00_Leviathan_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/Monster_Test_Animation.Monster_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/Monster_Test_Animation.Monster_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 61,
+    "rule_nodes": 130,
+    "bindings": 0,
+    "defaults": 0,
+    "errors": [],
+    "warnings": [],
+    "notes": [],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/barret_Test_Animation",
+    "template": "barret",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0001_00_Barret_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/barret_Test_Animation.barret_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/barret_Test_Animation.barret_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 7,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0001_Barret/Barret_Default.Barret_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0001_Barret/Barret_Loud.Barret_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0001_Barret/Barret_Smile.Barret_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/tifa_Test_Animation",
+    "template": "tifa",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0002_00_Tifa_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/tifa_Test_Animation.tifa_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/tifa_Test_Animation.tifa_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 6,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0002_Tifa/Tifa_Default.Tifa_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0002_Tifa/Tifa_Loud.Tifa_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0002_Tifa/Tifa_Smile.Tifa_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/aerith_Test_Animation",
+    "template": "aerith",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0003_00_Aerith_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/aerith_Test_Animation.aerith_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/aerith_Test_Animation.aerith_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 14,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0003_Aerith/Aerith_Default.Aerith_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0003_Aerith/Aerith_Loud.Aerith_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0003_Aerith/Aerith_Smile.Aerith_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/redxiii_Test_Animation",
+    "template": "redxiii",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0004_00_RedXIII_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/redxiii_Test_Animation.redxiii_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/redxiii_Test_Animation.redxiii_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 10,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 62,
+    "rule_nodes": 111,
+    "bindings": 0,
+    "defaults": 14,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Default.RedXIII_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Loud.RedXIII_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Smile.RedXIII_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Transform (Modify) Bone - Bone: C_FireA_a  - Bone C_FireA_a not found in Skeleton",
+     "warning: Transform (Modify) Bone - Bone: C_FireA_a  - Bone C_FireA_a not found in Skeleton"
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/yuffie_Test_Animation",
+    "template": "yuffie",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0005_00_Yuffie_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/yuffie_Test_Animation.yuffie_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/yuffie_Test_Animation.yuffie_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 10,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0005_Yuffie/Yuffie_Default.Yuffie_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0005_Yuffie/Yuffie_Loud.Yuffie_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0005_Yuffie/Yuffie_Smile.Yuffie_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/caitsith_Test_Animation",
+    "template": "caitsith",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0007_00_CaitSith_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/caitsith_Test_Animation.caitsith_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/caitsith_Test_Animation.caitsith_Test_Animation_C",
+    "compile": "up to date",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 62,
+    "rule_nodes": 119,
+    "bindings": 0,
+    "defaults": 13,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Default.RedXIII_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Loud.RedXIII_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Smile.RedXIII_Smile",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0007_CaitSith/CaitSith_Default.CaitSith_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0007_CaitSith/CaitSith_Loud.CaitSith_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0007_CaitSith/CaitSith_Smile.CaitSith_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": []
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/moogle_Test_Animation",
+    "template": "moogle",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0008_00_Debumoogle_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/moogle_Test_Animation.moogle_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/moogle_Test_Animation.moogle_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 62,
+    "rule_nodes": 133,
+    "bindings": 0,
+    "defaults": 1,
+    "errors": [],
+    "warnings": [],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/zack_Test_Animation",
+    "template": "zack",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0009_00_Zack_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/zack_Test_Animation.zack_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/zack_Test_Animation.zack_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 7,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0009_Zack/Zack_Default.Zack_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0009_Zack/Zack_Loud.Zack_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0009_Zack/Zack_Smile.Zack_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  },
+  {
+   "job": {
+    "package": "/Game/RebirthSkelCompat/AnimTemplateTest/cid_Test_Animation",
+    "template": "cid",
+    "replace": true,
+    "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton"
+   },
+   "made": {
+    "ok": true,
+    "template": "C:/FF7R2UProj/Tools/RebirthSkelCompat/abp/templates/PC0012_00_Cid_Standard_Animation.template.json",
+    "asset": "/Game/RebirthSkelCompat/AnimTemplateTest/cid_Test_Animation.cid_Test_Animation",
+    "anim_class": "/Game/RebirthSkelCompat/AnimTemplateTest/cid_Test_Animation.cid_Test_Animation_C",
+    "compile": "up to date, with warnings",
+    "anim_graph_nodes": 9,
+    "states": 17,
+    "conduits": 11,
+    "transitions": 73,
+    "rule_nodes": 165,
+    "bindings": 2,
+    "defaults": 4,
+    "errors": [],
+    "warnings": [
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0012_Cid/Cid_Default.Cid_Default",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0012_Cid/Cid_Loud.Cid_Loud",
+     "not in this project, so left empty in the class defaults: /Game/LipSync/LipMap/Player/PC0012_Cid/Cid_Smile.Cid_Smile"
+    ],
+    "notes": [
+     "the template: AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+    ],
+    "compiler": [
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. ",
+     "warning: Node  Result  uses potentially thread-unsafe call  Get Locomotion Anim Group from Cache . Disable threaded update or use a thread-safe call. Function may need BlueprintThreadSafe metadata adding. "
+    ]
+   }
+  }
+ ],
+ "done": true
+}

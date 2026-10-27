@@ -1,0 +1,392 @@
+{
+ "fields": [
+  "UniqueAbilityParameterName_Array",
+  "KeyAssignAbilityID_Array",
+  "CombinationTableID_Array",
+  "GuardParameterName_Array",
+  "DodgeReactionInfluenceID_Array",
+  "DodgeParameterName_Array",
+  "LimitAbilityID_Array",
+  "LimitAbilityUseableFlag_Array",
+  "FirstLimitAbilityUseableFlag_Array",
+  "CommandAbilityID_Array",
+  "GuardParameterValue_Array",
+  "DodgeParameterValue_Array",
+  "UniqueAbilityParameterValue_Array",
+  "DodgeType_Array",
+  "KeyAssignGuardAbilityID0",
+  "DodgeNeutralAbilityID1",
+  "MugAbilityID",
+  "ControlCharacterChangeAbilityID",
+  "KeyDownEffectSocketName",
+  "KeyDownEffectCreateTime",
+  "KeyDownTime",
+  "UniqueAbilityType0",
+  "EnableKeyAssiginGuardAbility0",
+  "GuardType0",
+  "EnableAerialShortCut"
+ ],
+ "added": [],
+ "removed": [],
+ "changed": {
+  "pt_Cloud": {
+   "UniqueAbilityParameterName_Array": [
+    [
+     "PC0000_Unique_Guard_01",
+     "PC0000_CounterAtk_1",
+     "B_Connect01",
+     "$PC0000_Change_ON",
+     "$PC0000_Change_OFF",
+     "$PC0000_AAAChange_ON",
+     "FX_PC0000_SAttack_Body_01",
+     "FX_PC0000_Burst09_Body_01"
+    ],
+    [
+     "FX_PC0010_Aura_Body_01",
+     "$PC0010_SAtk_0"
+    ]
+   ],
+   "KeyAssignAbilityID_Array": [
+    [
+     "PC0000_U_NAtk",
+     "PC0000_U_NPAtk",
+     "PC0000_NDAtk_1",
+     "PC0000_U_ModeChange",
+     null,
+     null,
+     "PC0000_JAtk_1",
+     "PC0000_JNPAtk_1",
+     "PC0000_JNDAtk_1",
+     "PC0000_JChange_ON"
+    ],
+    [
+     "PC0010_U_NAtk",
+     "PC0010_NPAtk_1",
+     null,
+     "PC0010_U_SAtk",
+     null,
+     null,
+     "PC0010_JAtk_1",
+     "PC0010_NPAtk_1",
+     null,
+     "PC0010_U_SAtk"
+    ]
+   ],
+   "CombinationTableID_Array": [
+    [
+     "PC0000_N_Chain01",
+     "PC0000_N_Chain02"
+    ],
+    [
+     "PC0010_N_Chain01",
+     "PC0010_N_Chain02"
+    ]
+   ],
+   "GuardParameterName_Array": [
+    [
+     "PC_Guard_01",
+     "AIPC_Guard_01",
+     "PC_JGuard_01",
+     "AIPC_JGuard_01"
+    ],
+    [
+     "PC0010_SAtk_P5",
+     "PC0010_SAtk_10",
+     "PC_Sephiroth_Guard_01",
+     "AIPC_Sephiroth_Guard_01"
+    ]
+   ],
+   "DodgeReactionInfluenceID_Array": [
+    [
+     "SensorMediumRange_Right"
+    ],
+    []
+   ],
+   "DodgeParameterName_Array": [
+    [
+     "B_Avoid01",
+     null,
+     null,
+     "B_AvoidJ01"
+    ],
+    [
+     "B_Avoid01_0",
+     "B_Avoid01_1",
+     "B_Avoid01_2",
+     "B_Avoid01_0",
+     "B_Avoid01_1",
+     "B_Avoid02_2"
+    ]
+   ],
+   "CommandAbilityID_Array": [
+    [
+     "PC0000_AtkBurst01",
+     "PC0000_AtkBurst03"
+    ],
+    [
+     "PC0010_AtkBurst01",
+     "PC0010_AtkBurst02"
+    ]
+   ],
+   "GuardParameterValue_Array": [
+    [],
+    [
+     45.0,
+     25.0,
+     45.0,
+     0.0,
+     0.5,
+     150.0
+    ]
+   ],
+   "DodgeParameterValue_Array": [
+    [],
+    [
+     0.10000000149011612,
+     40000.0,
+     20000.0,
+     0.0,
+     350.0,
+     150.0,
+     50.0,
+     0.0,
+     0.10000000149011612,
+     40000.0,
+     20000.0,
+     0.0,
+     450.0,
+     50.0,
+     50.0,
+     -1.0
+    ]
+   ],
+   "UniqueAbilityParameterValue_Array": [
+    [
+     240.0
+    ],
+    [
+     4.0
+    ]
+   ],
+   "DodgeType_Array": [
+    [],
+    [
+     1,
+     1
+    ]
+   ],
+   "DodgeNeutralAbilityID1": [
+    "PC0000_AvoidJN",
+    null
+   ],
+   "MugAbilityID": [
+    "M_CMD_001_atk002_01_Type1",
+    null
+   ],
+   "ControlCharacterChangeAbilityID": [
+    "PC0000_ChainChange01",
+    "PC0010_ChainChange01"
+   ],
+   "UniqueAbilityType0": [
+    1,
+    7
+   ],
+   "GuardType0": [
+    0,
+    1
+   ]
+  },
+  "pt_Sephiroth": {
+   "UniqueAbilityParameterName_Array": [
+    [
+     "FX_PC0010_Aura_Body_01",
+     "$PC0010_SAtk_0"
+    ],
+    [
+     "PC0000_Unique_Guard_01",
+     "PC0000_CounterAtk_1",
+     "B_Connect01",
+     "$PC0000_Change_ON",
+     "$PC0000_Change_OFF",
+     "$PC0000_AAAChange_ON",
+     "FX_PC0000_SAttack_Body_01",
+     "FX_PC0000_Burst09_Body_01"
+    ]
+   ],
+   "KeyAssignAbilityID_Array": [
+    [
+     "PC0010_U_NAtk",
+     "PC0010_NPAtk_1",
+     null,
+     "PC0010_U_SAtk",
+     null,
+     null,
+     "PC0010_JAtk_1",
+     "PC0010_NPAtk_1",
+     null,
+     "PC0010_U_SAtk"
+    ],
+    [
+     "PC0000_U_NAtk",
+     "PC0000_U_NPAtk",
+     "PC0000_NDAtk_1",
+     "PC0000_U_ModeChange",
+     null,
+     null,
+     "PC0000_JAtk_1",
+     "PC0000_JNPAtk_1",
+     "PC0000_JNDAtk_1",
+     "PC0000_JChange_ON"
+    ]
+   ],
+   "CombinationTableID_Array": [
+    [
+     "PC0010_N_Chain01",
+     "PC0010_N_Chain02"
+    ],
+    [
+     "PC0000_N_Chain01",
+     "PC0000_N_Chain02"
+    ]
+   ],
+   "GuardParameterName_Array": [
+    [
+     "PC0010_SAtk_P5",
+     "PC0010_SAtk_10",
+     "PC_Sephiroth_Guard_01",
+     "AIPC_Sephiroth_Guard_01"
+    ],
+    [
+     "PC_Guard_01",
+     "AIPC_Guard_01",
+     "PC_JGuard_01",
+     "AIPC_JGuard_01"
+    ]
+   ],
+   "DodgeReactionInfluenceID_Array": [
+    [],
+    [
+     "SensorMediumRange_Right"
+    ]
+   ],
+   "DodgeParameterName_Array": [
+    [
+     "B_Avoid01_0",
+     "B_Avoid01_1",
+     "B_Avoid01_2",
+     "B_Avoid01_0",
+     "B_Avoid01_1",
+     "B_Avoid02_2"
+    ],
+    [
+     "B_Avoid01",
+     null,
+     null,
+     "B_AvoidJ01"
+    ]
+   ],
+   "LimitAbilityID_Array": [
+    [
+     "PC0010_Limit001"
+    ],
+    [
+     "PC0000_EvilCloud_Limit001",
+     "PC0000_EvilCloud_Limit002",
+     "PC0000_EvilCloud_Limit003"
+    ]
+   ],
+   "LimitAbilityUseableFlag_Array": [
+    [],
+    [
+     null,
+     null,
+     null
+    ]
+   ],
+   "FirstLimitAbilityUseableFlag_Array": [
+    [],
+    [
+     null,
+     null,
+     null
+    ]
+   ],
+   "CommandAbilityID_Array": [
+    [
+     "PC0010_AtkBurst01"
+    ],
+    [
+     "PC0000_AtkBurst01",
+     "PC0000_AtkBurst03"
+    ]
+   ],
+   "GuardParameterValue_Array": [
+    [
+     45.0,
+     25.0,
+     45.0,
+     0.0,
+     0.5,
+     150.0
+    ],
+    []
+   ],
+   "DodgeParameterValue_Array": [
+    [
+     0.10000000149011612,
+     40000.0,
+     20000.0,
+     0.0,
+     350.0,
+     150.0,
+     50.0,
+     0.0,
+     0.10000000149011612,
+     40000.0,
+     20000.0,
+     0.0,
+     450.0,
+     50.0,
+     50.0,
+     -1.0
+    ],
+    []
+   ],
+   "UniqueAbilityParameterValue_Array": [
+    [
+     4.0
+    ],
+    [
+     240.0
+    ]
+   ],
+   "DodgeType_Array": [
+    [
+     1,
+     1
+    ],
+    []
+   ],
+   "DodgeNeutralAbilityID1": [
+    null,
+    "PC0000_AvoidJN"
+   ],
+   "MugAbilityID": [
+    null,
+    "M_CMD_001_atk002_01_Type1"
+   ],
+   "ControlCharacterChangeAbilityID": [
+    "PC0010_ChainChange01",
+    "PC0000_ChainChange01"
+   ],
+   "UniqueAbilityType0": [
+    7,
+    1
+   ],
+   "GuardType0": [
+    1,
+    0
+   ]
+  }
+ }
+}

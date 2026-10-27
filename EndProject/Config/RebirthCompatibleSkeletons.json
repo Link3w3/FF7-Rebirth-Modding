@@ -1,0 +1,39 @@
+{
+	"schema_version": 1,
+	"mapping_policy": "kh3_same_name_local_pose",
+	"retail_runtime_adapter_installed": false,
+	"pairs": [
+		{
+			"source_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"target_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"source_guid": "160AD88F492592E8E6C21595053EB90A",
+			"target_guid": "09E8A80D4AF9DF68D4569E99678FD541",
+			"source_bones": 1072,
+			"target_bones": 1129
+		},
+		{
+			"source_skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"target_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"source_guid": "4BEAEB474E78AE53CCE03A91527896FE",
+			"target_guid": "09E8A80D4AF9DF68D4569E99678FD541",
+			"source_bones": 622,
+			"target_bones": 1129
+		},
+		{
+			"source_skeleton": "/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton.EB0016_00_Skeleton",
+			"target_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"source_guid": "09ECEB9A40C69F1FD6E686B4F83F99CB",
+			"target_guid": "09E8A80D4AF9DF68D4569E99678FD541",
+			"source_bones": 684,
+			"target_bones": 1129
+		},
+		{
+			"source_skeleton": "/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton.EB2020_00_Skeleton",
+			"target_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"source_guid": "7B4967AB457355C30A84A0BFC5B2865D",
+			"target_guid": "09E8A80D4AF9DF68D4569E99678FD541",
+			"source_bones": 405,
+			"target_bones": 1129
+		}
+	]
+}

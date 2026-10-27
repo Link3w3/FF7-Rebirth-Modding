@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 4,
+	"VersionName": "1.9.0-cacs3.15",
+	"FriendlyName": "Kawaii Dynamic Motions",
+	"Description": "Kawaii Dynamic Motions: KawaiiPhysics 1.7.0 for UE 4.26 with the newest KawaiiPhysics' features fused in, and its own motions (1.9): waves and a looping key animation that move a node's bones, the physics on top (a tail's sway, a wing's beat). Its preview runs Create a Character System's own simulation (FINAL FANTASY VII REBIRTH, game mod 3.15.0); Export For Game writes an AnimBlueprint's nodes as the game mod's \"kawaii\" entries, and Import From Game makes them back into nodes. Editor only: keep AnimBlueprints with these nodes out of game paks.",
+	"Category": "Animation",
+	"CreatedBy": "pafuhana1213 (KawaiiPhysics); Create a Character System (Kawaii Dynamic Motions)",
+	"CreatedByURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"DocsURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/pafuhana1213/KawaiiPhysics/issues",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "KawaiiPhysics",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		},
+		{
+			"Name": "KawaiiPhysicsEd",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

@@ -1,0 +1,77 @@
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef KAWAIIPHYSICSED_KawaiiPhysicsGameImport_generated_h
+#error "already included"
+#endif
+#define KAWAIIPHYSICSED_KawaiiPhysicsGameImport_generated_h
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_SPARSE_DATA
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_RPC_WRAPPERS \
+	DECLARE_FUNCTION(execExportAnimBlueprintForGame); \
+	DECLARE_FUNCTION(execImportAllFromGame); \
+	DECLARE_FUNCTION(execImportIntoAnimBlueprint); \
+	DECLARE_FUNCTION(execImportFromGameWithAnimation); \
+	DECLARE_FUNCTION(execImportFromGame); \
+	DECLARE_FUNCTION(execListGameEntries);
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execExportAnimBlueprintForGame); \
+	DECLARE_FUNCTION(execImportAllFromGame); \
+	DECLARE_FUNCTION(execImportIntoAnimBlueprint); \
+	DECLARE_FUNCTION(execImportFromGameWithAnimation); \
+	DECLARE_FUNCTION(execImportFromGame); \
+	DECLARE_FUNCTION(execListGameEntries);
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUKawaiiPhysicsGameImport(); \
+	friend struct Z_Construct_UClass_UKawaiiPhysicsGameImport_Statics; \
+public: \
+	DECLARE_CLASS(UKawaiiPhysicsGameImport, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICSED"), NO_API) \
+	DECLARE_SERIALIZER(UKawaiiPhysicsGameImport)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_INCLASS \
+private: \
+	static void StaticRegisterNativesUKawaiiPhysicsGameImport(); \
+	friend struct Z_Construct_UClass_UKawaiiPhysicsGameImport_Statics; \
+public: \
+	DECLARE_CLASS(UKawaiiPhysicsGameImport, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICSED"), NO_API) \
+	DECLARE_SERIALIZER(UKawaiiPhysicsGameImport)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_STANDARD_CONSTRUCTORS \
+	NO_API UKawaiiPhysicsGameImport(const FObjectInitializer& ObjectInitializer); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UKawaiiPhysicsGameImport) \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UKawaiiPhysicsGameImport); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UKawaiiPhysicsGameImport); \
+private: \
+	NO_API UKawaiiPhysicsGameImport(UKawaiiPhysicsGameImport&&); \
+	NO_API UKawaiiPhysicsGameImport(const UKawaiiPhysicsGameImport&); \
+public:
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_ENHANCED_CONSTRUCTORS \
+	NO_API UKawaiiPhysicsGameImport(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+private: \
+	NO_API UKawaiiPhysicsGameImport(UKawaiiPhysicsGameImport&&); \
+	NO_API UKawaiiPhysicsGameImport(const UKawaiiPhysicsGameImport&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UKawaiiPhysicsGameImport); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UKawaiiPhysicsGameImport); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UKawaiiPhysicsGameImport)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_PRIVATE_PROPERTY_OFFSET
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_20_PROLOG
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_PRIVATE_PROPERTY_OFFSET \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_SPARSE_DATA \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_INCLASS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h_23_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+template<> KAWAIIPHYSICSED_API UClass* StaticClass<class UKawaiiPhysicsGameImport>();
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysicsEd_Public_KawaiiPhysicsGameImport_h
+PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,0 +1,66 @@
+{
+ "parts": {
+  "face": 4468,
+  "eyes": 4040,
+  "mouth": 1642,
+  "lashes": 1180
+ },
+ "scale": 0.9648,
+ "offset": [
+  0.8851,
+  0.0,
+  0.3353
+ ],
+ "icp_residual_cm": {
+  "median": 0.1402726763733418,
+  "p90": 0.26719967384415705
+ },
+ "head_moved_from": [
+  1.826,
+  0.0,
+  182.649
+ ],
+ "head_moved_to": [
+  1.735,
+  0.0,
+  182.47
+ ],
+ "vertices": {
+  "faded": 455,
+  "near": 3947,
+  "own": 66,
+  "mouth_upper": 955,
+  "mouth_lower": 632,
+  "mouth_tongue": 55,
+  "lash_upper": 888,
+  "lash_lower": 292,
+  "eye": 4040,
+  "kept": 138419
+ },
+ "max_weight_dropped_by_8_cap": 0.0736,
+ "face_bones_without_weights": 3,
+ "eyes_his": [
+  [
+   8.724,
+   -3.31,
+   187.883
+  ],
+  [
+   8.724,
+   3.289,
+   187.883
+  ]
+ ],
+ "eyes_bones": [
+  [
+   8.326,
+   -2.954,
+   187.73
+  ],
+  [
+   8.326,
+   2.954,
+   187.73
+  ]
+ ]
+}

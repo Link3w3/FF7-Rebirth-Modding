@@ -1,0 +1,470 @@
+{
+ "set": "Battle12",
+ "moves": [
+  {
+   "set": "Battle12",
+   "name": "B_NAttack01_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0",
+   "hits": [
+    {
+     "time": 0.3
+    }
+   ],
+   "source": "DNT_600A",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 0.267,
+     "duration": 0.33,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.3,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_NAttack02_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600B",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0",
+   "hits": [
+    {
+     "time": 0.317
+    },
+    {
+     "time": 0.7
+    }
+   ],
+   "source": "DNT_600B",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 0.2,
+     "duration": 0.197,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.317,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    },
+    {
+     "kind": "effect",
+     "time": 0.7,
+     "duration": 0.263,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.7,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_NAttack03_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600C",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0",
+   "hits": [
+    {
+     "time": 0.267
+    }
+   ],
+   "source": "DNT_600C",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 0.2,
+     "duration": 0.163,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.267,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_NAttack04_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600D",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0",
+   "hits": [
+    {
+     "time": 0.217
+    }
+   ],
+   "source": "DNT_600D",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 0.15,
+     "duration": 0.247,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.217,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_NPAttack01",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_740A_740D",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttack01",
+   "hits": [
+    {
+     "time": 1.783
+    },
+    {
+     "time": 2.167
+    },
+    {
+     "time": 2.333
+    }
+   ],
+   "source": "DNT_740A_740D",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 1.567,
+     "duration": 0.38,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 1.783,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    },
+    {
+     "kind": "effect",
+     "time": 2.067,
+     "duration": 0.196,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 2.167,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    },
+    {
+     "kind": "effect",
+     "time": 2.367,
+     "duration": 0.12,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 2.333,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_SAttack09_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_710A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack09_0",
+   "hits": [
+    {
+     "time": 1.267
+    }
+   ],
+   "source": "DNT_710A",
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 1.2,
+     "duration": 0.147,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 1.267,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_AtkLimit01_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_700A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkLimit01_0",
+   "hits": [],
+   "source": "DNT_700A",
+   "clip": [
+    0.0,
+    0.933
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_AtkLimit01_1",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_700A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkLimit01_1",
+   "hits": [
+    {
+     "time": 0.2
+    },
+    {
+     "time": 0.45
+    },
+    {
+     "time": 0.967
+    }
+   ],
+   "source": "DNT_700A",
+   "clip": [
+    0.933,
+    0.0
+   ],
+   "extras": [
+    {
+     "kind": "effect",
+     "time": 0.0,
+     "duration": 0.297,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.2,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    },
+    {
+     "kind": "effect",
+     "time": 0.45,
+     "duration": 0.147,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.45,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    },
+    {
+     "kind": "effect",
+     "time": 0.95,
+     "duration": 0.18,
+     "effect": "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01",
+     "socket": "C_TrailA_b",
+     "on": "Weapon1"
+    },
+    {
+     "kind": "sound",
+     "time": 0.967,
+     "bank": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+     "cue": "EB0021_sword_swishM",
+     "attach": "C_Hip_a"
+    }
+   ]
+  },
+  {
+   "set": "Battle12",
+   "name": "B_MagAttack01_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_0",
+   "hits": [],
+   "source": "DNT_950A"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_MagAttack01_1",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950B",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_1",
+   "hits": [],
+   "source": "DNT_950B"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_MagAttack01_2",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950C",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_2",
+   "hits": [
+    {
+     "time": 0.25
+    }
+   ],
+   "source": "DNT_950C"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_AtkMag01_0",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_0",
+   "hits": [],
+   "source": "DNT_950A"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_AtkMag01_1",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950B",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_1",
+   "hits": [],
+   "source": "DNT_950B"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_AtkMag01_2",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950C",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_2",
+   "hits": [
+    {
+     "time": 0.25
+    }
+   ],
+   "source": "DNT_950C"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_Idle01_1",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_000A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1",
+   "hits": [],
+   "source": "DNT_000A"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_Idle01_1_EnemyBook",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_000A",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1",
+   "hits": [],
+   "source": "DNT_000A"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_DmgF01",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_1001A_1001B",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF01",
+   "hits": [],
+   "source": "DNT_1001A_1001B"
+  },
+  {
+   "set": "Battle12",
+   "name": "B_Win01",
+   "animation": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_R300",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Win01",
+   "hits": [],
+   "source": "DNT_R300"
+  },
+  {
+   "set": "Neutral10",
+   "name": "N_Idle01_1",
+   "animation": "/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_stand",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Neutral00/N_Idle01_1",
+   "hits": [],
+   "source": "CC_gnm_stand"
+  },
+  {
+   "set": "Neutral10",
+   "name": "N_Walk01_1",
+   "animation": "/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_walk",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Neutral00/N_Walk01_1",
+   "hits": [],
+   "source": "CC_gnm_walk"
+  },
+  {
+   "set": "Neutral10",
+   "name": "N_Run01_1",
+   "animation": "/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_gnm_run",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Neutral00/N_Run01_1",
+   "hits": [],
+   "source": "CC_gnm_run"
+  },
+  {
+   "set": "Neutral10",
+   "name": "N_Dash01_1",
+   "animation": "/Game/Motion/Player/PC0010_16_CrisisCore_Sephiroth/CCRoot/CC_btm_run1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Neutral00/N_Dash01_1",
+   "hits": [],
+   "source": "CC_btm_run1"
+  }
+ ],
+ "keys": {
+  "Battle12": {
+   "B_NAttack01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_NAttack01_0.B_NAttack01_0",
+   "B_NAttack02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_NAttack02_0.B_NAttack02_0",
+   "B_NAttack03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_NAttack03_0.B_NAttack03_0",
+   "B_NAttack04_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_NAttack04_0.B_NAttack04_0",
+   "B_NPAttack01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_NPAttack01.B_NPAttack01",
+   "B_SAttack09_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_SAttack09_0.B_SAttack09_0",
+   "B_AtkLimit01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_AtkLimit01_0.B_AtkLimit01_0",
+   "B_AtkLimit01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_AtkLimit01_1.B_AtkLimit01_1",
+   "B_MagAttack01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_MagAttack01_0.B_MagAttack01_0",
+   "B_MagAttack01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_MagAttack01_1.B_MagAttack01_1",
+   "B_MagAttack01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_MagAttack01_2.B_MagAttack01_2",
+   "B_AtkMag01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_AtkMag01_0.B_AtkMag01_0",
+   "B_AtkMag01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_AtkMag01_1.B_AtkMag01_1",
+   "B_AtkMag01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_AtkMag01_2.B_AtkMag01_2",
+   "B_Idle01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_Idle01_1.B_Idle01_1",
+   "B_Idle01_1_EnemyBook": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_Idle01_1_EnemyBook.B_Idle01_1_EnemyBook",
+   "B_DmgF01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_DmgF01.B_DmgF01",
+   "B_Win01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle12/B_Win01.B_Win01"
+  },
+  "Neutral10": {
+   "N_Idle01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Neutral10/N_Idle01_1.N_Idle01_1",
+   "N_Walk01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Neutral10/N_Walk01_1.N_Walk01_1",
+   "N_Run01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Neutral10/N_Run01_1.N_Run01_1",
+   "N_Dash01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Neutral10/N_Dash01_1.N_Dash01_1"
+  }
+ },
+ "anim_folder": "/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot",
+ "limit_split": 0.933,
+ "field_sets": {
+  "Neutral10": {
+   "from": "/Game/Motion/Player/PC0010_Sephiroth/Neutral00.Neutral00",
+   "for": "the CRISIS CORE skins"
+  }
+ }
+}

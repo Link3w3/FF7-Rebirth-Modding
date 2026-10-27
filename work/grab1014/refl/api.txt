@@ -1,0 +1,371 @@
+# link array at 0x1460177c0: 486 functions
+0x143b99c80  ActiveRagdoll(Object character, Bool(native bool) bImmediately) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b58ee0  AddAttachEffect(Struct args) -> void  {Final Native Public BlueprintCallable} size 112
+0x143b780f4  AddAttachEffect(Name EffectName, Name CharacterName, Name AttachSocketNam, Int OutHandleId [Out]) -> void  {Final Native Private HasOutParms BlueprintCallable} size 28
+0x143b99c80  AddAttachEffect(Object chara, Struct args) -> void  {Final Native Static Public BlueprintCallable} size 120
+0x143b99c80  AddBattleCameraRestrictedPlayOwners(Object restrictedPlayOwners, Array restrictedPlayOwners) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  AddBattleSceneCount(Name InName, Int InAddCount) -> Int  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  AddCombinationGauge(Object character, Int value) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  AddDangerSource(Object Instigator, Float Duration, Struct Infos, Array Infos [Const,Out,Ref], Bool(native bool) bResolveWithDamageSource) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 40
+0x143b99c80  AddEnableTargetAbility(Object character, Name abilityID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  AddIgnoreDamageSourceLookAtTraceActor(Object Character, Object IgnoreActor) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  AddImpluse(Object character, Struct direction, Float magnitude) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  AddInvincibleThroughAbilityID(Object character, Name abilityID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b58ee0  AddSpecialStateEffect(Name specialStateEffectID) -> void  {Final Native Public BlueprintCallable} size 8
+0x143b99c80  AddSpecialStateEffect(Object character, Name specialStateEffectID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b58ee0  AddSpecialStateEffectWithBeamTarget(Name specialStateEffectID, Object beamTargetCharaList, Array beamTargetCharaList) -> void  {Final Native Public BlueprintCallable} size 24
+0x143b99c80  AddSpecialStateEffectWithBeamTarget(Object character, Name specialStateEffectID, Object beamTargetCharaList, Array beamTargetCharaList, Bool(native bool) bLineEffect, Float lineEffectTangentLength) -> void  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  AddSpecialStatusChangeID(Object character, Object causerCharacter, Name id) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  AddStatusChangeID(Object character, Name statusChangeID, Byte UnderlyingType, Enum timeType, Bool(native bool) ignoreResist, Object causeCharacter, Bool(native bool) lock) -> void  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  BeginBattleDirection(Bool(native bool) suspend) -> void  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  BeginBreak(Object character, Name battleBreakID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  BeginForceFieldMode(Bool(native bool) actorModeBattle, Bool(native bool) bDeactivateBattleCamera) -> void  {Final Native Static Public BlueprintCallable} size 2
+0x143b99c80  BreakParts(Object ownerCharacter, Name uniqueName, Bool(native bool) forceDisableBattleLog, Bool(native bool) forceDisableDamageSource) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  CalcAimTargetOffsetHeight(Struct From, Struct To, Float Velocity, Float GravityScale, Bool(native bool) bDebugDraw, Float DebugDrawTime) -> Float  {Final Native Static Public BlueprintCallable} size 44
+0x143b99c80  CanSyncAction(Object chara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  ChangeAppearance(Object character, Int index) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ChangePartyMember(Struct changeParameters, Array changeParameters, Bool(native bool) showUI) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  ChangePositionOfSummonOmen(Int phaseNumber, Object ownerCharacter) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ClearBattleCameraRestrictedPlayOwners() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b628f8  ClearBPDamageCoefficient() -> void  {Final Native Protected BlueprintCallable} size 0
+0x143b99c80  ClearBPDamageCoefficient(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ClearEffectsByCategoryBattle() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  CloseSummonEnvironment() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b58ee0  CreateDamageSource(Name DamageSourceID, Object targetChara, Name abilityID, Bool(native bool) bOverrideDamage, Int OverrideDamage) -> void  {Final Native Public BlueprintCallable} size 32
+0x143b99c80  CreateDamageSource(Name DamageSourceID, Object ownerCharacter, Object targetCharacter, Name abilityID, Bool(native bool) bOverrideDamage, Int OverrideDamage) -> void  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  CreateSafeAreaBehindDamageSource(Int InGroupId, Name InDamageSourceIdList, Array InDamageSourceIdList [Const,Out,Ref], Object InDangerActor) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 32
+0x143b58ee0  CreateSyncAction(Name syncActionID, Object targetChara, Bool(native bool) bOverwrite) -> void  {Final Native Public BlueprintCallable} size 24
+0x143b99c80  CreateSyncAction(Name syncActionID, Object ownerChara, Object targetChara, Bool(native bool) bPlayFromLoop, Bool(native bool) bOverwrite) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  CreateSyncActionOwners(Name syncActionID0, Object ownerChara0, Name syncActionID1, Object ownerChara1, Name syncActionID2, Object ownerChara2) -> void  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  CreateSyncActionOwnersByName(Name syncActionID0, Name ownerCharaName0, Name syncActionID1, Name ownerCharaName1, Name syncActionID2, Name ownerCharaName2) -> void  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  DebugSetHP(Object Chara, Int HP) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  DebugSetPropertyInformation(Object InCharacter, Str InName) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  DecBattleSceneCount(Name InName) -> Int  {Final Native Static Public BlueprintCallable} size 12
+0x143b58ee0  DestroyDamageSource(Name DamageSourceID, Bool(native bool) bDestroyEffect) -> void  {Final Native Public BlueprintCallable} size 12
+0x143b99c80  DestroyDamageSource(Name damageSourceID, Object ownerCharacter, Bool(native bool) bDestroyEffect, Bool(native bool) forceDestroy) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  DestroyDamageSourceAll(Bool(native bool) bDestroyEffect) -> void  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  DestroyDamageSourceAllCharacter(Object character, Bool(native bool) bDestroyEffect, Bool(native bool) forceDestroy) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  DestroySafeAreaBehindDamageSource(Int InGroupId, Name InDamageSourceIdList, Array InDamageSourceIdList [Const,Out,Ref]) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 24
+0x143b99c80  DestroySupportFieldAll() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  Die(Object character, Object causerCharacter, Bool(native bool) skipDirection) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 24
+0x143b58ee0  EnableDamageReactionOwnerSyncAction() -> void  {Final Native Public BlueprintCallable} size 0
+0x143b99c80  EnableDamageReactionOwnerSyncAction(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  EndBattleDirection() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  EndBreakTime(Object character, Bool(native bool) immediatelyEndAction) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  EndBurst(Object character, Bool(native bool) instant) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  EndForceFieldMode() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ExcludeActorFromSkillCameraSlow(Int sequenceActorUID, Object actor) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ExcludeActorsFromSkillCameraSlow(Int sequenceActorUID, Object actors, Array actors) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  ExistDamageSourceRevive() -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  ExistsNavmeshWallEdge(Struct InLocation, Float OutDistance [Out], Object InExecutor, Float InRadius, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 40
+0x143b99c80  ExistsNavmeshWallEdgeFromChara(Object InCharacter, Float OutDistance [Out], Float InRadius, Bool(native bool) InForceSSizeNav, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 32
+0x143b99c80  FindEnableCrystalAppearPoint(Object ownerCharacter, Float nearLength, Float farLength, Float viewAngle, Name outPointName [Out], Struct outPointTransform [Out]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 96
+0x143b99c80  FindNavVolumesInRange(Object character, Int groups, Array groups, Float angleRange, Byte UnderlyingType, Enum type, Bool(native bool) behind, Float distance, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable} size 56
+0x143b99c80  FindNavVolumesOutRange(Object character, Int groups, Array groups, Float angleRange, Byte UnderlyingType, Enum type, Bool(native bool) behind, Float distance, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable} size 56
+0x143b99c80  FinishSummonOmenEffect() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ForceDestroyParts(Object ownerCharacter, Name uniqueName) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b58ee0  ForceDisableAimEffectorSetting(Name EffectorSettingName) -> void  {Final Native Public BlueprintCallable} size 8
+0x143b99c80  ForceDisableAimEffectorSetting(Object character, Name EffectorSettingName) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  GameOverForce() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  GetAbilityElement(Name InAbilityName) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  GetActorDirection(Object From, Object To) -> Struct  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetActorDistance(Object From, Object To) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetActorName(Object InChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x144398e68  GetActorName(Struct Instance [Const,Out,Ref]) -> Name  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetAIController(Object InChara) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x145392a88  GetAIController(Object ControlledActor) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetAllDamageSourceLocations(Name damageSourceID, Struct ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetAttackableCharacters(Object OutList, Array OutList [Out], Object InList, Array InList) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetBattleCameraSequenceID(Int sequenceActorUID) -> Name  {Final Native Static Public BlueprintCallable} size 12
+0x143b99c80  GetBattleCharaSpec_DataTableID(Object InChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetBattleMemberConditionList(Bool(native bool) dead, Bool(native bool) sleep, Bool(native bool) stop, Bool(native bool) petrify, Bool(native bool) toad, Object memberList, Array memberList [Out]) -> Int  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetBattleSceneCount(Name InName) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  GetBattleSceneIDFromChara(Object InChara, Bool(native bool) InParent) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b628f8  GetBP() -> Float  {Final Native Protected BlueprintCallable} size 4
+0x143b99c80  GetBP(Object character) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b628f8  GetBPPercent() -> Float  {Final Native Protected BlueprintCallable} size 4
+0x143b99c80  GetBPPercent(Object character) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetBreakTime(Object character) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCharacterNameSymbolIndex(Object character) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCharactersFromID(Name Upper, Name Lower, Object OutList, Array OutList [Out], Object InList, Array InList) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetCharacterStateType(Object character, Byte UnderlyingType) -> Enum  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCharaFromActorName(Name InActorName, Bool(native bool) bAllowFindCharaPopManager) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetCharaFromRaceID(Name InRaceName) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCharaHP(Object InChara) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCharaID(Object InChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b58ee0  GetCharaSpecName() -> Name  {Final Native Public BlueprintCallable BlueprintPure} size 8
+0x143b99c80  GetCharaSpecName(Object character) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCombinationAbilityUsedCharacterName(Name abilityID) -> Name  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  GetCompareLocation(Struct baseLocation, Struct compareLocationList, Array compareLocationList [Const,Out,Ref], Bool(native bool) bCompare2D, Byte UnderlyingType, Enum compareType) -> Struct  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetCurrentAbilityID(Object InChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetCurrentLocomotionState(Object InChara, Byte UnderlyingType) -> Enum  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetDamageHitReactionTableIndex(Object character) -> Byte  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetDamageSourceCount(Name InDamageSourceID) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  GetDamageSourceCountInArea(Name InDamageSourceID, Object ActorToSearchAround, Float SearchRadius, Bool(native bool) bFlatSearch) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetDamageSourceLocations(Name damageSourceIDs, Array damageSourceIDs, Object ownerCharacter, Struct ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetDataObjectBattleAbility(Name abilityID, Struct dataObjectBattleAbility [Out]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetDataObjectBattleDamageSource(Name damageSourceID, Struct dataObjectBattleDamageSource [Out]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetDataObjectBattleDamageSourceFromAbilityID(Name abilityID, Struct dataObjectBattleDamageSource [Out]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetDummyEnemies(Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetDummyNPCsFromID(Name Upper, Name Lower, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetDummyPartyMembers(Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetEnableBreakable(Name LevelName, Name AccessID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 20
+0x143b99c80  GetEncountBattleSceneIDs(Name ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetEnemyMemberCount(Name ContainRaceID) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  GetEnemyMemberCountFromID(Name Upper, Name Lower, Bool(native bool) Flip) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetEnemyMemberFromIDWithIndex(Name Upper, Name Lower, Int InIndex) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetEnemyMembersFromID(Name Upper, Name Lower, Bool(native bool) Flip, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetEnemyMembersRef(Object Out, Array Out [Out]) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetEnemyTerritorySituationType(Name territoryId [Const,Out,Ref], Byte UnderlyingType) -> Enum  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 12
+0x143b99c80  GetEnvironmentSocketTransform(Name LevelName, Name AccessID, Name SocketName) -> Struct  {Final Native Static Public BlueprintCallable BlueprintPure} size 80
+0x143b99c80  GetExpectationCountInCapsuleArea(Object InCharacter, Byte targetType, Float CapsuleRadius, Float CapsuleLength, Float FowardVectorRotateAngle, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Int  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  GetExpectationCountInCapsuleAreaByLocation(Object InCharacter, Byte targetType, Float CapsuleRadius, Float CapsuleLength, Struct TargetLocation, Float FowardVectorRotateAngle, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Int  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  GetExpectationCountInConeArea(Object InCharacter, Byte targetType, Float ConeRadius, Float ConeAngle, Float FowardVectorRotateAngle, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Int  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  GetExpectationCountInConeAreaByLocation(Object InCharacter, Byte targetType, Float ConeRadius, Float ConeAngle, Struct TargetLocation, Float FowardVectorRotateAngle, Bool(native bool) InDrawDebug, Float InDrawDebugTime) -> Int  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  GetFarestActor(Object outActor [Out], Object baseActor, Object compareActorList, Array compareActorList [Const,Out,Ref], Object ignoreActorList, Array ignoreActorList [Const,Out,Ref]) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetFarestCharacter(Struct InLocation, Object InList, Array InList) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetFarestPhysics(Object InChara, Float InRadius, Name InName, Bool(native bool) InContain) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b58ee0  GetFirstDamageTime(Float FirstDamageTime [Out], Object AnimSequecne [Const], Float StartTime) -> Bool(native bool)  {Final Native Public HasOutParms BlueprintCallable BlueprintPure Const} size 24
+0x143b99c80  GetFirstDamageTime(Float FirstDamageTime [Out], Object AnimSequecne [Const], Float StartTime) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetGuardTime(Object InChara) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetHiddenBreakable(Name LevelName, Name AccessID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 20
+0x143b99c80  GetHighestPriorityBattleCharaCategory(Name territoryID [Const,Out,Ref], Byte UnderlyingType) -> Enum  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 12
+0x143b58ee0  GetHPMax() -> Int  {Final Native Public BlueprintCallable BlueprintPure} size 4
+0x143b99c80  GetHPMax(Object character) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b58ee0  GetHPPercent() -> Int  {Final Native Public BlueprintCallable BlueprintPure} size 4
+0x143b99c80  GetHPPercent(Object InChara) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetKeep(Object InChara) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetLayoutTransform(Name nodeName) -> Struct  {Final Native Static Public BlueprintCallable} size 64
+0x143b99c80  GetMagicAttack(Object character) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetMagicDefense(Object InChara) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetMateriaParam(Object InChara, Bool(native bool) bWeapon, Int Slot, Struct Param [Out]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetMotionList(Object InChara, Name ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetNavVolumeFromAngle(Object InChara, Float InAngleRange, Byte UnderlyingType, Enum InType, Int InGroup, Bool(native bool) InBehind) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetNavVolumeFromType(Name InBattleSceneID, Byte InType, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetNearestActor(Object outActor [Out], Object baseActor, Object compareActorList, Array compareActorList [Const,Out,Ref], Object ignoreActorList, Array ignoreActorList [Const,Out,Ref]) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetNearestCharacter(Struct InLocation, Object InList, Array InList) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetNearestOwnVolume(Object InChara, Struct InLocation) -> Struct  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetNearestOwnVolumeWithExtent(Object InChara, Struct InLocation, Struct InExtent) -> Struct  {Final Native Static Public BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetNearestPhysics(Object InChara, Name InName, Bool(native bool) InContain) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetNearestPhysicsFromActorName(Object InChara, Name InName, Bool(native bool) InContain) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetNearestPhysicsInVolume(Object InChara, Name InVolumeName, Name InName, Bool(native bool) InContain, Bool(native bool) InPossetion) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetNearestPhysicsInVolumeFromLocation(Object InChara, Name InVolumeName, Name LocationName, Name InName, Bool(native bool) InContain, Bool(native bool) InPossetion, Bool(native bool) InCanPosettion) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetNearestRangePartyCharacter(Object InChara, Float Range, Bool(native bool) ZVisible) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetNearestSocketName(Struct BaseLocation, Name SocketNameList, Array SocketNameList, Object HasSocketNameChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetNearestTargetPointName(Struct baseLocation, Name targetPointNameList, Array targetPointNameList) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetOffsetTransform(Struct Transform [Const,Out,Ref], Struct Offset [Const,Out,Ref], Byte RotationType) -> Struct  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 112
+0x143c86e38  GetOffsetTransform() -> void  {Native Event Static Protected HasOutParms Const Exec} size 2
+0x143b99c80  GetOverlapVolumes(Object InChara, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b628f8  GetPartsHPPercent(Name partsID) -> Int  {Final Native Protected BlueprintCallable} size 12
+0x143b99c80  GetPartsHPPercent(Object character, Name battleCharaPartsSpecID) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetPartyLeader() -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 8
+0x143b99c80  GetPartyMembersIgnoreDead(Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetPhysics(Name InName, Bool(native bool) InContain, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetPhysicsAttack(Object character) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetPhysicsDefense(Object InChara) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetPhysicsFromActorName(Name InName, Bool(native bool) InContain, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  GetPhysicsFromLocation(Name LocationName, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetPhysicsInVolume(Name InVolumeName, Name InName, Bool(native bool) InContain, Bool(native bool) InPossetion, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetPhysicsInVolumeFromLocation(Name InVolumeName, Name LocationName, Name InName, Bool(native bool) InContain, Bool(native bool) InPossetion, Bool(native bool) InCanPosettion, Object ReturnValue) -> Array  {Final Native Static Public BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetPlayerCharacter(Byte UnderlyingType, Enum type) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x1450a508c  GetPlayerCharacter(Object WorldContextObject [Const], Int PlayerIndex) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetPlayerType(Object InChara, Byte UnderlyingType) -> Enum  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x144398e68  GetPlayerType(Struct Instance [Const,Out,Ref]) -> Byte  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 40
+0x143b99c80  GetPlayingExtraActionSequenceNames(Name OutNames, Array OutNames [Out], Object InChara) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetRaceName(Object InChara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetReplaceDamageSourceID(Name InAbilityName) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x144354ba8  GetReplaceDamageSourceID(Struct Instance [Const,Out,Ref]) -> Str  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 48
+0x143b99c80  GetResistanceElement(Object InChara, Int InType) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetRiddenMasterCharacter(Object character) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetSocketTransform(Object InChara, Name InSocketName) -> Struct  {Final Native Static Public BlueprintCallable BlueprintPure} size 64
+0x1451b2a70  GetSocketTransform(Name InSocketName, Byte TransformSpace) -> Struct  {Native Public BlueprintCallable BlueprintPure Const} size 64
+0x143b99c80  GetSpecialStatusChangeParamFloat(Object character, Byte UnderlyingType, Enum type, Name paramID) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetSpecialStatusChangeType(Object character, Byte UnderlyingType, Enum typeList, Array typeList [Out]) -> void  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetSpendATBBarTotal(Object endCharacter) -> Int  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetStoryFlagConditionNum(Name storyFlagNames, Array storyFlagNames, Bool(native bool) condition, Int initializeNum) -> Int  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  GetSubCollisionPushBackSpeed(Object InChara) -> Float  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  GetSummom(Byte UnderlyingType, Enum Type) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetSummonAvilableTime() -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 4
+0x143b99c80  GetSummonTargetPointFromActorName(Name InActorName) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetSyncActionID(Object chara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetSyncActionIDLast(Object chara) -> Name  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetTargetCharacter(Object character) -> Object  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  GetTargetCharacterAngle(Object character, Object targetCharacter) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetTargetLocationAngle(Object character, Struct targetLocation) -> Float  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  GetTrophyFirstRescue() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  GetWorldLocationAngle(Struct BaseLocation [Const,Out,Ref], Struct TargetLocation [Const,Out,Ref]) -> Float  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 28
+0x143b99c80  HasAbilityElement(Name InAbilityName, Byte UnderlyingType, Enum InType) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b58ee0  HasDamageSource(Name DamageSourceID) -> Bool(native bool)  {Final Native Public BlueprintCallable} size 12
+0x143b99c80  HasDamageSource(Object InChara, Name InDamageSourceID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  HasSpecialStatusChangeID(Object character, Name id) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  HasSpecialStatusChangeType(Object InChara, Byte UnderlyingType, Enum InType) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  HasStatusChangeID(Object character, Name statusChangeID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  HideAbilityName(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  HidePhysics(Name ActorName) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  IncBattleSceneCount(Name InName) -> Int  {Final Native Static Public BlueprintCallable} size 12
+0x143b99c80  InvalidNearFadeEnvPhysicsActor() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  IsAbility(Name InAbilityName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b58ee0  IsActionRestriction() -> Bool(native bool)  {Final Native Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsActionRestriction(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsAdditiveDamagePlaying(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsAIPC(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsAIPCRangedWeaponEquipped(Byte UnderlyingType, Enum PlayerCharacter [Const]) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 2
+0x143b99c80  IsBreak(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsBreakEndAction(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsBrokenParts(Object Character, Name BattleCharaPartsSpecID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b628f8  IsBurst() -> Bool(native bool)  {Final Native Protected BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsBurst(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsCharacterValid(Object InCharacter) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsCharacterValidBranch(Object InCharacter, Byte OutSignal [Out]) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 16
+0x143b99c80  IsCharaID(Object InChara, Name Upper [Const], Name Lower [Const]) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  IsCloudOffensiveMode() -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsCombinationAbilityFromDataObjectBattleAbility(Int64 flag0) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsCommandAbilityCombination(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsContainedMotionList(Object InChara, Name InMot1) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  IsContainedMotionList2(Object InChara, Name InMot1, Name InMot2) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 32
+0x143b99c80  IsContainedMotionList3(Object InChara, Name InMot1, Name InMot2, Name InMot3) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  IsContainedMotionList4(Object InChara, Name InMot1, Name InMot2, Name InMot3, Name InMot4) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 48
+0x143b99c80  IsContainedMotionList5(Object InChara, Name InMot1, Name InMot2, Name InMot3, Name InMot4, Name InMot5) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 56
+0x143b99c80  IsContainedMotionListArray(Object InChara, Name InMot, Array InMot [Const,Out,Ref]) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable BlueprintPure} size 32
+0x143b99c80  IsDamage(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsDamageSourceFlagDisableFinish(Int64 flag) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsDisableTarget(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsDisperseTargetExecutor(Object Character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  IsDodgeResetUniqueAbility(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsDummyPartyMember(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsFillLimitPlayer(Name PlayerCharaName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  IsGuard(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b58ee0  IsHPPercent(Int percent, Byte UnderlyingType, Enum cmp) -> Bool(native bool)  {Final Native Public BlueprintCallable BlueprintPure} size 8
+0x143b99c80  IsHPPercent(Object InChara, Int percent, Byte UnderlyingType, Enum cmp) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsInBattle() -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsInEnemySummonCutScene() -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsInFanRange(Object ownerCharacter, Float baseYaw, Float angleRange, Float radiusMin, Float radiusMax, Struct targetPosition) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 40
+0x143b99c80  IsInScreen(Object actor) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsInSummonCutScene() -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 1
+0x143b99c80  IsInSupportField(Object character, Byte UnderlyingType, Enum supportFieldType) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b58ee0  IsInSyncAction() -> Bool(native bool)  {Final Native Public BlueprintCallable BlueprintPure Const} size 1
+0x143b99c80  IsInSyncAction(Object chara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsItem(Name InAbilityName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  IsLaunchActionInAir(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsLaunchActionPlaying(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsLimit(Name InAbilityName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  IsMagic(Name InAbilityName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  IsNormal(Name InAbilityName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  IsOverlapCharaFromName(Name InVolumeName, Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  IsOverlapPoint(Object InVolume, Struct InPoint) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  IsPlayer(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143c1a4c8  IsPlayer() -> Bool(native bool)  {Final Native Public BlueprintCallable BlueprintPure Const} size 1
+0x143b99c80  IsPlayerCharacterValid(Byte UnderlyingType, Enum type) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 2
+0x143b99c80  IsPlayingAnimEnvironment(Name LevelName, Name AccessID, Name AnimName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 28
+0x143b99c80  IsPlayingBattleCameraSequence(Int sequenceActorUID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  IsRideFatMoogle(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsSetRigidBodyName(Object Character, Name RigidBodyName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 24
+0x143b99c80  IsSummon(Object InChara) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsSummonGaugeZero() -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  IsUCPC(Object character) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 16
+0x143b99c80  IsUniqueAbility(Name abilityID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable BlueprintPure} size 12
+0x143b99c80  MoveGenjiShield(Object ownerCharacter, Object causerCharacter) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  NavmeshRaycast(Struct InLocation, Struct InDirection, Float OutDistance [Out], Object InExecutor, Float InCastRange, Bool(native bool) InDrawDebug, Float InDrawDebugTime, Bool(native bool) NoCheckEscapeWall) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 56
+0x143b99c80  NavmeshRaycastFromChara(Object InCharacter, Float InOffsetYaw, Float OutDistance [Out], Float InCastRange, Bool(native bool) InForceSSizeNav, Bool(native bool) InDrawDebug, Float InDrawDebugTime, Bool(native bool) NoCheckEscapeWall) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 32
+0x143b58ee0  NotifyAbilityReaction(Float param0) -> void  {Final Native Public BlueprintCallable} size 4
+0x143b99c80  NotifyAbilityReaction(Object character, Float param0) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  OnSummonActivateTriggerAction() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  OnSummonFinishActivatePhase() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  OverrideDamageSourceIDCutSceneAbility(Object InCharacter, Name InDamageSourceID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  OverrideSummonCaptureTimeLimit(Float Time) -> void  {Final Native Static Public BlueprintCallable} size 4
+0x143b99c80  OverrideSummonCutSceneReturnLocation(Object Character, Struct Transform) -> void  {Final Native Static Public BlueprintCallable} size 64
+0x143b99c80  OverrideSummonPointToIncreaseOneSecond(Float Point) -> void  {Final Native Static Public BlueprintCallable} size 4
+0x143b99c80  PlayAddMotion(Object character, Name motionName, Byte UnderlyingType, Enum layer, Bool(native bool) bInfiniteLoop) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  PlayAnimEnvironment(Name LevelName, Name AccessID, Name AnimName, Byte UnderlyingType, Enum PlayType) -> void  {Final Native Static Public BlueprintCallable} size 28
+0x143b99c80  PlayAnimEnvironmentBeginLoop(Name LevelName, Name AccessID, Name BeginAnimName, Name LoopAnimName) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b58ee0  PlayBattleCameraSequence(Name SequenceID) -> Int  {Final Native Public BlueprintCallable} size 12
+0x143b99c80  PlayBattleCameraSequence(Name CameraSequenceID, Object OwnerChara, Object HasResourceChara, Object TargetActor, Bool(native bool) bIsToRegisterSlaveViewOnly, Float massiveEnvironmentFrustrumScaleForMainPass) -> Int  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  PlayBattleCameraSequenceSpecialSkill(Name CameraSequenceID, Object OwnerChara, Object HasResourceChara, Object TargetActor) -> Int  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  PlayCrowdActor(Name LevelName, Name AccessID, Float BlendTime, Bool(native bool) bUseFade) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  PlayDitherFadeEffect(Int CategoryType, Name ResourceName, Object OwnerCharacter, Name AttachSocketName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  PlayEffect(Int CategoryType, Name ResourceName, Object AttachActor, Name AttachSocketName, Bool(native bool) NotSynchronizeInvisible) -> Int  {Final Native Static Public BlueprintCallable} size 40
+0x143c0d180  PlayEffect(Name ResourceName, Object AttachActor, Name AttachSocketName) -> void  {Final Native Public BlueprintCallable} size 24
+0x143b99c80  PlayEffectFromResourceCharacter(Int CategoryType, Object ResourceActor, Name ResourceName, Object AttachActor, Name AttachSocketName, Bool(native bool) NotSynchronizeInvisible) -> Int  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  PlayInterruptAnimInBurst(Object InChara) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  PlayPartLoopMotion(Object character, Name motionName, Name boneName, Byte UnderlyingType, Enum layer) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  PlayPartMotion(Object character, Name motionName, Name boneName, Byte UnderlyingType, Enum layer, Float overrideBlendIn, Float overrideBlendOut) -> void  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  PlayPartStartLoopEndMotion(Object character, Name startMotionName, Name loopMotionName, Name endMotionName, Name boneName, Byte UnderlyingType, Enum layer, Float loopTime) -> void  {Final Native Static Public BlueprintCallable} size 48
+0x143b99c80  RaycastSphereWallFromChara(Object InCharacter, Float InOffsetYaw, Float InCastRange, Float InRadius, Bool(native bool) OutHit [Out], Float OutDistance [Out], Struct OutParam [Out]) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 176
+0x143b99c80  RaycastTerrainFromChara(Struct hitResult [Out], Object character, Name socketName, Struct offset, Byte drawDebugType, Struct traceColor, Struct traceHitColor, Float drawTime) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 216
+0x143b99c80  RaycastWallFromChara(Object InCharacter, Float InOffsetYaw, Float InCastRange, Bool(native bool) OutHit [Out], Float OutDistance [Out], Struct OutParam [Out]) -> void  {Final Native Static Public HasOutParms BlueprintCallable} size 168
+0x143b99c80  RegisterTargetLockGroup(Object Character, Object TargetList, Array TargetList [Const,Out,Ref], Int MaxEachTargetNum, Bool(native bool) bPrioritizeUCPC, Name GroupName, Byte UnderlyingType, Enum Priority, Bool(native bool) bIgnoreProvocation, Bool(native bool) bNoLockLastOne) -> Bool(native bool)  {Final Native Static Public HasOutParms BlueprintCallable} size 48
+0x143b99c80  ReGuard(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ReleaseBattleFieldBySummonBoss() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b58ee0  RemoveAttachEffect(Name attachSocketName [Const], Name resourceName [Const], Bool(native bool) bDestroy) -> void  {Final Native Public BlueprintCallable} size 20
+0x143b780f4  RemoveAttachEffect(Int HandleId) -> void  {Final Native Private BlueprintCallable} size 4
+0x143b99c80  RemoveAttachEffect(Object chara, Name attachSocketName [Const], Name resourceName [Const], Bool(native bool) bDestroy) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  RemoveDangerSource(Object Instigator, Byte UnderlyingType, Enum type) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RemoveIgnoreDamageSourceLookAtTraceActor(Object Character, Object IgnoreActor) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b58ee0  RemoveSpecialStateEffect(Name specialStateEffectID) -> void  {Final Native Public BlueprintCallable} size 8
+0x143b99c80  RemoveSpecialStateEffect(Object character, Name specialStateEffectID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RemoveSpecialStatusChangeID(Object character, Name id) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RemoveSpecialStatusChangeIDRequest(Object character, Name id) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RemoveSpecialStatusChangeType(Object InChara, Byte UnderlyingType, Enum InType) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RemoveStatusChangeID(Object character, Name statusChangeID, Bool(native bool) lock) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  RepairParts(Object Character, Name BattleCharaPartsSpecID, Name MeshLabel, Byte UnderlyingType, Enum Condition) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b58ee0  RequestAttachSyncAction() -> void  {Final Native Public BlueprintCallable} size 0
+0x143b99c80  RequestAttachSyncAction(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  RequestBrokenDestructionParts(Object ownerCharacter, Name uniqueName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  RequestCreateDestructionParts(Object ownerCharacter, Name uniqueName, Name spawnCharaSpecName, Name partsAttachSocketName, Bool(native bool) recreate) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 40
+0x143b99c80  RequestCurrentChargeCrystalDisappears(Object ownerCharacter) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RequestPreloadCutScene(Name CutSceneId) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  RequestReturnSummon() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  RequestShowAbilityName(Object character, Str string, Float InTime, Bool(native bool) bNonGuardableIcon) -> void  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  RequestSummonEnemyCutSceneAbility(Object InCharacter, Name InCutSceneID, Name InDamageSourceID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  RequestSummonEnemyPlayCutSceneAbility(Object InCharacter) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  RequestSummonEnemyPreloadCutSceneAbility(Object InCharacter, Name InCutSceneID, Name InDamageSourceID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 32
+0x143b99c80  RequestSyncActionEnd(Object chara, Byte UnderlyingType, Enum type, Object causerCharacter) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  RequestUniqueAbilitySpawnWeapon(Object ownerCharacter, Byte UnderlyingType, Enum weaponType, Byte UnderlyingType, Enum weaponStateType, Name uniqueWeaponName) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  ResetAimTargetOffsetHeight(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetAIPCDisconnectArea() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ResetAIPCExcludeTarget(Byte UnderlyingType, Enum PlayerType) -> void  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  ResetAIPCTargetChoosingParam(Byte UnderlyingType, Enum PlayerCharacter [Const]) -> void  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  ResetAIPCTargetDirect(Byte UnderlyingType, Enum PlayerCharacter [Const]) -> void  {Final Native Static Public BlueprintCallable} size 1
+0x143b99c80  ResetAppearance(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetAppearanceFrog(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetBP(Object character, Bool(native bool) bResetAnimation) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ResetBreakDamageValue(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetBreakPartsDamageValue(Object character, Name battleCharaPartsSpecID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ResetBreakWeakAttributeDamageValue(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetCharacterMovementMode(Object InChara) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetDamageHitResponse(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetDisableStealTextLabel() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ResetDisperseTarget() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ResetHitCharaResponse(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b58ee0  ResetOverrideActiveAimAngle() -> void  {Final Native Public BlueprintCallable} size 0
+0x143b99c80  ResetOverrideActiveAimAngle(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverrideAdditiveDamage(Object InChara) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b628f8  ResetOverrideBattleCharaPartsSpec(Name BaseID) -> void  {Final Native Protected BlueprintCallable} size 8
+0x143b99c80  ResetOverrideBattleCharaPartsSpec(Object character, Name baseID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b628f8  ResetOverrideBattleCharaSpec() -> void  {Final Native Protected BlueprintCallable} size 0
+0x143b99c80  ResetOverrideBattleCharaSpec(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverrideBattleDefenseID(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverrideCameraLockSocketName(Object Character, Float BlendTime, Byte UnderlyingType, Enum BlendOption) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ResetOverrideCapsuleSize(Object InCharacter) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverrideEnemyBookID(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b58ee0  ResetOverrideKeep() -> void  {Final Native Public BlueprintCallable} size 0
+0x143b99c80  ResetOverrideKeep(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverrideLocomotionAnimSequenceName(Object InChara, Byte UnderlyingType, Enum AnimGroup, Float BlendTime) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ResetOverrideMovementBase(Object InCharacter) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetOverridePartsCameraLockSocketName(Object Character, Name BaseBattleCharaPartsSpecID, Float BlendTime, Byte UnderlyingType, Enum BlendOption) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  ResetPrimaryAnimPack(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetRigidBodyName(Object Character, Name RigidBodyName) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  ResetRootCapsuleAttackTargetSizeScale(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetSubCollisionPushBackSpeed(Object InChara) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetSummonCondition() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143bc8118  ResetSummonCondition() -> void  {Final Native Public BlueprintCallable} size 0
+0x143b99c80  ResetSummonCutSceneReturnLocation(Object Character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetSummonPointToIncreaseOneSecond() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  ResetUniqueAbilityDerivedFixedAbilityID(Object character) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetWalkableFloorAngle(Object InCharacter) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  ResetWalkableFloorAngleOnBattleNav(Object InCharacter) -> void  {Final Native Static Public BlueprintCallable} size 8
+0x143b99c80  RestrictBattleFieldBySummonBoss() -> void  {Final Native Static Public BlueprintCallable} size 0
+0x143b99c80  SendEventDamageSource(Object character, Name damageSourceID) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  SendEventDamageSourceTheTableNumber(Object character, Name damageSourceID, Int tableNumber) -> void  {Final Native Static Public BlueprintCallable} size 24
+0x143b99c80  SendEventResidualParticles(Object ownerCharacter, Byte UnderlyingType, Enum eventType, Bool(native bool) otherThanOwner) -> void  {Final Native Static Public BlueprintCallable} size 16
+0x143b99c80  SendGenjiShieldToPlayBattleCamera(Object ownerCharacter, Int sequenceActorUID) -> Bool(native bool)  {Final Native Static Public BlueprintCallable} size 16

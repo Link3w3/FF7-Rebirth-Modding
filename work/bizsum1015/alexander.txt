@@ -1,0 +1,197 @@
+== B_Appear01_0  AnimSequence len 7.167 frames 216 rm False lock 0 force False add False hits []
+       0.000 + 0.333 AnimNotify_EndForceFeedbackRange              Effect,bPlayForcibly
+       0.000 + 1.167 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.000 + 0.000 EndAnimNotifyBattleCameraChangeTiming         
+       0.045 + 1.167 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.188 + 0.000 EndBattleAIMessageNotify                      Message
+       0.667 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.288 + 4.119 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.306 + 4.119 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.306 + 4.092 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.315 + 4.074 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       3.270 + 0.825 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       3.333 + 0.333 AnimNotify_EndForceFeedbackRange              Effect,bPlayForcibly
+       4.433 + 0.333 AnimNotify_EndForceFeedbackRange              Effect,bPlayForcibly
+       4.459 + 0.836 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       6.355 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       6.432 + 0.327 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       6.432 + 0.299 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       6.433 + 0.333 AnimNotify_EndForceFeedbackRange              Effect,bPlayForcibly
+== B_AtkChestLaser01  AnimSequence len 2.167 frames 66 rm False lock 0 force False add False hits []
+       0.017 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.135 + 1.466 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.137 + 1.461 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.201 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       0.300 + 1.867 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.300 + 1.856 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.516 + 1.651 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.516 + 1.651 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.767 + 1.399 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.770 + 1.396 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.043 + 1.123 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.046 + 1.121 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.317 + 0.000 EndBattleAIMessageNotify                      Message
+       2.157 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+== B_AtkCleaveL01  AnimSequence len 2.667 frames 81 rm False lock 0 force False add False hits [0, 1.062]
+       0.000 + 1.335 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       0.045 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.339 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       1.062 + 0.276 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.062 + 0.276 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       1.062 + 0.276 EndAnimNotifyStateEnablePushCollisionParts    PartsID
+       1.095 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.957 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+== B_AtkCleaveR01  AnimSequence len 2.667 frames 81 rm False lock 0 force False add False hits [0, 1.062]
+       0.000 + 1.344 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       0.047 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.336 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       1.062 + 0.276 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.062 + 0.276 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       1.062 + 0.276 EndAnimNotifyStateEnablePushCollisionParts    PartsID
+       1.103 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.957 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+== B_AtkDeltaCore01_0  AnimSequence len 1.833 frames 56 rm False lock 0 force False add False hits []
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.669 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       0.691 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.133 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.823 + 0.000 EndBattleAIMessageNotify                      Message
+== B_AtkDeltaCore01_1  AnimSequence len 1.333 frames 41 rm False lock 0 force False add False hits []
+== B_AtkDeltaCore01_2  AnimSequence len 3.300 frames 100 rm False lock 0 force False add False hits [0.428]
+       0.000 + 0.432 AnimNotifyState_EndAIBattleDangerObject       Radius,ReferenceDamageSourceIdList,bMultipleCreate,bReferencedByDamageSource
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.428 + 0.437 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.428 + 0.437 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.428 + 0.146 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       0.428 + 0.000 EndBattleAIMessageNotify                      Message
+       1.632 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.171 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       2.691 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_AtkHardStrike01  AnimSequence len 3.833 frames 116 rm False lock 0 force False add False hits [1.982, 2.094, 2.236]
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.840 + 1.147 AnimNotifyState_EndAIBattleDangerObject       AttachSocketName,DodgeDirection,Radius,ReferenceDamageSourceId,ReferenceDamageSourceIdList,bReferencedByDamageSource
+       0.841 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       1.982 + 0.743 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       2.094 + 0.145 EndAnimNotifyStateEnablePushCollisionParts    PartsID
+       2.094 + 0.145 EndAnimNotifyStateEnablePushCollisionParts    PartsID
+       2.094 + 0.146 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       2.123 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.142 + 0.672 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.149 + 0.672 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.235 + 0.912 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.236 + 0.501 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       2.733 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.796 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+== B_AtkJudgeCharge01_0  AnimSequence len 3.333 frames 101 rm False lock 0 force False add False hits []
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.000 + 1.333 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+== B_AtkJudgeCharge01_1  AnimSequence len 3.333 frames 101 rm False lock 0 force False add False hits []
+       0.000 + 3.333 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+== B_AtkMagic01_0  AnimSequence len 1.100 frames 34 rm False lock 0 force False add False hits []
+       0.162 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.232 + 0.868 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.232 + 0.740 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.236 + 0.740 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.236 + 0.864 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       1.034 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       1.090 + 0.000 EndBattleAIMessageNotify                      Message
+       1.090 + 0.000 EndBattleAIMessageNotify                      Message
+== B_AtkMagic01_1  AnimSequence len 0.667 frames 21 rm False lock 0 force False add False hits []
+       0.000 + 0.667 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.000 + 0.667 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+== B_AtkMagic01_2  AnimSequence len 3.400 frames 103 rm False lock 0 force False add False hits []
+       0.000 + 0.923 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.000 + 0.921 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       0.251 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.779 + 0.000 EndBattleAIMessageNotify                      Message
+       0.779 + 0.000 EndBattleAIMessageNotify                      Message
+       0.935 + 0.710 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams,m_bEnableSynchroParentActorVisible
+       1.478 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.940 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       2.124 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       2.917 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_AtkShockWaveB01  AnimSequence len 4.167 frames 126 rm False lock 0 force False add False hits [1.352]
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.014 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.015 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       1.196 + 0.384 AnimNotifyState_EndAIBattleDangerObject       AttachSocketName,DodgeDirection,Radius,ReferenceDamageSourceIdList,bMultipleCreate,bUseDodgeDirection
+       1.352 + 0.235 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       1.519 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.591 + 0.000 EndBattleAIMessageNotify                      Message
+       1.591 + 0.000 EndBattleAIMessageNotify                      Message
+       1.591 + 1.103 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.591 + 1.103 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.670 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       3.124 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_AtkShockWaveL01  AnimSequence len 3.667 frames 111 rm False lock 0 force False add False hits [0.882]
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.509 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       0.662 + 0.384 AnimNotifyState_EndAIBattleDangerObject       AttachSocketName,DodgeDirection,Radius,ReferenceDamageSourceId,bReferencedByDamageSource,bUseDodgeDirection
+       0.779 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.882 + 0.165 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       1.018 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.043 + 0.000 EndBattleAIMessageNotify                      Message
+       1.043 + 1.103 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.175 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       2.342 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_AtkShockWaveR01  AnimSequence len 3.667 frames 111 rm False lock 0 force False add False hits [0.882]
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.509 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       0.662 + 0.384 AnimNotifyState_EndAIBattleDangerObject       AttachSocketName,DodgeDirection,Radius,ReferenceDamageSourceId,bReferencedByDamageSource,bUseDodgeDirection
+       0.768 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.882 + 0.165 EndAnimNotifyStateBattleDamage               HIT  DamageSourceIDs
+       1.003 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       1.043 + 1.103 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.043 + 0.000 EndBattleAIMessageNotify                      Message
+       2.171 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       2.349 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_Barrier01  AnimSequence len 5.000 frames 151 rm False lock 0 force False add False hits [2.033]
+       0.000 + 1.508 EndAnimNotifyStateBattleTargetCorrectionDirection  Angle
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.313 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancelStart  CancelStartParameters,NewProperty
+       0.323 + 1.885 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       1.486 + 1.804 AnimNotifyState_EndAIBattleDangerObject       AttachSocketName,DodgeDirection,Length,OffsetPosition,ReferenceDamageSourceId,bUseDodgeDirection
+       2.033 + 1.254 EndAnimNotifyStateBattleDamage               HIT  
+       2.033 + 2.967 AnimNotify_MoveActorTimeline                  EndTime,LocalEvent,StartTime,TargetActorName,TimelineKeyFrameData,TotalTime,bAutoTangents
+       2.060 + 0.000 EndBattleAIMessageNotify                      Message
+       2.071 + 1.885 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       2.195 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       3.253 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       3.293 + 0.000 EndBattleAIMessageNotify                      Message
+       3.295 + 1.705 EndBattleAbilityRotateState                   FrameDeltaTimeSpeed,GoalAngle,Type
+       3.513 + 0.000 AnimNotify_EndAIEnemyBattleAbilityCancel      CancelParameters,NewProperty
+       3.725 + 0.836 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       4.393 + 0.568 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+== B_Die01_0  AnimComposite len 0.300 frames None rm None lock None force None add None hits []
+     seg Summon/SU2030_Alexander/Battle00_Boss/B_DmgBurst01_0.B_DmgBurst01_0 start 0.000 [0.000-0.300] rate 1
+== B_Die01_1  AnimComposite len 1.700 frames None rm None lock None force None add None hits []
+     seg Summon/SU2030_Alexander/Battle00_Boss/B_DmgBurst01_0.B_DmgBurst01_0 start 0.000 [0.300-2.000] rate 1
+       0.217 + 0.681 AnimNotify_EndModifyPlayRate                  PlayRate
+       0.575 + 0.924 AnimNotify_EndModifyPlayRate                  PlayRate
+       0.971 + 0.729 AnimNotify_EndModifyPlayRate                  PlayRate
+== B_Idle01_1  AnimSequence len 3.333 frames 101 rm False lock 0 force False add False hits []
+== B_Rtrn01_0  AnimComposite len 1.000 frames None rm None lock None force None add None hits []
+     seg Summon/SU2030_Alexander/Battle00/B_Warp01_0.B_Warp01_0 start 0.000 [0.000-1.000] rate 1
+== B_Warp01_0  AnimSequence len 1.000 frames 31 rm False lock 0 force False add False hits []
+       0.000 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+       0.233 + 0.767 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.233 + 0.767 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.689 + 0.311 EndAnimNotifySetCharacterPushResponse         
+       0.689 + 0.311 EndAnimNotifyStateTransparent                 
+       0.990 + 0.000 EndAnimNotifyBattleHiddenCharacter            enableInfluenceChildren
+       0.990 + 0.000 AnimNotify_EndAIBattleWarp                    
+== B_Warp02_0  AnimSequence len 1.167 frames 36 rm False lock 0 force False add False hits []
+       0.010 + 0.000 EndBattleAIMessageNotify                      Message
+       0.010 + 0.000 EndBattleAIMessageNotify                      Message
+       0.020 + 1.147 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.020 + 1.147 AnimNotifyState_EndTimedNiagaraEffect        mot  m_NiagaraCreateParams
+       0.020 + 0.324 EndAnimNotifySetCharacterPushResponse         bHitCharacter
+       0.020 + 0.340 EndAnimNotifyStateTransparent                 
+       0.020 + 0.000 EndAnimNotifyBattleHiddenCharacter            enableHiddenCharacter,enableInfluenceChildren
+       0.020 + 0.000 EndAnimNotifyPlayCharacterSound              mot  AttachPointName,SoundName,SoundRef
+== B_AtkJudgeCharge01_2  AnimComposite len 3.333 frames None rm None lock None force None add None hits []
+     seg Summon/SU2030_Alexander/Battle00/B_AtkJudgeCharge01_1.B_AtkJudgeCharge01_1 start 0.000 [0.000-3.333] rate 1
+       0.010 + 0.000 EndAnimNotifyBattleDisableSummoning           bDisableSummoning
+       0.334 + 3.000 EndBattleAIMessageNotifyState                 Message
+== B_Barrier01_CompForPC  AnimComposite len 5.000 frames None rm None lock None force None add None hits []
+     seg Summon/SU2030_Alexander/Battle00/B_Barrier01.B_Barrier01 start 0.000 [0.000-5.000] rate 1

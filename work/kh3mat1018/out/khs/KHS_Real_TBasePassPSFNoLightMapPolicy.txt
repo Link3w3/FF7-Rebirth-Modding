@@ -1,0 +1,73 @@
+// ISGN
+//   TEXCOORD10 -> reg 0 .xyzw (used .)
+//   TEXCOORD11 -> reg 1 .xyzw (used .)
+//   COLOR3 -> reg 2 .x (used .)
+//   TEXCOORD0 -> reg 3 .xyzw (used .)
+//   SV_Position0 -> reg 4 .xyzw (used .xyz) sv1
+//   SV_IsFrontFace0 -> reg 5 .x (used .) sv9
+// OSGN
+//   SV_Target0 -> reg 0 .xyzw (used .)
+//   SV_Target1 -> reg 1 .xyzw (used .)
+//   SV_Target2 -> reg 2 .xyzw (used .)
+//   SV_Target3 -> reg 3 .xyzw (used .)
+//   SV_Target5 -> reg 5 .xyzw (used .)
+//   SV_Target6 -> reg 6 .xyzw (used .)
+ps_5_0
+      dcl_globalFlags 0x1
+      dcl_constantbuffer cb0[131].xyzw
+      dcl_constantbuffer cb1[19].xyzw
+      dcl_constantbuffer cb2[3].xyzw
+      dcl_input_ps_siv linear noperspective v4.xyz, sv1
+      dcl_output o0
+      dcl_output o1
+      dcl_output o2
+      dcl_output o3
+      dcl_output o5
+      dcl_output o6
+      dcl_temps 4
+   1: ieq r0.x, cb1[17].y, l(0x00000001)
+   2: ne r0.yz, l(0, 0, 0, 0), cb1[17].zzwz
+   3: or r0.x, r0.y, r0.x
+   4: or r0.y, cb1[17].y, l(0x00000200)
+   5: movc r0.x, r0.x, r0.y, cb1[17].y
+   6: or r0.y, r0.x, l(0x00000800)
+   7: movc r0.x, r0.z, r0.y, r0.x
+   8: ne r0.yz, l(0, 0, 0, 0), cb1[18].xxyx
+   9: or r0.w, r0.x, l(0x00004000)
+  10: movc r0.x, r0.y, r0.w, r0.x
+  11: or r0.y, r0.x, l(0x00001000)
+  12: movc r0.x, r0.z, r0.y, r0.x
+  13: mad r0.yzw, cb0[123].wwww, l(0, 0.04, 0.04, 0.04), cb0[123].xxyz
+  14: mad r0.yzw, r0.yyzw, l(0, 0.45, 0.45, 0.45), cb0[122].xxyz
+  15: lt r1.x, l(0), cb0[126].x
+  16: if_nz r1.x
+  17:   mul r1, v4.yyyy, cb0[37].xyzw
+  18:   mad r1, v4.xxxx, cb0[36].xyzw, r1.xyzw
+  19:   mad r1, v4.zzzz, cb0[38].xyzw, r1.xyzw
+  20:   add r1, r1.xyzw, cb0[39].xyzw
+  21:   div r1.xyz, r1.xyzx, r1.wwww
+  22:   add r1.xyz, r1.xyzx, -cb0[58].xyzx
+  23:   add r2.xyz, r1.xyzx, -cb1[8].xyzx
+  24:   add r3.xyz, cb1[9].xyzx, l(1, 1, 1, 0)
+  25:   lt r2.xyz, r3.xyzx, |r2.xyzx|
+  26:   or r1.w, r2.y, r2.x
+  27:   or r1.w, r2.z, r1.w
+  28:   dp3 r1.x, r1.xyzx, l(0.577, 0.577, 0.577, 0)
+  29:   mul r1.x, r1.x, l(0.002)
+  30:   frc r1.x, r1.x
+  31:   lt r1.x, l(0.5), r1.x
+  32:   movc r1.xyz, r1.xxxx, l(0, 1, 1, 0), l(1, 1, 0, 0)
+  33:   movc r1.xyz, r1.wwww, r1.xyzx, cb2[2].xyzx
+  34: else
+  35:   mov r1.xyz, cb2[2].xyzx
+  36: endif
+  37: mad o0.xyz, cb0[130].xxxx, r0.yzwy, r1.xyzx
+  38: itof r0.x, r0.x
+  39: mul o6.w, r0.x, l(1.5259e-05)
+  40: mov o0.w, l(0)
+  41: mov o1, l(0, 0, 0, 0)
+  42: mov o2, l(0, 0, 0, 0)
+  43: mov o3, l(0, 0, 0, 0)
+  44: mov o5, l(0, 0, 0, 0)
+  45: mov o6.xyz, l(0, 0, 0, 0)
+  46: ret

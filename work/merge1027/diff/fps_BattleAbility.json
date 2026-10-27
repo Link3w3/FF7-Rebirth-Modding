@@ -1,0 +1,909 @@
+{
+ "fields": [
+  "AddAnimationName_Array",
+  "ReactionParameterString_Array",
+  "ResourceID_Array",
+  "ResourceName_Array",
+  "AnimationString_Array",
+  "AddAnimationPlayInterval_Array",
+  "ReactionConditionParameterValue_Array",
+  "ReactionParameterValue_Array",
+  "AnimationParameter_Array",
+  "AnimationSelectType_Array",
+  "AddAnimationIndex_Array",
+  "AddAnimationPlayCount_Array",
+  "AddAnimationEndBase_Array",
+  "ReactionCondition_Array",
+  "ReactionConditionNotifyIndex_Array",
+  "ReactionType_Array",
+  "CancelNumber_Array",
+  "Explanation",
+  "ReplaceDamageSourceID",
+  "Name",
+  "AnimResourceReferenceBattleCharaSpecID",
+  "AnimationUpperBodyName",
+  "CameraSequenceID",
+  "UseSoundResourceName",
+  "ReactionInfluenceID",
+  "Flag0",
+  "MP",
+  "SortId",
+  "UniqueId",
+  "InputBufferTime",
+  "ATB",
+  "Range",
+  "SameCharacterDamageHitDamageCoefficient",
+  "SameCharacterDamageHitDamageCoefficientMin",
+  "TeleportParam",
+  "TeleportMinDistance",
+  "ShowNameSecond",
+  "ShowName",
+  "CommandType",
+  "CommandTargetType",
+  "UsePlace",
+  "CastMagicEffectType",
+  "AnimationBoneFilterIndexBits0",
+  "SkeletonControlType",
+  "TargetCount",
+  "TargetAimPosition",
+  "TargetCloseMove",
+  "TargetCorrectionDirectionImmediatelyType",
+  "DamageCreateMoveCollisionObjectOff",
+  "CameraSequenceNotify",
+  "KeepValue",
+  "DistFeelType",
+  "UseSoundResourceCategory",
+  "AfterWalkType",
+  "TeleportType",
+  "AfterTeleportRotationType",
+  "ActionCategory",
+  "ForceDamageDisplayToOne",
+  "StrengthenNumber"
+ ],
+ "added": [
+  "PC0010_T_ShadowFlare",
+  "PC0010_T_GroundFeeler",
+  "PC0010_T_BindFeeler",
+  "PC0010_T_HardCombo",
+  "PC0010_T_BindAttackNear",
+  "PC0010_T_BindAttackFar",
+  "PC0010_T_Firaga",
+  "PC0010_T_Blizzaga",
+  "PC0010_T_Thundaga",
+  "PC0010_T_Aeroga",
+  "PC0010_T_HeartlessAngel",
+  "PC0010_T_FeelerTornado",
+  "PC0010_T_WarpStab",
+  "PC0010_T_FeelerLaser",
+  "PC0010_T_LastAttack",
+  "PC0010_Limit002",
+  "PC0010_Limit003",
+  "PC0010_T_OctaslashPrime",
+  "PC0010_W2_ZanshinRising",
+  "PC0010_W3_DoubleBlizzaga",
+  "PC0010_W3_DoubleFiraga",
+  "PC0010_W3_DoubleThundaga",
+  "PC0010_W3_DoubleAeroga",
+  "PC0010_W3_InfernalGate",
+  "PC0010_W3_SwordDance",
+  "PC0010_T_Meteor",
+  "SU2030_00_BizZanshin",
+  "SU2030_00_BizWingFeeler",
+  "SU2030_00_BizStigma",
+  "PC0010_BZ_Octaslash",
+  "PC0010_BZ_Zanshin",
+  "PC0010_BZ_HellsGate",
+  "PC0010_BZ_Swarm",
+  "PC0010_BZ_HeartlessAngel",
+  "PC0010_BZ_ZanshinProfaned",
+  "PC0010_BZ_UnholyGate",
+  "PC0010_BZ_ApocalypticFire",
+  "PC0010_BZ_Profane",
+  "PC0010_BZ_WhisperVortex",
+  "PC0010_BZ_Atonement",
+  "PC0010_BZ_LacrymaDeus",
+  "PC0000_EvilCloud_Limit001",
+  "PC0000_EvilCloud_Limit002",
+  "PC0000_EvilCloud_Limit003",
+  "PC0000_EvilCloud_AtkBurst02",
+  "PC0010_RM_Octaslash",
+  "PC0010_RM_Scintilla",
+  "PC0010_RM_ShadowFlare",
+  "PC0010_RM_HellsGate"
+ ],
+ "removed": [],
+ "changed": {
+  "PC0000_AtkBurst02": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst02_0"
+    ],
+    [
+     "B_SAttack01_0"
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     101
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst02_help",
+    "$PC0000_AtkBurst02_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst02",
+    "PC0010_SAtk_1"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst02",
+    "$PC0010_SAtk_1"
+   ],
+   "Range": [
+    800.0,
+    500.0
+   ]
+  },
+  "PC0000_AtkBurst08": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst08_0",
+     "B_AtkBurst08_1",
+     "B_AtkBurst08_2"
+    ],
+    [
+     "B_AtkBurst02_1"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [
+     2.0,
+     3000.0,
+     0.0,
+     130.0,
+     1500.0,
+     1.0
+    ],
+    []
+   ],
+   "AnimationSelectType_Array": [
+    [
+     40
+    ],
+    []
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     104
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst08_help",
+    "$PC0000_AtkBurst08_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst08",
+    "PC0010_AtkBurst02"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst08",
+    "$PC0010_SAtk_4"
+   ],
+   "Range": [
+    2000.0,
+    500.0
+   ],
+   "ShowNameSecond": [
+    0.0,
+    1.0
+   ],
+   "UsePlace": [
+    0,
+    1
+   ]
+  },
+  "PC0000_AtkBurst07": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst07_0",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     "B_AtkBurstJ07_1"
+    ],
+    [
+     "B_SAttack06_0",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     "B_SAttack07_0"
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     107
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst07_help",
+    "$PC0000_AtkBurst07_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst07",
+    "PC0010_SAtk_7"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst07",
+    "$PC0010_SAtk_7"
+   ],
+   "Range": [
+    400.0,
+    500.0
+   ],
+   "TargetCorrectionDirectionImmediatelyType": [
+    1,
+    0
+   ]
+  },
+  "PC0000_AtkBurst09": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst09_0"
+    ],
+    [
+     "B_SAttack02_0"
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     102
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst09_help",
+    "$PC0000_AtkBurst09_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst09",
+    "PC0010_SAtk_2"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst09",
+    "$PC0010_SAtk_2"
+   ],
+   "Range": [
+    400.0,
+    500.0
+   ]
+  },
+  "PC0000_AtkBurst04": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst04_0"
+    ],
+    [
+     "B_AtkLimit01_1"
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     106
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst04_help",
+    "$PC0000_AtkBurst04_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst04",
+    "PC0010_SAtk_6"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst04",
+    "$PC0010_SAtk_6"
+   ],
+   "CameraSequenceID": [
+    null,
+    "PC0010_00_Limit001_1"
+   ],
+   "Range": [
+    300.0,
+    500.0
+   ],
+   "ShowNameSecond": [
+    0.0,
+    3.0
+   ]
+  },
+  "PC0000_AtkBurst05": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst05_0"
+    ],
+    [
+     "B_SAttack10_0"
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     108
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst05_help",
+    "$PC0000_AtkBurst05_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst05",
+    "PC0010_SAtk_8"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst05",
+    "$PC0010_SAtk_8"
+   ],
+   "Range": [
+    2000.0,
+    500.0
+   ],
+   "DistFeelType": [
+    1,
+    0
+   ]
+  },
+  "PC0000_AtkBurst06": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst06_0",
+     "B_AtkBurst06_1",
+     "B_AtkBurst06_3",
+     "B_AtkBurst06_2",
+     "AbilityCounter_Guard_01",
+     "AbilityCounter_JGuard_01",
+     null,
+     null,
+     "B_AtkBurstJ06_0",
+     "B_AtkBurstJ06_1",
+     "B_AtkBurstJ06_3",
+     "B_AtkBurstJ06_2",
+     "AbilityCounter_Guard_01",
+     "AbilityCounter_JGuard_01"
+    ],
+    [
+     "B_SAttack05_0"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [
+     2.0,
+     20.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     2.0,
+     20.0
+    ],
+    []
+   ],
+   "AnimationSelectType_Array": [
+    [
+     26,
+     26
+    ],
+    []
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     60
+    ],
+    [
+     105
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst06_help",
+    "$PC0000_AtkBurst06_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst06",
+    "PC0010_SAtk_5"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst06",
+    "$PC0010_SAtk_P5"
+   ],
+   "Range": [
+    700.0,
+    500.0
+   ],
+   "UsePlace": [
+    0,
+    1
+   ]
+  },
+  "PC0000_AtkBurst10": {
+   "AnimationString_Array": [
+    [
+     "B_AtkBurst10_0",
+     "B_AtkBurst10_1",
+     "B_AtkBurst10_2"
+    ],
+    [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     "B_SAttack08_0",
+     "B_SAttack08_1",
+     "B_SAttack08_2"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [
+     8000.0,
+     8000.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     5000.0,
+     9000.0
+    ]
+   ],
+   "AnimationSelectType_Array": [
+    [
+     30
+    ],
+    [
+     0,
+     30
+    ]
+   ],
+   "AddAnimationEndBase_Array": [
+    [
+     1
+    ],
+    []
+   ],
+   "CancelNumber_Array": [
+    [
+     10
+    ],
+    [
+     109
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_AtkBurst10_help",
+    "$PC0000_AtkBurst10_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_AtkBurst10",
+    "PC0010_SAtk_9"
+   ],
+   "Name": [
+    "$PC0000_AtkBurst10",
+    "$PC0010_SAtk_9"
+   ],
+   "Range": [
+    400.0,
+    500.0
+   ]
+  },
+  "PC0000_Limit001": {
+   "Explanation": [
+    "$PC0000_Limit001_help",
+    "$PC0000_Limit001_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_Limit001",
+    "PC0010_Limit001"
+   ],
+   "Name": [
+    "$PC0000_Limit001",
+    "$PC0010_Limit001"
+   ],
+   "CameraSequenceID": [
+    "PC0000_00_Limit001",
+    "PC0010_00_Limit001"
+   ],
+   "Range": [
+    1000.0,
+    500.0
+   ]
+  },
+  "PC0000_Limit002": {
+   "AnimationString_Array": [
+    [
+     "B_AtkLimit02_0"
+    ],
+    [
+     "B_AtkTenshi01_0",
+     "B_AtkTenshi01_1"
+    ]
+   ],
+   "AnimationSelectType_Array": [
+    [],
+    [
+     4
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_Limit002_help",
+    "$PC0000_Limit002_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_Limit002",
+    "PC0010_T_HeartlessAngel"
+   ],
+   "Name": [
+    "$PC0000_Limit002",
+    "$bt_BizarroSephiroth_HeartlessAngel"
+   ],
+   "CameraSequenceID": [
+    "PC0000_00_Limit002",
+    null
+   ],
+   "Range": [
+    1000.0,
+    1500.0
+   ],
+   "ShowNameSecond": [
+    0.0,
+    5.0
+   ],
+   "UsePlace": [
+    1,
+    0
+   ]
+  },
+  "PC0000_Limit003": {
+   "ResourceID_Array": [
+    [],
+    [
+     "Fire01"
+    ]
+   ],
+   "ResourceName_Array": [
+    [],
+    [
+     "BattleAbilityResource_Fire01"
+    ]
+   ],
+   "Explanation": [
+    "$PC0000_Limit003_help",
+    "$PC0000_Limit003_seph_help"
+   ],
+   "ReplaceDamageSourceID": [
+    "PC0000_Limit003",
+    "PC0010_Meteor"
+   ],
+   "Name": [
+    "$PC0000_Limit003",
+    "$PC0010_Limit003"
+   ],
+   "CameraSequenceID": [
+    "PC0000_00_Limit003",
+    null
+   ],
+   "Range": [
+    1000.0,
+    3000.0
+   ]
+  },
+  "SU2030_00_AtkCleaveL01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkCleaveL01"
+    ],
+    [
+     "B_AtkWingSwingL01"
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkCleaveL01",
+    "EB2210_00_WingSwing"
+   ]
+  },
+  "SU2030_00_AtkCleaveR01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkCleaveR01"
+    ],
+    [
+     "B_AtkWingSwingR01"
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkCleaveR01",
+    "EB2210_00_WingSwing"
+   ]
+  },
+  "SU2030_00_AtkHardStrike01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkHardStrike01"
+    ],
+    [
+     "B_AtkBodyExplode01"
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkHardStrike01",
+    "EB2210_00_BurstFlare"
+   ]
+  },
+  "SU2030_00_AtkMagicalShockNew": {
+   "AddAnimationName_Array": [
+    [],
+    [
+     "B_AtkMagB01_add"
+    ]
+   ],
+   "AnimationString_Array": [
+    [
+     "B_AtkMagic01_0",
+     "B_AtkMagic01_1",
+     "B_AtkMagic01_2"
+    ],
+    [
+     "B_AtkMagB01_0",
+     "B_AtkMagB01_1",
+     "B_AtkMagB01_2",
+     "B_AtkMagB01_3",
+     "B_AtkMagB01_4"
+    ]
+   ],
+   "AddAnimationPlayInterval_Array": [
+    [],
+    [
+     0.5
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [
+     0.0,
+     0.10000000149011612
+    ],
+    [
+     0.0,
+     0.30000001192092896,
+     0.0,
+     3.0
+    ]
+   ],
+   "AddAnimationIndex_Array": [
+    [],
+    [
+     3
+    ]
+   ],
+   "AddAnimationPlayCount_Array": [
+    [],
+    [
+     3
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkMagicalShockNew",
+    "EB2210_00_ShadowFlare"
+   ]
+  },
+  "SU2030_00_AtkShockWaveL01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkShockWaveL01"
+    ],
+    [
+     "B_AtkEyeMagic01_0",
+     "B_AtkEyeMagic01_1",
+     "B_AtkEyeMagic01_1_Comp_4",
+     "B_AtkEyeMagic01_2"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [],
+    [
+     0.0,
+     0.5
+    ]
+   ],
+   "AnimationSelectType_Array": [
+    [],
+    [
+     4
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkShockWave",
+    "EB2210_00_EyeMagic"
+   ]
+  },
+  "SU2030_00_AtkShockWaveR01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkShockWaveR01"
+    ],
+    [
+     "B_AtkEyeMagic01_0",
+     "B_AtkEyeMagic01_1",
+     "B_AtkEyeMagic01_1_Comp_3",
+     "B_AtkEyeMagic01_2"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [],
+    [
+     0.0,
+     0.5
+    ]
+   ],
+   "AnimationSelectType_Array": [
+    [],
+    [
+     4
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkShockWave",
+    "EB2210_00_EyeMagic"
+   ]
+  },
+  "SU2030_00_AtkShockWaveB01": {
+   "AnimationString_Array": [
+    [
+     "B_AtkShockWaveB01"
+    ],
+    [
+     "B_AtkWindBlow01"
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkShockWave",
+    "EB2210_00_WindBlow"
+   ]
+  },
+  "SU2030_00_AtkLaserMissileNew": {
+   "AnimationString_Array": [
+    [
+     "B_AtkChestLaser01"
+    ],
+    [
+     "B_AtkOmniSlash01_0",
+     "B_AtkOmniSlash01_1",
+     "B_AtkOmniSlash01_2"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [],
+    [
+     0.0,
+     7.0
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkLaserMissileNew",
+    "EB2210_00_Hattou"
+   ]
+  },
+  "SU2030_00_AtkGiantbeam": {
+   "AnimationString_Array": [
+    [
+     "B_Barrier01_CompForPC"
+    ],
+    [
+     "B_AtkAngel01_0",
+     "B_AtkAngel01_1",
+     "B_AtkAngel01_2"
+    ]
+   ],
+   "AnimationParameter_Array": [
+    [],
+    [
+     0.0,
+     2.0
+    ]
+   ],
+   "AnimationSelectType_Array": [
+    [],
+    [
+     4
+    ]
+   ],
+   "ReplaceDamageSourceID": [
+    "SU2030_00_AtkGiantbeam",
+    "EB2210_00_HeartlessAngel"
+   ]
+  }
+ }
+}

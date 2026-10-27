@@ -1,0 +1,416 @@
+{
+ "package": "/Game/KH3/RebirthFX/FX_SO010_APP0_Mesh",
+ "entry": {
+  "id": 6877859721234501580,
+  "size": 298586,
+  "export_count": 54,
+  "export_bundle_count": 1,
+  "imports": [
+   678830689016754070,
+   751524520046919353,
+   4373169768435205397,
+   4936453425946142082,
+   5620188726488332680,
+   8281677798187324647,
+   9796579875721290385,
+   11088176682933950481,
+   11756016699813410689,
+   12174703058809171161,
+   13512702482601902590,
+   13908423657808587107,
+   14265886442733875577,
+   16584138493954266964,
+   18225002549081842299
+  ],
+  "load_order": 0
+ },
+ "report": {
+  "emitters": [
+   {
+    "name": "glw_I",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glw_01a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 88,
+      "external_functions": 2,
+      "parameters": 21,
+      "external_size": 132,
+      "literals": 56,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 90,
+      "external_functions": 2,
+      "parameters": 3,
+      "external_size": 20,
+      "literals": 44,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "Key",
+    "enabled": true,
+    "renderers": [
+     "mesh smd_so010_00 jtx_1dot_wht_00m"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 94,
+      "external_functions": 2,
+      "parameters": 24,
+      "external_size": 144,
+      "literals": 60,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 93,
+      "external_functions": 2,
+      "parameters": 6,
+      "external_size": 32,
+      "literals": 44,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "fls_L",
+    "enabled": true,
+    "renderers": [
+     "sprite ttx_fls_02a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 90,
+      "external_functions": 2,
+      "parameters": 21,
+      "external_size": 132,
+      "literals": 56,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 88,
+      "external_functions": 2,
+      "parameters": 3,
+      "external_size": 20,
+      "literals": 44,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "glw_SS",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 93,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 136,
+      "literals": 56,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 91,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 24,
+      "literals": 44,
+      "data_interfaces": 3
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "hrng000",
+    "enabled": true,
+    "renderers": [
+     "mesh jmd_cir_32x1_00 stx_rng_00a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 93,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 136,
+      "literals": 60,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 90,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 24,
+      "literals": 44,
+      "data_interfaces": 3
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "sho",
+    "enabled": true,
+    "renderers": [
+     "mesh mmd_brd_2x6_02 jtx_sho_00a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 100,
+      "external_functions": 4,
+      "parameters": 25,
+      "external_size": 156,
+      "literals": 60,
+      "data_interfaces": 4
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 97,
+      "external_functions": 4,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 44,
+      "data_interfaces": 4
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_rsn02",
+    "enabled": true,
+    "renderers": [
+     "mesh smd_so020_rsn0 stx_ora_01m"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 108,
+      "external_functions": 5,
+      "parameters": 33,
+      "external_size": 188,
+      "literals": 60,
+      "data_interfaces": 5
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 101,
+      "external_functions": 5,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 44,
+      "data_interfaces": 5
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_rsn",
+    "enabled": true,
+    "renderers": [
+     "mesh smd_so020_rsn0 stx_ora_01m"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 108,
+      "external_functions": 5,
+      "parameters": 33,
+      "external_size": 188,
+      "literals": 60,
+      "data_interfaces": 5
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 101,
+      "external_functions": 5,
+      "parameters": 7,
+      "external_size": 44,
+      "literals": 44,
+      "data_interfaces": 5
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_cntcrs0",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_crs_03a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 333,
+      "external_functions": 3,
+      "parameters": 42,
+      "external_size": 296,
+      "literals": 100,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 309,
+      "external_functions": 3,
+      "parameters": 16,
+      "external_size": 124,
+      "literals": 92,
+      "data_interfaces": 3
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_cntglw0",
+    "enabled": true,
+    "renderers": [
+     "mesh zmd_grd_01 ztx_glt_00a"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 95,
+      "external_functions": 3,
+      "parameters": 22,
+      "external_size": 144,
+      "literals": 60,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 92,
+      "external_functions": 3,
+      "parameters": 4,
+      "external_size": 32,
+      "literals": 44,
+      "data_interfaces": 3
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_cnt_dot1",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 351,
+      "external_functions": 2,
+      "parameters": 45,
+      "external_size": 296,
+      "literals": 108,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 327,
+      "external_functions": 2,
+      "parameters": 19,
+      "external_size": 132,
+      "literals": 96,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "c_cnt_dot",
+    "enabled": true,
+    "renderers": [
+     "sprite jtx_glt_05a_clamp"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 346,
+      "external_functions": 3,
+      "parameters": 43,
+      "external_size": 280,
+      "literals": 108,
+      "data_interfaces": 3
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 327,
+      "external_functions": 2,
+      "parameters": 19,
+      "external_size": 132,
+      "literals": 96,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "added (from Color)"
+   },
+   {
+    "name": "light0",
+    "enabled": true,
+    "renderers": [
+     "sprite skipped (no texture for None)",
+     "NiagaraLightRendererProperties left out"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 71,
+      "external_functions": 2,
+      "parameters": 23,
+      "external_size": 152,
+      "literals": 48,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 72,
+      "external_functions": 2,
+      "parameters": 5,
+      "external_size": 40,
+      "literals": 36,
+      "data_interfaces": 2
+     }
+    ]
+   }
+  ],
+  "system_scripts": [
+   {
+    "usage": "SystemSpawnScript",
+    "instructions": 209,
+    "external_functions": 0,
+    "parameters": 1,
+    "external_size": 4,
+    "literals": 24,
+    "data_interfaces": 0
+   },
+   {
+    "usage": "SystemUpdateScript",
+    "instructions": 1416,
+    "external_functions": 3,
+    "parameters": 82,
+    "external_size": 328,
+    "literals": 192,
+    "data_interfaces": 3
+   }
+  ],
+  "khcv": 46504
+ }
+}

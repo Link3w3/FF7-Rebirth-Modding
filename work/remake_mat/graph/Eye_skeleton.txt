@@ -1,0 +1,62 @@
+Material EndMaterial_Eye
+  PIN BaseColor              <- MaterialExpressionComponentMask_2[0]
+  PIN Metallic               <- MaterialExpressionConstant_20[0]
+  PIN Specular               <- MaterialExpressionMaterialFunctionCall_12[0]
+  PIN Roughness              <- MaterialExpressionConstant_21[0]
+  PIN Normal                 <- MaterialExpressionStaticSwitchParameter_0[0]
+  PIN EmissiveColor          <- MaterialExpressionStaticSwitchParameter_3[0]
+  PIN AmbientOcclusion       <- MaterialExpressionComponentMask_16[0]
+  MaterialExpressionMaterialFunctionCall_1 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_3[0]
+  MaterialExpressionMaterialFunctionCall_2 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_0[0]
+  MaterialExpressionMaterialFunctionCall_4 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_1[0]
+  MaterialExpressionMaterialFunctionCall_12 (MaterialFunctionCall) {"function": "EncodeReflectance"}
+      Reflectance      <- MaterialExpressionAdd_1[0]
+  MaterialExpressionMaterialFunctionCall_13 (MaterialFunctionCall) {"function": "CompositeColor"}
+      R                <- MaterialExpressionScalarParameter_1[0]
+      G                <- MaterialExpressionScalarParameter_2[0]
+      B                <- MaterialExpressionScalarParameter_3[0]
+  MaterialExpressionScalarParameter_1 (ScalarParameter) {"DefaultValue": 1.0, "ParameterName": "DynamicEmissiveColor_X", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_2 (ScalarParameter) {"DefaultValue": 1.0, "ParameterName": "DynamicEmissiveColor_Y", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_3 (ScalarParameter) {"DefaultValue": 1.0, "ParameterName": "DynamicEmissiveColor_Z", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_17 (ScalarParameter) {"DefaultValue": 1.0, "ParameterName": "DynamicEmissiveIntensity", "Group": "Dynamic"}
+  MaterialExpressionStaticSwitchParameter_0 (StaticSwitchParameter) {"DefaultValue": true, "Definition": "STATIC_SWITCH_TRANSFORMED_NORMAL", "ParameterName": "TransformedNormal", "Group": "Static"}
+      A                <- MaterialExpressionNormalize_0[0]
+      B                <- MaterialExpressionNormalize_0[0]
+  MaterialExpressionStaticSwitchParameter_3 (StaticSwitchParameter) {"ParameterName": "Emissive", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_5[0]
+      B                <- MaterialExpressionConstant3Vector_4[0]
+  MaterialExpressionStaticSwitchParameter_6 (StaticSwitchParameter) {"ParameterName": "DynamicEmissive", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_6[0]
+      B                <- MaterialExpressionConstant3Vector_2[0]
+  MaterialExpressionTextureSampleParameter2D_0 (TextureSampleParameter2D) {"ParameterName": "0:4:Normal(Inner)", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_1 (TextureSampleParameter2D) {"ParameterName": "0:5:Normal(Gaze)", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "1:0:Occlusion", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_6 (TextureSampleParameter2D) {"ParameterName": "0:0:Color", "Group": "Texture", "texture": "767676FF_sRGB"}
+      Coordinates      <- MaterialExpressionAdd_3[0]
+  MaterialExpressionTextureSampleParameter2D_7 (TextureSampleParameter2D) {"ParameterName": "0:3:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_26 (TextureSampleParameter2D) {"ParameterName": "0:6:Emissive", "Group": "Texture", "texture": "000000FF_HDR", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionAdd_3[0]
+  stripped expressions referred to: 16
+    MaterialExpressionAdd_1                       <- used by MaterialExpressionMaterialFunctionCall_12.Reflectance
+    MaterialExpressionAdd_3                       <- used by MaterialExpressionTextureSampleParameter2D_26.Coordinates, MaterialExpressionTextureSampleParameter2D_6.Coordinates
+    MaterialExpressionComponentMask_0             <- used by MaterialExpressionMaterialFunctionCall_2.NormalRG
+    MaterialExpressionComponentMask_1             <- used by MaterialExpressionMaterialFunctionCall_4.NormalRG
+    MaterialExpressionComponentMask_16            <- used by <pins>.AmbientOcclusion
+    MaterialExpressionComponentMask_2             <- used by <pins>.BaseColor
+    MaterialExpressionComponentMask_3             <- used by MaterialExpressionMaterialFunctionCall_1.NormalRG
+    MaterialExpressionConstant3Vector_2           <- used by MaterialExpressionStaticSwitchParameter_6.B
+    MaterialExpressionConstant3Vector_4           <- used by MaterialExpressionStaticSwitchParameter_3.B
+    MaterialExpressionConstant_20                 <- used by <pins>.Metallic
+    MaterialExpressionConstant_21                 <- used by <pins>.Roughness
+    MaterialExpressionMultiply_5                  <- used by MaterialExpressionStaticSwitchParameter_3.A
+    MaterialExpressionMultiply_6                  <- used by MaterialExpressionStaticSwitchParameter_6.A
+    MaterialExpressionNormalize_0                 <- used by MaterialExpressionStaticSwitchParameter_0.A, MaterialExpressionStaticSwitchParameter_0.B
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionTextureSampleParameter2D_0.Coordinates, MaterialExpressionTextureSampleParameter2D_1.Coordinates, MaterialExpressionTextureSampleParameter2D_7.Coordinates
+    MaterialExpressionTextureCoordinate_3         <- used by MaterialExpressionTextureSampleParameter2D_5.Coordinates

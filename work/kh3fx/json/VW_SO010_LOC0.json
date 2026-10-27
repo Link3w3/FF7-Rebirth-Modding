@@ -1,0 +1,436 @@
+{
+ "name": "VW_SO010_LOC0",
+ "exports": {
+  "vw_so010_loc0.ParticleModuleColor_0.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleColorScaleOverLife_0.DistributionAlphaScaleOverLife": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleLifetime_1.DistributionFloatConstant_0": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.20000000298023224,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleRequired_1.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSpawn_1.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSpawn_1.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 20.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleColor_0.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     3.0,
+     3.0,
+     3.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleColorScaleOverLife_0.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSize_1.DistributionVectorConstant_1": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     25.0,
+     25.0,
+     25.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleSpriteEmitter_1.ParticleLODLevel_1": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_loc0.ParticleModuleRequired_1",
+    "Modules": [
+     "export:vw_so010_loc0.ParticleModuleLifetime_1",
+     "export:vw_so010_loc0.ParticleModuleSize_1",
+     "export:vw_so010_loc0.ParticleModuleSQEX_AllParticleKill_1",
+     "export:vw_so010_loc0.ParticleModuleColor_0",
+     "export:vw_so010_loc0.ParticleModuleColorScaleOverLife_0",
+     "export:vw_so010_loc0.ParticleModuleSQEX_DepthOffset_1",
+     "export:vw_so010_loc0.ParticleModuleSQEX_EmitterTakeover_0"
+    ],
+    "TypeDataModule": "export:vw_so010_loc0.ParticleModuleTypeDataAnimTrail_0",
+    "SpawnModule": "export:vw_so010_loc0.ParticleModuleSpawn_1",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleColor_0": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 3.0,
+     "MaxValue": 3.0,
+     "MinValueVec": [
+      3.0,
+      3.0,
+      3.0
+     ],
+     "MaxValueVec": [
+      3.0,
+      3.0,
+      3.0
+     ],
+     "Distribution": "export:vw_so010_loc0.ParticleModuleColor_0.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       3.0,
+       3.0,
+       3.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleColor_0.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleColorScaleOverLife_0": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_loc0.ParticleModuleColorScaleOverLife_0.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleColorScaleOverLife_0.DistributionAlphaScaleOverLife",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleLifetime_1": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.20000000298023224,
+     "MaxValue": 0.20000000298023224,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleLifetime_1.DistributionFloatConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.20000000298023224
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleRequired_1": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:Material:/Game/Effects/wep/w_com/mat/jmt_loc_00sa.jmt_loc_00sa",
+    "EmitterBlendType": "BLEND_Translucent",
+    "EmitterLoopTime": 0.054999999701976776,
+    "EmitterLoopDuration": 0.07500000298023224,
+    "EmitterDurationTime": 0.1850000023841858,
+    "LoopTime": 0.054999999701976776,
+    "LoopDuration": 0.07500000298023224,
+    "bUseLegacyEmitterTime": false,
+    "EmitterDuration": 0.1850000023841858,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_loc0.ParticleModuleRequired_1.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_loc0.ParticleModuleSize_1": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 25.0,
+     "MaxValue": 25.0,
+     "MinValueVec": [
+      25.0,
+      25.0,
+      25.0
+     ],
+     "MaxValueVec": [
+      25.0,
+      25.0,
+      25.0
+     ],
+     "Distribution": "export:vw_so010_loc0.ParticleModuleSize_1.DistributionVectorConstant_1",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       25.0,
+       25.0,
+       25.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSpawn_1": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "MinValue": 20.0,
+     "MaxValue": 20.0,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleSpawn_1.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       20.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_loc0.ParticleModuleSpawn_1.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSQEX_AllParticleKill_1": {
+   "cls": "ParticleModuleSQEX_AllParticleKill",
+   "props": {
+    "KillEmitterTime": 0.38499999046325684,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSQEX_DepthOffset_1": {
+   "cls": "ParticleModuleSQEX_DepthOffset",
+   "props": {
+    "DepthOffset": -10.0,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleSQEX_EmitterTakeover_0": {
+   "cls": "ParticleModuleSQEX_EmitterTakeover",
+   "props": {
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleModuleTypeDataAnimTrail_0": {
+   "cls": "ParticleModuleTypeDataAnimTrail",
+   "props": {
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0.ParticleSpriteEmitter_1": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "LODLevels": [
+     "export:vw_so010_loc0.ParticleSpriteEmitter_1.ParticleLODLevel_1"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_loc0": {
+   "cls": "ParticleSystem",
+   "props": {
+    "SqExParticleFlag": 65537,
+    "SqExGPUParticleReactionType": "ESQEX_GPUParticleReactionType_Small",
+    "Emitters": [
+     "export:vw_so010_loc0.ParticleSpriteEmitter_1"
+    ],
+    "CurveEdSetup": null,
+    "LODDistances": [
+     0.0
+    ],
+    "LODSettings": [
+     {
+      "__struct": "ParticleSystemLOD"
+     }
+    ],
+    "FixedRelativeBoundingBox": [
+     -150.0,
+     -150.0,
+     -150.0,
+     150.0,
+     150.0,
+     150.0,
+     1
+    ],
+    "bShouldResetPeakCounts": true,
+    "CustomOcclusionBounds": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1
+    ]
+   },
+   "tail": 4
+  }
+ },
+ "problems": []
+}

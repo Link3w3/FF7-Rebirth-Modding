@@ -1,0 +1,199 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "description": "Vincent in Cloud's slot with his own moves. Built in the End editor (Skeleton Compatibility data object named Vincent_Moves: Import From Game Json, then Build Moves) from Vincent's DoC animations in /Game/Motion/Player/PC0011_00_Vincent/Battle00, with Cloud's damage, combo and cancel notifies, plus a pistol muzzle flash and gunshot on every shot; packaged in chunk 46. Normal combo: handgun shots; Punisher: melee strikes; field attack: a shot aimed down. Until they are packaged, Elena's and Rufus's shots fill in (auto). Limit 1: Rufus's Fire Break; limit 2: Thunder Shot then Blizzard Shot. Needs RebirthSkelCompat 3.2. Rename to .txt to switch off.",
+  "families": [
+    {
+      "skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+        "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+        "/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton",
+        "/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton"
+      ],
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "proportions": true,
+      "requires_paks": [
+        "FullyPlayableVincentAssets_P"
+      ],
+      "enabled": true
+    }
+  ],
+  "animation_sets": [
+    {
+      "characters": [
+        "PC0000_00_Cloud_Standard"
+      ],
+      "override": true,
+      "battle": [
+        {
+          "from": "/Game/Motion/Enemy/EB2020_Elena/Battle00",
+          "auto": true,
+          "only": [
+            "Shot"
+          ]
+        },
+        {
+          "from": "/Game/Motion/Enemy/EB0016_Rufus/Battle00",
+          "as": "Battle01",
+          "auto": true,
+          "only": [
+            "Shot"
+          ]
+        },
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "moves": [
+        {
+          "set": "Battle00",
+          "key": "B_NAttack01_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack01_0.B_NAttack01_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_f_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle00",
+          "key": "B_NAttack02_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack02_0.B_NAttack02_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_sq_f_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle00",
+          "key": "B_NAttack03_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack03_0.B_NAttack03_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_fd_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle00",
+          "key": "B_NAttack04_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack04_0.B_NAttack04_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_sq_fd_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle00",
+          "key": "B_NAttack05_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack05_0.B_NAttack05_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m003_r_st_f_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle00",
+          "key": "B_NAttack01_1_2",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle00/B_NAttack01_1_2.B_NAttack01_1_2",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_f_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        },
+        {
+          "set": "Battle01",
+          "key": "B_SAttack01_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle01/B_SAttack01_0.B_SAttack01_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+            "hit_at": 0.07
+          }
+        },
+        {
+          "set": "Battle01",
+          "key": "B_SAttack02_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle01/B_SAttack02_0.B_SAttack02_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_1_remap",
+            "hit_at": 0.07
+          }
+        },
+        {
+          "set": "Battle01",
+          "key": "B_SAttack03_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle01/B_SAttack03_0.B_SAttack03_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_2_remap",
+            "hit_at": 0.12
+          }
+        },
+        {
+          "set": "Battle01",
+          "key": "B_SAttack04_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle01/B_SAttack04_0.B_SAttack04_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_3_remap",
+            "hit_at": 0.17
+          }
+        },
+        {
+          "set": "Battle01",
+          "key": "B_SAttack05_0",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Battle01/B_SAttack05_0.B_SAttack05_0",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_4_remap",
+            "hit_at": 0.07
+          }
+        },
+        {
+          "set": "Neutral00",
+          "key": "N_Atk01",
+          "animation": "/Game/Motion/Player/PC0011_00_Vincent/Built/Neutral00/N_Atk01.N_Atk01",
+          "build": {
+            "from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_fd_remap",
+            "shot": true,
+            "hit_at": 0.05
+          }
+        }
+      ],
+      "limit_breaks": [
+        [
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02"
+        ],
+        [
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkThunderShot01",
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBlizzardShot01_0"
+        ]
+      ],
+      "field_actions": "PC0000_Cloud",
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+      "cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "sockets": [
+        {
+          "socket": "Attach_Weapon01",
+          "use": "Attach_Weapon_Right01"
+        }
+      ],
+      "proportions": true,
+      "build_folder": "/Game/Motion/Player/PC0011_00_Vincent/Built",
+      "shot_effects": {
+        "muzzle": "/Game/Effect/Character/Weapon/WE1003_01_CorneoLackey_Pistol/Particle/FX_WE1003_01_Muzzle_01",
+        "socket": "VFX_Muzzle01",
+        "muzzle_time": 0.15,
+        "sound_bank": "/Game/Sound/SE/Character/Weapon/SE_WE1003_01_CorneoLackey_Pistol",
+        "sound": "FX_WE1003_01_Muzzle_01"
+      },
+      "requires_paks": [
+        "FullyPlayableVincentAssets_P"
+      ],
+      "enabled": true
+    }
+  ]
+}

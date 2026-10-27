@@ -1,0 +1,109 @@
+@echo off
+title Chaos's Death Penalty - making it cookable and packaging, please leave this window open
+rem Chaos's gun, the Death Penalty (close the End editor and the game first; the packaging at the end is the long part):
+rem   1. in the editor (label_death_penalty.py): everything in Content\Character\Weapon\WE011_10_Chaos_DeathPenialty
+rem      goes under a Primary Asset Label of its own for pakchunk56; its material instance is put on the game's surface
+rem      material RMI_Surface_Standard_Wide (it was on the cooked copy of the Quicksilver's material, which this editor
+rem      cannot load) with the DirectX normal map, and the model loses the Quicksilver's cooked effect mesh it was cloned
+rem      with (Saved\ChaosDeathPenalty\label_result.json says how it went). While the editor runs, those two cooked files
+rem      (Weapon\WE0011_00_Vincent_Quiksilver: Material\WE0011_00_Body and Model\WE0011_00_vfx) are put aside in
+rem      aside\ next to this, and put back right after,
+rem   2. packages the project (E:\FVIIREBIRTH\Pakage): the Death Penalty in pakchunk56.
+rem Nothing in the game is changed by this; Sandalphon makes the install from what it builds.
+rem Status: build\death_penalty_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\death_penalty_status.txt"
+echo Chaos's Death Penalty, started %DATE% %TIME%> "%STATUS%"
+for %%P in (UE4Editor.exe UE4Editor-Cmd.exe ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the End editor or the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+echo checking the files...>> "%STATUS%"
+call :md5 "%~dp0label_death_penalty.py" 7a685ed146aedd7233df83be29bbbff0 || goto :badfile
+call :md5 "%~dp0run_death_penalty.ps1" 91e76d63f9f64e8de92e2e01a8a7e10c || goto :badfile
+echo    both as made>> "%STATUS%"
+if not exist "C:\FF7R2UProj\Content\Character\Weapon\WE011_10_Chaos_DeathPenialty\Model\WE0011_10.uasset" (
+  echo FAILED: the Death Penalty is not in C:\FF7R2UProj\Content\Character\Weapon\WE011_10_Chaos_DeathPenialty ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+set "QS=C:\FF7R2UProj\Content\Character\Weapon\WE0011_00_Vincent_Quiksilver"
+set "ASIDE=%~dp0aside"
+call :putback
+if errorlevel 1 goto :done
+if not exist "%ASIDE%\Material" mkdir "%ASIDE%\Material"
+if not exist "%ASIDE%\Model" mkdir "%ASIDE%\Model"
+for %%F in (Material\WE0011_00_Body.uasset Material\WE0011_00_Body.uexp Model\WE0011_00_vfx.uasset Model\WE0011_00_vfx.uexp) do (
+  if exist "%QS%\%%F" move /Y "%QS%\%%F" "%ASIDE%\%%F" >nul
+)
+echo    the Quicksilver's cooked material and effect mesh are aside while the editor runs>> "%STATUS%"
+echo 1/2 the Death Penalty in the editor...>> "%STATUS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run_death_penalty.ps1"
+set "EDEXIT=%ERRORLEVEL%"
+call :putback
+if errorlevel 1 goto :done
+if not "%EDEXIT%"=="0" (
+  echo FAILED: the editor step ^(build\death_penalty_editor.log, Saved\ChaosDeathPenalty\label_result.json^): tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+echo 2/2 packaging the project ^(this is the long part^)...>> "%STATUS%"
+set "T0="
+for /f %%T in ('powershell -NoProfile -Command "[DateTime]::UtcNow.Ticks"') do set "T0=%%T"
+call "C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Build\BatchFiles\RunUAT.bat" -ScriptsForProject=C:/FF7R2UProj/End.uproject BuildCookRun -nocompileeditor -installed -nop4 -project=C:/FF7R2UProj/End.uproject -cook -stage -archive -archivedirectory=E:/FVIIREBIRTH/Pakage -package -ue4exe=C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Binaries\Win64\UE4Editor-Cmd.exe -compressed -ddc=InstalledDerivedDataBackendGraph -iostore -pak -iostore -prereqs -manifests -targetplatform=Win64 -build -target=End -clientconfig=Shipping -utf8output > "%~dp0build\death_penalty_package.log" 2>&1
+set "PKEXIT=%ERRORLEVEL%"
+>> "%STATUS%" echo    package exit=%PKEXIT%
+set "P56=E:\FVIIREBIRTH\Pakage\WindowsNoEditor\End\Content\Paks\pakchunk56-WindowsNoEditor.utoc"
+if not exist "%P56%" (
+  echo FAILED: pakchunk56 is NOT there ^(build\death_penalty_package.log^): tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+rem (pakchunk56 has to be this packaging's, not one left from before)
+powershell -NoProfile -Command "if ((Get-Item -LiteralPath '%P56%').LastWriteTimeUtc.Ticks -gt [long]'%T0%') { exit 0 } else { exit 1 }"
+if errorlevel 1 (
+  echo FAILED: pakchunk56 is an old one: the packaging did not make a new one ^(build\death_penalty_package.log^): tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+if not "%PKEXIT%"=="0" (
+  echo DONE, BUT the packaging ended with exit %PKEXIT% ^(pakchunk56 was made all the same^): tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+echo ALL DONE: pakchunk56 is there: tell Sandalphon, who makes the install from it>> "%STATUS%"
+goto :done
+
+:badfile
+echo STOPPED: a file next to this is not the one made for it ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:done
+echo DEATH PENALTY COMPLETE %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:putback
+rem (the two cooked Quicksilver files back where they were: after the editor, or from a run that stopped in the middle)
+for %%F in (Material\WE0011_00_Body.uasset Material\WE0011_00_Body.uexp Model\WE0011_00_vfx.uasset Model\WE0011_00_vfx.uexp) do (
+  if exist "%ASIDE%\%%F" (
+    if exist "%QS%\%%F" (
+      echo STOPPED: %%F is both in %QS% and in aside\ ^(tell Sandalphon^)>> "%STATUS%"
+      exit /b 1
+    )
+    move /Y "%ASIDE%\%%F" "%QS%\%%F" >nul
+    if exist "%ASIDE%\%%F" (
+      echo STOPPED: %%F could not be put back from aside\ ^(tell Sandalphon^)>> "%STATUS%"
+      exit /b 1
+    )
+    echo    put back: Weapon\WE0011_00_Vincent_Quiksilver\%%F>> "%STATUS%"
+  )
+)
+exit /b 0
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1

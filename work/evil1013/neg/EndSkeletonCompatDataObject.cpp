@@ -1,0 +1,7171 @@
+// RebirthSkelCompat: KH3-style compatible skeletons for FINAL FANTASY VII REBIRTH mods.
+#include "EndSkeletonCompatDataObject.h"
+
+#include "Animation/AnimBoneCompressionCodec.h"
+#include "Animation/AnimBoneCompressionSettings.h"
+#include "Animation/AnimComposite.h"
+#include "Animation/AnimCurveCompressionSettings.h"
+#include "Animation/AnimNotifies/AnimNotify.h"
+#include "Animation/AnimNotifies/AnimNotifyState.h"
+#include "Animation/AnimSequence.h"
+#include "Animation/Skeleton.h"
+#include "Animation/SmartName.h"
+#include "AssetRegistryModule.h"
+#include "Containers/StringConv.h"
+#include "Dom/JsonObject.h"
+#include "Dom/JsonValue.h"
+#include "EdGraphSchema_K2.h"
+#include "Engine/AssetUserData.h"
+#include "Engine/Blueprint.h"
+#include "Engine/BlueprintGeneratedClass.h"
+#include "Engine/PrimaryAssetLabel.h"
+#include "Engine/SkeletalMesh.h"
+#include "Engine/SkeletalMeshSocket.h"
+#include "FileHelpers.h"
+#include "HAL/FileManager.h"
+#include "Kismet2/BlueprintEditorUtils.h"
+#include "Kismet2/KismetEditorUtilities.h"
+#include "Misc/FileHelper.h"
+#include "Misc/MessageDialog.h"
+#include "Misc/PackageName.h"
+#include "Misc/Paths.h"
+#include "Modules/ModuleManager.h"
+#include "ObjectTools.h"
+#include "ReferenceSkeleton.h"
+#include "ScopedTransaction.h"
+#include "Settings/ProjectPackagingSettings.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+#include "Serialization/JsonWriter.h"
+#include "UObject/Package.h"
+#include "UObject/StructOnScope.h"
+#include "UObject/UObjectGlobals.h"
+#include "UObject/UnrealType.h"
+
+#include <string>
+#include <type_traits>
+
+// The game mod's own rules (config parsing, families, the bone-hierarchy test and the hierarchy fix), shared so this
+// data object shows exactly what the game will do. A copy of Tools/RebirthSkelCompat/src/SkelCompatCore.hpp.
+THIRD_PARTY_INCLUDES_START
+#include "SkelCompatCore.hpp"
+THIRD_PARTY_INCLUDES_END
+
+DEFINE_LOG_CATEGORY_STATIC(LogRebirthSkelCompat, Log, All);
+
+static_assert(std::is_same<TCHAR, wchar_t>::value, "The shared SkelCompat core uses wchar_t strings (Windows).");
+
+namespace RebirthSkelCompatEditor
+{
+// The Blueprint the UE4SS mod reads in game. Parent is the native AssetUserData, which the retail game has.
+const TCHAR* const CarrierPackage = TEXT("/Game/RebirthSkelCompat/BP_SkelCompatUserData");
+const TCHAR* const CarrierName = TEXT("BP_SkelCompatUserData");
+const TCHAR* const AnimationSkeletonsVariable = TEXT("AnimationSkeletons");
+const TCHAR* const ReceivingMeshesVariable = TEXT("ReceivingMeshes");
+const TCHAR* const DefaultGameDirectory = TEXT("C:/Program Files (x86)/Steam/steamapps/common/FINAL FANTASY VII REBIRTH");
+const TCHAR* const ModFolder = TEXT("End/Binaries/Win64/ue4ss/Mods/RebirthSkelCompat");
+constexpr int32 MaxMeshesPerPair = 32;
+constexpr int32 MaxNamesListed = 10;
+constexpr int64 MaxConfigFileBytes = 1 << 20; // the mod skips larger files
+
+FString PathOf(const UObject* Object) { return Object ? Object->GetPathName() : FString(TEXT("None")); }
+
+// Assets loaded from the game's cooked files. Saving one from the editor turns it into an editor copy of a
+// retail file, and rebinding a game mesh changes it everywhere the game shows it.
+bool IsCookedAsset(const UObject* Object)
+{
+	const UPackage* Package = Object ? Object->GetOutermost() : nullptr;
+	return Package && Package->HasAnyPackageFlags(PKG_Cooked);
+}
+
+std::wstring Wide(const FString& Text) { return std::wstring(*Text); }
+FString FromWide(const std::wstring& Text) { return FString(Text.c_str()); }
+
+// ------------------------------------------------------------------------------------------------
+// Paths, names and the mod's JSON
+// ------------------------------------------------------------------------------------------------
+// "/Game/A/B", "Skeleton'/Game/A/B.B'", "\Game\A\B.B" -> "/Game/A/B.B" (the form FSoftObjectPath::ToString gives).
+FString NormalizedObjectPath(FString Path)
+{
+	Path.TrimStartAndEndInline();
+	Path.ReplaceInline(TEXT("\\"), TEXT("/"));
+	int32 Quote = INDEX_NONE;
+	if (Path.FindChar(TEXT('\''), Quote))
+	{
+		Path = Path.Mid(Quote + 1);
+		Path.RemoveFromEnd(TEXT("'"));
+	}
+	while (Path.EndsWith(TEXT("/")))
+	{
+		Path.LeftChopInline(1);
+	}
+	int32 Slash = INDEX_NONE;
+	int32 Dot = INDEX_NONE;
+	Path.FindLastChar(TEXT('/'), Slash);
+	Path.FindLastChar(TEXT('.'), Dot);
+	if (Slash != INDEX_NONE && (Dot == INDEX_NONE || Dot < Slash))
+	{
+		Path += TEXT(".") + Path.Mid(Slash + 1);
+	}
+	return Path;
+}
+
+bool SamePath(const FString& A, const FString& B)
+{
+	return NormalizedObjectPath(A).Equals(NormalizedObjectPath(B), ESearchCase::IgnoreCase);
+}
+
+FString SoftPath(const TSoftObjectPtr<USkeleton>& Soft) { return Soft.ToSoftObjectPath().ToString(); }
+
+// "/Game/A/PC0000_00_Skeleton.PC0000_00_Skeleton" -> "PC0000_00_Skeleton"
+FString ShortName(const FString& Path)
+{
+	int32 Cut = INDEX_NONE;
+	if (Path.FindLastChar(TEXT('.'), Cut) || Path.FindLastChar(TEXT('/'), Cut))
+	{
+		return Path.Mid(Cut + 1);
+	}
+	return Path;
+}
+
+FString ShortName(const std::wstring& Path) { return ShortName(FromWide(Path)); }
+
+// "~mods\SephirothOverCloud_P.pak" -> "SephirothOverCloud_P": the name the mod compares installed paks and mod folders by.
+FString PakName(FString Name)
+{
+	Name.TrimStartAndEndInline();
+	Name.ReplaceInline(TEXT("\\"), TEXT("/"));
+	while (Name.EndsWith(TEXT("/")))
+	{
+		Name.LeftChopInline(1);
+	}
+	int32 Slash = INDEX_NONE;
+	if (Name.FindLastChar(TEXT('/'), Slash))
+	{
+		Name = Name.Mid(Slash + 1);
+	}
+	for (const TCHAR* Extension : {TEXT(".pak"), TEXT(".utoc"), TEXT(".ucas"), TEXT(".sig")})
+	{
+		if (Name.RemoveFromEnd(Extension, ESearchCase::IgnoreCase))
+		{
+			break;
+		}
+	}
+	Name.TrimStartAndEndInline();
+	return Name;
+}
+
+// Trimmed, non-empty, without duplicates (case-insensitive, like the mod).
+TArray<FString> CleanList(const TArray<FString>& Items, bool bPakNames)
+{
+	TArray<FString> Out;
+	for (const FString& Item : Items)
+	{
+		FString Clean = bPakNames ? PakName(Item) : Item.TrimStartAndEnd();
+		if (!Clean.IsEmpty())
+		{
+			Out.AddUnique(Clean); // FString == ignores case
+		}
+	}
+	return Out;
+}
+
+FString ListText(const TArray<FString>& Items)
+{
+	return Items.Num() > 0 ? FString::Join(Items, TEXT(", ")) : FString(TEXT("(none)"));
+}
+
+FString ShortList(const std::vector<std::wstring>& Paths)
+{
+	TArray<FString> Names;
+	for (const std::wstring& Path : Paths)
+	{
+		Names.Add(ShortName(Path));
+	}
+	return ListText(Names);
+}
+
+// True when some name in A is not in B.
+bool HasNamesMissingFrom(const TArray<FString>& A, const TArray<FString>& B)
+{
+	for (const FString& Name : A)
+	{
+		if (!B.Contains(Name))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+const TCHAR* MethodText(EEndSkelCompatMethod Method)
+{
+	switch (Method)
+	{
+	case EEndSkelCompatMethod::Mesh: return TEXT("mesh");
+	case EEndSkelCompatMethod::Family: return TEXT("family");
+	default: return TEXT("animations");
+	}
+}
+
+const TCHAR* MethodLabel(EEndSkelCompatMethod Method)
+{
+	switch (Method)
+	{
+	case EEndSkelCompatMethod::Mesh: return TEXT("Mesh rebind");
+	case EEndSkelCompatMethod::Family: return TEXT("Family");
+	default: return TEXT("Animations");
+	}
+}
+
+// The mod's reading of "method": mesh and family spellings, anything else is the animations method.
+EEndSkelCompatMethod ParseMethod(FString Text)
+{
+	Text.TrimStartAndEndInline();
+	for (const TCHAR* Mesh : {TEXT("mesh"), TEXT("meshes"), TEXT("rebind")})
+	{
+		if (Text.Equals(Mesh, ESearchCase::IgnoreCase))
+		{
+			return EEndSkelCompatMethod::Mesh;
+		}
+	}
+	for (const TCHAR* Family : {TEXT("family"), TEXT("group"), TEXT("share"), TEXT("shared"), TEXT("both"), TEXT("both_ways"), TEXT("bidirectional")})
+	{
+		if (Text.Equals(Family, ESearchCase::IgnoreCase))
+		{
+			return EEndSkelCompatMethod::Family;
+		}
+	}
+	return EEndSkelCompatMethod::Animations;
+}
+
+TArray<FString> StringsOf(const TSharedPtr<FJsonValue>& Value)
+{
+	TArray<FString> Out;
+	if (!Value.IsValid())
+	{
+		return Out;
+	}
+	if (Value->Type == EJson::String)
+	{
+		Out.Add(Value->AsString());
+	}
+	else if (Value->Type == EJson::Array)
+	{
+		for (const TSharedPtr<FJsonValue>& Item : Value->AsArray())
+		{
+			if (Item.IsValid() && Item->Type == EJson::String)
+			{
+				Out.Add(Item->AsString());
+			}
+		}
+	}
+	return Out;
+}
+
+bool BoolField(const TSharedPtr<FJsonObject>& Entry, const TCHAR* Key, bool& bOut)
+{
+	const TSharedPtr<FJsonValue> Value = Entry->TryGetField(Key);
+	if (!Value.IsValid() || Value->Type != EJson::Boolean)
+	{
+		return false;
+	}
+	bOut = Value->AsBool();
+	return true;
+}
+
+TArray<TSharedPtr<FJsonValue>> JsonStrings(const TArray<FString>& Items)
+{
+	TArray<TSharedPtr<FJsonValue>> Values;
+	for (const FString& Item : Items)
+	{
+		Values.Add(MakeShared<FJsonValueString>(Item));
+	}
+	return Values;
+}
+
+FString StringField(const TSharedPtr<FJsonObject>& Entry, const TCHAR* Key)
+{
+	FString Text;
+	return Entry.IsValid() && Entry->TryGetStringField(Key, Text) ? Text.TrimStartAndEnd() : FString();
+}
+
+// ------------------------------------------------------------------------------------------------
+// Animation set rows (RebirthSkelCompat 3.1, 3.2 options): the row's JSON entry, both ways.
+// ------------------------------------------------------------------------------------------------
+// "PC0000_00_Cloud_Standard", "CharaSpec_PC0000_00_Cloud_Standard" or the pack's path -> the CharaSpec row name.
+FString CharaSpecRowName(const FString& Character)
+{
+	const FString Pack = FromWide(SkelCompat::CharacterPackPath(Wide(Character)));
+	FString Name = Pack.IsEmpty() ? FString() : ShortName(Pack);
+	Name.RemoveFromStart(TEXT("CharaSpec_"), ESearchCase::IgnoreCase);
+	return Name;
+}
+
+// Where Build Moves puts a row's built animations (a content folder, no trailing slash).
+FString BuildFolderOf(const FEndAnimSetRow& Row)
+{
+	FString Folder = Row.BuildFolder.TrimStartAndEnd().Replace(TEXT("\\"), TEXT("/"));
+	while (Folder.EndsWith(TEXT("/")))
+	{
+		Folder.LeftChopInline(1);
+	}
+	if (!Folder.IsEmpty())
+	{
+		return Folder;
+	}
+	const TArray<FString> Characters = CleanList(Row.Characters, false);
+	const FString Character = Characters.Num() > 0 ? CharaSpecRowName(Characters[0]) : FString();
+	return TEXT("/Game/RebirthSkelCompat/Built/") + (Character.IsEmpty() ? FString(TEXT("Character")) : Character);
+}
+
+// The package of a move's built animation: <Build Folder>/<Set>/<Name>.
+FString BuiltPackageOf(const FEndAnimSetRow& Row, const FEndAnimSetMove& Move)
+{
+	FString Path = BuildFolderOf(Row) + TEXT("/");
+	const FString Set = Move.Set.TrimStartAndEnd();
+	if (!Set.IsEmpty())
+	{
+		Path += Set + TEXT("/");
+	}
+	return Path + Move.Name.TrimStartAndEnd();
+}
+
+FString BuiltObjectPathOf(const FEndAnimSetRow& Row, const FEndAnimSetMove& Move)
+{
+	return BuiltPackageOf(Row, Move) + TEXT(".") + Move.Name.TrimStartAndEnd();
+}
+
+// The same move as far as the game and Build Moves are concerned.
+bool SameMove(const FEndAnimSetMove& A, const FEndAnimSetMove& B)
+{
+	if (!SamePath(A.Animation.TrimStartAndEnd(), B.Animation.TrimStartAndEnd()) || A.bBuild != B.bBuild || CleanList(A.ThenPlay, false) != CleanList(B.ThenPlay, false))
+	{
+		return false;
+	}
+	return !A.bBuild || (A.bShot == B.bShot && FMath::IsNearlyEqual(A.HitAt, B.HitAt, 0.0005f) &&
+						 SamePath(A.NotifiesFrom.TrimStartAndEnd(), B.NotifiesFrom.TrimStartAndEnd()));
+}
+
+// The Directories To Never Cook entry (Project Settings > Packaging) that Folder is in, or empty when the project cooks it.
+FString NeverCookDirectoryOf(const FString& Folder)
+{
+	const FString Path = Folder + TEXT("/");
+	for (const FDirectoryPath& Directory : GetDefault<UProjectPackagingSettings>()->DirectoriesToNeverCook)
+	{
+		FString Root = Directory.Path.TrimStartAndEnd().Replace(TEXT("\\"), TEXT("/"));
+		if (Root.IsEmpty())
+		{
+			continue;
+		}
+		if (!Root.StartsWith(TEXT("/")))
+		{
+			Root = TEXT("/Game/") + Root;
+		}
+		while (Root.EndsWith(TEXT("/")))
+		{
+			Root.LeftChopInline(1);
+		}
+		if (Path.StartsWith(Root + TEXT("/"), ESearchCase::IgnoreCase))
+		{
+			return Root;
+		}
+	}
+	return FString();
+}
+
+// Seconds for the JSON, without float noise (0.08, not 0.07999999821).
+double JsonSeconds(float Value) { return FMath::RoundToDouble(static_cast<double>(Value) * 1000.0) / 1000.0; }
+
+// "auto" in the mod's JSON: false, "basic", true (attacks, abilities, limits) or "all".
+TSharedPtr<FJsonValue> AutoMatchJson(EEndAnimSetAutoMatch Mode)
+{
+	switch (Mode)
+	{
+	case EEndAnimSetAutoMatch::BasicAttacks: return MakeShared<FJsonValueString>(TEXT("basic"));
+	case EEndAnimSetAutoMatch::Attacks: return MakeShared<FJsonValueBoolean>(true);
+	case EEndAnimSetAutoMatch::WholeSet: return MakeShared<FJsonValueString>(TEXT("all"));
+	default: return MakeShared<FJsonValueBoolean>(false);
+	}
+}
+
+// "auto" / "match" of a source entry, as the mod reads it.
+EEndAnimSetAutoMatch AutoMatchOf(const TSharedPtr<FJsonObject>& Object)
+{
+	EEndAnimSetAutoMatch Mode = EEndAnimSetAutoMatch::Off;
+	for (const TCHAR* Key : {TEXT("auto"), TEXT("match")})
+	{
+		const TSharedPtr<FJsonValue> Value = Object.IsValid() ? Object->TryGetField(Key) : nullptr;
+		if (!Value.IsValid() || (Value->Type != EJson::Boolean && Value->Type != EJson::String))
+		{
+			continue;
+		}
+		SkelCompat::Json Text;
+		if (Value->Type == EJson::Boolean)
+		{
+			Text.type = SkelCompat::Json::Type::Bool;
+			Text.boolean = Value->AsBool();
+		}
+		else
+		{
+			Text.type = SkelCompat::Json::Type::String;
+			Text.string = TCHAR_TO_UTF8(*Value->AsString());
+		}
+		SkelCompat::AutoMatchMode Parsed = SkelCompat::AutoMatchMode::Off;
+		if (SkelCompat::Detail::ParseAutoMatch(Text, Parsed))
+		{
+			Mode = Parsed == SkelCompat::AutoMatchMode::Basic ? EEndAnimSetAutoMatch::BasicAttacks
+				 : Parsed == SkelCompat::AutoMatchMode::Attacks ? EEndAnimSetAutoMatch::Attacks
+				 : Parsed == SkelCompat::AutoMatchMode::All ? EEndAnimSetAutoMatch::WholeSet
+				 : EEndAnimSetAutoMatch::Off;
+		}
+		else
+		{
+			Mode = EEndAnimSetAutoMatch::Attacks; // the mod reads an unknown value as "attacks"
+		}
+	}
+	return Mode;
+}
+
+TSharedRef<FJsonObject> RowToJson(const FEndAnimSetRow& Row)
+{
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetArrayField(TEXT("characters"), JsonStrings(CleanList(Row.Characters, false)));
+	const auto Sources = [&](const TCHAR* Key, const TArray<FEndAnimSetSource>& List)
+	{
+		TArray<TSharedPtr<FJsonValue>> Values;
+		for (const FEndAnimSetSource& Source : List)
+		{
+			const FString Path = Source.Path.TrimStartAndEnd();
+			const FString As = Source.As.TrimStartAndEnd();
+			if (Path.IsEmpty())
+			{
+				continue;
+			}
+			if (As.IsEmpty() && Source.AutoMatch == EEndAnimSetAutoMatch::Off)
+			{
+				Values.Add(MakeShared<FJsonValueString>(Path));
+				continue;
+			}
+			TSharedRef<FJsonObject> Renamed = MakeShared<FJsonObject>();
+			Renamed->SetStringField(TEXT("from"), Path);
+			if (!As.IsEmpty())
+			{
+				Renamed->SetStringField(TEXT("as"), As);
+			}
+			if (Source.AutoMatch != EEndAnimSetAutoMatch::Off)
+			{
+				Renamed->SetField(TEXT("auto"), AutoMatchJson(Source.AutoMatch));
+				// "only" (3.2): the auto match uses only animations with one of these words in their name.
+				const TArray<FString> Only = CleanList(Source.OnlyNamesWith, false);
+				if (Only.Num() > 0)
+				{
+					Renamed->SetArrayField(TEXT("only"), JsonStrings(Only));
+				}
+			}
+			Values.Add(MakeShared<FJsonValueObject>(Renamed));
+		}
+		if (Values.Num() > 0)
+		{
+			Entry->SetArrayField(Key, Values);
+		}
+	};
+	Sources(TEXT("battle"), Row.Battle);
+	Sources(TEXT("field"), Row.Field);
+	TArray<TSharedPtr<FJsonValue>> Moves;
+	for (const FEndAnimSetMove& Move : Row.Moves)
+	{
+		if (Move.Name.TrimStartAndEnd().IsEmpty() || Move.Animation.TrimStartAndEnd().IsEmpty())
+		{
+			continue;
+		}
+		TSharedRef<FJsonObject> Object = MakeShared<FJsonObject>();
+		if (!Move.Set.TrimStartAndEnd().IsEmpty())
+		{
+			Object->SetStringField(TEXT("set"), Move.Set.TrimStartAndEnd());
+		}
+		Object->SetStringField(TEXT("key"), Move.Name.TrimStartAndEnd());
+		const TArray<FString> Then = CleanList(Move.ThenPlay, false);
+		if (Move.bBuild)
+		{
+			// Built in the editor (Build Moves): the game plays the built animation; "build" (editor only, the mod skips it)
+			// says what it is built from.
+			Object->SetStringField(TEXT("animation"), BuiltObjectPathOf(Row, Move));
+			TSharedRef<FJsonObject> Build = MakeShared<FJsonObject>();
+			Build->SetStringField(TEXT("from"), Move.Animation.TrimStartAndEnd());
+			if (Move.bShot)
+			{
+				Build->SetBoolField(TEXT("shot"), true);
+			}
+			if (Move.HitAt > 0.f)
+			{
+				Build->SetNumberField(TEXT("hit_at"), JsonSeconds(Move.HitAt));
+			}
+			if (!Move.NotifiesFrom.TrimStartAndEnd().IsEmpty())
+			{
+				Build->SetStringField(TEXT("notifies_from"), Move.NotifiesFrom.TrimStartAndEnd());
+			}
+			Object->SetObjectField(TEXT("build"), Build);
+		}
+		else if (Then.Num() > 0)
+		{
+			// A chain: the animations played one after another (RebirthSkelCompat 3.2).
+			TArray<FString> Chain{Move.Animation.TrimStartAndEnd()};
+			Chain.Append(Then);
+			Object->SetArrayField(TEXT("animation"), JsonStrings(Chain));
+		}
+		else
+		{
+			Object->SetStringField(TEXT("animation"), Move.Animation.TrimStartAndEnd());
+		}
+		Moves.Add(MakeShared<FJsonValueObject>(Object));
+	}
+	if (Moves.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("moves"), Moves);
+	}
+	const TArray<FString> Sets = CleanList(Row.MoreSetNames, false);
+	if (Sets.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("sets"), JsonStrings(Sets));
+	}
+	if (!Row.FieldActions.TrimStartAndEnd().IsEmpty())
+	{
+		Entry->SetStringField(TEXT("field_actions"), Row.FieldActions.TrimStartAndEnd());
+	}
+	if (!Row.Cutscene.IsNull())
+	{
+		Entry->SetStringField(TEXT("cutscene"), SoftPath(Row.Cutscene));
+	}
+	if (!Row.CharacterSkeleton.IsNull())
+	{
+		Entry->SetStringField(TEXT("skeleton"), SoftPath(Row.CharacterSkeleton));
+	}
+	TArray<TSharedPtr<FJsonValue>> Sockets;
+	for (const FEndSocketStandIn& Socket : Row.Sockets)
+	{
+		const FString Wanted = Socket.Socket.TrimStartAndEnd();
+		const FString Use = Socket.Use.TrimStartAndEnd();
+		if (!Wanted.IsEmpty() && !Use.IsEmpty())
+		{
+			TSharedRef<FJsonObject> Object = MakeShared<FJsonObject>();
+			Object->SetStringField(TEXT("socket"), Wanted);
+			Object->SetStringField(TEXT("use"), Use);
+			Sockets.Add(MakeShared<FJsonValueObject>(Object));
+		}
+	}
+	if (Sockets.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("sockets"), Sockets);
+	}
+	// Limit breaks in order (null keeps that limit as it is); empty ones at the end are left out.
+	TArray<TSharedPtr<FJsonValue>> Limits;
+	for (const FEndLimitBreak& Limit : Row.LimitBreaks)
+	{
+		const FString Animation = Limit.Animation.TrimStartAndEnd();
+		const TArray<FString> Then = CleanList(Limit.ThenPlay, false);
+		if (Animation.IsEmpty())
+		{
+			Limits.Add(MakeShared<FJsonValueNull>());
+		}
+		else if (Then.Num() == 0)
+		{
+			Limits.Add(MakeShared<FJsonValueString>(Animation));
+		}
+		else
+		{
+			TArray<FString> Chain{Animation};
+			Chain.Append(Then);
+			Limits.Add(MakeShared<FJsonValueArray>(JsonStrings(Chain)));
+		}
+	}
+	while (Limits.Num() > 0 && Limits.Last()->Type == EJson::Null)
+	{
+		Limits.Pop();
+	}
+	if (Limits.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("limit_breaks"), Limits);
+	}
+	if (Row.bKeepProportions)
+	{
+		Entry->SetBoolField(TEXT("proportions"), true);
+	}
+	if (Row.bOverride)
+	{
+		Entry->SetBoolField(TEXT("override"), true);
+	}
+	// Build Moves settings (editor only; the mod skips them).
+	if (!Row.BuildFolder.TrimStartAndEnd().IsEmpty())
+	{
+		Entry->SetStringField(TEXT("build_folder"), BuildFolderOf(Row));
+	}
+	const FEndShotEffects& Shot = Row.ShotEffects;
+	if (!Shot.MuzzleEffect.TrimStartAndEnd().IsEmpty() || !Shot.SoundBank.TrimStartAndEnd().IsEmpty())
+	{
+		TSharedRef<FJsonObject> Object = MakeShared<FJsonObject>();
+		if (!Shot.MuzzleEffect.TrimStartAndEnd().IsEmpty())
+		{
+			Object->SetStringField(TEXT("muzzle"), Shot.MuzzleEffect.TrimStartAndEnd());
+			Object->SetStringField(TEXT("socket"), Shot.MuzzleSocket.ToString());
+			Object->SetNumberField(TEXT("muzzle_time"), JsonSeconds(Shot.MuzzleTime));
+		}
+		if (!Shot.SoundBank.TrimStartAndEnd().IsEmpty())
+		{
+			Object->SetStringField(TEXT("sound_bank"), Shot.SoundBank.TrimStartAndEnd());
+			Object->SetStringField(TEXT("sound"), Shot.Sound.ToString());
+		}
+		if (Shot.Weapon != 1)
+		{
+			Object->SetNumberField(TEXT("weapon"), Shot.Weapon);
+		}
+		Entry->SetObjectField(TEXT("shot_effects"), Object);
+	}
+	const TArray<FString> Requires = CleanList(Row.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	Entry->SetBoolField(TEXT("enabled"), Row.bEnabled);
+	return Entry;
+}
+
+// The mod's "animation_sets" entry as a row (for Import From Game Json). False without a character.
+bool RowFromJson(const TSharedPtr<FJsonObject>& Entry, FEndAnimSetRow& Row)
+{
+	Row = FEndAnimSetRow();
+	if (!Entry.IsValid())
+	{
+		return false;
+	}
+	BoolField(Entry, TEXT("enabled"), Row.bEnabled);
+	TArray<FString> Characters = StringsOf(Entry->TryGetField(TEXT("character")));
+	Characters.Append(StringsOf(Entry->TryGetField(TEXT("characters"))));
+	Row.Characters = CleanList(Characters, false);
+	for (const TCHAR* Key : {TEXT("battle"), TEXT("field")})
+	{
+		TArray<FEndAnimSetSource>& List = FCString::Strcmp(Key, TEXT("battle")) == 0 ? Row.Battle : Row.Field;
+		const TSharedPtr<FJsonValue> Value = Entry->TryGetField(Key);
+		TArray<TSharedPtr<FJsonValue>> Items;
+		if (Value.IsValid() && Value->Type == EJson::Array) { Items = Value->AsArray(); }
+		else if (Value.IsValid()) { Items.Add(Value); }
+		for (const TSharedPtr<FJsonValue>& Item : Items)
+		{
+			FEndAnimSetSource Source;
+			if (Item.IsValid() && Item->Type == EJson::String)
+			{
+				Source.Path = Item->AsString().TrimStartAndEnd();
+			}
+			else if (Item.IsValid() && Item->Type == EJson::Object)
+			{
+				const TSharedPtr<FJsonObject> Object = Item->AsObject();
+				for (const TCHAR* From : {TEXT("from"), TEXT("set"), TEXT("path"), TEXT("use")})
+				{
+					if (Source.Path.IsEmpty()) { Source.Path = StringField(Object, From); }
+				}
+				Source.As = StringField(Object, TEXT("as"));
+				Source.AutoMatch = AutoMatchOf(Object);
+				Source.OnlyNamesWith = CleanList(StringsOf(Object->TryGetField(TEXT("only"))), false);
+			}
+			if (!Source.Path.IsEmpty())
+			{
+				List.Add(Source);
+			}
+		}
+	}
+	const TSharedPtr<FJsonValue> Moves = Entry->TryGetField(TEXT("moves"));
+	FString BuiltSeen;          // the first built animation's path, for a row without "build_folder"
+	FEndAnimSetMove BuiltSeenMove;
+	if (Moves.IsValid() && Moves->Type == EJson::Object)
+	{
+		for (const auto& Pair : Moves->AsObject()->Values)
+		{
+			const TArray<FString> Chain = StringsOf(Pair.Value);
+			if (Chain.Num() == 0)
+			{
+				continue;
+			}
+			FEndAnimSetMove Move;
+			const FString Key = Pair.Key.TrimStartAndEnd();
+			FString Set, Name;
+			if (Key.Split(TEXT("/"), &Set, &Name))
+			{
+				Move.Set = Set.TrimStartAndEnd();
+				Move.Name = Name.TrimStartAndEnd();
+			}
+			else
+			{
+				Move.Name = Key;
+			}
+			Move.Animation = Chain[0].TrimStartAndEnd();
+			for (int32 Index = 1; Index < Chain.Num(); ++Index)
+			{
+				Move.ThenPlay.Add(Chain[Index].TrimStartAndEnd());
+			}
+			Row.Moves.Add(Move);
+		}
+	}
+	else if (Moves.IsValid() && Moves->Type == EJson::Array)
+	{
+		for (const TSharedPtr<FJsonValue>& Item : Moves->AsArray())
+		{
+			if (!Item.IsValid() || Item->Type != EJson::Object)
+			{
+				continue;
+			}
+			const TSharedPtr<FJsonObject> Object = Item->AsObject();
+			FEndAnimSetMove Move;
+			Move.Set = StringField(Object, TEXT("set"));
+			Move.Name = StringField(Object, TEXT("key"));
+			TArray<FString> Chain;
+			for (const TCHAR* Key : {TEXT("animation"), TEXT("use"), TEXT("chain")})
+			{
+				if (Chain.Num() == 0) { Chain = StringsOf(Object->TryGetField(Key)); }
+			}
+			// Built in the editor: "animation" is the built one, "build" says what it is made from.
+			const TSharedPtr<FJsonObject>* Build = nullptr;
+			if (Object->TryGetObjectField(TEXT("build"), Build) && Build && Build->IsValid())
+			{
+				Move.bBuild = true;
+				if (Chain.Num() > 0 && BuiltSeen.IsEmpty())
+				{
+					BuiltSeen = NormalizedObjectPath(Chain[0]);
+					BuiltSeenMove = Move;
+				}
+				Chain = StringsOf((*Build)->TryGetField(TEXT("from")));
+				BoolField(*Build, TEXT("shot"), Move.bShot);
+				double HitAt = 0.0;
+				if ((*Build)->TryGetNumberField(TEXT("hit_at"), HitAt))
+				{
+					Move.HitAt = FMath::Max(0.f, static_cast<float>(HitAt));
+				}
+				Move.NotifiesFrom = StringField(*Build, TEXT("notifies_from"));
+			}
+			if (Chain.Num() > 0)
+			{
+				Move.Animation = Chain[0].TrimStartAndEnd();
+				for (int32 Index = 1; Index < Chain.Num(); ++Index)
+				{
+					Move.ThenPlay.Add(Chain[Index].TrimStartAndEnd());
+				}
+			}
+			Row.Moves.Add(Move);
+		}
+	}
+	Row.MoreSetNames = CleanList(StringsOf(Entry->TryGetField(TEXT("sets"))), false);
+	Row.FieldActions = StringField(Entry, TEXT("field_actions"));
+	FString Skeleton = StringField(Entry, TEXT("skeleton"));
+	FString Hub = StringField(Entry, TEXT("cutscene"));
+	const TSharedPtr<FJsonObject>* Cutscene = nullptr;
+	if (Entry->TryGetObjectField(TEXT("cutscene"), Cutscene) && Cutscene)
+	{
+		Hub = StringField(*Cutscene, TEXT("hub"));
+		if (Hub.IsEmpty()) { Hub = StringField(*Cutscene, TEXT("plays")); }
+		const FString Own = StringField(*Cutscene, TEXT("skeleton"));
+		if (!Own.IsEmpty()) { Skeleton = Own; }
+	}
+	if (!Hub.IsEmpty()) { Row.Cutscene = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(Hub))); }
+	if (!Skeleton.IsEmpty()) { Row.CharacterSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(Skeleton))); }
+	const auto AddSocket = [&Row](const FString& Wanted, const FString& Use)
+	{
+		if (!Wanted.IsEmpty() && !Use.IsEmpty() && !Row.Sockets.ContainsByPredicate([&](const FEndSocketStandIn& S) { return S.Socket.Equals(Wanted, ESearchCase::IgnoreCase); }))
+		{
+			FEndSocketStandIn Socket;
+			Socket.Socket = Wanted;
+			Socket.Use = Use;
+			Row.Sockets.Add(Socket);
+		}
+	};
+	const TSharedPtr<FJsonValue> Sockets = Entry->TryGetField(TEXT("sockets"));
+	if (Sockets.IsValid() && Sockets->Type == EJson::Array)
+	{
+		for (const TSharedPtr<FJsonValue>& Item : Sockets->AsArray())
+		{
+			const TSharedPtr<FJsonObject> Object = Item.IsValid() && Item->Type == EJson::Object ? Item->AsObject() : nullptr;
+			FString Wanted = StringField(Object, TEXT("socket"));
+			if (Wanted.IsEmpty()) { Wanted = StringField(Object, TEXT("name")); }
+			FString Use = StringField(Object, TEXT("use"));
+			if (Use.IsEmpty()) { Use = StringField(Object, TEXT("to")); }
+			if (Use.IsEmpty()) { Use = StringField(Object, TEXT("bone")); }
+			AddSocket(Wanted, Use);
+		}
+	}
+	else if (Sockets.IsValid() && Sockets->Type == EJson::Object)
+	{
+		for (const auto& Socket : Sockets->AsObject()->Values)
+		{
+			if (Socket.Value.IsValid() && Socket.Value->Type == EJson::String)
+			{
+				AddSocket(Socket.Key.TrimStartAndEnd(), Socket.Value->AsString().TrimStartAndEnd());
+			}
+		}
+	}
+	// Limit breaks: an array in order (null or "" keeps that one), or an object by number / B_AtkLimit name.
+	TSharedPtr<FJsonValue> Limits = Entry->TryGetField(TEXT("limit_breaks"));
+	if (!Limits.IsValid()) { Limits = Entry->TryGetField(TEXT("limits")); }
+	const auto SetLimit = [&Row](int32 Number, const TSharedPtr<FJsonValue>& Value)
+	{
+		const TArray<FString> Chain = StringsOf(Value);
+		if (Number < 1 || Number > 99 || Chain.Num() == 0 || Chain[0].TrimStartAndEnd().IsEmpty())
+		{
+			return;
+		}
+		if (Row.LimitBreaks.Num() < Number) { Row.LimitBreaks.SetNum(Number); }
+		FEndLimitBreak& Limit = Row.LimitBreaks[Number - 1];
+		Limit.Animation = Chain[0].TrimStartAndEnd();
+		Limit.ThenPlay.Reset();
+		for (int32 Index = 1; Index < Chain.Num(); ++Index) { Limit.ThenPlay.Add(Chain[Index].TrimStartAndEnd()); }
+	};
+	if (Limits.IsValid() && Limits->Type == EJson::Array)
+	{
+		const TArray<TSharedPtr<FJsonValue>>& Items = Limits->AsArray();
+		for (int32 Index = 0; Index < Items.Num(); ++Index) { SetLimit(Index + 1, Items[Index]); }
+	}
+	else if (Limits.IsValid() && Limits->Type == EJson::Object)
+	{
+		for (const auto& Limit : Limits->AsObject()->Values)
+		{
+			FString Key = Limit.Key.TrimStartAndEnd();
+			if (Key.StartsWith(TEXT("B_AtkLimit"), ESearchCase::IgnoreCase))
+			{
+				Key = Key.Mid(10);
+				Key.RemoveFromEnd(TEXT("_0"));
+			}
+			if (Key.IsNumeric()) { SetLimit(FCString::Atoi(*Key), Limit.Value); }
+		}
+	}
+	for (const TCHAR* Key : {TEXT("proportions"), TEXT("keep_proportions")})
+	{
+		BoolField(Entry, Key, Row.bKeepProportions);
+	}
+	BoolField(Entry, TEXT("override"), Row.bOverride);
+	// Build Moves settings.
+	Row.BuildFolder = StringField(Entry, TEXT("build_folder"));
+	if (Row.BuildFolder.IsEmpty() && !BuiltSeen.IsEmpty())
+	{
+		// <folder>/<Set>/<Name>.<Name> -> <folder>
+		FString Folder = FPackageName::ObjectPathToPackageName(BuiltSeen);
+		Folder.RemoveFromEnd(TEXT("/") + BuiltSeenMove.Name.TrimStartAndEnd());
+		const FString Set = BuiltSeenMove.Set.TrimStartAndEnd();
+		if (!Set.IsEmpty())
+		{
+			Folder.RemoveFromEnd(TEXT("/") + Set);
+		}
+		Row.BuildFolder = Folder;
+	}
+	const TSharedPtr<FJsonObject>* Shot = nullptr;
+	if (Entry->TryGetObjectField(TEXT("shot_effects"), Shot) && Shot && Shot->IsValid())
+	{
+		Row.ShotEffects.MuzzleEffect = StringField(*Shot, TEXT("muzzle"));
+		const FString Socket = StringField(*Shot, TEXT("socket"));
+		if (!Socket.IsEmpty())
+		{
+			Row.ShotEffects.MuzzleSocket = FName(*Socket);
+		}
+		double Number = 0.0;
+		if ((*Shot)->TryGetNumberField(TEXT("muzzle_time"), Number) && Number > 0.0)
+		{
+			Row.ShotEffects.MuzzleTime = static_cast<float>(Number);
+		}
+		Row.ShotEffects.SoundBank = StringField(*Shot, TEXT("sound_bank"));
+		const FString Sound = StringField(*Shot, TEXT("sound"));
+		Row.ShotEffects.Sound = Sound.IsEmpty() ? NAME_None : FName(*Sound);
+		if ((*Shot)->TryGetNumberField(TEXT("weapon"), Number))
+		{
+			Row.ShotEffects.Weapon = FMath::Clamp(static_cast<int32>(Number), 1, 8);
+		}
+	}
+	TArray<FString> Paks = StringsOf(Entry->TryGetField(TEXT("requires_paks")));
+	Paks.Append(StringsOf(Entry->TryGetField(TEXT("requires_pak"))));
+	Row.RequiresPaks = CleanList(Paks, true);
+	return Row.Characters.Num() > 0;
+}
+
+// The row as the game reads it: parsed and settled by the mod's own code (alone, without the other compat files).
+bool RowAsGameReadsIt(const FEndAnimSetRow& Row, SkelCompat::AnimSetRow& Out, std::vector<std::wstring>& Notes, std::vector<SkelCompat::Pair>& Families)
+{
+	TSharedRef<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("schema"), TEXT("RebirthSkelCompat/1"));
+	FEndAnimSetRow On = Row;
+	On.bEnabled = true;
+	On.RequiresPaks.Reset();
+	TArray<TSharedPtr<FJsonValue>> Rows;
+	Rows.Add(MakeShared<FJsonValueObject>(RowToJson(On)));
+	Root->SetArrayField(TEXT("animation_sets"), Rows);
+	FString Text;
+	const TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Text);
+	FJsonSerializer::Serialize(Root, Writer);
+	SkelCompat::Config Config;
+	const FTCHARToUTF8 Utf8(*Text);
+	SkelCompat::AppendConfig(std::string_view(Utf8.Get(), static_cast<size_t>(Utf8.Length())), L"row", Config);
+	SkelCompat::FinishConfig(Config, [](const std::wstring&) { return true; });
+	Notes = Config.Messages;
+	Families = Config.Pairs;
+	if (Config.AnimSets.empty())
+	{
+		return false;
+	}
+	Out = Config.AnimSets.front();
+	return true;
+}
+
+// ------------------------------------------------------------------------------------------------
+// RebirthDataObjectLibrary (Rebirth Cooked Asset Preview plugin): the project's data object tools, called through
+// reflection so this plugin does not depend on that one.
+// ------------------------------------------------------------------------------------------------
+class FDataObjectCall
+{
+public:
+	// Library: RebirthDataObjectLibrary (data objects) or RebirthGameObjectLibrary (game assets, editor 1.7).
+	explicit FDataObjectCall(const TCHAR* Name, const TCHAR* LibraryName = TEXT("RebirthDataObjectLibrary"))
+	{
+		UClass* Library = FindObject<UClass>(ANY_PACKAGE, LibraryName);
+		Function = Library ? Library->FindFunctionByName(FName(Name)) : nullptr;
+		if (Function)
+		{
+			Params = MakeUnique<FStructOnScope>(Function);
+		}
+	}
+
+	explicit operator bool() const { return Function != nullptr; }
+
+	bool SetString(const TCHAR* Param, const FString& Value)
+	{
+		FStrProperty* Property = CastField<FStrProperty>(Find(Param));
+		if (Property) { Property->SetPropertyValue_InContainer(Memory(), Value); }
+		return Property != nullptr;
+	}
+
+	bool SetName(const TCHAR* Param, const FString& Value)
+	{
+		FNameProperty* Property = CastField<FNameProperty>(Find(Param));
+		if (Property) { Property->SetPropertyValue_InContainer(Memory(), FName(*Value)); }
+		return Property != nullptr;
+	}
+
+	bool SetNames(const TCHAR* Param, const TArray<FName>& Value)
+	{
+		FArrayProperty* Property = CastField<FArrayProperty>(Find(Param));
+		if (!Property || !CastField<FNameProperty>(Property->Inner)) { return false; }
+		*Property->ContainerPtrToValuePtr<TArray<FName>>(Memory()) = Value;
+		return true;
+	}
+
+	void Run()
+	{
+		if (Function) { Function->GetOwnerClass()->GetDefaultObject()->ProcessEvent(Function, Memory()); }
+	}
+
+	bool ResultBool() const
+	{
+		const FBoolProperty* Property = CastField<FBoolProperty>(Find(TEXT("ReturnValue")));
+		return Property && Property->GetPropertyValue_InContainer(Memory());
+	}
+
+	FString ResultString(const TCHAR* Param = TEXT("ReturnValue")) const
+	{
+		const FStrProperty* Property = CastField<FStrProperty>(Find(Param));
+		return Property ? Property->GetPropertyValue_InContainer(Memory()) : FString();
+	}
+
+	TArray<FName> ResultNames() const
+	{
+		const FArrayProperty* Property = CastField<FArrayProperty>(Find(TEXT("ReturnValue")));
+		return Property && CastField<FNameProperty>(Property->Inner) ? *Property->ContainerPtrToValuePtr<TArray<FName>>(Memory()) : TArray<FName>();
+	}
+
+	TArray<FString> ResultStrings() const
+	{
+		const FArrayProperty* Property = CastField<FArrayProperty>(Find(TEXT("ReturnValue")));
+		return Property && CastField<FStrProperty>(Property->Inner) ? *Property->ContainerPtrToValuePtr<TArray<FString>>(Memory()) : TArray<FString>();
+	}
+
+	UObject* ResultObject() const
+	{
+		const FObjectPropertyBase* Property = CastField<FObjectPropertyBase>(Find(TEXT("ReturnValue")));
+		return Property ? Property->GetObjectPropertyValue_InContainer(Memory()) : nullptr;
+	}
+
+private:
+	UFunction* Function = nullptr;
+	TUniquePtr<FStructOnScope> Params;
+
+	FProperty* Find(const TCHAR* Param) const { return Function ? Function->FindPropertyByName(FName(Param)) : nullptr; }
+	uint8* Memory() const { return Params->GetStructMemory(); }
+};
+
+struct FCharaSpecTable
+{
+	FString Package;
+	bool bAvailable = false;     // the tools are loaded
+	TArray<FName> Rows;
+
+	explicit FCharaSpecTable(const FString& InPackage) : Package(InPackage.TrimStartAndEnd())
+	{
+		FDataObjectCall Call(TEXT("GetDataObjectRowNames"));
+		bAvailable = static_cast<bool>(Call) && !Package.IsEmpty();
+		if (bAvailable && Call.SetString(TEXT("PackageName"), Package))
+		{
+			Call.Run();
+			Rows = Call.ResultNames();
+		}
+	}
+
+	bool Has(const FString& Row) const { return Rows.Contains(FName(*Row)); }
+
+	FString Field(const FString& Row, const TCHAR* FieldName) const
+	{
+		FDataObjectCall Call(TEXT("GetDataObjectRowField"));
+		if (!Call || !Call.SetString(TEXT("PackageName"), Package) || !Call.SetName(TEXT("RowName"), Row) || !Call.SetName(TEXT("FieldName"), FieldName))
+		{
+			return FString();
+		}
+		Call.Run();
+		return Call.ResultString().TrimStartAndEnd();
+	}
+
+	bool SetField(const FString& Row, const TCHAR* FieldName, const FString& Value, FString& Message) const
+	{
+		FDataObjectCall Call(TEXT("SetDataObjectRowField"));
+		if (!Call || !Call.SetString(TEXT("PackageName"), Package) || !Call.SetName(TEXT("RowName"), Row) || !Call.SetName(TEXT("FieldName"), FieldName) ||
+			!Call.SetString(TEXT("Value"), Value))
+		{
+			Message = TEXT("SetDataObjectRowField is not available");
+			return false;
+		}
+		Call.Run();
+		Message = Call.ResultString(TEXT("Message"));
+		return Call.ResultBool();
+	}
+
+	bool Save(FString& Message) const
+	{
+		FDataObjectCall Call(TEXT("SaveDataObject"));
+		if (!Call || !Call.SetString(TEXT("PackageName"), Package))
+		{
+			Message = TEXT("SaveDataObject is not available");
+			return false;
+		}
+		Call.Run();
+		Message = Call.ResultString(TEXT("Message"));
+		return Call.ResultBool();
+	}
+
+	TArray<FString> Check(const TArray<FName>& Which) const
+	{
+		FDataObjectCall Call(TEXT("CheckCharaSpecRows"));
+		if (!Call || !Call.SetString(TEXT("PackageName"), Package) || !Call.SetNames(TEXT("Rows"), Which))
+		{
+			return {};
+		}
+		Call.Run();
+		return Call.ResultStrings();
+	}
+};
+
+// Names in a field's copy text: (Battle00,Neutral00,None,...) or ("Battle00","Neutral00",...).
+TArray<FString> NamesInText(FString Text)
+{
+	Text.TrimStartAndEndInline();
+	Text.RemoveFromStart(TEXT("("));
+	Text.RemoveFromEnd(TEXT(")"));
+	TArray<FString> Parts;
+	Text.ParseIntoArray(Parts, TEXT(","), true);
+	TArray<FString> Names;
+	for (FString Part : Parts)
+	{
+		Part.TrimStartAndEndInline();
+		Part.TrimQuotesInline();
+		if (!Part.IsEmpty() && !Part.Equals(TEXT("None"), ESearchCase::IgnoreCase))
+		{
+			Names.AddUnique(Part);
+		}
+	}
+	return Names;
+}
+
+IAssetRegistry& AssetRegistry() { return FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry")).Get(); }
+
+bool InProject(const FString& ObjectPath) { return AssetRegistry().GetAssetByObjectPath(FName(*NormalizedObjectPath(ObjectPath))).IsValid(); }
+
+// ------------------------------------------------------------------------------------------------
+// Weapon swaps (editor 1.6). A weapon's CharaSpec pack says which blueprint spawns (Asset Class List) and what loads with
+// it (effect packs, sound banks); its CharaSpec row says which model that is (ContentsModel) and lists the same effects
+// and sounds. A row that still describes the old weapon next to a pack that spawns another one keeps every cutscene
+// with that weapon from starting. A replaced weapon's row is made to describe the weapon its pack spawns: the new
+// weapon's model, the new weapon in its Shared CharaSpec List, and the effects and sounds its pack loads.
+// ------------------------------------------------------------------------------------------------
+FString PackPackageOf(const FString& Row) { return TEXT("/Game/DataAsset/Game/CharaSpec/CharaSpec_") + Row; }
+
+// "WE0011_00_Vincent_Quiksilver" -> "WE0011_00": a model's id, the first two parts of its name.
+FString ModelIdOf(const FString& Name)
+{
+	TArray<FString> Parts;
+	Name.ParseIntoArray(Parts, TEXT("_"), true);
+	return Parts.Num() >= 2 ? Parts[0] + TEXT("_") + Parts[1] : Name;
+}
+
+// The skeleton in a weapon's model folder: /Game/Character/Weapon/<model>/Model/<id>_Skeleton.<id>_Skeleton.
+FString WeaponSkeletonPathOf(const FString& Model)
+{
+	const FString Skeleton = ModelIdOf(Model) + TEXT("_Skeleton");
+	return FString::Printf(TEXT("/Game/Character/Weapon/%s/Model/%s.%s"), *Model, *Skeleton, *Skeleton);
+}
+
+// A field value for an array of names or strings in the editor's copy format: ("A","B"), or () when empty.
+FString ArrayText(const TArray<FString>& Items)
+{
+	TArray<FString> Quoted;
+	for (const FString& Item : Items)
+	{
+		Quoted.Add(TEXT("\"") + Item + TEXT("\""));
+	}
+	return TEXT("(") + FString::Join(Quoted, TEXT(",")) + TEXT(")");
+}
+
+bool SameNames(const TArray<FString>& A, const TArray<FString>& B) { return !HasNamesMissingFrom(A, B) && !HasNamesMissingFrom(B, A); }
+
+// A field's value for a report: a list for arrays, the name otherwise.
+FString FieldShown(const TCHAR* Field, const FString& Text)
+{
+	if (FString(Field).EndsWith(TEXT("_Array")))
+	{
+		return TEXT("[") + FString::Join(NamesInText(Text), TEXT(", ")) + TEXT("]");
+	}
+	return Text.IsEmpty() ? FString(TEXT("(empty)")) : Text;
+}
+
+TSharedRef<FJsonObject> WeaponSwapToJson(const FEndWeaponSwap& Swap)
+{
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetArrayField(TEXT("weapons"), JsonStrings(CleanList(Swap.Weapons, false)));
+	Entry->SetStringField(TEXT("new_weapon"), Swap.NewWeapon.TrimStartAndEnd());
+	Entry->SetBoolField(TEXT("cutscene_family"), Swap.bCutsceneFamily);
+	if (!Swap.WeaponSkeleton.IsNull())
+	{
+		Entry->SetStringField(TEXT("weapon_skeleton"), SoftPath(Swap.WeaponSkeleton));
+	}
+	if (!Swap.NewWeaponSkeleton.IsNull())
+	{
+		Entry->SetStringField(TEXT("new_weapon_skeleton"), SoftPath(Swap.NewWeaponSkeleton));
+	}
+	TArray<TSharedPtr<FJsonValue>> Sockets;
+	for (const FEndSocketStandIn& Socket : Swap.Sockets)
+	{
+		if (!Socket.Socket.TrimStartAndEnd().IsEmpty() && !Socket.Use.TrimStartAndEnd().IsEmpty())
+		{
+			TSharedRef<FJsonObject> Object = MakeShared<FJsonObject>();
+			Object->SetStringField(TEXT("socket"), Socket.Socket.TrimStartAndEnd());
+			Object->SetStringField(TEXT("use"), Socket.Use.TrimStartAndEnd());
+			Sockets.Add(MakeShared<FJsonValueObject>(Object));
+		}
+	}
+	if (Sockets.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("sockets"), Sockets);
+	}
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	Entry->SetBoolField(TEXT("enabled"), Swap.bEnabled);
+	return Entry;
+}
+
+bool WeaponSwapFromJson(const TSharedPtr<FJsonObject>& Entry, FEndWeaponSwap& Swap)
+{
+	if (!Entry.IsValid())
+	{
+		return false;
+	}
+	Swap.Weapons = CleanList(StringsOf(Entry->TryGetField(TEXT("weapons"))), false);
+	Swap.NewWeapon = StringField(Entry, TEXT("new_weapon"));
+	BoolField(Entry, TEXT("cutscene_family"), Swap.bCutsceneFamily);
+	const FString Weapon = StringField(Entry, TEXT("weapon_skeleton"));
+	const FString New = StringField(Entry, TEXT("new_weapon_skeleton"));
+	if (!Weapon.IsEmpty())
+	{
+		Swap.WeaponSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(Weapon)));
+	}
+	if (!New.IsEmpty())
+	{
+		Swap.NewWeaponSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(New)));
+	}
+	const TArray<TSharedPtr<FJsonValue>>* Sockets = nullptr;
+	if (Entry->TryGetArrayField(TEXT("sockets"), Sockets) && Sockets)
+	{
+		for (const TSharedPtr<FJsonValue>& Item : *Sockets)
+		{
+			const TSharedPtr<FJsonObject> Object = Item.IsValid() && Item->Type == EJson::Object ? Item->AsObject() : nullptr;
+			FEndSocketStandIn Socket;
+			Socket.Socket = StringField(Object, TEXT("socket"));
+			Socket.Use = StringField(Object, TEXT("use"));
+			if (!Socket.Socket.IsEmpty() && !Socket.Use.IsEmpty())
+			{
+				Swap.Sockets.Add(Socket);
+			}
+		}
+	}
+	Swap.RequiresPaks = CleanList(StringsOf(Entry->TryGetField(TEXT("requires_paks"))), true);
+	BoolField(Entry, TEXT("enabled"), Swap.bEnabled);
+	return !Swap.NewWeapon.IsEmpty() || Swap.Weapons.Num() > 0;
+}
+
+// What a CharaSpec pack of this project loads, from its package dependencies (known even when the game assets they
+// name are not in the project), by package short name.
+struct FPackContents
+{
+	bool bInProject = false;
+	bool bCooked = false;            // a cooked game copy: it cannot be saved from the editor (make it editable first)
+	TArray<FString> Blueprints;      // under /Game/BluePrint/Character/: the character or weapon it spawns
+	TArray<FString> Effects;         // *_Effect__Pack
+	TArray<FString> SoundSE;         // SE_* sound banks
+	TArray<FString> SoundAutoSE;     // AS_* sound banks
+	TArray<FString> Voices;          // VO_* banks under /Game/Sound/Voice/ (one name for all languages)
+	TArray<FString> LipSyncs;        // LSD_* packs under /Game/LipSync/
+	TArray<FString> AIBlueprints;    // under /Game/BluePrint/AI/ (the CharaSpec row's End2AIList)
+	TArray<FString> MotionFolders;   // folders of the animation sets it lists, e.g. /Game/Motion/Player/PC0010_Sephiroth
+};
+
+FPackContents ReadPack(const FString& Row)
+{
+	FPackContents Out;
+	const FName Package(*PackPackageOf(Row));
+	TArray<FAssetData> Assets;
+	AssetRegistry().GetAssetsByPackageName(Package, Assets);
+	Out.bInProject = Assets.Num() > 0;
+	if (!Out.bInProject)
+	{
+		return Out;
+	}
+	Out.bCooked = (Assets[0].PackageFlags & PKG_Cooked) != 0;
+	TArray<FName> Dependencies;
+	AssetRegistry().GetDependencies(Package, Dependencies);
+	for (const FName& Dependency : Dependencies)
+	{
+		const FString Path = Dependency.ToString();
+		const FString Name = FPackageName::GetShortName(Path);
+		const bool bSound = Path.StartsWith(TEXT("/Game/Sound/"), ESearchCase::IgnoreCase);
+		if (Path.StartsWith(TEXT("/Game/BluePrint/Character/"), ESearchCase::IgnoreCase))
+		{
+			Out.Blueprints.AddUnique(Name);
+		}
+		else if (Path.StartsWith(TEXT("/Game/BluePrint/AI/"), ESearchCase::IgnoreCase))
+		{
+			Out.AIBlueprints.AddUnique(Name);
+		}
+		else if (Name.EndsWith(TEXT("_Effect__Pack"), ESearchCase::IgnoreCase))
+		{
+			Out.Effects.AddUnique(Name);
+		}
+		else if (Path.StartsWith(TEXT("/Game/Sound/Voice/"), ESearchCase::IgnoreCase))
+		{
+			Out.Voices.AddUnique(Name);
+		}
+		else if (Path.StartsWith(TEXT("/Game/LipSync/"), ESearchCase::IgnoreCase))
+		{
+			Out.LipSyncs.AddUnique(Name);
+		}
+		else if (bSound && Name.StartsWith(TEXT("SE_"), ESearchCase::IgnoreCase))
+		{
+			Out.SoundSE.AddUnique(Name);
+		}
+		else if (bSound && Name.StartsWith(TEXT("AS_"), ESearchCase::IgnoreCase))
+		{
+			Out.SoundAutoSE.AddUnique(Name);
+		}
+		else if (Path.StartsWith(TEXT("/Game/Motion/"), ESearchCase::IgnoreCase))
+		{
+			Out.MotionFolders.AddUnique(FPackageName::GetLongPackagePath(Path));
+		}
+	}
+	for (TArray<FString>* List : {&Out.Blueprints, &Out.Effects, &Out.SoundSE, &Out.SoundAutoSE, &Out.Voices, &Out.LipSyncs, &Out.AIBlueprints, &Out.MotionFolders})
+	{
+		List->Sort();
+	}
+	return Out;
+}
+
+// One field Apply To CharaSpec writes into a row.
+struct FWeaponFieldChange
+{
+	const TCHAR* Field = nullptr;
+	FString Current; // the field's text now
+	FString Value;   // the text Apply writes
+};
+using FFieldChange = FWeaponFieldChange;
+
+// The items of a field's copy text in order, "None" kept (slots, e.g. Override Weapon Socket Names lined up with the
+// equipment list): (None,None,Attach_Tonfa01) or ("A","B").
+TArray<FString> SlotsInText(FString Text)
+{
+	Text.TrimStartAndEndInline();
+	Text.RemoveFromStart(TEXT("("));
+	Text.RemoveFromEnd(TEXT(")"));
+	TArray<FString> Parts;
+	Text.ParseIntoArray(Parts, TEXT(","), true);
+	TArray<FString> Items;
+	for (FString Part : Parts)
+	{
+		Part.TrimStartAndEndInline();
+		Part.TrimQuotesInline();
+		Items.Add(Part.IsEmpty() ? FString(TEXT("None")) : Part);
+	}
+	return Items;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Game assets for packs to point at (editor 1.7): RebirthGameObjectLibrary of the Rebirth Cooked Asset Preview plugin finds
+// them in the game's paks, and for the ones this project does not have it makes in-memory stand-ins (never saved or cooked;
+// in game the reference resolves to the game's own asset).
+// ------------------------------------------------------------------------------------------------
+const TCHAR* const GameObjectLibrary = TEXT("RebirthGameObjectLibrary");
+const TCHAR* const GameObjectToolsMissing = TEXT("the Rebirth Cooked Asset Preview plugin of this project has no RebirthGameObjectLibrary yet (it is older than RebirthSkelCompat 1.7): rebuild the editor plugins (Tools\\EndEditorPlugins\\run_build_editor_plugins.cmd)");
+
+bool GameObjectToolsLoaded() { return static_cast<bool>(FDataObjectCall(TEXT("GetGameObject"), GameObjectLibrary)); }
+
+// Packages with this short name in the game's paks, e.g. VO_PC0000_02_Cloud_Insanity (empty without the tools).
+TArray<FString> GamePackagesNamed(const FString& ShortName)
+{
+	FDataObjectCall Call(TEXT("FindGamePackages"), GameObjectLibrary);
+	if (!Call || !Call.SetString(TEXT("ShortName"), ShortName))
+	{
+		return {};
+	}
+	Call.Run();
+	return Call.ResultStrings();
+}
+
+// The object path of the game asset ShortName under Folder (with Suffix, _C for a blueprint class), or empty. Of several,
+// the one under a /JP/ folder: the game's packs list the Japanese voice and lip sync (the game finds the voice language's).
+FString GameObjectPathOf(const FString& ShortName, const TCHAR* Folder, const TCHAR* Suffix = TEXT(""))
+{
+	FString Best;
+	for (const FString& Package : GamePackagesNamed(ShortName))
+	{
+		if (!Package.StartsWith(Folder, ESearchCase::IgnoreCase))
+		{
+			continue;
+		}
+		if (Best.IsEmpty() || (Package.Contains(TEXT("/JP/")) && !Best.Contains(TEXT("/JP/"))))
+		{
+			Best = Package;
+		}
+	}
+	return Best.IsEmpty() ? FString() : Best + TEXT(".") + ShortName + Suffix;
+}
+
+// The game asset at ObjectPath (this project's when it has it, else a stand-in), of the class at ClassPath.
+UObject* GameObject(const FString& ObjectPath, const FString& ClassPath, FString& Error)
+{
+	FDataObjectCall Call(TEXT("GetGameObject"), GameObjectLibrary);
+	if (!Call || !Call.SetString(TEXT("ObjectPath"), ObjectPath) || !Call.SetString(TEXT("ClassPath"), ClassPath))
+	{
+		Error = GameObjectToolsMissing;
+		return nullptr;
+	}
+	Call.Run();
+	Error = Call.ResultString(TEXT("Message"));
+	return Call.ResultObject();
+}
+
+// The folder of a character's kind under /Game/Character, /Game/BluePrint/Character and /Game/Motion: Player (PC...),
+// Weapon (WE...), Enemy (EN..., EB...), NonPlayer (NP...).
+const TCHAR* KindFolderOf(const FString& Name)
+{
+	if (Name.StartsWith(TEXT("WE"), ESearchCase::IgnoreCase))
+	{
+		return TEXT("Weapon");
+	}
+	if (Name.StartsWith(TEXT("EN"), ESearchCase::IgnoreCase) || Name.StartsWith(TEXT("EB"), ESearchCase::IgnoreCase))
+	{
+		return TEXT("Enemy");
+	}
+	if (Name.StartsWith(TEXT("NP"), ESearchCase::IgnoreCase))
+	{
+		return TEXT("NonPlayer");
+	}
+	return TEXT("Player");
+}
+
+// The skeleton in a model's folder: /Game/Character/<kind>/<model>/Model/<id>_Skeleton.<id>_Skeleton.
+FString ModelSkeletonPathOf(const FString& Model)
+{
+	const FString Skeleton = ModelIdOf(Model) + TEXT("_Skeleton");
+	return FString::Printf(TEXT("/Game/Character/%s/%s/Model/%s.%s"), KindFolderOf(Model), *Model, *Skeleton, *Skeleton);
+}
+
+// "PC0000_00_Cloud_Standard" -> "PC0000_": what every model and blueprint of that character starts with.
+FString CharacterIdOf(const FString& Name)
+{
+	int32 Underscore = INDEX_NONE;
+	return Name.FindChar(TEXT('_'), Underscore) ? Name.Left(Underscore + 1) : Name;
+}
+
+bool IsBlueprintOf(const FString& Blueprint, const FString& Character)
+{
+	return !Character.IsEmpty() && Blueprint.StartsWith(CharacterIdOf(Character), ESearchCase::IgnoreCase);
+}
+
+// "PC0000_00_Cloud_Standard" -> "/Game/Motion/Player/PC0000_Cloud": the motion folder named the way the game names them.
+FString MotionFolderByName(const FString& Model)
+{
+	TArray<FString> Parts;
+	Model.ParseIntoArray(Parts, TEXT("_"), true);
+	return Parts.Num() >= 3 ? FString::Printf(TEXT("/Game/Motion/%s/%s_%s"), KindFolderOf(Model), *Parts[0], *Parts[2]) : FString();
+}
+
+// The class path of the blueprint that spawns this CharaSpec row's model (the game names a blueprint like its model's row).
+FString BlueprintClassPathOf(const FString& Row)
+{
+	const FString Found = GameObjectPathOf(Row, TEXT("/Game/BluePrint/Character/"), TEXT("_C"));
+	return !Found.IsEmpty() ? Found : FString::Printf(TEXT("/Game/BluePrint/Character/%s/%s.%s_C"), KindFolderOf(Row), *Row, *Row);
+}
+
+// "/Game/BluePrint/Character/Player/PC0000_00_Cloud_Standard.PC0000_00_Cloud_Standard_C" -> "PC0000_00_Cloud_Standard"
+FString AssetNameOf(const FString& ObjectPath)
+{
+	FString Name = ShortName(ObjectPath);
+	Name.RemoveFromEnd(TEXT("_C"));
+	return Name;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Pack edits (editor 1.7). A CharaSpec pack (CharaSpec_<row>, End Asset Data Asset) spawns the classes in its Asset Class
+// List (the character or weapon blueprint, the AI blueprint) and loads the objects in its Asset Data List (motion sets,
+// effect packs, sound banks, voice, lip sync, battle camera). A swap points them at the new character or weapon.
+// ------------------------------------------------------------------------------------------------
+struct FPackEdit
+{
+	FString Blueprint; // class to spawn in place of its character or weapon blueprint (object path)
+	FString Voice;     // voice bank in place of its voice banks
+	FString LipSync;   // lip sync in place of its lip syncs
+	FString Effect;    // effect pack in place of its effect packs (weapons)
+	bool HasWork() const { return !Blueprint.IsEmpty() || !Voice.IsEmpty() || !LipSync.IsEmpty() || !Effect.IsEmpty(); }
+};
+
+TArray<FString> PackEditLines(const FPackEdit& Edit, const FPackContents& Pack)
+{
+	TArray<FString> Lines;
+	const auto Was = [](const TArray<FString>& Items) { return Items.Num() > 0 ? FString::Join(Items, TEXT(", ")) : FString(TEXT("nothing")); };
+	if (!Edit.Blueprint.IsEmpty())
+	{
+		Lines.Add(FString::Printf(TEXT("spawn %s (was %s)"), *AssetNameOf(Edit.Blueprint), *Was(Pack.Blueprints)));
+	}
+	if (!Edit.Voice.IsEmpty())
+	{
+		Lines.Add(FString::Printf(TEXT("voice %s (was %s)"), *AssetNameOf(Edit.Voice), *Was(Pack.Voices)));
+	}
+	if (!Edit.LipSync.IsEmpty())
+	{
+		Lines.Add(FString::Printf(TEXT("lip sync %s (was %s)"), *AssetNameOf(Edit.LipSync), *Was(Pack.LipSyncs)));
+	}
+	if (!Edit.Effect.IsEmpty())
+	{
+		Lines.Add(FString::Printf(TEXT("effects %s (was %s)"), *AssetNameOf(Edit.Effect), *Was(Pack.Effects)));
+	}
+	return Lines;
+}
+
+UObject* LoadPack(const FString& Row)
+{
+	return LoadObject<UObject>(nullptr, *(PackPackageOf(Row) + TEXT(".CharaSpec_") + Row), nullptr, LOAD_NoWarn | LOAD_Quiet);
+}
+
+bool InFolder(const UObject* Object, const TCHAR* Folder)
+{
+	return Object && Object->GetOutermost()->GetName().StartsWith(Folder, ESearchCase::IgnoreCase);
+}
+
+bool IsEffectPack(const UObject* Object)
+{
+	return Object && Object->GetName().EndsWith(TEXT("_Effect__Pack"), ESearchCase::IgnoreCase);
+}
+
+// One of a pack's lists (AssetDataList or AssetClassList): each entry's AssetUserData array of objects (classes).
+struct FPackList
+{
+	FArrayProperty* List = nullptr;
+	FArrayProperty* Items = nullptr;
+	FObjectPropertyBase* Item = nullptr;
+
+	FPackList(UObject* Pack, const TCHAR* Name)
+	{
+		List = Pack ? FindFProperty<FArrayProperty>(Pack->GetClass(), Name) : nullptr;
+		FStructProperty* Entry = List ? CastField<FStructProperty>(List->Inner) : nullptr;
+		Items = Entry ? FindFProperty<FArrayProperty>(Entry->Struct, TEXT("AssetUserData")) : nullptr;
+		Item = Items ? CastField<FObjectPropertyBase>(Items->Inner) : nullptr;
+	}
+
+	explicit operator bool() const { return Item != nullptr; }
+
+	// Every object, entry by entry.
+	void ForEach(UObject* Pack, TFunctionRef<void(UObject*)> Visit) const
+	{
+		FScriptArrayHelper Entries(List, List->ContainerPtrToValuePtr<void>(Pack));
+		for (int32 E = 0; E < Entries.Num(); ++E)
+		{
+			FScriptArrayHelper Objects(Items, Items->ContainerPtrToValuePtr<void>(Entries.GetRawPtr(E)));
+			for (int32 I = 0; I < Objects.Num(); ++I)
+			{
+				Visit(Item->GetObjectPropertyValue(Objects.GetRawPtr(I)));
+			}
+		}
+	}
+
+	// The objects Match picks are replaced by New: in each entry the first one becomes New, the others are taken out.
+	int32 Replace(UObject* Pack, TFunctionRef<bool(const UObject*)> Match, UObject* New) const
+	{
+		int32 Picked = 0;
+		FScriptArrayHelper Entries(List, List->ContainerPtrToValuePtr<void>(Pack));
+		for (int32 E = 0; E < Entries.Num(); ++E)
+		{
+			FScriptArrayHelper Objects(Items, Items->ContainerPtrToValuePtr<void>(Entries.GetRawPtr(E)));
+			bool bPlaced = false;
+			for (int32 I = 0; I < Objects.Num(); ++I)
+			{
+				bPlaced = bPlaced || Item->GetObjectPropertyValue(Objects.GetRawPtr(I)) == New;
+			}
+			for (int32 I = 0; I < Objects.Num(); ++I)
+			{
+				UObject* Current = Item->GetObjectPropertyValue(Objects.GetRawPtr(I));
+				if (!Current || Current == New || !Match(Current))
+				{
+					continue;
+				}
+				++Picked;
+				if (!bPlaced)
+				{
+					Item->SetObjectPropertyValue(Objects.GetRawPtr(I), New);
+					bPlaced = true;
+				}
+				else
+				{
+					Objects.RemoveValues(I, 1);
+					--I;
+				}
+			}
+		}
+		return Picked;
+	}
+};
+
+// Makes a pack of this project match an edit (the package is marked dirty and added to Dirty; saving is the caller's).
+bool ApplyPackEdit(const FString& Row, const FPackEdit& Edit, TArray<UPackage*>& Dirty, FString& Report)
+{
+	UObject* Pack = LoadPack(Row);
+	if (!Pack)
+	{
+		Report += FString::Printf(TEXT("CharaSpec_%s: ERROR: the pack does not load\n"), *Row);
+		return false;
+	}
+	if (IsCookedAsset(Pack))
+	{
+		Report += FString::Printf(TEXT("CharaSpec_%s: ERROR: a cooked game copy cannot be saved; make it editable first\n"), *Row);
+		return false;
+	}
+	const FPackList Classes(Pack, TEXT("AssetClassList"));
+	const FPackList Datas(Pack, TEXT("AssetDataList"));
+	if (!Classes || !Datas)
+	{
+		Report += FString::Printf(TEXT("CharaSpec_%s: ERROR: %s is not an End Asset Data Asset (no Asset Class List / Asset Data List)\n"), *Row, *Pack->GetClass()->GetName());
+		return false;
+	}
+	bool bOk = true;
+	bool bModified = false;
+	const auto Put = [&](const FString& Path, const FPackList& List, const TCHAR* What, TFunctionRef<bool(const UObject*)> Match)
+	{
+		if (Path.IsEmpty())
+		{
+			return;
+		}
+		// The new asset is one of a kind with what it replaces.
+		UObject* Old = nullptr;
+		List.ForEach(Pack, [&](UObject* Object) { if (!Old && Object && Match(Object)) { Old = Object; } });
+		if (!Old)
+		{
+			Report += FString::Printf(TEXT("CharaSpec_%s: no %s to replace\n"), *Row, What);
+			return;
+		}
+		FString Error;
+		UObject* New = GameObject(Path, Old->GetClass()->GetPathName(), Error);
+		if (!New)
+		{
+			Report += FString::Printf(TEXT("CharaSpec_%s: ERROR: %s %s not set: %s\n"), *Row, What, *Path, Error.IsEmpty() ? TEXT("not found") : *Error);
+			bOk = false;
+			return;
+		}
+		if (!bModified)
+		{
+			Pack->Modify();
+			bModified = true;
+		}
+		const int32 Picked = List.Replace(Pack, Match, New);
+		Report += FString::Printf(TEXT("CharaSpec_%s: %s %s (in place of %d)\n"), *Row, What, *New->GetPathName(), Picked);
+	};
+	Put(Edit.Blueprint, Classes, TEXT("blueprint"), [](const UObject* Object) { return InFolder(Object, TEXT("/Game/BluePrint/Character/")); });
+	Put(Edit.Voice, Datas, TEXT("voice"), [](const UObject* Object) { return InFolder(Object, TEXT("/Game/Sound/Voice/")); });
+	Put(Edit.LipSync, Datas, TEXT("lip sync"), [](const UObject* Object) { return InFolder(Object, TEXT("/Game/LipSync/")); });
+	Put(Edit.Effect, Datas, TEXT("effect pack"), [](const UObject* Object) { return IsEffectPack(Object); });
+	if (bModified)
+	{
+		Pack->PostEditChange();
+		Pack->MarkPackageDirty();
+		Dirty.AddUnique(Pack->GetOutermost());
+	}
+	return bOk;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Weapon swaps (editor 1.6; packs and socket stand-ins 1.7)
+// ------------------------------------------------------------------------------------------------
+struct FWeaponRowPlan
+{
+	FString Row;
+	bool bNamed = false;     // named in Weapons itself, not only through a name ending in *
+	FPackContents Pack;      // the pack as it is
+	FPackContents After;     // the pack once Apply has edited it
+	FPackEdit Edit;
+	bool bSpawnsNew = false; // its pack spawns the new weapon's blueprint (once edited)
+	TArray<FString> Notes;
+	TArray<FWeaponFieldChange> Changes;
+};
+
+struct FWeaponSwapPlan
+{
+	FString NewWeapon;         // CharaSpec row
+	FString NewModel;          // its model: a weapon's model and blueprint are named like its row
+	FString NewRowModel;       // what the new weapon's own row says now (another swap may have changed it)
+	FString Error;             // the swap cannot be applied
+	TArray<FString> Unknown;   // Weapons entries that name no row
+	TArray<FString> RowNames;  // the replaced rows
+	TArray<FWeaponRowPlan> Rows;
+	FString WeaponSkeleton;    // the family's member (object path)
+	FString NewWeaponSkeleton; // the family's hub (object path)
+	bool bWeaponSkeletonFromFolder = false;
+	bool bNewSkeletonFromFolder = false;
+};
+
+// The rows a swap replaces: exact row names (also put in Named), or every row that starts with a name ending in * (never
+// the new one).
+TArray<FString> SwapRowsOf(const TArray<FString>& Items, const FString& New, const FCharaSpecTable& Table, TArray<FString>& Unknown, TArray<FString>& Named)
+{
+	TArray<FString> Rows;
+	for (const FString& Item : CleanList(Items, false))
+	{
+		if (Item.EndsWith(TEXT("*")))
+		{
+			const FString Prefix = Item.LeftChop(1).TrimStartAndEnd();
+			int32 Found = 0;
+			for (const FName& Name : Table.Rows)
+			{
+				const FString Row = Name.ToString();
+				if (!Prefix.IsEmpty() && Row.StartsWith(Prefix, ESearchCase::IgnoreCase) && !Row.Equals(New, ESearchCase::IgnoreCase))
+				{
+					Rows.AddUnique(Row);
+					++Found;
+				}
+			}
+			if (Found == 0)
+			{
+				Unknown.Add(Item);
+			}
+			continue;
+		}
+		const FString Row = CharaSpecRowName(Item);
+		if (Row.IsEmpty() || (Table.bAvailable && !Table.Has(Row)))
+		{
+			Unknown.Add(Item);
+			continue;
+		}
+		if (!Row.Equals(New, ESearchCase::IgnoreCase))
+		{
+			Rows.AddUnique(Row);
+			Named.AddUnique(Row);
+		}
+	}
+	Rows.Sort();
+	return Rows;
+}
+
+// bRows: also read each replaced weapon's pack and work out what Apply writes into it and its row. bPackEdits: Apply may
+// edit the packs (Apply To Packs on).
+FWeaponSwapPlan PlanWeaponSwap(const FEndWeaponSwap& Swap, const FCharaSpecTable& Table, bool bRows, bool bPackEdits)
+{
+	FWeaponSwapPlan Plan;
+	Plan.NewWeapon = CharaSpecRowName(Swap.NewWeapon);
+	if (Plan.NewWeapon.IsEmpty())
+	{
+		Plan.Error = TEXT("New Weapon is empty: name the CharaSpec row of the weapon that takes their place, e.g. WE0011_00_Vincent_Quiksilver");
+	}
+	else if (Table.bAvailable && !Table.Has(Plan.NewWeapon))
+	{
+		Plan.Error = Plan.NewWeapon + TEXT(" is not a row of ") + Table.Package;
+	}
+	// The game names a weapon's model (and its blueprint) like its CharaSpec row. The row itself is not asked: another
+	// swap may have changed it (Cloud's Buster Sword row describing Vincent's gun, while Sephiroth's Masamune becomes the
+	// Buster Sword).
+	Plan.NewModel = Plan.NewWeapon;
+	if (Plan.Error.IsEmpty() && Table.bAvailable)
+	{
+		Plan.NewRowModel = Table.Field(Plan.NewWeapon, TEXT("ContentsModel"));
+	}
+	TArray<FString> Named;
+	Plan.RowNames = SwapRowsOf(Swap.Weapons, Plan.NewWeapon, Table, Plan.Unknown, Named);
+
+	// Skeletons of the cutscene family: as set, or the ones in the model folders.
+	if (!Swap.NewWeaponSkeleton.IsNull())
+	{
+		Plan.NewWeaponSkeleton = SoftPath(Swap.NewWeaponSkeleton);
+	}
+	else if (!Plan.NewModel.IsEmpty())
+	{
+		Plan.NewWeaponSkeleton = WeaponSkeletonPathOf(Plan.NewModel);
+		Plan.bNewSkeletonFromFolder = true;
+	}
+	if (!Swap.WeaponSkeleton.IsNull())
+	{
+		Plan.WeaponSkeleton = SoftPath(Swap.WeaponSkeleton);
+	}
+	else
+	{
+		// The base weapon (id ending in _00) has the skeleton its variants share: WE0000_00's for every one of Cloud's.
+		FString Base;
+		for (const FString& Row : Plan.RowNames)
+		{
+			if (ModelIdOf(Row).EndsWith(TEXT("_00")))
+			{
+				Base = Row;
+				break;
+			}
+		}
+		if (Base.IsEmpty() && Plan.RowNames.Num() > 0)
+		{
+			Base = Plan.RowNames[0];
+		}
+		if (!Base.IsEmpty())
+		{
+			Plan.WeaponSkeleton = WeaponSkeletonPathOf(Base);
+			Plan.bWeaponSkeletonFromFolder = true;
+		}
+	}
+	if (!bRows || !Plan.Error.IsEmpty() || !Table.bAvailable)
+	{
+		return Plan;
+	}
+	const bool bTools = bPackEdits && GameObjectToolsLoaded();
+	FString NewBlueprint;  // looked up once
+	FString NewEffect;
+	bool bEffectLooked = false;
+	for (const FString& Row : Plan.RowNames)
+	{
+		FWeaponRowPlan RowPlan;
+		RowPlan.Row = Row;
+		RowPlan.bNamed = Named.Contains(Row);
+		RowPlan.Pack = ReadPack(Row);
+		RowPlan.After = RowPlan.Pack;
+		RowPlan.bSpawnsNew = RowPlan.Pack.Blueprints.ContainsByPredicate([&](const FString& Blueprint) { return Blueprint.Equals(Plan.NewWeapon, ESearchCase::IgnoreCase); });
+		const bool bEditable = RowPlan.Pack.bInProject && !RowPlan.Pack.bCooked;
+		if (!RowPlan.bSpawnsNew && bEditable && bPackEdits)
+		{
+			if (!bTools)
+			{
+				RowPlan.Notes.Add(GameObjectToolsMissing);
+			}
+			else
+			{
+				if (NewBlueprint.IsEmpty())
+				{
+					NewBlueprint = BlueprintClassPathOf(Plan.NewWeapon);
+				}
+				RowPlan.Edit.Blueprint = NewBlueprint;
+				RowPlan.After.Blueprints = {Plan.NewWeapon};
+				RowPlan.bSpawnsNew = true;
+			}
+		}
+		// The new weapon's own effects in place of the old weapon's (the effect pack is named like the weapon's row).
+		const FString EffectName = Plan.NewWeapon + TEXT("_Effect__Pack");
+		if (RowPlan.bSpawnsNew && bEditable && bTools && RowPlan.Pack.Effects.Num() > 0 &&
+			!(RowPlan.Pack.Effects.Num() == 1 && RowPlan.Pack.Effects[0].Equals(EffectName, ESearchCase::IgnoreCase)))
+		{
+			if (!bEffectLooked)
+			{
+				NewEffect = GameObjectPathOf(EffectName, TEXT("/Game/Effect/"));
+				bEffectLooked = true;
+			}
+			if (!NewEffect.IsEmpty())
+			{
+				RowPlan.Edit.Effect = NewEffect;
+				RowPlan.After.Effects = {EffectName};
+			}
+			else
+			{
+				RowPlan.Notes.Add(FString::Printf(TEXT("the game has no %s: the pack keeps loading %s"), *EffectName, *FString::Join(RowPlan.Pack.Effects, TEXT(", "))));
+			}
+		}
+		if (RowPlan.bSpawnsNew)
+		{
+			const FString Model = Table.Field(Row, TEXT("ContentsModel"));
+			if (!Model.Equals(Plan.NewModel, ESearchCase::IgnoreCase))
+			{
+				RowPlan.Changes.Add({TEXT("ContentsModel"), Model, Plan.NewModel});
+			}
+			// The new weapon's own spec loads alongside (as SephirothOverCloud does it), unless another swap made that spec
+			// load a different weapon.
+			const bool bNewRowIsItself = Plan.NewRowModel.IsEmpty() || Plan.NewRowModel.Equals(Plan.NewWeapon, ESearchCase::IgnoreCase) ||
+				Plan.NewRowModel.Equals(TEXT("None"), ESearchCase::IgnoreCase);
+			const FString SharedText = Table.Field(Row, TEXT("SharedCharaSpecList_Array"));
+			TArray<FString> Shared = NamesInText(SharedText);
+			if (bNewRowIsItself && !Shared.Contains(Plan.NewWeapon))
+			{
+				Shared.Add(Plan.NewWeapon);
+				RowPlan.Changes.Add({TEXT("SharedCharaSpecList_Array"), SharedText, ArrayText(Shared)});
+			}
+			struct FLoaded
+			{
+				const TCHAR* Field;
+				const TArray<FString>* Items;
+			};
+			const FLoaded Loaded[] = {
+				{TEXT("ContentsEffect_Array"), &RowPlan.After.Effects},
+				{TEXT("ContentsSoundSE_Array"), &RowPlan.After.SoundSE},
+				{TEXT("ContentsSoundAutoSE_Array"), &RowPlan.After.SoundAutoSE},
+			};
+			for (const FLoaded& Field : Loaded)
+			{
+				const FString Text = Table.Field(Row, Field.Field);
+				if (!SameNames(NamesInText(Text), *Field.Items))
+				{
+					RowPlan.Changes.Add({Field.Field, Text, ArrayText(*Field.Items)});
+				}
+			}
+		}
+		Plan.Rows.Add(MoveTemp(RowPlan));
+	}
+	return Plan;
+}
+
+// A row matched only through a name ending in * whose pack is the game's own: the swap does not include that weapon.
+bool LeftOut(const FWeaponRowPlan& Row) { return !Row.bNamed && !Row.Pack.bInProject; }
+
+// Why a replaced weapon's row is left as it is, or empty when Apply can write it.
+FString WeaponRowProblem(const FWeaponRowPlan& Row, const FString& NewWeapon)
+{
+	if (!Row.Pack.bInProject)
+	{
+		return FString::Printf(TEXT("CharaSpec_%s is not in this project, so the game's own pack spawns the old weapon. Make that pack editable in this project, then press Apply To CharaSpec again"),
+			*Row.Row);
+	}
+	if (!Row.bSpawnsNew)
+	{
+		if (Row.Pack.bCooked)
+		{
+			return FString::Printf(TEXT("CharaSpec_%s in this project is a cooked game copy, which cannot be saved: make it editable first"), *Row.Row);
+		}
+		return FString::Printf(TEXT("its pack spawns %s, not %s. Set Asset Class List > 0 > Asset User Data of CharaSpec_%s to %s_C (or turn Apply To Packs on)"),
+			Row.Pack.Blueprints.Num() > 0 ? *FString::Join(Row.Pack.Blueprints, TEXT(", ")) : TEXT("no blueprint"), *NewWeapon, *Row.Row, *NewWeapon);
+	}
+	return FString();
+}
+
+// Report lines for a weapon's socket stand-ins: the old weapon's sockets the new one lacks, and each stand-in's socket.
+void ReportWeaponSockets(const FEndWeaponSwap& Swap, const FWeaponSwapPlan& Plan, FString& Report, bool& bOk)
+{
+	USkeleton* New = Plan.NewWeaponSkeleton.IsEmpty() ? nullptr : Cast<USkeleton>(FSoftObjectPath(Plan.NewWeaponSkeleton).TryLoad());
+	USkeleton* Old = Plan.WeaponSkeleton.IsEmpty() ? nullptr : Cast<USkeleton>(FSoftObjectPath(Plan.WeaponSkeleton).TryLoad());
+	if (Old && New && Old != New)
+	{
+		TArray<FString> Lacks;
+		for (const USkeletalMeshSocket* Socket : Old->Sockets)
+		{
+			if (Socket && !New->FindSocket(Socket->SocketName) && New->GetReferenceSkeleton().FindBoneIndex(Socket->SocketName) == INDEX_NONE &&
+				!Swap.Sockets.ContainsByPredicate([&](const FEndSocketStandIn& Mine) { return Mine.Socket.TrimStartAndEnd().Equals(Socket->SocketName.ToString(), ESearchCase::IgnoreCase); }))
+			{
+				Lacks.Add(Socket->SocketName.ToString());
+			}
+		}
+		if (Lacks.Num() > 0)
+		{
+			Report += FString::Printf(TEXT("    sockets of %s that %s lacks (moves made for the old weapon that hit with them do no damage; give each a stand-in under Sockets): %s\n"),
+				*Old->GetName(), *New->GetName(), *ListText(Lacks));
+		}
+	}
+	else if (!Old && Swap.Sockets.Num() == 0)
+	{
+		Report += FString::Printf(TEXT("    note: %s is not in this project, so its sockets are not compared (moves that hit with sockets the new weapon lacks need Sockets stand-ins)\n"),
+			Plan.WeaponSkeleton.IsEmpty() ? TEXT("the old weapon's skeleton") : *ShortName(Plan.WeaponSkeleton));
+	}
+	for (const FEndSocketStandIn& Socket : Swap.Sockets)
+	{
+		const FString Wanted = Socket.Socket.TrimStartAndEnd();
+		const FString Use = Socket.Use.TrimStartAndEnd();
+		if (Wanted.IsEmpty() || Use.IsEmpty())
+		{
+			Report += TEXT("    WARNING: a socket stand-in without Socket or Use is left out\n");
+			continue;
+		}
+		FString State = TEXT("checked in game");
+		if (New)
+		{
+			if (const USkeletalMeshSocket* Found = New->FindSocket(FName(*Use)))
+			{
+				State = TEXT("socket on bone ") + Found->BoneName.ToString();
+			}
+			else if (New->GetReferenceSkeleton().FindBoneIndex(FName(*Use)) != INDEX_NONE)
+			{
+				State = TEXT("a bone");
+			}
+			else
+			{
+				State = TEXT("WARNING: neither a socket nor a bone of ") + New->GetName() + TEXT(" (a socket only the mesh has still works)");
+			}
+		}
+		Report += FString::Printf(TEXT("    socket stand-in (Export Json): %s -> %s (%s)\n"), *Wanted, *Use, *State);
+		if (Wanted.Equals(Use, ESearchCase::IgnoreCase))
+		{
+			Report += TEXT("    WARNING: a socket cannot stand in for itself; this one is left out\n");
+		}
+	}
+	if (Swap.Sockets.Num() > 0 && Plan.NewWeaponSkeleton.IsEmpty())
+	{
+		Report += TEXT("    ERROR: socket stand-ins need New Weapon Skeleton (Advanced)\n");
+		bOk = false;
+	}
+}
+
+bool CheckWeaponSwap(const FEndWeaponSwap& Swap, int32 Index, const FCharaSpecTable& Table, bool bPackEdits, FString& Report)
+{
+	Report += FString::Printf(TEXT("Weapon swap %d: %s -> %s\n"), Index, *ListText(CleanList(Swap.Weapons, false)), *Swap.NewWeapon.TrimStartAndEnd());
+	if (!Swap.bEnabled)
+	{
+		Report += TEXT("    disabled\n");
+		return true;
+	}
+	bool bOk = true;
+	const FWeaponSwapPlan Plan = PlanWeaponSwap(Swap, Table, true, bPackEdits);
+	if (!Plan.Error.IsEmpty())
+	{
+		Report += TEXT("    ERROR: ") + Plan.Error + TEXT("\n");
+		bOk = false;
+	}
+	for (const FString& Item : Plan.Unknown)
+	{
+		Report += FString::Printf(TEXT("    WARNING: %s names no row of %s\n"), *Item, *Table.Package);
+	}
+	if (!Table.bAvailable)
+	{
+		Report += TEXT("    note: the Rebirth data object tools (Rebirth Cooked Asset Preview plugin) are not loaded, so the CharaSpec rows and packs are not checked\n");
+	}
+	else if (Plan.Error.IsEmpty())
+	{
+		Report += FString::Printf(TEXT("    new weapon: blueprint and model %s\n"), *Plan.NewModel);
+		if (!Plan.NewRowModel.IsEmpty() && !Plan.NewRowModel.Equals(Plan.NewWeapon, ESearchCase::IgnoreCase))
+		{
+			Report += FString::Printf(TEXT("    note: %s's own row describes %s now (another swap); the replaced weapons still get %s's own model\n"),
+				*Plan.NewWeapon, *Plan.NewRowModel, *Plan.NewWeapon);
+		}
+		if (Plan.RowNames.Num() == 0)
+		{
+			Report += TEXT("    ERROR: no weapon rows to replace (Weapons)\n");
+			bOk = false;
+		}
+		int32 Swapped = 0;
+		for (const FWeaponRowPlan& Row : Plan.Rows)
+		{
+			if (LeftOut(Row))
+			{
+				Report += FString::Printf(TEXT("    %s: left out (its pack is the game's own, so it stays the old weapon)\n"), *Row.Row);
+				continue;
+			}
+			for (const FString& Note : Row.Notes)
+			{
+				Report += FString::Printf(TEXT("    %s: note: %s\n"), *Row.Row, *Note);
+			}
+			const FString Problem = WeaponRowProblem(Row, Plan.NewWeapon);
+			if (!Problem.IsEmpty())
+			{
+				Report += FString::Printf(TEXT("    %s: ERROR: %s\n"), *Row.Row, *Problem);
+				bOk = false;
+				continue;
+			}
+			++Swapped;
+			if (Row.Edit.HasWork())
+			{
+				Report += FString::Printf(TEXT("    %s: Apply To CharaSpec makes its pack %s\n"), *Row.Row, *FString::Join(PackEditLines(Row.Edit, Row.Pack), TEXT("; ")));
+			}
+			TArray<FString> Loads = Row.After.Effects;
+			Loads.Append(Row.After.SoundSE);
+			Loads.Append(Row.After.SoundAutoSE);
+			const FString Spawns = FString::Printf(TEXT("pack spawns %s%s%s"), *Plan.NewWeapon, Loads.Num() > 0 ? TEXT(" and loads ") : TEXT(""), *FString::Join(Loads, TEXT(", ")));
+			if (Row.Changes.Num() == 0)
+			{
+				Report += FString::Printf(TEXT("    %s: %s; the row describes it\n"), *Row.Row, *Spawns);
+				continue;
+			}
+			Report += FString::Printf(TEXT("    %s: %s, but the row still describes the old weapon: press Apply To CharaSpec\n"), *Row.Row, *Spawns);
+			for (const FWeaponFieldChange& Change : Row.Changes)
+			{
+				Report += FString::Printf(TEXT("        %s: %s -> %s\n"), Change.Field, *FieldShown(Change.Field, Change.Current), *FieldShown(Change.Field, Change.Value));
+			}
+		}
+		if (Plan.RowNames.Num() > 0 && Swapped == 0 && bOk)
+		{
+			Report += TEXT("    ERROR: none of these weapons' packs is in this project, so none of them spawns the new weapon\n");
+			bOk = false;
+		}
+	}
+	if (Swap.bCutsceneFamily)
+	{
+		if (Plan.NewWeaponSkeleton.IsEmpty() || Plan.WeaponSkeleton.IsEmpty())
+		{
+			Report += TEXT("    ERROR: cutscene family: the skeletons are not known; set Weapon Skeleton and New Weapon Skeleton (Advanced)\n");
+			bOk = false;
+		}
+		else if (SamePath(Plan.NewWeaponSkeleton, Plan.WeaponSkeleton))
+		{
+			Report += TEXT("    cutscene family: not needed, both weapons are on ") + ShortName(Plan.NewWeaponSkeleton) + TEXT("\n");
+		}
+		else
+		{
+			Report += FString::Printf(TEXT("    cutscene family (Export Json): hub %s%s, member %s%s\n"), *Plan.NewWeaponSkeleton,
+				Plan.bNewSkeletonFromFolder ? TEXT(" (its model folder's)") : TEXT(""), *Plan.WeaponSkeleton,
+				Plan.bWeaponSkeletonFromFolder ? TEXT(" (the model folder's of the base weapon; set Weapon Skeleton if its cutscene animations use another)") : TEXT(""));
+		}
+	}
+	ReportWeaponSockets(Swap, Plan, Report, bOk);
+	return bOk;
+}
+
+// The weapon family a swap adds to the JSON, or null.
+TSharedPtr<FJsonObject> WeaponFamilyJson(const FEndWeaponSwap& Swap, const FCharaSpecTable& Table)
+{
+	if (!Swap.bEnabled || !Swap.bCutsceneFamily)
+	{
+		return nullptr;
+	}
+	const FWeaponSwapPlan Plan = PlanWeaponSwap(Swap, Table, false, false);
+	if (Plan.NewWeaponSkeleton.IsEmpty() || Plan.WeaponSkeleton.IsEmpty() || SamePath(Plan.NewWeaponSkeleton, Plan.WeaponSkeleton))
+	{
+		return nullptr;
+	}
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetStringField(TEXT("receiving_skeleton"), NormalizedObjectPath(Plan.NewWeaponSkeleton));
+	Entry->SetArrayField(TEXT("animation_skeletons"), JsonStrings({NormalizedObjectPath(Plan.WeaponSkeleton)}));
+	Entry->SetStringField(TEXT("method"), TEXT("family"));
+	Entry->SetStringField(TEXT("hub"), NormalizedObjectPath(Plan.NewWeaponSkeleton));
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	// The data object makes this entry from the swap again on every export (Import From Game Json skips it).
+	Entry->SetStringField(TEXT("from_weapon_swap"), Plan.NewWeapon.IsEmpty() ? Swap.NewWeapon.TrimStartAndEnd() : Plan.NewWeapon);
+	Entry->SetBoolField(TEXT("enabled"), true);
+	return Entry;
+}
+
+// The animation set row with a weapon swap's socket stand-ins (on the new weapon's meshes), or null.
+TSharedPtr<FJsonObject> WeaponSocketsJson(const FEndWeaponSwap& Swap, const FCharaSpecTable& Table)
+{
+	if (!Swap.bEnabled)
+	{
+		return nullptr;
+	}
+	TArray<TSharedPtr<FJsonValue>> Sockets;
+	for (const FEndSocketStandIn& Socket : Swap.Sockets)
+	{
+		const FString Wanted = Socket.Socket.TrimStartAndEnd();
+		const FString Use = Socket.Use.TrimStartAndEnd();
+		if (!Wanted.IsEmpty() && !Use.IsEmpty() && !Wanted.Equals(Use, ESearchCase::IgnoreCase))
+		{
+			TSharedRef<FJsonObject> Object = MakeShared<FJsonObject>();
+			Object->SetStringField(TEXT("socket"), Wanted);
+			Object->SetStringField(TEXT("use"), Use);
+			Sockets.Add(MakeShared<FJsonValueObject>(Object));
+		}
+	}
+	const FWeaponSwapPlan Plan = PlanWeaponSwap(Swap, Table, false, false);
+	if (Sockets.Num() == 0 || Plan.NewWeaponSkeleton.IsEmpty())
+	{
+		return nullptr;
+	}
+	// The mod puts a row's sockets on the meshes of its "skeleton"; its characters only have to be CharaSpec rows.
+	TArray<FString> Characters = Plan.RowNames;
+	if (Characters.Num() == 0 && !Plan.NewWeapon.IsEmpty())
+	{
+		Characters.Add(Plan.NewWeapon);
+	}
+	if (Characters.Num() == 0)
+	{
+		return nullptr;
+	}
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetArrayField(TEXT("characters"), JsonStrings(Characters));
+	Entry->SetStringField(TEXT("skeleton"), NormalizedObjectPath(Plan.NewWeaponSkeleton));
+	Entry->SetArrayField(TEXT("sockets"), Sockets);
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	Entry->SetStringField(TEXT("from_weapon_swap"), Plan.NewWeapon.IsEmpty() ? Swap.NewWeapon.TrimStartAndEnd() : Plan.NewWeapon);
+	Entry->SetBoolField(TEXT("enabled"), true);
+	return Entry;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Character swaps (editor 1.7): another character in some CharaSpec rows' place (Cloud in Sephiroth's). Each replaced
+// row's pack spawns the new character's blueprint and loads its voice; the row describes what its pack spawns and loads
+// (model, voice, effects, sounds, AI), shares his spec, and holds his weapon where Weapon Socket says. The two skeletons
+// become a family, and the rows' animation sets come from both characters' motion folders, the moveset's first.
+// ------------------------------------------------------------------------------------------------
+const TCHAR* MovesetText(EEndSwapMoveset Moveset) { return Moveset == EEndSwapMoveset::NewCharacter ? TEXT("new") : TEXT("replaced"); }
+
+EEndSwapMoveset ParseMoveset(const FString& Text)
+{
+	for (const TCHAR* Own : {TEXT("new"), TEXT("new_character"), TEXT("own"), TEXT("his"), TEXT("hers")})
+	{
+		if (Text.TrimStartAndEnd().Equals(Own, ESearchCase::IgnoreCase))
+		{
+			return EEndSwapMoveset::NewCharacter;
+		}
+	}
+	return EEndSwapMoveset::Replaced;
+}
+
+TSharedRef<FJsonObject> CharacterSwapToJson(const FEndCharacterSwap& Swap)
+{
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetArrayField(TEXT("characters"), JsonStrings(CleanList(Swap.Characters, false)));
+	Entry->SetStringField(TEXT("new_character"), Swap.NewCharacter.TrimStartAndEnd());
+	Entry->SetStringField(TEXT("moveset"), MovesetText(Swap.Moveset));
+	if (!Swap.Voice.TrimStartAndEnd().IsEmpty())
+	{
+		Entry->SetStringField(TEXT("voice"), Swap.Voice.TrimStartAndEnd());
+	}
+	if (!Swap.WeaponSocket.TrimStartAndEnd().IsEmpty())
+	{
+		Entry->SetStringField(TEXT("weapon_socket"), Swap.WeaponSocket.TrimStartAndEnd());
+	}
+	Entry->SetBoolField(TEXT("proportions"), Swap.bKeepProportionz);
+	if (!Swap.ReplacedSkeleton.IsNull())
+	{
+		Entry->SetStringField(TEXT("replaced_skeleton"), SoftPath(Swap.ReplacedSkeleton));
+	}
+	if (!Swap.NewSkeleton.IsNull())
+	{
+		Entry->SetStringField(TEXT("new_skeleton"), SoftPath(Swap.NewSkeleton));
+	}
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	Entry->SetBoolField(TEXT("enabled"), Swap.bEnabled);
+	return Entry;
+}
+
+bool CharacterSwapFromJson(const TSharedPtr<FJsonObject>& Entry, FEndCharacterSwap& Swap)
+{
+	if (!Entry.IsValid())
+	{
+		return false;
+	}
+	Swap.Characters = CleanList(StringsOf(Entry->TryGetField(TEXT("characters"))), false);
+	Swap.NewCharacter = StringField(Entry, TEXT("new_character"));
+	Swap.Moveset = ParseMoveset(StringField(Entry, TEXT("moveset")));
+	Swap.Voice = StringField(Entry, TEXT("voice"));
+	Swap.WeaponSocket = StringField(Entry, TEXT("weapon_socket"));
+	for (const TCHAR* Key : {TEXT("proportions"), TEXT("keep_proportions")})
+	{
+		BoolField(Entry, Key, Swap.bKeepProportions);
+	}
+	const FString Replaced = StringField(Entry, TEXT("replaced_skeleton"));
+	const FString New = StringField(Entry, TEXT("new_skeleton"));
+	if (!Replaced.IsEmpty())
+	{
+		Swap.ReplacedSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(Replaced)));
+	}
+	if (!New.IsEmpty())
+	{
+		Swap.NewSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(NormalizedObjectPath(New)));
+	}
+	Swap.RequiresPaks = CleanList(StringsOf(Entry->TryGetField(TEXT("requires_paks"))), true);
+	BoolField(Entry, TEXT("enabled"), Swap.bEnabled);
+	return !Swap.NewCharacter.IsEmpty() || Swap.Characters.Num() > 0;
+}
+
+// The same swap as far as Import From Game Json matches them: the same new character, and a replaced row in common.
+bool SameCharacterSwap(const FEndCharacterSwap& A, const FEndCharacterSwap& B)
+{
+	if (!CharaSpecRowName(A.NewCharacter).Equals(CharaSpecRowName(B.NewCharacter), ESearchCase::IgnoreCase))
+	{
+		return false;
+	}
+	const TArray<FString> Theirs = CleanList(B.Characters, false);
+	for (const FString& Mine : CleanList(A.Characters, false))
+	{
+		if (Theirs.Contains(Mine))
+		{
+			return true;
+		}
+	}
+	return A.Characters.Num() == 0 || B.Characters.Num() == 0;
+}
+
+struct FCharacterRowPlan
+{
+	FString Row;
+	bool bNamed = false;           // named in Characters itself, not only through a name ending in *
+	FPackContents Pack;            // the pack as it is
+	FPackContents After;           // the pack once Apply has edited it
+	FPackEdit Edit;
+	TArray<FString> Folders;       // the replaced character's motion folders for this row
+	FString Problem;               // why Apply leaves the row as it is (empty: it can write it)
+	TArray<FString> Notes;
+	TArray<FFieldChange> Changes;
+};
+
+struct FCharacterSwapPlan
+{
+	FString NewCharacter;          // CharaSpec row
+	FString Error;                 // the swap cannot be applied
+	TArray<FString> Unknown;       // Characters entries that name no row
+	TArray<FString> RowNames;      // the replaced rows
+	TArray<FCharacterRowPlan> Rows;
+	FString ReplacedId;            // "PC0010_": the replaced character's models and blueprints start with it
+	FString ReplacedSkeleton;      // object paths
+	FString NewSkeleton;
+	bool bReplacedSkeletonFromFolder = false;
+	bool bNewSkeletonFromFolder = false;
+	TArray<FString> NewFolders;    // the new character's motion folders
+	FString NewFoldersFrom;        // where they come from (for the report)
+	FString FieldActions;          // AnimationSetParentFolder for his own moveset, e.g. PC0000_Cloud
+	FString NewSpec;               // his row that goes into the Shared CharaSpec Lists (empty: none)
+	FString NewSpecNote;
+	FString VoiceName, VoicePath;  // the swap's voice and where the game has it
+	FString LipSyncName, LipSyncPath;
+	TArray<FString> Equipment;     // the weapons the replaced rows equip
+};
+
+// A row of his that still describes him: its model is his, and its pack (when this project has it) spawns him.
+bool RowDescribes(const FString& Row, const FString& Character, const FCharaSpecTable& Table)
+{
+	if (!Table.Has(Row) || !Table.Field(Row, TEXT("ContentsModel")).Equals(Character, ESearchCase::IgnoreCase))
+	{
+		return false;
+	}
+	const FPackContents Pack = ReadPack(Row);
+	return !Pack.bInProject || Pack.Blueprints.ContainsByPredicate([&](const FString& Blueprint) { return IsBlueprintOf(Blueprint, Character); });
+}
+
+// The motion folders a row's pack lists sets of, else the row's field-action folder.
+TArray<FString> RowFoldersOf(const FString& Row, const FPackContents& Pack, const FCharaSpecTable& Table)
+{
+	if (Pack.MotionFolders.Num() > 0)
+	{
+		return Pack.MotionFolders;
+	}
+	const FString Folder = Table.bAvailable ? Table.Field(Row, TEXT("AnimationSetParentFolder")) : FString();
+	if (!Folder.IsEmpty() && !Folder.Equals(TEXT("None"), ESearchCase::IgnoreCase))
+	{
+		return {FString::Printf(TEXT("/Game/Motion/%s/%s"), KindFolderOf(Row), *Folder)};
+	}
+	return {};
+}
+
+// bRows: also work out what Apply To CharaSpec does to each replaced row and its pack. bPackEdits: Apply may edit packs.
+FCharacterSwapPlan PlanCharacterSwap(const FEndCharacterSwap& Swap, const FCharaSpecTable& Table, bool bRows, bool bPackEdits)
+{
+	FCharacterSwapPlan Plan;
+	Plan.NewCharacter = CharaSpecRowName(Swap.NewCharacter);
+	if (Plan.NewCharacter.IsEmpty())
+	{
+		Plan.Error = TEXT("New Character is empty: name the CharaSpec row of the character that takes their place, e.g. PC0000_00_Cloud_Standard");
+	}
+	else if (Table.bAvailable && !Table.Has(Plan.NewCharacter))
+	{
+		Plan.Error = Plan.NewCharacter + TEXT(" is not a row of ") + Table.Package;
+	}
+	TArray<FString> Named;
+	Plan.RowNames = SwapRowsOf(Swap.Characters, Plan.NewCharacter, Table, Plan.Unknown, Named);
+	// Rows of the new character himself are never replaced by him.
+	Plan.RowNames.RemoveAll([&](const FString& Row) { return IsBlueprintOf(Row, Plan.NewCharacter); });
+	FString Base;
+	for (const FString& Row : Plan.RowNames)
+	{
+		if (Named.Contains(Row) && ModelIdOf(Row).EndsWith(TEXT("_00")))
+		{
+			Base = Row;
+			break;
+		}
+	}
+	for (const FString& Row : Plan.RowNames)
+	{
+		if (Base.IsEmpty() && ModelIdOf(Row).EndsWith(TEXT("_00")))
+		{
+			Base = Row;
+		}
+	}
+	if (Base.IsEmpty() && Plan.RowNames.Num() > 0)
+	{
+		Base = Plan.RowNames[0];
+	}
+	Plan.ReplacedId = Base.IsEmpty() ? FString() : CharacterIdOf(Base);
+	if (!Swap.ReplacedSkeleton.IsNull())
+	{
+		Plan.ReplacedSkeleton = SoftPath(Swap.ReplacedSkeleton);
+	}
+	else if (!Base.IsEmpty())
+	{
+		Plan.ReplacedSkeleton = ModelSkeletonPathOf(Base);
+		Plan.bReplacedSkeletonFromFolder = true;
+	}
+	if (!Swap.NewSkeleton.IsNull())
+	{
+		Plan.NewSkeleton = SoftPath(Swap.NewSkeleton);
+	}
+	else if (!Plan.NewCharacter.IsEmpty())
+	{
+		Plan.NewSkeleton = ModelSkeletonPathOf(Plan.NewCharacter);
+		Plan.bNewSkeletonFromFolder = true;
+	}
+	// His motion folders: what his own pack lists, else his row's field-action folder while it still describes him, else
+	// the folder named the way the game names them.
+	if (!Plan.NewCharacter.IsEmpty())
+	{
+		const FPackContents His = ReadPack(Plan.NewCharacter);
+		if (His.MotionFolders.Num() > 0)
+		{
+			Plan.NewFolders = His.MotionFolders;
+			Plan.NewFoldersFrom = TEXT("the sets his pack in this project lists");
+		}
+		else if (Table.bAvailable && RowDescribes(Plan.NewCharacter, Plan.NewCharacter, Table) && RowFoldersOf(Plan.NewCharacter, His, Table).Num() > 0)
+		{
+			Plan.NewFolders = RowFoldersOf(Plan.NewCharacter, His, Table);
+			Plan.NewFoldersFrom = TEXT("his CharaSpec row");
+		}
+		else if (!MotionFolderByName(Plan.NewCharacter).IsEmpty())
+		{
+			Plan.NewFolders = {MotionFolderByName(Plan.NewCharacter)};
+			Plan.NewFoldersFrom = TEXT("his name");
+		}
+		Plan.FieldActions = Plan.NewFolders.Num() > 0 ? FPackageName::GetShortName(Plan.NewFolders[0]) : FString();
+	}
+	for (const FString& Row : Plan.RowNames)
+	{
+		FCharacterRowPlan RowPlan;
+		RowPlan.Row = Row;
+		RowPlan.bNamed = Named.Contains(Row);
+		RowPlan.Pack = ReadPack(Row);
+		RowPlan.After = RowPlan.Pack;
+		RowPlan.Folders = RowFoldersOf(Row, RowPlan.Pack, Table);
+		Plan.Rows.Add(MoveTemp(RowPlan));
+	}
+	if (!bRows || !Plan.Error.IsEmpty() || !Table.bAvailable)
+	{
+		return Plan;
+	}
+
+	// His spec in their Shared CharaSpec Lists, so what his blueprint needs loads with them: his own row while it still
+	// describes him, else his _Reserve row (another swap may have changed his own, as SephirothOverCloud does).
+	for (const FString& Candidate : {Plan.NewCharacter, Plan.NewCharacter + TEXT("_Reserve")})
+	{
+		if (RowDescribes(Candidate, Plan.NewCharacter, Table))
+		{
+			Plan.NewSpec = Candidate;
+			break;
+		}
+	}
+	if (Plan.NewSpec.IsEmpty())
+	{
+		Plan.NewSpecNote = FString::Printf(TEXT("neither %s nor %s_Reserve describes %s any more (another swap?), so no spec of his is shared"),
+			*Plan.NewCharacter, *Plan.NewCharacter, *Plan.NewCharacter);
+	}
+
+	const bool bTools = bPackEdits && GameObjectToolsLoaded();
+	const FString VoiceText = Swap.Voice.TrimStartAndEnd();
+	if (!VoiceText.IsEmpty())
+	{
+		Plan.VoiceName = ShortName(NormalizedObjectPath(VoiceText));
+		if (Plan.VoiceName.StartsWith(TEXT("VO_"), ESearchCase::IgnoreCase))
+		{
+			Plan.LipSyncName = TEXT("LSD_") + Plan.VoiceName.Mid(3);
+		}
+		if (bTools)
+		{
+			Plan.VoicePath = GameObjectPathOf(Plan.VoiceName, TEXT("/Game/Sound/Voice/"));
+			Plan.LipSyncPath = Plan.LipSyncName.IsEmpty() ? FString() : GameObjectPathOf(Plan.LipSyncName, TEXT("/Game/LipSync/"));
+		}
+	}
+	FString NewBlueprint; // looked up once
+	for (FCharacterRowPlan& R : Plan.Rows)
+	{
+		const FString& Row = R.Row;
+		for (const FString& Weapon : NamesInText(Table.Field(Row, TEXT("EquipmentCharaSpecList_Array"))))
+		{
+			Plan.Equipment.AddUnique(Weapon);
+		}
+		if (!R.Pack.bInProject)
+		{
+			if (R.bNamed)
+			{
+				R.Problem = FString::Printf(TEXT("CharaSpec_%s is not in this project, so the game's own pack spawns %s. Make that pack editable in this project, then press Apply To CharaSpec again"),
+					*Row, *Row);
+			}
+			continue;
+		}
+		const bool bEditable = !R.Pack.bCooked;
+		const bool bHis = R.Pack.Blueprints.ContainsByPredicate([&](const FString& Blueprint) { return IsBlueprintOf(Blueprint, Plan.NewCharacter); });
+		if (!bHis)
+		{
+			if (!bEditable)
+			{
+				R.Problem = FString::Printf(TEXT("CharaSpec_%s in this project is a cooked game copy, which cannot be saved: make it editable first"), *Row);
+			}
+			else if (!bPackEdits)
+			{
+				R.Problem = FString::Printf(TEXT("its pack spawns %s, not %s. Set Asset Class List > 0 > Asset User Data of CharaSpec_%s to %s_C (or turn Apply To Packs on)"),
+					R.Pack.Blueprints.Num() > 0 ? *FString::Join(R.Pack.Blueprints, TEXT(", ")) : TEXT("no blueprint"), *Plan.NewCharacter, *Row, *Plan.NewCharacter);
+			}
+			else if (!bTools)
+			{
+				R.Problem = FString::Printf(TEXT("its pack spawns %s, and %s"), R.Pack.Blueprints.Num() > 0 ? *FString::Join(R.Pack.Blueprints, TEXT(", ")) : TEXT("no blueprint"),
+					GameObjectToolsMissing);
+			}
+			else
+			{
+				if (NewBlueprint.IsEmpty())
+				{
+					NewBlueprint = BlueprintClassPathOf(Plan.NewCharacter);
+				}
+				R.Edit.Blueprint = NewBlueprint;
+				R.After.Blueprints = {Plan.NewCharacter};
+			}
+		}
+		if (!Plan.VoiceName.IsEmpty() && bEditable && bPackEdits)
+		{
+			if (R.Pack.Voices.Num() == 0)
+			{
+				R.Notes.Add(TEXT("its pack loads no voice, so it gets none (the Voice replaces a pack's voice)"));
+			}
+			else if (!(R.Pack.Voices.Num() == 1 && R.Pack.Voices[0].Equals(Plan.VoiceName, ESearchCase::IgnoreCase)))
+			{
+				if (!bTools)
+				{
+					R.Notes.Add(FString::Printf(TEXT("Voice not set: %s"), GameObjectToolsMissing));
+				}
+				else if (Plan.VoicePath.IsEmpty())
+				{
+					R.Notes.Add(FString::Printf(TEXT("Voice not set: the game's paks have no %s under /Game/Sound/Voice/"), *Plan.VoiceName));
+				}
+				else
+				{
+					R.Edit.Voice = Plan.VoicePath;
+					R.After.Voices = {Plan.VoiceName};
+					if (!Plan.LipSyncPath.IsEmpty() && R.Pack.LipSyncs.Num() > 0)
+					{
+						R.Edit.LipSync = Plan.LipSyncPath;
+						R.After.LipSyncs = {Plan.LipSyncName};
+					}
+					else if (R.Pack.LipSyncs.Num() > 0)
+					{
+						R.Notes.Add(FString::Printf(TEXT("the game's paks have no lip sync %s for that voice: the pack keeps %s"),
+							*Plan.LipSyncName, *FString::Join(R.Pack.LipSyncs, TEXT(", "))));
+					}
+				}
+			}
+		}
+		if (!R.Problem.IsEmpty())
+		{
+			continue;
+		}
+
+		// The row describes what its pack spawns and loads.
+		const auto Want = [&](const TCHAR* Field, const FString& Value, bool bSet)
+		{
+			const FString Current = Table.Field(Row, Field);
+			const bool bSame = bSet ? SameNames(NamesInText(Current), NamesInText(Value)) : SlotsInText(Current) == SlotsInText(Value);
+			if (!bSame && !(Current.IsEmpty() && Value == TEXT("()")))
+			{
+				R.Changes.Add({Field, Current, Value});
+			}
+		};
+		TArray<FString> Models;
+		for (const FString& Blueprint : R.After.Blueprints)
+		{
+			if (IsBlueprintOf(Blueprint, Plan.NewCharacter))
+			{
+				Models.AddUnique(Blueprint);
+			}
+		}
+		if (Models.Num() == 1)
+		{
+			const FString Model = Table.Field(Row, TEXT("ContentsModel"));
+			if (!Model.Equals(Models[0], ESearchCase::IgnoreCase))
+			{
+				R.Changes.Add({TEXT("ContentsModel"), Model, Models[0]});
+			}
+		}
+		else if (Models.Num() > 1)
+		{
+			R.Notes.Add(TEXT("its pack spawns several of his blueprints, so its model is left as it is: ") + FString::Join(Models, TEXT(", ")));
+		}
+		if (R.After.Voices.Num() > 0)
+		{
+			Want(TEXT("ContentSoundVoice_Array"), ArrayText(R.After.Voices), true);
+			// A voice that switches with story flags (Cloud's past and insanity lines) is the old character's: it goes.
+			const TArray<FString> Packs = NamesInText(Table.Field(Row, TEXT("SoundVoisePack_Array")));
+			if (Packs.Num() > 0 && !Packs.Contains(R.After.Voices[0]))
+			{
+				Want(TEXT("SoundVoisePack_Array"), TEXT("()"), true);
+				Want(TEXT("SoundVoisePackEnableStoryFlag_Array"), TEXT("()"), true);
+			}
+		}
+		Want(TEXT("ContentsEffect_Array"), ArrayText(R.After.Effects), true);
+		Want(TEXT("ContentsSoundSE_Array"), ArrayText(R.After.SoundSE), true);
+		Want(TEXT("ContentsSoundAutoSE_Array"), ArrayText(R.After.SoundAutoSE), true);
+		if (R.After.AIBlueprints.Num() > 0)
+		{
+			Want(TEXT("End2AIList_Array"), ArrayText(R.After.AIBlueprints), true);
+		}
+		if (!Plan.NewSpec.IsEmpty())
+		{
+			const FString SharedText = Table.Field(Row, TEXT("SharedCharaSpecList_Array"));
+			TArray<FString> Shared = NamesInText(SharedText);
+			if (!Shared.Contains(Plan.NewSpec))
+			{
+				Shared.Add(Plan.NewSpec);
+				R.Changes.Add({TEXT("SharedCharaSpecList_Array"), SharedText, ArrayText(Shared)});
+			}
+		}
+		const FString Socket = Swap.WeaponSocket.TrimStartAndEnd();
+		if (!Socket.IsEmpty())
+		{
+			const FString Current = Table.Field(Row, TEXT("OverrideWeaponSocketNames_Array"));
+			TArray<FString> Slots = SlotsInText(Current);
+			if (Slots.Num() == 0)
+			{
+				Slots.Add(Socket);
+			}
+			else
+			{
+				Slots[0] = Socket;
+			}
+			Want(TEXT("OverrideWeaponSocketNames_Array"), ArrayText(Slots), false);
+		}
+		if (Swap.Moveset == EEndSwapMoveset::NewCharacter && !Plan.FieldActions.IsEmpty())
+		{
+			const FString Current = Table.Field(Row, TEXT("AnimationSetParentFolder"));
+			if (!Current.Equals(Plan.FieldActions, ESearchCase::IgnoreCase))
+			{
+				R.Changes.Add({TEXT("AnimationSetParentFolder"), Current, Plan.FieldActions});
+			}
+			// Sets the old character's folder has for special scenes (Cloud's bike, piano, ...) are not in his.
+			if (NamesInText(Table.Field(Row, TEXT("OverrideAnimationSetString_Array"))).Num() > 0)
+			{
+				Want(TEXT("OverrideAnimationSetString_Array"), TEXT("()"), true);
+			}
+		}
+	}
+	return Plan;
+}
+
+// A row matched only through * whose pack is the game's own: the swap does not include it.
+bool LeftOut(const FCharacterRowPlan& Row) { return !Row.bNamed && !Row.Pack.bInProject; }
+
+// The family a character swap adds to the JSON (hub: the skeleton whose moves are played), or null.
+TSharedPtr<FJsonObject> CharacterFamilyJson(const FEndCharacterSwap& Swap, const FCharacterSwapPlan& Plan)
+{
+	const bool bTheirs = Swap.Moveset == EEndSwapMoveset::Replaced;
+	const FString Hub = bTheirs ? Plan.ReplacedSkeleton : Plan.NewSkeleton;
+	const FString Member = bTheirs ? Plan.NewSkeleton : Plan.ReplacedSkeleton;
+	if (!Swap.bEnabled || !Plan.Error.IsEmpty() || Hub.IsEmpty() || Member.IsEmpty() || SamePath(Hub, Member))
+	{
+		return nullptr;
+	}
+	TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+	Entry->SetStringField(TEXT("receiving_skeleton"), NormalizedObjectPath(Hub));
+	Entry->SetArrayField(TEXT("animation_skeletons"), JsonStrings({NormalizedObjectPath(Member)}));
+	Entry->SetStringField(TEXT("method"), TEXT("family"));
+	Entry->SetStringField(TEXT("hub"), NormalizedObjectPath(Hub));
+	if (Swap.bKeepProportions)
+	{
+		// every member keeps its own bone lengths and height (RebirthSkelCompat 3.2); the mod applies it to the whole
+		// family this entry ends up in
+		Entry->SetBoolField(TEXT("proportions"), true);
+	}
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	if (Requires.Num() > 0)
+	{
+		Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+	}
+	// The data object makes this entry from the swap again on every export (Import From Game Json skips it).
+	Entry->SetStringField(TEXT("from_character_swap"), Plan.NewCharacter);
+	Entry->SetBoolField(TEXT("enabled"), true);
+	return Entry;
+}
+
+// The animation set rows a character swap adds: the swapped rows grouped by their own motion folders, each with both
+// characters' folders as battle and field sources, the moveset's first.
+TArray<TSharedPtr<FJsonObject>> CharacterRowsJson(const FEndCharacterSwap& Swap, const FCharacterSwapPlan& Plan)
+{
+	TArray<TSharedPtr<FJsonObject>> Out;
+	if (!Swap.bEnabled || !Plan.Error.IsEmpty())
+	{
+		return Out;
+	}
+	TArray<TPair<TArray<FString>, TArray<FString>>> Groups; // folders -> rows
+	for (const FCharacterRowPlan& Row : Plan.Rows)
+	{
+		const bool bHis = Row.Pack.Blueprints.ContainsByPredicate([&](const FString& Blueprint) { return IsBlueprintOf(Blueprint, Plan.NewCharacter); });
+		if (!Row.Pack.bInProject || (Row.Pack.bCooked && !bHis))
+		{
+			continue; // the game's own pack (or a cooked copy of it): the old character stays there
+		}
+		TPair<TArray<FString>, TArray<FString>>* Group = Groups.FindByPredicate([&](const TPair<TArray<FString>, TArray<FString>>& G) { return G.Key == Row.Folders; });
+		if (!Group)
+		{
+			Group = &Groups.Emplace_GetRef(Row.Folders, TArray<FString>());
+		}
+		Group->Value.Add(Row.Row);
+	}
+	const TArray<FString> Requires = CleanList(Swap.RequiresPaks, true);
+	for (const TPair<TArray<FString>, TArray<FString>>& Group : Groups)
+	{
+		TArray<FString> Sources = Swap.Moveset == EEndSwapMoveset::Replaced ? Group.Key : Plan.NewFolders;
+		for (const FString& Folder : Swap.Moveset == EEndSwapMoveset::Replaced ? Plan.NewFolders : Group.Key)
+		{
+			Sources.AddUnique(Folder);
+		}
+		if (Sources.Num() == 0)
+		{
+			continue;
+		}
+		TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+		Entry->SetArrayField(TEXT("characters"), JsonStrings(Group.Value));
+		Entry->SetArrayField(TEXT("battle"), JsonStrings(Sources));
+		Entry->SetArrayField(TEXT("field"), JsonStrings(Sources));
+		if (Requires.Num() > 0)
+		{
+			Entry->SetArrayField(TEXT("requires_paks"), JsonStrings(Requires));
+		}
+		Entry->SetStringField(TEXT("from_character_swap"), Plan.NewCharacter);
+		Entry->SetBoolField(TEXT("enabled"), true);
+		Out.Add(Entry);
+	}
+	return Out;
+}
+
+bool CheckCharacterSwap(const FEndCharacterSwap& Swap, int32 Index, const FCharaSpecTable& Table, bool bPackEdits, FString& Report)
+{
+	Report += FString::Printf(TEXT("Character swap %d: %s -> %s\n"), Index, *ListText(CleanList(Swap.Characters, false)), *Swap.NewCharacter.TrimStartAndEnd());
+	if (!Swap.bEnabled)
+	{
+		Report += TEXT("    disabled\n");
+		return true;
+	}
+	bool bOk = true;
+	const FCharacterSwapPlan Plan = PlanCharacterSwap(Swap, Table, true, bPackEdits);
+	if (!Plan.Error.IsEmpty())
+	{
+		Report += TEXT("    ERROR: ") + Plan.Error + TEXT("\n");
+		return false;
+	}
+	for (const FString& Item : Plan.Unknown)
+	{
+		Report += FString::Printf(TEXT("    WARNING: %s names no row of %s\n"), *Item, *Table.Package);
+	}
+	if (Plan.RowNames.Num() == 0)
+	{
+		Report += TEXT("    ERROR: no rows to replace (Characters)\n");
+		return false;
+	}
+	const bool bTheirs = Swap.Moveset == EEndSwapMoveset::Replaced;
+	Report += FString::Printf(TEXT("    moves: %s (%s)\n"), bTheirs ? TEXT("the replaced character's, his own fill in") : TEXT("his own, the replaced character's fill in"),
+		Plan.NewFolders.Num() > 0 ? *FString::Printf(TEXT("his motion folders from %s: %s"), *Plan.NewFoldersFrom, *ListText(Plan.NewFolders)) : TEXT("WARNING: his motion folders are not known"));
+	if (!Table.bAvailable)
+	{
+		Report += TEXT("    note: the Rebirth data object tools (Rebirth Cooked Asset Preview plugin) are not loaded, so the CharaSpec rows and packs are not checked\n");
+	}
+	else
+	{
+		if (!Plan.VoiceName.IsEmpty())
+		{
+			Report += FString::Printf(TEXT("    voice: %s%s\n"), *Plan.VoiceName, Plan.VoicePath.IsEmpty() ? TEXT(" (not found in the game's paks yet)") :
+				*FString::Printf(TEXT(" (%s%s)"), *Plan.VoicePath, Plan.LipSyncPath.IsEmpty() ? TEXT(", no lip sync of that name") : *(TEXT(", lip sync ") + Plan.LipSyncPath)));
+		}
+		Report += Plan.NewSpec.IsEmpty() ? TEXT("    WARNING: ") + Plan.NewSpecNote + TEXT("\n")
+										 : FString::Printf(TEXT("    shared spec: %s (loads what his blueprint needs with the rows)\n"), *Plan.NewSpec);
+		int32 Swapped = 0;
+		for (const FCharacterRowPlan& Row : Plan.Rows)
+		{
+			if (LeftOut(Row))
+			{
+				Report += FString::Printf(TEXT("    %s: left out (its pack is the game's own, so it stays the old character; make CharaSpec_%s editable in this project to swap it too)\n"),
+					*Row.Row, *Row.Row);
+				continue;
+			}
+			for (const FString& Note : Row.Notes)
+			{
+				Report += FString::Printf(TEXT("    %s: note: %s\n"), *Row.Row, *Note);
+			}
+			if (!Row.Problem.IsEmpty())
+			{
+				Report += FString::Printf(TEXT("    %s: ERROR: %s\n"), *Row.Row, *Row.Problem);
+				bOk = false;
+				continue;
+			}
+			++Swapped;
+			if (Row.Edit.HasWork())
+			{
+				Report += FString::Printf(TEXT("    %s: Apply To CharaSpec makes its pack %s\n"), *Row.Row, *FString::Join(PackEditLines(Row.Edit, Row.Pack), TEXT("; ")));
+			}
+			if (Row.Changes.Num() == 0)
+			{
+				Report += FString::Printf(TEXT("    %s: pack spawns %s; the row describes it\n"), *Row.Row, *ListText(Row.After.Blueprints));
+				continue;
+			}
+			Report += FString::Printf(TEXT("    %s: pack spawns %s; Apply To CharaSpec writes:\n"), *Row.Row, *ListText(Row.After.Blueprints));
+			for (const FFieldChange& Change : Row.Changes)
+			{
+				Report += FString::Printf(TEXT("        %s: %s -> %s\n"), Change.Field, *FieldShown(Change.Field, Change.Current), *FieldShown(Change.Field, Change.Value));
+			}
+		}
+		if (Swapped == 0 && bOk)
+		{
+			Report += TEXT("    ERROR: none of these rows' packs is in this project, so none of them spawns him\n");
+			bOk = false;
+		}
+		TArray<FString> Weapons;
+		for (const FString& Weapon : Plan.Equipment)
+		{
+			if (!Weapon.StartsWith(CharacterIdOf(Plan.NewCharacter)))
+			{
+				Weapons.Add(Weapon);
+			}
+		}
+		if (Weapons.Num() > 0)
+		{
+			Report += FString::Printf(TEXT("    note: these rows equip %s: add a weapon swap (New Weapon: his weapon, e.g. his _00 one) to put his weapon in his hands, with Sockets so the moves still hit\n"),
+				*ListText(Weapons));
+		}
+		if (!Swap.WeaponSocket.TrimStartAndEnd().IsEmpty())
+		{
+			Report += FString::Printf(TEXT("    weapon socket: %s (slot 0, the equipped weapon)\n"), *Swap.WeaponSocket.TrimStartAndEnd());
+		}
+	}
+	// What Export Json adds.
+	if (CleanList(Swap.RequiresPaks, true).Num() == 0)
+	{
+		Report += TEXT("    WARNING: Requires Paks is empty, so the family and moves below stay on in game even without your swap pak (the two characters keep sharing one skeleton): name the pak there\n");
+	}
+	const FString Hub = bTheirs ? Plan.ReplacedSkeleton : Plan.NewSkeleton;
+	const FString Member = bTheirs ? Plan.NewSkeleton : Plan.ReplacedSkeleton;
+	if (Hub.IsEmpty() || Member.IsEmpty())
+	{
+		Report += TEXT("    ERROR: family: the skeletons are not known; set Replaced Skeleton and New Skeleton (Advanced)\n");
+		bOk = false;
+	}
+	else if (SamePath(Hub, Member))
+	{
+		Report += TEXT("    family: not needed, both characters are on ") + ShortName(Hub) + TEXT("\n");
+	}
+	else
+	{
+		for (const FString& Skeleton : {Hub, Member})
+		{
+			if (!InProject(Skeleton))
+			{
+				Report += FString::Printf(TEXT("    note: %s is not in this project (checked in game)%s\n"), *Skeleton,
+					(SamePath(Skeleton, Plan.ReplacedSkeleton) ? Plan.bReplacedSkeletonFromFolder : Plan.bNewSkeletonFromFolder) ? TEXT("; it is the model folder's, set the skeleton (Advanced) if the animations use another") : TEXT(""));
+			}
+		}
+		Report += FString::Printf(TEXT("    family (Export Json): hub %s, member %s%s\n"), *Hub, *Member,
+			Swap.bKeepProportions ? TEXT("; every character keeps its own height (Keep Proportions, RebirthSkelCompat 3.2)") : TEXT("; Keep Proportions off: he takes the height of the skeleton whose moves he plays"));
+	}
+	for (const TSharedPtr<FJsonObject>& Row : CharacterRowsJson(Swap, Plan))
+	{
+		Report += FString::Printf(TEXT("    animation sets (Export Json) of %s: battle and field from %s\n"), *ListText(StringsOf(Row->TryGetField(TEXT("characters")))),
+			*ListText(StringsOf(Row->TryGetField(TEXT("battle")))));
+	}
+	return bOk;
+}
+
+// Shared CharaSpec Lists that would load each other in a loop once Planned (row -> its new list) is written, as text.
+TArray<FString> SharedLoops(const FCharaSpecTable& Table, const TMap<FString, TArray<FString>>& Planned)
+{
+	TMap<FString, TArray<FString>> Lists = Planned;
+	const auto SharedOf = [&](const FString& Row) -> TArray<FString>
+	{
+		if (const TArray<FString>* Known = Lists.Find(Row))
+		{
+			return *Known;
+		}
+		TArray<FString> Read = Table.Has(Row) ? NamesInText(Table.Field(Row, TEXT("SharedCharaSpecList_Array"))) : TArray<FString>();
+		Lists.Add(Row, Read);
+		return Read;
+	};
+	TArray<FString> Loops;
+	for (const TPair<FString, TArray<FString>>& Start : Planned)
+	{
+		TArray<TArray<FString>> Stack;
+		Stack.Add(TArray<FString>{Start.Key});
+		TSet<FString> Seen;
+		while (Stack.Num() > 0)
+		{
+			const TArray<FString> Path = Stack.Pop();
+			for (const FString& Next : SharedOf(Path.Last()))
+			{
+				if (Next.Equals(Start.Key, ESearchCase::IgnoreCase))
+				{
+					Loops.AddUnique(FString::Join(Path, TEXT(" -> ")) + TEXT(" -> ") + Next);
+				}
+				else if (!Seen.Contains(Next) && Path.Num() < 16)
+				{
+					Seen.Add(Next);
+					TArray<FString> Longer = Path;
+					Longer.Add(Next);
+					Stack.Add(Longer);
+				}
+			}
+		}
+	}
+	return Loops;
+}
+
+// Every CharaSpec pack of this project against its row: the model of the blueprint it spawns (wrong ones are what Fix Pack
+// Models changes), and the voice, effects, sounds and AI it loads.
+struct FPackCheck
+{
+	FString Row;
+	FString Model;    // the row's model now
+	FString Spawns;   // the one blueprint the pack spawns (empty: none or several)
+	TArray<FString> Differences;
+};
+
+// The Shared CharaSpec Lists Apply To CharaSpec would write for these swaps (row -> its new list).
+TMap<FString, TArray<FString>> PlannedSharedLists(const TArray<FEndCharacterSwap>& Characters, const TArray<FEndWeaponSwap>& Weapons, const FCharaSpecTable& Table, bool bPackEdits)
+{
+	TMap<FString, TArray<FString>> Planned;
+	const auto Take = [&Planned](const FString& Row, const TArray<FFieldChange>& Changes)
+	{
+		for (const FFieldChange& Change : Changes)
+		{
+			if (FCString::Strcmp(Change.Field, TEXT("SharedCharaSpecList_Array")) == 0)
+			{
+				Planned.Add(Row, NamesInText(Change.Value));
+			}
+		}
+	};
+	for (const FEndCharacterSwap& Swap : Characters)
+	{
+		if (Swap.bEnabled)
+		{
+			for (const FCharacterRowPlan& Row : PlanCharacterSwap(Swap, Table, true, bPackEdits).Rows)
+			{
+				Take(Row.Row, Row.Changes);
+			}
+		}
+	}
+	for (const FEndWeaponSwap& Swap : Weapons)
+	{
+		if (Swap.bEnabled)
+		{
+			for (const FWeaponRowPlan& Row : PlanWeaponSwap(Swap, Table, true, bPackEdits).Rows)
+			{
+				Take(Row.Row, Row.Changes);
+			}
+		}
+	}
+	return Planned;
+}
+
+TArray<FPackCheck> CheckProjectPacks(const FCharaSpecTable& Table)
+{
+	TArray<FPackCheck> Out;
+	if (!Table.bAvailable)
+	{
+		return Out;
+	}
+	TArray<FAssetData> Assets;
+	AssetRegistry().GetAssetsByPath(FName(TEXT("/Game/DataAsset/Game/CharaSpec")), Assets, false);
+	Assets.Sort([](const FAssetData& A, const FAssetData& B) { return A.PackageName.ToString() < B.PackageName.ToString(); });
+	for (const FAssetData& Asset : Assets)
+	{
+		FString Row = Asset.AssetName.ToString();
+		if (!Row.RemoveFromStart(TEXT("CharaSpec_")) || !Table.Has(Row))
+		{
+			continue;
+		}
+		const FPackContents Pack = ReadPack(Row);
+		FPackCheck Check;
+		Check.Row = Row;
+		Check.Model = Table.Field(Row, TEXT("ContentsModel"));
+		if (Pack.Blueprints.Num() == 1)
+		{
+			Check.Spawns = Pack.Blueprints[0];
+		}
+		const auto Compare = [&](const TCHAR* Field, const TArray<FString>& Loads, bool bOnlyWhenLoaded)
+		{
+			if (bOnlyWhenLoaded && Loads.Num() == 0)
+			{
+				return;
+			}
+			const TArray<FString> Lists = NamesInText(Table.Field(Row, Field));
+			if (!SameNames(Lists, Loads))
+			{
+				Check.Differences.Add(FString::Printf(TEXT("%s lists %s, the pack loads %s"), Field, *ListText(Lists), *ListText(Loads)));
+			}
+		};
+		Compare(TEXT("ContentSoundVoice_Array"), Pack.Voices, true);
+		Compare(TEXT("ContentsEffect_Array"), Pack.Effects, false);
+		Compare(TEXT("ContentsSoundSE_Array"), Pack.SoundSE, false);
+		Compare(TEXT("ContentsSoundAutoSE_Array"), Pack.SoundAutoSE, false);
+		Compare(TEXT("End2AIList_Array"), Pack.AIBlueprints, true);
+		if (!Check.Spawns.IsEmpty() && !Check.Spawns.Equals(Check.Model, ESearchCase::IgnoreCase))
+		{
+			Check.Differences.Insert(FString::Printf(TEXT("ERROR: it spawns %s, but the row's model is %s"), *Check.Spawns, *Check.Model), 0);
+		}
+		if (Check.Differences.Num() > 0)
+		{
+			Out.Add(MoveTemp(Check));
+		}
+	}
+	return Out;
+}
+
+// Something for Apply To CharaSpec to do: field actions or missing row references of rows, character or weapon swaps.
+bool HasCharaSpecWork(const TArray<FEndAnimSetRow>& Rows, const TArray<FEndWeaponSwap>& Swaps, const TArray<FEndCharacterSwap>& Characters, bool bFixMissing)
+{
+	for (const FEndAnimSetRow& Row : Rows)
+	{
+		if (Row.bEnabled && CleanList(Row.Characters, false).Num() > 0 && (bFixMissing || !Row.FieldActions.TrimStartAndEnd().IsEmpty()))
+		{
+			return true;
+		}
+	}
+	return Swaps.ContainsByPredicate([](const FEndWeaponSwap& Swap) { return Swap.bEnabled && !Swap.NewWeapon.TrimStartAndEnd().IsEmpty(); }) ||
+		Characters.ContainsByPredicate([](const FEndCharacterSwap& Swap) { return Swap.bEnabled && !Swap.NewCharacter.TrimStartAndEnd().IsEmpty(); });
+}
+
+// One pair as a compat JSON file states it (a family entry is listed under its hub).
+struct FFilePair
+{
+	FString File;                  // file name, e.g. Cloud_Sephiroth_SkeletonCompat.json
+	FString Receiving;             // normalised object path (a family: its hub)
+	TArray<FString> Animation;     // normalised object paths (a family: the other members)
+	bool bHasMethod = false;
+	EEndSkelCompatMethod Method = EEndSkelCompatMethod::Animations;
+	TArray<FString> RequiresPaks;
+	TArray<FString> AdoptPaths;
+	bool bEnabled = true;
+	bool bHasFixHierarchy = false;
+	bool bFixHierarchy = true;
+	bool bHasRepairLiveComponents = false;
+	bool bRepairLiveComponents = true;
+	bool bHasCarrySockets = false;
+	bool bCarrySockets = true;
+	bool bHasKeepProportions = false;
+	bool bKeepProportions = false;
+};
+
+// Entries a swap makes again on every export (Import From Game Json skips them).
+bool FromSwap(const TSharedPtr<FJsonObject>& Entry)
+{
+	return Entry.IsValid() && (Entry->HasField(TEXT("from_weapon_swap")) || Entry->HasField(TEXT("from_character_swap")));
+}
+
+bool ReadPairsFile(const FString& Path, TArray<FFilePair>& Out, FString& Error, TArray<FEndAnimSetRow>* Rows = nullptr, TArray<FEndWeaponSwap>* Swaps = nullptr,
+	TArray<FEndCharacterSwap>* Characters = nullptr)
+{
+	FString Text;
+	if (!FFileHelper::LoadFileToString(Text, *Path))
+	{
+		Error = TEXT("could not be read");
+		return false;
+	}
+	TSharedPtr<FJsonObject> Root;
+	const TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Text);
+	if (!FJsonSerializer::Deserialize(Reader, Root) || !Root.IsValid())
+	{
+		Error = TEXT("is not valid JSON");
+		return false;
+	}
+	const TArray<TSharedPtr<FJsonValue>>* PairEntries = nullptr;
+	const TArray<TSharedPtr<FJsonValue>>* FamilyEntries = nullptr;
+	const TArray<TSharedPtr<FJsonValue>>* RowEntries = nullptr;
+	const TArray<TSharedPtr<FJsonValue>>* SwapEntries = nullptr;
+	const TArray<TSharedPtr<FJsonValue>>* CharacterEntries = nullptr;
+	Root->TryGetArrayField(TEXT("pairs"), PairEntries);
+	Root->TryGetArrayField(TEXT("families"), FamilyEntries);
+	Root->TryGetArrayField(TEXT("animation_sets"), RowEntries);
+	Root->TryGetArrayField(TEXT("weapon_swaps"), SwapEntries);
+	Root->TryGetArrayField(TEXT("character_swaps"), CharacterEntries);
+	if (!PairEntries && !FamilyEntries && !RowEntries && !SwapEntries && !CharacterEntries)
+	{
+		Error = TEXT("has no \"pairs\", \"families\", \"animation_sets\", \"weapon_swaps\" or \"character_swaps\" array");
+		return false;
+	}
+	if (Characters && CharacterEntries)
+	{
+		for (const TSharedPtr<FJsonValue>& Value : *CharacterEntries)
+		{
+			FEndCharacterSwap Swap;
+			if (Value.IsValid() && Value->Type == EJson::Object && CharacterSwapFromJson(Value->AsObject(), Swap))
+			{
+				Characters->Add(Swap);
+			}
+		}
+	}
+	if (Swaps && SwapEntries)
+	{
+		for (const TSharedPtr<FJsonValue>& Value : *SwapEntries)
+		{
+			FEndWeaponSwap Swap;
+			if (Value.IsValid() && Value->Type == EJson::Object && WeaponSwapFromJson(Value->AsObject(), Swap))
+			{
+				Swaps->Add(Swap);
+			}
+		}
+	}
+	if (Rows && RowEntries)
+	{
+		for (const TSharedPtr<FJsonValue>& Value : *RowEntries)
+		{
+			FEndAnimSetRow Row;
+			if (Value.IsValid() && Value->Type == EJson::Object && !FromSwap(Value->AsObject()) && RowFromJson(Value->AsObject(), Row))
+			{
+				Rows->Add(Row);
+			}
+		}
+	}
+	const FString FileName = FPaths::GetCleanFilename(Path);
+	const auto ReadEntries = [&](const TArray<TSharedPtr<FJsonValue>>& Entries, bool bFamilyList)
+	{
+		for (const TSharedPtr<FJsonValue>& Value : Entries)
+		{
+			if (!Value.IsValid() || Value->Type != EJson::Object)
+			{
+				continue;
+			}
+			const TSharedPtr<FJsonObject> Entry = Value->AsObject();
+			if (!Entry.IsValid() || FromSwap(Entry))
+			{
+				continue; // a swap's family: the data object makes it from the swap
+			}
+			FFilePair Pair;
+			Pair.File = FileName;
+			Pair.Method = bFamilyList ? EEndSkelCompatMethod::Family : EEndSkelCompatMethod::Animations;
+			FString Method;
+			if (Entry->TryGetStringField(TEXT("method"), Method))
+			{
+				Pair.bHasMethod = true;
+				Pair.Method = ParseMethod(Method);
+			}
+			FString Hub;
+			if (Entry->TryGetStringField(TEXT("hub"), Hub) && !Hub.TrimStartAndEnd().IsEmpty())
+			{
+				Pair.bHasMethod = true;
+				Pair.Method = EEndSkelCompatMethod::Family; // naming a hub makes a family
+			}
+			TArray<FString> Receivers;
+			for (const FString& Skeleton : StringsOf(Entry->TryGetField(TEXT("receiving_skeleton"))))
+			{
+				Receivers.AddUnique(NormalizedObjectPath(Skeleton));
+			}
+			for (const FString& Skeleton : StringsOf(Entry->TryGetField(TEXT("receiving_skeletons"))))
+			{
+				Receivers.AddUnique(NormalizedObjectPath(Skeleton));
+			}
+			TArray<FString> Animation;
+			for (const TCHAR* Key : {TEXT("animation_skeletons"), TEXT("animation_skeleton"), TEXT("skeletons")})
+			{
+				for (const FString& Skeleton : StringsOf(Entry->TryGetField(Key)))
+				{
+					Animation.AddUnique(NormalizedObjectPath(Skeleton));
+				}
+			}
+			TArray<FString> Paks = StringsOf(Entry->TryGetField(TEXT("requires_paks")));
+			Paks.Append(StringsOf(Entry->TryGetField(TEXT("requires_pak"))));
+			Pair.RequiresPaks = CleanList(Paks, true);
+			Pair.AdoptPaths = CleanList(StringsOf(Entry->TryGetField(TEXT("adopt_paths"))), false);
+			BoolField(Entry, TEXT("enabled"), Pair.bEnabled);
+			Pair.bHasFixHierarchy = BoolField(Entry, TEXT("fix_hierarchy"), Pair.bFixHierarchy);
+			Pair.bHasRepairLiveComponents = BoolField(Entry, TEXT("repair_live_components"), Pair.bRepairLiveComponents);
+			Pair.bHasCarrySockets = BoolField(Entry, TEXT("carry_sockets"), Pair.bCarrySockets);
+			for (const TCHAR* Key : {TEXT("proportions"), TEXT("keep_proportions")})
+			{
+				Pair.bHasKeepProportions |= BoolField(Entry, Key, Pair.bKeepProportions);
+			}
+			if (Pair.Method == EEndSkelCompatMethod::Family)
+			{
+				// Listed under its hub: "hub", else the first skeleton named.
+				TArray<FString> Members = Receivers;
+				for (const FString& Skeleton : Animation)
+				{
+					Members.AddUnique(Skeleton);
+				}
+				Pair.Receiving = !Hub.TrimStartAndEnd().IsEmpty() ? NormalizedObjectPath(Hub) : (Members.Num() > 0 ? Members[0] : FString());
+				if (Pair.Receiving.IsEmpty())
+				{
+					continue;
+				}
+				for (const FString& Member : Members)
+				{
+					if (!SamePath(Member, Pair.Receiving))
+					{
+						Pair.Animation.AddUnique(Member);
+					}
+				}
+				Out.Add(MoveTemp(Pair));
+				continue;
+			}
+			for (const FString& Receiving : Receivers)
+			{
+				FFilePair One = Pair;
+				One.Receiving = Receiving;
+				for (const FString& Skeleton : Animation)
+				{
+					if (!SamePath(Skeleton, Receiving))
+					{
+						One.Animation.AddUnique(Skeleton);
+					}
+				}
+				Out.Add(MoveTemp(One));
+			}
+		}
+	};
+	if (PairEntries)
+	{
+		ReadEntries(*PairEntries, false);
+	}
+	if (FamilyEntries)
+	{
+		ReadEntries(*FamilyEntries, true);
+	}
+	return true;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Bone hierarchy test (Mesh rebind). Port of UE 4.26 USkeleton::IsCompatibleMesh / DoesParentChainMatch:
+// the game only spawns an AnimBlueprint on a mesh when this passes against the AnimBlueprint's skeleton.
+// In game the mesh is bound to the animation skeleton, so test against that one. Unlike the engine, the
+// test goes on after a bone placed differently, to count what the mod's hierarchy fix renames.
+// ------------------------------------------------------------------------------------------------
+struct FBoneCheck
+{
+	bool bCompatible = false; // passes the game's test as it is
+	bool bFixable = false;    // fails only on bones placed differently: the mod's hierarchy fix renames them
+	int32 Matched = 0;
+	int32 MeshOnly = 0;
+	int32 AnimationOnly = 0;
+	int32 Misplaced = 0;      // mesh bones whose parent chain differs on the animation skeleton
+	FString Problem;          // the first problem found
+};
+
+FString Chain(const FReferenceSkeleton& Skeleton, int32 Bone)
+{
+	FString Text;
+	for (int32 Guard = 0; Bone != INDEX_NONE && Guard < 6; ++Guard)
+	{
+		Text += (Text.IsEmpty() ? TEXT("") : TEXT(" < ")) + Skeleton.GetBoneName(Bone).ToString();
+		Bone = Skeleton.GetParentIndex(Bone);
+	}
+	return Bone == INDEX_NONE ? Text : Text + TEXT(" < ...");
+}
+
+bool ParentChainMatches(int32 SkeletonBone, const FReferenceSkeleton& Skeleton, const FReferenceSkeleton& Mesh)
+{
+	if (SkeletonBone == 0)
+	{
+		return Skeleton.GetBoneName(0) == Mesh.GetBoneName(0);
+	}
+	int32 MeshBone = Mesh.FindBoneIndex(Skeleton.GetBoneName(SkeletonBone));
+	if (MeshBone == INDEX_NONE)
+	{
+		return false;
+	}
+	for (;;)
+	{
+		const int32 SkeletonParent = Skeleton.GetParentIndex(SkeletonBone);
+		const int32 MeshParent = Mesh.GetParentIndex(MeshBone);
+		if (SkeletonParent == INDEX_NONE || MeshParent == INDEX_NONE)
+		{
+			return SkeletonParent == MeshParent;
+		}
+		if (Skeleton.GetBoneName(SkeletonParent) != Mesh.GetBoneName(MeshParent))
+		{
+			return false;
+		}
+		SkeletonBone = SkeletonParent;
+		MeshBone = MeshParent;
+	}
+}
+
+FBoneCheck CheckMesh(const FReferenceSkeleton& Mesh, const FReferenceSkeleton& Skeleton)
+{
+	FBoneCheck Result;
+	for (int32 Bone = 0; Bone < Skeleton.GetRawBoneNum(); ++Bone)
+	{
+		if (Mesh.FindBoneIndex(Skeleton.GetBoneName(Bone)) == INDEX_NONE)
+		{
+			++Result.AnimationOnly;
+		}
+	}
+	bool bHard = false; // a problem the hierarchy fix cannot solve
+	const int32 RawBones = Mesh.GetRawBoneNum();
+	for (int32 MeshBone = 0; MeshBone < RawBones && !bHard; ++MeshBone)
+	{
+		const FName Name = Mesh.GetBoneName(MeshBone);
+		int32 SkeletonBone = Skeleton.FindBoneIndex(Name);
+		if (SkeletonBone != INDEX_NONE)
+		{
+			++Result.Matched;
+		}
+		else
+		{
+			++Result.MeshOnly;
+			int32 Current = MeshBone;
+			while (SkeletonBone == INDEX_NONE && Current != INDEX_NONE)
+			{
+				const int32 Parent = Mesh.GetParentIndex(Current);
+				if (Parent != INDEX_NONE)
+				{
+					SkeletonBone = Skeleton.FindBoneIndex(Mesh.GetBoneName(Parent));
+				}
+				if (Parent == 0)
+				{
+					break;
+				}
+				Current = Parent;
+			}
+			if (SkeletonBone == INDEX_NONE)
+			{
+				Result.Problem = MeshBone == 0
+					? FString::Printf(TEXT("root bone '%s' is not on the animation skeleton (its root is '%s')"), *Name.ToString(), *Skeleton.GetBoneName(0).ToString())
+					: FString::Printf(TEXT("bone '%s' has no ancestor on the animation skeleton"), *Name.ToString());
+				bHard = true;
+				break;
+			}
+		}
+		if (!ParentChainMatches(SkeletonBone, Skeleton, Mesh))
+		{
+			if (SkeletonBone == 0)
+			{
+				Result.Problem = FString::Printf(TEXT("root bone names differ: mesh '%s', animation skeleton '%s'"), *Mesh.GetBoneName(0).ToString(),
+					*Skeleton.GetBoneName(0).ToString());
+				bHard = true;
+				break;
+			}
+			if (Result.Misplaced == 0)
+			{
+				const int32 InMesh = Mesh.FindBoneIndex(Skeleton.GetBoneName(SkeletonBone));
+				Result.Problem = FString::Printf(TEXT("parent chain of '%s' differs. Mesh: %s. Animation skeleton: %s"), *Skeleton.GetBoneName(SkeletonBone).ToString(),
+					*Chain(Mesh, InMesh), *Chain(Skeleton, SkeletonBone));
+			}
+			++Result.Misplaced;
+		}
+	}
+	if (!bHard && Result.Matched == 0)
+	{
+		Result.Problem = TEXT("no bone names in common");
+		bHard = true;
+	}
+	Result.bCompatible = !bHard && Result.Misplaced == 0;
+	Result.bFixable = !bHard && Result.Misplaced > 0;
+	return Result;
+}
+
+// The bone list in the form the game mod works on (final bones: raw ones first, then virtual bones).
+SkelCompat::BoneTable BonesOf(const FReferenceSkeleton& Reference)
+{
+	SkelCompat::BoneTable Table;
+	const int32 Count = Reference.GetNum();
+	Table.Names.reserve(static_cast<size_t>(Count));
+	Table.Parents.reserve(static_cast<size_t>(Count));
+	for (int32 Bone = 0; Bone < Count; ++Bone)
+	{
+		Table.Names.push_back(Wide(Reference.GetBoneName(Bone).ToString()));
+		Table.Parents.push_back(Reference.GetParentIndex(Bone));
+	}
+	Table.RawCount = Reference.GetRawBoneNum();
+	return Table;
+}
+
+// What the mod's hierarchy fix does to a mesh bound to Target that must stay compatible with Keep too (a family member's
+// own skeleton, the skeleton an outfit was made for), and whether the game then accepts it for each of them.
+struct FFixResult
+{
+	bool bPossible = true;
+	int32 Renamed = 0;
+	FString Names;          // the first renamed bones
+	bool bTargetOk = false; // AnimBlueprints for the target skeleton run
+	TArray<FString> KeepRefused; // skeletons in Keep whose AnimBlueprints would be refused
+};
+
+FFixResult PlanFix(USkeletalMesh* Mesh, USkeleton* Target, const TArray<USkeleton*>& Keep, bool bFixHierarchy)
+{
+	FFixResult Result;
+	const SkelCompat::BoneTable MeshBones = BonesOf(Mesh->RefSkeleton);
+	const SkelCompat::BoneTable TargetBones = BonesOf(Target->GetReferenceSkeleton());
+	std::vector<SkelCompat::BoneTable> KeepTables;
+	for (USkeleton* Skeleton : Keep)
+	{
+		if (Skeleton && Skeleton != Target)
+		{
+			KeepTables.push_back(BonesOf(Skeleton->GetReferenceSkeleton()));
+		}
+	}
+	std::vector<const SkelCompat::BoneTable*> KeepPointers;
+	for (const SkelCompat::BoneTable& Table : KeepTables)
+	{
+		KeepPointers.push_back(&Table);
+	}
+	SkelCompat::RenamePlan Plan;
+	if (bFixHierarchy)
+	{
+		Plan = SkelCompat::PlanConflictRenamesFor(MeshBones, TargetBones, KeepPointers);
+	}
+	Result.bPossible = Plan.Possible;
+	const SkelCompat::BoneTable After = SkelCompat::ApplyRenamePlan(MeshBones, Plan);
+	Result.Renamed = static_cast<int32>(Plan.Bones.size());
+	for (size_t Index = 0; Index < Plan.Bones.size() && Index < static_cast<size_t>(MaxNamesListed); ++Index)
+	{
+		Result.Names += (Index ? TEXT(", ") : TEXT("")) + FromWide(MeshBones.Names[static_cast<size_t>(Plan.Bones[Index])]);
+	}
+	if (Plan.Bones.size() > static_cast<size_t>(MaxNamesListed))
+	{
+		Result.Names += TEXT(" ...");
+	}
+	Result.bTargetOk = SkelCompat::CheckMeshAgainstSkeleton(After, TargetBones).Compatible;
+	size_t KeepIndex = 0;
+	for (USkeleton* Skeleton : Keep)
+	{
+		if (!Skeleton || Skeleton == Target)
+		{
+			continue;
+		}
+		if (!SkelCompat::CheckMeshAgainstSkeleton(After, KeepTables[KeepIndex]).Compatible)
+		{
+			Result.KeepRefused.Add(Skeleton->GetName());
+		}
+		++KeepIndex;
+	}
+	return Result;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Animations method: what carries over from the animation skeleton to the receiving skeleton. A bone's
+// track moves when the receiving skeleton has a bone of that name under the same parent chain; curve
+// tracks move when the receiving skeleton knows the curve name. The mod logs the same numbers in game.
+// ------------------------------------------------------------------------------------------------
+struct FCarryOver
+{
+	int32 Bones = 0;   // raw bones of the animation skeleton
+	int32 Carried = 0; // same name and parent chain on the receiving skeleton
+	int32 Missing = 0; // not on the receiving skeleton
+	int32 Moved = 0;   // on the receiving skeleton under a different parent chain
+	FString MovedNames;
+};
+
+bool SameParentChain(const FReferenceSkeleton& A, int32 BoneA, const FReferenceSkeleton& B, int32 BoneB)
+{
+	for (;;)
+	{
+		const int32 ParentA = A.GetParentIndex(BoneA);
+		const int32 ParentB = B.GetParentIndex(BoneB);
+		if (ParentA == INDEX_NONE || ParentB == INDEX_NONE)
+		{
+			return ParentA == ParentB;
+		}
+		if (A.GetBoneName(ParentA) != B.GetBoneName(ParentB))
+		{
+			return false;
+		}
+		BoneA = ParentA;
+		BoneB = ParentB;
+	}
+}
+
+FCarryOver CheckCarryOver(const FReferenceSkeleton& From, const FReferenceSkeleton& To)
+{
+	FCarryOver Result;
+	Result.Bones = From.GetRawBoneNum();
+	for (int32 Bone = 0; Bone < Result.Bones; ++Bone)
+	{
+		const FName Name = From.GetBoneName(Bone);
+		const int32 Target = To.FindBoneIndex(Name);
+		if (Target == INDEX_NONE)
+		{
+			++Result.Missing;
+		}
+		else if (SameParentChain(From, Bone, To, Target))
+		{
+			++Result.Carried;
+		}
+		else
+		{
+			if (Result.Moved < MaxNamesListed)
+			{
+				if (!Result.MovedNames.IsEmpty())
+				{
+					Result.MovedNames += TEXT(", ");
+				}
+				Result.MovedNames += Name.ToString();
+			}
+			++Result.Moved;
+		}
+	}
+	return Result;
+}
+
+// Curve names of From that To does not know (their tracks are left out of adopted animations). OutTotal: From's count.
+TArray<FString> CurvesMissing(const USkeleton* From, const USkeleton* To, int32& OutTotal)
+{
+	TArray<FString> Missing;
+	OutTotal = 0;
+	const FSmartNameMapping* FromCurves = From ? From->GetSmartNameContainer(USkeleton::AnimCurveMappingName) : nullptr;
+	if (!FromCurves)
+	{
+		return Missing;
+	}
+	const FSmartNameMapping* ToCurves = To ? To->GetSmartNameContainer(USkeleton::AnimCurveMappingName) : nullptr;
+	TArray<FName> Names;
+	FromCurves->FillNameArray(Names);
+	OutTotal = Names.Num();
+	for (const FName& Name : Names)
+	{
+		if (!ToCurves || !ToCurves->Exists(Name))
+		{
+			Missing.Add(Name.ToString());
+		}
+	}
+	Missing.Sort();
+	return Missing;
+}
+
+// One line about what of From's animations survives on To: bones and curves.
+void ReportCarryOver(USkeleton* From, USkeleton* To, const TCHAR* Indent, FString& Report, bool& bOk)
+{
+	const FCarryOver Carry = CheckCarryOver(From->GetReferenceSkeleton(), To->GetReferenceSkeleton());
+	Report += FString::Printf(TEXT("%s%s -> %s: %d of %d bones carry over (same name and parent chain), %d missing on %s, %d placed differently%s%s\n"),
+		Indent, *From->GetName(), *To->GetName(), Carry.Carried, Carry.Bones, Carry.Missing, *To->GetName(), Carry.Moved,
+		Carry.Moved > 0 ? TEXT(" (they keep their own pose or physics): ") : TEXT(""), *Carry.MovedNames);
+	if (Carry.Carried == 0)
+	{
+		Report += FString::Printf(TEXT("%sERROR: no bone carries over (root '%s' on %s, '%s' on %s)\n"), Indent,
+			*From->GetReferenceSkeleton().GetBoneName(0).ToString(), *From->GetName(), *To->GetReferenceSkeleton().GetBoneName(0).ToString(), *To->GetName());
+		bOk = false;
+	}
+	int32 Curves = 0;
+	const TArray<FString> Missing = CurvesMissing(From, To, Curves);
+	if (Missing.Num() > 0)
+	{
+		TArray<FString> Listed = Missing;
+		if (Listed.Num() > MaxNamesListed)
+		{
+			Listed.SetNum(MaxNamesListed);
+			Listed.Add(TEXT("..."));
+		}
+		Report += FString::Printf(TEXT("%s%d of %d curve name(s) of %s are unknown to %s, so those curve tracks are left out: %s\n"),
+			Indent, Missing.Num(), Curves, *From->GetName(), *To->GetName(), *FString::Join(Listed, TEXT(" ")));
+	}
+}
+
+// ------------------------------------------------------------------------------------------------
+// Assets
+// ------------------------------------------------------------------------------------------------
+// The meshes listed (Receiving Meshes), or every mesh on the skeleton the asset registry knows (up to MaxMeshesPerPair).
+TArray<USkeletalMesh*> MeshesFor(USkeleton* Receiving, const TArray<TSoftObjectPtr<USkeletalMesh>>& Listed, const TCHAR* Indent, FString& Report)
+{
+	TArray<USkeletalMesh*> Meshes;
+	if (Listed.Num() > 0)
+	{
+		for (const TSoftObjectPtr<USkeletalMesh>& Soft : Listed)
+		{
+			if (Soft.IsNull())
+			{
+				continue;
+			}
+			USkeletalMesh* Mesh = Soft.LoadSynchronous();
+			if (!Mesh)
+			{
+				Report += FString::Printf(TEXT("%s! mesh %s could not be loaded\n"), Indent, *Soft.ToString());
+				continue;
+			}
+			if (Mesh->Skeleton != Receiving)
+			{
+				Report += FString::Printf(TEXT("%s! %s uses %s, not the receiving skeleton: the game will not rebind it\n"), Indent,
+					*Mesh->GetName(), *PathOf(Mesh->Skeleton));
+			}
+			Meshes.Add(Mesh);
+		}
+		return Meshes;
+	}
+
+	IAssetRegistry& Registry = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry")).Get();
+	FARFilter Filter;
+	Filter.ClassNames.Add(USkeletalMesh::StaticClass()->GetFName());
+	Filter.bRecursiveClasses = true;
+	Filter.TagsAndValues.Add(FName(TEXT("Skeleton")), FAssetData(Receiving).GetExportTextName());
+	TArray<FAssetData> Assets;
+	Registry.GetAssets(Filter, Assets);
+	for (const FAssetData& Asset : Assets)
+	{
+		if (Meshes.Num() >= MaxMeshesPerPair)
+		{
+			Report += FString::Printf(TEXT("%s(only the first %d meshes were checked)\n"), Indent, MaxMeshesPerPair);
+			break;
+		}
+		if (USkeletalMesh* Mesh = Cast<USkeletalMesh>(Asset.GetAsset()))
+		{
+			Meshes.Add(Mesh);
+		}
+	}
+	return Meshes;
+}
+
+TArray<USkeleton*> LoadSkeletons(const std::vector<std::wstring>& Paths)
+{
+	TArray<USkeleton*> Out;
+	for (const std::wstring& Path : Paths)
+	{
+		if (USkeleton* Skeleton = Cast<USkeleton>(FSoftObjectPath(FromWide(Path)).TryLoad()))
+		{
+			Out.AddUnique(Skeleton);
+		}
+	}
+	return Out;
+}
+
+// Mesh rebind: each mesh against the skeletons it is bound to in game, with the hierarchy fix, and against the skeletons
+// whose AnimBlueprints must keep accepting it.
+void CheckMeshPair(const FEndSkeletonCompatPair& Pair, USkeleton* Receiving, const TArray<USkeleton*>& Targets, const TArray<USkeleton*>& Keep,
+	FString& Report, bool& bOk)
+{
+	const TArray<USkeletalMesh*> Meshes = MeshesFor(Receiving, Pair.ReceivingMeshes, TEXT("    "), Report);
+	if (Meshes.Num() == 0)
+	{
+		Report += TEXT("    no meshes found on the receiving skeleton to check\n");
+	}
+	for (USkeletalMesh* Mesh : Meshes)
+	{
+		if (IsCookedAsset(Mesh))
+		{
+			Report += FString::Printf(TEXT("    note: %s is a game mesh. While this pair is active it uses the animation skeleton everywhere the game shows it, so its own AnimBlueprints stop working there (its animations stay on its own skeleton; a Family keeps them working). For a replacement character, list your own copy of the mesh instead.\n"), *Mesh->GetName());
+		}
+		for (USkeleton* Skeleton : Targets)
+		{
+			const FBoneCheck Check = CheckMesh(Mesh->RefSkeleton, Skeleton->GetReferenceSkeleton());
+			FString Verdict;
+			if (Check.bCompatible)
+			{
+				Verdict = TEXT("OK, AnimBlueprints for this skeleton will run");
+			}
+			else if (Check.bFixable && Pair.bFixHierarchy)
+			{
+				Verdict = FString::Printf(TEXT("OK with the hierarchy fix: %d bone(s) fail the parent-chain test, the mod renames the ones placed differently in game and they keep the mesh's own pose. First: %s"),
+					Check.Misplaced, *Check.Problem);
+			}
+			else if (Check.bFixable)
+			{
+				Verdict = TEXT("REFUSED by the game (T-pose), Fix Hierarchy is off: ") + Check.Problem;
+				bOk = false;
+			}
+			else
+			{
+				Verdict = TEXT("REFUSED by the game (T-pose): ") + Check.Problem;
+				bOk = false;
+			}
+			Report += FString::Printf(TEXT("    %s -> %s: %d shared, %d mesh-only, %d animation-only. %s\n"), *Mesh->GetName(), *Skeleton->GetName(),
+				Check.Matched, Check.MeshOnly, Check.AnimationOnly, *Verdict);
+			if (Keep.Num() > 0 && (Check.bCompatible || Check.bFixable))
+			{
+				const FFixResult Fix = PlanFix(Mesh, Skeleton, Keep, Pair.bFixHierarchy);
+				TArray<FString> KeepNames;
+				for (USkeleton* KeepSkeleton : Keep)
+				{
+					if (KeepSkeleton && KeepSkeleton != Skeleton && !Fix.KeepRefused.Contains(KeepSkeleton->GetName()))
+					{
+						KeepNames.Add(KeepSkeleton->GetName());
+					}
+				}
+				if (KeepNames.Num() > 0)
+				{
+					Report += FString::Printf(TEXT("      AnimBlueprints made for %s still run on it%s\n"), *ListText(KeepNames),
+						Fix.Renamed > 0 ? *FString::Printf(TEXT(" (%d bone(s) renamed)"), Fix.Renamed) : TEXT(""));
+				}
+				if (Fix.KeepRefused.Num() > 0)
+				{
+					Report += FString::Printf(TEXT("      WARNING: AnimBlueprints made for %s would be refused on it\n"), *ListText(Fix.KeepRefused));
+				}
+			}
+		}
+	}
+}
+
+// Animations method (moving animations): what carries over from each animation skeleton.
+void CheckAnimationsPair(const FEndSkeletonCompatPair& Pair, USkeleton* Receiving, const TArray<USkeleton*>& Animation, FString& Report, bool& bOk)
+{
+	for (USkeleton* Skeleton : Animation)
+	{
+		ReportCarryOver(Skeleton, Receiving, TEXT("    "), Report, bOk);
+	}
+	if (Pair.ReceivingMeshes.Num() > 0)
+	{
+		Report += TEXT("    note: Receiving Meshes only apply to Mesh rebind pairs; they are not exported for this pair\n");
+	}
+	if (Pair.RequiresPaks.Num() == 0)
+	{
+		Report += TEXT("    note: no Requires Paks, so this pair is always on: while it is, the animation skeleton's own characters cannot play the adopted animations, even without your swap pak installed. Name your swap pak in Requires Paks, or make it a Family to share the animations.\n");
+	}
+}
+
+// A family member: its animations move onto the hub and its meshes are bound to the hub, with the hierarchy fix that
+// keeps both the hub's AnimBlueprints and its own running.
+void CheckFamilyMember(const FEndSkeletonCompatPair& Pair, USkeleton* Member, USkeleton* Hub, FString& Report, bool& bOk)
+{
+	Report += FString::Printf(TEXT("    member %s:\n"), *Member->GetName());
+	ReportCarryOver(Member, Hub, TEXT("      its animations on the hub: "), Report, bOk);
+	const TArray<USkeletalMesh*> Meshes = MeshesFor(Member, TArray<TSoftObjectPtr<USkeletalMesh>>(), TEXT("      "), Report);
+	if (Meshes.Num() == 0)
+	{
+		Report += TEXT("      no meshes found on this skeleton to check\n");
+	}
+	TArray<USkeleton*> Keep;
+	Keep.Add(Member);
+	for (USkeletalMesh* Mesh : Meshes)
+	{
+		const FFixResult Fix = PlanFix(Mesh, Hub, Keep, Pair.bFixHierarchy);
+		const FBoneCheck Check = CheckMesh(Mesh->RefSkeleton, Hub->GetReferenceSkeleton());
+		FString Verdict;
+		if (!Fix.bPossible)
+		{
+			Verdict = TEXT("REFUSED by the game (T-pose): ") + Check.Problem;
+			bOk = false;
+		}
+		else if (Fix.bTargetOk && Fix.KeepRefused.Num() == 0)
+		{
+			Verdict = Fix.Renamed > 0
+				? FString::Printf(TEXT("OK with the hierarchy fix: %d bone(s) renamed (they keep the mesh's own pose): %s. AnimBlueprints for %s and for %s both run"),
+					Fix.Renamed, *Fix.Names, *Hub->GetName(), *Member->GetName())
+				: FString::Printf(TEXT("OK, AnimBlueprints for %s and for %s both run"), *Hub->GetName(), *Member->GetName());
+		}
+		else if (!Pair.bFixHierarchy)
+		{
+			Verdict = TEXT("REFUSED for the hub's AnimBlueprints (T-pose), Fix Hierarchy is off: ") + Check.Problem;
+			bOk = false;
+		}
+		else
+		{
+			Verdict = FString::Printf(TEXT("REFUSED (T-pose) for %s even with the hierarchy fix"), Fix.bTargetOk ? *ListText(Fix.KeepRefused) : *Hub->GetName());
+			bOk = false;
+		}
+		Report += FString::Printf(TEXT("      %s on %s: %d shared bones, %d only on the mesh (they keep their own pose or physics). %s\n"), *Mesh->GetName(),
+			*Hub->GetName(), Check.Matched, Check.MeshOnly, *Verdict);
+	}
+}
+
+// ------------------------------------------------------------------------------------------------
+// The game's view: every compat file the mod reads plus this data object, settled by the mod's own rules
+// (SkelCompat::FinishConfig): families, outfits that follow animations, pairs switched off.
+// ------------------------------------------------------------------------------------------------
+struct FGameView
+{
+	bool bHasGame = false;          // the game folder with RebirthSkelCompat was found
+	TArray<FString> Files;          // files read, in the mod's order
+	TArray<FString> Problems;       // files the mod would skip
+	SkelCompat::Config Config;      // as the mod has it after reading every file
+};
+
+// Names requires_paks can match, like the mod: every .pak / .utoc under End\Content\Paks and End\Mods (file name without
+// extension), and the folders directly inside ~mods and End\Mods.
+TSet<FString> InstalledNames(const FString& Game)
+{
+	TSet<FString> Names;
+	const FString Paks = Game / TEXT("End/Content/Paks");
+	const FString Mods = Game / TEXT("End/Mods");
+	for (const FString& Root : {Paks, Mods})
+	{
+		for (const TCHAR* Pattern : {TEXT("*.pak"), TEXT("*.utoc")})
+		{
+			TArray<FString> Found;
+			IFileManager::Get().FindFilesRecursive(Found, *Root, Pattern, true, false);
+			for (const FString& File : Found)
+			{
+				Names.Add(FPaths::GetBaseFilename(File).ToLower());
+			}
+		}
+	}
+	for (const FString& Root : {Paks / TEXT("~mods"), Mods})
+	{
+		TArray<FString> Folders;
+		IFileManager::Get().FindFiles(Folders, *(Root / TEXT("*")), false, true);
+		for (const FString& Folder : Folders)
+		{
+			Names.Add(Folder.ToLower());
+		}
+	}
+	return Names;
+}
+
+struct FConfigSource
+{
+	FString Path;
+	FString Label;
+	bool bOwn = false;
+};
+
+// The mod reads compat\*.json and every <name>.skelcompat.json in ~mods and End\Mods, sorted by full path (compat\ first,
+// by file name). This data object's JSON takes the place of its own compat file, and of a copy shipped in ~mods.
+TArray<FConfigSource> ConfigSources(const FString& Game, const FString& OwnName)
+{
+	TArray<FConfigSource> Sources;
+	const FString Compat = Game / ModFolder / TEXT("compat");
+	TArray<FString> Files;
+	IFileManager::Get().FindFiles(Files, *(Compat / TEXT("*.json")), true, false);
+	for (const FString& File : Files)
+	{
+		FConfigSource Source;
+		Source.Path = Compat / File;
+		Source.Label = File;
+		Source.bOwn = FPaths::GetBaseFilename(File).Equals(OwnName, ESearchCase::IgnoreCase);
+		Sources.Add(Source);
+	}
+	if (!Sources.ContainsByPredicate([](const FConfigSource& Source) { return Source.bOwn; }))
+	{
+		FConfigSource Own;
+		Own.Path = Compat / (OwnName + TEXT(".json"));
+		Own.Label = OwnName + TEXT(".json");
+		Own.bOwn = true;
+		Sources.Add(Own);
+	}
+	for (const FString& Root : {Game / TEXT("End/Content/Paks/~mods"), Game / TEXT("End/Mods")})
+	{
+		TArray<FString> Found;
+		IFileManager::Get().FindFilesRecursive(Found, *Root, TEXT("*.skelcompat.json"), true, false);
+		for (const FString& File : Found)
+		{
+			const FString Name = FPaths::GetCleanFilename(File);
+			if (Name.Equals(OwnName + TEXT(".skelcompat.json"), ESearchCase::IgnoreCase))
+			{
+				continue;
+			}
+			FConfigSource Source;
+			Source.Path = File;
+			Source.Label = Name;
+			Sources.Add(Source);
+		}
+	}
+	Sources.Sort([](const FConfigSource& A, const FConfigSource& B) { return A.Path.Compare(B.Path, ESearchCase::CaseSensitive) < 0; });
+	return Sources;
+}
+
+std::string Utf8Of(const FString& Text)
+{
+	const FTCHARToUTF8 Converted(*Text);
+	return std::string(Converted.Get(), static_cast<size_t>(Converted.Length()));
+}
+
+FGameView SettleInGame(const FString& Game, const FString& OwnName, const FString& OwnJson)
+{
+	FGameView View;
+	View.bHasGame = !Game.IsEmpty() && IFileManager::Get().DirectoryExists(*(Game / ModFolder));
+	TSet<FString> Installed;
+	if (View.bHasGame)
+	{
+		Installed = InstalledNames(Game);
+		for (const FConfigSource& Source : ConfigSources(Game, OwnName))
+		{
+			std::string Bytes;
+			if (Source.bOwn)
+			{
+				Bytes = Utf8Of(OwnJson);
+			}
+			else
+			{
+				TArray<uint8> Data;
+				if (IFileManager::Get().FileSize(*Source.Path) > MaxConfigFileBytes || !FFileHelper::LoadFileToArray(Data, *Source.Path))
+				{
+					View.Problems.Add(Source.Label + TEXT(" could not be read (or is over 1 MB), the mod skips it"));
+					continue;
+				}
+				Bytes.assign(reinterpret_cast<const char*>(Data.GetData()), static_cast<size_t>(Data.Num()));
+			}
+			SkelCompat::AppendConfig(Bytes, Wide(Source.Label), View.Config);
+			View.Files.Add(Source.bOwn ? Source.Label + TEXT(" (this data object)") : Source.Label);
+		}
+	}
+	else
+	{
+		SkelCompat::AppendConfig(Utf8Of(OwnJson), Wide(OwnName + TEXT(".json")), View.Config);
+		View.Files.Add(OwnName + TEXT(".json (this data object)"));
+	}
+	const bool bHasGame = View.bHasGame;
+	SkelCompat::FinishConfig(View.Config, [&](const std::wstring& Name) { return !bHasGame || Installed.Contains(FromWide(Name).ToLower()); });
+	return View;
+}
+
+// The settled entry for a skeleton: once the mod has settled the pairs, each skeleton receives at most one.
+const SkelCompat::Pair* SettledFor(const FGameView& View, const FString& SkeletonPath)
+{
+	const std::wstring Path = Wide(NormalizedObjectPath(SkeletonPath));
+	return View.Config.FindForSkeleton(Path);
+}
+
+USkeleton* LoadPath(const std::wstring& Path) { return Cast<USkeleton>(FSoftObjectPath(FromWide(Path)).TryLoad()); }
+
+// ------------------------------------------------------------------------------------------------
+// One pair of this data object
+// ------------------------------------------------------------------------------------------------
+bool CheckPair(const FEndSkeletonCompatPair& Pair, int32 Index, const TArray<FEndSkeletonCompatPair>& All, const FGameView& View, FString& Report)
+{
+	Report += FString::Printf(TEXT("Pair %d (%s): %s\n"), Index, MethodLabel(Pair.Method),
+		Pair.ReceivingSkeleton.IsNull() ? TEXT("(no receiving skeleton)") : *Pair.ReceivingSkeleton.ToString());
+	if (!Pair.bEnabled)
+	{
+		Report += TEXT("    disabled\n");
+		return true;
+	}
+	USkeleton* First = Pair.ReceivingSkeleton.LoadSynchronous();
+	if (!First)
+	{
+		Report += Pair.Method == EEndSkelCompatMethod::Family ? TEXT("    ERROR: the hub (Receiving Skeleton) is not set or not found\n")
+															 : TEXT("    ERROR: receiving skeleton not set or not found\n");
+		return false;
+	}
+	bool bOk = true;
+	TArray<USkeleton*> Receivers;
+	Receivers.Add(First);
+	for (const TSoftObjectPtr<USkeleton>& Soft : Pair.MoreReceivingSkeletons)
+	{
+		if (Soft.IsNull())
+		{
+			continue;
+		}
+		USkeleton* Skeleton = Soft.LoadSynchronous();
+		if (!Skeleton)
+		{
+			Report += FString::Printf(TEXT("    ERROR: skeleton %s not found\n"), *Soft.ToString());
+			bOk = false;
+			continue;
+		}
+		Receivers.AddUnique(Skeleton);
+	}
+	TArray<USkeleton*> Animation;
+	for (const TSoftObjectPtr<USkeleton>& Soft : Pair.AnimationSkeletons)
+	{
+		if (Soft.IsNull())
+		{
+			continue;
+		}
+		USkeleton* Skeleton = Soft.LoadSynchronous();
+		if (!Skeleton)
+		{
+			Report += FString::Printf(TEXT("    ERROR: animation skeleton %s not found\n"), *Soft.ToString());
+			bOk = false;
+		}
+		else if (Receivers.Contains(Skeleton))
+		{
+			if (Pair.Method != EEndSkelCompatMethod::Family)
+			{
+				Report += FString::Printf(TEXT("    note: %s is a receiving skeleton of this pair too; it is left out of its own animation skeletons\n"), *Skeleton->GetName());
+			}
+		}
+		else
+		{
+			Animation.AddUnique(Skeleton);
+		}
+	}
+
+	if (Pair.Method == EEndSkelCompatMethod::Family)
+	{
+		TArray<USkeleton*> Members;
+		for (int32 Receiver = 1; Receiver < Receivers.Num(); ++Receiver)
+		{
+			Members.AddUnique(Receivers[Receiver]);
+		}
+		for (USkeleton* Skeleton : Animation)
+		{
+			Members.AddUnique(Skeleton);
+		}
+		if (Members.Num() == 0)
+		{
+			Report += TEXT("    ERROR: a family needs at least one skeleton besides the hub (Animation Skeletons)\n");
+			return false;
+		}
+		// In game another entry may already have named a different hub for some of these skeletons.
+		USkeleton* Hub = First;
+		if (const SkelCompat::Pair* Settled = SettledFor(View, PathOf(Members[0])))
+		{
+			if (!Settled->FamilyHub.empty() && !SamePath(FromWide(Settled->FamilyHub), PathOf(First)))
+			{
+				USkeleton* GameHub = LoadPath(Settled->FamilyHub);
+				Report += FString::Printf(TEXT("    note: in game this family gathers on %s, named first by %s; the checks below use that hub\n"),
+					*ShortName(Settled->FamilyHub), *FromWide(Settled->Origin));
+				if (GameHub)
+				{
+					Hub = GameHub;
+					Members.Remove(GameHub);
+					Members.AddUnique(First);
+				}
+			}
+		}
+		Report += FString::Printf(TEXT("    hub %s: its own characters and animations stay as they are; the members' animations move onto it and their meshes are bound to it\n"),
+			*Hub->GetName());
+		if (IsCookedAsset(Hub) == false)
+		{
+			Report += TEXT("    note: the hub is your own skeleton, so every member moves onto it (a union skeleton with all their bones keeps the most animation)\n");
+		}
+		for (USkeleton* Member : Members)
+		{
+			CheckFamilyMember(Pair, Member, Hub, Report, bOk);
+		}
+		if (Pair.AdoptPaths.Num() > 0 || Pair.ReceivingMeshes.Num() > 0)
+		{
+			Report += TEXT("    note: Adopt Paths and Receiving Meshes are not used by a family (it shares every animation and binds every mesh)\n");
+		}
+	}
+	else
+	{
+		for (USkeleton* Receiving : Receivers)
+		{
+			if (Receivers.Num() > 1)
+			{
+				Report += FString::Printf(TEXT("  receiving %s:\n"), *Receiving->GetName());
+			}
+			const SkelCompat::Pair* Settled = SettledFor(View, PathOf(Receiving));
+			if (Pair.Method == EEndSkelCompatMethod::Mesh)
+			{
+				if (IsCookedAsset(Receiving))
+				{
+					Report += TEXT("    note: the receiving skeleton is a game asset, so Apply To Skeletons leaves it alone; use Export Json\n");
+				}
+				TArray<USkeleton*> Targets = Animation;
+				TArray<USkeleton*> Keep;
+				if (Settled && Settled->Use == SkelCompat::Method::Mesh)
+				{
+					Targets = LoadSkeletons(Settled->Animation);
+					Keep = LoadSkeletons(Settled->KeepCompatible);
+					if (!Settled->FamilyHub.empty())
+					{
+						Report += FString::Printf(TEXT("    note: in game this skeleton is a member of the family of %s, so its meshes are bound to %s\n"),
+							*ShortName(Settled->FamilyHub), *ShortName(Settled->FamilyHub));
+					}
+					else if (Keep.Num() > 0)
+					{
+						Report += FString::Printf(TEXT("    note: in game these meshes follow the animations of %s to %s (checked against those, and kept compatible with the AnimBlueprints they were made for)\n"),
+							*ShortList(Settled->KeepCompatible), *ShortList(Settled->Animation));
+					}
+				}
+				else if (Settled)
+				{
+					Report += TEXT("    WARNING: in game this skeleton receives animations through another entry (the earlier entry for a skeleton keeps its method); these meshes are not rebound\n");
+				}
+				else
+				{
+					Report += TEXT("    note: in game this pair is off (see the In game section below)\n");
+				}
+				if (Targets.Num() == 0)
+				{
+					Report += TEXT("    ERROR: no usable animation skeleton\n");
+					bOk = false;
+					continue;
+				}
+				CheckMeshPair(Pair, Receiving, Targets, Keep, Report, bOk);
+				if (!Pair.bCarrySockets)
+				{
+					Report += TEXT("    note: Carry Sockets is off: rebound meshes only find the sockets of the skeleton they are bound to\n");
+				}
+				continue;
+			}
+
+			// Animations
+			if (Animation.Num() == 0)
+			{
+				Report += TEXT("    ERROR: no usable animation skeleton\n");
+				bOk = false;
+				continue;
+			}
+			if (Settled && !Settled->FamilyHub.empty())
+			{
+				// The pairs the game turned into a family: they share instead of moving animations away.
+				USkeleton* Hub = LoadPath(Settled->FamilyHub);
+				if (!Hub)
+				{
+					Report += FString::Printf(TEXT("    ERROR: in game this is part of the family of %s, which could not be loaded\n"), *ShortName(Settled->FamilyHub));
+					bOk = false;
+					continue;
+				}
+				if (Hub == Receiving)
+				{
+					Report += FString::Printf(TEXT("    in game: %s is the hub of a family (%s): it keeps its characters and animations, and the members' animations and meshes move onto it\n"),
+						*Receiving->GetName(), *FromWide(Settled->Origin));
+					for (USkeleton* Member : LoadSkeletons(Settled->Animation))
+					{
+						CheckFamilyMember(Pair, Member, Hub, Report, bOk);
+					}
+				}
+				else
+				{
+					Report += FString::Printf(TEXT("    in game: these skeletons share their animations as the family of %s (the pairs want the same animations, or chain): %s's meshes are bound to %s and its animations move there\n"),
+						*Hub->GetName(), *Receiving->GetName(), *Hub->GetName());
+					CheckFamilyMember(Pair, Receiving, Hub, Report, bOk);
+				}
+				continue;
+			}
+			CheckAnimationsPair(Pair, Receiving, Animation, Report, bOk);
+			if (!Settled)
+			{
+				Report += TEXT("    note: in game this pair is off (see the In game section below)\n");
+			}
+		}
+	}
+
+	for (int32 Other = 0; Other < Index; ++Other)
+	{
+		const FEndSkeletonCompatPair& OtherPair = All[Other];
+		if (!OtherPair.bEnabled || OtherPair.ReceivingSkeleton.ToSoftObjectPath() != Pair.ReceivingSkeleton.ToSoftObjectPath() ||
+			OtherPair.Method == EEndSkelCompatMethod::Family || Pair.Method == EEndSkelCompatMethod::Family)
+		{
+			continue;
+		}
+		Report += OtherPair.Method == Pair.Method
+			? FString::Printf(TEXT("    note: same receiving skeleton as pair %d; the mod merges both lists\n"), Other)
+			: FString::Printf(TEXT("    WARNING: same receiving skeleton as pair %d with another method; the mod merges both lists and keeps pair %d's method\n"), Other, Other);
+	}
+	return bOk;
+}
+
+// What the game makes of all compat files together, for the skeletons this data object names.
+void ReportInGame(const FGameView& View, const TArray<FString>& Mine, const FString& OwnFile, FString& Report)
+{
+	const auto Involves = [&](const std::wstring& Path) {
+		return Mine.ContainsByPredicate([&](const FString& Own) { return SamePath(Own, FromWide(Path)); });
+	};
+	Report += View.bHasGame
+		? FString::Printf(TEXT("\nIn game (RebirthSkelCompat 3.2 rules; files read: %s):\n"), *ListText(View.Files))
+		: FString(TEXT("\nIn game (game folder not found: this data object alone, Requires Paks counted as installed):\n"));
+	int32 Lines = 0;
+	for (const SkelCompat::Pair& Settled : View.Config.Pairs)
+	{
+		bool bMine = Involves(Settled.Receiving);
+		for (const std::wstring& Path : Settled.Animation)
+		{
+			bMine = bMine || Involves(Path);
+		}
+		if (!bMine)
+		{
+			continue;
+		}
+		++Lines;
+		if (Settled.Use == SkelCompat::Method::Animations && !Settled.FamilyHub.empty())
+		{
+			Report += FString::Printf(TEXT("  family of %s: %s play each other's animations with it (their animations move onto %s, their meshes are bound to it)\n"),
+				*ShortName(Settled.Receiving), *ShortList(Settled.Animation), *ShortName(Settled.Receiving));
+		}
+		else if (Settled.Use == SkelCompat::Method::Animations)
+		{
+			TArray<FString> Paths;
+			for (const std::wstring& Path : Settled.AdoptPaths)
+			{
+				Paths.Add(FromWide(Path));
+			}
+			Report += FString::Printf(TEXT("  %s takes over the animations of %s%s\n"), *ShortName(Settled.Receiving), *ShortList(Settled.Animation),
+				Paths.Num() > 0 ? *(TEXT(" under ") + ListText(Paths)) : TEXT(""));
+		}
+		else if (Settled.FamilyHub.empty())
+		{
+			Report += FString::Printf(TEXT("  meshes on %s are bound to %s%s\n"), *ShortName(Settled.Receiving), *ShortList(Settled.Animation),
+				Settled.KeepCompatible.empty() ? TEXT("") : *(TEXT(" (and still accepted by AnimBlueprints made for ") + ShortList(Settled.KeepCompatible) + TEXT(")")));
+		}
+		else
+		{
+			--Lines; // a family member's meshes: covered by the family line
+		}
+	}
+	if (Lines == 0)
+	{
+		Report += TEXT("  none of this data object's pairs is on\n");
+	}
+	for (const std::wstring& Message : View.Config.Messages)
+	{
+		const FString Text = FromWide(Message);
+		// A file the mod skips (invalid JSON, wrong schema) changes what the game does, whichever skeletons it names.
+		const bool bMine = Text.StartsWith(OwnFile) || Text.EndsWith(TEXT("file skipped")) ||
+			Mine.ContainsByPredicate([&](const FString& Own) { return Text.Contains(NormalizedObjectPath(Own)); });
+		if (bMine)
+		{
+			Report += TEXT("  note: ") + Text + TEXT("\n");
+		}
+	}
+	for (const FString& Problem : View.Problems)
+	{
+		Report += TEXT("  note: ") + Problem + TEXT("\n");
+	}
+}
+
+// "/Game/Motion/Player/PC0000_Cloud/Battle00.Battle00" -> "PC0000_Cloud/Battle00"
+FString ShortSource(const FString& Path)
+{
+	FString Package = Path;
+	int32 Dot = INDEX_NONE;
+	if (Package.FindChar(TEXT('.'), Dot))
+	{
+		Package = Package.Left(Dot);
+	}
+	TArray<FString> Parts;
+	Package.ParseIntoArray(Parts, TEXT("/"), true);
+	return Parts.Num() >= 2 ? Parts[Parts.Num() - 2] + TEXT("/") + Parts.Last() : Package;
+}
+
+// ------------------------------------------------------------------------------------------------
+// Auto-match preview (3.2): the picks the game makes, worked out with the mod's own rules from the sets this project
+// has, else read from the game's last RebirthSkelCompat.log.
+// ------------------------------------------------------------------------------------------------
+struct FSetContents
+{
+	std::vector<uint64_t> Keys;
+	std::vector<SkelCompat::MatchAnim> Anims;
+};
+
+uint64_t NameKey(const FName& Name)
+{
+	return (static_cast<uint64_t>(Name.GetComparisonIndex().ToUnstableInt()) << 32) | static_cast<uint32_t>(Name.GetNumber());
+}
+
+// A UEndAnimSet's AnimationAssets, by reflection (the EndGame module stays optional for this plugin).
+bool ReadEndAnimSet(UObject* Set, FSetContents& Out)
+{
+	if (!Set) { return false; }
+	FMapProperty* Map = FindFProperty<FMapProperty>(Set->GetClass(), TEXT("AnimationAssets"));
+	FObjectPropertyBase* Value = Map ? CastField<FObjectPropertyBase>(Map->ValueProp) : nullptr;
+	if (!Map || !CastField<FNameProperty>(Map->KeyProp) || !Value) { return false; }
+	FScriptMapHelper Helper(Map, Map->ContainerPtrToValuePtr<void>(Set));
+	for (int32 Index = 0; Index < Helper.GetMaxIndex(); ++Index)
+	{
+		if (!Helper.IsValidIndex(Index)) { continue; }
+		const FName Key = *reinterpret_cast<const FName*>(Helper.GetKeyPtr(Index));
+		UObject* Animation = Value->GetObjectPropertyValue(Helper.GetValuePtr(Index));
+		SkelCompat::MatchAnim Anim;
+		Anim.Name = Wide(Key.ToString());
+		if (const UAnimSequenceBase* Sequence = Cast<UAnimSequenceBase>(Animation)) { Anim.Length = Sequence->SequenceLength; }
+		if (const UAnimSequence* Sequence = Cast<UAnimSequence>(Animation)) { Anim.Additive = Sequence->IsValidAdditive(); }
+		Out.Keys.push_back(NameKey(Key));
+		Out.Anims.push_back(Anim);
+	}
+	return true;
+}
+
+// The pack's own set of that name (CharaSpec pack AssetDataList[].AssetUserData), when the pack is in this project.
+UObject* PackOwnSet(const FString& PackPath, const FString& SetName)
+{
+	if (PackPath.IsEmpty() || !InProject(PackPath)) { return nullptr; }
+	UObject* Pack = LoadObject<UObject>(nullptr, *PackPath);
+	FArrayProperty* List = Pack ? FindFProperty<FArrayProperty>(Pack->GetClass(), TEXT("AssetDataList")) : nullptr;
+	FStructProperty* Entry = List ? CastField<FStructProperty>(List->Inner) : nullptr;
+	FArrayProperty* Objects = Entry ? FindFProperty<FArrayProperty>(Entry->Struct, TEXT("AssetUserData")) : nullptr;
+	FObjectPropertyBase* Item = Objects ? CastField<FObjectPropertyBase>(Objects->Inner) : nullptr;
+	if (!Item) { return nullptr; }
+	FScriptArrayHelper Entries(List, List->ContainerPtrToValuePtr<void>(Pack));
+	for (int32 E = 0; E < Entries.Num(); ++E)
+	{
+		FScriptArrayHelper Users(Objects, Objects->ContainerPtrToValuePtr<void>(Entries.GetRawPtr(E)));
+		for (int32 U = 0; U < Users.Num(); ++U)
+		{
+			UObject* Object = Item->GetObjectPropertyValue(Users.GetRawPtr(U));
+			if (Object && Object->GetName().Equals(SetName, ESearchCase::IgnoreCase) && FindFProperty<FMapProperty>(Object->GetClass(), TEXT("AnimationAssets")))
+			{
+				return Object;
+			}
+		}
+	}
+	return nullptr;
+}
+
+// The game's RebirthSkelCompat.log, or empty.
+FString GameLogText(const FString& GameDirectory)
+{
+	FString Text;
+	if (!GameDirectory.IsEmpty()) { FFileHelper::LoadFileToString(Text, *(GameDirectory / ModFolder / TEXT("RebirthSkelCompat.log"))); }
+	return Text;
+}
+
+// The auto-matched lines of one set from the last "Animation sets of <pack>:" block of the game log.
+TArray<FString> LastRunPicks(const FString& Log, const FString& PackPath, const FString& SetName)
+{
+	TArray<FString> Lines, Picks;
+	Log.ParseIntoArrayLines(Lines, false);
+	int32 Start = INDEX_NONE;
+	const FString Header = TEXT("Animation sets of ") + NormalizedObjectPath(PackPath);
+	for (int32 K = Lines.Num() - 1; K >= 0 && Start == INDEX_NONE; --K)
+	{
+		if (Lines[K].Contains(Header, ESearchCase::IgnoreCase)) { Start = K + 1; }
+	}
+	if (Start == INDEX_NONE) { return Picks; }
+	bool bInSet = false, bInPicks = false;
+	for (int32 K = Start; K < Lines.Num() && !Lines[K].StartsWith(TEXT("[")); ++K)
+	{
+		const FString Trimmed = Lines[K].TrimStart();
+		const int32 Indent = Lines[K].Len() - Trimmed.Len();
+		if (Indent <= 4)
+		{
+			bInSet = Trimmed.StartsWith(SetName + TEXT(":"), ESearchCase::IgnoreCase);
+			bInPicks = false;
+			continue;
+		}
+		if (!bInSet) { continue; }
+		if (Trimmed.StartsWith(TEXT("auto-matched"))) { bInPicks = true; continue; }
+		if (bInPicks) { Picks.Add(Trimmed); }
+	}
+	return Picks;
+}
+
+// Validate: what each auto source of the set gives, before the game runs.
+void PreviewAutoMatch(const SkelCompat::AnimSetRow& Core, const std::wstring& Name, const TArray<FString>& PackPaths, const FString& GameLog, FString& Report)
+{
+	const std::vector<SkelCompat::SetSourceRef> Refs = SkelCompat::SetSourcesFor(Core, Name);
+	if (std::none_of(Refs.begin(), Refs.end(), [](const SkelCompat::SetSourceRef& Ref) { return Ref.Auto != SkelCompat::AutoMatchMode::Off; })) { return; }
+	std::vector<SkelCompat::MergeSource> Inputs;
+	TArray<FString> Labels, Missing;
+	bool bMissingAuto = false;
+	for (const SkelCompat::SetSourceRef& Ref : Refs)
+	{
+		UObject* Set = nullptr;
+		for (const std::wstring& Path : Ref.Paths)
+		{
+			if (InProject(FromWide(Path))) { Set = LoadObject<UObject>(nullptr, *FromWide(Path)); }
+			if (Set) { break; }
+		}
+		FSetContents Contents;
+		if (!Set || !ReadEndAnimSet(Set, Contents))
+		{
+			Missing.Add(ShortSource(FromWide(Ref.Paths.front())));
+			bMissingAuto |= Ref.Auto != SkelCompat::AutoMatchMode::Off;
+			continue;
+		}
+		SkelCompat::MergeSource Input;
+		Input.Auto = Ref.Auto;
+		Input.Only = Ref.Only;
+		Input.Keys = std::move(Contents.Keys);
+		Input.Anims = std::move(Contents.Anims);
+		Inputs.push_back(std::move(Input));
+		Labels.Add(ShortSource(Set->GetPathName()));
+	}
+	for (const FString& Pack : PackPaths)
+	{
+		FSetContents Contents;
+		if (UObject* Own = PackOwnSet(Pack, FromWide(Name)); Own && ReadEndAnimSet(Own, Contents))
+		{
+			SkelCompat::MergeSource Input;
+			Input.Keys = std::move(Contents.Keys);
+			Input.Anims = std::move(Contents.Anims);
+			Inputs.push_back(std::move(Input));
+			Labels.Add(TEXT("the pack's own ") + FromWide(Name));
+			break;
+		}
+	}
+	if (!bMissingAuto && !Inputs.empty())
+	{
+		const std::vector<SkelCompat::MergedEntry> Merged = SkelCompat::MergeSetSources(Inputs);
+		TArray<FString> Lines;
+		for (const SkelCompat::MergedEntry& Entry : Merged)
+		{
+			if (Entry.Tier < 2) { continue; }
+			const SkelCompat::MergeSource& From = Inputs[Entry.Source];
+			FString Picked = FromWide(From.Anims[Entry.Entry].Name);
+			float Length = From.Anims[Entry.Entry].Length;
+			if (Entry.Chain.size() > 1)
+			{
+				Picked.Reset();
+				Length = 0.f;
+				for (const size_t Piece : Entry.Chain)
+				{
+					Picked += (Picked.IsEmpty() ? TEXT("") : TEXT(" + ")) + FromWide(From.Anims[Piece].Name);
+					Length += From.Anims[Piece].Length;
+				}
+			}
+			FString Asked;
+			float Before = 0.f;
+			for (const SkelCompat::MergeSource& Other : Inputs)
+			{
+				if (Other.Auto != SkelCompat::AutoMatchMode::Off) { continue; }
+				for (size_t K = 0; K < Other.Keys.size() && Asked.IsEmpty(); ++K)
+				{
+					if (Other.Keys[K] == Entry.Key)
+					{
+						Asked = FromWide(Other.Anims[K].Name);
+						Before = Other.Anims[K].Length;
+					}
+				}
+				if (!Asked.IsEmpty()) { break; }
+			}
+			Lines.Add(FString::Printf(TEXT("%s (%.1f s) <- %s (%.1f s, %s)"), *Asked, Before, *Picked, Length,
+				Entry.Tier == 2 ? TEXT("another variant of the move") : TEXT("same kind, closest length")));
+		}
+		Report += FString::Printf(TEXT("    %s auto-match preview (%d pick(s), from %s%s):\n"), *FromWide(Name), Lines.Num(), *ListText(Labels),
+			Missing.Num() > 0 ? *(TEXT("; not in this project: ") + ListText(Missing)) : TEXT(""));
+		for (const FString& Line : Lines) { Report += TEXT("        ") + Line + TEXT("\n"); }
+		return;
+	}
+	// An auto source is not in this project: show what the game picked the last time it ran.
+	for (const FString& Pack : PackPaths)
+	{
+		const TArray<FString> Picks = LastRunPicks(GameLog, Pack, FromWide(Name));
+		if (Picks.Num() == 0) { continue; }
+		Report += FString::Printf(TEXT("    %s auto-match: %s not in this project, so these are the picks of the game's last run (RebirthSkelCompat.log):\n"),
+			*FromWide(Name), *ListText(Missing));
+		for (const FString& Line : Picks) { Report += TEXT("        ") + Line + TEXT("\n"); }
+		return;
+	}
+	Report += FString::Printf(TEXT("    %s auto-match: no preview (%s not in this project, and the game has not logged this set yet)\n"), *FromWide(Name), *ListText(Missing));
+}
+
+// ------------------------------------------------------------------------------------------------
+// Build Moves: a new animation made from an animation of this project, with the gameplay notifies of the character's own
+// animation of that name (so the game's attack works with it), lined up on the first hit, and optional shot effects.
+// ------------------------------------------------------------------------------------------------
+// The character's own animation of a move's name: Notifies From, else <folder source>/<Set>/<Name> of the row's folder
+// sources from the last one up (the slot owner's folder is usually listed last). OutPath: what was found or looked for.
+UAnimSequenceBase* FindNotifySource(const FEndAnimSetRow& Row, const FEndAnimSetMove& Move, FString& OutPath)
+{
+	const FString Name = Move.Name.TrimStartAndEnd();
+	const FString Set = Move.Set.TrimStartAndEnd();
+	TArray<FString> Candidates;
+	if (!Move.NotifiesFrom.TrimStartAndEnd().IsEmpty())
+	{
+		Candidates.Add(NormalizedObjectPath(Move.NotifiesFrom.TrimStartAndEnd()));
+	}
+	else if (!Name.IsEmpty())
+	{
+		const bool bBattle = Set.IsEmpty() ? Name.StartsWith(TEXT("B_"), ESearchCase::IgnoreCase) : SkelCompat::IsBattleSetName(Wide(Set));
+		TArray<FString> Sets;
+		if (!Set.IsEmpty())
+		{
+			Sets.Add(Set);
+		}
+		else if (bBattle)
+		{
+			Sets = {TEXT("Battle00"), TEXT("Battle01"), TEXT("Battle02")};
+		}
+		else
+		{
+			Sets = {TEXT("Neutral00"), TEXT("Neutral01"), TEXT("Neutral10"), TEXT("Neutral20"), TEXT("Emotion00")};
+		}
+		const TArray<FEndAnimSetSource>& Sources = bBattle ? Row.Battle : Row.Field;
+		for (int32 K = Sources.Num() - 1; K >= 0; --K)
+		{
+			SkelCompat::SetSource Parsed;
+			if (!SkelCompat::ParseSetSource(Wide(Sources[K].Path), Parsed) || !Parsed.Folder)
+			{
+				continue;
+			}
+			for (const FString& One : Sets)
+			{
+				Candidates.Add(FromWide(Parsed.Path) + TEXT("/") + One + TEXT("/") + Name + TEXT(".") + Name);
+			}
+		}
+	}
+	for (const FString& Path : Candidates)
+	{
+		if (!InProject(Path))
+		{
+			continue;
+		}
+		if (UAnimSequenceBase* Found = Cast<UAnimSequenceBase>(FSoftObjectPath(Path).TryLoad()))
+		{
+			OutPath = Path;
+			return Found;
+		}
+	}
+	OutPath = Candidates.Num() > 0 ? Candidates[0] : FString();
+	return nullptr;
+}
+
+UObject* NotifyObject(const FAnimNotifyEvent& Event)
+{
+	return Event.Notify ? static_cast<UObject*>(Event.Notify) : static_cast<UObject*>(Event.NotifyStateClass);
+}
+
+bool ClassNameHasAny(const UObject* Object, std::initializer_list<const TCHAR*> Words)
+{
+	if (!Object)
+	{
+		return false;
+	}
+	const FString Name = Object->GetClass()->GetName();
+	for (const TCHAR* Word : Words)
+	{
+		if (Name.Contains(Word))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+// A hit: a notify that creates damage (EndAnimNotifyBattleDamage, EndAnimNotifyStateBattleDamage, ...).
+bool IsHitNotify(const UObject* Object)
+{
+	return ClassNameHasAny(Object, {TEXT("BattleDamage")}) && !ClassNameHasAny(Object, {TEXT("Display"), TEXT("Assist"), TEXT("Destroy")});
+}
+
+// Left out of a build: what belongs to the original motion and weapon (its weapon and body sounds, weapon trails and
+// effects, cloth settings). Everything else is the game's logic for that move and is kept.
+bool IsMotionNotify(const UObject* Object)
+{
+	return ClassNameHasAny(Object, {TEXT("WeaponSound"), TEXT("CharacterSound"), TEXT("FootSound"), TEXT("HandSound"), TEXT("NiagaraEffect"),
+									TEXT("ParticleEffect"), TEXT("EffectCharaProperty"), TEXT("Bonamik")});
+}
+
+// Times of the original on the new animation: the first hit moves to the new hit time, the rest in proportion before and
+// after it (no hit: in proportion to the lengths).
+struct FBuildTimeMap
+{
+	float OldLength = 0.f;
+	float NewLength = 0.f;
+	float OldHit = -1.f;
+	float NewHit = -1.f;
+
+	float Map(float Time) const
+	{
+		Time = FMath::Clamp(Time, 0.f, OldLength);
+		if (OldHit < 0.f || NewHit < 0.f)
+		{
+			return OldLength > KINDA_SMALL_NUMBER ? Time * NewLength / OldLength : 0.f;
+		}
+		if (Time <= OldHit)
+		{
+			return OldHit > KINDA_SMALL_NUMBER ? Time * NewHit / OldHit : NewHit;
+		}
+		const float OldRest = OldLength - OldHit;
+		const float NewRest = NewLength - NewHit;
+		return OldRest > KINDA_SMALL_NUMBER ? NewHit + (Time - OldHit) * NewRest / OldRest : NewHit;
+	}
+};
+
+// Links a notify to the sequence at Start (a notify state for Length), on Track.
+void PlaceNotify(UAnimSequenceBase* Sequence, FAnimNotifyEvent& Event, float Start, float Length, int32 Track)
+{
+	Start = FMath::Clamp(Start, 0.f, Sequence->SequenceLength);
+	Event.Link(Sequence, Start);
+	Event.TriggerTimeOffset = GetTriggerTimeOffsetForType(Sequence->CalculateOffsetForNotify(Start));
+	if (Event.NotifyStateClass)
+	{
+		const float End = FMath::Clamp(Start + Length, Start, Sequence->SequenceLength);
+		Event.EndLink.Link(Sequence, End);
+		Event.SetDuration(End - Start);
+		Event.EndTriggerTimeOffset = GetTriggerTimeOffsetForType(Sequence->CalculateOffsetForNotify(End));
+	}
+	else
+	{
+		Event.EndLink.Link(Sequence, Start);
+		Event.Duration = 0.f;
+		Event.EndTriggerTimeOffset = 0.f;
+	}
+	Event.TrackIndex = Track;
+#if WITH_EDITORONLY_DATA
+	Event.Guid = FGuid::NewGuid();
+#endif
+}
+
+// Sets a property from its text form (the Copy / Paste text of the details panel).
+bool SetPropertyText(UObject* Object, const TCHAR* Name, const FString& Text, FString& Notes)
+{
+	FProperty* Property = Object ? FindFProperty<FProperty>(Object->GetClass(), Name) : nullptr;
+	if (!Property)
+	{
+		Notes += FString::Printf(TEXT("; %s has no %s"), Object ? *Object->GetClass()->GetName() : TEXT("(none)"), Name);
+		return false;
+	}
+	if (!Property->ImportText(*Text, Property->ContainerPtrToValuePtr<void>(Object), PPF_None, Object))
+	{
+		Notes += FString::Printf(TEXT("; %s.%s did not take %s"), *Object->GetClass()->GetName(), Name, *Text);
+		return false;
+	}
+	return true;
+}
+
+// Muzzle flash (a Niagara notify state at the weapon's socket) and gunshot (a weapon sound) at one hit. Only the
+// settings the game's own muzzle notifies set are set; everything else keeps the game's defaults.
+int32 AddShotEffects(UAnimSequenceBase* Sequence, const FEndShotEffects& Shot, float Time, int32 Track, FString& Notes)
+{
+	int32 Added = 0;
+	const int32 Weapon = FMath::Clamp(Shot.Weapon, 1, 8);
+	const FString Muzzle = Shot.MuzzleEffect.TrimStartAndEnd();
+	if (!Muzzle.IsEmpty())
+	{
+		UClass* Class = FindObject<UClass>(ANY_PACKAGE, TEXT("AnimNotifyState_EndTimedNiagaraEffect"));
+		if (!Class || !Class->IsChildOf(UAnimNotifyState::StaticClass()))
+		{
+			Notes += TEXT("; no muzzle flash: AnimNotifyState_EndTimedNiagaraEffect (EndGame) is not loaded");
+		}
+		else
+		{
+			UAnimNotifyState* State = NewObject<UAnimNotifyState>(Sequence, Class, NAME_None, RF_Transactional);
+			const FString Params = FString::Printf(TEXT("(m_NiagaraParameterInfo=(m_Template=\"%s\"),m_SocketName=\"%s\")"), *NormalizedObjectPath(Muzzle),
+				*Shot.MuzzleSocket.ToString());
+			if (SetPropertyText(State, TEXT("m_NiagaraCreateParams"), Params, Notes) &&
+				SetPropertyText(State, TEXT("m_AttachType"), FString::Printf(TEXT("Weapon%d"), Weapon), Notes))
+			{
+				FAnimNotifyEvent Event;
+				Event.NotifyStateClass = State;
+				Event.NotifyName = FName(*State->GetNotifyName());
+				PlaceNotify(Sequence, Event, Time, FMath::Max(Shot.MuzzleTime, 0.01f), Track);
+				Sequence->Notifies.Add(Event);
+				++Added;
+			}
+		}
+	}
+	const FString Bank = Shot.SoundBank.TrimStartAndEnd();
+	if (!Bank.IsEmpty() && !Shot.Sound.IsNone())
+	{
+		UClass* Class = FindObject<UClass>(ANY_PACKAGE, TEXT("EndAnimNotifyPlayWeaponSound"));
+		if (!Class || !Class->IsChildOf(UAnimNotify::StaticClass()))
+		{
+			Notes += TEXT("; no gunshot: EndAnimNotifyPlayWeaponSound (EndGame) is not loaded");
+		}
+		else
+		{
+			UAnimNotify* Notify = NewObject<UAnimNotify>(Sequence, Class, NAME_None, RF_Transactional);
+			bool bSet = SetPropertyText(Notify, TEXT("SoundRef"), TEXT("\"") + NormalizedObjectPath(Bank) + TEXT("\""), Notes) &&
+						SetPropertyText(Notify, TEXT("SoundName"), Shot.Sound.ToString(), Notes);
+			if (bSet && Weapon != 1)
+			{
+				bSet = SetPropertyText(Notify, TEXT("WeaponSlot"), FString::Printf(TEXT("EWeaponSlot_%d"), Weapon), Notes);
+			}
+			if (bSet)
+			{
+				FAnimNotifyEvent Event;
+				Event.Notify = Notify;
+				Event.NotifyName = FName(*Notify->GetNotifyName());
+				PlaceNotify(Sequence, Event, Time, 0.f, Track);
+				Sequence->Notifies.Add(Event);
+				++Added;
+			}
+		}
+	}
+	return Added;
+}
+
+struct FBuildResult
+{
+	int32 Copied = 0;
+	int32 Left = 0;
+	TArray<FString> LeftClasses;
+	int32 Hits = 0;
+	float OldHit = -1.f;
+	float NewHit = -1.f;
+	int32 Shots = 0;
+};
+
+// The gameplay notifies of From on Sequence, after the sequence's own: shot effects on the first new track, the copied
+// notifies on the tracks after it in the original's order.
+FBuildResult BuildNotifies(UAnimSequenceBase* Sequence, const UAnimSequenceBase* From, const FEndAnimSetMove& Move, const FEndShotEffects& Shot, FString& Notes)
+{
+	FBuildResult Result;
+	FBuildTimeMap Map;
+	Map.OldLength = From->SequenceLength;
+	Map.NewLength = Sequence->SequenceLength;
+	TArray<float> OldHits;
+	for (const FAnimNotifyEvent& Event : From->Notifies)
+	{
+		if (IsHitNotify(NotifyObject(Event)))
+		{
+			OldHits.Add(Event.GetTime());
+		}
+	}
+	OldHits.Sort();
+	if (OldHits.Num() > 0)
+	{
+		Result.OldHit = OldHits[0];
+		Result.NewHit = Move.HitAt > 0.f ? FMath::Min(Move.HitAt, Map.NewLength)
+										 : (Map.OldLength > KINDA_SMALL_NUMBER ? OldHits[0] * Map.NewLength / Map.OldLength : 0.f);
+		Map.OldHit = Result.OldHit;
+		Map.NewHit = Result.NewHit;
+	}
+	else if (Move.HitAt > 0.f)
+	{
+		Notes += TEXT("; Hit At not used: the original has no hit");
+	}
+	int32 ShotTrack = 0;
+#if WITH_EDITORONLY_DATA
+	ShotTrack = Sequence->AnimNotifyTracks.Num();
+#endif
+	int32 LastTrack = ShotTrack;
+	TArray<float> NewHits;
+	for (const FAnimNotifyEvent& Original : From->Notifies)
+	{
+		UObject* Object = NotifyObject(Original);
+		if (IsMotionNotify(Object))
+		{
+			++Result.Left;
+			Result.LeftClasses.AddUnique(Object->GetClass()->GetName());
+			continue;
+		}
+		FAnimNotifyEvent Event = Original;
+		if (Original.Notify)
+		{
+			Event.Notify = DuplicateObject<UAnimNotify>(Original.Notify, Sequence);
+		}
+		if (Original.NotifyStateClass)
+		{
+			Event.NotifyStateClass = DuplicateObject<UAnimNotifyState>(Original.NotifyStateClass, Sequence);
+		}
+		const float Start = Map.Map(Original.GetTime());
+		float Length = 0.f;
+		if (Original.NotifyStateClass)
+		{
+			// A damage window keeps its length (a shorter one could miss); other windows follow the time map.
+			Length = IsHitNotify(Object) ? Original.GetDuration() : Map.Map(Original.GetTime() + Original.GetDuration()) - Start;
+		}
+		const int32 Track = ShotTrack + 1 + FMath::Clamp(Original.TrackIndex, 0, 30);
+		LastTrack = FMath::Max(LastTrack, Track);
+		PlaceNotify(Sequence, Event, Start, FMath::Max(Length, 0.f), Track);
+		Sequence->Notifies.Add(Event);
+		++Result.Copied;
+		if (IsHitNotify(Object))
+		{
+			NewHits.Add(Start);
+		}
+	}
+	Result.Hits = NewHits.Num();
+	if (Move.bShot)
+	{
+		NewHits.Sort();
+		float Last = -1.f;
+		for (const float Time : NewHits)
+		{
+			if (Last >= 0.f && Time - Last < 0.05f)
+			{
+				continue; // several damage notifies of one hit: one shot
+			}
+			Last = Time;
+			if (AddShotEffects(Sequence, Shot, Time, ShotTrack, Notes) > 0)
+			{
+				++Result.Shots;
+			}
+		}
+		if (NewHits.Num() == 0)
+		{
+			Notes += TEXT("; Shot: no hit to put the shot effects on");
+		}
+	}
+#if WITH_EDITORONLY_DATA
+	while (Sequence->AnimNotifyTracks.Num() <= LastTrack)
+	{
+		const int32 Index = Sequence->AnimNotifyTracks.Num();
+		const FString TrackName = Index == ShotTrack ? FString(TEXT("Shot")) : FString::FromInt(Index + 1);
+		Sequence->AnimNotifyTracks.Add(FAnimNotifyTrack(FName(*TrackName), FLinearColor::White));
+	}
+#endif
+	return Result;
+}
+
+// Root motion and the game's blend settings, as the original has them.
+void CopyPlaySettings(const UAnimSequenceBase* From, UAnimSequenceBase* To)
+{
+	for (const TCHAR* Name : {TEXT("bEnableRootMotion"), TEXT("RootMotionRootLock"), TEXT("bForceRootLock"), TEXT("bUseNormalizedRootMotionScale"),
+							  TEXT("OverrideBehaviorActionBlendTime"), TEXT("OverrideBehaviorActionBlendOutTime"),
+							  TEXT("OverrideBehaviorActionBlendOutSequenceFilter"), TEXT("RootMotionScale")})
+	{
+		FProperty* Target = FindFProperty<FProperty>(To->GetClass(), Name);
+		FProperty* Source = FindFProperty<FProperty>(From->GetClass(), Name);
+		if (Target && Target == Source)
+		{
+			Target->CopyCompleteValue_InContainer(To, From);
+		}
+	}
+}
+
+// Properties of From set on To by name (ones To's class does not have are skipped; an empty object reference is not
+// copied, so a default the engine fills in stays).
+void CopyNamedProperties(const UObject* From, UObject* To, std::initializer_list<const TCHAR*> Names)
+{
+	for (const TCHAR* Name : Names)
+	{
+		FProperty* Target = FindFProperty<FProperty>(To->GetClass(), Name);
+		if (!Target || Target != FindFProperty<FProperty>(From->GetClass(), Name))
+		{
+			continue;
+		}
+		if (const FObjectProperty* Reference = CastField<FObjectProperty>(Target))
+		{
+			if (!Reference->GetObjectPropertyValue_InContainer(From))
+			{
+				continue;
+			}
+		}
+		Target->CopyCompleteValue_InContainer(To, From);
+	}
+}
+
+// The settings of the animation a move is made from that CreateAnimation does not take over (it takes the keys, curves
+// and notifies). Not its compression settings: a built move always gets the game's (GameBoneCompression).
+void CopyAnimSettings(const UAnimSequence* From, UAnimSequence* To)
+{
+	CopyNamedProperties(From, To, {TEXT("RateScale"), TEXT("Interpolation"), TEXT("RetargetSource"), TEXT("bIgnoreTranslationRetargeting"),
+								   TEXT("AdditiveAnimType"), TEXT("RefPoseType"), TEXT("RefPoseSeq"), TEXT("RefFrameIndex"),
+								   TEXT("CompressionErrorThresholdScale"),
+								   TEXT("bAllowFrameStripping"), TEXT("bDoNotOverrideCompression"), TEXT("ImportFileFramerate"),
+								   TEXT("ImportResampleFramerate"), TEXT("bLoop"), TEXT("PreviewPoseAsset"), TEXT("PreviewSkeletalMesh")});
+}
+
+// The game reads every animation with its own ACL codecs, whatever the animation names: the RebirthEngineV5 loader takes
+// AnimBoneCompressionCodec_ACL_0 from the animation's bone settings and AnimCurveCompressionCodec_ACL_0 of the game's curve
+// settings. So a built move is compressed with exactly these (the game's own assets, in this project as cooked copies).
+const TCHAR* const GameBoneCompression = TEXT("/Game/Animation/CompressionSettings/AnimBoneCompressionSettingsACL.AnimBoneCompressionSettingsACL");
+const TCHAR* const GameCurveCompression = TEXT("/Game/Animation/CompressionSettings/AnimCurveCompressionSettingsACL.AnimCurveCompressionSettingsACL");
+const TCHAR* const GameBoneCodec = TEXT("AnimBoneCompressionCodec_ACL_0");
+
+// A new Anim Sequence Package.Name with Source's keys, curves, notifies and settings. Not a duplicate: in this engine an
+// Anim Sequence writes data for the game's memory-mapped layout that it does not read back the same way in memory, so
+// duplicating one reads past its data and the editor crashes (FDuplicateDataReader Overread). Nothing here goes
+// through that: the keys are copied as they are and the notify objects are duplicated on their own.
+UAnimSequence* MakeAnimationFrom(UAnimSequence* Source, const FString& Package, const FString& Name, FString& Error)
+{
+	USkeleton* Skeleton = Source->GetSkeleton();
+	if (!Skeleton)
+	{
+		Error = Source->GetName() + TEXT(" has no skeleton");
+		return nullptr;
+	}
+	UAnimBoneCompressionSettings* BoneCompression = LoadObject<UAnimBoneCompressionSettings>(nullptr, GameBoneCompression, nullptr, LOAD_NoWarn | LOAD_Quiet);
+	UAnimCurveCompressionSettings* CurveCompression = LoadObject<UAnimCurveCompressionSettings>(nullptr, GameCurveCompression, nullptr, LOAD_NoWarn | LOAD_Quiet);
+	if (!BoneCompression || !CurveCompression)
+	{
+		Error = FString::Printf(TEXT("the game's animation compression settings are not in this project (%s, %s): the game reads every animation with them"),
+			BoneCompression ? TEXT("bone settings found") : GameBoneCompression, CurveCompression ? TEXT("curve settings found") : GameCurveCompression);
+		return nullptr;
+	}
+	UPackage* Outer = CreatePackage(*Package);
+	if (!Outer)
+	{
+		Error = Package + TEXT(" could not be made");
+		return nullptr;
+	}
+	Outer->FullyLoad();
+	if (StaticFindObjectFast(nullptr, Outer, FName(*Name)))
+	{
+		Error = Package + TEXT(" is still loaded (close it, then press Build Moves again)");
+		return nullptr;
+	}
+	UAnimSequence* Sequence = NewObject<UAnimSequence>(Outer, FName(*Name), RF_Public | RF_Standalone | RF_Transactional);
+	Sequence->SetSkeleton(Skeleton);
+	CopyAnimSettings(Source, Sequence);
+	// Before CreateAnimation compresses the keys.
+	Sequence->BoneCompressionSettings = BoneCompression;
+	Sequence->CurveCompressionSettings = CurveCompression;
+	if (!Sequence->CreateAnimation(Source))
+	{
+		Sequence->ClearFlags(RF_Public | RF_Standalone);
+		Sequence->MarkPendingKill();
+		Error = Source->GetName() + TEXT(" could not be copied");
+		return nullptr;
+	}
+	CopyNamedProperties(Source, Sequence, {TEXT("RateScale")}); // CreateAnimation resets it
+	// CreateAnimation shares the source's notify objects: the new sequence gets its own.
+	for (FAnimNotifyEvent& Event : Sequence->Notifies)
+	{
+		if (Event.Notify)
+		{
+			Event.Notify = DuplicateObject<UAnimNotify>(Event.Notify, Sequence);
+		}
+		if (Event.NotifyStateClass)
+		{
+			Event.NotifyStateClass = DuplicateObject<UAnimNotifyState>(Event.NotifyStateClass, Sequence);
+		}
+		PlaceNotify(Sequence, Event, Event.GetTime(), Event.GetDuration(), Event.TrackIndex);
+	}
+	Sequence->RefreshCacheData();
+	FAssetRegistryModule::AssetCreated(Sequence);
+	Sequence->MarkPackageDirty();
+	return Sequence;
+}
+
+// A Primary Asset Label in Folder that puts its animations (and everything under it) in Chunk when the project is packaged.
+// Only those: what they use (the skeleton, the compression settings) stays out of the chunk, since the game or another pak
+// has it and a copy in the mod's pak would replace it.
+void LabelForChunk(const FString& Folder, int32 Chunk, const TArray<UObject*>& Assets, TArray<UPackage*>& Dirty, FString& Report)
+{
+	const FString Name = FString::Printf(TEXT("PAL_SkelCompat_Chunk%d"), Chunk);
+	const FString Package = Folder + TEXT("/") + Name;
+	UPrimaryAssetLabel* Label = LoadObject<UPrimaryAssetLabel>(nullptr, *(Package + TEXT(".") + Name), nullptr, LOAD_NoWarn | LOAD_Quiet);
+	const bool bNew = Label == nullptr;
+	if (bNew)
+	{
+		UPackage* Outer = CreatePackage(*Package);
+		Label = NewObject<UPrimaryAssetLabel>(Outer, *Name, RF_Public | RF_Standalone | RF_Transactional);
+		FAssetRegistryModule::AssetCreated(Label);
+	}
+	Label->Modify();
+	Label->Rules.ChunkId = Chunk;
+	Label->Rules.Priority = FMath::Max(Label->Rules.Priority, 1);
+	Label->Rules.CookRule = EPrimaryAssetCookRule::AlwaysCook;
+	Label->Rules.bApplyRecursively = false;
+	Label->bLabelAssetsInMyDirectory = true;
+	for (UObject* Asset : Assets)
+	{
+		Label->ExplicitAssets.AddUnique(TSoftObjectPtr<UObject>(FSoftObjectPath(Asset)));
+	}
+	Label->MarkPackageDirty();
+	Dirty.AddUnique(Label->GetOutermost());
+	Report += FString::Printf(TEXT("%s %s: chunk %d for the animations in %s (not the skeleton and settings they use)\n"), bNew ? TEXT("Made") : TEXT("Updated"), *Package, Chunk, *Folder);
+}
+
+// ------------------------------------------------------------------------------------------------
+// One animation set row of this data object
+// ------------------------------------------------------------------------------------------------
+bool CheckAnimSetRow(const FEndAnimSetRow& Row, int32 Index, const FCharaSpecTable& Table, const FString& GameLog, FString& Report)
+{
+	Report += FString::Printf(TEXT("Animation set row %d: %s\n"), Index, *ListText(CleanList(Row.Characters, false)));
+	if (!Row.bEnabled)
+	{
+		Report += TEXT("    disabled\n");
+		return true;
+	}
+	bool bOk = true;
+	SkelCompat::AnimSetRow Core;
+	std::vector<std::wstring> Notes;
+	std::vector<SkelCompat::Pair> Families;
+	const bool bParsed = RowAsGameReadsIt(Row, Core, Notes, Families);
+	for (const std::wstring& Note : Notes)
+	{
+		FString Text = FromWide(Note);
+		Text.RemoveFromStart(TEXT("row: "));
+		if (!Text.StartsWith(TEXT("family of"))) // the cutscene family is reported below
+		{
+			Report += TEXT("    note: ") + Text + TEXT("\n");
+		}
+	}
+	if (!bParsed)
+	{
+		Report += TEXT("    ERROR: the mod would skip this row (it needs Characters, and Battle, Field, Moves, Field Actions, Sockets or Keep Proportions)\n");
+		return false;
+	}
+
+	// The characters' CharaSpec rows: the sets the game asks them for, and their field-action folder.
+	TArray<FString> Asked;
+	TArray<FName> TableRows;
+	for (const FString& Character : CleanList(Row.Characters, false))
+	{
+		const FString Name = CharaSpecRowName(Character);
+		if (Name.IsEmpty())
+		{
+			Report += FString::Printf(TEXT("    ERROR: %s is not a CharaSpec row name (like PC0000_00_Cloud_Standard)\n"), *Character);
+			bOk = false;
+			continue;
+		}
+		if (!Table.bAvailable)
+		{
+			continue;
+		}
+		if (!Table.Has(Name))
+		{
+			Report += FString::Printf(TEXT("    WARNING: %s is not a row of %s\n"), *Name, *Table.Package);
+			continue;
+		}
+		TableRows.Add(FName(*Name));
+		const TArray<FString> Sets = NamesInText(Table.Field(Name, TEXT("AnimationSetList_Array")));
+		for (const FString& Set : Sets)
+		{
+			Asked.AddUnique(Set);
+		}
+		const FString Folder = Table.Field(Name, TEXT("AnimationSetParentFolder"));
+		const FString Model = Table.Field(Name, TEXT("ContentsModel"));
+		Report += FString::Printf(TEXT("    CharaSpec %s: model %s, sets %s, field-action folder %s\n"), *Name, *Model,
+			*ListText(Sets), Folder.IsEmpty() ? TEXT("(none)") : *Folder);
+		// The blueprint the pack spawns has to be the row's model's (each character has its own blueprint, named like its
+		// model): one character's blueprint on another one's model keeps the game on its loading screen.
+		const FPackContents Pack = ReadPack(Name);
+		if (Pack.bInProject && Pack.Blueprints.Num() > 0 && !Model.IsEmpty() && !Model.Equals(TEXT("None"), ESearchCase::IgnoreCase) &&
+			!Pack.Blueprints.Contains(Model))
+		{
+			Report += FString::Printf(TEXT("    ERROR: CharaSpec_%s in this project spawns %s, but the row's model is %s: a blueprint on another character's model keeps the game on its loading screen. Set the pack's Asset Class List > 0 > Asset User Data to %s_C (and its action sounds to that character's AS_ bank)\n"),
+				*Name, *FString::Join(Pack.Blueprints, TEXT(", ")), *Model, *Model);
+			bOk = false;
+		}
+		const FString Wanted = Row.FieldActions.TrimStartAndEnd();
+		if (!Wanted.IsEmpty() && !Folder.Equals(Wanted, ESearchCase::IgnoreCase))
+		{
+			Report += FString::Printf(TEXT("    note: Field Actions is %s: press Apply To CharaSpec to write it into %s\n"), *Wanted, *Name);
+		}
+	}
+	if (!Table.bAvailable)
+	{
+		Report += TEXT("    note: the Rebirth data object tools (Rebirth Cooked Asset Preview plugin) are not loaded, so the CharaSpec rows are not checked\n");
+	}
+
+	// Each set: where it comes from. In game the pack's own set of that name fills in after these.
+	std::vector<std::wstring> Names = SkelCompat::RowSetNames(Core);
+	for (const FString& Set : Asked)
+	{
+		if (std::none_of(Names.begin(), Names.end(), [&](const std::wstring& Name) { return SkelCompat::NameEquals(Name, Wide(Set)); }))
+		{
+			Names.push_back(Wide(Set));
+		}
+	}
+	for (const std::wstring& Name : Names)
+	{
+		const bool bAsked = Asked.ContainsByPredicate([&](const FString& Set) { return Set.Equals(FromWide(Name), ESearchCase::IgnoreCase); });
+		TArray<FString> Here;
+		TArray<FString> Elsewhere;
+		for (const SkelCompat::SetSourceRef& Ref : SkelCompat::SetSourcesFor(Core, Name))
+		{
+			FString Auto = Ref.Auto == SkelCompat::AutoMatchMode::Basic ? TEXT(" (auto: basic attacks")
+						 : Ref.Auto == SkelCompat::AutoMatchMode::Attacks ? TEXT(" (auto: attacks")
+						 : Ref.Auto == SkelCompat::AutoMatchMode::All ? TEXT(" (auto: whole set") : TEXT("");
+			if (!Auto.IsEmpty())
+			{
+				TArray<FString> Words;
+				for (const std::wstring& Word : Ref.Only) { Words.Add(FromWide(Word)); }
+				Auto += Words.Num() > 0 ? TEXT(", only names with ") + FString::Join(Words, TEXT("/")) + TEXT(")") : FString(TEXT(")"));
+			}
+			bool bFound = false;
+			for (size_t Path = 0; Path < Ref.Paths.size() && !bFound; ++Path)
+			{
+				if (InProject(FromWide(Ref.Paths[Path])))
+				{
+					Here.Add(ShortSource(FromWide(Ref.Paths[Path])) + Auto + (Path > 0 ? TEXT(" (its first set of the kind)") : TEXT("")));
+					bFound = true;
+				}
+			}
+			if (!bFound)
+			{
+				FString Text = ShortSource(FromWide(Ref.Paths.front())) + Auto;
+				if (Ref.Paths.size() > 1) { Text += TEXT(", else ") + ShortSource(FromWide(Ref.Paths[1])); }
+				Elsewhere.Add(Text);
+			}
+		}
+		if (Here.Num() == 0 && !bAsked)
+		{
+			continue; // a usual set name nothing here has: the game may have it, the log will say
+		}
+		FString Line = Here.Num() > 0 ? ListText(Here) : FString(TEXT("no source in this project"));
+		if (Elsewhere.Num() > 0)
+		{
+			Line += FString::Printf(TEXT("; also looked for in the game: %s"), *ListText(Elsewhere));
+		}
+		if (Here.Num() == 0 && Elsewhere.Num() == 0)
+		{
+			Line = TEXT("no source: the character keeps the pack's own set");
+		}
+		Report += FString::Printf(TEXT("    %s%s: %s\n"), *FromWide(Name), bAsked || !Table.bAvailable ? TEXT("") : TEXT(" (not one its CharaSpec lists)"), *Line);
+	}
+	for (const SkelCompat::AnimMove& Move : Core.Moves)
+	{
+		TArray<FString> Parts;
+		bool bAllHere = true;
+		for (const std::wstring& Path : SkelCompat::MoveAnimations(Move))
+		{
+			Parts.Add(FromWide(Path));
+			bAllHere = bAllHere && InProject(FromWide(Path));
+		}
+		Report += FString::Printf(TEXT("    move %s%s -> %s%s%s\n"), Move.Set.empty() ? TEXT("") : *(FromWide(Move.Set) + TEXT("/")), *FromWide(Move.Key),
+			*FString::Join(Parts, TEXT(" then ")), Parts.Num() > 1 ? TEXT(" (played one after another)") : TEXT(""),
+			bAllHere ? TEXT("") : TEXT(" (not all in this project: the game must have them)"));
+	}
+	// Moves built in the editor (Build Moves).
+	const bool bBuildsMoves = Row.Moves.ContainsByPredicate([](const FEndAnimSetMove& Move) { return Move.bBuild; });
+	const FString NeverCook = bBuildsMoves ? NeverCookDirectoryOf(BuildFolderOf(Row)) : FString();
+	if (!NeverCook.IsEmpty())
+	{
+		Report += FString::Printf(TEXT("    ERROR: Build Folder %s is in %s, which Project Settings > Packaging > Directories To Never Cook lists: ")
+								  TEXT("the built animations would never be packaged. Set Build Folder outside it (for example /Game/RebirthSkelCompat/Built/<Character>).\n"),
+			*BuildFolderOf(Row), *NeverCook);
+		bOk = false;
+	}
+	for (const FEndAnimSetMove& Move : Row.Moves)
+	{
+		if (!Move.bBuild)
+		{
+			continue;
+		}
+		const FString Name = (Move.Set.TrimStartAndEnd().IsEmpty() ? FString() : Move.Set.TrimStartAndEnd() + TEXT("/")) + Move.Name.TrimStartAndEnd();
+		const FString Built = BuiltObjectPathOf(Row, Move);
+		const bool bSourceHere = !Move.Animation.TrimStartAndEnd().IsEmpty() && InProject(Move.Animation.TrimStartAndEnd());
+		FString NotifyPath;
+		const UAnimSequenceBase* From = FindNotifySource(Row, Move, NotifyPath);
+		int32 Hits = 0;
+		if (From)
+		{
+			for (const FAnimNotifyEvent& Event : From->Notifies)
+			{
+				Hits += IsHitNotify(NotifyObject(Event)) ? 1 : 0;
+			}
+		}
+		Report += FString::Printf(TEXT("    build %s: %s from %s%s; gameplay notifies from %s%s%s\n"), *Name,
+			InProject(Built) ? TEXT("built") : TEXT("NOT built yet (press Build Moves)"), *ShortSource(Move.Animation),
+			bSourceHere ? TEXT("") : TEXT(" (WARNING: not in this project)"), From ? *ShortSource(NotifyPath) : *(TEXT("nothing: ") + NotifyPath + TEXT(" is not in this project (set Notifies From)")),
+			From ? *FString::Printf(TEXT(", %d hit(s)"), Hits) : TEXT(""),
+			Move.bShot ? (Row.ShotEffects.MuzzleEffect.IsEmpty() && Row.ShotEffects.SoundBank.IsEmpty() ? TEXT("; Shot on but the row has no Shot Effects") : TEXT("; shot effects at every hit"))
+					   : TEXT(""));
+		bOk &= bSourceHere && From != nullptr;
+	}
+	const bool bAuto = std::any_of(Core.Battle.begin(), Core.Battle.end(), [](const SkelCompat::SetSource& Source) { return Source.Auto != SkelCompat::AutoMatchMode::Off; }) ||
+					   std::any_of(Core.Field.begin(), Core.Field.end(), [](const SkelCompat::SetSource& Source) { return Source.Auto != SkelCompat::AutoMatchMode::Off; });
+	if (bAuto)
+	{
+		Report += TEXT("    auto sources: the game matches their attacks to the character's attack names when the pack loads (Moves and Limit Breaks win over them):\n");
+		TArray<FString> PackPaths;
+		for (const FString& Character : CleanList(Row.Characters, false))
+		{
+			const FString Pack = FromWide(SkelCompat::CharacterPackPath(Wide(Character)));
+			if (!Pack.IsEmpty()) { PackPaths.AddUnique(Pack); }
+		}
+		for (const std::wstring& Name : SkelCompat::RowSetNames(Core)) { PreviewAutoMatch(Core, Name, PackPaths, GameLog, Report); }
+	}
+	for (const TArray<FEndAnimSetSource>* List : {&Row.Battle, &Row.Field})
+	{
+		for (const FEndAnimSetSource& Source : *List)
+		{
+			if (Source.AutoMatch == EEndAnimSetAutoMatch::Off && CleanList(Source.OnlyNamesWith, false).Num() > 0)
+			{
+				Report += FString::Printf(TEXT("    note: %s has Only Names With but Auto Match is off; the words only pick what an auto match uses\n"), *Source.Path.TrimStartAndEnd());
+			}
+		}
+	}
+
+	// Socket stand-ins on the character's meshes.
+	if (Row.Sockets.Num() > 0)
+	{
+		USkeleton* Own = Row.CharacterSkeleton.IsNull() ? nullptr : Row.CharacterSkeleton.LoadSynchronous();
+		if (Row.CharacterSkeleton.IsNull())
+		{
+			Report += TEXT("    WARNING: Sockets need Character Skeleton (the skeleton whose meshes get the stand-ins)\n");
+		}
+		for (const FEndSocketStandIn& Socket : Row.Sockets)
+		{
+			FString State = TEXT("checked in game");
+			if (Own)
+			{
+				const FName Use(*Socket.Use.TrimStartAndEnd());
+				if (USkeletalMeshSocket* Found = Own->FindSocket(Use))
+				{
+					State = TEXT("socket on bone ") + Found->BoneName.ToString();
+				}
+				else if (Own->GetReferenceSkeleton().FindBoneIndex(Use) != INDEX_NONE)
+				{
+					State = TEXT("a bone");
+				}
+				else
+				{
+					State = TEXT("WARNING: neither a socket nor a bone of ") + Own->GetName() + TEXT(" (a socket only the mesh has still works)");
+				}
+			}
+			Report += FString::Printf(TEXT("    socket %s -> %s (%s)\n"), *Socket.Socket, *Socket.Use, *State);
+		}
+	}
+	if (Row.bKeepProportions)
+	{
+		Report += Row.CharacterSkeleton.IsNull()
+			? FString(TEXT("    WARNING: Keep Proportions needs Character Skeleton\n"))
+			: FString(TEXT("    proportions: the pairs and families of ")) + ShortName(SoftPath(Row.CharacterSkeleton)) +
+				  TEXT(" keep every body's own bone lengths (body bones from each mesh, hips scaled to its height)\n");
+	}
+
+	// Cutscenes: a family with the cutscene skeleton as hub.
+	if (!Row.Cutscene.IsNull() || !Row.CharacterSkeleton.IsNull())
+	{
+		USkeleton* Hub = Row.Cutscene.IsNull() ? nullptr : Row.Cutscene.LoadSynchronous();
+		USkeleton* Own = Row.CharacterSkeleton.IsNull() ? nullptr : Row.CharacterSkeleton.LoadSynchronous();
+		if (Row.Cutscene.IsNull() || Row.CharacterSkeleton.IsNull())
+		{
+			Report += TEXT("    WARNING: cutscenes need both Cutscene (the skeleton whose cutscenes it plays) and Character Skeleton (its own)\n");
+		}
+		else if (!Hub || !Own)
+		{
+			Report += FString::Printf(TEXT("    ERROR: skeleton %s not found\n"), !Hub ? *Row.Cutscene.ToString() : *Row.CharacterSkeleton.ToString());
+			bOk = false;
+		}
+		else if (Hub == Own)
+		{
+			Report += TEXT("    note: Cutscene is the character's own skeleton: nothing to do\n");
+		}
+		else
+		{
+			Report += FString::Printf(TEXT("    cutscenes: meshes on %s are bound to %s and play its cutscene animations (a family with %s as hub)\n"),
+				*Own->GetName(), *Hub->GetName(), *Hub->GetName());
+		}
+	}
+	if (TableRows.Num() > 0)
+	{
+		for (const FString& Problem : Table.Check(TableRows))
+		{
+			Report += TEXT("    CharaSpec check: ") + Problem + TEXT("\n");
+		}
+	}
+	return bOk;
+}
+
+// The rows the game ends up with for these characters (rows of every compat file joined, paks checked).
+void ReportRowsInGame(const FGameView& View, const TArray<FString>& Packs, FString& Report)
+{
+	for (const SkelCompat::AnimSetRow& Settled : View.Config.AnimSets)
+	{
+		const FString Pack = FromWide(Settled.Characters.front());
+		if (!Packs.ContainsByPredicate([&](const FString& Mine) { return SamePath(Mine, Pack); }))
+		{
+			continue;
+		}
+		const auto Sources = [](const std::vector<SkelCompat::SetSource>& List) {
+			TArray<FString> Items;
+			for (const SkelCompat::SetSource& Source : List)
+			{
+				Items.Add((Source.Folder ? FromWide(Source.Path) + TEXT("/*") : ShortSource(FromWide(Source.Path))) +
+					(Source.As.empty() ? FString() : TEXT(" as ") + FromWide(Source.As)) +
+					(Source.Auto == SkelCompat::AutoMatchMode::Off ? FString() : FString(TEXT(" (auto)"))));
+			}
+			return ListText(Items);
+		};
+		Report += FString::Printf(TEXT("  sets of %s (%s): battle from %s; field from %s; %d move(s)%s\n"), *ShortName(Pack), *FromWide(Settled.Origin),
+			*Sources(Settled.Battle), *Sources(Settled.Field), static_cast<int32>(Settled.Moves.size()),
+			Settled.FieldActions.empty() ? TEXT("") : *(TEXT("; field actions ") + FromWide(Settled.FieldActions)));
+	}
+}
+
+// ------------------------------------------------------------------------------------------------
+// Carrier Blueprint (AssetUserData) and its two array variables. The arrays hold object paths as
+// strings, not soft references: soft references would make the cooker pull the (retail) animation
+// skeleton into your mod's cook. The mod also accepts Name or soft/hard reference arrays.
+// ------------------------------------------------------------------------------------------------
+bool IsPathArrayType(const FEdGraphPinType& Type)
+{
+	return Type.ContainerType == EPinContainerType::Array &&
+		(Type.PinCategory == UEdGraphSchema_K2::PC_String || Type.PinCategory == UEdGraphSchema_K2::PC_Name ||
+		 Type.PinCategory == UEdGraphSchema_K2::PC_SoftObject);
+}
+
+bool EnsureArrayVariable(UBlueprint* Blueprint, const FName Name, bool& bChanged, FString& Report)
+{
+	const int32 Existing = FBlueprintEditorUtils::FindNewVariableIndex(Blueprint, Name);
+	if (Existing != INDEX_NONE)
+	{
+		if (!IsPathArrayType(Blueprint->NewVariables[Existing].VarType))
+		{
+			Report += FString::Printf(TEXT("ERROR: %s.%s exists but is not an array of strings\n"), CarrierName, *Name.ToString());
+			return false;
+		}
+		return true;
+	}
+	FEdGraphPinType Type;
+	Type.PinCategory = UEdGraphSchema_K2::PC_String;
+	Type.ContainerType = EPinContainerType::Array;
+	if (!FBlueprintEditorUtils::AddMemberVariable(Blueprint, Name, Type))
+	{
+		Report += FString::Printf(TEXT("ERROR: could not add %s to %s\n"), *Name.ToString(), CarrierName);
+		return false;
+	}
+	FBlueprintEditorUtils::SetBlueprintOnlyEditableFlag(Blueprint, Name, false); // editable on the skeleton's instance
+	bChanged = true;
+	return true;
+}
+
+UClass* FindOrCreateCarrier(bool bCreate, TArray<UPackage*>& Dirty, FString& Report)
+{
+	const FString ObjectPath = FString(CarrierPackage) + TEXT(".") + CarrierName;
+	UBlueprint* Blueprint = LoadObject<UBlueprint>(nullptr, *ObjectPath, nullptr, LOAD_NoWarn | LOAD_Quiet);
+	bool bChanged = false;
+	if (!Blueprint && !bCreate)
+	{
+		Report += ObjectPath + TEXT(" does not exist, so no skeleton carries a list\n");
+		return nullptr;
+	}
+	if (!Blueprint)
+	{
+		UPackage* Package = CreatePackage(CarrierPackage);
+		Blueprint = FKismetEditorUtilities::CreateBlueprint(UAssetUserData::StaticClass(), Package, FName(CarrierName), BPTYPE_Normal,
+			UBlueprint::StaticClass(), UBlueprintGeneratedClass::StaticClass(), FName(TEXT("RebirthSkelCompat")));
+		if (!Blueprint)
+		{
+			Report += TEXT("ERROR: could not create ") + ObjectPath + TEXT("\n");
+			return nullptr;
+		}
+		FAssetRegistryModule::AssetCreated(Blueprint);
+		Report += TEXT("Created ") + ObjectPath + TEXT("\n");
+		bChanged = true;
+	}
+	if (Blueprint->ParentClass != UAssetUserData::StaticClass())
+	{
+		Report += TEXT("ERROR: ") + ObjectPath + TEXT(" must have AssetUserData as its parent class\n");
+		return nullptr;
+	}
+	if (!EnsureArrayVariable(Blueprint, AnimationSkeletonsVariable, bChanged, Report) ||
+		!EnsureArrayVariable(Blueprint, ReceivingMeshesVariable, bChanged, Report))
+	{
+		return nullptr;
+	}
+	if (bChanged || !Blueprint->GeneratedClass || Blueprint->Status != BS_UpToDate)
+	{
+		FKismetEditorUtilities::CompileBlueprint(Blueprint);
+		Blueprint->MarkPackageDirty();
+		Dirty.AddUnique(Blueprint->GetOutermost());
+	}
+	UClass* Generated = Blueprint->GeneratedClass;
+	if (!Generated || !Generated->IsChildOf(UAssetUserData::StaticClass()))
+	{
+		Report += TEXT("ERROR: ") + ObjectPath + TEXT(" did not compile\n");
+		return nullptr;
+	}
+	return Generated;
+}
+
+bool SetPathArray(UObject* Target, const FName Name, const TArray<FSoftObjectPath>& Paths)
+{
+	FArrayProperty* Array = FindFProperty<FArrayProperty>(Target->GetClass(), Name);
+	if (!Array)
+	{
+		return false;
+	}
+	FStrProperty* AsString = CastField<FStrProperty>(Array->Inner);
+	FNameProperty* AsName = CastField<FNameProperty>(Array->Inner);
+	FSoftObjectProperty* AsSoft = CastField<FSoftObjectProperty>(Array->Inner);
+	if (!AsString && !AsName && !AsSoft)
+	{
+		return false;
+	}
+	FScriptArrayHelper Helper(Array, Array->ContainerPtrToValuePtr<void>(Target));
+	Helper.EmptyValues();
+	for (const FSoftObjectPath& Path : Paths)
+	{
+		const int32 Index = Helper.AddValue();
+		if (AsString)
+		{
+			AsString->SetPropertyValue(Helper.GetRawPtr(Index), Path.ToString());
+		}
+		else if (AsName)
+		{
+			AsName->SetPropertyValue(Helper.GetRawPtr(Index), FName(*Path.ToString()));
+		}
+		else
+		{
+			AsSoft->SetPropertyValue(Helper.GetRawPtr(Index), FSoftObjectPtr(Path));
+		}
+	}
+	return true;
+}
+
+// Optional: RebirthMaterialPreview's editor-side registry (RegisterCompatibleSkeletons), called by reflection so this
+// plugin does not depend on that module.
+bool RegisterForEditorPreview(USkeleton* Receiving, USkeleton* Animation, FString& Diagnostic)
+{
+	UClass* Library = FindObject<UClass>(ANY_PACKAGE, TEXT("RebirthSkeletonCompatibilityEditorLibrary"));
+	UFunction* Function = Library ? Library->FindFunctionByName(TEXT("RegisterCompatibleSkeletons")) : nullptr;
+	if (!Function)
+	{
+		Diagnostic = TEXT("RebirthMaterialPreview editor registry not loaded");
+		return false;
+	}
+	FStructOnScope Params(Function);
+	uint8* Memory = Params.GetStructMemory();
+	FObjectProperty* A = FindFProperty<FObjectProperty>(Function, TEXT("A"));
+	FObjectProperty* B = FindFProperty<FObjectProperty>(Function, TEXT("B"));
+	FStrProperty* Out = FindFProperty<FStrProperty>(Function, TEXT("OutDiagnostic"));
+	FBoolProperty* Persist = FindFProperty<FBoolProperty>(Function, TEXT("bPersistManifest"));
+	FBoolProperty* Return = FindFProperty<FBoolProperty>(Function, TEXT("ReturnValue"));
+	if (!A || !B || !Return)
+	{
+		Diagnostic = TEXT("unexpected RegisterCompatibleSkeletons signature");
+		return false;
+	}
+	A->SetObjectPropertyValue_InContainer(Memory, Receiving);
+	B->SetObjectPropertyValue_InContainer(Memory, Animation);
+	if (Persist)
+	{
+		Persist->SetPropertyValue_InContainer(Memory, true);
+	}
+	Library->GetDefaultObject()->ProcessEvent(Function, Memory);
+	if (Out)
+	{
+		Diagnostic = Out->GetPropertyValue_InContainer(Memory);
+	}
+	return Return->GetPropertyValue_InContainer(Memory);
+}
+} // namespace RebirthSkelCompatEditor
+
+using namespace RebirthSkelCompatEditor;
+
+UEndSkeletonCompatDataObject::UEndSkeletonCompatDataObject()
+{
+	GameDirectory.Path = DefaultGameDirectory;
+}
+
+FString UEndSkeletonCompatDataObject::GameCompatFile() const
+{
+	if (GameDirectory.Path.IsEmpty())
+	{
+		return FString();
+	}
+	return GameDirectory.Path / ModFolder / TEXT("compat") / GetName() + TEXT(".json");
+}
+
+bool UEndSkeletonCompatDataObject::ValidatePairs(FString& OutReport) const
+{
+	OutReport.Reset();
+	bool bOk = Pairs.Num() > 0 || AnimationSets.Num() > 0 || WeaponSwaps.Num() > 0 || CharacterSwaps.Num() > 0;
+	if (!bOk)
+	{
+		OutReport += TEXT("No pairs, animation set rows, character swaps or weapon swaps.\n");
+	}
+	// Every compat file of the game plus this data object, settled as the mod settles them.
+	const FGameView View = SettleInGame(GameDirectory.Path, GetName(), ToRuntimeJson());
+	for (int32 Index = 0; Index < Pairs.Num(); ++Index)
+	{
+		bOk &= CheckPair(Pairs[Index], Index, Pairs, View, OutReport);
+	}
+	TArray<FString> Packs;
+	TArray<FString> WeaponSkeletons;
+	if (AnimationSets.Num() > 0 || WeaponSwaps.Num() > 0 || CharacterSwaps.Num() > 0 || bFixPackModels)
+	{
+		const FCharaSpecTable Table(CharaSpecTable);
+		const FString GameLog = AnimationSets.Num() > 0 ? GameLogText(GameDirectory.Path) : FString();
+		for (int32 Index = 0; Index < AnimationSets.Num(); ++Index)
+		{
+			bOk &= CheckAnimSetRow(AnimationSets[Index], Index, Table, GameLog, OutReport);
+			if (AnimationSets[Index].bEnabled)
+			{
+				for (const FString& Character : AnimationSets[Index].Characters)
+				{
+					const FString Pack = FromWide(SkelCompat::CharacterPackPath(Wide(Character)));
+					if (!Pack.IsEmpty())
+					{
+						Packs.AddUnique(Pack);
+					}
+				}
+			}
+		}
+		// Character swaps: their families and rows count as this data object's in the in-game view below.
+		TMap<FString, FString> FamilyHubs; // "member|member" -> hub, to find two swaps that pick different hubs
+		for (int32 Index = 0; Index < CharacterSwaps.Num(); ++Index)
+		{
+			bOk &= CheckCharacterSwap(CharacterSwaps[Index], Index, Table, bApplyToPacks, OutReport);
+			const FCharacterSwapPlan Plan = PlanCharacterSwap(CharacterSwaps[Index], Table, false, false);
+			if (const TSharedPtr<FJsonObject> Family = CharacterFamilyJson(CharacterSwaps[Index], Plan))
+			{
+				const FString Hub = StringField(Family, TEXT("hub"));
+				TArray<FString> Members{Hub};
+				for (const FString& Member : StringsOf(Family->TryGetField(TEXT("animation_skeletons"))))
+				{
+					Members.AddUnique(Member);
+					WeaponSkeletons.AddUnique(Member);
+				}
+				WeaponSkeletons.AddUnique(Hub);
+				Members.Sort();
+				const FString Key = FString::Join(Members, TEXT("|"));
+				if (const FString* Other = FamilyHubs.Find(Key))
+				{
+					if (!SamePath(*Other, Hub))
+					{
+						OutReport += FString::Printf(TEXT("    WARNING: another character swap makes the same family with hub %s; the game uses one hub for both (the first named): give both swaps the same Moveset\n"),
+							*ShortName(*Other));
+					}
+				}
+				else
+				{
+					FamilyHubs.Add(Key, Hub);
+				}
+			}
+			for (const FCharacterRowPlan& Row : Plan.Rows)
+			{
+				if (Row.Pack.bInProject)
+				{
+					Packs.AddUnique(FromWide(SkelCompat::CharacterPackPath(Wide(Row.Row))));
+				}
+			}
+		}
+		for (int32 Index = 0; Index < WeaponSwaps.Num(); ++Index)
+		{
+			bOk &= CheckWeaponSwap(WeaponSwaps[Index], Index, Table, bApplyToPacks, OutReport);
+			if (const TSharedPtr<FJsonObject> Family = WeaponFamilyJson(WeaponSwaps[Index], Table))
+			{
+				WeaponSkeletons.AddUnique(StringField(Family, TEXT("receiving_skeleton")));
+				for (const FString& Member : StringsOf(Family->TryGetField(TEXT("animation_skeletons"))))
+				{
+					WeaponSkeletons.AddUnique(Member);
+				}
+			}
+		}
+		if (Table.bAvailable && (CharacterSwaps.Num() > 0 || WeaponSwaps.Num() > 0))
+		{
+			// Shared CharaSpec Lists once Apply To CharaSpec has written them: a loop keeps the game loading forever.
+			const TArray<FString> Loops = SharedLoops(Table, PlannedSharedLists(CharacterSwaps, WeaponSwaps, Table, bApplyToPacks));
+			for (const FString& Loop : Loops)
+			{
+				OutReport += TEXT("Shared CharaSpec Lists: ERROR: these specs would load each other in a loop: ") + Loop + TEXT("\n");
+			}
+			bOk &= Loops.Num() == 0;
+		}
+		if (Table.bAvailable && bFixPackModels)
+		{
+			const TArray<FPackCheck> Checks = CheckProjectPacks(Table);
+			if (Checks.Num() > 0)
+			{
+				OutReport += TEXT("CharaSpec packs of this project that disagree with their rows (Apply To CharaSpec gives a row the model of the blueprint its pack spawns; swaps fix the rest):\n");
+			}
+			for (const FPackCheck& Check : Checks)
+			{
+				for (const FString& Difference : Check.Differences)
+				{
+					OutReport += FString::Printf(TEXT("    CharaSpec_%s: %s\n"), *Check.Row, *Difference);
+				}
+			}
+		}
+	}
+	TArray<FString> Mine = Packs;
+	Mine.Append(WeaponSkeletons);
+	for (const FEndAnimSetRow& Row : AnimationSets)
+	{
+		for (const TSoftObjectPtr<USkeleton>* Soft : {&Row.Cutscene, &Row.CharacterSkeleton})
+		{
+			if (Row.bEnabled && !Soft->IsNull())
+			{
+				Mine.AddUnique(SoftPath(*Soft));
+			}
+		}
+	}
+	for (const FEndSkeletonCompatPair& Pair : Pairs)
+	{
+		if (!Pair.bEnabled)
+		{
+			continue;
+		}
+		for (const TSoftObjectPtr<USkeleton>& Soft : Pair.MoreReceivingSkeletons)
+		{
+			if (!Soft.IsNull())
+			{
+				Mine.AddUnique(SoftPath(Soft));
+			}
+		}
+		for (const TSoftObjectPtr<USkeleton>& Soft : Pair.AnimationSkeletons)
+		{
+			if (!Soft.IsNull())
+			{
+				Mine.AddUnique(SoftPath(Soft));
+			}
+		}
+		if (!Pair.ReceivingSkeleton.IsNull())
+		{
+			Mine.AddUnique(SoftPath(Pair.ReceivingSkeleton));
+		}
+	}
+	ReportInGame(View, Mine, GetName() + TEXT(".json"), OutReport);
+	ReportRowsInGame(View, Packs, OutReport);
+	return bOk;
+}
+
+FString UEndSkeletonCompatDataObject::ToRuntimeJson() const
+{
+	TSharedRef<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("schema"), TEXT("RebirthSkelCompat/1"));
+	Root->SetStringField(TEXT("source"), GetPathName());
+	TArray<TSharedPtr<FJsonValue>> PairValues;
+	auto StringArray = [](const TArray<FString>& Items)
+	{
+		TArray<TSharedPtr<FJsonValue>> Values;
+		for (const FString& Item : Items)
+		{
+			Values.Add(MakeShared<FJsonValueString>(Item));
+		}
+		return Values;
+	};
+	for (const FEndSkeletonCompatPair& Pair : Pairs)
+	{
+		if (Pair.ReceivingSkeleton.IsNull())
+		{
+			continue;
+		}
+		const bool bMesh = Pair.Method == EEndSkelCompatMethod::Mesh;
+		const bool bFamily = Pair.Method == EEndSkelCompatMethod::Family;
+		const FString Receiving = Pair.ReceivingSkeleton.ToSoftObjectPath().ToString();
+		TSharedRef<FJsonObject> Entry = MakeShared<FJsonObject>();
+		Entry->SetStringField(TEXT("receiving_skeleton"), Receiving);
+		TArray<FString> More;
+		for (const TSoftObjectPtr<USkeleton>& Soft : Pair.MoreReceivingSkeletons)
+		{
+			if (!Soft.IsNull() && !SamePath(SoftPath(Soft), Receiving))
+			{
+				More.AddUnique(Soft.ToSoftObjectPath().ToString());
+			}
+		}
+		if (More.Num() > 0)
+		{
+			// A family lists them as more members; other pairs get one pair per receiving skeleton.
+			Entry->SetArrayField(bFamily ? TEXT("skeletons") : TEXT("receiving_skeletons"), StringArray(More));
+		}
+		TArray<FString> Animation;
+		for (const TSoftObjectPtr<USkeleton>& Soft : Pair.AnimationSkeletons)
+		{
+			if (!Soft.IsNull())
+			{
+				Animation.AddUnique(Soft.ToSoftObjectPath().ToString());
+			}
+		}
+		Entry->SetArrayField(TEXT("animation_skeletons"), StringArray(Animation));
+		Entry->SetStringField(TEXT("method"), MethodText(Pair.Method));
+		if (bFamily)
+		{
+			Entry->SetStringField(TEXT("hub"), Receiving);
+		}
+		const TArray<FString> Requires = CleanList(Pair.RequiresPaks, true);
+		if (Requires.Num() > 0)
+		{
+			Entry->SetArrayField(TEXT("requires_paks"), StringArray(Requires));
+		}
+		if (!bMesh && !bFamily)
+		{
+			const TArray<FString> Adopt = CleanList(Pair.AdoptPaths, false);
+			if (Adopt.Num() > 0)
+			{
+				Entry->SetArrayField(TEXT("adopt_paths"), StringArray(Adopt));
+			}
+		}
+		else
+		{
+			if (bMesh)
+			{
+				TArray<FString> Meshes;
+				for (const TSoftObjectPtr<USkeletalMesh>& Soft : Pair.ReceivingMeshes)
+				{
+					if (!Soft.IsNull())
+					{
+						Meshes.AddUnique(Soft.ToSoftObjectPath().ToString());
+					}
+				}
+				if (Meshes.Num() > 0)
+				{
+					Entry->SetArrayField(TEXT("receiving_meshes"), StringArray(Meshes));
+				}
+			}
+			Entry->SetBoolField(TEXT("fix_hierarchy"), Pair.bFixHierarchy);
+			Entry->SetBoolField(TEXT("repair_live_components"), Pair.bRepairLiveComponents);
+			Entry->SetBoolField(TEXT("carry_sockets"), Pair.bCarrySockets);
+		}
+		if (Pair.bKeepProportions)
+		{
+			Entry->SetBoolField(TEXT("proportions"), true);
+		}
+		Entry->SetBoolField(TEXT("enabled"), Pair.bEnabled);
+		PairValues.Add(MakeShared<FJsonValueObject>(Entry));
+	}
+	// Character and weapon swaps: their families as pairs, their rows (a character swap's moves, a weapon swap's socket
+	// stand-ins) after this data object's own rows, and the swaps themselves (the mod skips "character_swaps" and
+	// "weapon_swaps"; the data object reads them back with Import From Game Json).
+	TArray<TSharedPtr<FJsonValue>> SwapValues;
+	TArray<TSharedPtr<FJsonValue>> CharacterValues;
+	TArray<TSharedPtr<FJsonValue>> SwapRowValues;
+	if (WeaponSwaps.Num() > 0 || CharacterSwaps.Num() > 0)
+	{
+		const FCharaSpecTable Table(CharaSpecTable);
+		TArray<FString> FamilyKeys; // one family per set of skeletons: the first swap's hub
+		for (const FEndCharacterSwap& Swap : CharacterSwaps)
+		{
+			if (Swap.NewCharacter.TrimStartAndEnd().IsEmpty() && CleanList(Swap.Characters, false).Num() == 0)
+			{
+				continue;
+			}
+			CharacterValues.Add(MakeShared<FJsonValueObject>(CharacterSwapToJson(Swap)));
+			const FCharacterSwapPlan Plan = PlanCharacterSwap(Swap, Table, false, false);
+			if (const TSharedPtr<FJsonObject> Family = CharacterFamilyJson(Swap, Plan))
+			{
+				TArray<FString> Members = StringsOf(Family->TryGetField(TEXT("animation_skeletons")));
+				Members.AddUnique(StringField(Family, TEXT("hub")));
+				Members.Sort();
+				const FString Key = FString::Join(Members, TEXT("|"));
+				if (!FamilyKeys.Contains(Key))
+				{
+					FamilyKeys.Add(Key);
+					PairValues.Add(MakeShared<FJsonValueObject>(Family));
+				}
+			}
+			for (const TSharedPtr<FJsonObject>& Row : CharacterRowsJson(Swap, Plan))
+			{
+				SwapRowValues.Add(MakeShared<FJsonValueObject>(Row));
+			}
+		}
+		for (const FEndWeaponSwap& Swap : WeaponSwaps)
+		{
+			if (Swap.NewWeapon.TrimStartAndEnd().IsEmpty() && CleanList(Swap.Weapons, false).Num() == 0)
+			{
+				continue;
+			}
+			SwapValues.Add(MakeShared<FJsonValueObject>(WeaponSwapToJson(Swap)));
+			if (const TSharedPtr<FJsonObject> Family = WeaponFamilyJson(Swap, Table))
+			{
+				PairValues.Add(MakeShared<FJsonValueObject>(Family));
+			}
+			if (const TSharedPtr<FJsonObject> Sockets = WeaponSocketsJson(Swap, Table))
+			{
+				SwapRowValues.Add(MakeShared<FJsonValueObject>(Sockets));
+			}
+		}
+	}
+	Root->SetArrayField(TEXT("pairs"), PairValues);
+	if (CharacterValues.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("character_swaps"), CharacterValues);
+	}
+	if (SwapValues.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("weapon_swaps"), SwapValues);
+	}
+	TArray<TSharedPtr<FJsonValue>> RowValues;
+	for (const FEndAnimSetRow& Row : AnimationSets)
+	{
+		if (CleanList(Row.Characters, false).Num() > 0)
+		{
+			RowValues.Add(MakeShared<FJsonValueObject>(RowToJson(Row)));
+		}
+	}
+	RowValues.Append(SwapRowValues);
+	if (RowValues.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("animation_sets"), RowValues);
+	}
+	FString Text;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Text);
+	FJsonSerializer::Serialize(Root, Writer);
+	return Text;
+}
+
+bool UEndSkeletonCompatDataObject::WriteRuntimeJson(FString& OutReport) const
+{
+	OutReport.Reset();
+	const FString Json = ToRuntimeJson();
+	bool bOk = true;
+	auto Write = [&](const FString& File)
+	{
+		const FString Full = FPaths::ConvertRelativePathToFull(File);
+		IFileManager::Get().MakeDirectory(*FPaths::GetPath(Full), true);
+		if (FFileHelper::SaveStringToFile(Json, *Full, FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM))
+		{
+			OutReport += TEXT("Wrote ") + Full + TEXT("\n");
+		}
+		else
+		{
+			OutReport += TEXT("ERROR: could not write ") + Full + TEXT("\n");
+			bOk = false;
+		}
+	};
+	const FString Directory = ExportDirectory.Path.IsEmpty() ? FPaths::ProjectSavedDir() / TEXT("RebirthSkelCompat") : ExportDirectory.Path;
+	Write(Directory / GetName() + TEXT(".skelcompat.json"));
+	if (!GameDirectory.Path.IsEmpty())
+	{
+		const FString ModDirectory = GameDirectory.Path / ModFolder;
+		const FString GameFile = GameCompatFile();
+		if (!IFileManager::Get().DirectoryExists(*ModDirectory))
+		{
+			OutReport += TEXT("RebirthSkelCompat is not installed under ") + GameDirectory.Path + TEXT(" (game copy skipped)\n");
+		}
+		else
+		{
+			// Settings added to the game's copy by hand that this data object does not have would be lost.
+			FString Lost;
+			TArray<FFilePair> Existing;
+			TArray<FEndAnimSetRow> ExistingRows;
+			TArray<FEndWeaponSwap> ExistingSwaps;
+			TArray<FEndCharacterSwap> ExistingCharacters;
+			FString Error;
+			if (IFileManager::Get().FileExists(*GameFile) && ReadPairsFile(GameFile, Existing, Error, &ExistingRows, &ExistingSwaps, &ExistingCharacters))
+			{
+				// Character swaps, matched by new character and replaced rows.
+				for (const FEndCharacterSwap& Old : ExistingCharacters)
+				{
+					const FEndCharacterSwap* Match = CharacterSwaps.FindByPredicate([&](const FEndCharacterSwap& Swap) { return SameCharacterSwap(Swap, Old); });
+					if (!Match)
+					{
+						Lost += FString::Printf(TEXT("    character swap %s -> %s\n"), *ListText(Old.Characters), *Old.NewCharacter);
+						continue;
+					}
+					if (HasNamesMissingFrom(Old.Characters, CleanList(Match->Characters, false)))
+					{
+						Lost += FString::Printf(TEXT("    character swap to %s: characters %s\n"), *Old.NewCharacter, *ListText(Old.Characters));
+					}
+					if (HasNamesMissingFrom(Old.RequiresPaks, CleanList(Match->RequiresPaks, true)))
+					{
+						Lost += FString::Printf(TEXT("    character swap to %s: requires_paks %s\n"), *Old.NewCharacter, *ListText(Old.RequiresPaks));
+					}
+				}
+				// Weapon swaps, matched by new weapon: swaps and weapons the file has and this data object does not.
+				for (const FEndWeaponSwap& Old : ExistingSwaps)
+				{
+					const FString OldNew = CharaSpecRowName(Old.NewWeapon);
+					const FEndWeaponSwap* Match = WeaponSwaps.FindByPredicate([&](const FEndWeaponSwap& Swap) {
+						return CharaSpecRowName(Swap.NewWeapon).Equals(OldNew, ESearchCase::IgnoreCase);
+					});
+					if (!Match)
+					{
+						Lost += FString::Printf(TEXT("    weapon swap to %s\n"), *OldNew);
+						continue;
+					}
+					if (HasNamesMissingFrom(Old.Weapons, CleanList(Match->Weapons, false)))
+					{
+						Lost += FString::Printf(TEXT("    weapon swap to %s: weapons %s\n"), *OldNew, *ListText(Old.Weapons));
+					}
+					if (HasNamesMissingFrom(Old.RequiresPaks, CleanList(Match->RequiresPaks, true)))
+					{
+						Lost += FString::Printf(TEXT("    weapon swap to %s: requires_paks %s\n"), *OldNew, *ListText(Old.RequiresPaks));
+					}
+					for (const FEndSocketStandIn& Socket : Old.Sockets)
+					{
+						if (!Match->Sockets.ContainsByPredicate([&](const FEndSocketStandIn& Mine) { return Mine.Socket.TrimStartAndEnd().Equals(Socket.Socket, ESearchCase::IgnoreCase); }))
+						{
+							Lost += FString::Printf(TEXT("    weapon swap to %s: socket %s -> %s\n"), *OldNew, *Socket.Socket, *Socket.Use);
+						}
+					}
+				}
+				// Animation set rows: characters, sources and moves the file has and this data object does not.
+				for (const FEndAnimSetRow& Old : ExistingRows)
+				{
+					for (const FString& Character : Old.Characters)
+					{
+						const FString Name = CharaSpecRowName(Character);
+						const FEndAnimSetRow* Match = AnimationSets.FindByPredicate([&](const FEndAnimSetRow& Row) {
+							return Row.Characters.ContainsByPredicate([&](const FString& Mine) { return CharaSpecRowName(Mine).Equals(Name, ESearchCase::IgnoreCase); });
+						});
+						if (!Match)
+						{
+							Lost += FString::Printf(TEXT("    animation set row for %s\n"), *Name);
+							continue;
+						}
+						for (const TArray<FEndAnimSetSource>* List : {&Old.Battle, &Old.Field})
+						{
+							const TArray<FEndAnimSetSource>& Ours = List == &Old.Battle ? Match->Battle : Match->Field;
+							for (const FEndAnimSetSource& Source : *List)
+							{
+								if (!Ours.ContainsByPredicate([&](const FEndAnimSetSource& Mine) { return SamePath(Mine.Path, Source.Path); }))
+								{
+									Lost += FString::Printf(TEXT("    %s: source %s\n"), *Name, *Source.Path);
+								}
+							}
+						}
+						for (const FEndAnimSetMove& Move : Old.Moves)
+						{
+							if (!Match->Moves.ContainsByPredicate([&](const FEndAnimSetMove& Mine) { return Mine.Name.Equals(Move.Name, ESearchCase::IgnoreCase) && Mine.Set.Equals(Move.Set, ESearchCase::IgnoreCase); }))
+							{
+								Lost += FString::Printf(TEXT("    %s: move %s\n"), *Name, *Move.Name);
+							}
+						}
+					}
+				}
+				for (const FFilePair& Old : Existing)
+				{
+					const FEndSkeletonCompatPair* Match = Pairs.FindByPredicate([&](const FEndSkeletonCompatPair& Pair) {
+						return !Pair.ReceivingSkeleton.IsNull() && SamePath(SoftPath(Pair.ReceivingSkeleton), Old.Receiving);
+					});
+					if (!Match)
+					{
+						continue;
+					}
+					if (HasNamesMissingFrom(Old.RequiresPaks, CleanList(Match->RequiresPaks, true)))
+					{
+						Lost += FString::Printf(TEXT("    %s: requires_paks %s\n"), *ShortName(Old.Receiving), *ListText(Old.RequiresPaks));
+					}
+					if (Old.AdoptPaths.Num() > 0 && Match->AdoptPaths.Num() == 0 && Match->Method == EEndSkelCompatMethod::Animations)
+					{
+						Lost += FString::Printf(TEXT("    %s: adopt_paths %s\n"), *ShortName(Old.Receiving), *ListText(Old.AdoptPaths));
+					}
+					// Data objects made before Method existed load as Animations; a file set to another method by hand would flip back.
+					if (Old.bHasMethod && Old.Method != EEndSkelCompatMethod::Animations && Match->Method == EEndSkelCompatMethod::Animations)
+					{
+						Lost += FString::Printf(TEXT("    %s: method %s (this data object says Animations)\n"), *ShortName(Old.Receiving), MethodText(Old.Method));
+					}
+					if (Old.bHasCarrySockets && !Old.bCarrySockets && Match->bCarrySockets)
+					{
+						Lost += FString::Printf(TEXT("    %s: carry_sockets false\n"), *ShortName(Old.Receiving));
+					}
+				}
+			}
+			if (Lost.IsEmpty())
+			{
+				Write(GameFile);
+			}
+			else
+			{
+				OutReport += TEXT("NOT written: ") + GameFile + TEXT("\n  It has settings this data object does not have, which the export would remove or change:\n") + Lost +
+					TEXT("  Press Import From Game Json to take them over (or set them on the pair), then Export Json again. To drop them on purpose, delete that file first.\n");
+				bOk = false;
+			}
+		}
+	}
+	OutReport += TEXT("\n") + Json;
+	return bOk;
+}
+
+bool UEndSkeletonCompatDataObject::ImportRuntimeJson(FString& OutReport)
+{
+	OutReport.Reset();
+	const FString GameFile = ImportFile.FilePath.TrimStartAndEnd().IsEmpty() ? GameCompatFile() : FPaths::ConvertRelativePathToFull(ImportFile.FilePath.TrimStartAndEnd());
+	if (GameFile.IsEmpty() || !IFileManager::Get().FileExists(*GameFile))
+	{
+		OutReport += TEXT("No game JSON for this data object: ") + (GameFile.IsEmpty() ? FString(TEXT("Game Directory is empty")) : GameFile) +
+			TEXT(" (set Import File to read another one)\n");
+		return false;
+	}
+	TArray<FFilePair> FilePairs;
+	TArray<FEndAnimSetRow> FileRows;
+	TArray<FEndWeaponSwap> FileSwaps;
+	TArray<FEndCharacterSwap> FileCharacters;
+	FString Error;
+	if (!ReadPairsFile(GameFile, FilePairs, Error, &FileRows, &FileSwaps, &FileCharacters))
+	{
+		OutReport += GameFile + TEXT(" ") + Error + TEXT("\n");
+		return false;
+	}
+	const FScopedTransaction Transaction(NSLOCTEXT("RebirthSkelCompat", "ImportFromGameJson", "Import From Game Json"));
+	Modify();
+	bool bChanged = false;
+	for (int32 Index = 0; Index < Pairs.Num(); ++Index)
+	{
+		FEndSkeletonCompatPair& Pair = Pairs[Index];
+		if (Pair.ReceivingSkeleton.IsNull())
+		{
+			continue;
+		}
+		const FFilePair* From = FilePairs.FindByPredicate([&](const FFilePair& Candidate) { return SamePath(Candidate.Receiving, SoftPath(Pair.ReceivingSkeleton)); });
+		if (!From)
+		{
+			OutReport += FString::Printf(TEXT("Pair %d: not in %s\n"), Index, *FPaths::GetCleanFilename(GameFile));
+			continue;
+		}
+		FString Changes;
+		// The file's method is what the mod uses: without "method" that is the animations method.
+		if (Pair.Method != From->Method)
+		{
+			Pair.Method = From->Method;
+			Changes += FString::Printf(TEXT(" method %s;"), MethodText(Pair.Method));
+		}
+		const TArray<FString> Requires = CleanList(Pair.RequiresPaks, true);
+		if (HasNamesMissingFrom(From->RequiresPaks, Requires))
+		{
+			TArray<FString> Merged = Requires;
+			for (const FString& Name : From->RequiresPaks)
+			{
+				Merged.AddUnique(Name);
+			}
+			Pair.RequiresPaks = Merged;
+			Changes += TEXT(" Requires Paks ") + ListText(Merged) + TEXT(";");
+		}
+		const TArray<FString> Adopt = CleanList(Pair.AdoptPaths, false);
+		if (HasNamesMissingFrom(From->AdoptPaths, Adopt))
+		{
+			TArray<FString> Merged = Adopt;
+			for (const FString& Path : From->AdoptPaths)
+			{
+				Merged.AddUnique(Path);
+			}
+			Pair.AdoptPaths = Merged;
+			Changes += TEXT(" Adopt Paths ") + ListText(Merged) + TEXT(";");
+		}
+		if (Pair.Method == EEndSkelCompatMethod::Family)
+		{
+			// Members the file lists that this pair does not.
+			for (const FString& Member : From->Animation)
+			{
+				const bool bListed = SamePath(Member, SoftPath(Pair.ReceivingSkeleton)) ||
+					Pair.AnimationSkeletons.ContainsByPredicate([&](const TSoftObjectPtr<USkeleton>& Soft) { return SamePath(SoftPath(Soft), Member); }) ||
+					Pair.MoreReceivingSkeletons.ContainsByPredicate([&](const TSoftObjectPtr<USkeleton>& Soft) { return SamePath(SoftPath(Soft), Member); });
+				if (!bListed)
+				{
+					Pair.AnimationSkeletons.Add(TSoftObjectPtr<USkeleton>(FSoftObjectPath(Member)));
+					Changes += TEXT(" member ") + ShortName(Member) + TEXT(";");
+				}
+			}
+		}
+		if (From->bHasFixHierarchy && Pair.bFixHierarchy != From->bFixHierarchy)
+		{
+			Pair.bFixHierarchy = From->bFixHierarchy;
+			Changes += Pair.bFixHierarchy ? TEXT(" Fix Hierarchy on;") : TEXT(" Fix Hierarchy off;");
+		}
+		if (From->bHasRepairLiveComponents && Pair.bRepairLiveComponents != From->bRepairLiveComponents)
+		{
+			Pair.bRepairLiveComponents = From->bRepairLiveComponents;
+			Changes += Pair.bRepairLiveComponents ? TEXT(" Repair Live Components on;") : TEXT(" Repair Live Components off;");
+		}
+		if (From->bHasCarrySockets && Pair.bCarrySockets != From->bCarrySockets)
+		{
+			Pair.bCarrySockets = From->bCarrySockets;
+			Changes += Pair.bCarrySockets ? TEXT(" Carry Sockets on;") : TEXT(" Carry Sockets off;");
+		}
+		if (From->bHasKeepProportions && Pair.bKeepProportions != From->bKeepProportions)
+		{
+			Pair.bKeepProportions = From->bKeepProportions;
+			Changes += Pair.bKeepProportions ? TEXT(" Keep Proportions on;") : TEXT(" Keep Proportions off;");
+		}
+		OutReport += FString::Printf(TEXT("Pair %d (%s):%s\n"), Index, *ShortName(SoftPath(Pair.ReceivingSkeleton)),
+			Changes.IsEmpty() ? TEXT(" already matches the file") : *Changes);
+		bChanged |= !Changes.IsEmpty();
+	}
+	// Pairs and families of the file this data object does not have.
+	for (const FFilePair& From : FilePairs)
+	{
+		if (From.Receiving.IsEmpty() || Pairs.ContainsByPredicate([&](const FEndSkeletonCompatPair& Pair) {
+				return !Pair.ReceivingSkeleton.IsNull() && SamePath(SoftPath(Pair.ReceivingSkeleton), From.Receiving);
+			}))
+		{
+			continue;
+		}
+		FEndSkeletonCompatPair Pair;
+		Pair.bEnabled = From.bEnabled;
+		Pair.Method = From.Method;
+		Pair.ReceivingSkeleton = TSoftObjectPtr<USkeleton>(FSoftObjectPath(From.Receiving));
+		for (const FString& Skeleton : From.Animation)
+		{
+			Pair.AnimationSkeletons.Add(TSoftObjectPtr<USkeleton>(FSoftObjectPath(Skeleton)));
+		}
+		Pair.RequiresPaks = From.RequiresPaks;
+		Pair.AdoptPaths = From.AdoptPaths;
+		if (From.bHasFixHierarchy) { Pair.bFixHierarchy = From.bFixHierarchy; }
+		if (From.bHasRepairLiveComponents) { Pair.bRepairLiveComponents = From.bRepairLiveComponents; }
+		if (From.bHasCarrySockets) { Pair.bCarrySockets = From.bCarrySockets; }
+		if (From.bHasKeepProportions) { Pair.bKeepProportions = From.bKeepProportions; }
+		Pairs.Add(Pair);
+		OutReport += FString::Printf(TEXT("Pair %d (%s, %s): added from the file\n"), Pairs.Num() - 1, *ShortName(From.Receiving), MethodLabel(From.Method));
+		bChanged = true;
+	}
+	// Animation set rows, matched by character: what the file has and the row does not is added; a character this data
+	// object has no row for gets the file's row.
+	for (const FEndAnimSetRow& From : FileRows)
+	{
+		FEndAnimSetRow* Row = AnimationSets.FindByPredicate([&](const FEndAnimSetRow& Candidate) {
+			return Candidate.Characters.ContainsByPredicate([&](const FString& Mine) {
+				return From.Characters.ContainsByPredicate([&](const FString& Theirs) { return CharaSpecRowName(Mine).Equals(CharaSpecRowName(Theirs), ESearchCase::IgnoreCase); });
+			});
+		});
+		if (!Row)
+		{
+			AnimationSets.Add(From);
+			OutReport += FString::Printf(TEXT("Animation set row for %s: added from the file\n"), *ListText(From.Characters));
+			bChanged = true;
+			continue;
+		}
+		FString Changes;
+		for (const TArray<FEndAnimSetSource>* List : {&From.Battle, &From.Field})
+		{
+			TArray<FEndAnimSetSource>& Ours = List == &From.Battle ? Row->Battle : Row->Field;
+			for (const FEndAnimSetSource& Source : *List)
+			{
+				FEndAnimSetSource* Mine = Ours.FindByPredicate([&](const FEndAnimSetSource& Candidate) { return SamePath(Candidate.Path, Source.Path); });
+				if (!Mine)
+				{
+					Ours.Add(Source);
+					Changes += FString::Printf(TEXT(" %s source %s;"), List == &From.Battle ? TEXT("battle") : TEXT("field"), *Source.Path);
+				}
+				else if (Mine->AutoMatch == EEndAnimSetAutoMatch::Off && Source.AutoMatch != EEndAnimSetAutoMatch::Off)
+				{
+					Mine->AutoMatch = Source.AutoMatch;
+					Mine->OnlyNamesWith = Source.OnlyNamesWith;
+					Changes += FString::Printf(TEXT(" auto match for %s;"), *Source.Path);
+				}
+			}
+		}
+		FString Kept; // what the file has differently: the data object keeps its own (it is not a change)
+		for (const FEndAnimSetMove& Move : From.Moves)
+		{
+			const FEndAnimSetMove* Mine = Row->Moves.FindByPredicate([&](const FEndAnimSetMove& Candidate) {
+				return Candidate.Name.Equals(Move.Name, ESearchCase::IgnoreCase) && Candidate.Set.Equals(Move.Set, ESearchCase::IgnoreCase); });
+			if (!Mine)
+			{
+				Row->Moves.Add(Move);
+				Changes += TEXT(" move ") + Move.Name + TEXT(";");
+			}
+			else if (!SameMove(*Mine, Move))
+			{
+				Kept += TEXT(" move ") + Move.Name + TEXT(";");
+			}
+		}
+		if (Row->FieldActions.TrimStartAndEnd().IsEmpty() && !From.FieldActions.IsEmpty())
+		{
+			Row->FieldActions = From.FieldActions;
+			Changes += TEXT(" Field Actions ") + From.FieldActions + TEXT(";");
+		}
+		if (Row->Cutscene.IsNull() && !From.Cutscene.IsNull())
+		{
+			Row->Cutscene = From.Cutscene;
+			Changes += TEXT(" Cutscene ") + ShortName(SoftPath(From.Cutscene)) + TEXT(";");
+		}
+		if (Row->CharacterSkeleton.IsNull() && !From.CharacterSkeleton.IsNull())
+		{
+			Row->CharacterSkeleton = From.CharacterSkeleton;
+			Changes += TEXT(" Character Skeleton ") + ShortName(SoftPath(From.CharacterSkeleton)) + TEXT(";");
+		}
+		for (const FEndSocketStandIn& Socket : From.Sockets)
+		{
+			if (!Row->Sockets.ContainsByPredicate([&](const FEndSocketStandIn& Mine) { return Mine.Socket.Equals(Socket.Socket, ESearchCase::IgnoreCase); }))
+			{
+				Row->Sockets.Add(Socket);
+				Changes += TEXT(" socket ") + Socket.Socket + TEXT(" -> ") + Socket.Use + TEXT(";");
+			}
+		}
+		for (int32 Index = 0; Index < From.LimitBreaks.Num(); ++Index)
+		{
+			if (From.LimitBreaks[Index].Animation.IsEmpty() || (Row->LimitBreaks.IsValidIndex(Index) && !Row->LimitBreaks[Index].Animation.IsEmpty()))
+			{
+				continue;
+			}
+			if (Row->LimitBreaks.Num() <= Index) { Row->LimitBreaks.SetNum(Index + 1); }
+			Row->LimitBreaks[Index] = From.LimitBreaks[Index];
+			Changes += FString::Printf(TEXT(" limit break %d;"), Index + 1);
+		}
+		if (!Row->bKeepProportions && From.bKeepProportions)
+		{
+			Row->bKeepProportions = true;
+			Changes += TEXT(" Keep Proportions on;");
+		}
+		if (!Row->bOverride && From.bOverride)
+		{
+			Row->bOverride = true;
+			Changes += TEXT(" Override on;");
+		}
+		if (Row->BuildFolder.TrimStartAndEnd().IsEmpty() && !From.BuildFolder.IsEmpty())
+		{
+			Row->BuildFolder = From.BuildFolder;
+			Changes += TEXT(" Build Folder ") + From.BuildFolder + TEXT(";");
+		}
+		else if (!From.BuildFolder.IsEmpty() && !BuildFolderOf(*Row).Equals(BuildFolderOf(From), ESearchCase::IgnoreCase))
+		{
+			Kept += TEXT(" Build Folder ") + BuildFolderOf(*Row) + TEXT(" (the file has ") + BuildFolderOf(From) + TEXT(");");
+		}
+		if (Row->ShotEffects.MuzzleEffect.TrimStartAndEnd().IsEmpty() && Row->ShotEffects.SoundBank.TrimStartAndEnd().IsEmpty() &&
+			(!From.ShotEffects.MuzzleEffect.IsEmpty() || !From.ShotEffects.SoundBank.IsEmpty()))
+		{
+			Row->ShotEffects = From.ShotEffects;
+			Changes += TEXT(" Shot Effects;");
+		}
+		for (const FString& Name : From.MoreSetNames)
+		{
+			if (!Row->MoreSetNames.Contains(Name))
+			{
+				Row->MoreSetNames.Add(Name);
+				Changes += TEXT(" set name ") + Name + TEXT(";");
+			}
+		}
+		const TArray<FString> Requires = CleanList(Row->RequiresPaks, true);
+		if (HasNamesMissingFrom(From.RequiresPaks, Requires))
+		{
+			TArray<FString> Merged = Requires;
+			for (const FString& Name : From.RequiresPaks)
+			{
+				Merged.AddUnique(Name);
+			}
+			Row->RequiresPaks = Merged;
+			Changes += TEXT(" Requires Paks ") + ListText(Merged) + TEXT(";");
+		}
+		OutReport += FString::Printf(TEXT("Animation set row for %s:%s\n"), *ListText(Row->Characters),
+			!Changes.IsEmpty() ? *Changes : (Kept.IsEmpty() ? TEXT(" already matches the file") : TEXT(" nothing added")));
+		if (!Kept.IsEmpty())
+		{
+			OutReport += TEXT("    kept as this data object has them, the file's differ:") + Kept +
+						 TEXT("\n    (to take the file's: change them here by hand, or import into a new data object)\n");
+		}
+		bChanged |= !Changes.IsEmpty();
+	}
+	// Weapon swaps, matched by new weapon: the file's weapons, Requires Paks and skeletons this data object lacks are added.
+	for (const FEndWeaponSwap& From : FileSwaps)
+	{
+		const FString FromNew = CharaSpecRowName(From.NewWeapon);
+		FEndWeaponSwap* Swap = WeaponSwaps.FindByPredicate([&](const FEndWeaponSwap& Candidate) {
+			return CharaSpecRowName(Candidate.NewWeapon).Equals(FromNew, ESearchCase::IgnoreCase);
+		});
+		if (!Swap)
+		{
+			WeaponSwaps.Add(From);
+			OutReport += FString::Printf(TEXT("Weapon swap to %s: added from the file\n"), *FromNew);
+			bChanged = true;
+			continue;
+		}
+		FString Changes;
+		for (const FString& Weapon : From.Weapons)
+		{
+			if (!CleanList(Swap->Weapons, false).Contains(Weapon))
+			{
+				Swap->Weapons.Add(Weapon);
+				Changes += TEXT(" weapon ") + Weapon + TEXT(";");
+			}
+		}
+		const TArray<FString> Requires = CleanList(Swap->RequiresPaks, true);
+		if (HasNamesMissingFrom(From.RequiresPaks, Requires))
+		{
+			TArray<FString> Merged = Requires;
+			for (const FString& Name : From.RequiresPaks)
+			{
+				Merged.AddUnique(Name);
+			}
+			Swap->RequiresPaks = Merged;
+			Changes += TEXT(" Requires Paks ") + ListText(Merged) + TEXT(";");
+		}
+		if (Swap->WeaponSkeleton.IsNull() && !From.WeaponSkeleton.IsNull())
+		{
+			Swap->WeaponSkeleton = From.WeaponSkeleton;
+			Changes += TEXT(" Weapon Skeleton ") + ShortName(SoftPath(From.WeaponSkeleton)) + TEXT(";");
+		}
+		if (Swap->NewWeaponSkeleton.IsNull() && !From.NewWeaponSkeleton.IsNull())
+		{
+			Swap->NewWeaponSkeleton = From.NewWeaponSkeleton;
+			Changes += TEXT(" New Weapon Skeleton ") + ShortName(SoftPath(From.NewWeaponSkeleton)) + TEXT(";");
+		}
+		for (const FEndSocketStandIn& Socket : From.Sockets)
+		{
+			if (!Swap->Sockets.ContainsByPredicate([&](const FEndSocketStandIn& Mine) { return Mine.Socket.TrimStartAndEnd().Equals(Socket.Socket, ESearchCase::IgnoreCase); }))
+			{
+				Swap->Sockets.Add(Socket);
+				Changes += TEXT(" socket ") + Socket.Socket + TEXT(" -> ") + Socket.Use + TEXT(";");
+			}
+		}
+		OutReport += FString::Printf(TEXT("Weapon swap to %s:%s\n"), *FromNew, Changes.IsEmpty() ? TEXT(" already matches the file") : *Changes);
+		bChanged |= !Changes.IsEmpty();
+	}
+	// Character swaps, matched by new character and replaced rows: the file's rows, Requires Paks and the settings this
+	// data object leaves empty are added.
+	for (const FEndCharacterSwap& From : FileCharacters)
+	{
+		FEndCharacterSwap* Swap = CharacterSwaps.FindByPredicate([&](const FEndCharacterSwap& Candidate) { return SameCharacterSwap(Candidate, From); });
+		if (!Swap)
+		{
+			CharacterSwaps.Add(From);
+			OutReport += FString::Printf(TEXT("Character swap %s -> %s: added from the file\n"), *ListText(From.Characters), *From.NewCharacter);
+			bChanged = true;
+			continue;
+		}
+		FString Changes;
+		FString Kept;
+		for (const FString& Character : From.Characters)
+		{
+			if (!CleanList(Swap->Characters, false).Contains(Character))
+			{
+				Swap->Characters.Add(Character);
+				Changes += TEXT(" character ") + Character + TEXT(";");
+			}
+		}
+		const TArray<FString> Requires = CleanList(Swap->RequiresPaks, true);
+		if (HasNamesMissingFrom(From.RequiresPaks, Requires))
+		{
+			TArray<FString> Merged = Requires;
+			for (const FString& Name : From.RequiresPaks)
+			{
+				Merged.AddUnique(Name);
+			}
+			Swap->RequiresPaks = Merged;
+			Changes += TEXT(" Requires Paks ") + ListText(Merged) + TEXT(";");
+		}
+		const auto Take = [&](FString& Mine, const FString& Theirs, const TCHAR* Name)
+		{
+			if (Mine.TrimStartAndEnd().IsEmpty() && !Theirs.IsEmpty())
+			{
+				Mine = Theirs;
+				Changes += FString::Printf(TEXT(" %s %s;"), Name, *Theirs);
+			}
+			else if (!Theirs.IsEmpty() && !Mine.TrimStartAndEnd().Equals(Theirs, ESearchCase::IgnoreCase))
+			{
+				Kept += FString::Printf(TEXT(" %s %s (the file has %s);"), Name, *Mine.TrimStartAndEnd(), *Theirs);
+			}
+		};
+		Take(Swap->Voice, From.Voice, TEXT("Voice"));
+		Take(Swap->WeaponSocket, From.WeaponSocket, TEXT("Weapon Socket"));
+		if (Swap->Moveset != From.Moveset)
+		{
+			Kept += FString::Printf(TEXT(" Moveset %s (the file has %s);"), MovesetText(Swap->Moveset), MovesetText(From.Moveset));
+		}
+		if (Swap->bKeepProportions != From.bKeepProportions)
+		{
+			Kept += FString::Printf(TEXT(" Keep Proportions %s (the file has %s);"), Swap->bKeepProportions ? TEXT("on") : TEXT("off"), From.bKeepProportions ? TEXT("on") : TEXT("off"));
+		}
+		if (Swap->ReplacedSkeleton.IsNull() && !From.ReplacedSkeleton.IsNull())
+		{
+			Swap->ReplacedSkeleton = From.ReplacedSkeleton;
+			Changes += TEXT(" Replaced Skeleton ") + ShortName(SoftPath(From.ReplacedSkeleton)) + TEXT(";");
+		}
+		if (Swap->NewSkeleton.IsNull() && !From.NewSkeleton.IsNull())
+		{
+			Swap->NewSkeleton = From.NewSkeleton;
+			Changes += TEXT(" New Skeleton ") + ShortName(SoftPath(From.NewSkeleton)) + TEXT(";");
+		}
+		OutReport += FString::Printf(TEXT("Character swap to %s:%s\n"), *From.NewCharacter, Changes.IsEmpty() ? (Kept.IsEmpty() ? TEXT(" already matches the file") : TEXT(" nothing added")) : *Changes);
+		if (!Kept.IsEmpty())
+		{
+			OutReport += TEXT("    kept as this data object has them, the file's differ:") + Kept + TEXT("\n");
+		}
+		bChanged |= !Changes.IsEmpty();
+	}
+	if (bChanged)
+	{
+		PostEditChange();
+		MarkPackageDirty();
+		OutReport += TEXT("\nSave this data object to keep the changes.\n");
+	}
+	return true;
+}
+
+bool UEndSkeletonCompatDataObject::ApplyPairsToSkeletons(bool bRemove, FString& OutReport)
+{
+	OutReport.Reset();
+	TArray<UPackage*> Dirty;
+	UClass* Carrier = FindOrCreateCarrier(!bRemove, Dirty, OutReport);
+	if (!Carrier)
+	{
+		return bRemove;
+	}
+	// Several pairs may name the same receiving skeleton: one list per skeleton, merged like the mod merges JSON.
+	// Only Mesh rebind pairs travel this way; skeletons left without one lose a list stamped earlier.
+	struct FMerged
+	{
+		bool bEnabled = false;
+		bool bAllMeshes = false;
+		TArray<FSoftObjectPath> Animation;
+		TArray<FSoftObjectPath> Meshes;
+	};
+	TArray<USkeleton*> Order;
+	TMap<USkeleton*, FMerged> Merged;
+	bool bOk = true;
+	for (int32 Index = 0; Index < Pairs.Num(); ++Index)
+	{
+		const FEndSkeletonCompatPair& Pair = Pairs[Index];
+		if (Pair.ReceivingSkeleton.IsNull())
+		{
+			continue;
+		}
+		if (Pair.Method == EEndSkelCompatMethod::Family)
+		{
+			if (bRemove || !Pair.bEnabled)
+			{
+				continue;
+			}
+			OutReport += FString::Printf(TEXT("Pair %d (%s): families reach the game only as JSON; use Export Json.\n"), Index, *ShortName(SoftPath(Pair.ReceivingSkeleton)));
+			USkeleton* Hub = Pair.ReceivingSkeleton.LoadSynchronous();
+			if (!bRegisterForEditorPreview || !Hub)
+			{
+				continue;
+			}
+			TArray<TSoftObjectPtr<USkeleton>> Members = Pair.AnimationSkeletons;
+			Members.Append(Pair.MoreReceivingSkeletons);
+			for (const TSoftObjectPtr<USkeleton>& Soft : Members)
+			{
+				USkeleton* Member = Soft.IsNull() ? nullptr : Soft.LoadSynchronous();
+				if (!Member || Member == Hub)
+				{
+					continue;
+				}
+				FString ToHub, FromHub;
+				const bool bOne = RegisterForEditorPreview(Hub, Member, ToHub);
+				const bool bTwo = RegisterForEditorPreview(Member, Hub, FromHub);
+				OutReport += FString::Printf(TEXT("    editor preview %s <-> %s: %s%s%s\n"), *Hub->GetName(), *Member->GetName(),
+					bOne && bTwo ? TEXT("registered both ways") : (bOne || bTwo ? TEXT("registered one way") : TEXT("not registered")),
+					ToHub.IsEmpty() ? TEXT("") : TEXT(" - "), *ToHub);
+			}
+			continue;
+		}
+		TArray<TSoftObjectPtr<USkeleton>> Receivers;
+		Receivers.Add(Pair.ReceivingSkeleton);
+		for (const TSoftObjectPtr<USkeleton>& Soft : Pair.MoreReceivingSkeletons)
+		{
+			if (!Soft.IsNull())
+			{
+				Receivers.AddUnique(Soft);
+			}
+		}
+		for (const TSoftObjectPtr<USkeleton>& ReceivingSoft : Receivers)
+		{
+			USkeleton* Receiving = ReceivingSoft.LoadSynchronous();
+			if (!Receiving)
+			{
+				OutReport += FString::Printf(TEXT("Pair %d: ERROR: %s not found\n"), Index, *ReceivingSoft.ToString());
+				bOk = false;
+				continue;
+			}
+			FMerged& Entry = Merged.FindOrAdd(Receiving);
+			Order.AddUnique(Receiving);
+			if (bRemove || !Pair.bEnabled)
+			{
+				continue;
+			}
+			if (Pair.Method != EEndSkelCompatMethod::Mesh)
+			{
+				OutReport += FString::Printf(TEXT("Pair %d (%s): Animations pairs reach the game only as JSON; use Export Json. Apply To Skeletons carries Mesh rebind pairs.\n"),
+					Index, *Receiving->GetName());
+				continue;
+			}
+			if (!Pair.bFixHierarchy)
+			{
+				OutReport += FString::Printf(TEXT("Pair %d: note: Fix Hierarchy off is not stored on the skeleton (the mod keeps it on); use Export Json to switch it off\n"), Index);
+			}
+			if (!Pair.bCarrySockets)
+			{
+				OutReport += FString::Printf(TEXT("Pair %d: note: Carry Sockets off is not stored on the skeleton (the mod keeps it on); use Export Json to switch it off\n"), Index);
+			}
+			Entry.bEnabled = true;
+			for (const TSoftObjectPtr<USkeleton>& Soft : Pair.AnimationSkeletons)
+			{
+				if (!Soft.IsNull() && Soft.ToSoftObjectPath() != ReceivingSoft.ToSoftObjectPath())
+				{
+					Entry.Animation.AddUnique(Soft.ToSoftObjectPath());
+				}
+			}
+			int32 Listed = 0;
+			for (const TSoftObjectPtr<USkeletalMesh>& Soft : Pair.ReceivingMeshes)
+			{
+				if (!Soft.IsNull())
+				{
+					Entry.Meshes.AddUnique(Soft.ToSoftObjectPath());
+					++Listed;
+				}
+			}
+			Entry.bAllMeshes |= Listed == 0;
+		}
+	}
+
+	for (USkeleton* Receiving : Order)
+	{
+		FMerged& Entry = Merged[Receiving];
+		if (IsCookedAsset(Receiving))
+		{
+			if (Entry.bEnabled)
+			{
+				OutReport += FString::Printf(TEXT("%s: NOT changed. It is a cooked game asset, and saving it from the editor would replace it with an editor copy. Use Export Json, or make the receiving skeleton your own skeleton asset.\n"), *Receiving->GetName());
+				bOk = false;
+			}
+			continue;
+		}
+		if (!Entry.bEnabled)
+		{
+			if (Receiving->GetAssetUserDataOfClass(Carrier))
+			{
+				Receiving->Modify();
+				Receiving->RemoveUserDataOfClass(Carrier);
+				Receiving->MarkPackageDirty();
+				Dirty.AddUnique(Receiving->GetOutermost());
+				OutReport += FString::Printf(TEXT("%s: list removed\n"), *Receiving->GetName());
+			}
+			continue;
+		}
+		if (Entry.Animation.Num() == 0)
+		{
+			OutReport += FString::Printf(TEXT("%s: ERROR: no animation skeleton\n"), *Receiving->GetName());
+			bOk = false;
+			continue;
+		}
+		if (Entry.bAllMeshes)
+		{
+			Entry.Meshes.Reset();
+		}
+		Receiving->Modify();
+		UAssetUserData* Data = Receiving->GetAssetUserDataOfClass(Carrier);
+		if (!Data)
+		{
+			Data = NewObject<UAssetUserData>(Receiving, Carrier, NAME_None, RF_Transactional);
+			Receiving->AddAssetUserData(Data);
+		}
+		Data->Modify();
+		if (!SetPathArray(Data, AnimationSkeletonsVariable, Entry.Animation) || !SetPathArray(Data, ReceivingMeshesVariable, Entry.Meshes))
+		{
+			OutReport += FString::Printf(TEXT("%s: ERROR: %s has unexpected variables\n"), *Receiving->GetName(), CarrierName);
+			bOk = false;
+			continue;
+		}
+		Receiving->MarkPackageDirty();
+		Dirty.AddUnique(Receiving->GetOutermost());
+		OutReport += FString::Printf(TEXT("%s: lists %d animation skeleton(s), %s\n"), *Receiving->GetName(), Entry.Animation.Num(),
+			Entry.Meshes.Num() ? *FString::Printf(TEXT("%d mesh(es)"), Entry.Meshes.Num()) : TEXT("all its meshes"));
+		if (bRegisterForEditorPreview)
+		{
+			for (const FSoftObjectPath& Path : Entry.Animation)
+			{
+				FString Diagnostic;
+				USkeleton* AnimationSkeleton = Cast<USkeleton>(Path.TryLoad());
+				const bool bRegistered = AnimationSkeleton && RegisterForEditorPreview(Receiving, AnimationSkeleton, Diagnostic);
+				OutReport += FString::Printf(TEXT("    editor preview with %s: %s%s%s\n"), *Path.GetAssetName(),
+					bRegistered ? TEXT("registered") : TEXT("not registered"), Diagnostic.IsEmpty() ? TEXT("") : TEXT(" - "), *Diagnostic);
+			}
+		}
+	}
+	if (Dirty.Num() > 0)
+	{
+		FEditorFileUtils::PromptForCheckoutAndSave(Dirty, false, true);
+		OutReport += TEXT("\nSave the changed packages (you were prompted), then cook and pak them with your mod. ")
+			TEXT("BP_SkelCompatUserData cooks along with the skeleton; the game reads the list from it.\n");
+	}
+	return bOk;
+}
+
+bool UEndSkeletonCompatDataObject::ApplyRowsToCharaSpec(FString& OutReport)
+{
+	OutReport.Reset();
+	const FCharaSpecTable Table(CharaSpecTable);
+	if (!Table.bAvailable)
+	{
+		OutReport += TEXT("The Rebirth data object tools (Rebirth Cooked Asset Preview plugin) are not loaded, so the CharaSpec table cannot be edited here.\n");
+		return false;
+	}
+	if (Table.Rows.Num() == 0)
+	{
+		OutReport += Table.Package + TEXT(" has no rows. Set CharaSpec Table (Advanced) to your project's editable CharaSpec.\n");
+		return false;
+	}
+	bool bOk = true;
+	bool bChanged = false;
+	TSet<FString> Handled; // rows a swap writes (Fix Pack Models leaves them to it)
+	const auto Set = [&](const FString& Row, const TCHAR* Field, const FString& Value, const FString& Why) {
+		FString Message;
+		if (Table.SetField(Row, Field, Value, Message))
+		{
+			OutReport += FString::Printf(TEXT("%s: %s = %s (%s)\n"), *Row, Field, *Value, *Why);
+			bChanged = true;
+		}
+		else
+		{
+			OutReport += FString::Printf(TEXT("%s: ERROR: %s not set: %s\n"), *Row, Field, *Message);
+			bOk = false;
+		}
+	};
+	// A row's changes from a swap; a Shared CharaSpec List that would make specs load each other in a loop is left out.
+	const auto Write = [&](const FString& Row, const TArray<FFieldChange>& Changes, const FString& Why) {
+		for (const FFieldChange& Change : Changes)
+		{
+			if (FCString::Strcmp(Change.Field, TEXT("SharedCharaSpecList_Array")) == 0)
+			{
+				TMap<FString, TArray<FString>> One;
+				One.Add(Row, NamesInText(Change.Value));
+				const TArray<FString> Loops = SharedLoops(Table, One);
+				if (Loops.Num() > 0)
+				{
+					OutReport += FString::Printf(TEXT("%s: ERROR: SharedCharaSpecList_Array left as it is: %s would load each other in a loop (%s)\n"), *Row,
+						*FieldShown(Change.Field, Change.Value), *Loops[0]);
+					bOk = false;
+					continue;
+				}
+			}
+			Set(Row, Change.Field, Change.Value, Why + TEXT(", was ") + FieldShown(Change.Field, Change.Current));
+		}
+	};
+
+	// 1. The swaps' packs (Apply To Packs): the blueprint they spawn, a character's voice, a weapon's effects.
+	TArray<UPackage*> DirtyPacks;
+	TSet<FString> FailedPacks; // their rows are left alone: they would describe what the pack does not spawn
+	TArray<FCharacterSwapPlan> CharacterPlans;
+	for (const FEndCharacterSwap& Swap : CharacterSwaps)
+	{
+		CharacterPlans.Add(Swap.bEnabled ? PlanCharacterSwap(Swap, Table, true, bApplyToPacks) : FCharacterSwapPlan());
+		for (const FCharacterRowPlan& Row : CharacterPlans.Last().Rows)
+		{
+			if (Row.Problem.IsEmpty() && Row.Pack.bInProject && Row.Edit.HasWork() && !ApplyPackEdit(Row.Row, Row.Edit, DirtyPacks, OutReport))
+			{
+				FailedPacks.Add(Row.Row);
+				bOk = false;
+			}
+		}
+	}
+	TArray<FWeaponSwapPlan> WeaponPlans;
+	for (const FEndWeaponSwap& Swap : WeaponSwaps)
+	{
+		WeaponPlans.Add(Swap.bEnabled ? PlanWeaponSwap(Swap, Table, true, bApplyToPacks) : FWeaponSwapPlan());
+		for (const FWeaponRowPlan& Row : WeaponPlans.Last().Rows)
+		{
+			if (!LeftOut(Row) && Row.Pack.bInProject && Row.Edit.HasWork() && !ApplyPackEdit(Row.Row, Row.Edit, DirtyPacks, OutReport))
+			{
+				FailedPacks.Add(Row.Row);
+				bOk = false;
+			}
+		}
+	}
+	if (DirtyPacks.Num() > 0)
+	{
+		if (FEditorFileUtils::PromptForCheckoutAndSave(DirtyPacks, false, false) == FEditorFileUtils::PR_Success)
+		{
+			OutReport += FString::Printf(TEXT("Saved %d pack(s). Cook them with your mod.\n\n"), DirtyPacks.Num());
+		}
+		else
+		{
+			OutReport += TEXT("ERROR: the changed packs were not all saved (save them by hand)\n\n");
+			bOk = false;
+		}
+	}
+
+	// 2. Animation set rows: field actions and references to rows that are not in the table.
+	for (int32 Index = 0; Index < AnimationSets.Num(); ++Index)
+	{
+		const FEndAnimSetRow& Row = AnimationSets[Index];
+		if (!Row.bEnabled)
+		{
+			continue;
+		}
+		const FString Folder = Row.FieldActions.TrimStartAndEnd();
+		for (const FString& Character : CleanList(Row.Characters, false))
+		{
+			const FString Name = CharaSpecRowName(Character);
+			if (Name.IsEmpty() || !Table.Has(Name))
+			{
+				OutReport += FString::Printf(TEXT("Row %d: %s is not a row of %s\n"), Index, *Character, *Table.Package);
+				bOk = false;
+				continue;
+			}
+			if (!Folder.IsEmpty())
+			{
+				const FString Current = Table.Field(Name, TEXT("AnimationSetParentFolder"));
+				if (Current.Equals(Folder, ESearchCase::IgnoreCase))
+				{
+					OutReport += FString::Printf(TEXT("%s: AnimationSetParentFolder is already %s\n"), *Name, *Folder);
+				}
+				else
+				{
+					Set(Name, TEXT("AnimationSetParentFolder"), Folder, TEXT("field actions, was ") + (Current.IsEmpty() ? FString(TEXT("empty")) : Current));
+				}
+			}
+			if (bFixMissingRowReferences)
+			{
+				for (const TCHAR* Field : {TEXT("NoBattleCharaSpec"), TEXT("ReserveCharaSpec")})
+				{
+					const FString Current = Table.Field(Name, Field);
+					if (!Current.IsEmpty() && !Current.Equals(TEXT("None"), ESearchCase::IgnoreCase) && !Table.Has(Current))
+					{
+						Set(Name, Field, Name, Current + TEXT(" is not in the table"));
+					}
+				}
+			}
+		}
+	}
+
+	// 3. Character swaps: each replaced row describes what its pack spawns and loads. A row whose pack is the game's own,
+	// or still spawns someone else, is left alone: describing a character the pack does not spawn keeps the game loading.
+	for (int32 Index = 0; Index < CharacterSwaps.Num(); ++Index)
+	{
+		if (!CharacterSwaps[Index].bEnabled)
+		{
+			continue;
+		}
+		const FCharacterSwapPlan& Plan = CharacterPlans[Index];
+		if (!Plan.Error.IsEmpty())
+		{
+			OutReport += FString::Printf(TEXT("Character swap %d: ERROR: %s\n"), Index, *Plan.Error);
+			bOk = false;
+			continue;
+		}
+		for (const FString& Item : Plan.Unknown)
+		{
+			OutReport += FString::Printf(TEXT("Character swap %d: %s names no row of %s\n"), Index, *Item, *Table.Package);
+		}
+		if (Plan.Rows.Num() == 0)
+		{
+			OutReport += FString::Printf(TEXT("Character swap %d: ERROR: no rows to replace\n"), Index);
+			bOk = false;
+		}
+		if (!Plan.NewSpecNote.IsEmpty())
+		{
+			OutReport += FString::Printf(TEXT("Character swap %d: note: %s\n"), Index, *Plan.NewSpecNote);
+		}
+		for (const FCharacterRowPlan& Row : Plan.Rows)
+		{
+			if (LeftOut(Row))
+			{
+				OutReport += FString::Printf(TEXT("%s: left out (its pack is the game's own, so it stays the old character)\n"), *Row.Row);
+				continue;
+			}
+			for (const FString& Note : Row.Notes)
+			{
+				OutReport += FString::Printf(TEXT("%s: note: %s\n"), *Row.Row, *Note);
+			}
+			if (!Row.Problem.IsEmpty() || FailedPacks.Contains(Row.Row))
+			{
+				OutReport += FString::Printf(TEXT("%s: NOT changed: %s\n"), *Row.Row, Row.Problem.IsEmpty() ? TEXT("its pack could not be changed (above)") : *Row.Problem);
+				bOk = false;
+				continue;
+			}
+			Handled.Add(Row.Row);
+			if (Row.Changes.Num() == 0)
+			{
+				OutReport += FString::Printf(TEXT("%s: already describes %s\n"), *Row.Row, *ListText(Row.After.Blueprints));
+				continue;
+			}
+			Write(Row.Row, Row.Changes, TEXT("character swap to ") + Plan.NewCharacter);
+		}
+	}
+
+	// 4. Weapon swaps: each replaced weapon's row describes the weapon its pack spawns. A row whose pack still spawns the old
+	// weapon (or is the game's own) is left alone: describing a weapon the pack does not spawn is the same mismatch.
+	for (int32 Index = 0; Index < WeaponSwaps.Num(); ++Index)
+	{
+		if (!WeaponSwaps[Index].bEnabled)
+		{
+			continue;
+		}
+		const FWeaponSwapPlan& Plan = WeaponPlans[Index];
+		if (!Plan.Error.IsEmpty())
+		{
+			OutReport += FString::Printf(TEXT("Weapon swap %d: ERROR: %s\n"), Index, *Plan.Error);
+			bOk = false;
+			continue;
+		}
+		for (const FString& Item : Plan.Unknown)
+		{
+			OutReport += FString::Printf(TEXT("Weapon swap %d: %s names no row of %s\n"), Index, *Item, *Table.Package);
+		}
+		if (Plan.Rows.Num() == 0)
+		{
+			OutReport += FString::Printf(TEXT("Weapon swap %d: ERROR: no weapon rows to replace\n"), Index);
+			bOk = false;
+		}
+		for (const FWeaponRowPlan& Row : Plan.Rows)
+		{
+			if (LeftOut(Row))
+			{
+				OutReport += FString::Printf(TEXT("%s: left out (its pack is the game's own, so it stays the old weapon)\n"), *Row.Row);
+				continue;
+			}
+			for (const FString& Note : Row.Notes)
+			{
+				OutReport += FString::Printf(TEXT("%s: note: %s\n"), *Row.Row, *Note);
+			}
+			const FString Problem = FailedPacks.Contains(Row.Row) ? FString(TEXT("its pack could not be changed (above)")) : WeaponRowProblem(Row, Plan.NewWeapon);
+			if (!Problem.IsEmpty())
+			{
+				OutReport += FString::Printf(TEXT("%s: NOT changed: %s\n"), *Row.Row, *Problem);
+				bOk = false;
+				continue;
+			}
+			Handled.Add(Row.Row);
+			if (Row.Changes.Num() == 0)
+			{
+				OutReport += FString::Printf(TEXT("%s: already describes %s\n"), *Row.Row, *Plan.NewWeapon);
+				continue;
+			}
+			Write(Row.Row, Row.Changes, TEXT("weapon swap to ") + Plan.NewWeapon);
+		}
+	}
+
+	// 5. Fix Pack Models: every other pack of this project gets a row whose model is the blueprint it spawns.
+	if (bFixPackModels)
+	{
+		for (const FPackCheck& Check : CheckProjectPacks(Table))
+		{
+			if (Check.Spawns.IsEmpty() || Check.Spawns.Equals(Check.Model, ESearchCase::IgnoreCase) || Handled.Contains(Check.Row))
+			{
+				continue;
+			}
+			if (!Table.Has(Check.Spawns))
+			{
+				OutReport += FString::Printf(TEXT("%s: note: its pack spawns %s, which is not a row of the table, so its model is left as %s\n"), *Check.Row, *Check.Spawns, *Check.Model);
+				continue;
+			}
+			Set(Check.Row, TEXT("ContentsModel"), Check.Spawns, TEXT("Fix Pack Models: the blueprint its pack spawns, was ") + Check.Model);
+		}
+	}
+
+	if (bChanged)
+	{
+		FString Message;
+		if (Table.Save(Message))
+		{
+			OutReport += TEXT("\nSaved ") + Table.Package + TEXT(". Cook it with your mod (it replaces the game's CharaSpec).\n");
+		}
+		else
+		{
+			OutReport += TEXT("\nERROR: ") + Table.Package + TEXT(" not saved: ") + Message + TEXT("\n");
+			bOk = false;
+		}
+	}
+	else if (bOk && DirtyPacks.Num() == 0)
+	{
+		OutReport += TEXT("\nNothing to change.\n");
+	}
+	if (CharacterSwaps.ContainsByPredicate([](const FEndCharacterSwap& Swap) { return Swap.bEnabled; }) ||
+		WeaponSwaps.ContainsByPredicate([](const FEndWeaponSwap& Swap) { return Swap.bEnabled && Swap.Sockets.Num() > 0; }))
+	{
+		OutReport += TEXT("Press Export Json too: the swaps' families, moves and socket stand-ins reach the game through it.\n");
+	}
+	return bOk;
+}
+
+void UEndSkeletonCompatDataObject::ApplyToCharaSpec()
+{
+	FString Report;
+	const bool bOk = ApplyRowsToCharaSpec(Report);
+	ShowResult(TEXT("Apply To CharaSpec"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::ShowResult(const FString& Title, const FString& Report, bool bOk)
+{
+	LastResult = Title + (bOk ? TEXT(": OK\n\n") : TEXT(": PROBLEMS\n\n")) + Report;
+	UE_LOG(LogRebirthSkelCompat, Log, TEXT("%s"), *LastResult);
+	FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(LastResult.Left(6000)));
+}
+
+void UEndSkeletonCompatDataObject::Validate()
+{
+	FString Report;
+	const bool bOk = ValidatePairs(Report);
+	ShowResult(TEXT("Validate"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::ApplyToSkeletons()
+{
+	FString Report;
+	bool bOk = true;
+	if (Pairs.Num() > 0)
+	{
+		bOk = ApplyPairsToSkeletons(false, Report);
+	}
+	else
+	{
+		Report += TEXT("No skeleton compatibility pairs.\n");
+	}
+	// The CharaSpec part (field actions, weapon rows) cooks with the pak too, so it is applied here as well.
+	if (HasCharaSpecWork(AnimationSets, WeaponSwaps, CharacterSwaps, bFixMissingRowReferences))
+	{
+		FString Rows;
+		bOk &= ApplyRowsToCharaSpec(Rows);
+		Report += TEXT("\nCharaSpec table (Apply To CharaSpec):\n") + Rows;
+	}
+	if (WeaponSwaps.ContainsByPredicate([](const FEndWeaponSwap& Swap) { return Swap.bEnabled && Swap.bCutsceneFamily; }) ||
+		CharacterSwaps.ContainsByPredicate([](const FEndCharacterSwap& Swap) { return Swap.bEnabled; }) ||
+		Pairs.ContainsByPredicate([](const FEndSkeletonCompatPair& Pair) { return Pair.bEnabled && Pair.Method != EEndSkelCompatMethod::Mesh; }))
+	{
+		Report += TEXT("\nFamilies, Animations pairs and the swaps' families and moves reach the game through Export Json.\n");
+	}
+	ShowResult(TEXT("Apply To Skeletons"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::RemoveFromSkeletons()
+{
+	FString Report;
+	const bool bOk = ApplyPairsToSkeletons(true, Report);
+	ShowResult(TEXT("Remove From Skeletons"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::ExportJson()
+{
+	FString Report;
+	const bool bOk = WriteRuntimeJson(Report);
+	ShowResult(TEXT("Export Json"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::ImportFromGameJson()
+{
+	FString Report;
+	const bool bOk = ImportRuntimeJson(Report);
+	ShowResult(TEXT("Import From Game Json"), Report, bOk);
+}
+
+bool UEndSkeletonCompatDataObject::BuildMoveAnimations(FString& OutReport)
+{
+	OutReport.Reset();
+	bool bOk = true;
+	int32 Asked = 0;
+	int32 Built = 0;
+	TArray<UPackage*> ToSave;
+	TMap<FString, TArray<UObject*>> ByFolder;
+	for (const FEndAnimSetRow& Row : AnimationSets)
+	{
+		if (!Row.bEnabled)
+		{
+			continue;
+		}
+		// A folder the project never cooks would build animations that are never packaged.
+		const FString NeverCook = NeverCookDirectoryOf(BuildFolderOf(Row));
+		if (!NeverCook.IsEmpty())
+		{
+			int32 RowMoves = 0;
+			for (const FEndAnimSetMove& Move : Row.Moves)
+			{
+				RowMoves += Move.bBuild ? 1 : 0;
+			}
+			if (RowMoves > 0)
+			{
+				Asked += RowMoves;
+				OutReport += FString::Printf(TEXT("ERROR: %d move(s) not built: Build Folder %s is in %s, which Project Settings > Packaging > Directories To Never Cook lists, ")
+											 TEXT("so they would never be packaged. Set Build Folder outside it (for example /Game/RebirthSkelCompat/Built/<Character>).\n"),
+					RowMoves, *BuildFolderOf(Row), *NeverCook);
+				bOk = false;
+			}
+			continue;
+		}
+		for (const FEndAnimSetMove& Move : Row.Moves)
+		{
+			if (!Move.bBuild)
+			{
+				continue;
+			}
+			++Asked;
+			const FString Name = Move.Name.TrimStartAndEnd();
+			const FString Label = (Move.Set.TrimStartAndEnd().IsEmpty() ? FString() : Move.Set.TrimStartAndEnd() + TEXT("/")) + Name;
+			const FString SourcePath = Move.Animation.TrimStartAndEnd();
+			UAnimSequence* Source = SourcePath.IsEmpty() ? nullptr : Cast<UAnimSequence>(FSoftObjectPath(NormalizedObjectPath(SourcePath)).TryLoad());
+			if (Name.IsEmpty() || !Source)
+			{
+				OutReport += FString::Printf(TEXT("%s: ERROR: %s\n"), *Label,
+					Name.IsEmpty() ? TEXT("the move has no Name") : *(TEXT("Animation ") + SourcePath + TEXT(" is not an Anim Sequence of this project")));
+				bOk = false;
+				continue;
+			}
+			if (IsCookedAsset(Source))
+			{
+				OutReport += FString::Printf(TEXT("%s: ERROR: %s is a cooked game animation; Build needs one made in this project (imported or retargeted). A game animation can play as it is: turn Build off.\n"),
+					*Label, *Source->GetName());
+				bOk = false;
+				continue;
+			}
+			FString NotifyPath;
+			UAnimSequenceBase* From = FindNotifySource(Row, Move, NotifyPath);
+			if (!From)
+			{
+				OutReport += FString::Printf(TEXT("%s: ERROR: no animation to take the gameplay notifies from (%s is not in this project); set Notifies From\n"), *Label, *NotifyPath);
+				bOk = false;
+				continue;
+			}
+			const FString Package = BuiltPackageOf(Row, Move);
+			if (!FPackageName::IsValidLongPackageName(Package))
+			{
+				OutReport += FString::Printf(TEXT("%s: ERROR: %s is not in a content folder (Build Folder must start with /Game/ or a plugin's folder)\n"), *Label, *Package);
+				bOk = false;
+				continue;
+			}
+			// An earlier build is made anew.
+			if (UObject* Old = StaticLoadObject(UObject::StaticClass(), nullptr, *(Package + TEXT(".") + Name), nullptr, LOAD_NoWarn | LOAD_Quiet))
+			{
+				if (IsCookedAsset(Old))
+				{
+					OutReport += FString::Printf(TEXT("%s: ERROR: %s is a cooked game asset; choose another Build Folder\n"), *Label, *Package);
+					bOk = false;
+					continue;
+				}
+				if (ObjectTools::ForceDeleteObjects(TArray<UObject*>{Old}, false) == 0)
+				{
+					OutReport += FString::Printf(TEXT("%s: ERROR: the earlier build %s could not be replaced (close it, then press Build Moves again)\n"), *Label, *Package);
+					bOk = false;
+					continue;
+				}
+			}
+			// Made new from Source, not duplicated (duplicating an Anim Sequence crashes this engine), and not put in
+			// the undo history (undoing it would read it back the same broken way).
+			FString Error;
+			UAnimSequence* Sequence = MakeAnimationFrom(Source, Package, Name, Error);
+			if (!Sequence)
+			{
+				OutReport += FString::Printf(TEXT("%s: ERROR: %s could not be made: %s\n"), *Label, *Package, *Error);
+				bOk = false;
+				continue;
+			}
+			FString Notes;
+			if (CleanList(Move.ThenPlay, false).Num() > 0)
+			{
+				Notes += TEXT("; Then Play is not built (only Animation)");
+			}
+			const FBuildResult Result = BuildNotifies(Sequence, From, Move, Row.ShotEffects, Notes);
+			CopyPlaySettings(From, Sequence);
+			Sequence->RefreshCacheData();
+			Sequence->PostEditChange();
+			// Compressed now, so the report can say which codec it got: the game decompresses with GameBoneCodec only.
+			Sequence->RequestSyncAnimRecompression(false);
+			const UAnimBoneCompressionCodec* Codec = Sequence->CompressedData.BoneCompressionCodec;
+			const FString CodecName = Codec ? Codec->GetCodecDDCHandle() : FString(TEXT("no codec"));
+			if (!CodecName.Equals(GameBoneCodec, ESearchCase::IgnoreCase))
+			{
+				Notes += FString::Printf(TEXT("; ERROR: compressed with %s, but the game reads it with %s (it would not play right)"), *CodecName, GameBoneCodec);
+				bOk = false;
+			}
+			Sequence->MarkPackageDirty();
+			ToSave.AddUnique(Sequence->GetOutermost());
+			ByFolder.FindOrAdd(BuildFolderOf(Row)).Add(Sequence);
+			++Built;
+			OutReport += FString::Printf(TEXT("%s: built %s from %s (%.2f s), %d gameplay notifies from %s (%.2f s)"), *Label, *Package, *Source->GetName(),
+				Sequence->SequenceLength, Result.Copied, *From->GetName(), From->SequenceLength);
+			if (Result.OldHit >= 0.f)
+			{
+				OutReport += FString::Printf(TEXT(", first hit %.2f s -> %.2f s (%d hit(s))"), Result.OldHit, Result.NewHit, Result.Hits);
+			}
+			else
+			{
+				OutReport += TEXT(", the original has no hit");
+			}
+			if (Result.Shots > 0)
+			{
+				OutReport += FString::Printf(TEXT(", %d shot(s) with muzzle flash and gunshot"), Result.Shots);
+			}
+			if (Result.Left > 0)
+			{
+				OutReport += FString::Printf(TEXT("; left out %d of the original's own sounds and effects (%s)"), Result.Left, *FString::Join(Result.LeftClasses, TEXT(", ")));
+			}
+			OutReport += Notes + TEXT("\n");
+		}
+	}
+	if (Asked == 0)
+	{
+		OutReport += TEXT("No move has Build on. Turn on Build on the moves to make (Animation: the animation of this project to make it from).\n");
+		return false;
+	}
+	if (BuildChunk > 0)
+	{
+		for (const TPair<FString, TArray<UObject*>>& Folder : ByFolder)
+		{
+			LabelForChunk(Folder.Key, BuildChunk, Folder.Value, ToSave, OutReport);
+		}
+	}
+	if (ToSave.Num() > 0)
+	{
+		TArray<UPackage*> Failed;
+		FEditorFileUtils::PromptForCheckoutAndSave(ToSave, false, false, &Failed);
+		OutReport += FString::Printf(TEXT("\n%d of %d move(s) built and saved%s. Package the project: they go in pakchunk%d. Export Json points the moves at them.\n"),
+			Built, Asked, Failed.Num() > 0 ? *FString::Printf(TEXT(" (%d package(s) NOT saved)"), Failed.Num()) : TEXT(""), BuildChunk);
+		bOk &= Failed.Num() == 0;
+	}
+	return bOk && Built == Asked;
+}
+
+bool UEndSkeletonCompatDataObject::ApplySocketStandInsToMeshes(bool bRemove, FString& OutReport)
+{
+	OutReport.Reset();
+	bool bOk = true;
+	TArray<UPackage*> Dirty;
+	const FString Prefix = TEXT("SkelCompatStandIn_");
+	for (int32 Index = 0; Index < AnimationSets.Num(); ++Index)
+	{
+		const FEndAnimSetRow& Row = AnimationSets[Index];
+		if (!Row.bEnabled || Row.Sockets.Num() == 0)
+		{
+			continue;
+		}
+		USkeleton* Own = Row.CharacterSkeleton.IsNull() ? nullptr : Row.CharacterSkeleton.LoadSynchronous();
+		if (!Own)
+		{
+			OutReport += FString::Printf(TEXT("Row %d: ERROR: Sockets need Character Skeleton\n"), Index);
+			bOk = false;
+			continue;
+		}
+		for (USkeletalMesh* Mesh : MeshesFor(Own, {}, TEXT("    "), OutReport))
+		{
+			if (IsCookedAsset(Mesh))
+			{
+				OutReport += FString::Printf(TEXT("%s: cooked game mesh, not changed (the game mod adds the stand-ins while it loads)\n"), *Mesh->GetName());
+				continue;
+			}
+			FString Line;
+			bool bChanged = false;
+			TArray<USkeletalMeshSocket*>& List = Mesh->GetMeshOnlySocketList();
+			for (const FEndSocketStandIn& Socket : Row.Sockets)
+			{
+				const FName Wanted(*Socket.Socket.TrimStartAndEnd());
+				const FName Use(*Socket.Use.TrimStartAndEnd());
+				if (Wanted.IsNone() || Use.IsNone())
+				{
+					continue;
+				}
+				const int32 At = List.IndexOfByPredicate([&](const USkeletalMeshSocket* One) { return One && One->SocketName == Wanted; });
+				const bool bOurs = At != INDEX_NONE && List[At]->GetName().StartsWith(Prefix);
+				if (bRemove)
+				{
+					if (bOurs)
+					{
+						Mesh->Modify();
+						List.RemoveAt(At);
+						bChanged = true;
+						Line += TEXT(" ") + Wanted.ToString() + TEXT(" removed;");
+					}
+					continue;
+				}
+				if (At != INDEX_NONE && !bOurs)
+				{
+					Line += TEXT(" has its own ") + Wanted.ToString() + TEXT(", left as it is;");
+					continue;
+				}
+				// A copy of the Use socket (mesh, then skeleton), else a socket on the Use bone.
+				const USkeletalMeshSocket* Model = Mesh->FindSocket(Use);
+				const FName Bone = Model ? Model->BoneName : (Mesh->RefSkeleton.FindBoneIndex(Use) != INDEX_NONE ? Use : NAME_None);
+				if (Bone.IsNone())
+				{
+					Line += TEXT(" ") + Wanted.ToString() + TEXT(": NO socket or bone ") + Use.ToString() + TEXT(";");
+					bOk = false;
+					continue;
+				}
+				Mesh->Modify();
+				USkeletalMeshSocket* StandIn = bOurs ? List[At]
+					: NewObject<USkeletalMeshSocket>(Mesh, MakeUniqueObjectName(Mesh, USkeletalMeshSocket::StaticClass(), FName(*(Prefix + Wanted.ToString()))), RF_Transactional);
+				StandIn->Modify();
+				StandIn->SocketName = Wanted;
+				StandIn->BoneName = Bone;
+				StandIn->RelativeLocation = Model ? Model->RelativeLocation : FVector::ZeroVector;
+				StandIn->RelativeRotation = Model ? Model->RelativeRotation : FRotator::ZeroRotator;
+				StandIn->RelativeScale = Model ? Model->RelativeScale : FVector::OneVector;
+				StandIn->bForceAlwaysAnimated = Model ? Model->bForceAlwaysAnimated : false;
+				if (!bOurs)
+				{
+					List.Add(StandIn);
+				}
+				bChanged = true;
+				Line += FString::Printf(TEXT(" %s -> %s (bone %s);"), *Wanted.ToString(), *Use.ToString(), *Bone.ToString());
+			}
+			if (bChanged)
+			{
+				Mesh->RebuildSocketMap();
+				Mesh->MarkPackageDirty();
+				Dirty.AddUnique(Mesh->GetOutermost());
+			}
+			OutReport += Mesh->GetName() + TEXT(":") + (Line.IsEmpty() ? FString(TEXT(" nothing to do")) : Line) + TEXT("\n");
+		}
+	}
+	if (Dirty.Num() > 0)
+	{
+		FEditorFileUtils::PromptForCheckoutAndSave(Dirty, false, true);
+		OutReport += TEXT("\nSave the changed meshes (you were prompted), then cook them with your mod.\n");
+	}
+	else if (OutReport.IsEmpty())
+	{
+		OutReport += TEXT("No row has Sockets.\n");
+	}
+	return bOk;
+}
+
+bool UEndSkeletonCompatDataObject::MakeChainAnimComposites(FString& OutReport)
+{
+	OutReport.Reset();
+	bool bOk = true;
+	int32 Made = 0;
+	TArray<UPackage*> ToSave;
+	FString Folder = ChainFolder.TrimStartAndEnd().Replace(TEXT("\\"), TEXT("/"));
+	while (Folder.EndsWith(TEXT("/")))
+	{
+		Folder.LeftChopInline(1);
+	}
+	if (!FPackageName::IsValidLongPackageName(Folder + TEXT("/Chain")))
+	{
+		OutReport += TEXT("ERROR: Chain Folder must be a content folder, e.g. /Game/RebirthSkelCompat/Chains\n");
+		return false;
+	}
+	for (int32 Index = 0; Index < AnimationSets.Num(); ++Index)
+	{
+		const FEndAnimSetRow& Row = AnimationSets[Index];
+		if (!Row.bEnabled)
+		{
+			continue;
+		}
+		const TArray<FString> Characters = CleanList(Row.Characters, false);
+		const FString Character = Characters.Num() > 0 ? CharaSpecRowName(Characters[0]) : FString::Printf(TEXT("Row%d"), Index);
+		struct FChain
+		{
+			FString Key;
+			TArray<FString> Paths;
+		};
+		TArray<FChain> Chains;
+		for (const FEndAnimSetMove& Move : Row.Moves)
+		{
+			const TArray<FString> Then = CleanList(Move.ThenPlay, false);
+			if (Then.Num() > 0 && !Move.bBuild)
+			{
+				FChain Chain;
+				Chain.Key = (Move.Set.TrimStartAndEnd().IsEmpty() ? FString() : Move.Set.TrimStartAndEnd() + TEXT("_")) + Move.Name.TrimStartAndEnd();
+				Chain.Paths.Add(Move.Animation.TrimStartAndEnd());
+				Chain.Paths.Append(Then);
+				Chains.Add(Chain);
+			}
+		}
+		for (int32 Limit = 0; Limit < Row.LimitBreaks.Num(); ++Limit)
+		{
+			const TArray<FString> Then = CleanList(Row.LimitBreaks[Limit].ThenPlay, false);
+			if (Then.Num() > 0 && !Row.LimitBreaks[Limit].Animation.TrimStartAndEnd().IsEmpty())
+			{
+				FChain Chain;
+				Chain.Key = FString::Printf(TEXT("B_AtkLimit%02d_0"), Limit + 1);
+				Chain.Paths.Add(Row.LimitBreaks[Limit].Animation.TrimStartAndEnd());
+				Chain.Paths.Append(Then);
+				Chains.Add(Chain);
+			}
+		}
+		for (const FChain& Chain : Chains)
+		{
+			TArray<UAnimSequenceBase*> Pieces;
+			FString Missing;
+			for (const FString& Path : Chain.Paths)
+			{
+				UAnimSequenceBase* Piece = InProject(Path) ? Cast<UAnimSequenceBase>(FSoftObjectPath(NormalizedObjectPath(Path)).TryLoad()) : nullptr;
+				if (!Piece)
+				{
+					Missing += (Missing.IsEmpty() ? TEXT("") : TEXT(", ")) + ShortSource(Path);
+				}
+				Pieces.Add(Piece);
+			}
+			if (!Missing.IsEmpty())
+			{
+				OutReport += FString::Printf(TEXT("%s %s: NOT made, not in this project: %s (the game still builds it)\n"), *Character, *Chain.Key, *Missing);
+				bOk = false;
+				continue;
+			}
+			USkeleton* Skeleton = Pieces[0]->GetSkeleton();
+			if (Pieces.ContainsByPredicate([&](const UAnimSequenceBase* Piece) { return Piece->GetSkeleton() != Skeleton; }))
+			{
+				OutReport += FString::Printf(TEXT("%s %s: NOT made, its animations are on different skeletons\n"), *Character, *Chain.Key);
+				bOk = false;
+				continue;
+			}
+			const FString Name = TEXT("AC_") + Chain.Key;
+			const FString Package = Folder + TEXT("/") + Character + TEXT("/") + Name;
+			if (UObject* Old = StaticLoadObject(UObject::StaticClass(), nullptr, *(Package + TEXT(".") + Name), nullptr, LOAD_NoWarn | LOAD_Quiet))
+			{
+				if (ObjectTools::ForceDeleteObjects(TArray<UObject*>{Old}, false) == 0)
+				{
+					OutReport += FString::Printf(TEXT("%s %s: NOT made, %s could not be replaced (close it first)\n"), *Character, *Chain.Key, *Package);
+					bOk = false;
+					continue;
+				}
+			}
+			UPackage* Outer = CreatePackage(*Package);
+			UAnimComposite* Composite = NewObject<UAnimComposite>(Outer, *Name, RF_Public | RF_Standalone | RF_Transactional);
+			Composite->SetSkeleton(Skeleton);
+			float Position = 0.f;
+			for (UAnimSequenceBase* Piece : Pieces)
+			{
+				FAnimSegment Segment;
+				Segment.AnimReference = Piece;
+				Segment.StartPos = Position;
+				Segment.AnimStartTime = 0.f;
+				Segment.AnimEndTime = Piece->SequenceLength;
+				Segment.AnimPlayRate = 1.f;
+				Segment.LoopingCount = 1;
+				Segment.AnimBlendTime = 0.f;
+				Segment.bTriggerAnimReferenceNotify = true; // the pieces' sounds and effects still play
+				Composite->AnimationTrack.AnimSegments.Add(Segment);
+				Position += Segment.GetLength();
+			}
+			Composite->SequenceLength = Position;
+			FAssetRegistryModule::AssetCreated(Composite);
+			Composite->MarkPackageDirty();
+			ToSave.Add(Outer);
+			++Made;
+			OutReport += FString::Printf(TEXT("%s %s: %s, %d animations, %.2f s\n"), *Character, *Chain.Key, *Package, Pieces.Num(), Position);
+		}
+	}
+	if (ToSave.Num() > 0)
+	{
+		FEditorFileUtils::PromptForCheckoutAndSave(ToSave, false, true);
+		OutReport += TEXT("\nTo play an edited one in game: set the move's Animation to it, clear Then Play, and cook it with your mod.\n");
+	}
+	else if (Made == 0 && bOk)
+	{
+		OutReport += TEXT("No move or limit break has Then Play.\n");
+	}
+	return bOk;
+}
+
+void UEndSkeletonCompatDataObject::BuildMoves()
+{
+	FString Report;
+	const bool bOk = BuildMoveAnimations(Report);
+	ShowResult(TEXT("Build Moves"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::ApplySocketStandIns()
+{
+	FString Report;
+	const bool bOk = ApplySocketStandInsToMeshes(false, Report);
+	ShowResult(TEXT("Apply Socket Stand-ins"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::RemoveSocketStandIns()
+{
+	FString Report;
+	const bool bOk = ApplySocketStandInsToMeshes(true, Report);
+	ShowResult(TEXT("Remove Socket Stand-ins"), Report, bOk);
+}
+
+void UEndSkeletonCompatDataObject::MakeChainAssets()
+{
+	FString Report;
+	const bool bOk = MakeChainAnimComposites(Report);
+	ShowResult(TEXT("Make Chain Assets"), Report, bOk);
+}

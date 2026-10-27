@@ -1,0 +1,591 @@
+{
+ "emitters": {
+  "Particle Emitter_02": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife"
+   ],
+   "local_space": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 100.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Kira_04_T.FX_R_Kira_04_T"
+    }
+   }
+  },
+  "GPU_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleAcceleration",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleRotation",
+    "ParticleModuleRotationRate"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 500.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    },
+    "ParticleFadeDistancePreset": "Near"
+   }
+  },
+  "GPU_Cylinder": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleVectorFieldRotation",
+    "ParticleModuleVectorFieldRotationRate",
+    "ParticleModuleLocationPrimitiveCylinder",
+    "ParticleModuleAccelerationDrag"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.4,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 600.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    }
+   }
+  },
+  "Blackfeather_Mesh_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Material/FX_EB0021_Blackfeather_01_Ma.FX_EB0021_Blackfeather_01_Ma",
+   "typedata": "ParticleModuleTypeDataMesh",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleColor",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleVelocity",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleMeshRotation_Seeded",
+    "ParticleModuleMeshRotationRate_Seeded",
+    "ParticleModuleMeshRotationRateMultiplyLife",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife"
+   ],
+   "local_space": false,
+   "mesh": "/Game/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Model/FX_EB0021_Blackfeather_01_M.FX_EB0021_Blackfeather_01_M",
+   "VfxPivotCenterScale": {
+    "X": -5.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "VfxPivotCenterRotation": {
+    "X": -5.0,
+    "Y": 0.0,
+    "Z": -1.0
+   },
+   "params": {
+    "vectors": {},
+    "scalars": {},
+    "textures": {
+     "0:0:Color": null,
+     "0:1:Coverage": null,
+     "0:2:Metallic/Roughness/Variant": null,
+     "0:3:Normal": null,
+     "1:0:Occlusion": null,
+     "1:1:BentNormal": null
+    }
+   }
+  },
+  "root": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleVelocity",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleLocation",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleRotation",
+    "ParticleModuleLocationPrimitiveCylinder"
+   ],
+   "local_space": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.1,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 500.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    },
+    "ParticleFadeDistancePreset": "Near"
+   }
+  },
+  "GPU_02": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleSize",
+    "ParticleModuleVelocity",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleVectorFieldRotation",
+    "ParticleModuleVectorFieldRotationRate",
+    "ParticleModuleLocationEmitter"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 500.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_01_T.FX_R_Debris_01_T"
+    },
+    "ParticleFadeDistancePreset": "Near"
+   }
+  },
+  "Smk_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Lit_Average_Opacity_Soft.EMI_Particle_Lit_Average_Opacity_Soft",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSubUV",
+    "ParticleModuleLocationPrimitiveCylinder",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleRotation"
+   ],
+   "local_space": false,
+   "params": {
+    "vectors": {
+     "L:A:Diffuse(RGBA)": {
+      "const": [
+       0.3,
+       0.3,
+       0.3,
+       1.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:1:Opacity(Float1)": {
+      "const": 1.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:I:ToneOpacity(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 1.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:2:0:Opacity": "/Game/GameContents/Effect/Resident/Texture/FX_R_Smk_06A_T.FX_R_Smk_06A_T"
+    },
+    "ParticleFadeDistancePreset": "Far"
+   }
+  }
+ },
+ "dropped": [
+  {
+   "emitter": "Light",
+   "why": "no material (a helper emitter: EndParticleModuleLight)",
+   "light": {
+    "color": [
+     0.0,
+     0.33333298563957214,
+     1.0
+    ],
+    "intensity": [
+     0.0,
+     0.7847912708918253,
+     1.002916979789734,
+     0.9949935793876648,
+     0.84168674548467,
+     0.5594409704208375,
+     0.4109807848930359,
+     0.5595701535542806,
+     0.8404295325279236,
+     0.9916005849838256,
+     0.9229249954223633,
+     0.7393156449000042,
+     0.4986511766910552,
+     0.26001344919204705,
+     0.07494874000549301,
+     0.0
+    ],
+    "radius": 80.0
+   }
+  }
+ ],
+ "notes": [],
+ "source": "rm/End/Content/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Particle/FX_EB0021_SFlare_Shot_01",
+ "package": "/Game/RemakeFx/Cascade/FX_EB0021_SFlare_Shot_01",
+ "socket": "VFX_Magic01",
+ "bind_time": null,
+ "exposure": "ON",
+ "bounds": {
+  "Min": {
+   "X": -200.0,
+   "Y": -200.0,
+   "Z": -100.0
+  },
+  "Max": {
+   "X": 200.0,
+   "Y": 200.0,
+   "Z": 300.0
+  },
+  "IsValid": 1
+ },
+ "exports": 179
+}

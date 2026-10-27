@@ -1,0 +1,2052 @@
+{
+"0": {
+"global_index": 403,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"1": {
+"global_index": 410,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FClearEBufferVS",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"2": {
+"global_index": 1,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FLocalVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"3": {
+"global_index": 2833,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraRibbonVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"4": {
+"global_index": 4362,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"5": {
+"global_index": 4251,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"6": {
+"global_index": 2,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"7": {
+"global_index": 3,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"8": {
+"global_index": 4,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FProjectionPassPS",
+0,
+"PS"
+]
+]
+},
+"9": {
+"global_index": 5,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FDebugRenderVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+]
+]
+},
+"10": {
+"global_index": 6,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"11": {
+"global_index": 533,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FClearEBufferMS",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"12": {
+"global_index": 7,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FPrefabStaticMeshVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"13": {
+"global_index": 1527,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FDebugRenderVF",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"14": {
+"global_index": 2244,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"15": {
+"global_index": 3352,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"16": {
+"global_index": 2837,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"17": {
+"global_index": 2174,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"18": {
+"global_index": 10,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FDebugRenderVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"19": {
+"global_index": 11,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"20": {
+"global_index": 12,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"21": {
+"global_index": 13,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FNiagaraRibbonVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FLocalVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FDebugRenderVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"FClearBufferPS",
+0,
+"PS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FClearBufferPS",
+0,
+"PS"
+]
+]
+},
+"22": {
+"global_index": 2251,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FProjectionPassPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"FProjectionPassPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"FProjectionPassPS",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"FProjectionPassPS",
+0,
+"PS"
+]
+]
+},
+"23": {
+"global_index": 14,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FDebugRenderVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FDebugRenderVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FDebugRenderVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"24": {
+"global_index": 15,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"25": {
+"global_index": 2841,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVFEx",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"26": {
+"global_index": 16,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"27": {
+"global_index": 89,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FNiagaraRibbonVF",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"FImposterPS",
+0,
+"PS"
+]
+]
+},
+"28": {
+"global_index": 2842,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVFEx",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FNiagaraSpriteVFEx",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVFEx",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"29": {
+"global_index": 17,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"30": {
+"global_index": 18,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"31": {
+"global_index": 19,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FDebugRenderVF",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"FImposterPS",
+0,
+"PS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FImposterPS",
+0,
+"PS"
+]
+]
+},
+"32": {
+"global_index": 20,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"33": {
+"global_index": 2180,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"34": {
+"global_index": 21,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"35": {
+"global_index": 2265,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"36": {
+"global_index": 2843,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"37": {
+"global_index": 22,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FPrefabStaticMeshVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"38": {
+"global_index": 23,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"39": {
+"global_index": 2844,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVFEx",
+"ba003999e9f87ebb",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"40": {
+"global_index": 24,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"41": {
+"global_index": 25,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"42": {
+"global_index": 4256,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FHitProxyVS",
+0,
+"VS"
+]
+]
+},
+"43": {
+"global_index": 26,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FImposterMS",
+0,
+"MS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"44": {
+"global_index": 2274,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"45": {
+"global_index": 27,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FPrefabStaticMeshVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"46": {
+"global_index": 28,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FLocalVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"47": {
+"global_index": 29,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"a75b6d5330585563",
+0,
+"MS"
+]
+]
+},
+"48": {
+"global_index": 30,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"49": {
+"global_index": 2845,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"50": {
+"global_index": 4363,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraRibbonVF",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"51": {
+"global_index": 33,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FLocalVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"52": {
+"global_index": 34,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"53": {
+"global_index": 35,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"54": {
+"global_index": 36,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"55": {
+"global_index": 2286,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"56": {
+"global_index": 2850,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"57": {
+"global_index": 2288,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FProjectionPassPS",
+0,
+"PS"
+]
+]
+},
+"58": {
+"global_index": 919,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FClearEBufferMS",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"59": {
+"global_index": 1536,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"60": {
+"global_index": 3390,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"61": {
+"global_index": 37,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"62": {
+"global_index": 2851,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FProjectionPassVS",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"63": {
+"global_index": 4259,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVFEx",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"64": {
+"global_index": 38,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"65": {
+"global_index": 985,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FClearEBufferVS",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVFEx",
+"FClearEBufferVS",
+0,
+"VS"
+]
+]
+},
+"66": {
+"global_index": 39,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"67": {
+"global_index": 40,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"68": {
+"global_index": 1004,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"69": {
+"global_index": 4364,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVFEx",
+"fa99734846c7227e",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"70": {
+"global_index": 4365,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"71": {
+"global_index": 41,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"72": {
+"global_index": 2852,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FHitProxyPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"FHitProxyPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"FHitProxyPS",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"FHitProxyPS",
+0,
+"PS"
+]
+]
+},
+"73": {
+"global_index": 42,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FDebugRenderVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"74": {
+"global_index": 43,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"a75b6d5330585563",
+0,
+"MS"
+]
+]
+},
+"75": {
+"global_index": 4366,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"fa99734846c7227e",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"76": {
+"global_index": 4260,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVFEx",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVFEx",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"77": {
+"global_index": 1118,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FImposterMS",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"78": {
+"global_index": 44,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"79": {
+"global_index": 1146,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FImposterMS",
+0,
+"MS"
+],
+[
+"FNiagaraSpriteVF",
+"FImposterMS",
+0,
+"MS"
+]
+]
+},
+"80": {
+"global_index": 45,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FLocalVF",
+"FHitProxyVS",
+0,
+"VS"
+],
+[
+"FLocalVF",
+"TBasePassVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"81": {
+"global_index": 2855,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"82": {
+"global_index": 1545,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FLocalVF",
+"fa99734846c7227e",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"TBasePassPSNoDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"fa99734846c7227e",
+0,
+"PS"
+]
+]
+},
+"83": {
+"global_index": 46,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"84": {
+"global_index": 48,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FProjectionPassPS",
+0,
+"PS"
+]
+]
+},
+"85": {
+"global_index": 49,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FMassiveEnvironmentSourceMeshesVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"86": {
+"global_index": 2858,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FNiagaraRibbonVF",
+"FProjectionPassMS",
+1,
+"MS"
+]
+]
+},
+"87": {
+"global_index": 50,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FDebugRenderVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"88": {
+"global_index": 2860,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+],
+[
+"FNiagaraSpriteVF",
+"TLightMapDensityVSFNoLightMapPolicy",
+0,
+"VS"
+]
+]
+},
+"89": {
+"global_index": 51,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"FProjectionPassPS",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"FProjectionPassPS",
+0,
+"PS"
+]
+]
+},
+"90": {
+"global_index": 3814,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"91": {
+"global_index": 106,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraSpriteVFEx",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FNiagaraRibbonVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FNiagaraMeshVFEx",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+],
+[
+"FNiagaraSpriteVF",
+"FImposterDepthOnlyPS",
+0,
+"PS"
+]
+]
+},
+"92": {
+"global_index": 4367,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TBasePassPSWithDynamicCoverageFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+},
+"93": {
+"global_index": 2862,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FNiagaraMeshVF",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"FProjectionPassMS",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"TBasePassMSFNoLightMapPolicy",
+0,
+"MS"
+],
+[
+"FNiagaraMeshVFEx",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"94": {
+"global_index": 52,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FPrefabStaticMeshVF",
+"FClearEBufferMS",
+0,
+"MS"
+]
+]
+},
+"95": {
+"global_index": 53,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FLocalVF",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"96": {
+"global_index": 2863,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"a75b6d5330585563",
+0,
+"MS"
+],
+[
+"FNiagaraRibbonVF",
+"ba003999e9f87ebb",
+0,
+"MS"
+]
+]
+},
+"97": {
+"global_index": 54,
+"kind": [
+"MS"
+],
+"users": [
+[
+"FLocalVF",
+"FProjectionPassMS",
+1,
+"MS"
+],
+[
+"FLocalVF",
+"TBasePassMSWithMeshletIndicesFNoLightMapPolicy",
+0,
+"MS"
+]
+]
+},
+"98": {
+"global_index": 2203,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FLocalVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+],
+[
+"FPrefabStaticMeshVF",
+"TDepthOnlyPSWithDynamicCoverage",
+0,
+"PS"
+]
+]
+},
+"99": {
+"global_index": 2864,
+"kind": [
+"VS"
+],
+"users": [
+[
+"FNiagaraMeshVF",
+"FProjectionPassVS",
+0,
+"VS"
+],
+[
+"FNiagaraMeshVFEx",
+"FProjectionPassVS",
+0,
+"VS"
+]
+]
+},
+"100": {
+"global_index": 2865,
+"kind": [
+"PS"
+],
+"users": [
+[
+"FNiagaraRibbonVF",
+"TLightMapDensityPSFNoLightMapPolicy",
+0,
+"PS"
+]
+]
+}
+}

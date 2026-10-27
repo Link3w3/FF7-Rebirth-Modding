@@ -1,0 +1,49 @@
+CharaSpec:
+  PC0000_00_Cloud_Standard_CACS                  spawns PC0000_00_Cloud_Standard_CACS        NoBattle PC0000_00_Cloud_Standard_CACS_NoBattle           Reserve PC0000_00_Cloud_Standard_CACS_Reserve
+  PC0000_00_Cloud_Standard_CACS_NoBattle         spawns PC0000_00_Cloud_Standard_CACS        NoBattle None                                             Reserve None
+  PC0000_00_Cloud_Standard_CACS_Reserve          spawns PC0000_00_Cloud_Standard_CACS        NoBattle None                                             Reserve None
+  PC0000_04_Cloud_ZackCostume_CACS               spawns PC0000_04_Cloud_ZackCostume_CACS     NoBattle PC0000_04_Cloud_ZackCostume_CACS_NoBattle        Reserve PC0000_04_Cloud_ZackCostume_CACS_Reserve
+  PC0000_04_Cloud_ZackCostume_CACS_NoBattle      spawns PC0000_04_Cloud_ZackCostume_CACS     NoBattle None                                             Reserve None
+  PC0000_04_Cloud_ZackCostume_CACS_Reserve       spawns PC0000_04_Cloud_ZackCostume_CACS     NoBattle None                                             Reserve None
+  PC0000_08_Cloud_SoldierNoHelmet_CACS           spawns PC0000_08_Cloud_SoldierNoHelmet_CACS NoBattle PC0000_08_Cloud_SoldierNoHelmet_CACS_NoBattle    Reserve PC0000_08_Cloud_SoldierNoHelmet_CACS_Reserve
+  PC0000_08_Cloud_SoldierNoHelmet_CACS_NoBattle  spawns PC0000_08_Cloud_SoldierNoHelmet_CACS NoBattle None                                             Reserve None
+  PC0000_08_Cloud_SoldierNoHelmet_CACS_Reserve   spawns PC0000_08_Cloud_SoldierNoHelmet_CACS NoBattle None                                             Reserve None
+  PC0000_09_Cloud_CostaClothing_CACS             spawns PC0000_09_Cloud_CostaClothing_CACS   NoBattle PC0000_09_Cloud_CostaClothing_CACS_NoBattle      Reserve PC0000_09_Cloud_CostaClothing_CACS_Reserve
+  PC0000_09_Cloud_CostaClothing_CACS_NoBattle    spawns PC0000_09_Cloud_CostaClothing_CACS   NoBattle None                                             Reserve None
+  PC0000_09_Cloud_CostaClothing_CACS_Reserve     spawns PC0000_09_Cloud_CostaClothing_CACS   NoBattle None                                             Reserve None
+  PC0000_10_Cloud_CostaClothing2_CACS            spawns PC0000_10_Cloud_CostaClothing2_CACS  NoBattle PC0000_10_Cloud_CostaClothing2_CACS_NoBattle     Reserve PC0000_10_Cloud_CostaClothing2_CACS_Reserve
+  PC0000_10_Cloud_CostaClothing2_CACS_NoBattle   spawns PC0000_10_Cloud_CostaClothing2_CACS  NoBattle None                                             Reserve None
+  PC0000_10_Cloud_CostaClothing2_CACS_Reserve    spawns PC0000_10_Cloud_CostaClothing2_CACS  NoBattle None                                             Reserve None
+  PC0000_12_Cloud_ZackCostumeDirty_CACS          spawns PC0000_12_Cloud_ZackCostumeDirty_CACS NoBattle PC0000_12_Cloud_ZackCostumeDirty_CACS_NoBattle   Reserve PC0000_12_Cloud_ZackCostumeDirty_CACS_Reserve
+  PC0000_12_Cloud_ZackCostumeDirty_CACS_NoBattle spawns PC0000_12_Cloud_ZackCostumeDirty_CACS NoBattle None                                             Reserve None
+  PC0000_12_Cloud_ZackCostumeDirty_CACS_Reserve  spawns PC0000_12_Cloud_ZackCostumeDirty_CACS NoBattle None                                             Reserve None
+  WE0000_00_Cloud_BusterSword_CACS               spawns WE0000_00_Cloud_BusterSword (the game's own)
+  WE0000_05_Cloud_NailBat_CACS                   spawns WE0000_05_Cloud_NailBat (the game's own)
+  WE0000_11_Cloud_END2Weapon1_CACS               spawns WE0000_11_Cloud_END2Weapon1 (the game's own)
+  WE0000_12_Cloud_END2Weapon2_CACS               spawns WE0000_12_Cloud_END2Weapon2 (the game's own)
+  WE0000_13_Cloud_END2Weapon3_CACS               spawns WE0000_13_Cloud_END2Weapon3 (the game's own)
+  WE0000_14_Cloud_END2Weapon4_CACS               spawns WE0000_14_Cloud_END2Weapon4 (the game's own)
+  WE0000_15_Cloud_END2Weapon5_CACS               spawns WE0000_15_Cloud_END2Weapon5 (the game's own)
+  WE0000_16_Cloud_END2Weapon6_CACS               spawns WE0000_16_Cloud_END2Weapon6 (the game's own)
+  WE0000_17_Cloud_Umbrella_CACS                  spawns WE0000_17_Cloud_Umbrella (the game's own)
+  3541 rows -> 3568, 1717856 bytes -> 1730988
+BattlePlayerParameter:
+  pt_Cloud_CACS: the game's own pt_Cloud (the installed pt_Cloud differs in 16 field(s): UniqueAbilityParameterName_Array, KeyAssignAbilityID_Array, CombinationTableID_Array, GuardParameterName_Array, DodgeReactionInfluenceID_Array, DodgeParameterName_Array, CommandAbilityID_Array, GuardParameterValue_Array, DodgeParameterValue_Array, UniqueAbilityParameterValue_Array, DodgeType_Array, DodgeNeutralAbilityID1, MugAbilityID, ControlCharacterChangeAbilityID, UniqueAbilityType0, GuardType0)
+  10 rows -> 11, 15948 bytes -> 16308
+BattleAbility:
+  PC0000_AtkBurst02_CACS   the game's PC0000_AtkBurst02  $PC0000_AtkBurst02         anims ['B_AtkBurst02_0']  damage PC0000_AtkBurst02
+  PC0000_AtkBurst04_CACS   the game's PC0000_AtkBurst04  $PC0000_AtkBurst04         anims ['B_AtkBurst04_0']  damage PC0000_AtkBurst04
+  PC0000_AtkBurst05_CACS   the game's PC0000_AtkBurst05  $PC0000_AtkBurst05         anims ['B_AtkBurst05_0']  damage PC0000_AtkBurst05
+  PC0000_AtkBurst06_CACS   the game's PC0000_AtkBurst06  $PC0000_AtkBurst06         anims ['B_AtkBurst06_0', 'B_AtkBurst06_1', 'B_AtkBurst06_3', 'B_AtkBurst06_2', 'AbilityCounter_Guard_01', 'AbilityCounter_JGuard_01', None, None, 'B_AtkBurstJ06_0', 'B_AtkBurstJ06_1', 'B_AtkBurstJ06_3', 'B_AtkBurstJ06_2', 'AbilityCounter_Guard_01', 'AbilityCounter_JGuard_01']  damage PC0000_AtkBurst06
+  PC0000_AtkBurst07_CACS   the game's PC0000_AtkBurst07  $PC0000_AtkBurst07         anims ['B_AtkBurst07_0', None, None, None, None, None, None, None, 'B_AtkBurstJ07_1']  damage PC0000_AtkBurst07
+  PC0000_AtkBurst08_CACS   the game's PC0000_AtkBurst08  $PC0000_AtkBurst08         anims ['B_AtkBurst08_0', 'B_AtkBurst08_1', 'B_AtkBurst08_2']  damage PC0000_AtkBurst08
+  PC0000_AtkBurst09_CACS   the game's PC0000_AtkBurst09  $PC0000_AtkBurst09         anims ['B_AtkBurst09_0']  damage PC0000_AtkBurst09
+  PC0000_AtkBurst10_CACS   the game's PC0000_AtkBurst10  $PC0000_AtkBurst10         anims ['B_AtkBurst10_0', 'B_AtkBurst10_1', 'B_AtkBurst10_2']  damage PC0000_AtkBurst10
+  PC0000_Limit001_CACS     the game's PC0000_Limit001    $PC0000_Limit001           anims ['B_AtkLimit01_0']  damage PC0000_Limit001
+  PC0000_Limit002_CACS     the game's PC0000_Limit002    $PC0000_Limit002           anims ['B_AtkLimit02_0']  damage PC0000_Limit002
+  PC0000_Limit003_CACS     the game's PC0000_Limit003    $PC0000_Limit003           anims ['B_AtkLimit03_0']  damage PC0000_Limit003
+  3995 rows -> 4006, 2404508 bytes -> 2411380
+Effect2SoundTable:
+  his packs added to 169 row(s) (1536 name(s))
+  4048 rows -> 4048, 1185740 bytes -> 1212892
+FullyPlayableYoungSephirothDataAssets_P: 1171 chunks, 5 changed (CharaSpec, BattlePlayerParameter, BattleAbility, Effect2SoundTable and the header); .ucas 261569712 -> 267039472 bytes

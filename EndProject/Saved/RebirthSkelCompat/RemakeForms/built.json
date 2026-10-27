@@ -1,0 +1,700 @@
+{
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NAttack01_0.B_NAttack01_0": {
+  "length": 0.800000011920929,
+  "hits": [
+   0.30000001192092896
+  ],
+  "notifies": 17,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "AnimNotify_EndOverrideAttackDirection",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.240 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.301 snd EB0021_clothL C_Hip_a",
+   "0.330 snd EB0021_sword_swishM C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NAttack02_0.B_NAttack02_0": {
+  "length": 1.3666666746139526,
+  "hits": [
+   0.27000001072883606
+  ],
+  "notifies": 17,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "AnimNotify_EndOverrideAttackDirection",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.038 snd EB0021_clothM C_Hip_a",
+   "0.210 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.294 snd EB0021_sword_swishM C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NAttack03_0.B_NAttack03_0": {
+  "length": 2.799999952316284,
+  "hits": [
+   0.3700000047683716
+  ],
+  "notifies": 16,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "AnimNotify_EndOverrideAttackDirection",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.123 snd EB0021_clothL C_Hip_a",
+   "0.310 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.386 snd sword_swishL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NAttack04_0.B_NAttack04_0": {
+  "length": 2.3333332538604736,
+  "hits": [
+   0.9399999976158142
+  ],
+  "notifies": 20,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "AnimNotify_EndOverrideAttackDirection",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.239 snd EB0021_katana C_Hip_a",
+   "0.834 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.878 snd EB0021_clothL C_Hip_a",
+   "0.903 snd sword_swishL C_Hip_a",
+   "0.906 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,100) rot(0,0,0) Character",
+   "0.925 snd EB0021_sword_scapeLL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NPAttack01.B_NPAttack01": {
+  "length": 2,
+  "hits": [
+   0.5,
+   0.9599999785423279
+  ],
+  "notifies": 21,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.000 snd EB0021_katana C_Hip_a",
+   "0.433 snd EB0021_clothL C_Hip_a",
+   "0.463 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.466 snd EB0021_whoosh01 C_Hip_a",
+   "0.478 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,120) rot(0,0,70) Character",
+   "0.488 snd EB0021_sword_swishM C_Hip_a",
+   "0.907 snd EB0021_clothL C_Hip_a",
+   "0.934 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,120) rot(0,0,210) Character",
+   "0.969 snd sword_swishL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_NPAttackJ01.B_NPAttackJ01": {
+  "length": 2,
+  "hits": [
+   0.5,
+   0.9599999785423279
+  ],
+  "notifies": 21,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyCharacterFall",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.000 snd EB0021_katana C_Hip_a",
+   "0.433 snd EB0021_clothL C_Hip_a",
+   "0.463 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.466 snd EB0021_whoosh01 C_Hip_a",
+   "0.478 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,120) rot(0,0,70) Character",
+   "0.488 snd EB0021_sword_swishM C_Hip_a",
+   "0.907 snd EB0021_clothL C_Hip_a",
+   "0.934 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,120) rot(0,0,210) Character",
+   "0.969 snd sword_swishL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_MagAttack01_0.B_MagAttack01_0": {
+  "length": 0.7333333492279053,
+  "hits": [],
+  "notifies": 4,
+  "classes": [
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndForceFeedbackRange",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkMag01_0.B_AtkMag01_0": {
+  "length": 0.7333333492279053,
+  "hits": [],
+  "notifies": 2,
+  "classes": [
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_MagAttack01_1.B_MagAttack01_1": {
+  "length": 0.5,
+  "hits": [],
+  "notifies": 3,
+  "classes": [
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndForceFeedbackRange",
+   "AnimNotify_EndModifyLookAt"
+  ],
+  "extras": [],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkMag01_1.B_AtkMag01_1": {
+  "length": 0.5,
+  "hits": [],
+  "notifies": 2,
+  "classes": [
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_MagAttack01_2.B_MagAttack01_2": {
+  "length": 2.3333332538604736,
+  "hits": [
+   0.3700000047683716
+  ],
+  "notifies": 9,
+  "classes": [
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice"
+  ],
+  "extras": [
+   "0.239 snd EB0021_clothL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkMag01_2.B_AtkMag01_2": {
+  "length": 2.3333332538604736,
+  "hits": [
+   0.3700000047683716
+  ],
+  "notifies": 8,
+  "classes": [
+   "AnimNotify_EndAIEnemyBattleAbilityCancel",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.239 snd EB0021_clothL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkHattou01_0.B_AtkHattou01_0": {
+  "length": 2,
+  "hits": [],
+  "notifies": 7,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.000 snd B_AtkHattou01_0_bell C_Hip_a",
+   "0.025 snd B_AtkHattou01_0_zoom C_Hip_a",
+   "0.064 snd EB0021_clothSS C_Hip_a",
+   "0.591 fx FX_PC0010_Limit01_BodyAura_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "0.610 snd EB0021_katana C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkHattou01_1.B_AtkHattou01_1": {
+  "length": 0.7666666507720947,
+  "hits": [],
+  "notifies": 6,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_Limit01_BodyAura_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "0.125 snd EB0021_clothL C_Hip_a",
+   "0.130 snd EB0021_whoosh03 C_Hip_a",
+   "0.164 snd B_Avoid01_0_foot C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkHattou01_2.B_AtkHattou01_2": {
+  "length": 5.166666507720947,
+  "hits": [
+   0.031099999323487282,
+   0.31610000133514404,
+   0.6808000206947327,
+   0.921500027179718,
+   1.3199000358581543,
+   1.542199969291687,
+   1.9627000093460083,
+   2.714200019836426
+  ],
+  "notifies": 48,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndForceFeedbackRange",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleBlock",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleStatusChangeDebuffDisable",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(40,0,100) rot(0,0,70) Character",
+   "0.000 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "0.000 fx FX_PC0010_Limit01_BodyAura_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "0.000 fx FX_PC0010_Limit01_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.267 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(40,0,100) rot(0,20,-20) Character",
+   "0.267 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "0.607 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "0.607 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,170) rot(-5,0,95) Character",
+   "0.848 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "0.848 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,100) rot(0,0,8) Character",
+   "1.265 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,160) rot(0,0,200) Character",
+   "1.265 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "1.526 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "1.526 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,180) rot(0,0,120) Character",
+   "1.982 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "1.982 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,160) rot(0,0,160) Character",
+   "2.191 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,100) rot(0,0,90) Character",
+   "2.191 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "2.641 snd FX_EB0021_AtkHattou_WeaponSlash_01 ",
+   "2.641 fx FX_PC0010_Limit01_WeaponSlash_01 @Trans loc(0,0,90) rot(-10,0,85) Character",
+   "2.784 fx FX_PC0010_Limit01_Finish_01 @Trans loc(300,0,0) rot(0,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkSenkou02.B_AtkSenkou02": {
+  "length": 3.933333396911621,
+  "hits": [
+   0.07000000029802322,
+   1.409999966621399,
+   1.5299999713897705,
+   1.649999976158142,
+   1.7699999809265137,
+   1.8899999856948853
+  ],
+  "notifies": 26,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.039 snd EB0021_clothM C_Hip_a",
+   "0.307 snd EB0021_katana C_Hip_a",
+   "1.369 snd EB0021_whoosh02 C_Hip_a",
+   "1.572 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "1.588 snd sword_swishL C_Hip_a",
+   "1.590 fx FX_PC0010_SAttack_Slash_01 @Trans loc(60,0,120) rot(0,0,70) Character",
+   "1.590 fx FX_PC0010_Limit01_SlashStorm_01 @Trans loc(150,0,100) rot(0,0,0) Character",
+   "3.313 snd EB0021_sword_swishM C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkSFlare01_0.B_AtkSFlare01_0": {
+  "length": 1.3333333730697632,
+  "hits": [],
+  "notifies": 4,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.699 snd EB0021_clothM C_Hip_a",
+   "0.929 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkSFlare01_1.B_AtkSFlare01_1": {
+  "length": 1,
+  "hits": [],
+  "notifies": 3,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkSFlare01_2.B_AtkSFlare01_2": {
+  "length": 3,
+  "hits": [
+   0.17000000178813934,
+   0.25,
+   0.33000001311302185,
+   0.4099999964237213
+  ],
+  "notifies": 12,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndAIEnemyBattleAbilityCancel",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character",
+   "0.135 snd EB0021_clothL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle09/B_AtkSFlare01_0.B_AtkSFlare01_0": {
+  "length": 1.3333333730697632,
+  "hits": [],
+  "notifies": 4,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.701 snd EB0021_clothL C_Hip_a",
+   "0.893 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle09/B_AtkSFlare01_1.B_AtkSFlare01_1": {
+  "length": 1,
+  "hits": [],
+  "notifies": 3,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle09/B_AtkSFlare01_2.B_AtkSFlare01_2": {
+  "length": 7.199999809265137,
+  "hits": [
+   0.376800000667572,
+   0.8263999819755554,
+   1.4138000011444092,
+   1.7316999435424805,
+   2.1171998977661133,
+   2.7183001041412354,
+   3.2969000339508057,
+   3.3671000003814697,
+   3.6744000911712646,
+   4.2403998374938965,
+   4.466700077056885,
+   5.238500118255615,
+   5.409200191497803,
+   5.5391998291015625,
+   5.94189977645874,
+   6.679599761962891
+  ],
+  "notifies": 24,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndAIEnemyBattleAbilityCancel",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleDamage",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_ShadowFlare_Charge_01 @VFX_Magic02 loc(0,0,0) rot(0,0,0) Character",
+   "0.184 snd EB0021_clothL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkGokumon01_0.B_AtkGokumon01_0": {
+  "length": 1.1333333253860474,
+  "hits": [],
+  "notifies": 3,
+  "classes": [
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.024 snd EB0021_clothM C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkGokumon01_1.B_AtkGokumon01_1": {
+  "length": 0.5666666626930237,
+  "hits": [],
+  "notifies": 3,
+  "classes": [
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.000 snd B_AtkGokumon01_1_jump C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkGokumon01_2.B_AtkGokumon01_2": {
+  "length": 0.6200000047683716,
+  "hits": [],
+  "notifies": 5,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection"
+  ],
+  "extras": [
+   "0.143 snd EB0021_katana C_Hip_a",
+   "0.250 fx FX_PC0010_Weapon_Trail_01 @C_TrailA_b loc(0,0,0) rot(0,0,0) Weapon1",
+   "0.291 snd EB0021_whoosh03 C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkGokumon01_4.B_AtkGokumon01_4": {
+  "length": 4.599999904632568,
+  "hits": [
+   0.17000000178813934,
+   0.9399999976158142
+  ],
+  "notifies": 23,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyBattleAbilityCancel",
+   "EndAnimNotifyBattleCancelDodge",
+   "EndAnimNotifyBattleCancelGuard",
+   "EndAnimNotifyBattleStateChange",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndAnimNotifyStateBattleDamage",
+   "EndAnimNotifyStateBattleSetDerivedAbilityID",
+   "EndAnimNotifyStateBattleTargetCorrectionDirection",
+   "EndAnimNotifyStateOverrideCameraParams",
+   "EndBattleCameraShakeNotify"
+  ],
+  "extras": [
+   "0.000 snd EN0021_AtkGokumon_body C_Hip_a",
+   "0.000 snd EN0021_katana_stab C_Hip_a",
+   "0.119 fx FX_PC0010_Burst02_SwordImpact_01 @Trans loc(100,0,0) rot(0,0,0) Character",
+   "0.940 fx FX_PC0010_Burst01_Shokwave_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "1.805 snd EN0021_katana_draw C_Hip_a",
+   "2.609 snd EN0021_katana_grab C_Hip_a",
+   "3.230 snd EB0021_katana C_Hip_a",
+   "3.493 snd EB0021_clothS C_Hip_a",
+   "3.652 snd sword_swishL C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkTenshi01_0.B_AtkTenshi01_0": {
+  "length": 2,
+  "hits": [],
+  "notifies": 6,
+  "classes": [
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.000 snd B_AtkHattou01_0_zoom C_Hip_a",
+   "0.428 snd EB0021_katana C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle08/B_AtkTenshi01_1.B_AtkTenshi01_1": {
+  "length": 6.599999904632568,
+  "hits": [
+   1.6327999830245972,
+   1.7799999713897705
+  ],
+  "notifies": 20,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyCharacterBodyMoveMode",
+   "EndAnimNotifyCharacterMindMoveMode",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifySetMovementMode",
+   "EndAnimNotifyStateBattleDamage",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_Tenshi_Charge_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "0.309 snd B_AtkTenshi01_wing C_Hip_a",
+   "0.564 snd B_Avoid01_0_foot C_Hip_a",
+   "0.570 snd EB0021_clothL C_Hip_a",
+   "0.746 snd EB0021_whoosh03 C_Hip_a",
+   "1.351 snd B_AtkTenshi01_1_cloth C_Hip_a",
+   "1.620 fx FX_PC0010_10_Tenshi_Hit_01 @C_Body_a loc(200,0,0) rot(180,0,0) Character"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle09/B_AtkTenshi01_0.B_AtkTenshi01_0": {
+  "length": 2,
+  "hits": [],
+  "notifies": 5,
+  "classes": [
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifyPlayVoice",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.426 snd EB0021_katana C_Hip_a"
+  ],
+  "error": null
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle09/B_AtkTenshi01_1.B_AtkTenshi01_1": {
+  "length": 8,
+  "hits": [
+   1.6327999830245972,
+   2.8775999546051025
+  ],
+  "notifies": 20,
+  "classes": [
+   "AnimNotifyState_EndTimedNiagaraEffect",
+   "AnimNotify_EndEmotion",
+   "AnimNotify_EndModifyLookAt",
+   "EndAnimNotifyCharacterBodyMoveMode",
+   "EndAnimNotifyCharacterMindMoveMode",
+   "EndAnimNotifyPlayCharacterSound",
+   "EndAnimNotifySetMovementMode",
+   "EndAnimNotifyStateBattleDamage",
+   "EndBattleAIMessageNotify"
+  ],
+  "extras": [
+   "0.000 fx FX_PC0010_10_Tenshi_Charge_01 @Trans loc(0,0,0) rot(0,0,0) Character",
+   "0.563 snd B_AtkTenshi01_wing C_Hip_a",
+   "0.859 snd EB0021_whoosh03 C_Hip_a",
+   "1.467 snd EB0021_clothL C_Hip_a",
+   "1.620 fx FX_PC0010_10_Tenshi_Hit_01 @C_Body_a loc(200,0,0) rot(180,0,0) Character",
+   "7.390 snd EN0021_katana_grab C_Hip_a",
+   "7.725 snd EN0021_katana_draw C_Hip_a"
+  ],
+  "error": null
+ }
+}

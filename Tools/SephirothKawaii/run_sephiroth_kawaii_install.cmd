@@ -1,0 +1,87 @@
+@echo off
+title Sephiroth skins on KawaiiPhysics - installing, please leave this window open
+rem Installs compat\SephirothKawaii.json for Create a Character System 3.14.5 (close the game first; takes a second):
+rem   KawaiiPhysics in place of the Bonamik on the four Sephiroth skins and the forms that wear the same models:
+rem     Sephiroth (Rebirth)          PC0010_15  (also the OLDER SEPHIROTH form)
+rem     Sephiroth (Rebirth, Winged)  PC0010_10  (also the game's own winged Sephiroth)
+rem     Anime Sephiroth              PC0010_01  (the winged model on toon materials: the winged entry)
+rem     Seraph Sephiroth             PC0010_15_Seraph_Sephiroth_Transformed (his own hair; the winged coat, collar, wing)
+rem   2026-10-26: the coat's strips tied in pairs, so the legs no longer go through it walking; it hangs ~1 cm further in.
+rem     Remake Sephiroth             EB0021_00  (also the REMAKE form)
+rem     Remake Sephiroth (Winged)    EB0021_01  (also the REMAKE WINGED form; the wing follows the body's bones)
+rem   Hair, long hair, coat, belts, collar and the wing's feathers swing on KawaiiPhysics (the Rebirth preset); the
+rem   model's Bonamik is off while it is shown. A different SephirothKawaii.json already there is kept in
+rem   Tools\SephirothKawaii\backup first. run_sephiroth_kawaii_remove.cmd takes it out again.
+rem The file is checked (md5). Status: build\install_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\install_status.txt"
+set "STAGE=%~dp0stage"
+set "BACKUP=%~dp0backup"
+set "COMPAT=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH\End\Binaries\Win64\ue4ss\Mods\RebirthSkelCompat\compat"
+set "FILE=SephirothKawaii.json"
+set "MD5=cd39df23d7ec734e3cd1f080ee99dc24"
+echo Sephiroth skins on KawaiiPhysics, install started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%COMPAT%" goto :nocompat
+echo checking the file to install...>> "%STATUS%"
+call :md5 "%STAGE%\%FILE%" %MD5% || goto :badstage
+echo    as made>> "%STATUS%"
+if not exist "%COMPAT%\%FILE%" goto :copy
+call :same "%COMPAT%\%FILE%" %MD5% && goto :copy
+if not exist "%BACKUP%" mkdir "%BACKUP%"
+set /a N=1
+:nextname
+if exist "%BACKUP%\%FILE%.before%N%" (set /a N+=1 & goto :nextname)
+copy /y "%COMPAT%\%FILE%" "%BACKUP%\%FILE%.before%N%" >nul
+if not exist "%BACKUP%\%FILE%.before%N%" goto :nobackup
+echo    the SephirothKawaii.json that was there is kept as backup\%FILE%.before%N%>> "%STATUS%"
+
+:copy
+echo installing into the mod's compat folder...>> "%STATUS%"
+copy /y "%STAGE%\%FILE%" "%COMPAT%\%FILE%" >nul
+call :md5 "%COMPAT%\%FILE%" %MD5% || goto :badcopy
+echo    installed and checked>> "%STATUS%"
+echo ALL DONE: start the game and put on a Sephiroth skin (Anime and Seraph Sephiroth too; or the OLDER SEPHIROTH, REMAKE or REMAKE WINGED form).>> "%STATUS%"
+echo The mod's log (RebirthSkelCompat.log) gets a "Kawaii:" line for each model when it is first shown.>> "%STATUS%"
+goto :done
+
+:nocompat
+echo STOPPED: the mod's compat folder is not there (is Create a Character System installed?); nothing was changed>> "%STATUS%"
+goto :done
+
+:badstage
+echo STOPPED: Tools\SephirothKawaii\stage\%FILE% is not the one made for this ^(see above^); nothing was changed>> "%STATUS%"
+goto :done
+
+:nobackup
+echo STOPPED: the SephirothKawaii.json already there could not be kept in Tools\SephirothKawaii\backup; nothing was changed>> "%STATUS%"
+goto :done
+
+:badcopy
+echo FAILED: the file in the compat folder did not check out; run this again ^(or run_sephiroth_kawaii_remove.cmd^)>> "%STATUS%"
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1
+
+:same
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+exit /b 1

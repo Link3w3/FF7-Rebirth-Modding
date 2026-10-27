@@ -1,0 +1,395 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "note": "Create a Character System 3.14.0: Young Sephiroth's hair, coat, collar and wing swing with KawaiiPhysics. His model (YoungSephiroth_P) has no BNM; it keeps its KDI (the wing's KineDriver), and each chain swings about the pose the KDI gives it. Settings: the README's KawaiiPhysics part.",
+ "kawaii": [
+  {
+   "name": "Young Sephiroth: hair, coat, collar and wing",
+   "models": [
+    "/Game/Character/Player/PC0010_13_Young_Sephiroth/Model/PC0010_13.PC0010_13"
+   ],
+   "requires_paks": [
+    "YoungSephiroth_P"
+   ],
+   "nodes": [
+    {
+     "name": "hair",
+     "root_bone": "C_HairF_a_Phy",
+     "additional_root_bones": [
+      "C_HairB_a_Phy",
+      "C_HairJ_a_Phy",
+      "C_HairE_a_Phy",
+      "C_HairA_a_Phy",
+      "L_HairA_a_Phy",
+      "L_HairC_a_Phy",
+      "C_HairH_a_Phy",
+      "R_HairA_a_Phy",
+      "C_HairD_a_Phy",
+      "R_HairD_a_Phy",
+      "C_HairL_a_Phy",
+      "L_HairD_a_Phy"
+     ],
+     "damping": 0.15,
+     "stiffness": 0.12,
+     "world_damping_location": 0.65,
+     "world_damping_rotation": 0.65,
+     "radius": 0.75,
+     "limit_angle": 40,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -150
+     ],
+     "teleport_rotation_threshold": 30,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        8.571,
+        2.27,
+        0.0
+       ],
+       "radius": 6.51
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        4.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "radius": 5.77,
+       "length": 9.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        8.0,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "radius": 8.31,
+       "length": 16.0
+      }
+     ]
+    },
+    {
+     "name": "coat",
+     "root_bone": "L_CoatA_a_Phy",
+     "additional_root_bones": [
+      "L_CoatB_a_Phy",
+      "L_CoatC_a_Phy",
+      "L_CoatD_a_Phy",
+      "L_CoatE_a_Phy",
+      "C_CoatA_a_Phy",
+      "R_CoatE_a_Phy",
+      "R_CoatD_a_Phy",
+      "R_CoatC_a_Phy",
+      "R_CoatB_a_Phy",
+      "R_CoatA_a_Phy"
+     ],
+     "damping": 0.12,
+     "stiffness": 0.04,
+     "world_damping_location": 0.55,
+     "world_damping_rotation": 0.55,
+     "radius": 1.5,
+     "radius_curve": [
+      [
+       0,
+       0.67
+      ],
+      [
+       0.5,
+       0.75
+      ],
+      [
+       1,
+       1.5
+      ]
+     ],
+     "limit_angle": 55,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -450
+     ],
+     "teleport_rotation_threshold": 30,
+     "spheres": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        -9.953,
+        -0.193,
+        -0.0
+       ],
+       "radius": 9.48
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        20.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "radius": 7.05,
+       "length": 41.0
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        21.75,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "radius": 5.99,
+       "length": 43.5
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        20.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "radius": 7.05,
+       "length": 41.0
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        21.75,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "radius": 5.99,
+       "length": 43.5
+      }
+     ],
+     "bone_constraints": [
+      [
+       "L_CoatA_b_Phy",
+       "L_CoatB_b_Phy"
+      ],
+      [
+       "L_CoatA_c_Phy",
+       "L_CoatB_c_Phy"
+      ],
+      [
+       "L_CoatA_d_Phy",
+       "L_CoatB_d_Phy"
+      ],
+      [
+       "L_CoatB_b_Phy",
+       "L_CoatC_b_Phy"
+      ],
+      [
+       "L_CoatB_c_Phy",
+       "L_CoatC_c_Phy"
+      ],
+      [
+       "L_CoatB_d_Phy",
+       "L_CoatC_d_Phy"
+      ],
+      [
+       "L_CoatC_b_Phy",
+       "L_CoatD_b_Phy"
+      ],
+      [
+       "L_CoatC_c_Phy",
+       "L_CoatD_c_Phy"
+      ],
+      [
+       "L_CoatC_d_Phy",
+       "L_CoatD_d_Phy"
+      ],
+      [
+       "L_CoatD_b_Phy",
+       "L_CoatE_b_Phy"
+      ],
+      [
+       "L_CoatD_c_Phy",
+       "L_CoatE_c_Phy"
+      ],
+      [
+       "L_CoatD_d_Phy",
+       "L_CoatE_d_Phy"
+      ],
+      [
+       "L_CoatE_b_Phy",
+       "C_CoatA_b_Phy"
+      ],
+      [
+       "L_CoatE_c_Phy",
+       "C_CoatA_c_Phy"
+      ],
+      [
+       "L_CoatE_d_Phy",
+       "C_CoatA_d_Phy"
+      ],
+      [
+       "C_CoatA_b_Phy",
+       "R_CoatE_b_Phy"
+      ],
+      [
+       "C_CoatA_c_Phy",
+       "R_CoatE_c_Phy"
+      ],
+      [
+       "C_CoatA_d_Phy",
+       "R_CoatE_d_Phy"
+      ],
+      [
+       "R_CoatE_b_Phy",
+       "R_CoatD_b_Phy"
+      ],
+      [
+       "R_CoatE_c_Phy",
+       "R_CoatD_c_Phy"
+      ],
+      [
+       "R_CoatE_d_Phy",
+       "R_CoatD_d_Phy"
+      ],
+      [
+       "R_CoatD_b_Phy",
+       "R_CoatC_b_Phy"
+      ],
+      [
+       "R_CoatD_c_Phy",
+       "R_CoatC_c_Phy"
+      ],
+      [
+       "R_CoatD_d_Phy",
+       "R_CoatC_d_Phy"
+      ],
+      [
+       "R_CoatC_b_Phy",
+       "R_CoatB_b_Phy"
+      ],
+      [
+       "R_CoatC_c_Phy",
+       "R_CoatB_c_Phy"
+      ],
+      [
+       "R_CoatC_d_Phy",
+       "R_CoatB_d_Phy"
+      ],
+      [
+       "R_CoatB_b_Phy",
+       "R_CoatA_b_Phy"
+      ],
+      [
+       "R_CoatB_c_Phy",
+       "R_CoatA_c_Phy"
+      ],
+      [
+       "R_CoatB_d_Phy",
+       "R_CoatA_d_Phy"
+      ]
+     ]
+    },
+    {
+     "name": "collar",
+     "root_bone": "L_CollarA_a_Phy",
+     "additional_root_bones": [
+      "L_CollarB_a_Phy",
+      "R_CollarA_a_Phy",
+      "R_CollarB_a_Phy"
+     ],
+     "damping": 0.2,
+     "stiffness": 0.35,
+     "world_damping_location": 0.8,
+     "world_damping_rotation": 0.8,
+     "radius": 1,
+     "limit_angle": 20,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30
+    },
+    {
+     "name": "wing",
+     "root_bone": "R_FeatherA_a_Phy",
+     "additional_root_bones": [
+      "R_FeatherB_a_Phy",
+      "R_FeatherC_a_Phy",
+      "R_FeatherD_a_Phy",
+      "R_FeatherE_a_Phy",
+      "R_FeatherF_a_Phy",
+      "R_FeatherG_a_Phy",
+      "R_FeatherH_a_Phy",
+      "R_FeatherI_a_Phy",
+      "R_FeatherJ_a_Phy",
+      "R_FeatherK_a_Phy"
+     ],
+     "damping": 0.25,
+     "stiffness": 0.3,
+     "world_damping_location": 0.8,
+     "world_damping_rotation": 0.8,
+     "radius": 2.24,
+     "limit_angle": 25,
+     "dummy_bone_length": 12,
+     "gravity": [
+      0,
+      0,
+      -300
+     ],
+     "teleport_rotation_threshold": 30
+    }
+   ]
+  }
+ ]
+}

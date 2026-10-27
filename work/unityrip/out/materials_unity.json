@@ -1,0 +1,978 @@
+{
+ "mat_ch049_001_body": {
+  "shader": "EXTERNAL(file 1, path 4048984269881372897)",
+  "keywords": [
+   "_ALPHATEST_ON"
+  ],
+  "render_queue": 2450,
+  "tags": {
+   "RenderType": "TransparentCutout"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_body_AAAT",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BumpMap": {
+    "tex": "tex_ch049_001_body_NNNX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_MetallicGlossMap": {
+    "tex": "tex_ch049_001_body_MROX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 1.0,
+   "_AffectDiffuseNormal": 1.0,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 1.0,
+   "_Cull": 2.0,
+   "_CullMirror": 1.0,
+   "_Cutoff": 0.5,
+   "_DstBlend": 0.0,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 1.0,
+   "_GlossMapScale": 1.0,
+   "_Metallic": 1.0,
+   "_MirrorColorIntensity": 1.0,
+   "_OcclusionStrength": 1.0,
+   "_OcclusionStrength_RT": 1.0,
+   "_ReceiveShadowIntensity": 1.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 1.0,
+   "_SrcBlend": 1.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0,
+   "_ZTest": 4.0,
+   "_ZWrite": 1.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_hair": {
+  "shader": "EXTERNAL(file 1, path 4048984269881372897)",
+  "keywords": [
+   "_ALPHATEST_ON",
+   "_ANISOTROPICENABLE",
+   "_RAMPENABLE"
+  ],
+  "render_queue": 2450,
+  "tags": {
+   "RenderType": "TransparentCutout"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_hair_AAAT",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_MetallicGlossMap": {
+    "tex": "tex_ch049_001_hair_MROX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_RampMap": {
+    "tex": "tex_ch049_001_ramp_hair",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 1.0,
+   "_AffectDiffuseNormal": 1.0,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 0.8999999761581421,
+   "_Cull": 0.0,
+   "_CullMirror": 1.0,
+   "_Cutoff": 0.3499999940395355,
+   "_DstBlend": 0.0,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 0.0,
+   "_GlossMapScale": 0.6499999761581421,
+   "_Metallic": 0.6499999761581421,
+   "_MirrorColorIntensity": 1.0,
+   "_OcclusionStrength": 0.800000011920929,
+   "_OcclusionStrength_RT": 1.0,
+   "_ReceiveShadowIntensity": 0.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 1.0,
+   "_SrcBlend": 1.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0,
+   "_ZTest": 4.0,
+   "_ZWrite": 1.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_eyelash": {
+  "shader": "EXTERNAL(file 1, path 4048984269881372897)",
+  "keywords": null,
+  "render_queue": 2999,
+  "tags": {
+   "RenderType": "Transparent"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_hair_AAAT",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_MetallicGlossMap": {
+    "tex": "tex_ch049_001_hair_MROX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 1.0,
+   "_AffectDiffuseNormal": 1.0,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 1.0,
+   "_Cull": 0.0,
+   "_CullMirror": 1.0,
+   "_Cutoff": 0.5,
+   "_DstBlend": 10.0,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 0.0,
+   "_GlossMapScale": 0.0,
+   "_Metallic": 0.0,
+   "_MirrorColorIntensity": 1.0,
+   "_OcclusionStrength": 1.0,
+   "_OcclusionStrength_RT": 1.0,
+   "_ReceiveShadowIntensity": 1.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 0.0,
+   "_SrcBlend": 5.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0,
+   "_ZTest": 4.0,
+   "_ZWrite": 0.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_eye_shadow": {
+  "shader": "EXTERNAL(file 1, path 4048984269881372897)",
+  "keywords": null,
+  "render_queue": 2999,
+  "tags": {
+   "RenderType": "Transparent"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_eye_shadow_AAAT",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 1.0,
+   "_AffectDiffuseNormal": 1.0,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 1.0,
+   "_Cull": 2.0,
+   "_CullMirror": 1.0,
+   "_Cutoff": 0.5,
+   "_DstBlend": 10.0,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 0.0,
+   "_GlossMapScale": 0.0,
+   "_Metallic": 0.0,
+   "_MirrorColorIntensity": 1.0,
+   "_OcclusionStrength": 1.0,
+   "_OcclusionStrength_RT": 1.0,
+   "_ReceiveShadowIntensity": 1.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 0.0,
+   "_SrcBlend": 5.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0,
+   "_ZTest": 4.0,
+   "_ZWrite": 0.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_head": {
+  "shader": "EXTERNAL(file 1, path 4048984269881372897)",
+  "keywords": [
+   "_RAMPENABLE"
+  ],
+  "render_queue": 2000,
+  "tags": {
+   "RenderType": "Opaque"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_head_AAAX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BumpMap": {
+    "tex": "tex_ch049_001_head_NNNX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_MetallicGlossMap": {
+    "tex": "tex_ch049_001_head_MROX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_RampMap": {
+    "tex": "tex_ch049_001_ramp_skin",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 0.800000011920929,
+   "_AffectDiffuseNormal": 0.699999988079071,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 0.8339999914169312,
+   "_Cull": 2.0,
+   "_CullMirror": 1.0,
+   "_Cutoff": 0.5,
+   "_DstBlend": 0.0,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 0.0,
+   "_GlossMapScale": 1.0,
+   "_Metallic": 0.0,
+   "_MirrorColorIntensity": 1.0,
+   "_OcclusionStrength": 1.0,
+   "_OcclusionStrength_RT": 0.949999988079071,
+   "_ReceiveShadowIntensity": 0.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 1.0,
+   "_SrcBlend": 1.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0,
+   "_ZTest": 4.0,
+   "_ZWrite": 1.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_hair_tp": {
+  "shader": "EXTERNAL(file 1, path -8271594506445488981)",
+  "keywords": [
+   "_ALPHATEST_ON",
+   "_ANISOTROPICENABLE",
+   "_RAMPENABLE"
+  ],
+  "render_queue": 2500,
+  "tags": {
+   "RenderType": "Transparent"
+  },
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_hair_AAAT",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_MetallicGlossMap": {
+    "tex": "tex_ch049_001_hair_MROX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_RampMap": {
+    "tex": "tex_ch049_001_ramp_hair",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_AdditionalLightDiffuse": 0.5,
+   "_AdditionalLightMaxDiffuse": 1.0,
+   "_AffectDiffuseNormal": 1.0,
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_Anisotropic": 0.8999999761581421,
+   "_Cull": 0.0,
+   "_Cutoff": 0.20000000298023224,
+   "_EmissionIntensity": 1.0,
+   "_FresnelIntensity": 0.0,
+   "_GlossMapScale": 0.6499999761581421,
+   "_Metallic": 0.6499999761581421,
+   "_OcclusionStrength": 0.800000011920929,
+   "_OcclusionStrength_RT": 1.0,
+   "_ReceiveShadowIntensity": 0.0,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_SpecularIntensity": 1.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_EmissionColor": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "mat_ch049_001_eye": {
+  "shader": "EXTERNAL(file 1, path 5531719840816991354)",
+  "keywords": null,
+  "render_queue": -1,
+  "tags": {},
+  "textures": {
+   "_BaseMap": {
+    "tex": "tex_ch049_001_eye_AAAX",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_BreakMap": {
+    "tex": "EXTERNAL(file 2, path 1538419700190358448)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_DitherTex": {
+    "tex": "EXTERNAL(file 3, path -3117616586059632878)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_HeightMap": {
+    "tex": "EXTERNAL(file 4, path -2073030572120413641)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_RampMap": {
+    "tex": "tex_ch049_001_ramp_skin",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   },
+   "_ReflectionTex": {
+    "tex": "EXTERNAL(file 5, path 537526618499096064)",
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "offset": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "floats": {
+   "_Alpha": 1.0,
+   "_AmbientSaturate": 1.0,
+   "_CircleHighLightAdditionalIntensity": 0.6000000238418579,
+   "_CircleHighLightIntensity": 0.5,
+   "_CommandPhaseBreak": 0.0,
+   "_HeightScale": 0.10000000149011612,
+   "_HighLightShiftH": 0.10000000149011612,
+   "_HighLightShiftV": -0.30000001192092896,
+   "_ReceiveShadowIntensity": 0.0,
+   "_ReflectionIntensity": 0.5,
+   "_RimPower": 0.0,
+   "_RimPowerSecond": 0.0,
+   "_VRLineSpeed": 0.0,
+   "_VRLineTiling": 0.0
+  },
+  "colors": {
+   "_AmbientMutiply": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_BaseColor": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ],
+   "_BreakColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_RimColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_RimColorSecond": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "_VRLineColor": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

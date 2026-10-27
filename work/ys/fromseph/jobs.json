@@ -1,0 +1,1340 @@
+{
+ "jobs": {
+  "job00": [
+   "B_Abnormal01_0",
+   "B_Abnormal01_1",
+   "B_Abnormal01_2",
+   "B_Avoid01_0",
+   "B_Avoid01_1",
+   "B_ChainWait01_0",
+   "B_ChainWait01_1",
+   "B_ChainWait01_2",
+   "B_DmgB01",
+   "B_DmgB02",
+   "B_DmgB03_0",
+   "B_DmgB03_1",
+   "B_DmgB03_2",
+   "B_DmgBlowB01_0",
+   "B_DmgBlowB01_1",
+   "B_DmgBlowB01_2",
+   "B_DmgBlowF01_0",
+   "B_DmgBlowF01_1",
+   "B_DmgBlowF01_2",
+   "B_DmgBurst01_0",
+   "B_DmgBurst01_1",
+   "B_DmgBurst01_2",
+   "B_DmgDownB01_0",
+   "B_DmgDownB01_2",
+   "B_DmgDownB02_0",
+   "B_DmgDownB02_2"
+  ],
+  "job01": [
+   "B_DmgDownB03_0",
+   "B_DmgDownF01_0",
+   "B_DmgDownF01_2",
+   "B_DmgDownF02_0",
+   "B_DmgDownF02_2",
+   "B_DmgDownF03_0",
+   "B_DmgGuard02",
+   "B_DmgRecoverB01",
+   "B_DmgRecoverF01",
+   "B_DmgReflect01",
+   "B_DmgStrikeB01_0",
+   "B_DmgStrikeB01_1",
+   "B_DmgStrikeF01_0",
+   "B_DmgStrikeF01_1",
+   "B_DmgUpperB01_0",
+   "B_DmgUpperB01_1",
+   "B_DmgUpperB01_2",
+   "B_DmgUpperF01_0",
+   "B_DmgUpperF01_1",
+   "B_DmgUpperF01_2",
+   "B_DownAbnormalB01_0",
+   "B_DownAbnormalF01_0",
+   "B_DownDieB01",
+   "B_DownDieF01",
+   "B_Fall01_1",
+   "B_Fall01_2"
+  ],
+  "job02": [
+   "B_Guard01_0",
+   "B_Guard01_1",
+   "B_Guard01_2",
+   "B_GuardFace01_0",
+   "B_GuardFace01_1",
+   "B_GuardFace01_2",
+   "B_GuardFace02_0",
+   "B_GuardFace02_1",
+   "B_GuardFace02_2",
+   "B_GuardTurn01_L180",
+   "B_GuardTurn01_L90",
+   "B_GuardTurn01_R180",
+   "B_GuardTurn01_R90",
+   "B_Idle01_2",
+   "B_Run01_0_L180",
+   "B_Run01_0_L90",
+   "B_Run01_0_R180",
+   "B_Run01_1_L180",
+   "B_Run01_1_R180",
+   "B_Run01_Up",
+   "B_Turn01_L0",
+   "B_Turn01_L180",
+   "B_Turn01_L90",
+   "B_Turn01_R0",
+   "B_Turn01_R180",
+   "B_Turn01_R90"
+  ],
+  "job03": [
+   "B_Walk01_0_L0",
+   "B_Walk01_0_L180",
+   "B_Walk01_0_L90",
+   "B_Walk01_0_R180",
+   "B_Walk01_0_R90",
+   "B_Walk01_1",
+   "B_Walk01_2l",
+   "B_Walk01_2r",
+   "B_WalkB01_0",
+   "B_WalkB01_1",
+   "B_WalkB01_2l",
+   "B_WalkB01_2r",
+   "B_WalkBL01_1",
+   "B_WalkBR01_1",
+   "B_WalkFL01_1",
+   "B_WalkFR01_1",
+   "B_WalkL01_0",
+   "B_WalkL01_1",
+   "B_WalkL01_2l",
+   "B_WalkL01_2r",
+   "B_WalkR01_0",
+   "B_WalkR01_1",
+   "B_WalkR01_2l",
+   "B_WalkR01_2r"
+  ]
+ },
+ "report": {
+  "B_Abnormal01_0": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    -28.2,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Abnormal01_1": {
+   "frames": 73,
+   "seconds": 2.4,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Abnormal01_2": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    28.2,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Avoid01_0": {
+   "frames": 6,
+   "seconds": 0.167,
+   "loop": false,
+   "travel": [
+    146.3,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Avoid01_1": {
+   "frames": 16,
+   "seconds": 0.5,
+   "loop": true,
+   "travel": [
+    984.9,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_ChainWait01_0": {
+   "frames": 31,
+   "seconds": 1.0,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_ChainWait01_1": {
+   "frames": 57,
+   "seconds": 1.867,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_ChainWait01_2": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgB01": {
+   "frames": 27,
+   "seconds": 0.867,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgB02": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    176.1,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgB03_0": {
+   "frames": 31,
+   "seconds": 1.0,
+   "loop": false,
+   "travel": [
+    484.4,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgB03_1": {
+   "frames": 71,
+   "seconds": 2.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgB03_2": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowB01_0": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowB01_1": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowB01_2": {
+   "frames": 71,
+   "seconds": 2.333,
+   "loop": false,
+   "travel": [
+    545.5,
+    1.1,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowF01_0": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowF01_1": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBlowF01_2": {
+   "frames": 71,
+   "seconds": 2.333,
+   "loop": false,
+   "travel": [
+    -581.2,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBurst01_0": {
+   "frames": 74,
+   "seconds": 2.433,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBurst01_1": {
+   "frames": 75,
+   "seconds": 2.467,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgBurst01_2": {
+   "frames": 59,
+   "seconds": 1.933,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownB01_0": {
+   "frames": 29,
+   "seconds": 0.933,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownB01_2": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownB02_0": {
+   "frames": 29,
+   "seconds": 0.933,
+   "loop": false,
+   "travel": [
+    176.1,
+    1.1,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownB02_2": {
+   "frames": 45,
+   "seconds": 1.467,
+   "loop": false,
+   "travel": [
+    0.0,
+    3.1,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownB03_0": {
+   "frames": 29,
+   "seconds": 0.933,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownF01_0": {
+   "frames": 29,
+   "seconds": 0.933,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownF01_2": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownF02_0": {
+   "frames": 29,
+   "seconds": 0.933,
+   "loop": false,
+   "travel": [
+    -176.2,
+    0.2,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownF02_2": {
+   "frames": 49,
+   "seconds": 1.6,
+   "loop": false,
+   "travel": [
+    0.0,
+    1.1,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgDownF03_0": {
+   "frames": 30,
+   "seconds": 0.967,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgGuard02": {
+   "frames": 31,
+   "seconds": 1.0,
+   "loop": false,
+   "travel": [
+    -176.1,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgRecoverB01": {
+   "frames": 57,
+   "seconds": 1.867,
+   "loop": false,
+   "travel": [
+    308.2,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgRecoverF01": {
+   "frames": 57,
+   "seconds": 1.867,
+   "loop": false,
+   "travel": [
+    -301.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgReflect01": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    -198.2,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgStrikeB01_0": {
+   "frames": 5,
+   "seconds": 0.133,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgStrikeB01_1": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgStrikeF01_0": {
+   "frames": 5,
+   "seconds": 0.133,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgStrikeF01_1": {
+   "frames": 11,
+   "seconds": 0.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperB01_0": {
+   "frames": 67,
+   "seconds": 2.2,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperB01_1": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperB01_2": {
+   "frames": 68,
+   "seconds": 2.233,
+   "loop": false,
+   "travel": [
+    -35.7,
+    -0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperF01_0": {
+   "frames": 67,
+   "seconds": 2.2,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperF01_1": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DmgUpperF01_2": {
+   "frames": 59,
+   "seconds": 1.933,
+   "loop": false,
+   "travel": [
+    -330.6,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DownAbnormalB01_0": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    1.1,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DownAbnormalF01_0": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DownDieB01": {
+   "frames": 101,
+   "seconds": 3.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    3.5,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_DownDieF01": {
+   "frames": 101,
+   "seconds": 3.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    3.6,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Fall01_1": {
+   "frames": 31,
+   "seconds": 1.0,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Fall01_2": {
+   "frames": 31,
+   "seconds": 1.0,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Guard01_0": {
+   "frames": 6,
+   "seconds": 0.167,
+   "loop": false,
+   "travel": [
+    -52.8,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Guard01_1": {
+   "frames": 41,
+   "seconds": 1.333,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Guard01_2": {
+   "frames": 12,
+   "seconds": 0.367,
+   "loop": false,
+   "travel": [
+    52.8,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace01_0": {
+   "frames": 15,
+   "seconds": 0.467,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace01_1": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace01_2": {
+   "frames": 25,
+   "seconds": 0.8,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace02_0": {
+   "frames": 8,
+   "seconds": 0.233,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace02_1": {
+   "frames": 14,
+   "seconds": 0.433,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardFace02_2": {
+   "frames": 11,
+   "seconds": 0.333,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardTurn01_L180": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    -26.4,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardTurn01_L90": {
+   "frames": 16,
+   "seconds": 0.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": -90.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardTurn01_R180": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    26.4,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_GuardTurn01_R90": {
+   "frames": 16,
+   "seconds": 0.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 90.0,
+   "root_off_axis": 0.0
+  },
+  "B_Idle01_2": {
+   "frames": 37,
+   "seconds": 1.2,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_0_L180": {
+   "frames": 20,
+   "seconds": 0.633,
+   "loop": false,
+   "travel": [
+    -315.9,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_0_L90": {
+   "frames": 16,
+   "seconds": 0.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    -293.7,
+    0.0
+   ],
+   "turn": -81.1,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_0_R180": {
+   "frames": 17,
+   "seconds": 0.533,
+   "loop": false,
+   "travel": [
+    -299.4,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_1_L180": {
+   "frames": 18,
+   "seconds": 0.567,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_1_R180": {
+   "frames": 18,
+   "seconds": 0.567,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Run01_Up": {
+   "frames": 21,
+   "seconds": 0.667,
+   "loop": false,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_L0": {
+   "frames": 45,
+   "seconds": 1.467,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_L180": {
+   "frames": 65,
+   "seconds": 2.133,
+   "loop": false,
+   "travel": [
+    -44.9,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_L90": {
+   "frames": 50,
+   "seconds": 1.633,
+   "loop": false,
+   "travel": [
+    0.0,
+    -15.4,
+    0.0
+   ],
+   "turn": -90.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_R0": {
+   "frames": 45,
+   "seconds": 1.467,
+   "loop": true,
+   "travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_R180": {
+   "frames": 65,
+   "seconds": 2.133,
+   "loop": false,
+   "travel": [
+    -44.9,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Turn01_R90": {
+   "frames": 50,
+   "seconds": 1.633,
+   "loop": false,
+   "travel": [
+    -15.4,
+    0.0,
+    0.0
+   ],
+   "turn": 90.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_0_L0": {
+   "frames": 38,
+   "seconds": 1.233,
+   "loop": false,
+   "travel": [
+    89.9,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_0_L180": {
+   "frames": 56,
+   "seconds": 1.833,
+   "loop": false,
+   "travel": [
+    -131.1,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_0_L90": {
+   "frames": 48,
+   "seconds": 1.567,
+   "loop": false,
+   "travel": [
+    0.0,
+    -103.0,
+    0.0
+   ],
+   "turn": -90.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_0_R180": {
+   "frames": 37,
+   "seconds": 1.2,
+   "loop": false,
+   "travel": [
+    -56.9,
+    0.0,
+    0.0
+   ],
+   "turn": 180.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_0_R90": {
+   "frames": 38,
+   "seconds": 1.233,
+   "loop": false,
+   "travel": [
+    0.0,
+    61.6,
+    0.0
+   ],
+   "turn": 90.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    134.1,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_2l": {
+   "frames": 51,
+   "seconds": 1.667,
+   "loop": false,
+   "travel": [
+    47.5,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_Walk01_2r": {
+   "frames": 51,
+   "seconds": 1.667,
+   "loop": false,
+   "travel": [
+    86.6,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkB01_0": {
+   "frames": 38,
+   "seconds": 1.233,
+   "loop": false,
+   "travel": [
+    -47.6,
+    -3.2,
+    1.2
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkB01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    -133.9,
+    0.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkB01_2l": {
+   "frames": 51,
+   "seconds": 1.667,
+   "loop": false,
+   "travel": [
+    -76.6,
+    3.2,
+    -1.2
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkB01_2r": {
+   "frames": 51,
+   "seconds": 1.667,
+   "loop": false,
+   "travel": [
+    -141.8,
+    3.2,
+    -1.2
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkBL01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    -94.7,
+    -94.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkBR01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    -94.7,
+    94.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkFL01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    94.7,
+    -94.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkFR01_1": {
+   "frames": 44,
+   "seconds": 1.433,
+   "loop": true,
+   "travel": [
+    94.7,
+    94.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkL01_0": {
+   "frames": 36,
+   "seconds": 1.167,
+   "loop": false,
+   "travel": [
+    0.0,
+    -31.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkL01_1": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    -81.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkL01_2l": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    -45.8,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkL01_2r": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    -36.5,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkR01_0": {
+   "frames": 36,
+   "seconds": 1.167,
+   "loop": false,
+   "travel": [
+    0.0,
+    45.8,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkR01_1": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    81.0,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkR01_2l": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    31.7,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  },
+  "B_WalkR01_2r": {
+   "frames": 46,
+   "seconds": 1.5,
+   "loop": false,
+   "travel": [
+    0.0,
+    70.9,
+    0.0
+   ],
+   "turn": 0.0,
+   "root_off_axis": 0.0
+  }
+ }
+}

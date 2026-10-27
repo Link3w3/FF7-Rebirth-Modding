@@ -1,0 +1,26 @@
+{
+ "steps": [
+  "scanned",
+  "data_object",
+  "row",
+  "build_moves",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth",
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "data_object": "created /Game/RebirthSkelCompat/SephirothForms/DO_SephirothForms",
+ "row": "288 moves (155 to build)",
+ "build_moves": "Build Moves: PROBLEMS",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: PROBLEMS",
+ "done": true
+}

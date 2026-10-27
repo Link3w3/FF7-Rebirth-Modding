@@ -1,0 +1,37 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Crisis Core Masamune",
+ "author": "",
+ "description": "Crisis Core Reunion's Masamune: the game's playable (cut-scale) Masamune blueprint holding Reunion's own sword (its model, cooked into the Crisis Core Sephiroth skins). Its package only: the weapon of the Crisis Core Sephiroth skins.",
+ "characters": [],
+ "model": "",
+ "skeleton": "",
+ "family": "",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "",
+ "weapon": "",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "part": true,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/BluePrint/Character/Weapon/WE1021_16_CrisisCore_Masamune/WE1021_10_SephirothIllusion_MasamuneCutScale",
+   "file": "Content/BluePrint/Character/Weapon/WE1021_16_CrisisCore_Masamune/WE1021_10_SephirothIllusion_MasamuneCutScale.uasset",
+   "size": 2336,
+   "export_count": 6,
+   "export_bundle_count": 1,
+   "load_order": 624747,
+   "imports": [
+    "43ea269859b874d2",
+    "c53141f9e9cf085c"
+   ],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-27T02:34:22Z",
+ "built_with": "make_cc_weapon.py (the game's package copied to a new path)"
+}

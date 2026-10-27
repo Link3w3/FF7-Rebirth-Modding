@@ -1,0 +1,173 @@
+Damage, in place (x6, at most 9998):
+  PC0010_ChainChange01_01            Power 20 -> 120
+  PC0010_NAtk_1_01                   Power 30 -> 180
+  PC0010_NAtk_2_01                   Power 30 -> 180
+  PC0010_NAtk_3_01                   Power 50 -> 300
+  PC0010_NAtk_4_01                   Power 70 -> 420
+  PC0010_JAtk_1_01                   Power 50 -> 300
+  PC0010_JAtk_2_01                   Power 50 -> 300
+  PC0010_JAtk_3_01                   Power 70 -> 420
+  PC0010_PAtk_1_01                   Power 10 -> 60
+  PC0010_PAtk_2_01                   Power 10 -> 60
+  PC0010_Satk_1_01                   Power 100 -> 600
+  PC0010_Satk_2_01                   Power 30 -> 180
+  PC0010_SAtk_5_01                   Power 100 -> 600
+  PC0010_Satk_6_01                   Power 50 -> 300
+  PC0010_Satk_6_02                   Power 100 -> 600
+  PC0010_Satk_6_03                   Power 150 -> 900
+  PC0010_Satk_6_04                   Power 200 -> 1200
+  PC0010_Satk_6_05                   Power 250 -> 1500
+  PC0010_Satk_6_06                   Power 300 -> 1800
+  PC0010_SAtk_7_01                   Power 30 -> 180
+  PC0010_SAtk_7_02                   Power 100 -> 600
+  PC0010_Satk_8_01                   Power 50 -> 300
+  PC0010_Satk_8_02                   Power 50 -> 300
+  PC0010_Satk_8_03                   Power 150 -> 900
+  PC0010_SAtk_9_01                   Power 30 -> 180
+  PC0010_SAtk_9_02                   Power 30 -> 180
+  PC0010_SAtk_9_03                   Power 200 -> 1200
+  PC0010_SAtk_10_01                  Power 400 -> 2400
+  PC0010_NPAtk_1_02                  Power 5 -> 30
+  PC0010_NPAtk_1_04                  Power 10 -> 60
+  PC0010_AtkBurst01_01               Power 180 -> 1080
+  PC0010_AtkBurst01_02               Power 180 -> 1080
+  PC0010_AtkBurst01_03               Power 200 -> 1200
+  PC0010_AtkBurst01_A01              Power 180 -> 1080
+  PC0010_AtkBurst01_A02              Power 180 -> 1080
+  PC0010_AtkBurst01_A03              Power 200 -> 1200
+  PC0010_AtkBurst02_01               Power 500 -> 3000
+  PC0010_AtkBurst02_02               Power 300 -> 1800
+  PC0010_ChainCounter4_AI_01         Power 100 -> 600
+  PC0010_ChainCounter5_AI_01         Power 400 -> 2400
+  PC0010_ChainCharge1_AI_01          Power 100 -> 600
+  PC0010_ChainTatakau1_UC_1_01       Power 5 -> 30
+  PC0010_ChainTatakau1_UC_2_01       Power 10 -> 60
+  PC0010_ChainTatakau1_UC_2_02       Power 20 -> 120
+  PC0010_ChainTatakau1_UC_3_01       Power 20 -> 120
+  PC0010_ChainTatakau1_UC_3_02       Power 50 -> 300
+  PC0010_Limit_1_01                  Power 100 -> 600
+  PC0010_Limit_1_02                  Power 100 -> 600
+  PC0010_Limit_1_03                  Power 200 -> 1200
+  PC0010_Limit_1_04                  Power 300 -> 1800
+  PC0010_Limit_1_05                  Power 150 -> 900
+  PC0010_Limit_1_06                  Power 150 -> 900
+  PC0010_Limit_1_07                  Power 300 -> 1800
+  PC0010_Limit_1_08                  Power 1100 -> 6600
+  PC0010_Meteor_01                   Power 800 -> 4800
+  PC0010_Meteor_Burst                Power 2500 -> 9998, boss-made: x12, stagger like a player's
+  PC0010_T_Stab_01                   Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_T_Stab_Feeler_01            Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_T_StabDetach_01             Power 5 -> 60, boss-made: x12, stagger like a player's
+  PC0010_Meteor_Impact               Power 3000 -> 9998, boss-made: x12, stagger like a player's
+  EB2210_00_ShadowFlare_01           Power 15 -> 180, boss-made: x12, stagger like a player's
+  EB2210_00_Zanshin1_L01             Power 60 -> 720, boss-made: x12, stagger like a player's
+  EB2210_00_Zanshin1_R01             Power 60 -> 720, boss-made: x12, stagger like a player's
+  EB2210_00_BurstFlare_01            Power 120 -> 1440, boss-made: x12, stagger like a player's
+  EB2210_00_FeelerWingSmash_01       Power 150 -> 1800, boss-made: x12, stagger like a player's
+  EB2210_00_FeelerWingSmash_02       Power 500 -> 6000, boss-made: x12, stagger like a player's
+  EB2210_00_FeelerWingSmash_03       Power 500 -> 6000, boss-made: x12, stagger like a player's
+  EB2210_00_FeelerWingSmash_04       Power 500 -> 6000, boss-made: x12, stagger like a player's
+  EB2210_00_FeelerWingSmash_05       Power 500 -> 6000, boss-made: x12, stagger like a player's
+  EB2210_00_EyeMagic_01              Power 30 -> 360, boss-made: x12, stagger like a player's
+  EB2210_00_WingSwing_L01            Power 100 -> 1200, boss-made: x12, stagger like a player's
+  EB2210_00_WingSwing_R01            Power 100 -> 1200, boss-made: x12, stagger like a player's
+  EB2210_00_Stigma_01                Power 100 -> 1200, boss-made: x12, stagger like a player's
+  EB2210_00_Stigma_02                Power 50 -> 600, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_01                Power 30 -> 360, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_02                Power 30 -> 360, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_03                Power 40 -> 480, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_04                Power 40 -> 480, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_05                Power 30 -> 360, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_06                Power 30 -> 360, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_07                Power 100 -> 1200, boss-made: x12, stagger like a player's
+  EB2210_00_Hattou_08                Power 200 -> 2400, boss-made: x12, stagger like a player's
+  82 rows
+Damage, the transformed boss's rows his abilities use, copied as PC0010_P_* (23 rows):
+  PC0010_P_BindAttack01_01           Power 30 -> 360, boss-made: x12, stagger like a player's
+  PC0010_P_BindAttack02_01           Power 30 -> 360, boss-made: x12, stagger like a player's
+  PC0010_P_BindFeeler_01             Power 20 -> 240, boss-made: x12, stagger like a player's
+  PC0010_P_Blizzard3_02              Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_P_FeelerLaser_01            Power 500 -> 6000, boss-made: x12, stagger like a player's
+  PC0010_P_FeelerTornado_01          Power 500 -> 6000, boss-made: x12, stagger like a player's
+  PC0010_P_Fire3_02                  Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_P_HeatAttack_1_01           Power 2 -> 24, boss-made: x12, stagger like a player's
+  PC0010_P_HeatAttack_1_Feeler_01    Power 4 -> 48, boss-made: x12, stagger like a player's
+  PC0010_P_LastAttack_R01            Power 200 -> 2400, boss-made: x12, stagger like a player's
+  PC0010_P_LastAttack_L01            Power 200 -> 2400, boss-made: x12, stagger like a player's
+  PC0010_P_ShadowFlare_02            Power 5 -> 60, boss-made: x12, stagger like a player's
+  PC0010_P_Thunder3_02               Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_P_Wind3_02                  Power 300 -> 3600, boss-made: x12, stagger like a player's
+  PC0010_P_GroundFeelerExp           Power 30 -> 360, boss-made: x12, stagger like a player's
+  PC0010_10_BindAttack01 -> PC0010_P_BindAttack01: PC0010_T_BindAttackNear
+  PC0010_10_BindAttack02 -> PC0010_P_BindAttack02: PC0010_T_BindAttackFar
+  PC0010_10_BindFeeler -> PC0010_P_BindFeeler: PC0010_T_BindFeeler
+  PC0010_10_Blizzard3 -> PC0010_P_Blizzard3: PC0010_T_Blizzaga, PC0010_W3_DoubleBlizzaga
+  PC0010_10_FeelerLaser -> PC0010_P_FeelerLaser: PC0010_T_FeelerLaser
+  PC0010_10_FeelerTornado -> PC0010_P_FeelerTornado: PC0010_T_FeelerTornado
+  PC0010_10_Fire3 -> PC0010_P_Fire3: PC0010_T_Firaga, PC0010_W3_DoubleFiraga
+  PC0010_10_GroundFeeler -> PC0010_P_GroundFeeler: PC0010_T_GroundFeeler
+  PC0010_10_HeatAttack_1 -> PC0010_P_HeatAttack_1: PC0010_T_HardCombo
+  PC0010_10_LastAttack -> PC0010_P_LastAttack: PC0010_T_LastAttack
+  PC0010_10_ShadowFlare -> PC0010_P_ShadowFlare: PC0010_T_ShadowFlare
+  PC0010_10_Thunder3 -> PC0010_P_Thunder3: PC0010_T_Thundaga, PC0010_W3_DoubleThundaga
+  PC0010_10_Wind3 -> PC0010_P_Wind3: PC0010_T_Aeroga, PC0010_W3_DoubleAeroga
+Damage, the final battle's rows his Bizarro attacks need (13):
+  EB2210_00_GokumonA1_04             Power 150 -> 1800, boss-made: x12, stagger like a player's
+  EB2210_00_GokumonB1_05             Power 200 -> 2400, boss-made: x12, stagger like a player's
+  EB2210_00_Zanshin2_01              Power 100 -> 1200, boss-made: x12, stagger like a player's
+  EB2210_00_WingSmashR_01            Power 150 -> 1800, boss-made: x12, stagger like a player's
+  EB2210_00_WingSmashL_01            Power 150 -> 1800, boss-made: x12, stagger like a player's
+Damage, the Bizarro form's hits (28):
+  PC0010_BZ_NAtk_1_01          WingR from PC0010_NAtk_1_01, power 180
+  PC0010_BZ_NAtk_2_01          WingL from PC0010_NAtk_2_01, power 180
+  PC0010_BZ_NAtk_3_01          Sword from PC0010_NAtk_3_01, power 300
+  PC0010_BZ_NAtk_4_01          Sword from PC0010_NAtk_4_01, power 420
+  PC0010_BZ_JAtk_1_01          WingR from PC0010_JAtk_1_01, power 300
+  PC0010_BZ_JAtk_2_01          WingL from PC0010_JAtk_2_01, power 300
+  PC0010_BZ_JAtk_3_01          Sword from PC0010_JAtk_3_01, power 420
+  PC0010_BZ_NPAtk_1_01         Around from PC0010_NPAtk_1_04, power 60
+  PC0010_BZ_Satk_1_01          Sword from PC0010_Satk_1_01, power 600
+  PC0010_BZ_Satk_2_01          WingR from PC0010_Satk_2_01, power 180
+  PC0010_BZ_Satk_6_01          Direct from PC0010_Satk_6_01, power 300
+  PC0010_BZ_Satk_8_01          Sword from PC0010_Satk_8_01, power 300
+  PC0010_BZ_Satk_8_02          Sword from PC0010_Satk_8_02, power 300
+  PC0010_BZ_Satk_8_03          Sword from PC0010_Satk_8_03, power 900
+  PC0010_BZ_SAtk_9_01          Sword from PC0010_SAtk_9_01, power 180
+  PC0010_BZ_SAtk_9_02          Sword from PC0010_SAtk_9_02, power 180
+  PC0010_BZ_SAtk_9_03          Sword from PC0010_SAtk_9_03, power 1200
+  PC0010_BZ_ChainChange01_01   WingR from PC0010_ChainChange01_01, power 120
+  PC0010_BZ_PAtk_1_01          WingL from PC0010_PAtk_1_01, power 60
+  PC0010_BZ_PAtk_2_01          WingR from PC0010_PAtk_2_01, power 60
+  PC0010_BZ_Limit_1_01         Direct from PC0010_Limit_1_01, power 600
+  PC0010_BZ_Limit_1_02         Direct from PC0010_Limit_1_02, power 600
+  PC0010_BZ_Limit_1_03         Direct from PC0010_Limit_1_03, power 1200
+  PC0010_BZ_Limit_1_04         Direct from PC0010_Limit_1_04, power 1800
+  PC0010_BZ_Limit_1_05         Direct from PC0010_Limit_1_05, power 900
+  PC0010_BZ_Limit_1_06         Direct from PC0010_Limit_1_06, power 900
+  PC0010_BZ_Limit_1_07         Direct from PC0010_Limit_1_07, power 1800
+  PC0010_BZ_Limit_1_08         Direct from PC0010_Limit_1_08, power 6600
+Abilities (12):
+  PC0010_BZ_Octaslash        from EB2210_00_Hattou           $bt_BizarroSephiroth_Hattou            ATB 2  anims ['B_AtkOmniSlash01_0', 'B_AtkOmniSlash01_1', 'B_AtkOmniSlash01_2']  damage EB2210_00_Hattou (8 rows)
+  PC0010_BZ_Zanshin          from EB2210_00_Zanshin1         $bt_BizarroSephiroth_Zanshin           ATB 1  anims ['B_AtkZanShin01_0']  damage EB2210_00_Zanshin1 (3 rows)
+  PC0010_BZ_HellsGate        from EB2210_00_GokumonA1        $bt_BizarroSephiroth_Gokumon           ATB 2  anims ['B_AtkHellsGate01']  damage EB2210_00_GokumonA1 (4 rows)
+  PC0010_BZ_Swarm            from EB2210_00_ShadowFlare      $bt_BizarroSephiroth_ShadowFlare       ATB 1  anims ['B_AtkMagB01_0', 'B_AtkMagB01_1', 'B_AtkMagB01_2', 'B_AtkMagB01_3', 'B_AtkMagB01_4']  damage EB2210_00_ShadowFlare (1 rows)
+  PC0010_BZ_HeartlessAngel   from EB2210_00_HeartlessAngel   $bt_BizarroSephiroth_HeartlessAngel    ATB 2  anims ['B_AtkAngel01_0', 'B_AtkAngel01_1', 'B_AtkAngel01_2']  damage EB2210_00_HeartlessAngel (1 rows)
+  PC0010_BZ_ZanshinProfaned  from EB2210_00_Zanshin2         $bt_BizarroSephiroth_Zanshin2          ATB 1  anims ['B_AtkZanShin01_1']  damage EB2210_00_Zanshin2 (1 rows)
+  PC0010_BZ_UnholyGate       from EB2210_00_GokumonB1        $bt_BizarroSephiroth_Gokumon2          ATB 2  anims ['B_AtkUnholyGate01']  damage EB2210_00_GokumonB1 (5 rows)
+  PC0010_BZ_ApocalypticFire  from EB2210_00_BurstFlare       $bt_BizarroSephiroth_FlareBurst        ATB 2  anims ['B_AtkBodyExplode01']  damage EB2210_00_BurstFlare (1 rows)
+  PC0010_BZ_Profane          from EB2210_00_Stigma           $bt_BizarroSephiroth_Stigma            ATB 1  anims ['B_AtkStigma01_0', 'B_AtkStigma01_1_Comp', 'B_AtkStigma01_2']  damage EB2210_00_Stigma (2 rows)
+  PC0010_BZ_WhisperVortex    from EB2210_00_FeelerWingSmash  $bt_BizarroSephiroth_WingFeeler        ATB 2  anims ['B_AtkFeelerWingSmash01']  damage EB2210_00_FeelerWingSmash (5 rows)
+  PC0010_BZ_Atonement        from EB2210_00_WingSmashR       $bt_BizarroSephiroth_WingSmash         ATB 2  anims ['B_AtkWingSmashR01']  damage EB2210_00_WingSmashR (1 rows)
+  PC0010_BZ_LacrymaDeus      from EB2210_00_EyeLaserR        $bt_BizarroSephiroth_FaceEyeMagic      ATB 1  anims ['B_AtkEyeMagic01_0', 'B_AtkEyeMagic01_1', 'B_AtkEyeMagic01_1_Comp_3', 'B_AtkEyeMagic01_2']  damage EB2210_00_EyeMagic (1 rows)
+Text/US: 12 help texts
+CharaSpec:
+  PC0000_00_Cloud_Standard: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_08_Cloud_SoldierNoHelmet: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_09_Cloud_CostaClothing: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_10_Cloud_CostaClothing2: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_04_Cloud_ZackCostume: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_12_Cloud_ZackCostumeDirty: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_18_Cloud_ZackCostumeAge21: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_19_Cloud_ZackCostumeDirtyAge21: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+  PC0000_23_Cloud_ZackCostumeWet: effects ['PC0010_Sephiroth_Effect__Pack', 'PC0010_10_Sephiroth_Transform_Effect__Pack', 'EB2210_BizarroSephiroth_Effect__Pack']; sounds ['SE_PC0010_00_Sephiroth_Standard', 'SE_EB2210_00_BizarroSephiroth_Standard']; sets ['Battle00', 'Neutral00', 'Battle05', 'Emotion00', 'Facial00', 'Battle04', 'Battle01', 'Battle02', 'Neutral20', 'Battle03', 'Battle00_Comp']
+container: /work/forms36/data2/FullyPlayableSephirothDataAssets_P (47 packages; changed: DataObject/Resident/BattleAbility.uasset, DataObject/Resident/BattleDamageSource.uasset, DataObject/Resident/CharaSpec.uasset, Text/US/Resident_TxtRes.uasset)

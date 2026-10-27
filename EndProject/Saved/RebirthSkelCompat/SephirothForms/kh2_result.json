@@ -1,0 +1,32 @@
+{
+ "steps": [
+  "scanned",
+  "import",
+  "flight_import",
+  "row",
+  "failed",
+  "build",
+  "checked",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth",
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "import": "OK ",
+ "flight_import": "OK ",
+ "row": "345 moves, 51 of them his KH2 form's (Battle04), 44 his flying form's flight (Battle03)",
+ "failed": [],
+ "build": "95 of 95 built",
+ "checked": "344 package(s), all load back",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: PROBLEMS",
+ "done": true
+}

@@ -1,0 +1,5501 @@
+{
+ "EMI_Particle_Emit_Gray_Identity_Screen": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "8:Identity",
+   "B:Gray",
+   "D:Emit",
+   "P:ScreenCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_GlarePass",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Fabric_Coverage_Detail_Identifier_Coverage_Occlusion_Dynamic_Condition_Emissive": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "ConditionalEmissive",
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion",
+   "DynamicEmissive",
+   "Emissive",
+   "IdentifierCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Water_Thickness_Earlier": {
+  "parent": "EndMaterial_Water",
+  "on": [
+   "WaterThickness"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_bHasVertexModifier": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus2",
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity_Occlusion": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_FluidBody_Lit_Refract": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "M:FluidBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EndMaterialInstance_Fabric": {
+  "parent": "EndMaterial_Fabric",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Identity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Color_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Diffuse_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Emit_Gray_Identity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_RigidBody_Lit_Refract_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "K:RigidBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_NonRadiativeLDREmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "LDREmissive",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Standard": {
+  "parent": "EndMaterial_Standard",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Water_SoftBody_Environment": {
+  "parent": "EndMaterial_Water",
+  "on": [
+   "SoftBody",
+   "WaterEnvironment"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_bHasVertexModifier": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_Water",
+   "bHasVertexModifier": true
+  }
+ },
+ "EndMaterialInstance_Fabric_Detail": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Emissive_Stationary_FlowEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "FlowEmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Glass": {
+  "parent": "EndMaterial_Glass",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Glass_LDREmissive_Dynamic_ExtraEmissive": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "ExtraEmissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Color_Grade_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Modifier_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Edge_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Emit_Gray_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_RigidBody_Color_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "5:Grade",
+   "D:Emit",
+   "K:RigidBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Grade_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Fabric_Selective_Coverage": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage",
+   "Selective"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Stationary_CubeEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "CubeEmissive",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Water_FluidBody_Thickness_Early": {
+  "parent": "EndMaterial_Water",
+  "on": [
+   "FluidBody",
+   "WaterThickness"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_bHasVertexModifier": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1",
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_Emissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_InvisibleBody_Emissive_Dynamic_Flow": {
+  "parent": "EndMaterial_InvisibleBody",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "FlowEmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_BlackBody_Emissive_Drift_Depth": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "CameraRelativeDepth",
+   "Drift",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_NonRadiativeEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Glass_LDREmissive_Stationary_ExtraEmissive": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Emissive",
+   "ExtraEmissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_LDREmissive_Stationary_ExtraEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "ExtraEmissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Normal_Occlusion": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EndMaterialInstance_Thin": {
+  "parent": "EndMaterial_Thin",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_LDREmissive_Detail_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DynamicEmissive",
+   "Emissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Diffuse_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Standard_LDREmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Identity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Emit_Color_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "8:Identity",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Diffuse_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EndMaterialInstance_Fabric_Coverage_Detail_Identifier_Coverage_Occlusion": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion",
+   "IdentifierCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Identity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_LDREmissive_Dynamic_ExtraEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "ExtraEmissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Identity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "8:Identity",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Grade_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Edge_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_BlackBody_SoftBody_Emissive_Dynamic_Condition_Emissive": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "ConditionalEmissive",
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Directional_Edge_Modifier_Soft": {
+  "parent": "EndMaterial_Directional",
+  "on": [
+   "Edge",
+   "Modifier",
+   "Soft",
+   "VelocityTangent"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Hair": {
+  "parent": "EndMaterial_Hair",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Average_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Thin_Coverage": {
+  "parent": "EndMaterial_Thin",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Standard_LDREmissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_PreMultipliedColor": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "PreMultipliedColor"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_BlackBody_Emissive_Depth": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "CameraRelativeDepth",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Identity_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_Flow": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "FlowEmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_BlackBody_LDREmissive_Condition": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "ConditionalEmissive",
+   "Emissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_BlackBody_Emissive": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Menu_Movie": {
+  "parent": "EndMaterial_Menu",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Opacity_Occlusion_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "C:Soft",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_SoftBody_Lit_Refract_Gray_Grade_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Water_FluidBody_Thickness_Edge_Early": {
+  "parent": "EndMaterial_Water",
+  "on": [
+   "FluidBody",
+   "WaterEdge",
+   "WaterThickness"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_bHasVertexModifier": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1",
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Detail_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Detail:0",
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Water_Early": {
+  "parent": "EndMaterial_Water",
+  "on": [],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_SoftBody": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Glass_RigidBody": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "RigidBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_bHasVertexModifier": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Detail_Coverage_Occlusion": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_RigidBody": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "RigidBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Opacity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity_Occlusion_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Emissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Diffuse_Normal_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_SoftBody_Lit_Refract_Gray_Grade_Edge": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Identity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Detail": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Tear_FlipBook": {
+  "parent": "EndMaterial_Tear",
+  "on": [
+   "FlipBook"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Fabric_Coverage_Detail": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage",
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Glass_Coverage_Early": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_Masked": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1",
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Detail": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Detail:0",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Standard_SoftBody_Distribution_Sand_Coverage": {
+  "parent": "EndMaterial_Sand",
+  "on": [
+   "Coverage",
+   "DistributeAnimateKeyIndex",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EndMaterialInstance_BlackBody_Emissive_DoubleFlow_Depth": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "CameraRelativeDepth",
+   "DoubleFlow",
+   "Emissive",
+   "Flow",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_LiteDecal": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "LiteDecal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_Masked": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_FakeDecalPass",
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Hologram_Perlin_Detail": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Detail:0",
+   "Perlin"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Detail_Identifier_Coverage_Occlusion": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion",
+   "IdentifierCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Identity_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EndMaterialInstance_Standard_SoftBody_Coverage": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Masked": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_Lead": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Lead"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Identity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_NonRadiativeIdentityEmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "IdentityEmissive",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_ExtraEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "ExtraEmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Jewel_Early": {
+  "parent": "EndMaterial_Jewel",
+  "on": [],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity_Occlusion_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Emit_Gray_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Emit_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Identity_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Opacity_Occlusion_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_SoftBody_LDREmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "LDREmissive",
+   "Radiation",
+   "SoftBody",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Opacity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Fur_Back_Coverage_Detail_Identifier_Coverage_Occlusion": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion",
+   "Fur",
+   "FurBack",
+   "IdentifierCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Hologram_Perlin": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Perlin"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_BlackBody_NonRadiativeEmissive_Depth": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "CameraRelativeDepth",
+   "Emissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Modifier_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_BlackBody_LDREmissive_Condition_FixedCoordinate": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "ConditionalEmissive",
+   "Emissive",
+   "FixedCoordinate",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Lit_Refract_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Eye_Emissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Eye",
+  "on": [
+   "DynamicEmissive",
+   "Emissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_Detail_Coverage": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Identity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Detail": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Skin_Detail_BoneExpressive": {
+  "parent": "EndMaterial_Skin",
+  "on": [
+   "BoneExpressive",
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Hologram_Blue_Detail": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Blue",
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_SoftBody_Color_Grade_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_SoftBody_Sand_Coverage": {
+  "parent": "EndMaterial_Sand",
+  "on": [
+   "Coverage",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EndMaterialInstance_Standard_LDREmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_IdentityEmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Emissive",
+   "IdentityEmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Emit_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Diffuse_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Identity_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Emit_Gray_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_InvisibleBody": {
+  "parent": "EndMaterial_InvisibleBody",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "9:Diffuse",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Hologram_Blue": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Blue"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Emissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Directional_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Directional",
+  "on": [
+   "Modifier",
+   "Soft",
+   "VelocityTangent",
+   "Visibility"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_Coverage": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Emissive_Dynamic_Classify": {
+  "parent": "EndMaterial_Standard_Classify",
+  "on": [
+   "Classify",
+   "Coverage",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_Condition_Flow_Shiny": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "ConditionalEmissive",
+   "DynamicEmissive",
+   "Emissive",
+   "FlowEmissive",
+   "Radiation",
+   "Shiny"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Subsurface_Coverage": {
+  "parent": "EndMaterial_Subsurface",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_BlackBody_Coverage_Emissive": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "Coverage",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Fabric_Selective": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Selective"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Directional_Edge_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Directional",
+  "on": [
+   "Edge",
+   "Modifier",
+   "Soft",
+   "VelocityTangent",
+   "Visibility"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Sand_Flow_Coverage": {
+  "parent": "EndMaterial_Sand",
+  "on": [
+   "Coverage",
+   "Flow"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Identity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Fabric_Coverage": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_LDREmissive_Dynamic_ExtraEmissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "DynamicEmissive",
+   "Emissive",
+   "ExtraEmissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Emit_Gray_Grade_Opacity_Occlusion": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Identity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_Early": {
+  "parent": "EndMaterial_Glass",
+  "on": [],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus1"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Subsurface": {
+  "parent": "EndMaterial_Subsurface",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Edge_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Diffuse_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Standard_RigidBody_Emissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "Radiation",
+   "RigidBody",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_BlackBody_NonRadiativeEmissive": {
+  "parent": "EndMaterial_BlackBody",
+  "on": [
+   "Emissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Lit_Refract_Gray_Grade_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Color_Identity_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Eye": {
+  "parent": "EndMaterial_Eye",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_IdentityEmissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "DynamicEmissive",
+   "Emissive",
+   "IdentityEmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Refract_Diffuse_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Identity_Screen": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "8:Identity",
+   "D:Emit",
+   "P:ScreenCoverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_GlarePass",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Hologram_Blue_Coverage": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Blue",
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_RigidBody_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "K:RigidBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Skin_SoftBody_Detail": {
+  "parent": "EndMaterial_Skin",
+  "on": [
+   "Detail:0",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal_Opacity_Occlusion": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Standard_Coverage_Emissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Subsurface_SoftBody_Tilt_Coverage": {
+  "parent": "EndMaterial_Subsurface",
+  "on": [
+   "Coverage",
+   "DirectionalTilt",
+   "SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "bOverride_Velocity": true,
+   "bOverride_bHasVertexModifier": true,
+   "Masked": true,
+   "Velocity": true,
+   "bHasVertexModifier": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Hair_Coverage": {
+  "parent": "EndMaterial_Hair",
+  "on": [
+   "Coverage"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Detail_Dynamic_Condition_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "ConditionalEmissive",
+   "Detail:0",
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Hologram_Perlin_Eye": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Eye",
+   "Perlin"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_Condition_Flow": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "ConditionalEmissive",
+   "DynamicEmissive",
+   "Emissive",
+   "FlowEmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Hologram_Blue_Coverage_Detail": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Blue",
+   "Coverage",
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Standard_Emissive_Dynamic_Condition_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "ConditionalEmissive",
+   "DynamicEmissive",
+   "Emissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Grade_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_Lit_Average_Emit_Gray_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "3:Visibility",
+   "5:Grade",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Glass_Earlier": {
+  "parent": "EndMaterial_Glass",
+  "on": [],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus2"
+  }
+ },
+ "EMI_Particle_Lit_Refract_Normal_Emit_Gray_Identity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRefract"
+  }
+ },
+ "EndMaterialInstance_Blood_Coverage": {
+  "parent": "EndMaterial_Blood",
+  "on": [
+   "Coverage",
+   "LiteDecal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Opacity_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Glass_Emissive": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Emissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "9:Diffuse",
+   "A:Normal",
+   "C:Soft"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_LDREmissive_Dynamic_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "DynamicEmissive",
+   "Emissive",
+   "LDREmissive",
+   "Radiation"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Visibility_Parallax_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Tear": {
+  "parent": "EndMaterial_Tear",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Radius_Modifier": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "7:Radius",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "3:Visibility",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Average_Opacity_Occlusion": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity",
+   "O:Occlusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricAverage"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Identity_Opacity_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "3:Visibility",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Standard_Coverage_LDREmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Coverage",
+   "Emissive",
+   "LDREmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Directional_Modifier_Soft": {
+  "parent": "EndMaterial_Directional",
+  "on": [
+   "Modifier",
+   "Soft",
+   "VelocityTangent"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Rough_Emit_Gray_Identity_Opacity_Visibility_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Hologram_Blue_Eye": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Blue",
+   "Eye"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Gloss_Normal": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "8:Identity",
+   "A:Normal"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Skin_Detail": {
+  "parent": "EndMaterial_Skin",
+  "on": [
+   "Detail:0"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Lit_Rough_Opacity": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "4:Lit",
+   "8:Identity"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ },
+ "EndMaterialInstance_Fabric_Coverage_Detail_Coverage_Occlusion": {
+  "parent": "EndMaterial_Fabric",
+  "on": [
+   "Coverage",
+   "Detail:0",
+   "DetailCoverage",
+   "DetailOcclusion"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Edge_Modifier_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Scatter_Emit_Gray_Identity_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "3:Visibility",
+   "4:Lit",
+   "8:Identity",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricScatter"
+  }
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier_Opacity_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "2:Parallax",
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EndMaterialInstance_Materia": {
+  "parent": "EndMaterial_Materia",
+  "on": [],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Identity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "8:Identity",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Grade_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "bOverride_UsesExtraSceneDepth": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss",
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EMI_Particle_Lit_Gloss_Normal_Emit_Gray_Grade": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "4:Lit",
+   "5:Grade",
+   "A:Normal",
+   "B:Gray",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricGloss"
+  }
+ },
+ "EndMaterialInstance_Standard_IdentityEmissive_Stationary_Emissive": {
+  "parent": "EndMaterial_Standard",
+  "on": [
+   "Emissive",
+   "IdentityEmissive",
+   "Radiation",
+   "StationaryEmissive"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Modifier": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "5:Grade",
+   "B:Gray",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Color_Grade_Modifier_Opacity_Visibility": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "0:Color",
+   "1:Opacity",
+   "3:Visibility",
+   "5:Grade",
+   "D:Emit",
+   "F:Modifier"
+  ],
+  "off": [],
+  "ovr": {}
+ },
+ "EMI_Particle_Emit_Gray_Grade_Opacity_Soft": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "1:Opacity",
+   "5:Grade",
+   "B:Gray",
+   "C:Soft",
+   "D:Emit"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_UsesExtraSceneDepth": true,
+   "UsesExtraSceneDepth": true
+  }
+ },
+ "EndMaterialInstance_Hologram_Perlin_Coverage": {
+  "parent": "EndMaterial_Hologram",
+  "on": [
+   "Coverage",
+   "Perlin"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_Masked": true,
+   "Masked": true
+  }
+ },
+ "EndMaterialInstance_Glass_Lead_Earlier": {
+  "parent": "EndMaterial_Glass",
+  "on": [
+   "Lead"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_CustomRenderPass": true,
+   "CustomRenderPass": "ECustomRenderPass::CRP_TranslucentPassMinus2"
+  }
+ },
+ "EMI_Particle_Emit_SoftBody_Lit_Rough_Gray_Grade_Edge_Visibility_Parallax": {
+  "parent": "EndMaterial_Particle",
+  "on": [
+   "2:Parallax",
+   "3:Visibility",
+   "4:Lit",
+   "5:Grade",
+   "6:Edge",
+   "B:Gray",
+   "D:Emit",
+   "L:SoftBody"
+  ],
+  "off": [],
+  "ovr": {
+   "bOverride_ShadingModel": true,
+   "bOverride_TranslucencyLightingMode": true,
+   "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricRough"
+  }
+ }
+}

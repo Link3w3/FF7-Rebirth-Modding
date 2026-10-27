@@ -1,0 +1,1634 @@
+{
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_0.B_NAttack01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_0.B_NAttack01_0",
+  "class": "AnimSequence",
+  "length": 0.6000000238418579,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 19,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.04709669202566147,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.5999999046325684,
+    "track": 5,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "100.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.06827490031719208,
+    "track": 6,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 9,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 10,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.6000000238418579,
+    "track": 14,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.02904769405722618,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_01"
+    }
+   },
+   {
+    "time": 0.04882478713989258,
+    "duration": 0.19013231992721558,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.07000000029802322,
+    "duration": 0.1008329913020134,
+    "track": 8,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.07299157977104187,
+    "duration": 0,
+    "track": 7,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "25.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.11405937373638153,
+    "duration": 0,
+    "track": 9,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.14077550172805786,
+    "duration": 0,
+    "track": 11,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.24288690090179443,
+    "duration": 0.2629014849662781,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.40745851397514343,
+    "duration": 0,
+    "track": 12,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.07000000029802322
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack02_0.B_NAttack02_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack02_0.B_NAttack02_0",
+  "class": "AnimSequence",
+  "length": 0.3333333432674408,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 11,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.017180873081088066,
+    "track": 5,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 6,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "-90.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.06713502109050751,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 10,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 11,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 14,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.02082546427845955,
+    "duration": 0.1302817165851593,
+    "track": 5,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.0422368049621582,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_02"
+    }
+   },
+   {
+    "time": 0.07000000029802322,
+    "duration": 0.09449901431798935,
+    "track": 9,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.07618232071399689,
+    "duration": 0,
+    "track": 8,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "18.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.09500869363546371,
+    "duration": 0,
+    "track": 10,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.10753138363361359,
+    "duration": 0,
+    "track": 12,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.15297523140907288,
+    "duration": 0.11942923069000244,
+    "track": 5,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.24872633814811707,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.07000000029802322
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack03_0.B_NAttack03_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack03_0.B_NAttack03_0",
+  "class": "AnimSequence",
+  "length": 0.8333333134651184,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 26,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.11033520847558975,
+    "track": 8,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.8333333134651184,
+    "track": 9,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.11706846207380295,
+    "track": 10,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.8333333134651184,
+    "track": 18,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.06671398133039474,
+    "duration": 0,
+    "track": 14,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=10),(Number=40),(Number=50),(Number=60),(Number=70),(Number=80),(Number=90),(Number=3))"
+    }
+   },
+   {
+    "time": 0.11208653450012207,
+    "duration": 0.19905570149421692,
+    "track": 8,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.119063600897789,
+    "duration": 0,
+    "track": 3,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_03"
+    }
+   },
+   {
+    "time": 0.11999998986721039,
+    "duration": 0.12586897611618042,
+    "track": 12,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.17523939907550812,
+    "duration": 0,
+    "track": 11,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "25.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.350000"
+    }
+   },
+   {
+    "time": 0.18707725405693054,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.20594432950019836,
+    "duration": 0,
+    "track": 16,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.3201524317264557,
+    "duration": 0.42320653796195984,
+    "track": 8,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.532892107963562,
+    "duration": 0,
+    "track": 17,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.11999998986721039
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack04_0.B_NAttack04_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack04_0.B_NAttack04_0",
+  "class": "AnimSequence",
+  "length": 0.5333333611488342,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 17,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.11158251017332077,
+    "track": 7,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.5333333611488342,
+    "track": 8,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.1609210968017578,
+    "track": 10,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 14,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.5333333611488342,
+    "track": 17,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.09952778369188309,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_04"
+    }
+   },
+   {
+    "time": 0.1143895760178566,
+    "duration": 0.1412074863910675,
+    "track": 7,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.17000001668930054,
+    "duration": 0.15999600291252136,
+    "track": 12,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.1746729612350464,
+    "duration": 0,
+    "track": 11,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "25.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.22556397318840027,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.24288927018642426,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.25908589363098145,
+    "duration": 0.21678650379180908,
+    "track": 7,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.39374393224716187,
+    "duration": 0,
+    "track": 16,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.17000001668930054
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack05_0.B_NAttack05_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack05_0.B_NAttack05_0",
+  "class": "AnimSequence",
+  "length": 0.6333333253860474,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 20,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.06729968637228012,
+    "track": 10,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.6333333253860474,
+    "track": 11,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "-102.857140"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.049917593598365784,
+    "track": 12,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 16,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.6333333253860474,
+    "track": 19,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.04902050644159317,
+    "duration": 0,
+    "track": 4,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_05"
+    }
+   },
+   {
+    "time": 0.06844817101955414,
+    "duration": 0.15895681083202362,
+    "track": 10,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.07000000029802322,
+    "duration": 0.14760202169418335,
+    "track": 14,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.08717115968465805,
+    "duration": 0,
+    "track": 13,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "30.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.400000"
+    }
+   },
+   {
+    "time": 0.13868620991706848,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=10),(Number=40),(Number=50),(Number=60),(Number=70),(Number=80),(Number=90),(Number=5),(Number=3))"
+    }
+   },
+   {
+    "time": 0.1609167754650116,
+    "duration": 0,
+    "track": 17,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.23123446106910706,
+    "duration": 0.33579424023628235,
+    "track": 10,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.3365866243839264,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.45655298233032227,
+    "duration": 0,
+    "track": 18,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.07000000029802322
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack06_0.B_NAttack06_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack06_0.B_NAttack06_0",
+  "class": "AnimSequence",
+  "length": 0.06666667014360428,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 3,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.06666667014360428,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleAbilityIDReplace",
+    "class": "EndAnimNotifyStateBattleAbilityIDReplace",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ReplaceID": "?_WAtk"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.011497813276946545,
+    "track": 8,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 12,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 14,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.06666667014360428,
+    "track": 18,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.001640647416934371,
+    "duration": 0.06502602249383926,
+    "track": 20,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "78.285721"
+    }
+   },
+   {
+    "time": 0.01169835776090622,
+    "duration": 0.05496831238269806,
+    "track": 10,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.012011492624878883,
+    "duration": 0,
+    "track": 9,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "25.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.015176926739513874,
+    "duration": 0,
+    "track": 11,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 0.021947640925645828,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Combo=1))"
+    }
+   },
+   {
+    "time": 0.023880600929260254,
+    "duration": 0,
+    "track": 15,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.055240776389837265,
+    "duration": 0,
+    "track": 16,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.01169835776090622
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack07_0.B_NAttack07_0": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack07_0.B_NAttack07_0",
+  "class": "AnimSequence",
+  "length": 0.2666666805744171,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 9,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.2666666805744171,
+    "track": 2,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.03334016725420952,
+    "track": 12,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.2666666805744171,
+    "track": 13,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "85.714279"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.2666666805744171,
+    "track": 14,
+    "name": "EndAnimNotifyStateBattleAbilityIDReplace",
+    "class": "EndAnimNotifyStateBattleAbilityIDReplace",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ReplaceID": "?_WAtk"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.04227449744939804,
+    "track": 15,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 18,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=20),(Number=30),(Number=60))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 21,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.022393999621272087,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyPlayVoice",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Atk_Normal_05"
+    }
+   },
+   {
+    "time": 0.03388216719031334,
+    "duration": 0.06532499194145203,
+    "track": 12,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.04248133674263954,
+    "duration": 0,
+    "track": 16,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "40.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.04486867040395737,
+    "duration": 0.19821101427078247,
+    "track": 17,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.09947817027568817,
+    "duration": 0.11275999248027802,
+    "track": 12,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.10403600335121155,
+    "duration": 0.1151689887046814,
+    "track": 17,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 0.1093771681189537,
+    "duration": 0,
+    "track": 16,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "8.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.450000"
+    }
+   },
+   {
+    "time": 0.1111111119389534,
+    "duration": 0,
+    "track": 20,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.12222222983837128,
+    "duration": 0,
+    "track": 22,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.16723933815956116,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.04486867040395737,
+   0.10403600335121155
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_1_2.B_NAttack01_1_2": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_1_2.B_NAttack01_1_2",
+  "class": "AnimSequence",
+  "length": 0.06666667014360428,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 3,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.002503420924767852,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.06666667014360428,
+    "track": 5,
+    "name": "EndAnimNotifyStateOverrideCameraParams",
+    "class": "EndAnimNotifyStateOverrideCameraParams",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.0032751059625297785,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 11,
+    "name": "EndAnimNotifyBattleCancelDodge",
+    "class": "EndAnimNotifyBattleCancelDodge",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.06666667014360428,
+    "track": 14,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.06666667014360428,
+    "track": 15,
+    "name": "End Override Attack Direction",
+    "class": "AnimNotify_EndOverrideAttackDirection",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Yaw": "81.714294"
+    }
+   },
+   {
+    "time": 0.003034473629668355,
+    "duration": 0.017599841579794884,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Attack01",
+     "BlendInTime": "0.100000",
+     "BlendOutTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.004143263213336468,
+    "duration": 0.06252340972423553,
+    "track": 9,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.004474736750125885,
+    "duration": 0,
+    "track": 8,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "25.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.009068368934094906,
+    "duration": 0,
+    "track": 10,
+    "name": "EndAnimNotifyBattleAbilityCancel",
+    "class": "EndAnimNotifyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "(())"
+    }
+   },
+   {
+    "time": 0.012486622668802738,
+    "duration": 0,
+    "track": 12,
+    "name": "EndAnimNotifyBattleCancelGuard",
+    "class": "EndAnimNotifyBattleCancelGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.021013636142015457,
+    "duration": 0.031179051846265793,
+    "track": 4,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Angry01",
+     "BlendInTime": "0.100000"
+    }
+   },
+   {
+    "time": 0.04219169169664383,
+    "duration": 0,
+    "track": 13,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.004143263213336468
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/Vincent/Neutral00/N_Atk01.N_Atk01": {
+  "path": "/Game/RebirthSkelCompat/Built/Vincent/Neutral00/N_Atk01.N_Atk01",
+  "class": "AnimSequence",
+  "length": 0.6000000238418579,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+  "frames": 19,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.33198899030685425,
+    "track": 13,
+    "name": "End Modify LookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "AutoDisableLookAt"
+    }
+   },
+   {
+    "time": 0.03987604379653931,
+    "duration": 0,
+    "track": 11,
+    "name": "End PlayVoice[ VO_PC0000_00_Cloud :(Atk_Normal_02) ]",
+    "class": "EndAnimNotifyPlayVoice",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+     "SoundName": "Field_BreakingBox"
+    }
+   },
+   {
+    "time": 0.04736035689711571,
+    "duration": 0.12306931614875793,
+    "track": 12,
+    "name": "EndWeaponAttachment",
+    "class": "AnimNotify_EndWeaponAttachment",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SocketName": "Attach_Weapon_Left01"
+    }
+   },
+   {
+    "time": 0.07000000029802322,
+    "duration": 0.22355502843856812,
+    "track": 4,
+    "name": "End BattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"PC0000_00_FAtk001_01\")"
+    }
+   },
+   {
+    "time": 0.0773003026843071,
+    "duration": 0,
+    "track": 3,
+    "name": "EndBattleCameraShakeNotify",
+    "class": "EndBattleCameraShakeNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Cycle": "100.000000",
+     "Power": "20.000000",
+     "BlendOutTime": "1.000000",
+     "Duration": "0.300000"
+    }
+   },
+   {
+    "time": 0.1696932315826416,
+    "duration": 0.14906850457191467,
+    "track": 12,
+    "name": "EndWeaponAttachment",
+    "class": "AnimNotify_EndWeaponAttachment",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "SocketName": "Attach_Weapon_Right01"
+    }
+   },
+   {
+    "time": 0.17190256714820862,
+    "duration": 0,
+    "track": 5,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AfterWalkType": "Run"
+    }
+   },
+   {
+    "time": 0.3100767731666565,
+    "duration": 0,
+    "track": 6,
+    "name": "EndAnimNotifyBattleStateChange",
+    "class": "EndAnimNotifyBattleStateChange",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.07000000029802322
+  ]
+ }
+}

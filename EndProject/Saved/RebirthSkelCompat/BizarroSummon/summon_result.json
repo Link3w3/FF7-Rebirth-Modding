@@ -1,0 +1,29 @@
+{
+ "steps": [
+  "scanned",
+  "data_object",
+  "row",
+  "failed",
+  "build",
+  "checked",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Enemy/EB2210_BizarroSephiroth",
+  "/Game/Motion/Summon/SU2030_Alexander",
+  "/Game/Character/Enemy/EB2210_00_BizarroSephiroth_Standard",
+  "/Game/Character/Summon/SU2030_00_Alexander_Standard",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings"
+ ],
+ "data_object": "loaded /Game/RebirthSkelCompat/BizarroSummon/DO_BizarroSummon",
+ "row": "25 moves (23 to build)",
+ "failed": [],
+ "build": "23 of 23 built",
+ "checked": "24 package(s), all load back",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: OK",
+ "done": true
+}

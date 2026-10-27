@@ -1,0 +1,242 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Vincent fights as he does in Dirge of Cerberus (the Create a Character System 3.7 shooter): an over-the-shoulder camera, Dirge of Cerberus' reticle and bullet counter, Cerberus, Hydra and Griffon in his right hand firing his own bullets (PC0011_Dirge_* in FullyPlayableVincentAssets_P's damage table: a player's bullets, as Barret's are; Elena's, which the guns fired before, hit only the party) from its muzzle with his own gunshot (from the cutscene EV_FOREE_0630), a clip that reloads (the ammo never runs out), his Dirge of Cerberus stance (his battle idle: \"moves\"), aiming (L2) the game's guard-walk (3.7.3 \"strafe\": the game sees R1, its guard button, held while he aims) playing his Dirge of Cerberus aim-runs every way he moves while he faces the reticle, and his aim stance standing (B_Guard01_1: \"moves\"), and his Dirge of Cerberus walk, run and strafes (Vincent_Moves.json: moves built over them with the root motion of the game's walks and runs, which is what moves a character in battle; the motions alone stand in place, so as \"moves\" they left him walking on the spot), DualSense adaptive triggers. Square stays his Dirge of Cerberus melee combo (Vincent_Moves.json). Cloud in his SOLDIER uniform (the prologue) is Vincent too. Parts from the weapon vendors (zzVincentGunShop_P: a Power Core, Hair Trigger, Extended Magazine and Long Barrel for each gun, up to 5 of each) make his guns stronger as he holds them (3.7.4 \"upgrades\": the bullet rows PC0011_Dirge_<gun>_P<power>R<range>, shorter times between shots, more rounds, faster reloads, more reach; each gun's \"range\" is its bullet's reach without a Long Barrel).",
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0000_00_Cloud_Standard",
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0000_23_Cloud_ZackCostumeWet"
+   ],
+   "moves": {
+    "Battle00/B_Idle01_0": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap",
+    "Battle00/B_Idle01_1": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap",
+    "Battle00/B_Idle01_2": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap",
+    "Battle00/B_Guard01_1": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_a_remap"
+   },
+   "shooter": {
+    "controls": "triggers",
+    "triggers": true,
+    "assist": 2.5,
+    "strafe": true,
+    "camera": {
+     "distance": 250,
+     "side": 55,
+     "height": 20,
+     "aim_distance": 130,
+     "aim_side": 50,
+     "aim_height": 12,
+     "pivot": 60,
+     "aim_fov": 55,
+     "zoom_fov": 25,
+     "blend": 0.2,
+     "aim_scale": 0.55,
+     "zoom_scale": 0.3,
+     "pitch_min": -70,
+     "pitch_max": 75,
+     "camera_abilities": [
+      "*NAtk*",
+      "*Avoid*",
+      "*Dodge*",
+      "*Guard*"
+     ]
+    },
+    "reticle": {
+     "ui_folder": "dirge_ui",
+     "scale": 0.55,
+     "hud_scale": 1.0,
+     "ammo": true
+    },
+    "motions": {
+     "folder": "/Game/RebirthSkelCompat/Dirge/Vincent",
+     "slot": "DefaultSlot",
+     "turn_actor": true,
+     "stand": false,
+     "walking": false,
+     "running": false
+    },
+    "weapons": [
+     {
+      "name": "CERBERUS",
+      "clip": 6,
+      "interval": 0.22,
+      "reload": 1.3,
+      "damage_source": "PC0011_Dirge_Cerberus",
+      "range": 3000.0,
+      "upgrades": [
+       {
+        "item": "key_dirge_cerberus_power",
+        "id": 3860,
+        "row": "P",
+        "levels": 5
+       },
+       {
+        "item": "key_dirge_cerberus_barrel",
+        "id": 3863,
+        "row": "R",
+        "range": [
+         1.2,
+         1.4,
+         1.6,
+         1.8,
+         2.0
+        ]
+       },
+       {
+        "item": "key_dirge_cerberus_trigger",
+        "id": 3861,
+        "interval": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       },
+       {
+        "item": "key_dirge_cerberus_magazine",
+        "id": 3862,
+        "clip": [
+         1,
+         2,
+         3,
+         4,
+         5
+        ],
+        "reload": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       }
+      ]
+     },
+     {
+      "name": "HYDRA",
+      "clip": 30,
+      "interval": 0.1,
+      "automatic": true,
+      "reload": 1.8,
+      "damage_source": "PC0011_Dirge_Hydra",
+      "range": 2000.0,
+      "upgrades": [
+       {
+        "item": "key_dirge_hydra_power",
+        "id": 3864,
+        "row": "P",
+        "levels": 5
+       },
+       {
+        "item": "key_dirge_hydra_barrel",
+        "id": 3867,
+        "row": "R",
+        "range": [
+         1.2,
+         1.4,
+         1.6,
+         1.8,
+         2.0
+        ]
+       },
+       {
+        "item": "key_dirge_hydra_trigger",
+        "id": 3865,
+        "interval": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       },
+       {
+        "item": "key_dirge_hydra_magazine",
+        "id": 3866,
+        "clip": [
+         6,
+         12,
+         18,
+         24,
+         30
+        ],
+        "reload": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       }
+      ]
+     },
+     {
+      "name": "GRIFFON",
+      "clip": 5,
+      "interval": 0.9,
+      "reload": 2.0,
+      "damage_source": "PC0011_Dirge_Griffon",
+      "range": 4500.0,
+      "upgrades": [
+       {
+        "item": "key_dirge_griffon_power",
+        "id": 3868,
+        "row": "P",
+        "levels": 5
+       },
+       {
+        "item": "key_dirge_griffon_barrel",
+        "id": 3871,
+        "row": "R",
+        "range": [
+         1.2,
+         1.4,
+         1.6,
+         1.8,
+         2.0
+        ]
+       },
+       {
+        "item": "key_dirge_griffon_trigger",
+        "id": 3869,
+        "interval": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       },
+       {
+        "item": "key_dirge_griffon_magazine",
+        "id": 3870,
+        "clip": [
+         1,
+         2,
+         3,
+         4,
+         5
+        ],
+        "reload": [
+         0.92,
+         0.84,
+         0.76,
+         0.68,
+         0.6
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "requires_paks": [
+    "FullyPlayableVincentAssets_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

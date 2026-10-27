@@ -1,0 +1,40 @@
+Material EndMaterial_Blood
+  PIN BaseColor              <- MaterialExpressionLinearInterpolate_1[0]
+  PIN Metallic               <- MaterialExpressionConstant_5[0]
+  PIN Specular               <- MaterialExpressionMaterialFunctionCall_5[0]
+  PIN Roughness              <- MaterialExpressionConstant_8[0]
+  PIN Normal                 <- MaterialExpressionMaterialFunctionCall_14[0]
+  PIN OpacityMask            <- MaterialExpressionStaticSwitchParameter_24[0]
+  PIN AmbientOcclusion       <- MaterialExpressionComponentMask_11[0]
+  MaterialExpressionMaterialFunctionCall_5 (MaterialFunctionCall) {"function": "EncodeReflectance"}
+      Reflectance      <- MaterialExpressionConstant_3[0]
+  MaterialExpressionMaterialFunctionCall_14 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_6[0]
+  MaterialExpressionStaticSwitchParameter_5 (StaticSwitchParameter) {"ParameterName": "Coverage", "Group": "Static"}
+      A                <- MaterialExpressionComponentMask_0[0]
+      B                <- MaterialExpressionConstant_0[0]
+  MaterialExpressionStaticSwitchParameter_24 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_LITE_DECAL", "ParameterName": "LiteDecal", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_5[0]
+      B                <- MaterialExpressionStaticSwitchParameter_5[0]
+  MaterialExpressionTextureSampleParameter2D_0 (TextureSampleParameter2D) {"ParameterName": "C:1:Hematocrit", "Group": "Texture", "SamplerSource": "ESamplerSourceMode::SSM_Clamp_WorldGroupSettings", "texture": "767676FF_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionConstant2Vector_1[0]
+  MaterialExpressionTextureSampleParameter2D_2 (TextureSampleParameter2D) {"ParameterName": "0:1:Coverage", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "1:0:Occlusion", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  MaterialExpressionTextureSampleParameter2D_6 (TextureSampleParameter2D) {"ParameterName": "C:0:OxygenSaturation", "Group": "Texture", "SamplerSource": "ESamplerSourceMode::SSM_Clamp_WorldGroupSettings", "texture": "767676FF_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionConstant2Vector_1[0]
+  MaterialExpressionTextureSampleParameter2D_7 (TextureSampleParameter2D) {"ParameterName": "0:3:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  stripped expressions referred to: 11
+    MaterialExpressionComponentMask_0             <- used by MaterialExpressionStaticSwitchParameter_5.A
+    MaterialExpressionComponentMask_11            <- used by <pins>.AmbientOcclusion
+    MaterialExpressionComponentMask_6             <- used by MaterialExpressionMaterialFunctionCall_14.NormalRG
+    MaterialExpressionConstant2Vector_1           <- used by MaterialExpressionTextureSampleParameter2D_0.Coordinates, MaterialExpressionTextureSampleParameter2D_6.Coordinates
+    MaterialExpressionConstant_0                  <- used by MaterialExpressionStaticSwitchParameter_5.B
+    MaterialExpressionConstant_3                  <- used by MaterialExpressionMaterialFunctionCall_5.Reflectance
+    MaterialExpressionConstant_5                  <- used by <pins>.Metallic
+    MaterialExpressionConstant_8                  <- used by <pins>.Roughness
+    MaterialExpressionLinearInterpolate_1         <- used by <pins>.BaseColor
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionTextureSampleParameter2D_2.Coordinates, MaterialExpressionTextureSampleParameter2D_7.Coordinates
+    MaterialExpressionTextureCoordinate_3         <- used by MaterialExpressionTextureSampleParameter2D_5.Coordinates

@@ -1,0 +1,528 @@
+== NiagaraSystem
+             NiagaraSystem                bSupportLargeWorldCoordinates                           Bool
+             NiagaraSystem                bOverrideCastShadow                                     Bool
+             NiagaraSystem                bOverrideReceivesDecals                                 Bool
+             NiagaraSystem                bOverrideRenderCustomDepth                              Bool
+             NiagaraSystem                bOverrideCustomDepthStencilValue                        Bool
+             NiagaraSystem                bOverrideCustomDepthStencilWriteMask                    Bool
+             NiagaraSystem                bOverrideTranslucencySortPriority                       Bool
+             NiagaraSystem                bOverrideTranslucencySortDistanceOffset                 Bool
+             NiagaraSystem                bCastShadow                                             Bool
+             NiagaraSystem                bReceivesDecals                                         Bool
+             NiagaraSystem                bRenderCustomDepth                                      Bool
+             NiagaraSystem                bDisableExperimentalVM                                  Bool
+             NiagaraSystem                CustomDepthStencilWriteMask                             Enum<ERendererStencilMask:Byte>
+             NiagaraSystem                CustomDepthStencilValue                                 Int
+             NiagaraSystem                TranslucencySortPriority                                Int
+             NiagaraSystem                TranslucencySortDistanceOffset                          Float
+             NiagaraSystem                bDumpDebugSystemInfo                                    Bool
+             NiagaraSystem                bDumpDebugEmitterInfo                                   Bool
+             NiagaraSystem                bRequireCurrentFrameData                                Bool
+   81        NiagaraSystem                bFixedBounds                                            Bool
+             NiagaraSystem                EffectType                                              Object
+             NiagaraSystem                bOverrideScalabilitySettings                            Bool
+             NiagaraSystem                bOverrideAllowCullingForLocalPlayers                    Bool
+             NiagaraSystem                m_bVfxIgnoreLowPerformance_ScalabilitySettings_MaxDistance Bool
+             NiagaraSystem                ScalabilityOverrides                                    Array<Struct<NiagaraSystemScalabilityOverride>>
+             NiagaraSystem                SystemScalabilityOverrides                              Struct<NiagaraSystemScalabilityOverrides>
+   86   1    NiagaraSystem                EmitterHandles                                          Array<Struct<NiagaraEmitterHandle>>
+             NiagaraSystem                ParameterCollectionOverrides                            Array<Object>
+   86   1    NiagaraSystem                SystemSpawnScript                                       Object
+   86   1    NiagaraSystem                SystemUpdateScript                                      Object
+   42        NiagaraSystem                m_VfxRefDataInterfaceAssetMap                           Map<UInt32,Object>
+   86   1    NiagaraSystem                SystemCompiledData                                      Struct<NiagaraSystemCompiledData>
+   86   1    NiagaraSystem                ExposedParameters                                       Struct<NiagaraUserRedirectionParameterStore>
+   80        NiagaraSystem                FixedBounds                                             Struct<Box>
+             NiagaraSystem                bAutoDeactivate                                         Bool
+   86        NiagaraSystem                bDeterminism                                            Bool
+             NiagaraSystem                RandomSeed                                              Int
+             NiagaraSystem                WarmupTime                                              Float
+             NiagaraSystem                WarmupTickCount                                         Int
+             NiagaraSystem                WarmupTickDelta                                         Float
+             NiagaraSystem                bFixedTickDelta                                         Bool
+             NiagaraSystem                FixedTickDeltaTime                                      Float
+   44        NiagaraSystem                bHasSystemScriptDIsWithPerInstanceData                  Bool
+             NiagaraSystem                bNeedsGPUContextInitForDataInterfaces                   Bool
+             NiagaraSystem                UserDINamesReadInSystemScripts                          Array<Name>
+             FXSystemAsset                MaxPoolSize                                             UInt32
+             FXSystemAsset                PoolPrimeSize                                           UInt32
+   81        FXSystemAsset                m_EndEffectExtraData                                    Struct<EndEffectExtraData>
+   editor-only: ['EditorData']
+== NiagaraEmitter
+             NiagaraEmitter               ExposedVersion                                          Struct<Guid>
+             NiagaraEmitter               VersionData                                             Array<Struct<VersionedNiagaraEmitterData>>
+             NiagaraEmitter               bVersioningEnabled                                      Bool
+   107  2    NiagaraEmitter               bLocalSpace                                             Bool
+   9         NiagaraEmitter               bDeterminism                                            Bool
+             NiagaraEmitter               AllocationMode                                          Enum<EParticleAllocationMode:Byte>
+             NiagaraEmitter               RandomSeed                                              Int
+             NiagaraEmitter               PreAllocationCount                                      Int
+   393  26   NiagaraEmitter               UpdateScriptProps                                       Struct<NiagaraEmitterScriptProperties>
+   393  26   NiagaraEmitter               SpawnScriptProps                                        Struct<NiagaraEmitterScriptProperties>
+   253       NiagaraEmitter               FixedBounds                                             Struct<Box>
+             NiagaraEmitter               MinDetailLevel                                          Int
+             NiagaraEmitter               MaxDetailLevel                                          Int
+             NiagaraEmitter               GlobalSpawnCountScaleOverrides                          Struct<NiagaraDetailsLevelScaleOverrides>
+   393  26   NiagaraEmitter               Platforms                                               Struct<NiagaraPlatformSet>
+             NiagaraEmitter               ScalabilityOverrides                                    Struct<NiagaraEmitterScalabilityOverrides>
+             NiagaraEmitter               RendererBindings                                        Struct<NiagaraParameterStore>
+             NiagaraEmitter               MaxDeltaTimePerTick                                     Float
+             NiagaraEmitter               m_VfxLowPerformance_SpawnCountScale                     Float
+             NiagaraEmitter               MaxGPUParticlesSpawnPerFrame                            Int
+   13        NiagaraEmitter               m_VfxMaterialIndependentParameter_RandomSeed            Int
+   145       NiagaraEmitter               SimTarget                                               Enum<ENiagaraSimTarget:Byte>
+   326  26   NiagaraEmitter               bInterpolatedSpawning                                   Bool
+   309       NiagaraEmitter               bFixedBounds                                            Bool
+             NiagaraEmitter               bUseMinDetailLevel                                      Bool
+             NiagaraEmitter               bUseMaxDetailLevel                                      Bool
+             NiagaraEmitter               bOverrideGlobalSpawnCountScale                          Bool
+   16        NiagaraEmitter               bRequiresPersistentIDs                                  Bool
+             NiagaraEmitter               bCombineEventSpawn                                      Bool
+             NiagaraEmitter               bLimitDeltaTime                                         Bool
+             NiagaraEmitter               bSimulationStagesEnabled                                Bool
+             NiagaraEmitter               bDeprecatedShaderStagesEnabled                          Bool
+   9         NiagaraEmitter               m_VfxUseSceneTexture                                    Bool
+   75        NiagaraEmitter               m_VfxDisableLowPerformance                              Bool
+             NiagaraEmitter               m_VfxDisableHandheld                                    Bool
+   108       NiagaraEmitter               m_VfxSpawnRate                                          Bool
+   309       NiagaraEmitter               m_VfxSpawnBurst                                         Bool
+   4         NiagaraEmitter               m_VfxSpawnPerFrame                                      Bool
+   13        NiagaraEmitter               m_VfxSpawnPerUnit                                       Bool
+   393  26   NiagaraEmitter               UniqueEmitterName                                       Str
+   358  13   NiagaraEmitter               RendererProperties                                      Array<Object>
+   1         NiagaraEmitter               EventHandlerScriptProps                                 Array<Struct<NiagaraEventScriptProperties>>
+             NiagaraEmitter               SimulationStages                                        Array<Object>
+   393  26   NiagaraEmitter               GPUComputeScript                                        Object
+   1         NiagaraEmitter               SharedEventGeneratorIds                                 Array<Name>
+   78   13   NiagaraEmitter               Parent                                                  Object
+   78        NiagaraEmitter               m_VfxRandomSeed_SpawnOnly_Params                        Array<Struct<NiagaraVariable>>
+             NiagaraEmitter               m_VfxRandomSeed_EveryFrame_Params                       Array<Struct<NiagaraVariable>>
+   editor-only: ['EmitterSpawnScriptProps', 'EmitterUpdateScriptProps', 'GraphSource', 'ThumbnailImage', 'TemplateAssetDescription', 'ChangeId', 'EditorData', 'ParentAtLastMerge', 'MessageKeyToMessageMap']
+== NiagaraScript
+   78        NiagaraScript                m_VfxParentEmitterScript                                Object
+   814  145  NiagaraScript                Usage                                                   Enum<ENiagaraScriptUsage:Byte>
+   1         NiagaraScript                UsageId                                                 Struct<Guid>
+   814  145  NiagaraScript                RapidIterationParameters                                Struct<NiagaraParameterStore>
+   814  28   NiagaraScript                ScriptExecutionParamStore                               Struct<NiagaraScriptExecutionParameterStore>
+   78        NiagaraScript                ScriptExecutionBoundParameters                          Array<Struct<NiagaraBoundParameter>>
+   814  28   NiagaraScript                CachedScriptVMId                                        Struct<NiagaraVMExecutableDataId>
+   814  28   NiagaraScript                CachedScriptVM                                          Struct<NiagaraVMExecutableData>
+             NiagaraScript                CachedParameterCollectionReferences                     Array<Object>
+   592  27   NiagaraScript                CachedDefaultDataInterfaces                             Array<Struct<NiagaraScriptDataInterfaceInfo>>
+   editor-only: ['LibraryVisibility', 'Source', 'LastGeneratedVMId', 'ModuleUsageBitmask', 'Description']
+== NiagaraSpriteRendererProperties
+   197  6    NiagaraSpriteRendererPropert Material                                                Object
+             NiagaraSpriteRendererPropert SourceMode                                              Enum<ENiagaraRendererSourceDataMode:Byte>
+        7    NiagaraSpriteRendererPropert MaterialUserParamBinding                                Struct<NiagaraUserParameterBinding>
+   81        NiagaraSpriteRendererPropert Alignment                                               Enum<ENiagaraSpriteAlignment:Byte>
+   2    4    NiagaraSpriteRendererPropert FacingMode                                              Enum<ENiagaraSpriteFacingMode:Byte>
+   4         NiagaraSpriteRendererPropert PivotInUVSpace                                          Struct<Vector2D>
+             NiagaraSpriteRendererPropert MacroUVRadius                                           Float
+   3         NiagaraSpriteRendererPropert SortMode                                                Enum<ENiagaraSortMode:Byte>
+   89        NiagaraSpriteRendererPropert SubImageSize                                            Struct<Vector2D>
+             NiagaraSpriteRendererPropert bSubImageBlend                                          Bool
+             NiagaraSpriteRendererPropert bRemoveHMDRollInVR                                      Bool
+             NiagaraSpriteRendererPropert bSortOnlyWhenTranslucent                                Bool
+             NiagaraSpriteRendererPropert SortPrecision                                           Enum<ENiagaraRendererSortPrecision:Byte>
+             NiagaraSpriteRendererPropert bGpuLowLatencyTranslucency                              Bool
+             NiagaraSpriteRendererPropert MinFacingCameraBlendDistance                            Float
+             NiagaraSpriteRendererPropert MaxFacingCameraBlendDistance                            Float
+             NiagaraSpriteRendererPropert bEnableCameraDistanceCulling                            Bool
+             NiagaraSpriteRendererPropert MinCameraDistance                                       Float
+             NiagaraSpriteRendererPropert MaxCameraDistance                                       Float
+             NiagaraSpriteRendererPropert RendererVisibility                                      UInt32
+   197  7    NiagaraSpriteRendererPropert PositionBinding                                         Struct<NiagaraVariableAttributeBinding>
+   75   7    NiagaraSpriteRendererPropert ColorBinding                                            Struct<NiagaraVariableAttributeBinding>
+   167  3    NiagaraSpriteRendererPropert VelocityBinding                                         Struct<NiagaraVariableAttributeBinding>
+   87   7    NiagaraSpriteRendererPropert SpriteRotationBinding                                   Struct<NiagaraVariableAttributeBinding>
+   197  7    NiagaraSpriteRendererPropert SpriteSizeBinding                                       Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert SpriteFacingBinding                                     Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert SpriteAlignmentBinding                                  Struct<NiagaraVariableAttributeBinding>
+   87        NiagaraSpriteRendererPropert SubImageIndexBinding                                    Struct<NiagaraVariableAttributeBinding>
+   128  4    NiagaraSpriteRendererPropert CameraOffsetBinding                                     Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraSpriteRendererPropert UVScaleBinding                                          Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PivotOffsetBinding                                      Struct<NiagaraVariableAttributeBinding>
+   197  7    NiagaraSpriteRendererPropert MaterialRandomBinding                                   Struct<NiagaraVariableAttributeBinding>
+   197  7    NiagaraSpriteRendererPropert CustomSortingBinding                                    Struct<NiagaraVariableAttributeBinding>
+   197  7    NiagaraSpriteRendererPropert NormalizedAgeBinding                                    Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert RendererVisibilityTagBinding                            Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraSpriteRendererPropert MaterialParameterBindings                               Array<Struct<NiagaraMaterialAttributeBinding>>
+             NiagaraSpriteRendererPropert VfxLensFlare                                            Bool
+             NiagaraSpriteRendererPropert PrevPositionBinding                                     Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevVelocityBinding                                     Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevSpriteRotationBinding                               Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevSpriteSizeBinding                                   Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevSpriteFacingBinding                                 Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevSpriteAlignmentBinding                              Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevCameraOffsetBinding                                 Struct<NiagaraVariableAttributeBinding>
+             NiagaraSpriteRendererPropert PrevPivotOffsetBinding                                  Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    Platforms                                               Struct<NiagaraPlatformSet>
+   44        NiagaraRendererProperties    SortOrderHint                                           Int
+             NiagaraRendererProperties    MotionVectorSetting                                     Enum<ENiagaraRendererMotionVectorSetting:Int>
+   196       NiagaraRendererProperties    RendererEnabledBinding                                  Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bIsEnabled                                              Bool
+             NiagaraRendererProperties    bAllowInCullProxies                                     Bool
+             NiagaraRendererProperties    OuterEmitterVersion                                     Struct<Guid>
+   86        NiagaraRendererProperties    VfxSubImage                                             Bool
+             NiagaraRendererProperties    VfxSubImageRepeat                                       Bool
+   197       NiagaraRendererProperties    VfxMaterialResident                                     Bool
+   153       NiagaraRendererProperties    VfxMaterialEmit                                         Bool
+             NiagaraRendererProperties    VfxMaterialOpaque                                       Bool
+             NiagaraRendererProperties    VfxMaterialChara                                        Bool
+             NiagaraRendererProperties    VfxMaterialOrthographic                                 Bool
+             NiagaraRendererProperties    VfxMaterialGlare                                        Bool
+   2         NiagaraRendererProperties    VfxMaterialBlur                                         Bool
+   1         NiagaraRendererProperties    VfxOverrideCullMode                                     Bool
+   1         NiagaraRendererProperties    VfxCullMode                                             Enum<EVfxCullModeKind:Byte>
+             NiagaraRendererProperties    VfxOverride_ExtraRenderPass                             Bool
+             NiagaraRendererProperties    VfxExtraRenderPass                                      Enum<EVfxExtraRenderPass:Int8>
+             NiagaraRendererProperties    VfxBillBoardParticleLocation                            Bool
+             NiagaraRendererProperties    VfxParticleLocationToOrthographicSpace                  Bool
+             NiagaraRendererProperties    VfxDisableLowPerformance                                Bool
+   126       NiagaraRendererProperties    VfxParticleFadeDistancePreset                           Enum<EVfxParticleFadeDistancePreset:Byte>
+             NiagaraRendererProperties    VfxMaterialVABKind                                      Enum<EVfxMaterialVABKind:Int8>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters0_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters1_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters2_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters3_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters4_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters5_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters6_Binding               Struct<NiagaraVariableAttributeBinding>
+   197       NiagaraRendererProperties    VfxMaterialIndependentParameters7_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bMotionBlurEnabled                                      Bool
+   editor-only: ['MergeId']
+== NiagaraMeshRendererProperties
+   171       NiagaraMeshRendererPropertie Meshes                                                  Array<Struct<NiagaraMeshRendererMeshProperties>>
+             NiagaraMeshRendererPropertie SourceMode                                              Enum<ENiagaraRendererSourceDataMode:Byte>
+   1         NiagaraMeshRendererPropertie SortMode                                                Enum<ENiagaraSortMode:Byte>
+   166  6    NiagaraMeshRendererPropertie bOverrideMaterials                                      Bool
+             NiagaraMeshRendererPropertie bSortOnlyWhenTranslucent                                Bool
+             NiagaraMeshRendererPropertie SortPrecision                                           Enum<ENiagaraRendererSortPrecision:Byte>
+             NiagaraMeshRendererPropertie bGpuLowLatencyTranslucency                              Bool
+   1         NiagaraMeshRendererPropertie bSubImageBlend                                          Bool
+             NiagaraMeshRendererPropertie bEnableFrustumCulling                                   Bool
+             NiagaraMeshRendererPropertie bEnableCameraDistanceCulling                            Bool
+             NiagaraMeshRendererPropertie bEnableMeshFlipbook                                     Bool
+   171  6    NiagaraMeshRendererPropertie OverrideMaterials                                       Array<Struct<NiagaraMeshMaterialOverride>>
+   14        NiagaraMeshRendererPropertie SubImageSize                                            Struct<Vector2D>
+   40        NiagaraMeshRendererPropertie FacingMode                                              Enum<ENiagaraMeshFacingMode:Byte>
+   14        NiagaraMeshRendererPropertie bLockedAxisEnable                                       Bool
+   9         NiagaraMeshRendererPropertie LockedAxis                                              Struct<Vector>
+             NiagaraMeshRendererPropertie LockedAxisSpace                                         Enum<ENiagaraMeshLockedAxisSpace:Byte>
+             NiagaraMeshRendererPropertie MinCameraDistance                                       Float
+             NiagaraMeshRendererPropertie MaxCameraDistance                                       Float
+             NiagaraMeshRendererPropertie RendererVisibility                                      UInt32
+   168  6    NiagaraMeshRendererPropertie PositionBinding                                         Struct<NiagaraVariableAttributeBinding>
+   105  6    NiagaraMeshRendererPropertie ColorBinding                                            Struct<NiagaraVariableAttributeBinding>
+   42        NiagaraMeshRendererPropertie VelocityBinding                                         Struct<NiagaraVariableAttributeBinding>
+   163       NiagaraMeshRendererPropertie MeshOrientationBinding                                  Struct<NiagaraVariableAttributeBinding>
+   171  6    NiagaraMeshRendererPropertie ScaleBinding                                            Struct<NiagaraVariableAttributeBinding>
+   15        NiagaraMeshRendererPropertie SubImageIndexBinding                                    Struct<NiagaraVariableAttributeBinding>
+   171  6    NiagaraMeshRendererPropertie MaterialRandomBinding                                   Struct<NiagaraVariableAttributeBinding>
+   171  6    NiagaraMeshRendererPropertie CustomSortingBinding                                    Struct<NiagaraVariableAttributeBinding>
+   171  6    NiagaraMeshRendererPropertie NormalizedAgeBinding                                    Struct<NiagaraVariableAttributeBinding>
+   69   2    NiagaraMeshRendererPropertie CameraOffsetBinding                                     Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie RendererVisibilityTagBinding                            Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie MeshIndexBinding                                        Struct<NiagaraVariableAttributeBinding>
+   166       NiagaraMeshRendererPropertie MaterialParameterBindings                               Array<Struct<NiagaraMaterialAttributeBinding>>
+             NiagaraMeshRendererPropertie PreviousPositionBinding                                 Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie PreviousVelocityBinding                                 Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie PreviousScaleBinding                                    Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie PreviousMeshOrientationBinding                          Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie PreviousCameraOffsetBinding                             Struct<NiagaraVariableAttributeBinding>
+             NiagaraMeshRendererPropertie PreviousSubImageIndexBinding                            Struct<NiagaraVariableAttributeBinding>
+        6    NiagaraMeshRendererPropertie ParticleMesh                                            Object
+             NiagaraMeshRendererPropertie PivotOffset                                             Struct<Vector>
+             NiagaraMeshRendererPropertie PivotOffsetSpace                                        Enum<ENiagaraMeshPivotOffsetSpace:Byte>
+             NiagaraRendererProperties    Platforms                                               Struct<NiagaraPlatformSet>
+   50        NiagaraRendererProperties    SortOrderHint                                           Int
+             NiagaraRendererProperties    MotionVectorSetting                                     Enum<ENiagaraRendererMotionVectorSetting:Int>
+   169       NiagaraRendererProperties    RendererEnabledBinding                                  Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bIsEnabled                                              Bool
+             NiagaraRendererProperties    bAllowInCullProxies                                     Bool
+             NiagaraRendererProperties    OuterEmitterVersion                                     Struct<Guid>
+   15        NiagaraRendererProperties    VfxSubImage                                             Bool
+   8         NiagaraRendererProperties    VfxSubImageRepeat                                       Bool
+   166       NiagaraRendererProperties    VfxMaterialResident                                     Bool
+   117       NiagaraRendererProperties    VfxMaterialEmit                                         Bool
+   5         NiagaraRendererProperties    VfxMaterialOpaque                                       Bool
+   5         NiagaraRendererProperties    VfxMaterialChara                                        Bool
+             NiagaraRendererProperties    VfxMaterialOrthographic                                 Bool
+             NiagaraRendererProperties    VfxMaterialGlare                                        Bool
+   15        NiagaraRendererProperties    VfxMaterialBlur                                         Bool
+   124       NiagaraRendererProperties    VfxOverrideCullMode                                     Bool
+   140       NiagaraRendererProperties    VfxCullMode                                             Enum<EVfxCullModeKind:Byte>
+             NiagaraRendererProperties    VfxOverride_ExtraRenderPass                             Bool
+             NiagaraRendererProperties    VfxExtraRenderPass                                      Enum<EVfxExtraRenderPass:Int8>
+             NiagaraRendererProperties    VfxBillBoardParticleLocation                            Bool
+             NiagaraRendererProperties    VfxParticleLocationToOrthographicSpace                  Bool
+             NiagaraRendererProperties    VfxDisableLowPerformance                                Bool
+   108       NiagaraRendererProperties    VfxParticleFadeDistancePreset                           Enum<EVfxParticleFadeDistancePreset:Byte>
+   11        NiagaraRendererProperties    VfxMaterialVABKind                                      Enum<EVfxMaterialVABKind:Int8>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters0_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters1_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters2_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters3_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters4_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters5_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters6_Binding               Struct<NiagaraVariableAttributeBinding>
+   171       NiagaraRendererProperties    VfxMaterialIndependentParameters7_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bMotionBlurEnabled                                      Bool
+   editor-only: ['MergeId', 'DynamicMaterialBinding']
+== NiagaraLightRendererProperties
+             NiagaraLightRendererProperti bUseInverseSquaredFalloff                               Bool
+             NiagaraLightRendererProperti bAffectsTranslucency                                    Bool
+             NiagaraLightRendererProperti bAlphaScalesBrightness                                  Bool
+             NiagaraLightRendererProperti RadiusScale                                             Float
+             NiagaraLightRendererProperti DefaultExponent                                         Float
+             NiagaraLightRendererProperti ColorAdd                                                Struct<Vector>
+             NiagaraLightRendererProperti RendererVisibility                                      Int
+             NiagaraLightRendererProperti LightRenderingEnabledBinding                            Struct<NiagaraVariableAttributeBinding>
+             NiagaraLightRendererProperti LightExponentBinding                                    Struct<NiagaraVariableAttributeBinding>
+        1    NiagaraLightRendererProperti PositionBinding                                         Struct<NiagaraVariableAttributeBinding>
+        1    NiagaraLightRendererProperti ColorBinding                                            Struct<NiagaraVariableAttributeBinding>
+        1    NiagaraLightRendererProperti RadiusBinding                                           Struct<NiagaraVariableAttributeBinding>
+             NiagaraLightRendererProperti VolumetricScatteringBinding                             Struct<NiagaraVariableAttributeBinding>
+             NiagaraLightRendererProperti RendererVisibilityTagBinding                            Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    Platforms                                               Struct<NiagaraPlatformSet>
+             NiagaraRendererProperties    SortOrderHint                                           Int
+             NiagaraRendererProperties    MotionVectorSetting                                     Enum<ENiagaraRendererMotionVectorSetting:Int>
+             NiagaraRendererProperties    RendererEnabledBinding                                  Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bIsEnabled                                              Bool
+             NiagaraRendererProperties    bAllowInCullProxies                                     Bool
+             NiagaraRendererProperties    OuterEmitterVersion                                     Struct<Guid>
+             NiagaraRendererProperties    VfxSubImage                                             Bool
+             NiagaraRendererProperties    VfxSubImageRepeat                                       Bool
+             NiagaraRendererProperties    VfxMaterialResident                                     Bool
+             NiagaraRendererProperties    VfxMaterialEmit                                         Bool
+             NiagaraRendererProperties    VfxMaterialOpaque                                       Bool
+             NiagaraRendererProperties    VfxMaterialChara                                        Bool
+             NiagaraRendererProperties    VfxMaterialOrthographic                                 Bool
+             NiagaraRendererProperties    VfxMaterialGlare                                        Bool
+             NiagaraRendererProperties    VfxMaterialBlur                                         Bool
+             NiagaraRendererProperties    VfxOverrideCullMode                                     Bool
+             NiagaraRendererProperties    VfxCullMode                                             Enum<EVfxCullModeKind:Byte>
+             NiagaraRendererProperties    VfxOverride_ExtraRenderPass                             Bool
+             NiagaraRendererProperties    VfxExtraRenderPass                                      Enum<EVfxExtraRenderPass:Int8>
+             NiagaraRendererProperties    VfxBillBoardParticleLocation                            Bool
+             NiagaraRendererProperties    VfxParticleLocationToOrthographicSpace                  Bool
+             NiagaraRendererProperties    VfxDisableLowPerformance                                Bool
+             NiagaraRendererProperties    VfxParticleFadeDistancePreset                           Enum<EVfxParticleFadeDistancePreset:Byte>
+             NiagaraRendererProperties    VfxMaterialVABKind                                      Enum<EVfxMaterialVABKind:Int8>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters0_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters1_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters2_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters3_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters4_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters5_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters6_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    VfxMaterialIndependentParameters7_Binding               Struct<NiagaraVariableAttributeBinding>
+             NiagaraRendererProperties    bMotionBlurEnabled                                      Bool
+   editor-only: ['MergeId']
+== NiagaraVMExecutableData
+   669  28   NiagaraVMExecutableData      ByteCode                                                Array<Byte>
+   585       NiagaraVMExecutableData      UncompressedSize                                        Int
+             NiagaraVMExecutableData      OptimizedByteCode                                       Struct<NiagaraVMExecutableByteCode>
+   669  28   NiagaraVMExecutableData      NumTempRegisters                                        Int
+   134       NiagaraVMExecutableData      NumUserPtrs                                             Int
+   669  28   NiagaraVMExecutableData      ScriptLiterals                                          Array<Byte>
+        28   NiagaraVMExecutableData      Attributes                                              Array<Struct<NiagaraVariable>>
+             NiagaraVMExecutableData      DataUsage                                               Struct<NiagaraScriptDataUsageInfo>
+   592  27   NiagaraVMExecutableData      DataInterfaceInfo                                       Array<Struct<NiagaraScriptDataInterfaceCompileInfo>>
+   415  27   NiagaraVMExecutableData      CalledVMExternalFunctions                               Array<Struct<VMExternalFunctionBindingInfo>>
+   1         NiagaraVMExecutableData      ReadDataSets                                            Array<Struct<NiagaraDataSetID>>
+   2         NiagaraVMExecutableData      WriteDataSets                                           Array<Struct<NiagaraDataSetProperties>>
+   141       NiagaraVMExecutableData      ShaderScriptParametersMetadata                          Struct<NiagaraShaderScriptParametersMetadata>
+   814  28   NiagaraVMExecutableData      LastCompileStatus                                       Enum<ENiagaraScriptCompileStatus:Byte>
+   145       NiagaraVMExecutableData      SimulationStageMetaData                                 Array<Struct<SimulationStageMetaData>>
+             NiagaraVMExecutableData      bReadsSignificanceIndex                                 Bool
+             NiagaraVMExecutableData      bNeedsGPUContextInit                                    Bool
+   editor-only: ['Parameters', 'InternalParameters', 'StatScopes', 'LastHlslTranslation', 'LastAssemblyTranslation', 'LastOpCount', 'DataSetToParameters']
+== NiagaraVMExecutableDataId
+   814  108  NiagaraVMExecutableDataId    CompilerVersionID                                       Struct<Guid>
+   814  108  NiagaraVMExecutableDataId    ScriptUsageType                                         Enum<ENiagaraScriptUsage:Byte>
+   1         NiagaraVMExecutableDataId    ScriptUsageTypeID                                       Struct<Guid>
+   736       NiagaraVMExecutableDataId    bUsesRapidIterationParams                               Bool
+   814       NiagaraVMExecutableDataId    bDisableDebugSwitches                                   Bool
+   326  26   NiagaraVMExecutableDataId    bInterpolatedSpawn                                      Bool
+   32        NiagaraVMExecutableDataId    bRequiresPersistentIDs                                  Bool
+             NiagaraVMExecutableDataId    BaseScriptID                                            Struct<Guid>
+   814  108  NiagaraVMExecutableDataId    BaseScriptCompileHash                                   Struct<NiagaraCompileHash>
+             NiagaraVMExecutableDataId    ScriptVersionID                                         Struct<Guid>
+   editor-only: ['AdditionalDefines', 'ReferencedCompileHashes']
+== NiagaraParameterStore
+             NiagaraParameterStore        Owner                                                   Object
+   92   40   NiagaraParameterStore        SortedParameterOffsets                                  Array<Struct<NiagaraVariableWithOffset>>
+   92   40   NiagaraParameterStore        ParameterData                                           Array<Byte>
+   2         NiagaraParameterStore        DataInterfaces                                          Array<Object>
+   78        NiagaraParameterStore        UncompressedSize                                        Int
+             NiagaraParameterStore        UObjects                                                Array<Object>
+             NiagaraParameterStore        OriginalPositionData                                    Array<Struct<NiagaraPositionSource>>
+   editor-only: ['DebugName']
+== NiagaraScriptExecutionParameterStore
+   595       NiagaraScriptExecutionParame ParameterSize                                           Int
+   595       NiagaraScriptExecutionParame PaddedParameterSize                                     UInt32
+   145       NiagaraScriptExecutionParame PaddingInfo                                             Array<Struct<NiagaraScriptExecutionPaddingInfo>>
+             NiagaraScriptExecutionParame bInitialized                                            Bool
+             NiagaraParameterStore        Owner                                                   Object
+   776       NiagaraParameterStore        SortedParameterOffsets                                  Array<Struct<NiagaraVariableWithOffset>>
+   595       NiagaraParameterStore        ParameterData                                           Array<Byte>
+   592       NiagaraParameterStore        DataInterfaces                                          Array<Object>
+   78        NiagaraParameterStore        UncompressedSize                                        Int
+             NiagaraParameterStore        UObjects                                                Array<Object>
+             NiagaraParameterStore        OriginalPositionData                                    Array<Struct<NiagaraPositionSource>>
+   editor-only: ['DebugName']
+== NiagaraSystemCompiledData
+   14        NiagaraSystemCompiledData    InstanceParamStore                                      Struct<NiagaraParameterStore>
+   86   1    NiagaraSystemCompiledData    DataSetCompiledData                                     Struct<NiagaraDataSetCompiledData>
+   86   1    NiagaraSystemCompiledData    SpawnInstanceParamsDataSetCompiledData                  Struct<NiagaraDataSetCompiledData>
+   86   1    NiagaraSystemCompiledData    UpdateInstanceParamsDataSetCompiledData                 Struct<NiagaraDataSetCompiledData>
+             NiagaraSystemCompiledData    SpawnInstanceGlobalBinding                              Struct<NiagaraParameterDataSetBindingCollection>
+   86        NiagaraSystemCompiledData    SpawnInstanceSystemBinding                              Struct<NiagaraParameterDataSetBindingCollection>
+   1         NiagaraSystemCompiledData    SpawnInstanceOwnerBinding                               Struct<NiagaraParameterDataSetBindingCollection>
+   86   1    NiagaraSystemCompiledData    SpawnInstanceEmitterBindings                            Array<Struct<NiagaraParameterDataSetBindingCollection>>
+             NiagaraSystemCompiledData    UpdateInstanceGlobalBinding                             Struct<NiagaraParameterDataSetBindingCollection>
+   86   1    NiagaraSystemCompiledData    UpdateInstanceSystemBinding                             Struct<NiagaraParameterDataSetBindingCollection>
+   86        NiagaraSystemCompiledData    UpdateInstanceOwnerBinding                              Struct<NiagaraParameterDataSetBindingCollection>
+   86   1    NiagaraSystemCompiledData    UpdateInstanceEmitterBindings                           Array<Struct<NiagaraParameterDataSetBindingCollection>>
+== NiagaraDataSetCompiledData
+   260  3    NiagaraDataSetCompiledData   Variables                                               Array<Struct<NiagaraVariable>>
+   2    3    NiagaraDataSetCompiledData   VariableLayouts                                         Array<Struct<NiagaraVariableLayoutInfo>>
+   2         NiagaraDataSetCompiledData   ID                                                      Struct<NiagaraDataSetID>
+   175  2    NiagaraDataSetCompiledData   TotalFloatComponents                                    UInt32
+   260  3    NiagaraDataSetCompiledData   TotalInt32Components                                    UInt32
+   2         NiagaraDataSetCompiledData   TotalHalfComponents                                     UInt32
+   2         NiagaraDataSetCompiledData   bRequiresPersistentIDs                                  Bool
+   2         NiagaraDataSetCompiledData   SimTarget                                               Enum<ENiagaraSimTarget:Byte>
+== NiagaraEmitterHandle
+   393       NiagaraEmitterHandle         ID                                                      Struct<Guid>
+   393  13   NiagaraEmitterHandle         IdName                                                  Name
+   393  13   NiagaraEmitterHandle         bIsEnabled                                              Bool
+   393  13   NiagaraEmitterHandle         Name                                                    Name
+   393  13   NiagaraEmitterHandle         Instance                                                Object
+   393       NiagaraEmitterHandle         VersionedInstance                                       Struct<VersionedNiagaraEmitter>
+   editor-only: ['Id']
+== NiagaraEmitterScriptProperties
+   786  104  NiagaraEmitterScriptProperti Script                                                  Object
+             NiagaraEmitterScriptProperti EventReceivers                                          Array<Struct<NiagaraEventReceiverProperties>>
+   2         NiagaraEmitterScriptProperti EventGenerators                                         Array<Struct<NiagaraEventGeneratorProperties>>
+== NiagaraVariableAttributeBinding
+   3271 4    NiagaraVariableAttributeBind RootVariable                                            Struct<NiagaraVariable>
+   3271 4    NiagaraVariableAttributeBind ParamMapVariable                                        Struct<NiagaraVariableBase>
+   3271 4    NiagaraVariableAttributeBind DataSetVariable                                         Struct<NiagaraVariable>
+             NiagaraVariableAttributeBind BindingSourceMode                                       Enum<ENiagaraBindingSource:Byte>
+   4853 100  NiagaraVariableAttributeBind bBindingExistsOnSource                                  Bool
+   384       NiagaraVariableAttributeBind bIsCachedParticleValue                                  Bool
+   editor-only: ['CachedDisplayName']
+== NiagaraMaterialAttributeBinding
+   5734      NiagaraMaterialAttributeBind MaterialParameterName                                   Name
+   5734      NiagaraMaterialAttributeBind NiagaraVariable                                         Struct<NiagaraVariableBase>
+   5734      NiagaraMaterialAttributeBind ResolvedNiagaraVariable                                 Struct<NiagaraVariableBase>
+   5734      NiagaraMaterialAttributeBind m_ConstantValue                                         Struct<LinearColor>
+   5734      NiagaraMaterialAttributeBind m_Texture                                               Object
+   5734      NiagaraMaterialAttributeBind m_bIsStatic                                             Bool
+   5734      NiagaraMaterialAttributeBind m_bIsDynamic                                            Bool
+   5734      NiagaraMaterialAttributeBind m_bIsTexture                                            Bool
+   5734      NiagaraMaterialAttributeBind m_bIsBuffer                                             Bool
+   5734      NiagaraMaterialAttributeBind m_bIsResidentResource                                   Bool
+== NiagaraMeshRendererMeshProperties
+   171       NiagaraMeshRendererMeshPrope Mesh                                                    Object
+   171       NiagaraMeshRendererMeshPrope Scale                                                   Struct<Vector>
+   171       NiagaraMeshRendererMeshPrope Rotation                                                Struct<Rotator>
+   171       NiagaraMeshRendererMeshPrope PivotOffset                                             Struct<Vector>
+   171       NiagaraMeshRendererMeshPrope PivotOffsetSpace                                        Enum<ENiagaraMeshPivotOffsetSpace:Byte>
+== NiagaraScriptDataInterfaceCompileInfo
+   2636 80   NiagaraScriptDataInterfaceCo Name                                                    Name
+   2636 80   NiagaraScriptDataInterfaceCo UserPtrIdx                                              Int
+   2636 80   NiagaraScriptDataInterfaceCo Type                                                    Struct<NiagaraTypeDefinition>
+   2636 80   NiagaraScriptDataInterfaceCo RegisteredParameterMapRead                              Name
+   2636 80   NiagaraScriptDataInterfaceCo RegisteredParameterMapWrite                             Name
+   2636 80   NiagaraScriptDataInterfaceCo bIsPlaceholder                                          Bool
+   editor-only: ['RegisteredFunctions']
+== VMExternalFunctionBindingInfo
+   1687      VMExternalFunctionBindingInf Name                                                    Name
+   1687      VMExternalFunctionBindingInf OwnerName                                               Name
+   1687      VMExternalFunctionBindingInf InputParamLocations                                     Array<Bool>
+   1687      VMExternalFunctionBindingInf NumOutputs                                              Int
+   1687      VMExternalFunctionBindingInf FunctionSpecifiers                                      Array<Struct<VMFunctionSpecifier>>
+== NiagaraPlatformSet
+   393  26   NiagaraPlatformSet           QualityLevelMask                                        Int
+             NiagaraPlatformSet           DeviceProfileStates                                     Array<Struct<NiagaraDeviceProfileStateEntry>>
+             NiagaraPlatformSet           CVarConditions                                          Array<Struct<NiagaraPlatformSetCVarCondition>>
+== EndEffectExtraData
+             EndEffectExtraData           m_TranslucencyRenderLayer                               Enum<EVfxTranslucencyRenderLayer:Byte>
+   1         EndEffectExtraData           m_TranslucencySortPriority                              Enum<EVfxTranslucencySortPriority:Int8>
+   2         EndEffectExtraData           m_UseTranslucencySortOffset                             Bool
+   1         EndEffectExtraData           m_TranslucencySortOffset                                Int
+             EndEffectExtraData           m_BindComponentName                                     Name
+   28        EndEffectExtraData           m_BindSocketName                                        Struct<EndEffectSocketName>
+             EndEffectExtraData           m_CharaScaleMin                                         Float
+   1         EndEffectExtraData           m_CharaScaleMax                                         Float
+             EndEffectExtraData           m_IgnoreBindScale                                       Bool
+             EndEffectExtraData           m_IgnoreBindRot                                         Bool
+   26        EndEffectExtraData           m_BindTime                                              Float
+             EndEffectExtraData           m_RenderTarget                                          Enum<EVfxRenderTarget:Int8>
+             EndEffectExtraData           m_DisableCullingTick                                    Bool
+             EndEffectExtraData           m_DisableCullingDraw                                    Bool
+             EndEffectExtraData           m_IgnoreDynamicCoverage                                 Bool
+             EndEffectExtraData           m_AbsoluteLocation                                      Bool
+   2         EndEffectExtraData           m_AbsoluteRotation                                      Bool
+             EndEffectExtraData           m_AbsoluteScale                                         Bool
+   19        EndEffectExtraData           m_AbsoluteRotationActor                                 Bool
+             EndEffectExtraData           m_RotationBeamTarget                                    Bool
+             EndEffectExtraData           m_AttachCamera                                          Bool
+   8         EndEffectExtraData           m_EnableDirectionRot                                    Bool
+   7         EndEffectExtraData           m_DirectionRotVectorBaseAxis                            Enum<EVfxAxisLock:Int8>
+   1         EndEffectExtraData           m_DirectionRotUpVectorLock                              Bool
+   9         EndEffectExtraData           m_DirectionRotHitNormal                                 Bool
+   1         EndEffectExtraData           m_DirectionRotVectorIgnoreZ                             Bool
+             EndEffectExtraData           m_DirectionVectorReflectHitNormal                       Bool
+             EndEffectExtraData           m_bUseRayCast                                           Bool
+             EndEffectExtraData           m_bUseOrthoGraphic                                      Bool
+             EndEffectExtraData           m_bIgnoreTickPauseFarLevelEffect                        Bool
+             EndEffectExtraData           m_bIsLooping                                            Bool
+   35        EndEffectExtraData           m_bIsLoopingFromData                                    Bool
+             EndEffectExtraData           m_bInitSetBeamTarget                                    Bool
+             EndEffectExtraData           m_bInitFieldGridFlow                                    Bool
+             EndEffectExtraData           m_vRayVectorStartOffset                                 Struct<Vector>
+             EndEffectExtraData           m_vRayVector                                            Struct<Vector>
+             EndEffectExtraData           m_fHitNormalOffsetScale                                 Float
+             EndEffectExtraData           m_fBlendBeamTarget                                      Float
+             EndEffectExtraData           m_ExposureCondition                                     Enum<EVfxExposureCondition:Int8>
+             EndEffectExtraData           m_Debug_SerializeTest                                   Bool
+== NiagaraEmitterCompiledData
+             NiagaraEmitterCompiledData   EmitterSpawnIntervalVar                                 Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterInterpSpawnStartDTVar                            Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterSpawnGroupVar                                    Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterAgeVar                                           Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterRandomSeedVar                                    Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterInstanceSeedVar                                  Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   EmitterTotalSpawnedParticlesVar                         Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   m_VfxMaterialIndependentParameter_InstanceSeedVar       Struct<NiagaraVariable>
+             NiagaraEmitterCompiledData   DataSetCompiledData                                     Struct<NiagaraDataSetCompiledData>
+== NiagaraUserParameterBinding
+   171  13   NiagaraUserParameterBinding  Parameter                                               Struct<NiagaraVariable>
+== NiagaraParameterDataSetBindingCollection
+   959  27   NiagaraParameterDataSetBindi FloatOffsets                                            Array<Struct<NiagaraParameterDataSetBinding>>
+   958  26   NiagaraParameterDataSetBindi Int32Offsets                                            Array<Struct<NiagaraParameterDataSetBinding>>
+== NiagaraParameterDataSetBinding
+   2022 27   NiagaraParameterDataSetBindi ParameterOffset                                         Int
+   2022 27   NiagaraParameterDataSetBindi DataSetComponentOffset                                  Int
+== NiagaraDataSetID
+   5         NiagaraDataSetID             Name                                                    Name
+   5         NiagaraDataSetID             Type                                                    Enum<ENiagaraDataSetType:Byte>
+== NiagaraScriptDataUsageInfo
+             NiagaraScriptDataUsageInfo   bReadsAttributeData                                     Bool
+== NiagaraUserRedirectionParameterStore
+   86        NiagaraUserRedirectionParame UserParameterRedirects                                  Map<Struct<NiagaraVariable>,Struct<NiagaraVariable>>
+             NiagaraParameterStore        Owner                                                   Object
+   86        NiagaraParameterStore        SortedParameterOffsets                                  Array<Struct<NiagaraVariableWithOffset>>
+   86        NiagaraParameterStore        ParameterData                                           Array<Byte>
+   86        NiagaraParameterStore        DataInterfaces                                          Array<Object>
+   86        NiagaraParameterStore        UncompressedSize                                        Int
+   86        NiagaraParameterStore        UObjects                                                Array<Object>
+   86        NiagaraParameterStore        OriginalPositionData                                    Array<Struct<NiagaraPositionSource>>
+   editor-only: ['DebugName']
+== NiagaraMeshMaterialOverride
+   171  6    NiagaraMeshMaterialOverride  ExplicitMat                                             Object
+   171  6    NiagaraMeshMaterialOverride  UserParamBinding                                        Struct<NiagaraUserParameterBinding>

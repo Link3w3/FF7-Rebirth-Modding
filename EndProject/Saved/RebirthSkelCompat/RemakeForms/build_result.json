@@ -1,0 +1,233 @@
+{
+ "steps": [
+  "plugin",
+  "run",
+  "setup",
+  "built_now",
+  "failed",
+  "adjust",
+  "described",
+  "done"
+ ],
+ "plugin": "1.16.1",
+ "run": "run 1: 0 move(s) built before, 0 left out",
+ "setup": {
+  "data_object": "updated /Game/RebirthSkelCompat/RemakeForms/RemakeForms_Data",
+  "moves": 30,
+  "carriers": 26
+ },
+ "built_now": "30 move(s) in 16 s",
+ "failed": {},
+ "adjust": {
+  "Battle08/B_NAttack01_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_NAttack02_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_NAttack03_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_NAttack04_0": {
+   "matched": 6,
+   "of": 6,
+   "placed": 1,
+   "attached": 4,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_NPAttack01": {
+   "matched": 9,
+   "of": 9,
+   "placed": 2,
+   "attached": 6,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_NPAttackJ01": {
+   "matched": 9,
+   "of": 9,
+   "placed": 2,
+   "attached": 6,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_MagAttack01_2": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkMag01_2": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkHattou01_0": {
+   "matched": 5,
+   "of": 5,
+   "placed": 0,
+   "attached": 4,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkHattou01_1": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkHattou01_2": {
+   "matched": 21,
+   "of": 21,
+   "placed": 10,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkSenkou02": {
+   "matched": 8,
+   "of": 8,
+   "placed": 2,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkSFlare01_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkSFlare01_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkSFlare01_2": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle09/B_AtkSFlare01_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle09/B_AtkSFlare01_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle09/B_AtkSFlare01_2": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkGokumon01_0": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkGokumon01_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkGokumon01_2": {
+   "matched": 3,
+   "of": 3,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkGokumon01_4": {
+   "matched": 9,
+   "of": 9,
+   "placed": 1,
+   "attached": 7,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkTenshi01_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle08/B_AtkTenshi01_1": {
+   "matched": 7,
+   "of": 7,
+   "placed": 1,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle09/B_AtkTenshi01_0": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle09/B_AtkTenshi01_1": {
+   "matched": 7,
+   "of": 7,
+   "placed": 1,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  }
+ },
+ "described": 30,
+ "done": 30
+}

@@ -1,0 +1,57 @@
+@echo off
+title Vincent - making the Dirge of Cerberus motions cookable, please leave this window open
+rem Vincent's Dirge of Cerberus shooter, step 1b (close the End editor and the game first; the packaging at the end is
+rem the long part). The project never cooks Content\Motion (Directories To Never Cook), so step 1 made no pakchunk53/54:
+rem   1. in the editor (cook_dirge_motions.py, plan dirge_motions_plan.json): every Dirge of Cerberus motion of Vincent
+rem      (Motion\Player\PC0011_00_Vincent\Battle00\p000_*) and of Chaos (Motion\Player\PC0011_10_Chaos\Battle00\p007_*)
+rem      made anew by the Create a Character System plugin (the keys as they are, the game's ACL compression) into
+rem      Content\RebirthSkelCompat\Dirge\Vincent (pakchunk53) and Content\RebirthSkelCompat\Dirge\Chaos (pakchunk54),
+rem      and Chaos's model labeled for pakchunk54 under a name of its own (Saved\RebirthSkelCompat\VincentDirge\ says how it went),
+rem   2. packages the project (E:\FVIIREBIRTH\Pakage): the melee combo in pakchunk46, Vincent's motions in 53, Chaos in 54.
+rem Nothing is installed in the game: tell Sandalphon when it is done.
+rem Status: build\dirge_motions_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\dirge_motions_status.txt"
+echo Vincent Dirge of Cerberus motions (cookable), started %DATE% %TIME%> "%STATUS%"
+for %%P in (UE4Editor.exe UE4Editor-Cmd.exe ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the End editor or the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+for %%F in (dirge_motions_plan.json cook_dirge_motions.py run_dirge_motions.ps1) do (
+  if not exist "%~dp0%%F" (
+    echo FAILED: %%F is missing>> "%STATUS%"
+    goto :done
+  )
+)
+findstr /L /C:"1.12.4" "C:\FF7R2UProj\Plugins\RebirthSkelCompat\RebirthSkelCompat.uplugin" >nul
+if errorlevel 1 (
+  echo FAILED: the plugin in C:\FF7R2UProj\Plugins\RebirthSkelCompat is not 1.12.4 ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+echo 1/2 the editor: about 470 motions made anew for the game ^(a while^)...>> "%STATUS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run_dirge_motions.ps1"
+if errorlevel 1 (
+  echo FAILED: the editor step ^(build\dirge_motions_editor.log, Saved\RebirthSkelCompat\VincentDirge\motions_result.json^)>> "%STATUS%"
+  goto :done
+)
+echo 2/2 packaging the project ^(this is the long part^)...>> "%STATUS%"
+call "C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Build\BatchFiles\RunUAT.bat" -ScriptsForProject=C:/FF7R2UProj/End.uproject BuildCookRun -nocompileeditor -installed -nop4 -project=C:/FF7R2UProj/End.uproject -cook -stage -archive -archivedirectory=E:/FVIIREBIRTH/Pakage -package -ue4exe=C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Binaries\Win64\UE4Editor-Cmd.exe -compressed -ddc=InstalledDerivedDataBackendGraph -iostore -pak -iostore -prereqs -manifests -targetplatform=Win64 -build -target=End -clientconfig=Shipping -utf8output > "%~dp0build\dirge_motions_package.log" 2>&1
+>> "%STATUS%" echo    package exit=%ERRORLEVEL%
+set "PAKS=E:\FVIIREBIRTH\Pakage\WindowsNoEditor\End\Content\Paks"
+for %%C in (46 53 54) do (
+  if exist "%PAKS%\pakchunk%%C-WindowsNoEditor.utoc" (
+    for %%S in ("%PAKS%\pakchunk%%C-WindowsNoEditor.ucas") do echo    pakchunk%%C is there ^(%%~zS bytes^)>> "%STATUS%"
+  ) else (
+    echo    pakchunk%%C is NOT there ^(build\dirge_motions_package.log^)>> "%STATUS%"
+  )
+)
+:done
+echo DIRGE MOTIONS COOK COMPLETE %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b

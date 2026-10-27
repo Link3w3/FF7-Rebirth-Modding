@@ -1,0 +1,62 @@
+71 sets of Cloud's copied into his folder PC0000_EvilCloud (FieldAction 23, Level 34, Player 14)
+PC0010_00_Sephiroth_Standard: Cloud's pack PC0000_00_Cloud_Standard with 16 imports swapped (Battle00, Battle01, Emotion00, Facial00, LSD_PC0000_00_Cloud, Neutral00, Neutral20, PC0000_00_Cloud_Standard, VO_PC0000_00_Cloud); 16 packages in its header entry
+PC0010_00_Sephiroth_Standard_NoBattle: Cloud's pack PC0000_00_Cloud_Standard_NoBattle with 14 imports swapped (Emotion00, Facial00, LSD_PC0000_00_Cloud, Neutral00, Neutral20, PC0000_00_Cloud_Standard, VO_PC0000_00_Cloud); 13 packages in its header entry
+PC0010_00_Sephiroth_Standard_Reserve: Cloud's pack PC0000_00_Cloud_Standard_Reserve with 16 imports swapped (Battle00, Battle01, Emotion00, Facial00, LSD_PC0000_00_Cloud, Neutral00, Neutral20, PC0000_00_Cloud_Standard, VO_PC0000_00_Cloud); 16 packages in its header entry
+PC0010_01_Sephiroth_StandardWet: Cloud's pack PC0000_22_Cloud_StandardWet with 14 imports swapped (Battle00, Battle01, Emotion00, Facial00, LSD_PC0000_00_Cloud, Neutral00, Neutral20, PC0000_22_Cloud_StandardWet, VO_PC0000_00_Cloud); 15 packages in its header entry
+CharaSpec: 6 rows changed or added (PC0010_00_Sephiroth_Standard, PC0010_00_Sephiroth_Standard_NoBattle, PC0010_00_Sephiroth_Standard_Reserve, PC0010_01_Sephiroth_StandardWet, PC0010_10_Sephiroth_Transform, PC0010_20_Sephiroth_VRHard)
+    PC0010_00_Sephiroth_Standard AnimationSetList_Array: ['Battle00', 'Neutral00', None, None, 'Facial00', None, 'Battle01', None, None, None, 'Battle00_Comp'] -> ['Battle00', 'Neutral00', None, 'Emotion00', 'Facial00', None, 'Battle01', None, 'Neutral20']
+    PC0010_00_Sephiroth_Standard End2AIList_Array: ['PC0010_00_Sephiroth_Standard_AIBP'] -> ['PC0000_00_Cloud_Standard_AIBP']
+    PC0010_00_Sephiroth_Standard ContentsSoundAutoSE_Array: ['AS_PC0010_00_Sephiroth_Standard'] -> ['AS_PC0000_00_Cloud_Standard']
+    PC0010_00_Sephiroth_Standard ContentsSoundSE_Array: ['SE_PC0010_00_Sephiroth_Standard'] -> ['SE_PC0000_00_Cloud']
+    PC0010_00_Sephiroth_Standard ContentsEffect_Array: ['PC0010_Sephiroth_Effect__Pack'] -> ['PC0000_Cloud_Effect__Pack']
+    PC0010_00_Sephiroth_Standard AnimationSetParentFolder: PC0010_Sephiroth -> PC0000_EvilCloud
+    PC0010_00_Sephiroth_Standard_NoBattle AnimationSetList_Array: [None, 'Neutral00', None, None, 'Facial00'] -> [None, 'Neutral00', None, 'Emotion00', 'Facial00', None, None, None, 'Neutral20']
+    PC0010_00_Sephiroth_Standard_NoBattle End2AIList_Array: ['PC0010_00_Sephiroth_Standard_AIBP'] -> ['PC0000_00_Cloud_Standard_AIBP']
+    PC0010_00_Sephiroth_Standard_NoBattle ContentsSoundAutoSE_Array: ['AS_PC0010_00_Sephiroth_Standard'] -> ['AS_PC0000_00_Cloud_Standard']
+    PC0010_00_Sephiroth_Standard_NoBattle ContentsSoundSE_Array: ['SE_PC0010_00_Sephiroth_Standard'] -> ['SE_PC0000_00_Cloud']
+    PC0010_00_Sephiroth_Standard_NoBattle ContentsEffect_Array: [] -> []
+    PC0010_00_Sephiroth_Standard_NoBattle AnimationSetParentFolder: PC0010_Sephiroth -> PC0000_EvilCloud
+    PC0010_00_Sephiroth_Standard_Reserve AnimationSetList_Array: ['Battle00', 'Neutral00', None, None, 'Facial00', None, 'Battle01', None, None, None, 'Battle00_Comp'] -> ['Battle00', 'Neutral00', None, 'Emotion00', 'Facial00', None, 'Battle01', None, 'Neutral20']
+    PC0010_00_Sephiroth_Standard_Reserve End2AIList_Array: ['PC0010_00_Sephiroth_Standard_AIBP'] -> ['PC0000_00_Cloud_Standard_AIBP']
+    PC0010_00_Sephiroth_Standard_Reserve ContentsSoundAutoSE_Array: ['AS_PC0010_00_Sephiroth_Standard'] -> ['AS_PC0000_00_Cloud_Standard']
+    PC0010_00_Sephiroth_Standard_Reserve ContentsSoundSE_Array: ['SE_PC0010_00_Sephiroth_Standard'] -> ['SE_PC0000_00_Cloud']
+    PC0010_00_Sephiroth_Standard_Reserve ContentsEffect_Array: ['PC0010_Sephiroth_Effect__Pack'] -> ['PC0000_Cloud_Effect__Pack']
+    PC0010_00_Sephiroth_Standard_Reserve AnimationSetParentFolder: PC0010_Sephiroth -> PC0000_EvilCloud
+    PC0010_01_Sephiroth_StandardWet AnimationSetList_Array: [None, 'Neutral00', None, None, 'Facial00'] -> ['Battle00', 'Neutral00', None, 'Emotion00', 'Facial00', None, 'Battle01', None, 'Neutral20']
+    PC0010_01_Sephiroth_StandardWet End2AIList_Array: ['PC0010_00_Sephiroth_Standard_AIBP'] -> ['PC0000_00_Cloud_Standard_AIBP']
+    PC0010_01_Sephiroth_StandardWet ContentsSoundAutoSE_Array: ['AS_PC0010_00_Sephiroth_Standard'] -> ['AS_PC0000_00_Cloud_Standard']
+    PC0010_01_Sephiroth_StandardWet ContentsSoundSE_Array: [] -> ['SE_PC0000_00_Cloud']
+    PC0010_01_Sephiroth_StandardWet ContentsEffect_Array: [] -> ['PC0000_Cloud_Effect__Pack']
+    PC0010_01_Sephiroth_StandardWet AnimationSetParentFolder: PC0010_Sephiroth -> PC0000_EvilCloud
+    PC0010_00_Sephiroth_Standard OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+    PC0010_00_Sephiroth_Standard_NoBattle OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+    PC0010_00_Sephiroth_Standard_Reserve OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+    PC0010_01_Sephiroth_StandardWet OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+    PC0010_10_Sephiroth_Transform OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+    PC0010_20_Sephiroth_VRHard OverrideWeaponSocketNames_Array: ['Attach_Weapon_Left01'] -> []
+BattlePlayerParameter: 1 rows changed or added (pt_Sephiroth)
+    pt_Sephiroth UniqueAbilityParameterName_Array: ['FX_PC0010_Aura_Body_01', '$PC0010_SAtk_0'] -> ['PC0000_Unique_Guard_01', 'PC0000_CounterAtk_1', 'B_Connect01', '$PC0000_Change_ON', '$PC0000_Change_OFF', '$PC0000_AAAChange_ON', 'FX_PC0000_SAttack_Body_01', 'FX_PC0000_Burst09_Body_01']
+    pt_Sephiroth KeyAssignAbilityID_Array: ['PC0010_U_NAtk', 'PC0010_NPAtk_1', None, 'PC0010_U_SAtk', None, None, 'PC0010_JAtk_1', 'PC0010_NPAtk_1', None, 'PC0010_U_SAtk'] -> ['PC0000_U_NAtk', 'PC0000_U_NPAtk', 'PC0000_NDAtk_1', 'PC0000_U_ModeChange', None, None, 'PC0000_JAtk_1', 'PC0000_JNPAtk_1', 'PC0000_JNDAtk_1', 'PC0000_JChange_ON']
+    pt_Sephiroth CombinationTableID_Array: ['PC0010_N_Chain01', 'PC0010_N_Chain02'] -> ['PC0000_N_Chain01', 'PC0000_N_Chain02']
+    pt_Sephiroth GuardParameterName_Array: ['PC0010_SAtk_P5', 'PC0010_SAtk_10', 'PC_Sephiroth_Guard_01', 'AIPC_Sephiroth_Guard_01'] -> ['PC_Guard_01', 'AIPC_Guard_01', 'PC_JGuard_01', 'AIPC_JGuard_01']
+    pt_Sephiroth DodgeReactionInfluenceID_Array: [] -> ['SensorMediumRange_Right']
+    pt_Sephiroth DodgeParameterName_Array: ['B_Avoid01_0', 'B_Avoid01_1', 'B_Avoid01_2', 'B_Avoid01_0', 'B_Avoid01_1', 'B_Avoid02_2'] -> ['B_Avoid01', None, None, 'B_AvoidJ01']
+    pt_Sephiroth LimitAbilityID_Array: ['PC0010_Limit001'] -> ['PC0000_EvilCloud_Limit001', 'PC0000_EvilCloud_Limit002', 'PC0000_EvilCloud_Limit003']
+    pt_Sephiroth LimitAbilityUseableFlag_Array: [] -> [None, None, None]
+    pt_Sephiroth FirstLimitAbilityUseableFlag_Array: [] -> [None, None, None]
+    pt_Sephiroth CommandAbilityID_Array: ['PC0010_AtkBurst01'] -> ['PC0000_AtkBurst01', 'PC0000_AtkBurst03']
+    pt_Sephiroth GuardParameterValue_Array: [45.0, 25.0, 45.0, 0.0, 0.5, 150.0] -> []
+    pt_Sephiroth DodgeParameterValue_Array: [0.10000000149011612, 40000.0, 20000.0, 0.0, 350.0, 150.0, 50.0, 0.0, 0.10000000149011612, 40000.0, 20000.0, 0.0, 450.0, 50.0, 50.0, -1.0] -> []
+    pt_Sephiroth UniqueAbilityParameterValue_Array: [4.0] -> [240.0]
+    pt_Sephiroth DodgeType_Array: [1, 1] -> []
+    pt_Sephiroth DodgeNeutralAbilityID1: None -> 'PC0000_AvoidJN'
+    pt_Sephiroth MugAbilityID: None -> 'M_CMD_001_atk002_01_Type1'
+    pt_Sephiroth ControlCharacterChangeAbilityID: 'PC0010_ChainChange01' -> 'PC0000_ChainChange01'
+    pt_Sephiroth UniqueAbilityType0: 7 -> 1
+    pt_Sephiroth GuardType0: 1 -> 0
+BattleAbility: 4 rows changed or added (PC0000_EvilCloud_AtkBurst02, PC0000_EvilCloud_Limit001, PC0000_EvilCloud_Limit002, PC0000_EvilCloud_Limit003)
+    PC0000_EvilCloud_Limit001: a copy of the game's PC0000_Limit001 ($PC0000_Limit001, anims ['B_AtkLimit01_0'], damage PC0000_Limit001, camera PC0000_00_Limit001, UniqueId 830957)
+    PC0000_EvilCloud_Limit002: a copy of the game's PC0000_Limit002 ($PC0000_Limit002, anims ['B_AtkLimit02_0'], damage PC0000_Limit002, camera PC0000_00_Limit002, UniqueId 1954297)
+    PC0000_EvilCloud_Limit003: a copy of the game's PC0000_Limit003 ($PC0000_Limit003, anims ['B_AtkLimit03_0'], damage PC0000_Limit003, camera PC0000_00_Limit003, UniqueId 1133579)
+    PC0000_EvilCloud_AtkBurst02: a copy of the game's PC0000_AtkBurst02 ($PC0000_AtkBurst02, anims ['B_AtkBurst02_0'], damage PC0000_AtkBurst02, camera None, UniqueId 173351)
+FullyPlayableSephirothDataAssets_P: 1028 chunks (957 before: 4 packs, 3 tables and the header changed; 71 sets added); 776 ACL blocks of the built moves 16-aligned; read back as written; the .ucas is the old one plus 4520768 bytes

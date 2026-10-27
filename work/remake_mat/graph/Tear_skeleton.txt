@@ -1,0 +1,62 @@
+Material EndMaterial_Tear
+  PIN BaseColor              <- MaterialExpressionConstant3Vector_6[0]
+  PIN Metallic               <- MaterialExpressionConstant_5[0]
+  PIN Specular               <- MaterialExpressionMaterialFunctionCall_5[0]
+  PIN Roughness              <- MaterialExpressionConstant_8[0]
+  PIN Normal                 <- MaterialExpressionStaticSwitchParameter_3[0]
+  PIN Opacity                <- MaterialExpressionStaticSwitchParameter_1[0]
+  PIN OpacityMask            <- MaterialExpressionConstant_0[0]
+  PIN ClearCoat              <- MaterialExpressionStaticSwitchParameter_1[0]
+  PIN AmbientOcclusion       <- MaterialExpressionComponentMask_11[0]
+  MaterialExpressionMaterialFunctionCall_1 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_13[0]
+  MaterialExpressionMaterialFunctionCall_2 (MaterialFunctionCall) {"function": "SphericalInterpolateVector"}
+      Left             <- MaterialExpressionMaterialFunctionCall_14[0]
+      Right            <- MaterialExpressionMaterialFunctionCall_1[0]
+      Ratio            <- MaterialExpressionFrac_0[0]
+  MaterialExpressionMaterialFunctionCall_5 (MaterialFunctionCall) {"function": "EncodeReflectance"}
+      Reflectance      <- MaterialExpressionConstant_3[0]
+  MaterialExpressionMaterialFunctionCall_14 (MaterialFunctionCall) {"function": "NormalizeNormalRG"}
+      NormalRG         <- MaterialExpressionComponentMask_6[0]
+  MaterialExpressionScalarParameter_29 (ScalarParameter) {"ParameterName": "AnimateKeyIndex", "Group": "Dynamic"}
+  MaterialExpressionStaticSwitchParameter_0 (StaticSwitchParameter) {"ParameterName": "FlipBook", "Group": "Static"}
+      A                <- MaterialExpressionAppendVector_6[0]
+      B                <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionStaticSwitchParameter_1 (StaticSwitchParameter) {"DefaultValue": true, "Definition": "STATIC_SWITCH_TEAR", "ParameterName": "Tear", "Group": "Static"}
+      A                <- MaterialExpressionConstant_1[0]
+      B                <- MaterialExpressionConstant_2[0]
+  MaterialExpressionStaticSwitchParameter_2 (StaticSwitchParameter) {"ParameterName": "FlipBook", "Group": "Static"}
+      A                <- MaterialExpressionLinearInterpolate_1[0]
+      B                <- MaterialExpressionComponentMask_9[0]
+  MaterialExpressionStaticSwitchParameter_3 (StaticSwitchParameter) {"ParameterName": "FlipBook", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_2[0]
+      B                <- MaterialExpressionMaterialFunctionCall_14[0]
+  MaterialExpressionStaticSwitchParameter_4 (StaticSwitchParameter) {"ParameterName": "FlipBook", "Group": "Static"}
+      A                <- MaterialExpressionAppendVector_5[0]
+      B                <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionStaticSwitchParameter_19 (StaticSwitchParameter) {"ParameterName": "Reference", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_3[0]
+      B                <- MaterialExpressionScalarParameter_29[0]
+  MaterialExpressionTextureObjectParameter_0 (TextureObjectParameter) {"ParameterName": "0:3:Normal", "Group": "Texture", "texture": "8080FF00", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_LinearColor"}
+  MaterialExpressionTextureObjectParameter_2 (TextureObjectParameter) {"ParameterName": "0:7:Visibility", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "1:0:Occlusion", "Group": "Texture", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_3[0]
+  stripped expressions referred to: 18
+    MaterialExpressionAppendVector_5              <- used by MaterialExpressionStaticSwitchParameter_4.A
+    MaterialExpressionAppendVector_6              <- used by MaterialExpressionStaticSwitchParameter_0.A
+    MaterialExpressionComponentMask_11            <- used by <pins>.AmbientOcclusion
+    MaterialExpressionComponentMask_13            <- used by MaterialExpressionMaterialFunctionCall_1.NormalRG
+    MaterialExpressionComponentMask_6             <- used by MaterialExpressionMaterialFunctionCall_14.NormalRG
+    MaterialExpressionComponentMask_9             <- used by MaterialExpressionStaticSwitchParameter_2.B
+    MaterialExpressionConstant3Vector_6           <- used by <pins>.BaseColor
+    MaterialExpressionConstant_0                  <- used by <pins>.OpacityMask
+    MaterialExpressionConstant_1                  <- used by MaterialExpressionStaticSwitchParameter_1.A
+    MaterialExpressionConstant_2                  <- used by MaterialExpressionStaticSwitchParameter_1.B
+    MaterialExpressionConstant_3                  <- used by MaterialExpressionMaterialFunctionCall_5.Reflectance
+    MaterialExpressionConstant_5                  <- used by <pins>.Metallic
+    MaterialExpressionConstant_8                  <- used by <pins>.Roughness
+    MaterialExpressionFrac_0                      <- used by MaterialExpressionMaterialFunctionCall_2.Ratio
+    MaterialExpressionLinearInterpolate_1         <- used by MaterialExpressionStaticSwitchParameter_2.A
+    MaterialExpressionMultiply_3                  <- used by MaterialExpressionStaticSwitchParameter_19.A
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionStaticSwitchParameter_0.B, MaterialExpressionStaticSwitchParameter_4.B
+    MaterialExpressionTextureCoordinate_3         <- used by MaterialExpressionTextureSampleParameter2D_5.Coordinates

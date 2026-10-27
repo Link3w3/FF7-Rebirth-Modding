@@ -1,0 +1,2684 @@
+{
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_0.B_AtkOmniSlash01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_0.B_AtkOmniSlash01_0",
+  "class": "AnimSequence",
+  "length": 1.5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 46,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkOmniSlash01_0_zoom",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 1,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkCoreFeeler01_1_whoosh",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 3,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "SetBarrier",
+     "IntValue": "7"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1.5,
+    "track": 5,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.5577620267868042,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkBindBall01_0_whoosh",
+     "AttachPointName": "R_SmlHand_a"
+    }
+   },
+   {
+    "time": 0.98170405626297,
+    "duration": 0,
+    "track": 3,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "MasamuneON",
+     "IntValue": "3"
+    }
+   },
+   {
+    "time": 1.0496208667755127,
+    "duration": 0.4503791332244873,
+    "track": 6,
+    "name": "EndOverrideAdditiveDamage",
+    "class": "AnimNotify_EndOverrideAdditiveDamage",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AnimationName": "B_AtkOmniSlash01_1_Add"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_1.B_AtkOmniSlash01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_1.B_AtkOmniSlash01_1",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 1,
+    "name": "EndOverrideAdditiveDamage",
+    "class": "AnimNotify_EndOverrideAdditiveDamage",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AnimationName": "B_AtkOmniSlash01_1_Add"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 2,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_2.B_AtkOmniSlash01_2": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkOmniSlash01_2.B_AtkOmniSlash01_2",
+  "class": "AnimSequence",
+  "length": 5.566666603088379,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 168,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkCoreFeeler01_1_whoosh02",
+     "VolumeMultiplier": "0.800000",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 1,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh02",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 6,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "RemoveBarrier",
+     "IntValue": "7"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 5.566666603088379,
+    "track": 9,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.7245259284973145,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkOmniSlash01_2_slash",
+     "VolumeMultiplier": "0.800000",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0.7333329916000366,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0.8153119683265686,
+    "duration": 0.15925300121307373,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.9666669964790344,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.130248785018921,
+    "duration": 0.15925300121307373,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 1.3463979959487915,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.383842945098877,
+    "duration": 0.07543563842773438,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_03\")"
+    }
+   },
+   {
+    "time": 1.5,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.522141695022583,
+    "duration": 0.07543599605560303,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_04\")"
+    }
+   },
+   {
+    "time": 1.741288423538208,
+    "duration": 0.12153506278991699,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_05\")"
+    }
+   },
+   {
+    "time": 1.7666670083999634,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 2.0333330631256104,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 2.0827975273132324,
+    "duration": 0.12153506278991699,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_06\")"
+    }
+   },
+   {
+    "time": 2.299999952316284,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 2.354928493499756,
+    "duration": 0.12153506278991699,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_07\")"
+    }
+   },
+   {
+    "time": 3.0999999046325684,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkOmniSlash01_2_lastSlash",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 3.0999999046325684,
+    "duration": 0,
+    "track": 1,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 3.1782500743865967,
+    "duration": 0.12153506278991699,
+    "track": 7,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_08\")"
+    }
+   },
+   {
+    "time": 4.668235778808594,
+    "duration": 0,
+    "track": 6,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "ResetReaction",
+     "IntValue": "7"
+    }
+   },
+   {
+    "time": 4.865113258361816,
+    "duration": 0,
+    "track": 7,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "MasamuneOFF",
+     "IntValue": "3"
+    }
+   }
+  ],
+  "hits": [
+   0.8153119683265686,
+   1.130248785018921,
+   1.383842945098877,
+   1.522141695022583,
+   1.741288423538208,
+   2.0827975273132324,
+   2.354928493499756,
+   3.1782500743865967
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkZanShin01_0.B_AtkZanShin01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkZanShin01_0.B_AtkZanShin01_0",
+  "class": "AnimSequence",
+  "length": 5.066666603088379,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 153,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh01",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 3.2571709156036377,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 5.066666603088379,
+    "track": 12,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.0643015131354332,
+    "duration": 0,
+    "track": 5,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "MasamuneON",
+     "IntValue": "3"
+    }
+   },
+   {
+    "time": 1.7848196029663086,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.9276270866394043,
+    "duration": 0,
+    "track": 8,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_R01\")"
+    }
+   },
+   {
+    "time": 2.577240467071533,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 2.7242677211761475,
+    "duration": 0,
+    "track": 8,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_L01\")"
+    }
+   },
+   {
+    "time": 3.107553005218506,
+    "duration": 0,
+    "track": 4,
+    "name": "EndAIEnemyBattleAbilityCancel",
+    "class": "AnimNotify_EndAIEnemyBattleAbilityCancel",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelParameters": "((Number=1))"
+    }
+   },
+   {
+    "time": 3.7153730392456055,
+    "duration": 0,
+    "track": 5,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "MasamuneOFF",
+     "IntValue": "3"
+    }
+   },
+   {
+    "time": 3.96415638923645,
+    "duration": 1.1025102138519287,
+    "track": 13,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   1.9276270866394043,
+   2.7242677211761475
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkZanShin01_1.B_AtkZanShin01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkZanShin01_1.B_AtkZanShin01_1",
+  "class": "AnimSequence",
+  "length": 3.0999999046325684,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 94,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 5,
+    "name": "EndAIEnemyBattleAbilityCancelStart",
+    "class": "AnimNotify_EndAIEnemyBattleAbilityCancelStart",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NewProperty": "True",
+     "CancelStartParameters": "((Number=1))"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 3.0999999046325684,
+    "track": 8,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.166375532746315,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkBindBall01_0_whoosh",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.1254613399505615,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh02",
+     "AttachPointName": "L_SmlHand_a"
+    }
+   },
+   {
+    "time": 1.229002594947815,
+    "duration": 0,
+    "track": 4,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 1.6825296878814697,
+    "duration": 0,
+    "track": 5,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "MasamuneOFF",
+     "IntValue": "3"
+    }
+   }
+  ],
+  "hits": [
+   1.229002594947815
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkHellsGate01.B_AtkHellsGate01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkHellsGate01.B_AtkHellsGate01",
+  "class": "AnimSequence",
+  "length": 5.47175407409668,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 329,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 2.3051366806030273,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.7176107168197632,
+    "track": 6,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   },
+   {
+    "time": 2.1574904918670654,
+    "duration": 0,
+    "track": 2,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "DamageA",
+     "IntValue": "4"
+    }
+   },
+   {
+    "time": 2.3051366806030273,
+    "duration": 3.1666173934936523,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 2.809485912322998,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 3.659647226333618,
+    "duration": 1.8121068477630615,
+    "track": 5,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   2.809485912322998
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkUnholyGate01.B_AtkUnholyGate01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkUnholyGate01.B_AtkUnholyGate01",
+  "class": "AnimSequence",
+  "length": 6.166666507720947,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 371,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 2.999999761581421,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0,
+    "duration": 0.717621922492981,
+    "track": 6,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   },
+   {
+    "time": 2.1575241088867188,
+    "duration": 0,
+    "track": 2,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "DamageA",
+     "IntValue": "4"
+    }
+   },
+   {
+    "time": 2.989999532699585,
+    "duration": 0,
+    "track": 2,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "DamageB",
+     "IntValue": "4"
+    }
+   },
+   {
+    "time": 2.999999761581421,
+    "duration": 3.1666667461395264,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 3.504356622695923,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 4.354531288146973,
+    "duration": 1.8121352195739746,
+    "track": 5,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   3.504356622695923
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_0.B_AtkMagB01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_0.B_AtkMagB01_0",
+  "class": "AnimSequence",
+  "length": 0.8333333134651184,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 26,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkBindBall01_0_whoosh",
+     "AttachPointName": "R_SmlHand_a"
+    }
+   },
+   {
+    "time": 0.5029752254486084,
+    "duration": 0.33035808801651,
+    "track": 5,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_1.B_AtkMagB01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_1.B_AtkMagB01_1",
+  "class": "AnimSequence",
+  "length": 2.3333332538604736,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 71,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 2.3333332538604736,
+    "track": 1,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_2.B_AtkMagB01_2": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_2.B_AtkMagB01_2",
+  "class": "AnimSequence",
+  "length": 0.75,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 46,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_3.B_AtkMagB01_3": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_3.B_AtkMagB01_3",
+  "class": "AnimSequence",
+  "length": 2.3333332538604736,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 71,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 2.3333332538604736,
+    "track": 1,
+    "name": "EndAnimNotifyStateBattleAbilityReaction",
+    "class": "EndAnimNotifyStateBattleAbilityReaction",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "NotifyIndex": "3"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_4.B_AtkMagB01_4": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkMagB01_4.B_AtkMagB01_4",
+  "class": "AnimSequence",
+  "length": 1.5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 46,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 1.0663474798202515,
+    "duration": 0,
+    "track": 1,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "AerithBarrier",
+     "IntValue": "6"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_0.B_AtkAngel01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_0.B_AtkAngel01_0",
+  "class": "AnimSequence",
+  "length": 3,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 91,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkAngel01_0_whoosh",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 2,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "AddEffect",
+     "IntValue": "8"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 3,
+    "track": 5,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.012030303478240967,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh01",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 1.6000001430511475,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkAngel01_0_shout",
+     "AttachPointName": "C_Head_a"
+    }
+   },
+   {
+    "time": 2.500000238418579,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh02",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_1.B_AtkAngel01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_1.B_AtkAngel01_1",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 2,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_2.B_AtkAngel01_2": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkAngel01_2.B_AtkAngel01_2",
+  "class": "AnimSequence",
+  "length": 3.6666667461395264,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 111,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "SE_EB2210_B_AtkAngel01_2_impact",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 1,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh03",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 3,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "RemoveEffect",
+     "IntValue": "8"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 3.6666667461395264,
+    "track": 7,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.7097671031951904,
+    "duration": 0.6980109214782715,
+    "track": 4,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 3.0726726055145264,
+    "duration": 0.593994140625,
+    "track": 8,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   0.7097671031951904
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkBodyExplode01.B_AtkBodyExplode01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkBodyExplode01.B_AtkBodyExplode01",
+  "class": "AnimSequence",
+  "length": 4.833333492279053,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 146,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh01",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 1.4643737077713013,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAIPlayerStartAbilityGuard",
+    "class": "AnimNotify_EndAIPlayerStartAbilityGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 1.5293635129928589,
+    "duration": 1.3258172273635864,
+    "track": 3,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ReferenceDamageSourceId": "EB2210_00_BurstFlare_01",
+     "AttachSocketName": "C_SmlSpine_c",
+     "Radius": "1000.000000",
+     "Length": "2000.000000"
+    }
+   },
+   {
+    "time": 2.109173536300659,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "tekito-swish",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 2.1217334270477295,
+    "duration": 0.6747169494628906,
+    "track": 4,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 2.153639554977417,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkBodyExplode01_exp",
+     "AttachPointName": "C_SmlHead_a"
+    }
+   },
+   {
+    "time": 2.880596876144409,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAIPlayerCancelAbilityGuard",
+    "class": "AnimNotify_EndAIPlayerCancelAbilityGuard",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 4.115711688995361,
+    "duration": 0.7176218032836914,
+    "track": 9,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   2.1217334270477295
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_0.B_AtkStigma01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_0.B_AtkStigma01_0",
+  "class": "AnimSequence",
+  "length": 3.1667838096618652,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 191,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 3.1667838096618652,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "Core_Laser",
+     "OffsetPosition": "(X=1000.000000,Y=0.000000,Z=0.000000)",
+     "OffsetRotation": "(Pitch=0.000000,Yaw=15.000000,Roll=0.000000)",
+     "Radius": "600.000000",
+     "Length": "5000.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 3.1667838096618652,
+    "track": 2,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "Core_Smoke1",
+     "OffsetPosition": "(X=-1000.000000,Y=0.000000,Z=0.000000)",
+     "OffsetRotation": "(Pitch=90.000000,Yaw=0.000000,Roll=0.000000)",
+     "Radius": "800.000000",
+     "Length": "2000.000000"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp",
+  "class": "AnimSequence",
+  "length": 4,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 241,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 4,
+    "track": 2,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "Core_Smoke1",
+     "OffsetPosition": "(X=-1000.000000,Y=0.000000,Z=0.000000)",
+     "OffsetRotation": "(Pitch=90.000000,Yaw=0.000000,Roll=0.000000)",
+     "Radius": "800.000000",
+     "Length": "2000.000000"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 4,
+    "track": 3,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 4,
+    "track": 4,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 4,
+    "track": 5,
+    "name": "MoveActorTimeline",
+    "class": "AnimNotify_MoveActorTimeline",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "TargetActorName": "Stigma",
+     "bAutoTangents": "True",
+     "StartTime": "0.000100",
+     "EndTime": "4.000000",
+     "TotalTime": "3.999900",
+     "TimelineKeyFrameData": "((Location=(X=6000.000000,Y=0.000000,Z=2000.000000)),(Time=0.500000,Location=(X=6000.000000,Y=0.000000,Z=2000.000000),CurveType=Curve),(Time=1.000000,Location=(X=5500.000000,Y=2000.000000,Z=2000.000000),CurveType=Curve),(Time=1.500000,Location=(X=4000.000000,Y=3000.000000,Z=2000.000000),CurveType=Curve),(Time=2.000000,Location=(X=5500.000000,Y=2000.000000,Z=2000.000000),CurveType=Curve),(Time=2.500000,Location=(X=6000.000000,Y=0.000000,Z=2000.000000),CurveType=Curve),(Time=3.000000,Location=(X=5500.000000,Y=-2000.000000,Z=2000.000000),CurveType=Curve),(Time=3.500000,Location=(X=4000.000000,Y=-",
+     "LocalEvent": "(TriggerTimeOffset=0.000100,EndTriggerTimeOffset=-0.000100,TriggerWeightThreshold=0.000010,NotifyName=\"MoveActorTimeline\",NotifyStateClass=AnimNotify_MoveActorTimeline'\"/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp:AnimNotify_MoveActorTimeline_0\"',Duration=4.000000,EndLink=(SegmentLength=4.000000,LinkValue=4.000000,LinkedSequence=AnimComposite'\"/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01_Comp/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp\"'),NotifyTriggerChance=1.000000,bTriggerOnDedicatedServer=True,NotifyColor=(B=0,G=0,R=0,A=255),Guid=B3D0",
+     "DataCache": "((LocalEvent=(TriggerTimeOffset=0.000100,EndTriggerTimeOffset=-0.000100,NotifyName=\"MoveActorTimeline\",NotifyStateClass=AnimNotify_MoveActorTimeline'\"/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp:AnimNotify_MoveActorTimeline_0\"',Duration=4.000000,EndLink=(SegmentIndex=0,SegmentLength=4.000000,LinkValue=4.000000,LinkedSequence=AnimComposite'\"/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle01_Comp/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp\"'),Guid=FBC739CB4635E433C01B33A3D78D5258,TrackIndex=4,SegmentIndex=0,SegmentLength=4.000000,LinkedSequence=A"
+    }
+   }
+  ],
+  "hits": [
+   0
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_2.B_AtkStigma01_2": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkStigma01_2.B_AtkStigma01_2",
+  "class": "AnimSequence",
+  "length": 3.1666667461395264,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 96,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkFeelerWingSmash01.B_AtkFeelerWingSmash01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkFeelerWingSmash01.B_AtkFeelerWingSmash01",
+  "class": "AnimSequence",
+  "length": 8.666666984558105,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 261,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 8.666666984558105,
+    "track": 13,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.3192867934703827,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh01",
+     "AttachPointName": "R_Hand_a"
+    }
+   },
+   {
+    "time": 1.1857167482376099,
+    "duration": 0,
+    "track": 12,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingFeelerOn"
+    }
+   },
+   {
+    "time": 3.2807888984680176,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh03",
+     "AttachPointName": "R_Hand_a"
+    }
+   },
+   {
+    "time": 4.072421073913574,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkFeelerWingSmash01_impact",
+     "AttachPointName": "R_Hand_a"
+    }
+   },
+   {
+    "time": 4.114983558654785,
+    "duration": 1.6676015853881836,
+    "track": 11,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 4.345914840698242,
+    "duration": 0,
+    "track": 10,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 4.526543140411377,
+    "duration": 0,
+    "track": 9,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_03\")"
+    }
+   },
+   {
+    "time": 4.553260326385498,
+    "duration": 0,
+    "track": 10,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingTornadoOn1"
+    }
+   },
+   {
+    "time": 4.672815322875977,
+    "duration": 0,
+    "track": 9,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingTornadoOn2"
+    }
+   },
+   {
+    "time": 4.677896976470947,
+    "duration": 0,
+    "track": 8,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_04\")"
+    }
+   },
+   {
+    "time": 4.829250812530518,
+    "duration": 0,
+    "track": 7,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_05\")"
+    }
+   },
+   {
+    "time": 4.881051540374756,
+    "duration": 0,
+    "track": 8,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingTornadoOn3"
+    }
+   },
+   {
+    "time": 5.080081462860107,
+    "duration": 0,
+    "track": 7,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingTornadoOn4"
+    }
+   },
+   {
+    "time": 5.213113784790039,
+    "duration": 0,
+    "track": 12,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingFeelerOff"
+    }
+   }
+  ],
+  "hits": [
+   4.114983558654785,
+   4.345914840698242,
+   4.526543140411377,
+   4.677896976470947,
+   4.829250812530518
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkWingSmashR01.B_AtkWingSmashR01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkWingSmashR01.B_AtkWingSmashR01",
+  "class": "AnimSequence",
+  "length": 10,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 301,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh01",
+     "AttachPointName": "R_Hand_a"
+    }
+   },
+   {
+    "time": 1.7582221031188965,
+    "duration": 0,
+    "track": 6,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "AIPCTarget",
+     "IntValue": "2"
+    }
+   },
+   {
+    "time": 1.8207662105560303,
+    "duration": 1.6772191524505615,
+    "track": 2,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ReferenceDamageSourceId": "EB2210_00_WingSmashR_01",
+     "bReferencedByDamageSource": "True",
+     "Radius": "5000.000000"
+    }
+   },
+   {
+    "time": 1.9136179685592651,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "move_whoosh03",
+     "AttachPointName": "R_Hand_a"
+    }
+   },
+   {
+    "time": 2.6208200454711914,
+    "duration": 0.6067073345184326,
+    "track": 4,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 2.9607093334198,
+    "duration": 0,
+    "track": 5,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "AbleWingTarget",
+     "IntValue": "2"
+    }
+   },
+   {
+    "time": 4.424915313720703,
+    "duration": 1.5773811340332031,
+    "track": 4,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 8.032379150390625,
+    "duration": 0,
+    "track": 5,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "DIsableWingTarget",
+     "IntValue": "2"
+    }
+   },
+   {
+    "time": 8.368464469909668,
+    "duration": 0,
+    "track": 4,
+    "name": "EndBattleAIMessageNotify",
+    "class": "EndBattleAIMessageNotify",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Message": "WingSmashReturn",
+     "IntValue": "5"
+    }
+   }
+  ],
+  "hits": [
+   2.6208200454711914
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_0.B_AtkEyeMagic01_0": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_0.B_AtkEyeMagic01_0",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 2,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.505742609500885,
+    "duration": 0,
+    "track": 0,
+    "name": "EndAnimNotifyPlayCharacterSound",
+    "class": "EndAnimNotifyPlayCharacterSound",
+    "hit": false,
+    "motion": true,
+    "settings": {
+     "SoundRef": "/Game/Sound/SE/Character/Enemy/SE_EB2210_00_BizarroSephiroth_Standard.SE_EB2210_00_BizarroSephiroth_Standard",
+     "SoundName": "B_AtkBindBall01_0_whoosh",
+     "AttachPointName": "C_Head_a"
+    }
+   },
+   {
+    "time": 0.8305951356887817,
+    "duration": 0.16940486431121826,
+    "track": 3,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1.B_AtkEyeMagic01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1.B_AtkEyeMagic01_1",
+  "class": "AnimSequence",
+  "length": 0.3333333432674408,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 11,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3",
+  "class": "AnimSequence",
+  "length": 5,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 301,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 0,
+    "duration": 0.3333333432674408,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.015312688425183296,
+    "duration": 4.775380611419678,
+    "track": 4,
+    "name": "MoveActorTimeline",
+    "class": "AnimNotify_MoveActorTimeline",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "TargetActorName": "EyeLaser",
+     "bAutoTangents": "True",
+     "StartTime": "0.015313",
+     "EndTime": "4.790688",
+     "TotalTime": "4.775375",
+     "TimelineKeyFrameData": "((Location=(X=0.000000,Y=1500.000000,Z=3550.000000)),(Time=0.700000,Location=(X=0.000000,Y=1500.000000,Z=3550.000000),CurveType=Curve),(Time=2.700000,Location=(X=2500.000000,Y=0.000000,Z=3550.000000),AutoGeneratedTangent=(X=2931966233486310884537008128.000000,Y=0.000000,Z=-0.000000),CurveType=Curve),(Time=4.700000,Location=(X=0.000000,Y=-1500.000000,Z=3550.000000)))",
+     "LocalEvent": "(TriggerWeightThreshold=0.000010,NotifyName=\"MoveActorTimeline\",NotifyStateClass=AnimNotify_MoveActorTimeline'\"/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3:AnimNotify_MoveActorTimeline_0\"',Duration=4.775375,EndLink=(SegmentLength=1.666667,LinkValue=4.790688,LinkedSequence=AnimComposite'\"/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00_Comp/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3\"'),NotifyTriggerChance=1.000000,bTriggerOnDedicatedServer=True,NotifyColor=(B=0,G=0,R=0,A=255),Guid=1F1910E249AB64F1F722CAB3A93060AD,TrackIndex=3,",
+     "DataCache": "((LocalEvent=(NotifyName=\"MoveActorTimeline\",NotifyStateClass=AnimNotify_MoveActorTimeline'\"/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3:AnimNotify_MoveActorTimeline_0\"',Duration=4.775375,EndLink=(SegmentIndex=0,SegmentLength=1.666667,LinkValue=4.790688,LinkedSequence=AnimComposite'\"/Game/Motion/Enemy/EB2210_BizarroSephiroth/Battle00_Comp/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3\"'),Guid=0A6804574257E7B66AC72F990346545D,TrackIndex=3,SegmentIndex=0,SegmentLength=1.666667,LinkValue=0.015313,LinkedSequence=AnimComposite'\"/Game/Mot"
+    }
+   },
+   {
+    "time": 0.02135384827852249,
+    "duration": 4.6459832191467285,
+    "track": 3,
+    "name": "EndAnimNotifyStateBattleDamage",
+    "class": "EndAnimNotifyStateBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_01\")"
+    }
+   },
+   {
+    "time": 0.3333333432674408,
+    "duration": 0.3333333432674408,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 0.3333333432674408,
+    "duration": 0.3333333432674408,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 0.3333333432674408,
+    "duration": 0.3333333432674408,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.6666666865348816,
+    "duration": 0.3333333134651184,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 0.6666666865348816,
+    "duration": 0.3333333134651184,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 0.6666666865348816,
+    "duration": 0.3333333134651184,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 1,
+    "duration": 0.33333325386047363,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 1,
+    "duration": 0.33333325386047363,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 1,
+    "duration": 0.33333325386047363,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 1.3333332538604736,
+    "duration": 0.33333349227905273,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 1.3333332538604736,
+    "duration": 0.33333349227905273,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 1.3333332538604736,
+    "duration": 0.33333349227905273,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 1.6666667461395264,
+    "duration": 0.33333349227905273,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 1.6666667461395264,
+    "duration": 0.33333349227905273,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 1.6666667461395264,
+    "duration": 0.33333349227905273,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 1.9999998807907104,
+    "duration": 0.3333336114883423,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 1.9999998807907104,
+    "duration": 0.3333336114883423,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 1.9999998807907104,
+    "duration": 0.3333336114883423,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 2.3333334922790527,
+    "duration": 0.33333349227905273,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 2.3333334922790527,
+    "duration": 0.33333349227905273,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 2.3333334922790527,
+    "duration": 0.33333349227905273,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 2.6666669845581055,
+    "duration": 0.33333325386047363,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 2.6666669845581055,
+    "duration": 0.33333325386047363,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 2.6666669845581055,
+    "duration": 0.33333325386047363,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 3.000000238418579,
+    "duration": 0.33333349227905273,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 3.000000238418579,
+    "duration": 0.33333349227905273,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 3.000000238418579,
+    "duration": 0.33333349227905273,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 3.333333730697632,
+    "duration": 0.33333325386047363,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 3.333333730697632,
+    "duration": 0.33333325386047363,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 3.333333730697632,
+    "duration": 0.33333325386047363,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 3.6666669845581055,
+    "duration": 0.33333349227905273,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 3.6666669845581055,
+    "duration": 0.33333349227905273,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 3.6666669845581055,
+    "duration": 0.33333349227905273,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 4,
+    "duration": 0.33333301544189453,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 4,
+    "duration": 0.33333301544189453,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 4,
+    "duration": 0.33333301544189453,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 4.3333330154418945,
+    "duration": 0.33333396911621094,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 4.3333330154418945,
+    "duration": 0.33333396911621094,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 4.3333330154418945,
+    "duration": 0.33333396911621094,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 4.6666669845581055,
+    "duration": 0.33333301544189453,
+    "track": 1,
+    "name": "EndAIBattleDangerObject",
+    "class": "AnimNotifyState_EndAIBattleDangerObject",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "AttachSocketName": "C_Head_a",
+     "Radius": "2500.000000",
+     "DodgeDirection": "Back",
+     "bUseDodgeDirection": "True"
+    }
+   },
+   {
+    "time": 4.6666669845581055,
+    "duration": 0.33333301544189453,
+    "track": 2,
+    "name": "EndAnimNotifyStateBattleSuperArmor",
+    "class": "EndAnimNotifyStateBattleSuperArmor",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "disableAdditive": "True"
+    }
+   },
+   {
+    "time": 4.6666669845581055,
+    "duration": 0.33333301544189453,
+    "track": 3,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": [
+   0.02135384827852249
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_2.B_AtkEyeMagic01_2": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_AtkEyeMagic01_2.B_AtkEyeMagic01_2",
+  "class": "AnimSequence",
+  "length": 1,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 31,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 1,
+    "track": 2,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   }
+  ],
+  "hits": []
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_SaferGokumon01_1.B_SaferGokumon01_1": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_SaferGokumon01_1.B_SaferGokumon01_1",
+  "class": "AnimSequence",
+  "length": 3.167062520980835,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 191,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 3.167062520980835,
+    "track": 4,
+    "name": "End DisableAutoFacial",
+    "class": "AnimNotify_EndDisableAutoFacial",
+    "hit": false,
+    "motion": false,
+    "settings": {}
+   },
+   {
+    "time": 0.5044201016426086,
+    "duration": 0,
+    "track": 2,
+    "name": "EndAnimNotifyBattleDamage",
+    "class": "EndAnimNotifyBattleDamage",
+    "hit": true,
+    "motion": false,
+    "settings": {
+     "DamageSourceIDs": "(\"?_02\")"
+    }
+   },
+   {
+    "time": 1.354701042175293,
+    "duration": 1.812361478805542,
+    "track": 5,
+    "name": "EndModifyLookAt",
+    "class": "AnimNotify_EndModifyLookAt",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "ModifierType": "ForceEnableLookAt"
+    }
+   }
+  ],
+  "hits": [
+   0.5044201016426086
+  ]
+ },
+ "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_SaferEnter01.B_SaferEnter01": {
+  "path": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle06/B_SaferEnter01.B_SaferEnter01",
+  "class": "AnimSequence",
+  "length": 8,
+  "rate_scale": 1,
+  "skeleton": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999_Skeleton.PC0010_999_Skeleton",
+  "frames": 481,
+  "root_motion": false,
+  "root_lock": 0,
+  "force_root_lock": false,
+  "additive": false,
+  "notifies": [
+   {
+    "time": 0,
+    "duration": 7.999999046325684,
+    "track": 1,
+    "name": "End Emotion",
+    "class": "AnimNotify_EndEmotion",
+    "hit": false,
+    "motion": false,
+    "settings": {
+     "Emotion": "F_Serious01",
+     "BlendInTime": "0.000000"
+    }
+   }
+  ],
+  "hits": []
+ }
+}

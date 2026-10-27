@@ -1,0 +1,2324 @@
+{
+ "settings": {
+  "out": "out_blue1",
+  "hue": 215.0,
+  "spread": 0.25,
+  "sat": 1.0,
+  "bright": 1.0,
+  "mode": "blue",
+  "name": "BlueCrossSlash_P"
+ },
+ "packages": {
+  "/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Limit01_CrossSlash_01": {
+   "curves": [
+    {
+     "emitter": "Line_2",
+     "script": "SpawnScript_1",
+     "curve": "Line.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line_2",
+     "script": "SpawnScript_1",
+     "curve": "Line.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line_2",
+     "script": "UpdateScript_2",
+     "curve": "Line.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line_2",
+     "script": "UpdateScript_2",
+     "curve": "Line.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main_0",
+     "script": "SpawnScript_1",
+     "curve": "Main.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main_0",
+     "script": "SpawnScript_1",
+     "curve": "Main.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main_0",
+     "script": "UpdateScript_2",
+     "curve": "Main.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main_0",
+     "script": "UpdateScript_2",
+     "curve": "Main.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark_Ea.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark_Ea.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "bytes_changed": 4556
+  },
+  "/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Limit01_CrossSlash_02": {
+   "curves": [
+    {
+     "emitter": "Line2_9",
+     "script": "SpawnScript_1",
+     "curve": "Line2.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line2_9",
+     "script": "SpawnScript_1",
+     "curve": "Line2.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line2_9",
+     "script": "UpdateScript_2",
+     "curve": "Line2.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line2_9",
+     "script": "UpdateScript_2",
+     "curve": "Line2.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line3_11",
+     "script": "SpawnScript_1",
+     "curve": "Line3.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line3_11",
+     "script": "SpawnScript_1",
+     "curve": "Line3.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line3_11",
+     "script": "UpdateScript_2",
+     "curve": "Line3.ColorFromCurve002.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line3_11",
+     "script": "UpdateScript_2",
+     "curve": "Line3.ColorFromCurve001.ColorCurve",
+     "samples": 26,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main2_12",
+     "script": "SpawnScript_1",
+     "curve": "Main2.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main2_12",
+     "script": "SpawnScript_1",
+     "curve": "Main2.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main2_12",
+     "script": "UpdateScript_2",
+     "curve": "Main2.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main2_12",
+     "script": "UpdateScript_2",
+     "curve": "Main2.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main3_13",
+     "script": "SpawnScript_1",
+     "curve": "Main3.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main3_13",
+     "script": "SpawnScript_1",
+     "curve": "Main3.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main3_13",
+     "script": "UpdateScript_2",
+     "curve": "Main3.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main3_13",
+     "script": "UpdateScript_2",
+     "curve": "Main3.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark2_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark2_Ea.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark2_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark2_Ea.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark3_Ea_3",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark3_Ea.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark3_Ea_3",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark3_Ea.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash001_1",
+     "script": "SpawnScript_0",
+     "curve": "Splash001.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash001_1",
+     "script": "SpawnScript_0",
+     "curve": "Splash001.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash001_1",
+     "script": "UpdateScript_1",
+     "curve": "Splash001.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash001_1",
+     "script": "UpdateScript_1",
+     "curve": "Splash001.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "bytes_changed": 9116
+  },
+  "/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Limit01_CrossSlash_03": {
+   "curves": [
+    {
+     "emitter": "exp_Ea001_2",
+     "script": "SpawnScript_0",
+     "curve": "exp_Ea001.ColorFromCurve.ColorCurve",
+     "samples": 29,
+     "before": [
+      1.0,
+      0.5127,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0448,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4343,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5737,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "exp_Ea001_2",
+     "script": "SpawnScript_0",
+     "curve": "exp_Ea001.ColorFromCurve001.ColorCurve",
+     "samples": 58,
+     "before": [
+      1.0,
+      0.0606,
+      0.0,
+      1.0,
+      "...",
+      0.2969,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5473,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.167,
+      0.2969,
+      1.0
+     ]
+    },
+    {
+     "emitter": "exp_Ea001_2",
+     "script": "UpdateScript_1",
+     "curve": "exp_Ea001.ColorFromCurve.ColorCurve",
+     "samples": 29,
+     "before": [
+      1.0,
+      0.5127,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0448,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4343,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5737,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "exp_Ea001_2",
+     "script": "UpdateScript_1",
+     "curve": "exp_Ea001.ColorFromCurve001.ColorCurve",
+     "samples": 58,
+     "before": [
+      1.0,
+      0.0606,
+      0.0,
+      1.0,
+      "...",
+      0.2969,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5473,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.167,
+      0.2969,
+      1.0
+     ]
+    },
+    {
+     "emitter": "exp_Ea_0",
+     "script": "GPUComputeScript_5",
+     "curve": "exp_Ea.ColorFromCurve.ColorCurve",
+     "samples": 29,
+     "before": [
+      1.0,
+      0.5127,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.1492,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4343,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5252,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "exp_Ea_0",
+     "script": "GPUComputeScript_5",
+     "curve": "exp_Ea.ColorFromCurve001.ColorCurve",
+     "samples": 58,
+     "before": [
+      1.0,
+      0.0606,
+      0.0,
+      1.0,
+      "...",
+      0.2969,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5473,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.167,
+      0.2969,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line4_0",
+     "script": "SpawnScript_1",
+     "curve": "Line4.ColorFromCurve002.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line4_0",
+     "script": "SpawnScript_1",
+     "curve": "Line4.ColorFromCurve001.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line4_0",
+     "script": "UpdateScript_2",
+     "curve": "Line4.ColorFromCurve002.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line4_0",
+     "script": "UpdateScript_2",
+     "curve": "Line4.ColorFromCurve001.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line5_6",
+     "script": "SpawnScript_1",
+     "curve": "Line5.ColorFromCurve002.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line5_6",
+     "script": "SpawnScript_1",
+     "curve": "Line5.ColorFromCurve001.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line5_6",
+     "script": "UpdateScript_2",
+     "curve": "Line5.ColorFromCurve002.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Line5_6",
+     "script": "UpdateScript_2",
+     "curve": "Line5.ColorFromCurve001.ColorCurve",
+     "samples": 27,
+     "before": [
+      0.7656,
+      1.0,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6242,
+      1.0,
+      1.0
+     ],
+     "after": [
+      0.7656,
+      0.8633,
+      1.0,
+      1.0,
+      "...",
+      0.4143,
+      0.6584,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main4_1",
+     "script": "SpawnScript_1",
+     "curve": "Main4.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main4_1",
+     "script": "SpawnScript_1",
+     "curve": "Main4.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main4_1",
+     "script": "UpdateScript_2",
+     "curve": "Main4.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main4_1",
+     "script": "UpdateScript_2",
+     "curve": "Main4.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main5_7",
+     "script": "SpawnScript_1",
+     "curve": "Main5.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main5_7",
+     "script": "SpawnScript_1",
+     "curve": "Main5.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main5_7",
+     "script": "UpdateScript_2",
+     "curve": "Main5.ColorFromCurve002.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Main5_7",
+     "script": "UpdateScript_2",
+     "curve": "Main5.ColorFromCurve001.ColorCurve",
+     "samples": 46,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0866,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5409,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainA_8",
+     "script": "SpawnScript_1",
+     "curve": "MainA.ColorFromCurve001.ColorCurve",
+     "samples": 44,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0326,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5707,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainA_8",
+     "script": "SpawnScript_1",
+     "curve": "MainA.ColorFromCurve002.ColorCurve",
+     "samples": 45,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0936,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5391,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainA_8",
+     "script": "UpdateScript_2",
+     "curve": "MainA.ColorFromCurve001.ColorCurve",
+     "samples": 44,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0326,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5707,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainA_8",
+     "script": "UpdateScript_2",
+     "curve": "MainA.ColorFromCurve002.ColorCurve",
+     "samples": 45,
+     "before": [
+      1.0,
+      0.7956,
+      0.4078,
+      1.0,
+      "...",
+      1.0,
+      0.0936,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.4078,
+      0.644,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5391,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainB_Exp_9",
+     "script": "SpawnScript_1",
+     "curve": "MainB_Exp.ColorFromCurve002.ColorCurve",
+     "samples": 69,
+     "before": [
+      1.0,
+      0.0,
+      0.1038,
+      1.0,
+      "...",
+      0.0885,
+      0.0,
+      0.0008,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5884,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.05,
+      0.0885,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainB_Exp_9",
+     "script": "SpawnScript_1",
+     "curve": "MainB_Exp.ColorFromCurve001.ColorCurve",
+     "samples": 13,
+     "before": [
+      1.0,
+      0.1849,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.3189,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5163,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.4828,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainB_Exp_9",
+     "script": "UpdateScript_2",
+     "curve": "MainB_Exp.ColorFromCurve002.ColorCurve",
+     "samples": 69,
+     "before": [
+      1.0,
+      0.0,
+      0.1038,
+      1.0,
+      "...",
+      0.0885,
+      0.0,
+      0.0008,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5884,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.05,
+      0.0885,
+      1.0
+     ]
+    },
+    {
+     "emitter": "MainB_Exp_9",
+     "script": "UpdateScript_2",
+     "curve": "MainB_Exp.ColorFromCurve001.ColorCurve",
+     "samples": 13,
+     "before": [
+      1.0,
+      0.1849,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.3189,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.5163,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.4828,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_child_0",
+     "script": "GPUComputeScript_5",
+     "curve": "Spark_child.ColorFromCurve001.ColorCurve",
+     "samples": 62,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_child_0",
+     "script": "GPUComputeScript_5",
+     "curve": "Spark_child.ColorFromCurve.ColorCurve",
+     "samples": 62,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Col_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark_Col_Ea.ColorFromCurve001.ColorCurve",
+     "samples": 62,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Col_Ea_0",
+     "script": "GPUComputeScript_6",
+     "curve": "Spark_Col_Ea.ColorFromCurve.ColorCurve",
+     "samples": 62,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Emit_4",
+     "script": "GPUComputeScript_5",
+     "curve": "Spark_Emit.ColorFromCurve001.ColorCurve",
+     "samples": 29,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Spark_Emit_4",
+     "script": "GPUComputeScript_5",
+     "curve": "Spark_Emit.ColorFromCurve.ColorCurve",
+     "samples": 29,
+     "before": [
+      1.0,
+      0.5846,
+      0.0,
+      1.0,
+      "...",
+      1.0,
+      0.0,
+      0.0873,
+      1.0
+     ],
+     "after": [
+      0.0,
+      0.4164,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5843,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "SpawnScript_0",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve001.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "emitter": "Splash_2",
+     "script": "UpdateScript_1",
+     "curve": "Splash.ColorFromCurve.ColorCurve",
+     "samples": 40,
+     "before": [
+      1.0,
+      0.9346,
+      0.6458,
+      1.0,
+      "...",
+      1.0,
+      0.0765,
+      0.0,
+      1.0
+     ],
+     "after": [
+      0.6458,
+      0.7729,
+      1.0,
+      1.0,
+      "...",
+      0.0,
+      0.5434,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "bytes_changed": 15902
+  }
+ }
+}

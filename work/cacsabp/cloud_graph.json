@@ -1,0 +1,5425 @@
+{
+ "cls": "PC0000_00_Cloud_Standard_Animation_C",
+ "package": "/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation",
+ "parent": "/Script/EndGame.EndCharacterAnimInstance",
+ "skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+ "nodes": [
+  {
+   "index": 0,
+   "name": "AnimGraphNode_Root",
+   "struct": "AnimNode_Root",
+   "values": {
+    "Name": "\"AnimGraph\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 130
+   }
+  },
+  {
+   "index": 1,
+   "name": "AnimGraphNode_EndBehaviorAction",
+   "struct": "AnimNode_EndBehaviorAction",
+   "values": {},
+   "links": {
+    "Source": 122
+   }
+  },
+  {
+   "index": 2,
+   "name": "AnimGraphNode_TransitionResult_83",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 3,
+   "name": "AnimGraphNode_TransitionResult_82",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 4,
+   "name": "AnimGraphNode_TransitionResult_81",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 5,
+   "name": "AnimGraphNode_TransitionResult_80",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 6,
+   "name": "AnimGraphNode_TransitionResult_79",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 7,
+   "name": "AnimGraphNode_TransitionResult_78",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 8,
+   "name": "AnimGraphNode_TransitionResult_77",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 9,
+   "name": "AnimGraphNode_TransitionResult_76",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 10,
+   "name": "AnimGraphNode_TransitionResult_75",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 11,
+   "name": "AnimGraphNode_TransitionResult_74",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 12,
+   "name": "AnimGraphNode_TransitionResult_73",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 13,
+   "name": "AnimGraphNode_TransitionResult_72",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 14,
+   "name": "AnimGraphNode_TransitionResult_71",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 15,
+   "name": "AnimGraphNode_TransitionResult_70",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 16,
+   "name": "AnimGraphNode_TransitionResult_69",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 17,
+   "name": "AnimGraphNode_TransitionResult_68",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 18,
+   "name": "AnimGraphNode_TransitionResult_67",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 19,
+   "name": "AnimGraphNode_TransitionResult_66",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 20,
+   "name": "AnimGraphNode_TransitionResult_65",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 21,
+   "name": "AnimGraphNode_TransitionResult_64",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 22,
+   "name": "AnimGraphNode_TransitionResult_63",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 23,
+   "name": "AnimGraphNode_TransitionResult_62",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 24,
+   "name": "AnimGraphNode_TransitionResult_61",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 25,
+   "name": "AnimGraphNode_TransitionResult_60",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 26,
+   "name": "AnimGraphNode_TransitionResult_59",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 27,
+   "name": "AnimGraphNode_TransitionResult_58",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 28,
+   "name": "AnimGraphNode_TransitionResult_57",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 29,
+   "name": "AnimGraphNode_TransitionResult_56",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 30,
+   "name": "AnimGraphNode_TransitionResult_55",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 31,
+   "name": "AnimGraphNode_TransitionResult_54",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 32,
+   "name": "AnimGraphNode_TransitionResult_53",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 33,
+   "name": "AnimGraphNode_TransitionResult_52",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 34,
+   "name": "AnimGraphNode_TransitionResult_51",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 35,
+   "name": "AnimGraphNode_TransitionResult_50",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 36,
+   "name": "AnimGraphNode_TransitionResult_49",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 37,
+   "name": "AnimGraphNode_TransitionResult_48",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 38,
+   "name": "AnimGraphNode_TransitionResult_47",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 39,
+   "name": "AnimGraphNode_TransitionResult_46",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 40,
+   "name": "AnimGraphNode_TransitionResult_45",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 41,
+   "name": "AnimGraphNode_TransitionResult_44",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 42,
+   "name": "AnimGraphNode_TransitionResult_43",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 43,
+   "name": "AnimGraphNode_TransitionResult_42",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 44,
+   "name": "AnimGraphNode_TransitionResult_41",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 45,
+   "name": "AnimGraphNode_TransitionResult_40",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 46,
+   "name": "AnimGraphNode_TransitionResult_39",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 47,
+   "name": "AnimGraphNode_TransitionResult_38",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 48,
+   "name": "AnimGraphNode_TransitionResult_37",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 49,
+   "name": "AnimGraphNode_TransitionResult_36",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 50,
+   "name": "AnimGraphNode_TransitionResult_35",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 51,
+   "name": "AnimGraphNode_TransitionResult_34",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 52,
+   "name": "AnimGraphNode_TransitionResult_33",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 53,
+   "name": "AnimGraphNode_TransitionResult_32",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 54,
+   "name": "AnimGraphNode_TransitionResult_31",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 55,
+   "name": "AnimGraphNode_TransitionResult_30",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 56,
+   "name": "AnimGraphNode_TransitionResult_29",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 57,
+   "name": "AnimGraphNode_TransitionResult_28",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 58,
+   "name": "AnimGraphNode_TransitionResult_27",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 59,
+   "name": "AnimGraphNode_TransitionResult_26",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 60,
+   "name": "AnimGraphNode_TransitionResult_25",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 61,
+   "name": "AnimGraphNode_TransitionResult_24",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 62,
+   "name": "AnimGraphNode_TransitionResult_23",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 63,
+   "name": "AnimGraphNode_TransitionResult_22",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 64,
+   "name": "AnimGraphNode_TransitionResult_21",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 65,
+   "name": "AnimGraphNode_TransitionResult_20",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 66,
+   "name": "AnimGraphNode_TransitionResult_19",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 67,
+   "name": "AnimGraphNode_TransitionResult_18",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 68,
+   "name": "AnimGraphNode_TransitionResult_17",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 69,
+   "name": "AnimGraphNode_TransitionResult_16",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 70,
+   "name": "AnimGraphNode_TransitionResult_15",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 71,
+   "name": "AnimGraphNode_TransitionResult_14",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 72,
+   "name": "AnimGraphNode_TransitionResult_13",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 73,
+   "name": "AnimGraphNode_TransitionResult_12",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 74,
+   "name": "AnimGraphNode_TransitionResult_11",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "False"
+   },
+   "links": {}
+  },
+  {
+   "index": 75,
+   "name": "AnimGraphNode_TransitionResult_10",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 76,
+   "name": "AnimGraphNode_TransitionResult_9",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 77,
+   "name": "AnimGraphNode_TransitionResult_8",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 78,
+   "name": "AnimGraphNode_TransitionResult_7",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 79,
+   "name": "AnimGraphNode_TransitionResult_6",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 80,
+   "name": "AnimGraphNode_TransitionResult_5",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 81,
+   "name": "AnimGraphNode_TransitionResult_4",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 82,
+   "name": "AnimGraphNode_TransitionResult_3",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 83,
+   "name": "AnimGraphNode_TransitionResult_2",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 84,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_14",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "RunLoop",
+    "RotationRateSettings": "((BehaviorMode=Battle,LocomotionState=RunLoop,RotationRate=4.2e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "True",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 85,
+   "name": "AnimGraphNode_StateResult_16",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Run Loop\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 84
+   }
+  },
+  {
+   "index": 86,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_13",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "WalkLoop",
+    "RotationRateSettings": "((BehaviorMode=Battle,LocomotionState=WalkLoop,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "True",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 87,
+   "name": "AnimGraphNode_StateResult_15",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Walk Loop\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 86
+   }
+  },
+  {
+   "index": 88,
+   "name": "AnimGraphNode_EndLocomotionBlendSpacePlayer",
+   "struct": "AnimNode_EndLocomotionBlendSpacePlayer",
+   "values": {
+    "LocomotionState": "AccelLoop",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkLoop,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Neutral,LocomotionState=RunLoop,RotationRate=3.6e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Neutral,LocomotionState=DashLoop,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "X": "0.0",
+    "Y": "0.0",
+    "Z": "0.0",
+    "PlayRate": "1.0",
+    "bLoop": "True",
+    "bResetPlayTimeWhenBlendSpaceChanges": "True",
+    "StartPosition": "0.0",
+    "BlendSpace": "None",
+    "PreviousBlendSpace": "None",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 89,
+   "name": "AnimGraphNode_StateResult_14",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Accel Loop\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 88
+   }
+  },
+  {
+   "index": 90,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_12",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "RunTurn",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=RunTurn,RotationRate=3.6e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=RunTurn,RotationRate=4.2e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 91,
+   "name": "AnimGraphNode_StateResult_13",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Run Turn\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 90
+   }
+  },
+  {
+   "index": 92,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_11",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "WalkTurn",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkTurn,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=WalkTurn,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 93,
+   "name": "AnimGraphNode_StateResult_12",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Walk Turn\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 92
+   }
+  },
+  {
+   "index": 94,
+   "name": "AnimGraphNode_LocalRefPose",
+   "struct": "AnimNode_RefPose",
+   "values": {
+    "RefPoseType": "EIT_LocalSpace"
+   },
+   "links": {}
+  },
+  {
+   "index": 95,
+   "name": "AnimGraphNode_StateResult_11",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Entry\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 94
+   }
+  },
+  {
+   "index": 96,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_10",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "StrafingWalkEnd",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 97,
+   "name": "AnimGraphNode_StateResult_10",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Strafing Walk End\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 96
+   }
+  },
+  {
+   "index": 98,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_9",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "StrafingWalkLoop",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=StrafingWalkLoop,RotationRate=1.2e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=StrafingWalkLoop,RotationRate=1.2e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "True",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 99,
+   "name": "AnimGraphNode_StateResult_9",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Strafing Walk Loop\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 98
+   }
+  },
+  {
+   "index": 100,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_8",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "StrafingWalkStart",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=StrafingWalkStart,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=StrafingWalkStart,RotationRate=4.8e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 101,
+   "name": "AnimGraphNode_StateResult_8",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Strafing Walk Start\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 100
+   }
+  },
+  {
+   "index": 102,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_7",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "Turn",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 103,
+   "name": "AnimGraphNode_StateResult_7",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Turn\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 102
+   }
+  },
+  {
+   "index": 104,
+   "name": "AnimGraphNode_TransitionResult_1",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 105,
+   "name": "AnimGraphNode_TransitionResult",
+   "struct": "AnimNode_TransitionResult",
+   "values": {
+    "bCanEnterTransition": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 106,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_6",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "RunEnd",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 107,
+   "name": "AnimGraphNode_StateResult_6",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Run End\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 106
+   }
+  },
+  {
+   "index": 108,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_5",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "DashEnd",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 109,
+   "name": "AnimGraphNode_StateResult_5",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Dash End\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 108
+   }
+  },
+  {
+   "index": 110,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_4",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "WalkEnd",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 111,
+   "name": "AnimGraphNode_StateResult_4",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Walk End\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 110
+   }
+  },
+  {
+   "index": 112,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_3",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "DashStart",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=DashStart,RotationRate=1.8e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 113,
+   "name": "AnimGraphNode_StateResult_3",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Dash Start\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 112
+   }
+  },
+  {
+   "index": 114,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_2",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "RunStart",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=RunStart,RotationRate=3.6e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=RunStart,RotationRate=4.2e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 115,
+   "name": "AnimGraphNode_StateResult_2",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Run Start\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 114
+   }
+  },
+  {
+   "index": 116,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer_1",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "WalkStart",
+    "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkStart,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=WalkStart,RotationRate=2.4e+02,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "False",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 117,
+   "name": "AnimGraphNode_StateResult_1",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Walk Start\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 116
+   }
+  },
+  {
+   "index": 118,
+   "name": "AnimGraphNode_EndLocomotionSequencePlayer",
+   "struct": "AnimNode_EndLocomotionSequencePlayer",
+   "values": {
+    "LocomotionState": "Idle",
+    "RotationRateSettings": "()",
+    "Sequence": "None",
+    "PlayRateBasis": "1.0",
+    "PlayRate": "1.0",
+    "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "StartPosition": "0.0",
+    "bLoopAnimation": "True",
+    "GroupName": "None",
+    "GroupRole": "CanBeLeader",
+    "GroupScope": "Local",
+    "bIgnoreForRelevancyTest": "False",
+    "BlendWeight": "0.0",
+    "InternalTimeAccumulator": "0.0"
+   },
+   "links": {}
+  },
+  {
+   "index": 119,
+   "name": "AnimGraphNode_StateResult",
+   "struct": "AnimNode_StateResult",
+   "values": {
+    "Name": "\"Idle\"",
+    "Group": "None"
+   },
+   "links": {
+    "Result": 118
+   }
+  },
+  {
+   "index": 120,
+   "name": "AnimGraphNode_StateMachine",
+   "struct": "AnimNode_StateMachine",
+   "values": {
+    "StateMachineIndexInClass": "0",
+    "MaxTransitionsPerFrame": "3",
+    "bSkipFirstUpdateTransition": "True",
+    "bReinitializeOnBecomingRelevant": "True"
+   },
+   "links": {}
+  },
+  {
+   "index": 121,
+   "name": "AnimGraphNode_EndInertialization",
+   "struct": "AnimNode_EndInertialization",
+   "values": {},
+   "links": {
+    "Source": 125
+   }
+  },
+  {
+   "index": 122,
+   "name": "AnimGraphNode_Slot",
+   "struct": "AnimNode_Slot",
+   "values": {
+    "SlotName": "\"DefaultSlot\"",
+    "bAlwaysUpdateSourcePose": "False"
+   },
+   "links": {
+    "Source": 120
+   }
+  },
+  {
+   "index": 123,
+   "name": "AnimGraphNode_LocalToComponentSpace_1",
+   "struct": "AnimNode_ConvertLocalToComponentSpace",
+   "values": {},
+   "links": {
+    "LocalPose": 124
+   }
+  },
+  {
+   "index": 124,
+   "name": "AnimGraphNode_EndFacialSecondary",
+   "struct": "AnimNode_EndFacialSecondary",
+   "values": {
+    "LipMaps": "()",
+    "Input": "(Pack=None,KeyName=None,MappingName=\"Default\",EvaluateTime=0.0)",
+    "DummyShape": "(Attributes=(),AudioMin=0.0,AudioMax=0.0,AudioPower=0.0,bBlend=False,BlendIn=0.0,BlendOut=0.0,bRandomize=False,bRandomizePerChannel=False,RandomMin=0.0,RandomMax=0.0,bForceShape=False)"
+   },
+   "links": {
+    "Source": 121
+   }
+  },
+  {
+   "index": 125,
+   "name": "AnimGraphNode_EndFacialPrimary",
+   "struct": "AnimNode_EndFacialPrimary",
+   "values": {
+    "SlotName": "\"FacialSlot\"",
+    "bAlwaysUpdateSourcePose": "True"
+   },
+   "links": {
+    "Source": 1
+   }
+  },
+  {
+   "index": 126,
+   "name": "AnimGraphNode_EndCharacterMovementExpression",
+   "struct": "AnimNode_EndCharacterMovementExpression",
+   "values": {
+    "LODThreshold": "-1",
+    "ActualAlpha": "0.0",
+    "AlphaInputType": "Float",
+    "bAlphaBoolEnabled": "True",
+    "Alpha": "1.0",
+    "AlphaScaleBias": "(Scale=1.0,Bias=0.0)",
+    "AlphaBoolBlend": "(BlendInTime=0.0,BlendOutTime=0.0,BlendOption=Linear,bInitialized=False,CustomCurve=None,AlphaBlend=(CustomCurve=None,BlendTime=0.2,BlendOption=Linear))",
+    "AlphaCurveName": "None",
+    "AlphaScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)"
+   },
+   "links": {
+    "ComponentPose": 123
+   }
+  },
+  {
+   "index": 127,
+   "name": "AnimGraphNode_ControlRig",
+   "struct": "AnimNode_ControlRig",
+   "values": {
+    "ControlRigClass": "/Game/Character/Common/ControlRig/CommonHuman00_Rig.CommonHuman00_Rig_C",
+    "ControlRig": "None",
+    "Alpha": "1.0",
+    "AlphaInputType": "Float",
+    "bAlphaBoolEnabled": "True",
+    "bSetRefPoseFromSkeleton": "False",
+    "AlphaScaleBias": "(Scale=1.0,Bias=0.0)",
+    "AlphaBoolBlend": "(BlendInTime=0.0,BlendOutTime=0.0,BlendOption=Linear,bInitialized=False,CustomCurve=None,AlphaBlend=(CustomCurve=None,BlendTime=0.2,BlendOption=Linear))",
+    "AlphaCurveName": "None",
+    "AlphaScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)",
+    "InputMapping": "()",
+    "OutputMapping": "()",
+    "LODThreshold": "-1",
+    "ControlRigBoneMapping": "()",
+    "ControlRigCurveMapping": "()",
+    "InputToCurveMappingUIDs": "()",
+    "NodeMappingContainer": "None",
+    "InputSettings": "(bUpdatePose=True,bUpdateCurves=True)",
+    "OutputSettings": "(bUpdatePose=True,bUpdateCurves=True)",
+    "bExecute": "True",
+    "SourcePropertyNames": "()",
+    "DestPropertyNames": "()",
+    "TargetInstance": "None"
+   },
+   "links": {
+    "Source": 128
+   }
+  },
+  {
+   "index": 128,
+   "name": "AnimGraphNode_ComponentToLocalSpace_1",
+   "struct": "AnimNode_ConvertComponentToLocalSpace",
+   "values": {},
+   "links": {
+    "ComponentPose": 126
+   }
+  },
+  {
+   "index": 129,
+   "name": "AnimGraphNode_LocalToComponentSpace",
+   "struct": "AnimNode_ConvertLocalToComponentSpace",
+   "values": {},
+   "links": {
+    "LocalPose": 127
+   }
+  },
+  {
+   "index": 130,
+   "name": "AnimGraphNode_ComponentToLocalSpace",
+   "struct": "AnimNode_ConvertComponentToLocalSpace",
+   "values": {},
+   "links": {
+    "ComponentPose": 131
+   }
+  },
+  {
+   "index": 131,
+   "name": "AnimGraphNode_EndSwordExpression",
+   "struct": "AnimNode_EndSwordExpression",
+   "values": {
+    "TargetBone": "(BoneName=\"C_Weapon_a\")",
+    "EndPointDirection": "(Axis=(X=-1.0,Y=-0.1,Z=0.0),bInLocalSpace=True)",
+    "EndPointDistance": "1.1e+02",
+    "bEnabledEndPointGravity": "False",
+    "AnimatedPositionStiffness": "0.05",
+    "VelocityFriction": "0.7",
+    "ConstraintAngle": "1e+01",
+    "ConstraintAngleStiffness": "1.0",
+    "ContactBones": "((BoneName=\"L_Foot_a\"),(BoneName=\"R_Foot_a\"))",
+    "ContactPadding": "7.0",
+    "ContactPaddingWalkScale": "2.0",
+    "ContactPaddingRunScale": "2.0",
+    "ContactPaddingDashScale": "3.0",
+    "ContactPositionStiffness": "0.2",
+    "ContactVelocityStiffness": "0.8",
+    "PositionIterationCount": "4",
+    "VelocityIterationCount": "1",
+    "WeightSmoothRate": "3.0",
+    "ActiveDuringTime": "4.0",
+    "DeltaRotationInterpSpeedWalk": "1e+01",
+    "DeltaRotationInterpSpeedRun": "2e+01",
+    "DeltaRotationInterpSpeedDash": "3e+01",
+    "LODThreshold": "-1",
+    "ActualAlpha": "0.0",
+    "AlphaInputType": "Float",
+    "bAlphaBoolEnabled": "True",
+    "Alpha": "1.0",
+    "AlphaScaleBias": "(Scale=1.0,Bias=0.0)",
+    "AlphaBoolBlend": "(BlendInTime=0.0,BlendOutTime=0.0,BlendOption=Linear,bInitialized=False,CustomCurve=None,AlphaBlend=(CustomCurve=None,BlendTime=0.2,BlendOption=Linear))",
+    "AlphaCurveName": "None",
+    "AlphaScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=1e+01,InterpSpeedDecreasing=1e+01)"
+   },
+   "links": {
+    "ComponentPose": 129
+   }
+  }
+ ],
+ "root": 0,
+ "machines": [
+  {
+   "name": "Locomotion",
+   "initial": 0,
+   "states": [
+    {
+     "name": "Entry",
+     "conduit": false,
+     "root": 95,
+     "players": [],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 43,
+       "priority": 0,
+       "rule_node": 74,
+       "rule_node_name": "AnimGraphNode_TransitionResult_11",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 7
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 44,
+       "priority": 1,
+       "rule_node": 73,
+       "rule_node_name": "AnimGraphNode_TransitionResult_12",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 3
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 45,
+       "priority": 2,
+       "rule_node": 72,
+       "rule_node_name": "AnimGraphNode_TransitionResult_13",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 11
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 67,
+       "priority": 3,
+       "rule_node": 71,
+       "rule_node_name": "AnimGraphNode_TransitionResult_14",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 14
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 31,
+       "priority": 4,
+       "rule_node": 70,
+       "rule_node_name": "AnimGraphNode_TransitionResult_15",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Idle",
+     "conduit": false,
+     "root": 119,
+     "players": [
+      118
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 10,
+       "priority": 0,
+       "rule_node": 69,
+       "rule_node_name": "AnimGraphNode_TransitionResult_16",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 3,
+       "priority": 1,
+       "rule_node": 68,
+       "rule_node_name": "AnimGraphNode_TransitionResult_17",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      0,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Start",
+     "conduit": false,
+     "root": 117,
+     "players": [
+      116
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 19,
+       "priority": 0,
+       "rule_node": 67,
+       "rule_node_name": "AnimGraphNode_TransitionResult_18",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 11
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 30,
+       "priority": 1,
+       "rule_node": 66,
+       "rule_node_name": "AnimGraphNode_TransitionResult_19",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "BooleanAND",
+        "args": [
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 4
+           }
+          ]
+         },
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "Less_FloatFloat",
+          "args": [
+           {
+            "op": "time",
+            "func": "GetRelevantAnimTimeRemainingFraction",
+            "machine_node": 120,
+            "state": 2
+           },
+           {
+            "op": "const",
+            "type": "float",
+            "value": 0.699999988079071
+           }
+          ]
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 37,
+       "priority": 2,
+       "rule_node": 65,
+       "rule_node_name": "AnimGraphNode_TransitionResult_20",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 2
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 70,
+       "priority": 3,
+       "rule_node": 64,
+       "rule_node_name": "AnimGraphNode_TransitionResult_21",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 17,
+       "priority": 4,
+       "rule_node": 63,
+       "rule_node_name": "AnimGraphNode_TransitionResult_22",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 7
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Start",
+     "conduit": false,
+     "root": 115,
+     "players": [
+      114
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 32,
+       "priority": 0,
+       "rule_node": 62,
+       "rule_node_name": "AnimGraphNode_TransitionResult_23",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 3
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 71,
+       "priority": 1,
+       "rule_node": 61,
+       "rule_node_name": "AnimGraphNode_TransitionResult_24",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 72,
+       "priority": 2,
+       "rule_node": 60,
+       "rule_node_name": "AnimGraphNode_TransitionResult_25",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "BooleanAND",
+        "args": [
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 8
+           }
+          ]
+         },
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "Less_FloatFloat",
+          "args": [
+           {
+            "op": "time",
+            "func": "GetRelevantAnimTimeRemainingFraction",
+            "machine_node": 120,
+            "state": 3
+           },
+           {
+            "op": "const",
+            "type": "float",
+            "value": 0.699999988079071
+           }
+          ]
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 18,
+       "priority": 3,
+       "rule_node": 59,
+       "rule_node_name": "AnimGraphNode_TransitionResult_26",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 11
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Dash Start",
+     "conduit": false,
+     "root": 113,
+     "players": [
+      112
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 38,
+       "priority": 0,
+       "rule_node": 58,
+       "rule_node_name": "AnimGraphNode_TransitionResult_27",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 4
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk End",
+     "conduit": false,
+     "root": 111,
+     "players": [
+      110
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 7,
+       "priority": 0,
+       "rule_node": 57,
+       "rule_node_name": "AnimGraphNode_TransitionResult_28",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 5
+         },
+         {
+          "op": "select",
+          "index": {
+           "op": "var",
+           "name": "CurrentBehaviorMode"
+          },
+          "options": [
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 0
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.10000000149011612
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 4
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 17
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 1
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.10000000149011612
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 2
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.10000000149011612
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 4
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 17
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          ],
+          "default": {
+           "op": "default",
+           "name": "K2Node_Select_Default_2"
+          }
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 14,
+       "priority": 1,
+       "rule_node": 56,
+       "rule_node_name": "AnimGraphNode_TransitionResult_29",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 5
+         },
+         {
+          "op": "select",
+          "index": {
+           "op": "var",
+           "name": "CurrentBehaviorMode"
+          },
+          "options": [
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 0
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 4
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 17
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 1
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.20000000298023224
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 2
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 4
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 17
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          ],
+          "default": {
+           "op": "default",
+           "name": "K2Node_Select_Default"
+          }
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 2,
+       "priority": 2,
+       "rule_node": 55,
+       "rule_node_name": "AnimGraphNode_TransitionResult_30",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 5
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Dash End",
+     "conduit": false,
+     "root": 109,
+     "players": [
+      108
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 9,
+       "priority": 0,
+       "rule_node": 54,
+       "rule_node_name": "AnimGraphNode_TransitionResult_31",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 6
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.30000001192092896
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 16,
+       "priority": 1,
+       "rule_node": 53,
+       "rule_node_name": "AnimGraphNode_TransitionResult_32",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 6
+         },
+         {
+          "op": "select",
+          "index": {
+           "op": "var",
+           "name": "CurrentBehaviorMode"
+          },
+          "options": [
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 0
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.4000000059604645
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 12
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 54
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 1
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.4000000059604645
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 2
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.4000000059604645
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 12
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 54
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          ],
+          "default": {
+           "op": "default",
+           "name": "K2Node_Select_Default_1"
+          }
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 0,
+       "priority": 2,
+       "rule_node": 52,
+       "rule_node_name": "AnimGraphNode_TransitionResult_33",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 6
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run End",
+     "conduit": false,
+     "root": 107,
+     "players": [
+      106
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 8,
+       "priority": 0,
+       "rule_node": 51,
+       "rule_node_name": "AnimGraphNode_TransitionResult_34",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 7
+         },
+         {
+          "op": "select",
+          "index": {
+           "op": "var",
+           "name": "CurrentBehaviorMode"
+          },
+          "options": [
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 0
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.10000000149011612
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 1
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.30000001192092896
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 2
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.10000000149011612
+            }
+           ]
+          ],
+          "default": {
+           "op": "default",
+           "name": "K2Node_Select_Default_3"
+          }
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 15,
+       "priority": 1,
+       "rule_node": 50,
+       "rule_node_name": "AnimGraphNode_TransitionResult_35",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 7
+         },
+         {
+          "op": "select",
+          "index": {
+           "op": "var",
+           "name": "CurrentBehaviorMode"
+          },
+          "options": [
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 0
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 8
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 41
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 1
+            },
+            {
+             "op": "const",
+             "type": "float",
+             "value": 0.4000000059604645
+            }
+           ],
+           [
+            {
+             "op": "const",
+             "type": "byte",
+             "value": 2
+            },
+            {
+             "op": "call",
+             "cls": "KismetMathLibrary",
+             "func": "SelectFloat",
+             "args": [
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.20000000298023224
+              },
+              {
+               "op": "const",
+               "type": "float",
+               "value": 0.699999988079071
+              },
+              {
+               "op": "call",
+               "cls": "KismetMathLibrary",
+               "func": "EqualEqual_ByteByte",
+               "args": [
+                {
+                 "op": "call",
+                 "cls": "EndCharacterAnimInstance",
+                 "func": "GetLocomotionAnimGroupFromCache",
+                 "args": [
+                  {
+                   "op": "const",
+                   "type": "byte",
+                   "value": 8
+                  }
+                 ]
+                },
+                {
+                 "op": "const",
+                 "type": "byte",
+                 "value": 41
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          ],
+          "default": {
+           "op": "default",
+           "name": "K2Node_Select_Default_4"
+          }
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 1,
+       "priority": 2,
+       "rule_node": 49,
+       "rule_node_name": "AnimGraphNode_TransitionResult_36",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 7
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Allow Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 105,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 5,
+       "priority": 0,
+       "rule_node": 48,
+       "rule_node_name": "AnimGraphNode_TransitionResult_37",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 6
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 6,
+       "priority": 1,
+       "rule_node": 47,
+       "rule_node_name": "AnimGraphNode_TransitionResult_38",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 10
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 20,
+       "priority": 2,
+       "rule_node": 46,
+       "rule_node_name": "AnimGraphNode_TransitionResult_39",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 13
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 4,
+       "priority": 3,
+       "rule_node": 45,
+       "rule_node_name": "AnimGraphNode_TransitionResult_40",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 2
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Allow Turn",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 104,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 11,
+       "priority": 0,
+       "rule_node": 44,
+       "rule_node_name": "AnimGraphNode_TransitionResult_41",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Turn",
+     "conduit": false,
+     "root": 103,
+     "players": [
+      102
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 13,
+       "priority": 0,
+       "rule_node": 43,
+       "rule_node_name": "AnimGraphNode_TransitionResult_42",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 12,
+       "priority": 1,
+       "rule_node": 42,
+       "rule_node_name": "AnimGraphNode_TransitionResult_43",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 10
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Strafing Walk Start",
+     "conduit": false,
+     "root": 101,
+     "players": [
+      100
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 22,
+       "priority": 0,
+       "rule_node": 41,
+       "rule_node_name": "AnimGraphNode_TransitionResult_44",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 11
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 23,
+       "priority": 1,
+       "rule_node": 40,
+       "rule_node_name": "AnimGraphNode_TransitionResult_45",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 11
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 21,
+       "priority": 2,
+       "rule_node": 39,
+       "rule_node_name": "AnimGraphNode_TransitionResult_46",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 7
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Strafing Walk Loop",
+     "conduit": false,
+     "root": 99,
+     "players": [
+      98
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 25,
+       "priority": 0,
+       "rule_node": 38,
+       "rule_node_name": "AnimGraphNode_TransitionResult_47",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 11
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 26,
+       "priority": 1,
+       "rule_node": 37,
+       "rule_node_name": "AnimGraphNode_TransitionResult_48",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 15
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 24,
+       "priority": 2,
+       "rule_node": 36,
+       "rule_node_name": "AnimGraphNode_TransitionResult_49",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 7
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Strafing Walk End",
+     "conduit": false,
+     "root": 97,
+     "players": [
+      96
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 28,
+       "priority": 0,
+       "rule_node": 35,
+       "rule_node_name": "AnimGraphNode_TransitionResult_50",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 13
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 29,
+       "priority": 1,
+       "rule_node": 34,
+       "rule_node_name": "AnimGraphNode_TransitionResult_51",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Greater_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeFraction",
+          "machine_node": 120,
+          "state": 13
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.30000001192092896
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 27,
+       "priority": 2,
+       "rule_node": 33,
+       "rule_node_name": "AnimGraphNode_TransitionResult_52",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Turn",
+     "conduit": false,
+     "root": 93,
+     "players": [
+      92
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 57,
+       "priority": 0,
+       "rule_node": 32,
+       "rule_node_name": "AnimGraphNode_TransitionResult_53",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 14
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Turn",
+     "conduit": false,
+     "root": 91,
+     "players": [
+      90
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 53,
+       "priority": 0,
+       "rule_node": 31,
+       "rule_node_name": "AnimGraphNode_TransitionResult_54",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemaining",
+          "machine_node": 120,
+          "state": 15
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.05000000074505806
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Accel Loop",
+     "conduit": false,
+     "root": 89,
+     "players": [
+      88
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 41,
+       "priority": 0,
+       "rule_node": 30,
+       "rule_node_name": "AnimGraphNode_TransitionResult_55",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 8
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 42,
+       "priority": 1,
+       "rule_node": 29,
+       "rule_node_name": "AnimGraphNode_TransitionResult_56",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 4
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 51,
+       "priority": 2,
+       "rule_node": 28,
+       "rule_node_name": "AnimGraphNode_TransitionResult_57",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 9
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 56,
+       "priority": 3,
+       "rule_node": 27,
+       "rule_node_name": "AnimGraphNode_TransitionResult_58",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 5
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 68,
+       "priority": 4,
+       "rule_node": 26,
+       "rule_node_name": "AnimGraphNode_TransitionResult_59",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "BooleanAND",
+        "args": [
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 11
+           }
+          ]
+         },
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "Less_FloatFloat",
+          "args": [
+           {
+            "op": "var",
+            "name": "LastBlendInputSpeed"
+           },
+           {
+            "op": "const",
+            "type": "float",
+            "value": 0.5009999871253967
+           }
+          ]
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 40,
+       "priority": 5,
+       "rule_node": 25,
+       "rule_node_name": "AnimGraphNode_TransitionResult_60",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 12
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 64,
+       "priority": 6,
+       "rule_node": 24,
+       "rule_node_name": "AnimGraphNode_TransitionResult_61",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 63,
+       "priority": 7,
+       "rule_node": 23,
+       "rule_node_name": "AnimGraphNode_TransitionResult_62",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Loop",
+     "conduit": false,
+     "root": 87,
+     "players": [
+      86
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 62,
+       "priority": 0,
+       "rule_node": 22,
+       "rule_node_name": "AnimGraphNode_TransitionResult_63",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "BooleanOR",
+        "args": [
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 4
+           }
+          ]
+         },
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 7
+           }
+          ]
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 60,
+       "priority": 1,
+       "rule_node": 21,
+       "rule_node_name": "AnimGraphNode_TransitionResult_64",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 5
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 65,
+       "priority": 2,
+       "rule_node": 20,
+       "rule_node_name": "AnimGraphNode_TransitionResult_65",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Loop",
+     "conduit": false,
+     "root": 85,
+     "players": [
+      84
+     ],
+     "entry_rule_node": null,
+     "entry_rule": null,
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 61,
+       "priority": 0,
+       "rule_node": 19,
+       "rule_node_name": "AnimGraphNode_TransitionResult_66",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "BooleanOR",
+        "args": [
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 8
+           }
+          ]
+         },
+         {
+          "op": "call",
+          "cls": "KismetMathLibrary",
+          "func": "EqualEqual_ByteByte",
+          "args": [
+           {
+            "op": "var",
+            "name": "RequestedLocomotionState"
+           },
+           {
+            "op": "const",
+            "type": "byte",
+            "value": 3
+           }
+          ]
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 52,
+       "priority": 1,
+       "rule_node": 18,
+       "rule_node_name": "AnimGraphNode_TransitionResult_67",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 9
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 66,
+       "priority": 2,
+       "rule_node": 17,
+       "rule_node_name": "AnimGraphNode_TransitionResult_68",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Start to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 83,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 33,
+       "priority": 0,
+       "rule_node": 16,
+       "rule_node_name": "AnimGraphNode_TransitionResult_69",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 34,
+       "priority": 1,
+       "rule_node": 15,
+       "rule_node_name": "AnimGraphNode_TransitionResult_70",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Start to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 82,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 35,
+       "priority": 0,
+       "rule_node": 14,
+       "rule_node_name": "AnimGraphNode_TransitionResult_71",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 36,
+       "priority": 1,
+       "rule_node": 13,
+       "rule_node_name": "AnimGraphNode_TransitionResult_72",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Dash Start to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 81,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 39,
+       "priority": 0,
+       "rule_node": 12,
+       "rule_node_name": "AnimGraphNode_TransitionResult_73",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Entry to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 80,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 48,
+       "priority": 0,
+       "rule_node": 11,
+       "rule_node_name": "AnimGraphNode_TransitionResult_74",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 50,
+       "priority": 1,
+       "rule_node": 10,
+       "rule_node_name": "AnimGraphNode_TransitionResult_75",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Entry to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 79,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 47,
+       "priority": 0,
+       "rule_node": 9,
+       "rule_node_name": "AnimGraphNode_TransitionResult_76",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 46,
+       "priority": 1,
+       "rule_node": 8,
+       "rule_node_name": "AnimGraphNode_TransitionResult_77",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Dash Entry to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 78,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 49,
+       "priority": 0,
+       "rule_node": 7,
+       "rule_node_name": "AnimGraphNode_TransitionResult_78",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Run Turn to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 77,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 54,
+       "priority": 0,
+       "rule_node": 6,
+       "rule_node_name": "AnimGraphNode_TransitionResult_79",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 55,
+       "priority": 1,
+       "rule_node": 5,
+       "rule_node_name": "AnimGraphNode_TransitionResult_80",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Walk Turn to Accel",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 76,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 58,
+       "priority": 0,
+       "rule_node": 4,
+       "rule_node_name": "AnimGraphNode_TransitionResult_81",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "NotEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "CurrentBehaviorMode"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      },
+      {
+       "transition": 59,
+       "priority": 1,
+       "rule_node": 3,
+       "rule_node_name": "AnimGraphNode_TransitionResult_82",
+       "rule": {
+        "op": "const",
+        "type": "bool",
+        "value": true
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    },
+    {
+     "name": "Accel Cancel Turn",
+     "conduit": true,
+     "root": null,
+     "players": [],
+     "entry_rule_node": 75,
+     "entry_rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "reset_on_entry": false,
+     "exits": [
+      {
+       "transition": 69,
+       "priority": 0,
+       "rule_node": 2,
+       "rule_node_name": "AnimGraphNode_TransitionResult_83",
+       "rule": {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 1
+         }
+        ]
+       },
+       "custom_result": null,
+       "desired": true,
+       "automatic": false
+      }
+     ],
+     "notifies": [
+      -1,
+      -1,
+      -1
+     ]
+    }
+   ],
+   "transitions": [
+    {
+     "PreviousState": 6,
+     "NextState": 1,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 7,
+     "NextState": 1,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 5,
+     "NextState": 1,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 1,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 8,
+     "NextState": 2,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 8,
+     "NextState": 3,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 8,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 5,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 7,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 6,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 1,
+     "NextState": 9,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 9,
+     "NextState": 10,
+     "CrossfadeDuration": 0.4000000059604645,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 10,
+     "NextState": 1,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 10,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 5,
+     "NextState": 9,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 7,
+     "NextState": 9,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 6,
+     "NextState": 9,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 2,
+     "NextState": 3,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 3,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 2,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 8,
+     "NextState": 11,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 11,
+     "NextState": 3,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 11,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 11,
+     "NextState": 12,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 12,
+     "NextState": 3,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 12,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 12,
+     "NextState": 13,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 13,
+     "NextState": 8,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 13,
+     "NextState": 1,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 13,
+     "NextState": 9,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 2,
+     "NextState": 5,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 0,
+     "NextState": 1,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 3,
+     "NextState": 19,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 19,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 19,
+     "NextState": 18,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 20,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 20,
+     "NextState": 17,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 2,
+     "NextState": 20,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 4,
+     "NextState": 21,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 21,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 6,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 7,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 5,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 0,
+     "NextState": 22,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 0,
+     "NextState": 23,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 0,
+     "NextState": 24,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 23,
+     "NextState": 17,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 23,
+     "NextState": 16,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 22,
+     "NextState": 16,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 24,
+     "NextState": 16,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 22,
+     "NextState": 18,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 15,
+     "CrossfadeDuration": 0.10000000149011612,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 18,
+     "NextState": 15,
+     "CrossfadeDuration": 0.10000000149011612,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 15,
+     "NextState": 25,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 25,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 25,
+     "NextState": 18,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 14,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 14,
+     "NextState": 26,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 26,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 26,
+     "NextState": 17,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 17,
+     "NextState": 14,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 18,
+     "NextState": 7,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 17,
+     "NextState": 5,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 17,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 18,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 17,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 18,
+     "NextState": 16,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 0,
+     "NextState": 12,
+     "CrossfadeDuration": 0,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 16,
+     "NextState": 4,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 27,
+     "NextState": 10,
+     "CrossfadeDuration": 0.30000001192092896,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 2,
+     "NextState": 27,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 3,
+     "NextState": 27,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    },
+    {
+     "PreviousState": 3,
+     "NextState": 7,
+     "CrossfadeDuration": 0.20000000298023224,
+     "StartNotify": -1,
+     "EndNotify": -1,
+     "InterruptNotify": -1,
+     "BlendMode": "HermiteCubic",
+     "CustomCurve": 0,
+     "BlendProfile": 0,
+     "LogicType": "TLT_Inertialization",
+     "StateName": 0
+    }
+   ],
+   "node": 120
+  }
+ ],
+ "bindings": [
+  {
+   "node": "AnimGraphNode_EndLocomotionBlendSpacePlayer",
+   "pin": "X",
+   "source": "BlendInputDirection"
+  },
+  {
+   "node": "AnimGraphNode_EndLocomotionBlendSpacePlayer",
+   "pin": "Y",
+   "source": "BlendInputSpeed"
+  }
+ ],
+ "notifies": [
+  {
+   "TriggerTimeOffset": 0,
+   "EndTriggerTimeOffset": 0,
+   "TriggerWeightThreshold": 9.999999747378752e-06,
+   "NotifyName": "SetStateIdle",
+   "Notify": 0,
+   "NotifyStateClass": 0,
+   "Duration": 0,
+   "EndLink": {
+    "LinkedMontage": 0,
+    "SlotIndex": 0,
+    "SegmentIndex": -1,
+    "LinkMethod": 0,
+    "CachedLinkMethod": 0,
+    "SegmentBeginTime": 0,
+    "SegmentLength": 0,
+    "LinkValue": 0,
+    "LinkedSequence": 0
+   },
+   "bConvertedFromBranchingPoint": 0,
+   "MontageTickType": 0,
+   "NotifyTriggerChance": 1.0,
+   "NotifyFilterType": 0,
+   "NotifyFilterLOD": 0,
+   "bTriggerOnDedicatedServer": true,
+   "bTriggerOnFollower": 0,
+   "TrackIndex": 0,
+   "LinkedMontage": 0,
+   "SlotIndex": 0,
+   "SegmentIndex": -1,
+   "LinkMethod": 0,
+   "CachedLinkMethod": 0,
+   "SegmentBeginTime": 0,
+   "SegmentLength": 0,
+   "LinkValue": 0,
+   "LinkedSequence": 0
+  }
+ ],
+ "variables": [],
+ "defaults": {
+  "BoneBlendRateGroups": "((\"Com\", (BoneBlendRates=((BoneName=\"C_Spine_a\",BlendRate=0.2),(BoneName=\"C_Spine_b\",BlendRate=0.2),(BoneName=\"C_Spine_c\",BlendRate=0.3),(BoneName=\"R_Shoulder_a\",BlendRate=0.9),(BoneName=\"L_Shoulder_a\",BlendRate=0.0),(BoneName=\"C_Weapon_b\",BlendRate=0.0)))),(\"LeftUpperBody\", (BoneBlendRates=((BoneName=\"C_Spine_a\",BlendRate=0.2),(BoneName=\"C_Spine_b\",BlendRate=0.2),(BoneName=\"C_Spine_c\",BlendRate=0.3),(BoneName=\"R_Shoulder_a\",BlendRate=0.0),(BoneName=\"L_Shoulder_a\",BlendRate=1.0),(BoneName=\"C_Weapon_b\",BlendRate=0.0)))))",
+  "bEnabledSwitchBehaviorWalkCancelBlend": "True",
+  "SwitchBehaviorWalkCancelBlendBoneFilter": "\"RightUpperBody\"",
+  "FieldAttackWalkCancelBlendBoneFilter": "\"RightUpperBody\"",
+  "FieldFaceGuardBlendBoneFilter": "\"RightUpperBody\"",
+  "IdleActionTable": "((\"N_Idle02_1\", 1.0),(\"N_Idle03_1\", 1.0),(\"N_Idle04_1\", 1.0),(\"N_Idle05_1\", 1.0),(\"N_Idle06_1\", 1.0),(\"N_Idle07_1\", 1.0))",
+  "WalkActionTable": "((\"N_Walk10_1\", 1.0),(\"N_Walk11_1\", 1.0))",
+  "WalkRunActionInterval": "(X=2.0,Y=2.0)",
+  "StrafingWalkLoopRevaluationOnNeutral": "(bDisableDirectChangeDirection=True)",
+  "WeaponSettingsOnNeutral": "((Slot=EWeaponSlot_1,AttachSocketName=\"Attach_Weapon01\",bVisibility=True))",
+  "WeaponSettingsOnBattle": "((Slot=EWeaponSlot_1,AttachSocketName=\"Attach_Weapon_Right01\",bVisibility=True))",
+  "PoseMatchingType": "Foot",
+  "LipMapDefault": "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Default.Cloud_Default",
+  "LipMapLoud": "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Loud.Cloud_Loud",
+  "LipMapSmile": "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Smile.Cloud_Smile"
+ },
+ "refs": [
+  "/Game/Character/Common/ControlRig/CommonHuman00_Rig.CommonHuman00_Rig_C",
+  "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Default.Cloud_Default",
+  "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Loud.Cloud_Loud",
+  "/Game/LipSync/LipMap/Player/PC0000_Cloud/Cloud_Smile.Cloud_Smile"
+ ],
+ "problems": [],
+ "unresolved_rules": []
+}

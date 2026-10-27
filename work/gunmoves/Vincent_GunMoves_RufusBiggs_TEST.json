@@ -1,0 +1,48 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "description": "TEST: Vincent (over Cloud) with Rufus's gun moves in normal mode and Biggs's in Punisher mode, on top of Vincent's own animations with Cloud's for everything he lacks. Needs RebirthSkelCompat 3.1. Works on its own; rename to .txt to switch off (Vincent_AnimationSets.json keeps the base setup).",
+  "families": [
+    {
+      "skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+        "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+        "/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton",
+        "/Game/Character/NonPlayer/NP0000_00_Biggs_Standard/Model/NP0000_00_Skeleton"
+      ],
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "requires_paks": [ "FullyPlayableVincentAssets_P" ],
+      "enabled": true
+    }
+  ],
+  "animation_sets": [
+    {
+      "character": "PC0000_00_Cloud_Standard",
+      "battle": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field_actions": "PC0000_Cloud",
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+      "cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "moves": {
+        "Battle00/B_NAttack01_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkSpeedShot01",
+        "Battle00/B_NAttack01_1": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkNearShot01",
+        "Battle00/B_NAttack01_1_2": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkShotGun01",
+        "Battle00/B_NAttack02_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkNearShot01",
+        "Battle00/B_NAttack03_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkLinkPursuit01_Forward",
+        "Battle00/B_NAttack04_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBackflipShot01",
+        "Battle00/B_NAttack05_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkForwardflipShot01",
+        "Battle00/B_NAttackJ01_0": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkAerialTwinShot01",
+        "Battle01/B_SAttack01_0": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkShot01_1",
+        "Battle01/B_SAttack02_0": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkKick01",
+        "Battle01/B_CounterAttack01": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkKick01"
+      },
+      "requires_paks": [ "FullyPlayableVincentAssets_P" ],
+      "enabled": true
+    }
+  ]
+}

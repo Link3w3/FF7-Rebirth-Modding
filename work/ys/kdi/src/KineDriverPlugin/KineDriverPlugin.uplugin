@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "3.1.24.20230202",
+	"FriendlyName": "KineDriver for UnrealEngine",
+	"Description": "The KineDriver is Helper Joint System.",
+	"Category": "Happy",
+	"CreatedBy": "Square Enix",
+	"CreatedByURL": "http://happy/document/UE4/KineDriverUE4/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "KineDriverRt",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "KineDriverEd",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PostEngineInit"
+		}
+	]
+}

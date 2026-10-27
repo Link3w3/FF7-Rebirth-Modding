@@ -1,0 +1,27 @@
+{
+ "steps": [
+  "plugin",
+  "run",
+  "setup",
+  "built_now",
+  "failed",
+  "described",
+  "done"
+ ],
+ "plugin": "1.20.1",
+ "run": "run 1: 0 move(s) built before, 0 left out",
+ "setup": {
+  "data_object": "made /Game/RebirthSkelCompat/CloudMoveset/CloudMoveset_Data",
+  "moves": 123,
+  "cut to their turn": [
+   "Battle11/B_GuardTurn01_L180 0.67 s",
+   "Battle11/B_GuardTurn01_L90 0.50 s",
+   "Battle11/B_GuardTurn01_R180 0.67 s",
+   "Battle11/B_GuardTurn01_R90 0.50 s"
+  ]
+ },
+ "built_now": "123 move(s) in 15 s",
+ "failed": {},
+ "described": 123,
+ "done": 123
+}

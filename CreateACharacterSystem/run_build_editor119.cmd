@@ -1,0 +1,91 @@
+@echo off
+title Create a Character System editor 1.19 - installing and building, then the AnimBlueprint test: please leave this window open
+rem Create a Character System editor 1.19 (close the End editor first; the game can stay open):
+rem   1. copies the 1.19 sources into place: the plugin (C:\FF7R2UProj\Plugins\RebirthSkelCompat: the AnimBlueprint Maker
+rem      of 1.18, and 1.19's Make Editable AnimBlueprint and Cook For Game), End's own editor module (Source\ENDEditor: the
+rem      AnimGraph nodes of the game's End anim nodes, and its Build.cs with the AnimGraph modules), and the tools
+rem      (Tools\RebirthSkelCompat\abp: the AnimBlueprint Maker's tool, the AnimBlueprint templates, the editor script).
+rem      The old files go to C:\FF7R2UProj\_mod_backups\before_119_<time>\ (outside the Plugins folder);
+rem   2. builds End's editor module (ENDEditor) and the plugin (UnrealBuildTool, only those two modules);
+rem   3. the AnimBlueprint test: Cloud's player AnimBlueprint rebuilt as an editable AnimBlueprint for his own skeleton
+rem      (/Game/BluePrint/Animation/Player/PC0000_00_Cloud_Standard_Animation in this project), compiled and cooked into
+rem      the test container Tools\RebirthSkelCompat\abp\out\CACS_AnimTemplateTest_P (NOT installed: that is
+rem      run_abp_template_test_install.cmd); Sephiroth's, Vincent's and the monsters' templates made and compiled
+rem      (/Game/RebirthSkelCompat/AnimTemplateTest).
+rem Status: Tools\RebirthSkelCompat\build\editor119_status.txt (logs: build\endeditor119_build.log, build\plugin119_build.log,
+rem build\abp_template_editor.log; the test's result: C:\FF7R2UProj\Saved\RebirthSkelCompat\AnimTemplate\result.json)
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\editor119_status.txt"
+set "PLUGIN=C:\FF7R2UProj\Plugins\RebirthSkelCompat"
+set "ENDEDITOR=C:\FF7R2UProj\Source\ENDEditor"
+set "BACKUPS=C:\FF7R2UProj\_mod_backups"
+set "STAGE=%~dp0stage119"
+echo Create a Character System editor 1.19, started %DATE% %TIME%> "%STATUS%"
+tasklist /FI "IMAGENAME eq UE4Editor.exe" 2>nul | find /I "UE4Editor.exe" >nul
+if not errorlevel 1 (
+  echo REFUSED: close the End editor ^(UE4Editor.exe^) first, then run this again>> "%STATUS%"
+  goto :done
+)
+for %%F in (install_editor119.py build_editor_module.py run_abp_template_test.ps1) do (
+  if not exist "%~dp0%%F" (
+    echo FAILED: %%F is missing ^(tell Sandalphon^)>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%STAGE%\manifest.json" (
+  echo FAILED: stage119\manifest.json is missing ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+if not exist "%ENDEDITOR%\ENDEditor.Build.cs" (
+  echo FAILED: %ENDEDITOR%\ENDEditor.Build.cs is not there ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+if not exist "%BACKUPS%" mkdir "%BACKUPS%"
+call :findpython
+echo 1/4 the 1.19 files into place...>> "%STATUS%"
+%PY% "%~dp0install_editor119.py" "%STAGE%" "%PLUGIN%" "%ENDEDITOR%" "%~dp0." "%BACKUPS%" >> "%STATUS%" 2>&1
+if errorlevel 1 (
+  echo FAILED: the files did not all go in ^(above^); nothing was built: tell Sandalphon>> "%STATUS%"
+  goto :done
+)
+echo 2/4 building End's editor module ^(ENDEditor, a few minutes^)...>> "%STATUS%"
+type "%STATUS%"
+%PY% "%~dp0build_editor_module.py" ENDEditor "%~dp0build\endeditor119_build.log" > "%~dp0build\endeditor119_result.txt" 2>&1
+if errorlevel 1 (
+  type "%~dp0build\endeditor119_result.txt" >> "%STATUS%"
+  echo FAILED: End's editor module did not build ^(build\endeditor119_build.log^): tell Sandalphon. Its old files are in %BACKUPS%\before_119_*.>> "%STATUS%"
+  goto :done
+)
+echo    ENDEditor built>> "%STATUS%"
+echo 3/4 building the plugin ^(a few minutes^)...>> "%STATUS%"
+type "%STATUS%"
+%PY% "%~dp0build_editor_module.py" RebirthSkelCompatEditor "%~dp0build\plugin119_build.log" > "%~dp0build\plugin119_result.txt" 2>&1
+if errorlevel 1 (
+  type "%~dp0build\plugin119_result.txt" >> "%STATUS%"
+  echo FAILED: the plugin did not build ^(build\plugin119_build.log^): tell Sandalphon.>> "%STATUS%"
+  goto :done
+)
+echo    the plugin built>> "%STATUS%"
+echo 4/4 the AnimBlueprint test in an editor commandlet ^(about 5 minutes^)...>> "%STATUS%"
+type "%STATUS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run_abp_template_test.ps1"
+if errorlevel 1 (
+  echo NOT ALL OF THE TEST WENT THROUGH ^(above^): tell Sandalphon. The editor and the plugin are built.>> "%STATUS%"
+  goto :done
+)
+echo DONE: the editor has 1.19. Tell Sandalphon: it checks the test container before you try it in the game ^(run_abp_template_test_install.cmd, the game closed^).>> "%STATUS%"
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python39\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python39\python.exe"
+if not defined PY set "PY=python"
+exit /b

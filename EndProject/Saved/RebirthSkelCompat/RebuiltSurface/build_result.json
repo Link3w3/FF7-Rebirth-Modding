@@ -1,0 +1,50 @@
+{
+ "steps": [
+  "asset",
+  "parameters",
+  "blue_noise",
+  "node",
+  "graph",
+  "saved",
+  "base_compile",
+  "permutations_started",
+  "permutations",
+  "finished"
+ ],
+ "warnings": [],
+ "asset": "rebuilt in place: /Game/Renderer/Material/RM_Surface",
+ "parameters": {
+  "textures": 67,
+  "vectors": 9,
+  "switches": 102
+ },
+ "blue_noise": "/Engine/EngineResources/SpatiotemporalBlueNoiseVolumeSource.SpatiotemporalBlueNoiseVolumeSource 128x8192",
+ "node": "178 inputs, 22 outputs",
+ "graph": "264 expressions",
+ "saved": "/Game/Renderer/Material/RM_Surface",
+ "base_compile": {
+  "ok": true,
+  "errors": [],
+  "raw_keys": [
+   "asset",
+   "base_material",
+   "base_material_state_id",
+   "base_material_state_id_valid",
+   "cooked_for_editor",
+   "expression_count",
+   "game_thread",
+   "package_flags",
+   "preview_preflight_json",
+   "resources",
+   "rhi_feature_level",
+   "rhi_shader_platform",
+   "used_texture_paths",
+   "used_texture_residency",
+   "valid_material"
+  ]
+ },
+ "permutations_started": "104 instances (7 s)",
+ "permutations": "104 of 104 compiled without errors (405 s)",
+ "done": true,
+ "finished": true
+}

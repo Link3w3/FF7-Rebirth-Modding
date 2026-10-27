@@ -1,0 +1,127 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Fully Playable Young Sephiroth's swap (from the Fully Playable Sephiroth's): Young Sephiroth's skeleton PC0010_13_Skeleton joins Sephiroth's family (his mesh plays every animation made for Sephiroth, keeping his own build: \"proportions\"; his wing, R_Feather*, keeps its own smaller size too: \"proportion_bones\", Create a Character System 3.8.2), the Nameless's WE1021_49_Skeleton the weapons' family; Evil Cloud in Sephiroth's place as in FPS. Goes with FullyPlayableYoungSephirothDataAssets_P and YoungSephiroth_P. Based on: Sephiroth and Evil Cloud swapped (Sephiroth with the Masamune in Cloud's place; Evil Cloud with the Buster Sword in Sephiroth's place: PC0000_10_Evil_Cloud, PC0000_11_EvilCloud_Transformed for his Transform form); the playable Evil Cloud plays like Cloud from his own motion folder (PC0000_EvilCloud: copies of Cloud's sets; Sephiroth's only fill names his lack), with Cloud's commands and limit breaks (the data pak's pt_Sephiroth), Focused Thrust for the Masamune's ability, and the sword in his left hand in cutscenes (Create a Character System 3.6.16: cutscene_weapon_socket); every character keeps its own height and proportions; goes with FullyPlayableSephirothDataAssets_P (Evil Cloud's models merged in)",
+ "pairs": [
+  {
+   "receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+   "animation_skeletons": [
+    "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+    "/Game/Character/Player/PC0000_10_Evil_Cloud/Model/PC0000_10_Skeleton.PC0000_10_Skeleton",
+    "/Game/Character/Player/PC0010_13_Young_Sephiroth/Model/PC0010_13_Skeleton.PC0010_13_Skeleton"
+   ],
+   "method": "family",
+   "hub": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+   "proportions": true,
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P",
+    "YoungSephiroth_P"
+   ],
+   "enabled": true,
+   "proportion_bones": [
+    "R_Feather*"
+   ]
+  },
+  {
+   "receiving_skeleton": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "animation_skeletons": [
+    "/Game/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00_Skeleton.WE1021_00_Skeleton",
+    "/Game/Character/Weapon/WE1021_49_Nameless/Model/WE1021_49_Skeleton.WE1021_49_Skeleton"
+   ],
+   "method": "family",
+   "hub": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P",
+    "YoungSephiroth_P"
+   ],
+   "enabled": true
+  }
+ ],
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0010_00_Sephiroth_Standard_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_NoBattle_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_Reserve_EVILCLOUD",
+    "PC0010_01_Sephiroth_StandardWet_EVILCLOUD"
+   ],
+   "battle": [
+    "/Game/Motion/Player/PC0000_EvilCloud",
+    "/Game/Motion/Player/PC0010_Sephiroth"
+   ],
+   "field": [
+    "/Game/Motion/Player/PC0000_EvilCloud",
+    "/Game/Motion/Player/PC0010_Sephiroth"
+   ],
+   "player": "pt_Sephiroth",
+   "abilities": [
+    {
+     "pack": "Battle00",
+     "weapon_abilities": {
+      "PC0010_AtkBurst02": "PC0000_EvilCloud_AtkBurst02"
+     }
+    }
+   ],
+   "pack_assets": [
+    "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword"
+   ],
+   "cutscene_weapon_socket": "Attach_Weapon_Left01",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "enabled": true
+  },
+  {
+   "characters": [
+    "PC0010_10_Sephiroth_Transform_EVILCLOUD",
+    "PC0010_20_Sephiroth_VRHard_EVILCLOUD"
+   ],
+   "battle": [
+    "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+    "/Game/Motion/Player/PC0000_Cloud"
+   ],
+   "field": [
+    "/Game/Motion/Player/PC0010_Sephiroth",
+    "/Game/Motion/Player/PC0000_Cloud"
+   ],
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "enabled": true
+  },
+  {
+   "characters": [
+    "WE1021_00_SephirothIllusion_Masamune_EVILCLOUD",
+    "WE1021_01_SephirothIllusion_MasamuneBrood_EVILCLOUD",
+    "WE1021_02_SephirothIllusion_MasamuneCut_EVILCLOUD",
+    "WE1021_10_SephirothIllusion_MasamuneCutScale_EVILCLOUD"
+   ],
+   "skeleton": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "sockets": [
+    {
+     "socket": "NAttack1",
+     "use": "C_TrailA_a"
+    },
+    {
+     "socket": "NAttack2",
+     "use": "C_TrailA_b"
+    },
+    {
+     "socket": "NAttack3",
+     "use": "SAttack_Zack"
+    },
+    {
+     "socket": "NAttack4",
+     "use": "ChainCharge_Sephiroth"
+    },
+    {
+     "socket": "NAttackBoss",
+     "use": "C_TrailA_b"
+    }
+   ],
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

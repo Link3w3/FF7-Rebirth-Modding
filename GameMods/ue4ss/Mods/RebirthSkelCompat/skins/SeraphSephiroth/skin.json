@@ -1,0 +1,1221 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Seraph Sephiroth",
+ "author": "",
+ "description": "Sephiroth's seraph form: his own model on Rebirth's winged Sephiroth's bones (PC0010_10, his own hair and halo), playing Sephiroth's animations (the PC0010_00 skeleton's family), with the Essence Shard.",
+ "characters": [
+  "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_YOUNGSEPHIROTH",
+  "PC0000_00_Cloud_Standard_SEPHIROTH",
+  "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+  "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+  "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+  "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+  "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+  "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+  "PC0000_23_Cloud_ZackCostumeWet_SEPHIROTH"
+ ],
+ "model": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15.PC0010_15",
+ "skeleton": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15_Skeleton.PC0010_15_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "own",
+ "weapon": "/Game/BluePrint/Character/Weapon/WE1021_15_Essence_Shard/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15.uasset",
+   "size": 4550981,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 64,
+   "imports": [
+    "2cccc75f20ab8c79",
+    "f0ee9e11f0ea5cf4",
+    "6ff0ed52fc9bdab4",
+    "3f5cb8a9a77ada20",
+    "17df2473657e419c",
+    "6d53fb6d3c0583b2",
+    "83e961b6f9e25ed3",
+    "2cf209c82f8a38f9",
+    "2379a58a148e9167",
+    "38392ad6504e8676",
+    "c3b785df61e0f840",
+    "1768732a3ea508ec",
+    "919c11eced7ab853",
+    "0f98c3bb15118802",
+    "37c21dc4c249dec4",
+    "b5874f88e21515df",
+    "1a98009221cb56f1"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15_Skeleton",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Model/PC0010_15_Skeleton.uasset",
+   "size": 106906,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 39,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15.uasset",
+   "size": 862208,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 49,
+   "imports": [
+    "3d66179c39e1be76",
+    "b87783a244a90ff6",
+    "cc47e99aafb5a615"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Skirt_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Skirt_Inst.uasset",
+   "size": 7654,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 57,
+   "imports": [
+    "86b41052bff55069",
+    "e84878c76de1d54f",
+    "5f588daf8035a1fc",
+    "e910a2abeffddcf8",
+    "1c01074d4d8a0ee6",
+    "57c2e82af2a322a9",
+    "18970ea152141588",
+    "d4721671c2d6ce0e",
+    "c991de8f869371f2",
+    "dba4ce29bed9cb88",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Skin_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Skin_Inst.uasset",
+   "size": 7115,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 46,
+   "imports": [
+    "86b41052bff55069",
+    "6ccb6419e93a9b34",
+    "33539a8a163e2484",
+    "345738c6802a5ed5",
+    "ee75a343fb5c692b",
+    "6967bce0a8db51c6",
+    "28cae39857278cfd",
+    "d8e5544fa7ff87c3",
+    "efa23ababeccfabe",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Head_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Head_Inst.uasset",
+   "size": 6553,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 38,
+   "imports": [
+    "86b41052bff55069",
+    "27cafccda81972d3",
+    "84f90c822d990f95",
+    "62d2480cc472ddfb",
+    "d3b2c1dc25829144",
+    "514133818674d6b9",
+    "d9ba1624fd2a4e20",
+    "fb5638450716ceb5",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo_Inst.uasset",
+   "size": 6063,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 50,
+   "imports": [
+    "86b41052bff55069",
+    "7f5e56a7c9c23824",
+    "d681e587312894b6",
+    "6ab6a27997f6b1ad",
+    "7df2f04348e398a9",
+    "92c19d40c56e2262",
+    "4c7f1cd8e0783f0b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo02_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo02_Inst.uasset",
+   "size": 6349,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 63,
+   "imports": [
+    "86b41052bff55069",
+    "dc494eee32649ca4",
+    "0045280b2e8d5261",
+    "d681e587312894b6",
+    "6ab6a27997f6b1ad",
+    "7df2f04348e398a9",
+    "397c2394cdbb198b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo01_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Halo01_Inst.uasset",
+   "size": 6063,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 62,
+   "imports": [
+    "86b41052bff55069",
+    "dc494eee32649ca4",
+    "0045280b2e8d5261",
+    "d681e587312894b6",
+    "6ab6a27997f6b1ad",
+    "7df2f04348e398a9",
+    "4c7f1cd8e0783f0b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_EyeShadow",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_EyeShadow.uasset",
+   "size": 4962,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 59,
+   "imports": [
+    "86b41052bff55069",
+    "2c804e95731ec2c0",
+    "122cd75c269a1857",
+    "9fd680cafde2b4d9",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Cloud_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Cloud_Inst.uasset",
+   "size": 6859,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 56,
+   "imports": [
+    "86b41052bff55069",
+    "6ccb6419e93a9b34",
+    "7cae921b777898ad",
+    "867bd3ca12687ad5",
+    "34980ba545a30d4f",
+    "eb629a628be20e8d",
+    "b1bfbccbdcd452ae",
+    "ac1bc839605f7e5d",
+    "84f90c822d990f95",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Material/PC0010_999_Hair_Inst",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Material/PC0010_999_Hair_Inst.uasset",
+   "size": 6550,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 54,
+   "imports": [
+    "86b41052bff55069",
+    "5ac998971149269d",
+    "651f504763efcdc5",
+    "f6b07f7717c03373",
+    "a648fd5ba80c7936",
+    "cf3f88946fbea13c",
+    "b59a348d975a1693",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Material/PC0010_999_Eye_Inst",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Material/PC0010_999_Eye_Inst.uasset",
+   "size": 2797,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 20,
+   "imports": [
+    "86b41052bff55069",
+    "49ad6c58ecbdb808",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Wing_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Wing_Inst.uasset",
+   "size": 6851,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 60,
+   "imports": [
+    "86b41052bff55069",
+    "6ccb6419e93a9b34",
+    "7cae921b777898ad",
+    "867bd3ca12687ad5",
+    "34980ba545a30d4f",
+    "eb629a628be20e8d",
+    "b1bfbccbdcd452ae",
+    "ac1bc839605f7e5d",
+    "84f90c822d990f95",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Wing01_Inst",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Material/PC0010_15_Wing01_Inst.uasset",
+   "size": 6891,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 52,
+   "imports": [
+    "86b41052bff55069",
+    "6ccb6419e93a9b34",
+    "7f5e56a7c9c23824",
+    "d681e587312894b6",
+    "5982f24bc83858ef",
+    "6ab6a27997f6b1ad",
+    "1ec625ad3729ecff",
+    "7df2f04348e398a9",
+    "92c19d40c56e2262",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Material/WE1021_15_Body_Inst",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Material/WE1021_15_Body_Inst.uasset",
+   "size": 6565,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 48,
+   "imports": [
+    "86b41052bff55069",
+    "4c7f1cd8e0783f0b",
+    "244ff53ac2e74656",
+    "e0c672691d56269b",
+    "8d2509e0769802c6",
+    "eef34470432bab04",
+    "31450ec1b4b76a63",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15_PhysicsAsset.uasset",
+   "size": 2102,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 18,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15_Skeleton.uasset",
+   "size": 5285,
+   "export_count": 14,
+   "export_bundle_count": 1,
+   "load_order": 16,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_M",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_M.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 53,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_M.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtN",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtN.uasset",
+   "size": 7053,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 6,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtN.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtD",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtD.uasset",
+   "size": 6686,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 34,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtD.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/Wing_a",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/Wing_a.uasset",
+   "size": 4152,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 9,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/Wing_a.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MR",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MR.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 17,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MR.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MG",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MG.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 13,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MB",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MB.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 55,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MB.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MA",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MA.uasset",
+   "size": 3914,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 36,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/skirtS_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MR",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MR.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MR.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MG",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MG.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 11,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MB",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MB.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 45,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MB.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MA",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MA.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 32,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_M",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_M.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 4,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyS_M.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyN",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyN.uasset",
+   "size": 7009,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 41,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyN.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyD",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyD.uasset",
+   "size": 3942,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 42,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/bodyD.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_Normal_DirectX",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_Normal_DirectX.uasset",
+   "size": 7057,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_Normal_DirectX.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MROX",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MROX.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 10,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MROX.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MG",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MG.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 37,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MB",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MB.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 14,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_MB.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_AAAX",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_AAAX.uasset",
+   "size": 3966,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 33,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_head_AAAX.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/O",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/O.uasset",
+   "size": 1037652,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 27,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MR",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MR.uasset",
+   "size": 2792,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 24,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MR.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2D",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2D.uasset",
+   "size": 2582,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 28,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2D.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MG",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MG.uasset",
+   "size": 2792,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 29,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MA",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MA.uasset",
+   "size": 2792,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 31,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2N",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2N.uasset",
+   "size": 4297,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 12,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/TopS_MR",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/TopS_MR.uasset",
+   "size": 4116,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 61,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/TopS_MR.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/topD",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/topD.uasset",
+   "size": 3942,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 8,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/topD.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/tex_mo572_001_eye_shadow_MA",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/tex_mo572_001_eye_shadow_MA.uasset",
+   "size": 4120,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 58,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/tex_mo572_001_eye_shadow_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_13_Young_Sephiroth/Texture/PC0010_13_EyeShadow_C",
+   "file": "Content/Character/Player/PC0010_13_Young_Sephiroth/Texture/PC0010_13_EyeShadow_C.uasset",
+   "size": 3850,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 44,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_13_Young_Sephiroth/Texture/PC0010_13_EyeShadow_C.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MG",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MG.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 22,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MB",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MB.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 21,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MB.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MA",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MA.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 5,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_M",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_M.uasset",
+   "size": 2756,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 40,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingS_M.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingN",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingN.uasset",
+   "size": 4289,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 26,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingN.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingD",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingD.uasset",
+   "size": 2582,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 30,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wingD.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Normal_DirectX",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Normal_DirectX.uasset",
+   "size": 7057,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 19,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Normal_DirectX.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_MROX",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_MROX.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 15,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_MROX.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Coveerage",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Coveerage.uasset",
+   "size": 4184,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 23,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_Coveerage.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_AAAT",
+   "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_AAAT.uasset",
+   "size": 6710,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_999_Safer_Sephiroth/Texture/tex_mo572_001_hair_AAAT.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MB",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MB.uasset",
+   "size": 2792,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 51,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S_MB.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S",
+   "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S.uasset",
+   "size": 2792,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 35,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_15_Seraph_Sephiroth_Transformed/Texture/wing2S.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MG",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MG.uasset",
+   "size": 2671,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 43,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MG.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MA",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MA.uasset",
+   "size": 2469,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/S_MA.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Texture/N",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/N.uasset",
+   "size": 4176,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 25,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/N.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_M",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_M.uasset",
+   "size": 2461,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 47,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_M.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_MR",
+   "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_MR.uasset",
+   "size": 2671,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 7,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Weapon/WE1021_15_Essence_Shard/Texture/D_MR.ubulk",
+     "type": 3
+    }
+   ]
+  }
+ ],
+ "built": "2026-10-26T01:32:59Z",
+ "built_with": "Create a Character System editor 1.17.0"
+}

@@ -1,0 +1,771 @@
+{
+ "import_folder": "/Game/RebirthSkelCompat/Imported/SephirothFlight",
+ "skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "fps": 30,
+ "moves": [
+  {
+   "set": "Battle03",
+   "name": "B_Idle01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_0.FLY_B_Idle01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0",
+   "hits": [],
+   "seconds": 1.0,
+   "frames": 31,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Idle01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_1.FLY_B_Idle01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Idle01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_2.FLY_B_Idle01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_2.B_Idle01_2",
+   "hits": [],
+   "seconds": 1.2,
+   "frames": 37,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Fall01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Fall01_1.FLY_B_Fall01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Fall01_2",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Fall01_2.FLY_B_Fall01_2",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2",
+   "hits": [],
+   "seconds": 1.0,
+   "frames": 31,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1.FLY_B_Run01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1",
+   "hits": [],
+   "seconds": 0.833,
+   "frames": 26,
+   "body": "flight",
+   "root_travel": [
+    651.7,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_1_L180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1_L180.FLY_B_Run01_1_L180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_L180.B_Run01_1_L180",
+   "hits": [],
+   "seconds": 0.567,
+   "frames": 18,
+   "body": "flight",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_1_R180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1_R180.FLY_B_Run01_1_R180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_R180.B_Run01_1_R180",
+   "hits": [],
+   "seconds": 0.567,
+   "frames": 18,
+   "body": "flight",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_0_L0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L0.FLY_B_Run01_0_L0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+   "hits": [],
+   "seconds": 0.533,
+   "frames": 17,
+   "body": "takeoff",
+   "root_travel": [
+    340.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_0_L90",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L90.FLY_B_Run01_0_L90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+   "hits": [],
+   "seconds": 0.5,
+   "frames": 16,
+   "body": "takeoff",
+   "root_travel": [
+    0.0,
+    -333.5,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_0_L180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L180.FLY_B_Run01_0_L180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+   "hits": [],
+   "seconds": 0.633,
+   "frames": 20,
+   "body": "takeoff",
+   "root_travel": [
+    -358.7,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_0_R180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_R180.FLY_B_Run01_0_R180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+   "hits": [],
+   "seconds": 0.533,
+   "frames": 17,
+   "body": "takeoff",
+   "root_travel": [
+    -340.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_2l",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_2l.FLY_B_Run01_2l",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2l.B_Run01_2l",
+   "hits": [],
+   "seconds": 1.0,
+   "frames": 31,
+   "body": "stop",
+   "root_travel": [
+    176.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Run01_2r",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_2r.FLY_B_Run01_2r",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2r.B_Run01_2r",
+   "hits": [],
+   "seconds": 1.0,
+   "frames": 31,
+   "body": "stop",
+   "root_travel": [
+    24.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_L0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L0.FLY_B_Turn01_L0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L0.B_Turn01_L0",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 45,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_R0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R0.FLY_B_Turn01_R0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R0.B_Turn01_R0",
+   "hits": [],
+   "seconds": 1.467,
+   "frames": 45,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_L90",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L90.FLY_B_Turn01_L90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L90.B_Turn01_L90",
+   "hits": [],
+   "seconds": 1.633,
+   "frames": 50,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -17.5,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_R90",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R90.FLY_B_Turn01_R90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R90.B_Turn01_R90",
+   "hits": [],
+   "seconds": 1.633,
+   "frames": 50,
+   "body": "hover",
+   "root_travel": [
+    -17.5,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_L180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L180.FLY_B_Turn01_L180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L180.B_Turn01_L180",
+   "hits": [],
+   "seconds": 2.133,
+   "frames": 65,
+   "body": "hover",
+   "root_travel": [
+    -51.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Turn01_R180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R180.FLY_B_Turn01_R180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R180.B_Turn01_R180",
+   "hits": [],
+   "seconds": 2.133,
+   "frames": 65,
+   "body": "hover",
+   "root_travel": [
+    -51.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_0_L0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L0.FLY_B_Walk01_0_L0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+   "hits": [],
+   "seconds": 1.233,
+   "frames": 38,
+   "body": "hover",
+   "root_travel": [
+    102.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_0_L90",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L90.FLY_B_Walk01_0_L90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+   "hits": [],
+   "seconds": 1.567,
+   "frames": 48,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -116.9,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_0_R90",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_R90.FLY_B_Walk01_0_R90",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+   "hits": [],
+   "seconds": 1.233,
+   "frames": 38,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    70.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_0_L180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L180.FLY_B_Walk01_0_L180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+   "hits": [],
+   "seconds": 1.833,
+   "frames": 56,
+   "body": "hover",
+   "root_travel": [
+    -148.9,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_0_R180",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_R180.FLY_B_Walk01_0_R180",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+   "hits": [],
+   "seconds": 1.2,
+   "frames": 37,
+   "body": "hover",
+   "root_travel": [
+    -64.6,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_1.FLY_B_Walk01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    219.6,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_2l",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_2l.FLY_B_Walk01_2l",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2l.B_Walk01_2l",
+   "hits": [],
+   "seconds": 1.667,
+   "frames": 51,
+   "body": "hover",
+   "root_travel": [
+    54.0,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_Walk01_2r",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_2r.FLY_B_Walk01_2r",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2r.B_Walk01_2r",
+   "hits": [],
+   "seconds": 1.667,
+   "frames": 51,
+   "body": "hover",
+   "root_travel": [
+    98.3,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkB01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_0.FLY_B_WalkB01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_0.B_WalkB01_0",
+   "hits": [],
+   "seconds": 1.233,
+   "frames": 38,
+   "body": "hover",
+   "root_travel": [
+    -54.0,
+    -3.7,
+    1.4
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkB01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_1.FLY_B_WalkB01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    -219.2,
+    0.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkB01_2l",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_2l.FLY_B_WalkB01_2l",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+   "hits": [],
+   "seconds": 1.667,
+   "frames": 51,
+   "body": "hover",
+   "root_travel": [
+    -87.0,
+    3.7,
+    -1.4
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkB01_2r",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_2r.FLY_B_WalkB01_2r",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+   "hits": [],
+   "seconds": 1.667,
+   "frames": 51,
+   "body": "hover",
+   "root_travel": [
+    -161.0,
+    3.7,
+    -1.4
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkL01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_0.FLY_B_WalkL01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_0.B_WalkL01_0",
+   "hits": [],
+   "seconds": 1.167,
+   "frames": 36,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -36.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_1.FLY_B_WalkL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -126.8,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkL01_2l",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_2l.FLY_B_WalkL01_2l",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+   "hits": [],
+   "seconds": 1.5,
+   "frames": 46,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -52.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkL01_2r",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_2r.FLY_B_WalkL01_2r",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+   "hits": [],
+   "seconds": 1.5,
+   "frames": 46,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    -41.5,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkR01_0",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_0.FLY_B_WalkR01_0",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_0.B_WalkR01_0",
+   "hits": [],
+   "seconds": 1.167,
+   "frames": 36,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    52.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_1.FLY_B_WalkR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    126.8,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkR01_2l",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_2l.FLY_B_WalkR01_2l",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+   "hits": [],
+   "seconds": 1.5,
+   "frames": 46,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    36.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkR01_2r",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_2r.FLY_B_WalkR01_2r",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+   "hits": [],
+   "seconds": 1.5,
+   "frames": 46,
+   "body": "hover",
+   "root_travel": [
+    0.0,
+    80.5,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkFL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkFL01_1.FLY_B_WalkFL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    155.0,
+    -155.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkFR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkFR01_1.FLY_B_WalkFR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    155.0,
+    155.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkBL01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkBL01_1.FLY_B_WalkBL01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    -155.0,
+    -155.0,
+    0.0
+   ],
+   "tracks": 96
+  },
+  {
+   "set": "Battle03",
+   "name": "B_WalkBR01_1",
+   "animation": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkBR01_1.FLY_B_WalkBR01_1",
+   "build": true,
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+   "hits": [],
+   "seconds": 2.067,
+   "frames": 63,
+   "body": "hover",
+   "root_travel": [
+    -155.0,
+    155.0,
+    0.0
+   ],
+   "tracks": 96
+  }
+ ],
+ "sources": {
+  "hover": [
+   "EV_FOREE_8710_PC0010_10_C0120",
+   4,
+   77
+  ],
+  "flight": [
+   "EV_FOREE_8790_PC0010_10_C0080",
+   110,
+   140
+  ]
+ },
+ "turns": {
+  "hover": -161.9,
+  "flight": -44.3
+ }
+}

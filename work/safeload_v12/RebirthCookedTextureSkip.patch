@@ -1,0 +1,20 @@
+--- orig/RebirthMaterialPreview/RebirthCookedTextureSkip.cpp	2026-10-12 13:05:11.055080809 -0400
++++ RebirthMaterialPreview/RebirthCookedTextureSkip.cpp	2026-10-12 13:06:33.677912653 -0400
+@@ -1,6 +1,7 @@
+ #include "RebirthCookedTextureSkip.h"
+ #include "RebirthCookAssetManagerProxy.h"
+ #include "RebirthCookedCopies.h"
++#include "RebirthSafeLoad.h"
+ 
+ #include "AssetRegistry/AssetData.h"
+ #include "AssetRegistry/AssetRegistryModule.h"
+@@ -131,6 +132,9 @@
+ 		{
+ 			UE_LOG(LogRebirthCookedTextures, Display, TEXT("%d self-test package(s) in /Game/RebirthDataObjectTests are left out of this cook."), SelfTests.Num());
+ 		}
++		// What this cook never writes may load with default values when its saved properties don't fit this project's
++		// classes (Rebirth Safe Cooked Loading), instead of crashing the cook when an editable asset references it.
++		RebirthSafeLoad::AddPackagesLeftOutOfCook(Packages);
+ 		if (Packages.Num() == 0)
+ 		{
+ 			UE_LOG(LogRebirthCookedTextures, Display, TEXT("No cooked textures, game copies or self-test assets found; nothing to leave out of this cook."));

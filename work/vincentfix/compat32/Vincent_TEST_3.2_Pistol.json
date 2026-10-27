@@ -1,0 +1,85 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "description": "TEST 3.2 (pistol): Vincent in Cloud's slot. Normal mode: Elena's pistol shots, auto-matched to Cloud's attack, ability and limit names. Punisher mode (Battle01): Rufus's shots, auto-matched. Field attack: Elena's aim-shoot-recover shot. Limit 1: Rufus's Fire Break; limit 2: Thunder Shot then Blizzard Shot; limit 3: auto. Weapon in his right hand in the field, own proportions. Everything else: Vincent's own animations, then Cloud's. Needs RebirthSkelCompat 3.2. Rename to .txt to switch off.",
+  "families": [
+    {
+      "skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+        "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+        "/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton",
+        "/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton"
+      ],
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "proportions": true,
+      "requires_paks": [
+        "FullyPlayableVincentAssets_P"
+      ],
+      "enabled": true
+    }
+  ],
+  "animation_sets": [
+    {
+      "characters": [
+        "PC0000_00_Cloud_Standard"
+      ],
+      "override": true,
+      "battle": [
+        {
+          "from": "/Game/Motion/Enemy/EB2020_Elena/Battle00",
+          "auto": true,
+          "only": [
+            "Shot"
+          ]
+        },
+        {
+          "from": "/Game/Motion/Enemy/EB0016_Rufus/Battle00",
+          "as": "Battle01",
+          "auto": true,
+          "only": [
+            "Shot"
+          ]
+        },
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "moves": [
+        {
+          "set": "Neutral00",
+          "key": "N_Atk01",
+          "animation": [
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_0",
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_1",
+            "/Game/Motion/Enemy/EB2020_Elena/Battle00/B_AtkShot02_2"
+          ]
+        }
+      ],
+      "limit_breaks": [
+        [
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02"
+        ],
+        [
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkThunderShot01",
+          "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBlizzardShot01_0"
+        ]
+      ],
+      "field_actions": "PC0000_Cloud",
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+      "cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "sockets": [
+        {
+          "socket": "Attach_Weapon01",
+          "use": "Attach_Weapon_Right01"
+        }
+      ],
+      "proportions": true,
+      "requires_paks": [
+        "FullyPlayableVincentAssets_P"
+      ],
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,1089 @@
+{
+ "remake": {
+  "Ring_Core_01": {
+   "kind": "mesh",
+   "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit_Visibility.RMI_Particle_Emit_Visibility",
+   "bindings": [
+    {
+     "name": "Emissive",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_Lens_03E_T.FX_R_Lens_03E_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterEmitChrome",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitFlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffsetDistribution",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitRotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitScale",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterEmitTint",
+     "type": "float",
+     "value": [
+      -0.5
+     ]
+    },
+    {
+     "name": "EmitterEmitTone",
+     "type": "float",
+     "value": [
+      -2.0
+     ]
+    },
+    {
+     "name": "EmitterEmitExposureCondition",
+     "type": "bool",
+     "value": [
+      1.0
+     ]
+    },
+    {
+     "name": "Visibility0",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_Glow_04A_T.FX_R_Glow_04A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterCoordinateVisibility0FlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Offset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0OffsetDistribution",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Rotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Scale",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "Visibility1",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_White_01A_T.FX_R_White_01A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterCoordinateVisibility1FlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Offset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1OffsetDistribution",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Rotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Scale",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterVisibilityTone",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    }
+   ],
+   "ip": {
+    "0": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "1": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "color",
+       3
+      ],
+      [
+       "const",
+       15000.0
+      ]
+     ]
+    ],
+    "2": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.66672
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "4": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "5": [
+     [
+      [
+       "attr",
+       "DynamicMaterialParameter",
+       0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ]
+   },
+   "remake_material": "EMI_Particle_Emit_Gray_Grade_Opacity_Visibility",
+   "template_from": "/work/remakefx/rbtpl/End/Content/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_BurstChain00_10_01_SwordImpact_01.uasset",
+   "template_export": 14,
+   "template_of": "FX_PC0010_BurstChain00_10_01_SwordImpact_01.uasset Slash",
+   "cull": "Double",
+   "mesh": "/Game/Effect/Resident/Model/FX_R_Ring_07_M.FX_R_Ring_07_M",
+   "missing_textures": [
+    "/Game/GameContents/Effect/Resident/Texture/FX_R_Grd_03_T.FX_R_Grd_03_T"
+   ]
+  },
+  "Ring_Sub": {
+   "kind": "mesh",
+   "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit.RMI_Particle_Emit",
+   "bindings": [
+    {
+     "name": "Emissive",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_Lens_03E_T.FX_R_Lens_03E_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterEmitChrome",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitFlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffsetDistribution",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitRotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitScale",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterEmitTint",
+     "type": "float",
+     "value": [
+      -0.5
+     ]
+    },
+    {
+     "name": "EmitterEmitTone",
+     "type": "float",
+     "value": [
+      -2.0
+     ]
+    },
+    {
+     "name": "EmitterEmitExposureCondition",
+     "type": "bool",
+     "value": [
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    }
+   ],
+   "ip": {
+    "0": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "1": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "color",
+       3
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ]
+    ],
+    "2": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.66672
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "4": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "5": [
+     [
+      [
+       "attr",
+       "DynamicMaterialParameter",
+       0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ]
+   },
+   "remake_material": "EMI_Particle_Emit_Gray_Grade",
+   "template_from": "/work/remakefx/rbtpl/End/Content/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Burst06_Weapon_01.uasset",
+   "template_export": 8,
+   "template_of": "FX_PC0000_Burst06_Weapon_01.uasset Glow",
+   "cull": "Double",
+   "mesh": "/Game/Effect/Resident/Model/FX_R_Ring_07_M.FX_R_Ring_07_M"
+  },
+  "Ring_Air": {
+   "kind": "mesh",
+   "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Lit_Average_Emit_Visibility_Soft.RMI_Particle_Lit_Average_Emit_Visibility_Soft",
+   "bindings": [
+    {
+     "name": "Emissive",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_White_01A_T.FX_R_White_01A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterEmitChrome",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitFlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitOffsetDistribution",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitRotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateEmitScale",
+     "type": "vector2",
+     "value": [
+      2.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterEmitTint",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterEmitTone",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterEmitExposureCondition",
+     "type": "bool",
+     "value": [
+      1.0
+     ]
+    },
+    {
+     "name": "Opacity",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_White_01A_T.FX_R_White_01A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterCoordinateLitFlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateLitOffset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateLitOffsetDistribution",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateLitRotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateLitScale",
+     "type": "vector2",
+     "value": [
+      2.0,
+      1.0
+     ]
+    },
+    {
+     "name": "Visibility0",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_White_01A_T.FX_R_White_01A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterCoordinateVisibility0FlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Offset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0OffsetDistribution",
+     "type": "vector2",
+     "value": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Rotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility0Scale",
+     "type": "vector2",
+     "value": [
+      2.0,
+      1.0
+     ]
+    },
+    {
+     "name": "Visibility1",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_White_01A_T.FX_R_White_01A_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterCoordinateVisibility1FlipBook",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Offset",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1OffsetDistribution",
+     "type": "vector2",
+     "value": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Rotation",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterCoordinateVisibility1Scale",
+     "type": "vector2",
+     "value": [
+      1.0,
+      2.0
+     ]
+    },
+    {
+     "name": "EmitterVisibilityTone",
+     "type": "float",
+     "value": [
+      -1.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeFarawayFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityNear",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterDistanceFadeVicinityFar",
+     "type": "float",
+     "value": [
+      0.0
+     ]
+    }
+   ],
+   "ip": {
+    "0": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "1": [
+     [
+      [
+       "color",
+       0
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ]
+     ],
+     [
+      [
+       "color",
+       3
+      ],
+      [
+       "const",
+       4.0
+      ]
+     ]
+    ],
+    "2": [
+     [
+      [
+       "color",
+       0
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "3": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.6
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.6
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ],
+      [
+       "const",
+       0.6
+      ]
+     ],
+     [
+      [
+       "color",
+       3
+      ],
+      [
+       "const",
+       1.0
+      ]
+     ]
+    ],
+    "4": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "5": [
+     [
+      [
+       "attr",
+       "DynamicMaterialParameter",
+       0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ]
+   },
+   "remake_material": "EMI_Particle_Lit_Average_Emit_Gray_Identity_Opacity_Visibility_Soft",
+   "template_from": "/work/remakefx/rbtpl/End/Content/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_BurstChain00_10_01_Slash_01.uasset",
+   "template_export": 11,
+   "template_of": "FX_PC0010_BurstChain00_10_01_Slash_01.uasset Slash_Prism001",
+   "cull": "Double",
+   "mesh": "/Game/Effect/Resident/Model/FX_R_Ring_07_M.FX_R_Ring_07_M",
+   "missing_textures": [
+    "/Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T",
+    "/Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T",
+    "/Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T",
+    "/Game/GameContents/Effect/Resident/Texture/FX_R_Msk_01_T.FX_R_Msk_01_T"
+   ]
+  }
+ },
+ "bounds": 700.0,
+ "notes": [
+  "Ring_Core_01: textures not in the game (white for now): /Game/GameContents/Effect/Resident/Texture/FX_R_Grd_03_T.FX_R_Grd_03_T",
+  "Ring_Air: textures not in the game (white for now): /Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T, /Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T, /Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T, /Game/GameContents/Effect/Resident/Texture/FX_R_Msk_01_T.FX_R_Msk_01_T"
+ ]
+}

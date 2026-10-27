@@ -1,0 +1,42 @@
+@echo off
+title Create a Character System editor 1.19 - the AnimBlueprint test again, please leave this window open
+rem The AnimBlueprint test of editor 1.19 again, with the fixed templates (close the End editor first; nothing is built):
+rem   the templates (Tools\RebirthSkelCompat\abp\templates) now give a name setting without quotes (the Slot nodes'
+rem   DefaultSlot and FacialSlot, Cloud's bone filters: quoted, the quotes became part of the name) and an empty array
+rem   as no text (the locomotion players' rotation rates, the facial node's lip maps: "()" made one empty entry).
+rem   Cloud's AnimBlueprint is rebuilt and cooked into the test container again (Tools\RebirthSkelCompat\abp\out\
+rem   CACS_AnimTemplateTest_P, NOT installed), and Sephiroth's, Vincent's and the monsters' templates made and compiled.
+rem Status: Tools\RebirthSkelCompat\build\editor119_status.txt (the test's result:
+rem C:\FF7R2UProj\Saved\RebirthSkelCompat\AnimTemplate\result.json)
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\editor119_status.txt"
+echo The AnimBlueprint test again ^(editor 1.19, the fixed templates^), started %DATE% %TIME%> "%STATUS%"
+tasklist /FI "IMAGENAME eq UE4Editor.exe" 2>nul | find /I "UE4Editor.exe" >nul
+if not errorlevel 1 (
+  echo REFUSED: close the End editor ^(UE4Editor.exe^) first, then run this again>> "%STATUS%"
+  goto :done
+)
+if not exist "%~dp0run_abp_template_test.ps1" (
+  echo FAILED: run_abp_template_test.ps1 is missing ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+findstr /L /C:"\"SlotName\": \"DefaultSlot\"," "%~dp0abp\templates\PC0000_00_Cloud_Standard_Animation.template.json" >nul
+if errorlevel 1 (
+  echo FAILED: abp\templates still has the old templates ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+echo the AnimBlueprint test in an editor commandlet ^(about 5 minutes^)...>> "%STATUS%"
+type "%STATUS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run_abp_template_test.ps1"
+if errorlevel 1 (
+  echo NOT ALL OF THE TEST WENT THROUGH ^(above^): tell Sandalphon.>> "%STATUS%"
+  goto :done
+)
+echo DONE: tell Sandalphon. It checks the test container again before you try it in the game.>> "%STATUS%"
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b

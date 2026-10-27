@@ -1,0 +1,765 @@
+{
+ "skeleton_fbx": "SU2050_00_Preview.fbx",
+ "sets": {
+  "/Game/Motion/Summon/SU2050_NeoBahamut/Neutral00.Neutral00": {
+   "N_Act01_0": {
+    "frames": 91,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "N_Act01_1": {
+    "frames": 136,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "N_Idle01_1": {
+    "frames": 181,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "N_Idle01_2": {
+    "frames": 181,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   }
+  },
+  "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00.Battle00": {
+   "B_Appear01_0": {
+    "frames": 231,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBladeCombo01_0": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBombBullet01_0": {
+    "frames": 95,
+    "fps": 29.999998092651367,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBoosterAttack01": {
+    "frames": 117,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBreathMove01_0": {
+    "frames": 41,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBreathMove01_1": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkBreathMove01_2": {
+    "frames": 41,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkEnergySlash01": {
+    "frames": 286,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkGrab01": {
+    "frames": 106,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkGrab01_0": {
+    "frames": 66,
+    "fps": 29.999998092651367,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkGrab01_1": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkGrab01_2": {
+    "frames": 131,
+    "fps": 29.999998092651367,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkGroundLaser01": {
+    "frames": 58,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkGroundLaser02": {
+    "frames": 51,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkJumpSlash01": {
+    "frames": 131,
+    "fps": 29.999998092651367,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkKickCombo01": {
+    "frames": 63,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkNeoHeavyStilke01": {
+    "frames": 161,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon01_0": {
+    "frames": 111,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon01_2": {
+    "frames": 63,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon_Test01_0": {
+    "frames": 56,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon_Test01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkSatelliteCanon_Test01_2": {
+    "frames": 51,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkShoulderVulcan01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkShoulderVulcan01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkShoulderVulcan01_2": {
+    "frames": 36,
+    "fps": 30.000001907348633,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkSpinSlash01": {
+    "frames": 111,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStinger01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStinger01_1": {
+    "frames": 11,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStinger01_2": {
+    "frames": 54,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStunLaser01_0": {
+    "frames": 41,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStunLaser01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_AtkStunLaser01_2": {
+    "frames": 36,
+    "fps": 30.000001907348633,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkStunLaser01_Add": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 142,
+    "loop": true,
+    "additive": true,
+    "least_w": 0.8804703179826179
+   },
+   "B_AtkTailSpinR01_1": {
+    "frames": 101,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkUpperSlash01_0": {
+    "frames": 78,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkUpperSlash01_1": {
+    "frames": 87,
+    "fps": 30.000001907348633,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkWingAttack01_0": {
+    "frames": 74,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkWingAttack01_1": {
+    "frames": 16,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkWingAttack01_2": {
+    "frames": 56,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_AtkWingAttack01_3": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Idle01_1": {
+    "frames": 361,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_ModeChange01": {
+    "frames": 41,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_ModeChange02": {
+    "frames": 41,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Rtrn01_0": {
+    "frames": 28,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Turn01_L180": {
+    "frames": 34,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Turn01_L90": {
+    "frames": 34,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Turn01_R180": {
+    "frames": 34,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Turn01_R90": {
+    "frames": 34,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_0_L180": {
+    "frames": 26,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_0_L90": {
+    "frames": 26,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_0_R180": {
+    "frames": 26,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_0_R90": {
+    "frames": 26,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Walk01_2r": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkB01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkB01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkB01_2r": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkL01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkL01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkL01_2r": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkR01_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkR01_1": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_WalkR01_2r": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Warp01_0": {
+    "frames": 13,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_Warp02_0": {
+    "frames": 13,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   }
+  },
+  "/Game/Motion/Summon/SU2050_NeoBahamut/Battle00_Boss.Battle00_Boss": {
+   "B_Appear02": {
+    "skip": "AnimComposite without its own ACL clip (no ACL clip)"
+   },
+   "B_Die01_0": {
+    "skip": "AnimComposite without its own ACL clip (no ACL clip)"
+   },
+   "B_Die01_1": {
+    "skip": "AnimComposite without its own ACL clip (no ACL clip)"
+   },
+   "B_Dmg01_Add": {
+    "frames": 5,
+    "fps": 29.999998092651367,
+    "tracks": 167,
+    "loop": false,
+    "additive": true,
+    "least_w": 0.9662484583288302
+   },
+   "B_DmgB01": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgB03_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgB03_1": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_DmgB03_2": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgBurst01_0": {
+    "frames": 91,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgBurst01_1": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_DmgBurst01_2": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgBurst01_Add": {
+    "frames": 26,
+    "fps": 30.0,
+    "tracks": 145,
+    "loop": true,
+    "additive": true,
+    "least_w": 0.9150872355146796
+   },
+   "B_DmgDownF01_0": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgDownF01_1": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_DmgDownF01_2": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgF01": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgF03_0": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgF03_1": {
+    "frames": 61,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": true,
+    "additive": false
+   },
+   "B_DmgF03_2": {
+    "frames": 31,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgL01": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_DmgR01": {
+    "frames": 21,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_EnergyCharge01_0": {
+    "frames": 46,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_EnergyCharge01_1": {
+    "skip": "AnimSequence without its own ACL clip (no ACL clip)"
+   },
+   "B_EnergyCharge01_2": {
+    "frames": 51,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   },
+   "B_EnergyCharge01_3": {
+    "frames": 101,
+    "fps": 30.0,
+    "tracks": 249,
+    "loop": false,
+    "additive": false
+   }
+  }
+ },
+ "files": {
+  "SU2050_00_Preview.fbx": "a2751540e5a73f553a865c7b1c776a80",
+  "cacanim/Neutral00/N_Act01_0.cacanim": "1c3e4ecac973d6aa957715af64b5dea2",
+  "cacanim/Neutral00/N_Act01_1.cacanim": "3c6573f82d0f5960d440ae11c9db9f43",
+  "cacanim/Neutral00/N_Idle01_1.cacanim": "6620997f9a32b2d411a66e2705caa331",
+  "cacanim/Neutral00/N_Idle01_2.cacanim": "6620997f9a32b2d411a66e2705caa331",
+  "cacanim/Battle00/B_Appear01_0.cacanim": "bc958fb5db2746c1e0073a181c6b533a",
+  "cacanim/Battle00/B_AtkBladeCombo01_0.cacanim": "1e1a2d83be7fc152def674411a6e5765",
+  "cacanim/Battle00/B_AtkBombBullet01_0.cacanim": "9c2037f643ddd3f185ce4bb17c504078",
+  "cacanim/Battle00/B_AtkBoosterAttack01.cacanim": "0a5b4a23fee83fe35a9c90e3ebad13bd",
+  "cacanim/Battle00/B_AtkBreathMove01_0.cacanim": "00e6fd45396c6379266df93cb105163c",
+  "cacanim/Battle00/B_AtkBreathMove01_1.cacanim": "18d0a2523839e550e5765064f4037962",
+  "cacanim/Battle00/B_AtkBreathMove01_2.cacanim": "94fb182916dd14d0a570d49e50ca2956",
+  "cacanim/Battle00/B_AtkEnergySlash01.cacanim": "2f5b0d291d61a0918496197a98d5ea23",
+  "cacanim/Battle00/B_AtkGrab01.cacanim": "25c6993e66412808e45f8c1381b7c318",
+  "cacanim/Battle00/B_AtkGrab01_0.cacanim": "83717c8d3368536d6369c5e8ad5e41ac",
+  "cacanim/Battle00/B_AtkGrab01_1.cacanim": "1a61f24d83a146addb34791640cb4ee1",
+  "cacanim/Battle00/B_AtkGrab01_2.cacanim": "ca41558c7be31db3da798a39a9c1b2a4",
+  "cacanim/Battle00/B_AtkGroundLaser01.cacanim": "67291b9bd773cd7e0d15163fb98aa901",
+  "cacanim/Battle00/B_AtkGroundLaser02.cacanim": "8068d8647813c499d8e6d486e4f78c69",
+  "cacanim/Battle00/B_AtkJumpSlash01.cacanim": "613b1559c0d7e988e64b636ede4c89df",
+  "cacanim/Battle00/B_AtkKickCombo01.cacanim": "84ce364200b852f8af679ca79c5fc4c9",
+  "cacanim/Battle00/B_AtkNeoHeavyStilke01.cacanim": "be4a97779bf0624cbd6f205fafe7766a",
+  "cacanim/Battle00/B_AtkSatelliteCanon01_0.cacanim": "32dc9454680c6c422d91839b3dc83ec1",
+  "cacanim/Battle00/B_AtkSatelliteCanon01_1.cacanim": "3d9d7b29a5ea0e3d333297ccd0ea57b6",
+  "cacanim/Battle00/B_AtkSatelliteCanon01_2.cacanim": "ae1840ba0096c52107294c80ac419694",
+  "cacanim/Battle00/B_AtkSatelliteCanon_Test01_0.cacanim": "dfb3e477566b0d38a41a39aa0b37dc69",
+  "cacanim/Battle00/B_AtkSatelliteCanon_Test01_1.cacanim": "fe19fbd578f1ccf7fdecb464565feb44",
+  "cacanim/Battle00/B_AtkSatelliteCanon_Test01_2.cacanim": "14a1eeab8a56736a5c9f44312cd86458",
+  "cacanim/Battle00/B_AtkShoulderVulcan01_0.cacanim": "3b5e971288175e83611696cc5b89b4ff",
+  "cacanim/Battle00/B_AtkShoulderVulcan01_1.cacanim": "6a99f5fa506ded75c5bc367e6ee64971",
+  "cacanim/Battle00/B_AtkShoulderVulcan01_2.cacanim": "d2fe2bcdc8577bd6f72f83a8cb10ad2d",
+  "cacanim/Battle00/B_AtkSpinSlash01.cacanim": "7548823d432c645021e5582ddcd2ed0c",
+  "cacanim/Battle00/B_AtkStinger01_0.cacanim": "1e4f0b804d58880b82f4270cf337e216",
+  "cacanim/Battle00/B_AtkStinger01_1.cacanim": "f6ef2b87dded4f111179f1601990f8d1",
+  "cacanim/Battle00/B_AtkStinger01_2.cacanim": "ef31f08160ea1fc5aae102d50b6cbb77",
+  "cacanim/Battle00/B_AtkStunLaser01_0.cacanim": "2d1d138d34ff1f5ecb70ba3206896ecd",
+  "cacanim/Battle00/B_AtkStunLaser01_1.cacanim": "41fd139a516d5398c22b88dfba60d059",
+  "cacanim/Battle00/B_AtkStunLaser01_2.cacanim": "ab307b0ca29e78a91895d754f08131cc",
+  "cacanim/Battle00/B_AtkStunLaser01_Add.cacanim": "394c3440d25e06657153324ca66a8914",
+  "cacanim/Battle00/B_AtkTailSpinR01_1.cacanim": "48a5cbf1eb913e12e00871d632be7e97",
+  "cacanim/Battle00/B_AtkUpperSlash01_0.cacanim": "c2b9f1e6ef7a1f1cb225ad1d8a7255e4",
+  "cacanim/Battle00/B_AtkUpperSlash01_1.cacanim": "fc237f21e0187b38ae9f1bf8c51c1b90",
+  "cacanim/Battle00/B_AtkWingAttack01_0.cacanim": "23b59f979e79ce0baf4f8a41a8e8780f",
+  "cacanim/Battle00/B_AtkWingAttack01_1.cacanim": "0b459f835341d219693e986be4d25fb2",
+  "cacanim/Battle00/B_AtkWingAttack01_2.cacanim": "f711be201026b78df41b6494c3167153",
+  "cacanim/Battle00/B_AtkWingAttack01_3.cacanim": "e0eb8731ea34660bba96cbb19ef3ed51",
+  "cacanim/Battle00/B_Idle01_1.cacanim": "576d92272f6466f9a8cb8e0e8b1032d7",
+  "cacanim/Battle00/B_ModeChange01.cacanim": "f993d1afa2997a125441433035e4548b",
+  "cacanim/Battle00/B_ModeChange02.cacanim": "5be26e19203674df619f225007945980",
+  "cacanim/Battle00/B_Rtrn01_0.cacanim": "c07b77c7c6d9df4a7dc498fb57b83ae8",
+  "cacanim/Battle00/B_Turn01_L180.cacanim": "4c95e47439721c46fa2cab2f6631f586",
+  "cacanim/Battle00/B_Turn01_L90.cacanim": "d94285ea3399e031e630a300d8e4dff6",
+  "cacanim/Battle00/B_Turn01_R180.cacanim": "22e07b8fbf21623b43c629213e326f91",
+  "cacanim/Battle00/B_Turn01_R90.cacanim": "ee635af1b329ed979faf330ce0562da8",
+  "cacanim/Battle00/B_Walk01_0.cacanim": "b1deab18cc718f9af421b1fd82943a63",
+  "cacanim/Battle00/B_Walk01_0_L180.cacanim": "788f57f4b8d745feb58e825aefc4ab3e",
+  "cacanim/Battle00/B_Walk01_0_L90.cacanim": "1adbf6ef387b973fe385c7a8ffd9af59",
+  "cacanim/Battle00/B_Walk01_0_R180.cacanim": "20e20a1ab5d60ced1b5200b045ec49bc",
+  "cacanim/Battle00/B_Walk01_0_R90.cacanim": "b233270a6a4af423a5733a654de7b42e",
+  "cacanim/Battle00/B_Walk01_1.cacanim": "df114d29c8b2de05c6647fe7c9c990c1",
+  "cacanim/Battle00/B_Walk01_2r.cacanim": "f8f7e0f9f39def140e61b6034f1dd8c3",
+  "cacanim/Battle00/B_WalkB01_0.cacanim": "0145d51d961853160a263036723d33aa",
+  "cacanim/Battle00/B_WalkB01_1.cacanim": "303de6c2633748295fdb5829f165d0a2",
+  "cacanim/Battle00/B_WalkB01_2r.cacanim": "89f07db741387cee2e2ce3ce0b149bf3",
+  "cacanim/Battle00/B_WalkL01_0.cacanim": "77f14566d173d7c8ddf4eb8e12e350e0",
+  "cacanim/Battle00/B_WalkL01_1.cacanim": "062a16a61ce6b741718a5767690c0c3a",
+  "cacanim/Battle00/B_WalkL01_2r.cacanim": "52de9f9bc5c607e78d86dacf978f089e",
+  "cacanim/Battle00/B_WalkR01_0.cacanim": "288c4937c4ccca681e165e789b510ba8",
+  "cacanim/Battle00/B_WalkR01_1.cacanim": "e93191f3f717bc15c6f0a1b4de9131dc",
+  "cacanim/Battle00/B_WalkR01_2r.cacanim": "d38d1838fec9ff740536c91db0f371ac",
+  "cacanim/Battle00/B_Warp01_0.cacanim": "3f231857b7fb15e379e570fad9fdf75f",
+  "cacanim/Battle00/B_Warp02_0.cacanim": "c7372dda0a147ab5966e39979e565361",
+  "cacanim/Battle00_Boss/B_Dmg01_Add.cacanim": "f9289c3dfdd9d866d709cd6fbbcaead2",
+  "cacanim/Battle00_Boss/B_DmgB01.cacanim": "b7480ec06c5f21369acf1dd4943a9bed",
+  "cacanim/Battle00_Boss/B_DmgB03_0.cacanim": "7b1a9f5c79cd7ad296eeca57518816e5",
+  "cacanim/Battle00_Boss/B_DmgB03_1.cacanim": "7ac3a4a8d265176b17500a2421883e23",
+  "cacanim/Battle00_Boss/B_DmgB03_2.cacanim": "d38430c673d1ac83eeef250e72bf9551",
+  "cacanim/Battle00_Boss/B_DmgBurst01_0.cacanim": "0b73d9890db0d2e89bde2aefa89afecc",
+  "cacanim/Battle00_Boss/B_DmgBurst01_1.cacanim": "075d4d03ecb9c98bb6748b68019e0d5b",
+  "cacanim/Battle00_Boss/B_DmgBurst01_2.cacanim": "5657b6f703124bc176240b8111265688",
+  "cacanim/Battle00_Boss/B_DmgBurst01_Add.cacanim": "0f141b7db6874ef2576812c4c35d8634",
+  "cacanim/Battle00_Boss/B_DmgDownF01_0.cacanim": "600761e95298ea495cbd6f0b444e1100",
+  "cacanim/Battle00_Boss/B_DmgDownF01_1.cacanim": "754563d629d0ed5ed961c77ac7bf84c8",
+  "cacanim/Battle00_Boss/B_DmgDownF01_2.cacanim": "eea0267d777401d10b01b35e49b5fe08",
+  "cacanim/Battle00_Boss/B_DmgF01.cacanim": "315e01caf38763b143b55419aba0e88d",
+  "cacanim/Battle00_Boss/B_DmgF03_0.cacanim": "9fdf78f431b04e6727154004b0279547",
+  "cacanim/Battle00_Boss/B_DmgF03_1.cacanim": "eba160a96a01592c7c222f917406b067",
+  "cacanim/Battle00_Boss/B_DmgF03_2.cacanim": "3d2869fa2dfac117b87aa9e9c9e104a6",
+  "cacanim/Battle00_Boss/B_DmgL01.cacanim": "dad42f1f42e8d5fbea1d2f4cac3938ff",
+  "cacanim/Battle00_Boss/B_DmgR01.cacanim": "4b1c570345aab3c26e30c2d3f1f1ad84",
+  "cacanim/Battle00_Boss/B_EnergyCharge01_0.cacanim": "1856ae8df6da2d6aead0aa9d60edde55",
+  "cacanim/Battle00_Boss/B_EnergyCharge01_2.cacanim": "549b88472d4b8e13aa9878ad71703b0b",
+  "cacanim/Battle00_Boss/B_EnergyCharge01_3.cacanim": "5530c19690d8fa21c0f2f71d307d069d"
+ }
+}

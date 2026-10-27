@@ -1,0 +1,823 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/Vincent_Moves.Vincent_Moves",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+				"/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton.EB0016_00_Skeleton",
+				"/Game/Character/Enemy/EB2020_00_Elena_Standard/Model/EB2020_00_Skeleton.EB2020_00_Skeleton"
+			],
+			"method": "family",
+			"hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"requires_paks": [
+				"FullyPlayableVincentAssets_P"
+			],
+			"fix_hierarchy": true,
+			"repair_live_components": true,
+			"carry_sockets": true,
+			"proportions": true,
+			"enabled": true
+		}
+	],
+	"animation_sets": [
+		{
+			"characters": [
+				"PC0000_00_Cloud_Standard",
+				"PC0000_04_Cloud_ZackCostume",
+				"PC0000_12_Cloud_ZackCostumeDirty",
+				"PC0000_18_Cloud_ZackCostumeAge21",
+				"PC0000_19_Cloud_ZackCostumeDirtyAge21",
+				"PC0000_23_Cloud_ZackCostumeWet"
+			],
+			"battle": [
+				{
+					"from": "/Game/Motion/Enemy/EB2020_Elena/Battle00",
+					"auto": true,
+					"only": [
+						"Shot"
+					]
+				},
+				{
+					"from": "/Game/Motion/Enemy/EB0016_Rufus/Battle00",
+					"as": "Battle01",
+					"auto": true,
+					"only": [
+						"Shot"
+					]
+				},
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"field": [
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"moves": [
+				{
+					"set": "Battle00",
+					"key": "B_NAttack01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_0.B_NAttack01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack02_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack02_0.B_NAttack02_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_1_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack03_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack03_0.B_NAttack03_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_2_remap",
+						"hit_at": 0.12
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack04_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack04_0.B_NAttack04_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_3_remap",
+						"hit_at": 0.17000000000000001
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack05_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack05_0.B_NAttack05_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_4_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack01_1_2",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack01_1_2.B_NAttack01_1_2",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_01_remap"
+					}
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack01_0.B_SAttack01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack02_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack02_0.B_SAttack02_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_1_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack03_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack03_0.B_SAttack03_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_2_remap",
+						"hit_at": 0.12
+					}
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack04_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack04_0.B_SAttack04_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_3_remap",
+						"hit_at": 0.17000000000000001
+					}
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack05_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle01/B_SAttack05_0.B_SAttack05_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_4_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Neutral00",
+					"key": "N_Atk01",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Neutral00/N_Atk01.N_Atk01",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+						"hit_at": 0.070000000000000007
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack06_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack06_0.B_NAttack06_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_21_remap"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack07_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_NAttack07_0.B_NAttack07_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_11_remap"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0.B_Run01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0_L0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0_L90",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0_L180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0_R90",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_R90.B_Run01_0_R90",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_0_R180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1.B_Run01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_1_L180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1_L180.B_Run01_1_L180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_L180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_L180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_1_R180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_1_R180.B_Run01_1_R180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_R180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_R180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_Up",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_Up.B_Run01_Up",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_Up",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_Up",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rn_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_2",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2.B_Run01_2",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2l.B_Run01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Run01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Run01_2r.B_Run01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0.B_Walk01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans",
+						"speed": 0.35899999999999999
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0_L0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans",
+						"speed": 0.35899999999999999
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0_L90",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0_L180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0_R90",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_0_R180",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_1.B_Walk01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_2l.B_Walk01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_Walk01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_Walk01_2r.B_Walk01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkF01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_0.B_WalkF01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkF01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_1.B_WalkF01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_wk_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkF01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_2l.B_WalkF01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkF01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkF01_2r.B_WalkF01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkF01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkB01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_0.B_WalkB01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans",
+						"speed": 0.57899999999999996
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkB01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_1.B_WalkB01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkB01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkB01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkBL01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBL01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBL01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkBR01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBR01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBR01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_brn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkL01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_0.B_WalkL01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans",
+						"speed": 0.63200000000000001
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkL01_0l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_0l.B_WalkL01_0l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans",
+						"speed": 0.63200000000000001
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkL01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_1.B_WalkL01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkL01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkL01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkFL01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFL01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFL01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_lrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkR01_0",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_0.B_WalkR01_0",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkR01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_1.B_WalkR01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkR01_2l",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkR01_2r",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_st_a_remap",
+						"bone_map": "Trans=Trans"
+					}
+				},
+				{
+					"set": "Battle00",
+					"key": "B_WalkFR01_1",
+					"animation": "/Game/RebirthSkelCompat/Built/Vincent/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+					"build":
+					{
+						"from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFR01_1",
+						"notifies_from": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFR01_1",
+						"retarget": "motion",
+						"base": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m001_h_rrn_a_remap",
+						"base_loop": true,
+						"bone_map": "Trans=Trans"
+					}
+				}
+			],
+			"field_actions": "PC0000_Cloud",
+			"cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"sockets": [
+				{
+					"socket": "Attach_Weapon01",
+					"use": "Attach_Weapon_Right01"
+				}
+			],
+			"limit_breaks": [
+				"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkFireBreak02",
+				[
+					"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkThunderShot01",
+					"/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBlizzardShot01_0"
+				]
+			],
+			"proportions": true,
+			"override": true,
+			"build_folder": "/Game/RebirthSkelCompat/Built/Vincent",
+			"shot_effects":
+			{
+				"muzzle": "/Game/Effect/Character/Weapon/WE1003_01_CorneoLackey_Pistol/Particle/FX_WE1003_01_Muzzle_01",
+				"socket": "VFX_Muzzle01",
+				"muzzle_time": 0.14999999999999999,
+				"sound_bank": "/Game/Sound/SE/Character/Weapon/SE_WE1003_01_CorneoLackey_Pistol",
+				"sound": "FX_WE1003_01_Muzzle_01"
+			},
+			"requires_paks": [
+				"FullyPlayableVincentAssets_P"
+			],
+			"enabled": true
+		}
+	]
+}

@@ -1,0 +1,18 @@
+MSG YoungSephirothForms.json: animation_sets[0] abilities: pack Battle02 lists 6 commands; the game takes the first 5 from a player row, the rest are left out
+MSG YoungSephirothForms.json: animation_sets[0] abilities: pack Battle03 lists 6 commands; the game takes the first 5 from a player row, the rest are left out
+ROW CharaSpec_PC0000_00_Cloud_Standard 
+  origin=YoungSephirothForms.json moves=765 packassets=2 shooter=0 forms=6
+   form NORMAL pack= model= anim= shooter=-1 armor=0 seconds=0 fly=0 effects=1 sounds=1
+      as_look=0 weapon=
+   form WINGED pack=Battle02 model= anim= shooter=-1 armor=0 seconds=0 fly=0 effects=2 sounds=2
+      as_look=0 weapon=/Game/BluePrint/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C
+   form FLYING pack=Battle03 model= anim= shooter=-1 armor=0 seconds=0 fly=1 effects=2 sounds=2
+      as_look=0 weapon=/Game/BluePrint/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C
+   form KH2 pack=Battle04 model=/Game/Character/Player/PC0010_14_Sephiroth_KH2/Model/PC0010_14.PC0010_14 anim= shooter=-1 armor=0 seconds=0 fly=0 effects=2 sounds=2
+      as_look=1 weapon=/Game/BluePrint/Character/Weapon/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C
+   form BIZARRO pack=Battle05 model=/Game/Character/Enemy/EB2210_00_BizarroSephiroth_Standard/Model/EB2210_00_Body.EB2210_00_Body anim=/Game/BluePrint/Animation/Enemy/EB2210_00_BizarroSephiroth_Standard_Animation.EB2210_00_BizarroSephiroth_Standard_Animation_C shooter=-1 armor=1 seconds=60 fly=0 effects=4 sounds=1
+      as_look=0 weapon=
+   form SAFER pack=Battle06 model=/Game/Character/Player/PC0010_999_Safer_Sephiroth/Model/PC0010_999.PC0010_999 anim=/Game/BluePrint/Animation/Player/PC0010_999_Safer_Sephiroth_Standard_Animation.PC0010_999_Safer_Sephiroth_Standard_Animation_C shooter=-1 armor=1 seconds=60 fly=0 effects=4 sounds=2
+      as_look=0 weapon=
+   pack asset /Game/Effect/Character/Player/PC0010_10_Sephiroth_Transform/Build/PC0010_10_Sephiroth_Transform_Effect__Pack.PC0010_10_Sephiroth_Transform_Effect__Pack
+   pack asset /Game/Effect/Character/Enemy/EB2210_BizarroSephiroth/Build/EB2210_BizarroSephiroth_Effect__Pack.EB2210_BizarroSephiroth_Effect__Pack

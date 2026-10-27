@@ -1,0 +1,2503 @@
+{
+ "fields": [
+  "ContentsSoundAutoSE_Array",
+  "ContentSoundVoice_Array",
+  "ContentsEffect_Array",
+  "ContentsSoundSE_Array",
+  "OverrideAnimationSetString_Array",
+  "SoundVoisePack_Array",
+  "SoundVoisePackEnableStoryFlag_Array",
+  "OverrideWeaponSocketNames_Array",
+  "EquipmentCharaSpecList_Array",
+  "SharedCharaSpecList_Array",
+  "AnimationSetList_Array",
+  "End2AIList_Array",
+  "EquipmentDefaultHiddenList_Array",
+  "ContentsSoundFootAttributeSE",
+  "CharaID",
+  "NoBattleCharaSpec",
+  "ContentsModel",
+  "AnimationSetParentFolder",
+  "FootAttributeID",
+  "SoundCategoryId",
+  "ReserveCharaSpec",
+  "ScaleMax",
+  "RootMotionTranslationScale",
+  "AnimationPlayRate",
+  "ScaleMin",
+  "WeightType",
+  "PhysiqueSize",
+  "MoveType",
+  "IgnoreRagdollPhysics",
+  "GroundAnimationBattlePackIndex",
+  "GroundAnimationFieldPackIndex",
+  "FlyAnimationBattlePackIndex",
+  "FlyAnimationFieldPackIndex",
+  "EnableCollision"
+ ],
+ "added": [],
+ "removed": [],
+ "changed": {
+  "PC0000_00_Cloud_Standard": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_00_Cloud_Standard_NoBattle",
+    "PC0000_00_Cloud_Standard"
+   ],
+   "ContentsModel": [
+    "PC0000_00_Cloud_Standard",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_00_Cloud_Standard_Reserve",
+    "PC0000_00_Cloud_Standard"
+   ]
+  },
+  "PC0000_04_Cloud_ZackCostume": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_04_Cloud_ZackCostume_NoBattle",
+    "PC0000_04_Cloud_ZackCostume"
+   ],
+   "ContentsModel": [
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_04_Cloud_ZackCostume_Reserve",
+    "PC0000_04_Cloud_ZackCostume"
+   ]
+  },
+  "PC0000_08_Cloud_SoldierNoHelmet": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_06_Cloud_Soldier"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "OverrideWeaponSocketNames_Array": [
+    [
+     null,
+     null,
+     "Attach_Tonfa01"
+    ],
+    []
+   ],
+   "EquipmentCharaSpecList_Array": [
+    [
+     null,
+     null,
+     "WE1001_00_SecuritySoldier_Rod"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle",
+    "PC0000_08_Cloud_SoldierNoHelmet"
+   ],
+   "ContentsModel": [
+    "PC0000_08_Cloud_SoldierNoHelmet",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve",
+    "PC0000_08_Cloud_SoldierNoHelmet"
+   ]
+  },
+  "PC0000_09_Cloud_CostaClothing": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_09_Cloud_CostaClothing"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_09_Cloud_CostaClothing_NoBattle",
+    "PC0000_09_Cloud_CostaClothing"
+   ],
+   "ContentsModel": [
+    "PC0000_09_Cloud_CostaClothing",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_09_Cloud_CostaClothing_Reserve",
+    "PC0000_09_Cloud_CostaClothing"
+   ]
+  },
+  "PC0000_10_Cloud_CostaClothing2": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_10_Cloud_CostaClothing2"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_10_Cloud_CostaClothing2_NoBattle",
+    "PC0000_10_Cloud_CostaClothing2"
+   ],
+   "ContentsModel": [
+    "PC0000_10_Cloud_CostaClothing2",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_10_Cloud_CostaClothing2_Reserve",
+    "PC0000_10_Cloud_CostaClothing2"
+   ]
+  },
+  "PC0000_12_Cloud_ZackCostumeDirty": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle",
+    "PC0000_12_Cloud_ZackCostumeDirty"
+   ],
+   "ContentsModel": [
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve",
+    "PC0000_12_Cloud_ZackCostumeDirty"
+   ]
+  },
+  "PC0000_18_Cloud_ZackCostumeAge21": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle",
+    "PC0000_18_Cloud_ZackCostumeAge21"
+   ],
+   "ContentsModel": [
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve",
+    "PC0000_18_Cloud_ZackCostumeAge21"
+   ]
+  },
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "NoBattleCharaSpec": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21"
+   ],
+   "ContentsModel": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ],
+   "ReserveCharaSpec": [
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21"
+   ]
+  },
+  "PC0000_23_Cloud_ZackCostumeWet": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ],
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0000_00_Cloud"
+    ],
+    [
+     "VO_PC0010_00_Sephiroth"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ],
+    [
+     "PC0010_Sephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0000_00_Cloud"
+    ],
+    [
+     "SE_PC0010_00_Sephiroth_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00"
+    ],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SoundVoisePack_Array": [
+    [
+     "VO_PC0000_00_Cloud",
+     "VO_PC0000_01_Cloud_Past",
+     "VO_PC0000_02_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SoundVoisePackEnableStoryFlag_Array": [
+    [
+     "stfCmn_Voice_Cloud_Past",
+     "stfCmn_Voice_Cloud_Insanity"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0010_00_Sephiroth_Standard",
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "FA0260_01_SephirothMeteor_Battle",
+     "EN9000_20_Feeler_BlackEnd2"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     "Battle05",
+     "Emotion00",
+     "Facial00",
+     "Battle04",
+     "Battle01",
+     "Battle02",
+     "Neutral20",
+     "Battle03",
+     "Battle00_Comp",
+     "Battle06",
+     "Battle08",
+     "Battle09"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ],
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0000_23_Cloud_ZackCostumeWet",
+    "PC0010_00_Sephiroth_Standard"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0000_Cloud",
+    "PC0010_Sephiroth"
+   ]
+  },
+  "PC0009_03_Zack_StandardWet": {
+   "ContentSoundVoice_Array": [
+    [],
+    [
+     "VO_PC0009_00_Zack"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [],
+    [
+     "PC0009_Zack_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_PC0009_00_Zack_Standard"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     "Neutral00",
+     null,
+     null,
+     "Facial00"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     null,
+     "Facial00",
+     null,
+     null,
+     null,
+     null,
+     null,
+     "Battle00_Comp"
+    ]
+   ]
+  },
+  "PC0010_00_Sephiroth_Standard": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0010_00_Sephiroth"
+    ],
+    [
+     "VO_PC0000_02_Cloud_Insanity"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0010_Sephiroth_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "SE_PC0000_00_Cloud"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     null,
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     null,
+     null,
+     "Battle00_Comp"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ],
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_00_Sephiroth_Standard",
+    "PC0000_10_Evil_Cloud"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0010_Sephiroth",
+    "PC0000_EvilCloud"
+   ]
+  },
+  "PC0010_01_Sephiroth_StandardWet": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [],
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_PC0000_00_Cloud"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     "Neutral00",
+     null,
+     null,
+     "Facial00"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ],
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_01_Sephiroth_StandardWet",
+    "PC0000_10_Evil_Cloud"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0010_Sephiroth",
+    "PC0000_EvilCloud"
+   ]
+  },
+  "PC0010_10_Sephiroth_Transform": {
+   "ContentSoundVoice_Array": [
+    [
+     "VO_EB0021_00_Sephiroth_Standard"
+    ],
+    [
+     "VO_PC0000_02_Cloud_Insanity"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "EN9000_20_Feeler_BlackEnd2"
+    ],
+    [
+     "EN9000_22_Feeler_BlackBulletEnd2",
+     "EN9000_20_Feeler_BlackEnd2",
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_10_Sephiroth_Transform",
+    "PC0000_11_EvilCloud_Transformed"
+   ]
+  },
+  "PC0010_20_Sephiroth_VRHard": {
+   "ContentSoundVoice_Array": [
+    [
+     "VO_EB0021_00_Sephiroth_Standard"
+    ],
+    [
+     "VO_PC0000_02_Cloud_Insanity"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_20_Sephiroth_VRHard",
+    "PC0000_10_Evil_Cloud"
+   ]
+  },
+  "PC0010_00_Sephiroth_Standard_Reserve": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0010_00_Sephiroth"
+    ],
+    [
+     "VO_PC0000_02_Cloud_Insanity"
+    ]
+   ],
+   "ContentsEffect_Array": [
+    [
+     "PC0010_Sephiroth_Effect__Pack"
+    ],
+    [
+     "PC0000_Cloud_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "SE_PC0000_00_Cloud"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     null,
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     null,
+     null,
+     "Battle00_Comp"
+    ],
+    [
+     "Battle00",
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     "Battle01",
+     null,
+     "Neutral20"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ],
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_00_Sephiroth_Standard",
+    "PC0000_10_Evil_Cloud"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0010_Sephiroth",
+    "PC0000_EvilCloud"
+   ]
+  },
+  "PC0010_00_Sephiroth_Standard_NoBattle": {
+   "ContentsSoundAutoSE_Array": [
+    [
+     "AS_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "AS_PC0000_00_Cloud_Standard"
+    ]
+   ],
+   "ContentSoundVoice_Array": [
+    [
+     "VO_PC0010_00_Sephiroth"
+    ],
+    [
+     "VO_PC0000_02_Cloud_Insanity"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_PC0010_00_Sephiroth_Standard"
+    ],
+    [
+     "SE_PC0000_00_Cloud"
+    ]
+   ],
+   "OverrideAnimationSetString_Array": [
+    [],
+    [
+     "GBike01",
+     "PhotoPose00",
+     "Piano00",
+     "IrukaJump00",
+     "FireWalk00",
+     "FlowerBasket00",
+     "LureRope00",
+     "DolphinJump00",
+     "Crane00",
+     "MushPickUp00",
+     "GBike02",
+     "Camera00",
+     "Puppet00",
+     "DmgWalk00",
+     "Capture00",
+     "ShootingGallery00",
+     "ShakeOff00",
+     "FireWalk01",
+     "FeelerWalk00",
+     "LifeStreamDamage00",
+     "BizarroSephiroth00",
+     "Ch13Monument00",
+     "ChocoboRace00",
+     "ChocoboRace32",
+     "HandLight00",
+     "HandlePuzzle00",
+     "LockerRoom00",
+     "MoogleCapture00",
+     "MoogleCapture01",
+     "MoogleCapture02",
+     "PushBMantle00",
+     "Resist00",
+     "SaboSearch00",
+     "Wheelie00"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "PC0000_00_Cloud_Standard_Reserve"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     "Neutral00",
+     null,
+     null,
+     "Facial00"
+    ],
+    [
+     null,
+     "Neutral00",
+     null,
+     "Emotion00",
+     "Facial00",
+     null,
+     null,
+     null,
+     "Neutral20"
+    ]
+   ],
+   "End2AIList_Array": [
+    [
+     "PC0010_00_Sephiroth_Standard_AIBP"
+    ],
+    [
+     "PC0000_00_Cloud_Standard_AIBP"
+    ]
+   ],
+   "ContentsModel": [
+    "PC0010_00_Sephiroth_Standard",
+    "PC0000_10_Evil_Cloud"
+   ],
+   "AnimationSetParentFolder": [
+    "PC0010_Sephiroth",
+    "PC0000_EvilCloud"
+   ]
+  },
+  "SU2030_00_Alexander_Standard": {
+   "ContentsEffect_Array": [
+    [
+     "SU2030_Alexander_Effect__Pack"
+    ],
+    [
+     "SU2030_Alexander_Effect__Pack",
+     "EB2210_BizarroSephiroth_Effect__Pack",
+     "PC0010_10_Sephiroth_Transform_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_SU2030_00_Alexander_Standard"
+    ],
+    [
+     "SE_SU2030_00_Alexander_Standard",
+     "SE_EB2210_00_BizarroSephiroth_Standard",
+     "SE_PC0010_00_Sephiroth_Standard"
+    ]
+   ],
+   "ContentsModel": [
+    "SU2030_00_Alexander_Standard",
+    "EB2210_00_BizarroSephiroth_Standard"
+   ]
+  },
+  "EN0000_33_SecuritySoldier_StandardWet": {
+   "ContentsEffect_Array": [
+    [],
+    [
+     "EN0000_SecuritySoldier_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [],
+    [
+     "SE_EN0000_SecuritySoldier"
+    ]
+   ],
+   "AnimationSetList_Array": [
+    [
+     null,
+     null,
+     "Neutral00_Gun",
+     "Neutral00",
+     "Facial00"
+    ],
+    [
+     "Battle00_Gun",
+     "Battle00",
+     "Neutral00_Gun",
+     "Neutral00",
+     "Facial00"
+    ]
+   ]
+  },
+  "WE0000_00_Cloud_BusterSword": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_00_Cloud_BusterSword",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_05_Cloud_NailBat": {
+   "ContentsEffect_Array": [
+    [],
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_05_NailBat"
+    ],
+    [
+     "SE_WE0000_00_BusterSword"
+    ]
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE0000_00_Cloud_BusterSword",
+     "PC0009_00_Zack_Standard",
+     "PC0009_02_Zack_Dirty"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_05_Cloud_NailBat",
+    "WE0000_00_Cloud_BusterSword"
+   ]
+  },
+  "WE0000_11_Cloud_END2Weapon1": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_11_Cloud_END2Weapon1_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_11_Cloud_END2Weapon1",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_12_Cloud_END2Weapon2": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_12_Cloud_END2Weapon2_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_12_Cloud_END2Weapon2",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_13_Cloud_END2Weapon3": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_13_Cloud_END2Weapon3_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_13_Cloud_END2Weapon3",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_14_Cloud_END2Weapon4": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_14_Cloud_END2Weapon4_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_14_Cloud_END2Weapon4",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_15_Cloud_END2Weapon5": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_15_Cloud_END2Weapon5_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_15_Cloud_END2Weapon5",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_16_Cloud_END2Weapon6": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_16_Cloud_END2Weapon6_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_00_BusterSword"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_16_Cloud_END2Weapon6",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE0000_17_Cloud_Umbrella": {
+   "ContentsEffect_Array": [
+    [
+     "WE0000_17_Cloud_Umbrella_Effect__Pack"
+    ],
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ]
+   ],
+   "ContentsSoundSE_Array": [
+    [
+     "SE_WE0000_17_Cloud_Umbrella"
+    ],
+    []
+   ],
+   "SharedCharaSpecList_Array": [
+    [],
+    [
+     "WE1021_00_SephirothIllusion_Masamune"
+    ]
+   ],
+   "ContentsModel": [
+    "WE0000_17_Cloud_Umbrella",
+    "WE1021_00_SephirothIllusion_Masamune"
+   ]
+  },
+  "WE1021_00_SephirothIllusion_Masamune": {
+   "ContentsEffect_Array": [
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ],
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ]
+   ],
+   "ContentsModel": [
+    "WE1021_00_SephirothIllusion_Masamune",
+    "WE0000_00_Cloud_BusterSword"
+   ]
+  },
+  "WE1021_01_SephirothIllusion_MasamuneBrood": {
+   "ContentsEffect_Array": [
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ],
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ]
+   ],
+   "ContentsModel": [
+    "WE1021_01_SephirothIllusion_MasamuneBrood",
+    "WE0000_00_Cloud_BusterSword"
+   ]
+  },
+  "WE1021_02_SephirothIllusion_MasamuneCut": {
+   "ContentsEffect_Array": [
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ],
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ]
+   ],
+   "ContentsModel": [
+    "WE1021_02_SephirothIllusion_MasamuneCut",
+    "WE0000_00_Cloud_BusterSword"
+   ]
+  },
+  "WE1021_10_SephirothIllusion_MasamuneCutScale": {
+   "ContentsEffect_Array": [
+    [
+     "WE1021_00_SephirothIllusion_Masamune_Effect__Pack"
+    ],
+    [
+     "WE0000_00_Cloud_BusterSword_Effect__Pack"
+    ]
+   ],
+   "ContentsModel": [
+    "WE1021_10_SephirothIllusion_MasamuneCutScale",
+    "WE0000_00_Cloud_BusterSword"
+   ]
+  }
+ }
+}

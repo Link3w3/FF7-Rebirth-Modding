@@ -1,0 +1,190 @@
+176 moves for the boss's sets (115 built from Cloud's with the boss's notifies, 61 Cloud's as they are)
+B_AtkBurst01_0             Battle00       1.700 s  <- B_AtkBurst07_0          0.47- 2.17 x1.000 =  1.700 s  boss hits 0.19,0.53                    move hits 0.19,0.53                      Zanshin 1: Disorder
+B_AtkBurst01_1             Battle00       1.833 s  <- B_EleBurst01_0          0.00- 1.83 x1.000 =  1.833 s  boss hits 0.53                         move hits 0.53                           Zanshin 2: an elemental impulse
+B_AtkBurst02_0             Battle00       3.233 s  <- B_AtkBurst02_0          0.00- 2.47 x1.000 =  2.467 s  boss hits 0.97                         move hits 0.97                           Hell's Gate: Focused Thrust
+B_AtkBurst02_1             Battle00       2.700 s  <- B01/B_Change_03_0       0.00- 2.03 x0.963 =  2.111 s  boss hits 0.27                         move hits 0.27                           Hell's Gate 2: a mode-switch slash
+B_AtkFeelerLaser01_0       Battle01       1.833 s  <- B_MagSummon01_0         0.00- 2.33 x1.273 =  1.833 s  boss hits                              move hits                                the feeler lasers: his summoning
+B_AtkFeelerLaser01_2       Battle01       1.900 s  <- B_MagSummon01_2         0.00- 1.90 x1.000 =  1.900 s  boss hits                              move hits                                the feeler lasers: end
+B_AtkFeelerLaserL01_1      Battle01       9.000 s  <- B_MagSummon01_1         0.00- 2.00 x0.222 =  9.001 s  boss hits 0.00                         move hits 0.00                           the feeler lasers: held 9 s
+B_AtkFeelerLaserR01_1      Battle01       9.000 s  <- B_MagSummon01_1         0.00- 2.00 x0.222 =  9.001 s  boss hits 0.00                         move hits 0.00                           the feeler lasers: held 9 s
+B_AtkFeelerTornado01_0     Battle01       2.467 s  <- B_AtkLimit03_0          0.87- 3.34 x1.000 =  2.467 s  boss hits 2.33                         move hits 2.33                           Whisper Whirlwind: Finishing Touch
+B_AtkFeelerTornado01_1     Battle01       1.333 s  <- B_AtkBurst06_1          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                Whisper Whirlwind: in the storm (Counterstance)
+B_AtkFeelerTornado01_2     Battle01       2.733 s  <- B_AtkLimit03_0          7.00- 9.73 x1.000 =  2.733 s  boss hits                              move hits                                Whisper Whirlwind: Finishing Touch's last slashes
+B_AtkFinalAttack01_0       Battle01       2.467 s  <- B_MagSummon01_0         0.00- 2.33 x0.946 =  2.467 s  boss hits                              move hits                                Tempus Finis: his summoning
+B_AtkFinalAttack01_1       Battle01      15.000 s  <- B_MagSummon01_1         0.00- 2.00 x0.133 = 15.000 s  boss hits 0.00,0.10                    move hits 0.00,0.10                      Tempus Finis: held 15 s
+B_AtkFinalAttack01_2       Battle01       1.767 s  <- B_MagSummon01_2         0.00- 1.77 x1.000 =  1.767 s  boss hits                              move hits                                Tempus Finis: end
+B_AtkLimit01_0             Battle00       0.500 s  <- B_AtkBurst06_0          0.00- 0.53 x1.066 =  0.500 s  boss hits                              move hits                                Octaslash: ready (Counterstance)
+B_AtkLimit01_1             Battle00       1.333 s  <- B_AtkBurst06_1          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                Octaslash: ready, held
+B_AtkLimit01_1_Comp        Battle00_Comp  1.333 s  <- B_AtkBurst06_1          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                Octaslash: ready, held
+B_AtkLimit01_1_Comp2       Battle00_Comp  1.333 s  <- B_AtkBurst06_1          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                Octaslash: ready, held
+B_AtkLimit01_2             Battle00       0.300 s  <- B_NAttack01_1_0         0.00- 0.27 x0.890 =  0.300 s  boss hits                              move hits                                Octaslash: the dash
+B_AtkLimit01_3             Battle00       0.133 s  <- B_NAttack01_1_1         0.00- 0.53 x1.000 =  0.533 s  boss hits                              move hits                                Octaslash: the dash (loop)
+B_AtkLimit01_3_Comp        Battle00_Comp  5.985 s  <- B_AtkLimit02_0          1.85- 7.83 x1.000 =  5.985 s  boss hits 0.56,0.89,1.15,1.53,1.76,2.13,3.41 move hits 0.56,0.88,1.26,1.54,1.97,2.77,3.52 the last phase's Octaslash: Ascension
+B_AtkLimit01_4             Battle00       5.800 s  <- B_AtkLimit01_0          1.00- 5.10 x1.000 =  4.100 s  boss hits 0.04,0.37,0.71,0.97,1.34,1.57,1.95,3.23 move hits 0.50,0.60,0.70,0.99,1.09,1.19,1.86,1.96 Octaslash: Cross-Slash (his eight hits on its three slashes)
+B_AtkLimit01_5             Battle00       4.267 s  <- B_AtkBurst04_0          1.69- 5.60 x1.000 =  3.910 s  boss hits 1.26                         move hits 1.26                           Octaslash Prime: Infinity's End
+B_AtkLimit01_5_Comp        Battle00_Comp  4.267 s  <- B_AtkBurst04_0          1.69- 5.60 x1.000 =  3.910 s  boss hits 1.26                         move hits 1.26                           Octaslash Prime: Infinity's End
+B_AtkLimit01_6             Battle00       5.000 s  <- B_Win01                 0.00- 5.00 x1.000 =  5.000 s  boss hits                              move hits                                the game over: his victory pose
+B_AtkLimit02_0             Battle01      left as the boss's
+B_AtkLimit02_1             Battle01      left as the boss's
+B_AtkMag01_0               Battle00       0.200 s  <- B_MagAttack02_0         0.00- 0.17 x0.835 =  0.200 s  boss hits                              move hits                                cast: start
+B_AtkMag01_0_Comp          Battle00_Comp  0.200 s  <- B_MagAttack02_0         0.00- 0.17 x0.835 =  0.200 s  boss hits                              move hits                                cast: start
+B_AtkMag01_1               Battle00       1.333 s  <- B_MagAttack02_1         0.00- 3.00 x1.000 =  3.000 s  boss hits                              move hits                                cast: hold
+B_AtkMag01_1_Comp          Battle00_Comp  1.333 s  <- B_MagAttack02_1         0.00- 3.00 x1.000 =  3.000 s  boss hits                              move hits                                cast: hold
+B_AtkMag01_2               Battle00       1.633 s  <- B_MagAttack02_2         0.00- 1.31 x0.800 =  1.633 s  boss hits 0.30                         move hits 0.30                           cast: release
+B_AtkMag01_2_Comp          Battle00_Comp  3.000 s  <- B_MagAttack02_1         0.00- 3.00 x1.000 =  3.000 s  boss hits                              move hits                                the pull: hold
+B_AtkMag01_2_Comp1         Battle00_Comp  0.329 s  <- B_MagAttack02_2         0.00- 0.22 x0.667 =  0.329 s  boss hits 0.30                         move hits 0.30                           the pull
+B_AtkMag01_2_CompMagic     Battle00_Comp  2.829 s  <- B_MagAttack02_1         0.00- 3.00 x1.060 =  2.829 s  boss hits 0.30,1.65                    move hits 0.30,1.65                      a double cast
+B_AtkMag01_3               Battle00       0.567 s  <- B_MagAttack02_2         0.00- 0.57 x1.000 =  0.567 s  boss hits                              move hits                                cast: the call
+B_AtkMag01_4               Battle00       1.000 s  <- B_MagAttack02_1         0.00- 1.00 x1.000 =  1.000 s  boss hits 0.00,0.34,0.67               move hits 0.00,0.34,0.67                 cast: the barrage (loop)
+B_AtkMag01_4_Fire_Comp     Battle00_Comp  3.000 s  <- B_MagAttack02_1         0.00- 3.00 x1.000 =  3.000 s  boss hits                              move hits                                Infernal Flare: hold
+B_AtkMag01_4_Ice_Comp      Battle00_Comp  4.000 s  <- B_MagAttack02_1         0.00- 3.00 x0.750 =  4.000 s  boss hits                              move hits                                Great Tribulation: hold
+B_AtkMag01_4_Lightning_Comp Battle00_Comp  3.000 s  <- B_MagAttack02_1         0.00- 3.00 x1.000 =  3.000 s  boss hits                              move hits                                Keraunos: hold
+B_AtkMag01_4_Wind_Comp     Battle00_Comp  1.000 s  <- B_MagAttack02_1         0.00- 1.00 x1.000 =  1.000 s  boss hits 0.03                         move hits 0.03                           Rapture
+B_AtkMag01_5               Battle00       1.067 s  <- B_MagAttack02_2         0.27- 1.33 x1.000 =  1.067 s  boss hits                              move hits                                cast: end
+B_AtkMag01_6               Battle00      left as the boss's
+B_AtkStab01                Battle01       3.400 s  <- B_AtkBurst01_0          0.01- 3.23 x1.000 =  3.223 s  boss hits 1.34                         move hits 1.34                           Skewer: Braver
+B_AtkStab02                Battle01      left as the boss's
+B_AtkTenshi01_0            Battle01       0.667 s  <- B_AtkLimit02_0          0.00- 0.41 x0.615 =  0.667 s  boss hits                              move hits                                Heartless Angel: Ascension begins
+B_AtkTenshi01_1            Battle01       5.333 s  <- B_AtkLimit02_0          0.41- 5.74 x1.000 =  5.333 s  boss hits 2.00                         move hits 2.00                           Heartless Angel: Ascension
+B_AtkZekkuu01_0            Battle00       0.767 s  <- B_ChainCounter_A01_2    0.00- 0.74 x0.966 =  0.767 s  boss hits 0.03,0.61                    move hits 0.00,0.58                      Shadowy Chains far: the throw
+B_AtkZekkuu01_0_Comp       Battle00_Comp  0.767 s  <- B_ChainCounter_A01_2    0.00- 0.74 x0.966 =  0.767 s  boss hits 0.03,0.61                    move hits 0.00,0.58                      Shadowy Chains far: the throw
+B_AtkZekkuu01_1            Battle00       1.000 s  <- B_AtkBurst06_1          0.00- 1.33 x1.333 =  1.000 s  boss hits                              move hits                                Shadowy Chains far: hold (Counterstance)
+B_AtkZekkuu01_2            Battle00       1.500 s  <- B_AtkBurst06_3          0.00- 1.73 x1.155 =  1.501 s  boss hits                              move hits                                Shadowy Chains far: end
+B_Avoid01_0                Battle00       0.167 s  <- B_NAttackJ05_0          0.00- 0.23 x1.400 =  0.167 s  boss hits                              move hits                                air dash start
+B_Avoid01_1                Battle00       0.500 s  <- B_NAttackJ05_1          0.00- 0.17 x1.000 =  0.167 s  boss hits                              move hits                                air dash
+B_Avoid01_2                Battle00       0.833 s  <- B_AvoidJ10_2            0.00- 1.00 x1.200 =  0.833 s  boss hits                              move hits                                air dash end
+B_Avoid02_2                Battle00       0.433 s  <- B_Avoid02               0.25- 0.68 x1.000 =  0.433 s  boss hits 0.00                         move hits 0.00                           a dodge with a hit
+B_ChainTatakau_A01_0       Battle00       0.333 s  <- B_NAttack01_1_0         0.00- 0.27 x0.800 =  0.333 s  boss hits                              move hits                                Blade Dance: the dash
+B_ChainTatakau_A01_1       Battle00       0.500 s  <- B_NAttack01_1_1         0.00- 0.53 x1.000 =  0.533 s  boss hits                              move hits                                Blade Dance: the dash (loop)
+B_ChainTatakau_A01_2       Battle00       1.100 s  <- B_NAttack01_1_2         0.04- 1.14 x1.000 =  1.100 s  boss hits 0.04                         move hits 0.04                           Blade Dance 1: his dash strike
+B_ChainTatakau_A02_0       Battle00       1.100 s  <- B_NAttack07_0           0.17- 1.60 x1.300 =  1.100 s  boss hits 0.08,0.35                    move hits 0.08,0.35                      Blade Dance 2: a double slash
+B_ChainTatakau_A03_0       Battle00       1.767 s  <- B_ChainTatakau_B01_0    0.51- 3.19 x1.514 =  1.767 s  boss hits 0.15,0.87                    move hits 0.15,0.87                      Blade Dance 3: Mad Dash
+B_Die01_0                  Battle00      Cloud's as it is
+B_Die01_1                  Battle00      Cloud's as it is
+B_Dmg01_Add                Battle00      Cloud's as it is
+B_DmgB01                   Battle00       0.867 s  <- B_DmgB01                0.00- 0.77 x1.000 =  0.767 s  boss hits                              move hits                                
+B_DmgB03_0                 Battle00       1.000 s  <- B_DmgB03_0              0.00- 1.03 x1.000 =  1.033 s  boss hits                              move hits                                
+B_DmgB03_1                 Battle00       0.333 s  <- B_DmgB03_1              0.00- 2.33 x1.000 =  2.333 s  boss hits                              move hits                                
+B_DmgB03_2                 Battle00       1.000 s  <- B_DmgB03_2              0.00- 1.20 x1.000 =  1.200 s  boss hits                              move hits                                
+B_DmgBlowB01_0             Battle00       0.667 s  <- B_DmgBlowB01_0          0.00- 1.00 x1.000 =  1.000 s  boss hits                              move hits                                
+B_DmgBlowB01_1             Battle00      Cloud's as it is
+B_DmgBlowF01_0             Battle00       0.667 s  <- B_DmgBlowF01_0          0.00- 1.00 x1.000 =  1.000 s  boss hits                              move hits                                
+B_DmgBlowF01_1             Battle00      Cloud's as it is
+B_DmgBurst01_0             Battle00       2.433 s  <- B_Abnormal01_0          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                staggered
+B_DmgBurst01_1             Battle00       2.467 s  <- B_Abnormal01_1          0.00- 2.50 x1.000 =  2.500 s  boss hits                              move hits                                staggered (loop)
+B_DmgBurst01_2             Battle00       1.933 s  <- B_Abnormal01_2          0.00- 1.67 x1.000 =  1.667 s  boss hits                              move hits                                staggered: end
+B_DmgBurst01_Add           Battle00      left as the boss's
+B_DmgBurstA01_0            Battle01       1.667 s  <- B_Abnormal01_0          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                staggered in the air
+B_DmgBurstA01_1            Battle01       1.333 s  <- B_Abnormal01_1          0.00- 2.50 x1.000 =  2.500 s  boss hits                              move hits                                staggered in the air (loop)
+B_DmgBurstA01_2            Battle01       0.667 s  <- B_Abnormal01_2          0.00- 1.67 x1.000 =  1.667 s  boss hits                              move hits                                staggered in the air: end
+B_DmgDown01_1              Battle01       2.467 s  <- B_DmgDownB01_0          0.00- 0.93 x1.000 =  0.933 s  boss hits                              move hits                                knocked down
+B_DmgDown01_2              Battle01       1.933 s  <- B_DmgDownB01_2          0.00- 1.57 x1.000 =  1.567 s  boss hits                              move hits                                getting up
+B_DmgDownB01_0             Battle00      Cloud's as it is
+B_DmgDownB01_1             Battle00       1.000 s  <- B_DmgDownB01_0          0.90- 0.93 x0.033 =  0.991 s  boss hits                              move hits                                lying down: his last pose held
+B_DmgDownB01_2             Battle00      Cloud's as it is
+B_DmgDownB02_0             Battle00      Cloud's as it is
+B_DmgDownB02_2             Battle00      Cloud's as it is
+B_DmgDownB03_0             Battle00      Cloud's as it is
+B_DmgDownF01_0             Battle00      Cloud's as it is
+B_DmgDownF01_1             Battle00       1.000 s  <- B_DmgDownF01_0          0.90- 0.93 x0.033 =  0.991 s  boss hits                              move hits                                lying down: his last pose held
+B_DmgDownF01_2             Battle00      Cloud's as it is
+B_DmgDownF02_0             Battle00      Cloud's as it is
+B_DmgDownF02_2             Battle00      Cloud's as it is
+B_DmgDownF03_0             Battle00      Cloud's as it is
+B_DmgDownSword01_0         Battle01       1.833 s  <- B_DmgRecoverF01         0.00- 1.87 x1.000 =  1.867 s  boss hits                              move hits                                knocked down (sword)
+B_DmgDownWing01_0          Battle01       1.833 s  <- B_DmgRecoverB01         0.00- 1.87 x1.000 =  1.867 s  boss hits                              move hits                                knocked down (wing)
+B_DmgF01                   Battle00       0.867 s  <- B_DmgF01                0.00- 0.87 x1.000 =  0.867 s  boss hits                              move hits                                
+B_DmgF03_0                 Battle00       1.000 s  <- B_DmgF03_0              0.00- 1.03 x1.000 =  1.033 s  boss hits                              move hits                                
+B_DmgF03_1                 Battle00      Cloud's as it is
+B_DmgF03_2                 Battle00      Cloud's as it is
+B_DmgFall01_0              Battle01       1.167 s  <- B_Fall01_1              0.00- 1.00 x0.857 =  1.167 s  boss hits                              move hits                                hit in the air
+B_DmgFall01_1              Battle01       1.333 s  <- B_Fall01_1              0.00- 1.00 x0.750 =  1.333 s  boss hits                              move hits                                falling
+B_DmgFall01_2              Battle01       0.667 s  <- B_Fall01_2              0.00- 0.67 x1.000 =  0.667 s  boss hits                              move hits                                landing
+B_DmgFallDownWing01_0      Battle01       1.833 s  <- B_DmgRecoverB01         0.00- 1.87 x1.000 =  1.867 s  boss hits                              move hits                                fallen (wing)
+B_DmgL01                   Battle00       0.867 s  <- B_DmgL01                0.00- 0.77 x1.000 =  0.767 s  boss hits                              move hits                                
+B_DmgR01                   Battle00       0.867 s  <- B_DmgR01                0.00- 0.77 x1.000 =  0.767 s  boss hits                              move hits                                
+B_DmgRecoverB01            Battle00      Cloud's as it is
+B_DmgRecoverF01            Battle00      Cloud's as it is
+B_DmgReflect01             Battle00       1.333 s  <- B_DmgReflect01          0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                
+B_DmgStrikeB01_0           Battle00       0.133 s  <- B_DmgStrikeB01_0        0.00- 0.13 x1.000 =  0.133 s  boss hits                              move hits                                
+B_DmgStrikeB01_1           Battle00      Cloud's as it is
+B_DmgStrikeF01_0           Battle00      Cloud's as it is
+B_DmgStrikeF01_1           Battle00      Cloud's as it is
+B_DmgUpperB01_0            Battle00       2.200 s  <- B_DmgUpperB01_0         0.00- 2.20 x1.000 =  2.200 s  boss hits                              move hits                                
+B_DmgUpperB01_1            Battle00       1.333 s  <- B_DmgUpperB01_1         0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                
+B_DmgUpperF01_0            Battle00       2.200 s  <- B_DmgUpperF01_0         0.00- 2.20 x1.000 =  2.200 s  boss hits                              move hits                                
+B_DmgUpperF01_1            Battle00       1.333 s  <- B_DmgUpperF01_1         0.00- 1.33 x1.000 =  1.333 s  boss hits                              move hits                                
+B_DownBurstB01_0           Battle00       2.000 s  <- B_DmgDownB01_0          0.00- 0.93 x1.000 =  0.933 s  boss hits                              move hits                                down while staggered
+B_DownBurstF01_0           Battle00       2.000 s  <- B_DmgDownF01_0          0.00- 0.93 x1.000 =  0.933 s  boss hits                              move hits                                down while staggered
+B_DownDieB01               Battle00      Cloud's as it is
+B_DownDieF01               Battle00      Cloud's as it is
+B_Fall01_1                 Battle00       1.000 s  <- B_Fall01_1              0.00- 1.00 x1.000 =  1.000 s  boss hits                              move hits                                
+B_Fall01_2                 Battle00       1.000 s  <- B_Fall01_2              0.00- 1.03 x1.000 =  1.033 s  boss hits                              move hits                                
+B_Idle01_1                 Battle00      Cloud's as it is
+B_Idle01_1_Comp            Battle00_Comp  0.400 s  <- B_Idle01_1              0.00- 0.40 x1.000 =  0.400 s  boss hits                              move hits                                after the warp
+B_NAttack01_0              Battle00       1.067 s  <- B_NAttack01_0           0.16- 1.22 x1.000 =  1.067 s  boss hits 0.08                         move hits 0.08                           combo 1
+B_NAttack02_0              Battle00       1.367 s  <- B_NAttack02_0           0.00- 1.37 x1.000 =  1.367 s  boss hits 0.19                         move hits 0.19                           combo 2
+B_NAttack03_0              Battle00       1.133 s  <- B_NAttack03_0           0.40- 1.70 x1.150 =  1.127 s  boss hits 0.17                         move hits 0.17                           combo 3
+B_NAttack04_0              Battle00       2.267 s  <- B_NAttack05_0           0.21- 2.13 x0.900 =  2.136 s  boss hits 0.51                         move hits 0.51                           combo 4: Cloud's finisher
+B_NAttackJ01_0             Battle00       0.833 s  <- B_NAttackJ01_0          0.12- 0.87 x0.900 =  0.826 s  boss hits 0.13                         move hits 0.13                           air 1
+B_NAttackJ02_0             Battle00       1.000 s  <- B_NAttackJ02_0          0.20- 0.93 x0.850 =  0.860 s  boss hits 0.08                         move hits 0.08                           air 2
+B_NAttackJ03_0             Battle00       0.867 s  <- B_NAttackJ03_0          0.08- 0.95 x1.000 =  0.867 s  boss hits 0.33                         move hits 0.33                           air 3
+B_NAttackWing02_0          Battle01      left as the boss's
+B_NAttackWing04_0          Battle01      left as the boss's
+B_NPAttack01               Battle00      left as the boss's
+B_Run01_0_L0               Battle00      Cloud's as it is
+B_Run01_0_L180             Battle00      Cloud's as it is
+B_Run01_0_L90              Battle00      Cloud's as it is
+B_Run01_0_R180             Battle00      Cloud's as it is
+B_Run01_0_R90              Battle00      Cloud's as it is
+B_Run01_1                  Battle00      Cloud's as it is
+B_Run01_2l                 Battle00      Cloud's as it is
+B_SAttack01_0              Battle00       2.400 s  <- B01/B_SAttack01_1       0.24- 2.40 x1.000 =  2.160 s  boss hits 1.04                         move hits 1.04                           a charged slash (Punisher)
+B_SAttack02_0              Battle00       1.133 s  <- B_WAttack01_0           0.00- 1.07 x0.944 =  1.133 s  boss hits 0.18                         move hits 0.18                           his lunging slash
+B_SAttack05_0              Battle00       2.567 s  <- B01/B_SAttack06_2       0.18- 2.57 x1.000 =  2.387 s  boss hits 0.00,1.10                    move hits 0.00,1.10                      Shadowy Chains near
+B_SAttack05_0_Comp         Battle00_Comp  2.567 s  <- B01/B_SAttack06_2       0.18- 2.57 x1.000 =  2.387 s  boss hits 0.00,1.10                    move hits 0.00,1.10                      Shadowy Chains near
+B_SAttack06_0              Battle00       2.500 s  <- B_AtkBurst06_2          0.00- 2.20 x0.880 =  2.500 s  boss hits 0.20,0.41                    move hits 0.15,0.41                      Counterstance's counter
+B_SAttack08_0              Battle00       0.500 s  <- B01/B_SAttackJ01_0      0.00- 0.60 x1.200 =  0.500 s  boss hits 0.10,0.44                    move hits 0.10,0.42                      jump attack: up
+B_SAttack08_1              Battle00       1.000 s  <- B01/B_SAttackJ01_1      0.00- 0.20 x1.000 =  0.200 s  boss hits 0.00                         move hits 0.00                           jump attack: down (loop)
+B_SAttack08_2              Battle00       1.433 s  <- B01/B_SAttackJ01_2      0.05- 1.48 x1.000 =  1.433 s  boss hits 0.00                         move hits 0.00                           jump attack: landing
+B_SAttack10_0              Battle00       1.700 s  <- B_WAttack02_0           0.11- 1.81 x1.000 =  1.700 s  boss hits 0.18,0.39,0.71               move hits 0.18,0.44,0.51                 a three-hit lunge
+B_SAttackWing02_0          Battle01      left as the boss's
+B_SAttackWing06_0          Battle01      left as the boss's
+B_SetFeeler01              Battle01       3.000 s  <- B_AtkBurst09_0          0.00- 3.23 x1.078 =  2.999 s  boss hits                              move hits                                Wicked Augment: Prime Mode
+B_StepB01                  Battle00       1.833 s  <- B_Avoid02               0.00- 1.40 x0.764 =  1.832 s  boss hits                              move hits                                a step back
+B_StepB01_Comp             Battle00_Comp  1.650 s  <- B_Avoid02               0.00- 1.40 x0.848 =  1.651 s  boss hits                              move hits                                a step back
+B_StepB01_Comp2            Battle00_Comp  1.650 s  <- B_Avoid02               0.00- 1.40 x0.848 =  1.651 s  boss hits                              move hits                                a step back
+B_StepB01_CompMagic        Battle00_Comp  3.403 s  <- B_MagAttack02_1         0.00- 3.00 x0.882 =  3.403 s  boss hits 2.07                         move hits 2.07                           a step back and a cast
+B_StrafingWalk01_0         Battle00      Cloud's as it is
+B_StrafingWalk01_2l        Battle00      Cloud's as it is
+B_Turn01                   Battle00      Cloud's as it is
+B_Turn01_L0                Battle00      Cloud's as it is
+B_Turn01_L180              Battle00      Cloud's as it is
+B_Turn01_L90               Battle00      Cloud's as it is
+B_Turn01_R0                Battle00      Cloud's as it is
+B_Turn01_R180              Battle00      Cloud's as it is
+B_Turn01_R90               Battle00      Cloud's as it is
+B_Walk01_0_L0              Battle00      Cloud's as it is
+B_Walk01_0_L180            Battle00      Cloud's as it is
+B_Walk01_0_L90             Battle00      Cloud's as it is
+B_Walk01_0_R180            Battle00      Cloud's as it is
+B_Walk01_0_R90             Battle00      Cloud's as it is
+B_Walk01_1                 Battle00      Cloud's as it is
+B_Walk01_2l                Battle00      Cloud's as it is
+B_Walk01_2r                Battle00      Cloud's as it is
+B_WalkB01_0                Battle00      Cloud's as it is
+B_WalkB01_1                Battle00      Cloud's as it is
+B_WalkB01_2l               Battle00      Cloud's as it is
+B_WalkB01_2r               Battle00      Cloud's as it is
+B_WalkL01_0                Battle00      Cloud's as it is
+B_WalkL01_1                Battle00      Cloud's as it is
+B_WalkL01_2l               Battle00      Cloud's as it is
+B_WalkL01_2r               Battle00      Cloud's as it is
+B_WalkR01_0                Battle00      Cloud's as it is
+B_WalkR01_1                Battle00      Cloud's as it is
+B_WalkR01_2l               Battle00      Cloud's as it is
+B_WalkR01_2r               Battle00      Cloud's as it is
+B_Warp01_0                 Battle00       1.333 s  <- B_Avoid02               0.00- 1.40 x1.050 =  1.333 s  boss hits                              move hits                                the warp: a dodge
+
+PROBLEMS:
+none

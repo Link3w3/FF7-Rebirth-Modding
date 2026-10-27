@@ -1,0 +1,2485 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "comment": "FullyPlayableCreateACharacterSystemExperience (Create a Character System 3.21): who plays Cloud's place, on the CHARACTER page. Cloud stays the game's own; every character has its own CharaSpec rows, packs, blueprints, AI blueprint, weapons and voice (FullyPlayableCreateACharacterSystemExperience_P). Picking either Sephiroth also puts Evil Cloud in Sephiroth's place and Bizarro Sephiroth in Alexander's.",
+ "characters": [
+  {
+   "name": "YOUNG SEPHIROTH",
+   "slot": "Cloud",
+   "player": "pt_Cloud",
+   "note": "Young Sephiroth (Fully Playable Young Sephiroth): his own rows, blueprint, AI, Masamune, voice and forms; Evil Cloud takes Sephiroth's place and Bizarro Sephiroth Alexander's while he is picked",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P",
+    "YoungSephiroth_P",
+    "YoungSephirothVoice_P",
+    "ClassicSephirothVoice_P"
+   ],
+   "charaspecs": {
+    "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+    "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+    "PC0000_00_Cloud_Standard_Reserve": "PC0000_00_Cloud_Standard_YOUNGSEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume_Reserve": "PC0000_04_Cloud_ZackCostume_YOUNGSEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve": "PC0000_08_Cloud_SoldierNoHelmet_YOUNGSEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing_Reserve": "PC0000_09_Cloud_CostaClothing_YOUNGSEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2_Reserve": "PC0000_10_Cloud_CostaClothing2_YOUNGSEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve": "PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve": "PC0000_18_Cloud_ZackCostumeAge21_YOUNGSEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve": "PC0000_19_Cloud_ZackCostumeDirtyAge21_YOUNGSEPHIROTH",
+    "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_YOUNGSEPHIROTH",
+    "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_YOUNGSEPHIROTH",
+    "WE0000_11_Cloud_END2Weapon1": "WE0000_11_Cloud_END2Weapon1_YOUNGSEPHIROTH",
+    "WE0000_12_Cloud_END2Weapon2": "WE0000_12_Cloud_END2Weapon2_YOUNGSEPHIROTH",
+    "WE0000_13_Cloud_END2Weapon3": "WE0000_13_Cloud_END2Weapon3_YOUNGSEPHIROTH",
+    "WE0000_14_Cloud_END2Weapon4": "WE0000_14_Cloud_END2Weapon4_YOUNGSEPHIROTH",
+    "WE0000_15_Cloud_END2Weapon5": "WE0000_15_Cloud_END2Weapon5_YOUNGSEPHIROTH",
+    "WE0000_16_Cloud_END2Weapon6": "WE0000_16_Cloud_END2Weapon6_YOUNGSEPHIROTH",
+    "WE0000_17_Cloud_Umbrella": "WE0000_17_Cloud_Umbrella_YOUNGSEPHIROTH",
+    "PC0010_00_Sephiroth_Standard": "PC0010_00_Sephiroth_Standard_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_NoBattle": "PC0010_00_Sephiroth_Standard_NoBattle_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_Reserve": "PC0010_00_Sephiroth_Standard_Reserve_EVILCLOUD",
+    "PC0010_01_Sephiroth_StandardWet": "PC0010_01_Sephiroth_StandardWet_EVILCLOUD",
+    "PC0010_10_Sephiroth_Transform": "PC0010_10_Sephiroth_Transform_EVILCLOUD",
+    "PC0010_20_Sephiroth_VRHard": "PC0010_20_Sephiroth_VRHard_EVILCLOUD",
+    "WE1021_00_SephirothIllusion_Masamune": "WE1021_00_SephirothIllusion_Masamune_EVILCLOUD",
+    "WE1021_01_SephirothIllusion_MasamuneBrood": "WE1021_01_SephirothIllusion_MasamuneBrood_EVILCLOUD",
+    "WE1021_02_SephirothIllusion_MasamuneCut": "WE1021_02_SephirothIllusion_MasamuneCut_EVILCLOUD",
+    "WE1021_10_SephirothIllusion_MasamuneCutScale": "WE1021_10_SephirothIllusion_MasamuneCutScale_EVILCLOUD",
+    "SU2030_00_Alexander_Standard": "SU2030_00_Alexander_Standard_BIZARRO"
+   },
+   "names": {
+    "CharaSpec_PC0000_00_Cloud_StandardOA05": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA05",
+    "CharaSpec_PC0000_00_Cloud_StandardOA14": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA14",
+    "CharaSpec_PC0000_00_Cloud_StandardOA07": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA07",
+    "CharaSpec_PC0000_00_Cloud_StandardOA08": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA08",
+    "CharaSpec_PC0000_00_Cloud_StandardOA04": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA04",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA17": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTHOA17",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA04": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_YOUNGSEPHIROTHOA04",
+    "CharaSpec_PC0000_00_Cloud_StandardOA19": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA19",
+    "CharaSpec_PC0000_00_Cloud_StandardOA12": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA12",
+    "CharaSpec_PC0000_00_Cloud_StandardOA17": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA17",
+    "CharaSpec_PC0000_00_Cloud_StandardOA16": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA16",
+    "CharaSpec_PC0000_00_Cloud_StandardOA18": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA18",
+    "CharaSpec_PC0000_00_Cloud_StandardOA01": "CharaSpec_PC0000_00_Cloud_Standard_YOUNGSEPHIROTHOA01",
+    "AnimSet_Hofuku00_PC0000_Cloud": "AnimSet_Hofuku00_PC0010_Sephiroth"
+   },
+   "names_in_add": [
+    {
+     "table": "Item",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "BattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "CharaSpecUseList",
+     "fields": [
+      "UseCharaSpec"
+     ]
+    },
+    {
+     "table": "EnemyBookBattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/BattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ],
+     "optional": true
+    }
+   ],
+   "rows": [
+    {
+     "table": "BattlePlayerParameter",
+     "row": "pt_Cloud",
+     "from": "pt_Cloud_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst02",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst02_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst08",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst08_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst07",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst07_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst09",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst09_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst04",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst04_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst05",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst05_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst06",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst06_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst10",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst10_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit001",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit001_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit002",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit002_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit003",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit003_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainChange01_01",
+     "from": "PC0010_ChainChange01_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_1_01",
+     "from": "PC0010_NAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_2_01",
+     "from": "PC0010_NAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_3_01",
+     "from": "PC0010_NAtk_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_4_01",
+     "from": "PC0010_NAtk_4_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_1_01",
+     "from": "PC0010_JAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_2_01",
+     "from": "PC0010_JAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_3_01",
+     "from": "PC0010_JAtk_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_PAtk_1_01",
+     "from": "PC0010_PAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_PAtk_2_01",
+     "from": "PC0010_PAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_1_01",
+     "from": "PC0010_Satk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_2_01",
+     "from": "PC0010_Satk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_5_01",
+     "from": "PC0010_SAtk_5_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_01",
+     "from": "PC0010_Satk_6_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_02",
+     "from": "PC0010_Satk_6_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_03",
+     "from": "PC0010_Satk_6_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_04",
+     "from": "PC0010_Satk_6_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_05",
+     "from": "PC0010_Satk_6_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_06",
+     "from": "PC0010_Satk_6_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_7_01",
+     "from": "PC0010_SAtk_7_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_7_02",
+     "from": "PC0010_SAtk_7_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_01",
+     "from": "PC0010_Satk_8_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_02",
+     "from": "PC0010_Satk_8_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_03",
+     "from": "PC0010_Satk_8_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_01",
+     "from": "PC0010_SAtk_9_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_02",
+     "from": "PC0010_SAtk_9_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_03",
+     "from": "PC0010_SAtk_9_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_10_01",
+     "from": "PC0010_SAtk_10_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NPAtk_1_02",
+     "from": "PC0010_NPAtk_1_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NPAtk_1_04",
+     "from": "PC0010_NPAtk_1_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_01",
+     "from": "PC0010_AtkBurst01_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_02",
+     "from": "PC0010_AtkBurst01_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_03",
+     "from": "PC0010_AtkBurst01_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A01",
+     "from": "PC0010_AtkBurst01_A01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A02",
+     "from": "PC0010_AtkBurst01_A02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A03",
+     "from": "PC0010_AtkBurst01_A03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst02_01",
+     "from": "PC0010_AtkBurst02_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst02_02",
+     "from": "PC0010_AtkBurst02_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCounter4_AI_01",
+     "from": "PC0010_ChainCounter4_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCounter5_AI_01",
+     "from": "PC0010_ChainCounter5_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCharge1_AI_01",
+     "from": "PC0010_ChainCharge1_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_1_01",
+     "from": "PC0010_ChainTatakau1_UC_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_2_01",
+     "from": "PC0010_ChainTatakau1_UC_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_2_02",
+     "from": "PC0010_ChainTatakau1_UC_2_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_3_01",
+     "from": "PC0010_ChainTatakau1_UC_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_3_02",
+     "from": "PC0010_ChainTatakau1_UC_3_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_01",
+     "from": "PC0010_Limit_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_02",
+     "from": "PC0010_Limit_1_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_03",
+     "from": "PC0010_Limit_1_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_04",
+     "from": "PC0010_Limit_1_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_05",
+     "from": "PC0010_Limit_1_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_06",
+     "from": "PC0010_Limit_1_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_07",
+     "from": "PC0010_Limit_1_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_08",
+     "from": "PC0010_Limit_1_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin01_Feeler_03",
+     "from": "PC0010_10_Zanshin01_Feeler_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin01_Feeler_04",
+     "from": "PC0010_10_Zanshin01_Feeler_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_05",
+     "from": "PC0010_10_Zanshin02_Feeler_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_06",
+     "from": "PC0010_10_Zanshin02_Feeler_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_07",
+     "from": "PC0010_10_Zanshin02_Feeler_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_08",
+     "from": "PC0010_10_Zanshin02_Feeler_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_03",
+     "from": "PC0010_10_Gokumon02_Feeler_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_04",
+     "from": "PC0010_10_Gokumon02_Feeler_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_05",
+     "from": "PC0010_10_Gokumon02_Feeler_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_06",
+     "from": "PC0010_10_Gokumon02_Feeler_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_07",
+     "from": "PC0010_10_Gokumon02_Feeler_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_08",
+     "from": "PC0010_10_Gokumon02_Feeler_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_09",
+     "from": "PC0010_10_Gokumon02_Feeler_09_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_10",
+     "from": "PC0010_10_Gokumon02_Feeler_10_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GokumonFeelerExp",
+     "from": "PC0010_10_GokumonFeelerExp_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerExp_02",
+     "from": "PC0010_10_GroundFeelerExp_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_LastAttack_R01",
+     "from": "PC0010_10_LastAttack_R01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_LastAttack_L01",
+     "from": "PC0010_10_LastAttack_L01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_BindFeeler_01",
+     "from": "PC0010_10_BindFeeler_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerTornado_01",
+     "from": "PC0010_10_FeelerTornado_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerLaser_01",
+     "from": "PC0010_10_FeelerLaser_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerBullet",
+     "from": "PC0010_10_GroundFeelerBullet_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerExp",
+     "from": "PC0010_10_GroundFeelerExp_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerWingBreak_01",
+     "from": "PC0010_10_FeelerWingBreak_01_SEPHIROTH"
+    },
+    {
+     "table": "BattlePlayerParameter",
+     "row": "pt_Sephiroth",
+     "from": "pt_Sephiroth_EVILCLOUD"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkCleaveL01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkCleaveL01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkCleaveR01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkCleaveR01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkHardStrike01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkHardStrike01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkMagicalShockNew",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkMagicalShockNew_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveL01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveL01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveR01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveR01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveB01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveB01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkLaserMissileNew",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkLaserMissileNew_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkGiantbeam",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkGiantbeam_BIZARRO"
+    }
+   ],
+   "values": [
+    {
+     "table": "PlannerEvent",
+     "field": "VoicePack",
+     "rows": [
+      "BT_BVCLD_STARTBTL_0000",
+      "BT_BVCLD_STARTBTL_0010",
+      "BT_BVCLD_STARTBTL_0100",
+      "BT_BVCLD_STARTBTL_0110",
+      "BT_BVCLD_STARTBTL_0200",
+      "BT_BVCLD_NATKNML_0000",
+      "BT_BVCLD_NATKMOVE_0000",
+      "BT_BVCLD_NATKNML_0010",
+      "BT_BVCLD_NATKNML_0020",
+      "BT_BVCLD_NATKNML_0030",
+      "BT_BVCLD_NATKNML_0040",
+      "BT_BVCLD_AATKNML_0000",
+      "BT_BVCLD_AATKNML_0010",
+      "BT_BVCLD_AATKNML_0020",
+      "BT_BVCLD_ABILITY_0000",
+      "BT_BVCLD_ABILITY_0010",
+      "BT_BVCLD_ABILITY_0020",
+      "BT_BVCLD_ABILITY_0030",
+      "BT_BVCLD_ABILITY_0040",
+      "BT_BVCLD_ABILITY_0050",
+      "BT_BVCLD_ABILITY_0060",
+      "BT_BVCLD_LIMIT_0000",
+      "BT_BVCLD_LIMIT_0010",
+      "BT_BVCLD_LIMIT_0020",
+      "BT_BVCLD_LIMIT_0030",
+      "BT_BVCLD_FILLLIMIT_0000",
+      "BT_BVCLD_HEATENEMY_0000",
+      "BT_BVCLD_ATKFINISH_0000",
+      "BT_BVCLD_BMODE_0000",
+      "BT_BVCLD_BRAVEATK_0000",
+      "BT_BVCLD_BRAVEATK_0010",
+      "BT_BVCLD_BRAVEATK_0020",
+      "BT_BVCLD_UNIQUECNT_0000",
+      "BT_BVCLD_UNIQUECNT_0010",
+      "BT_BVCLD_UNIQUEEND_0000",
+      "BT_BVCLD_UNIQUEEND_0010",
+      "BT_BVCLD_STBURST_0000",
+      "BT_BVCLD_MAGDBFCMN_0000",
+      "BT_BVCLD_MAGDBFSLP_0000",
+      "BT_BVCLD_MAGDBFSIL_0000",
+      "BT_BVCLD_MAGDBFPOI_0000",
+      "BT_BVCLD_MAGDBFBAR_0000",
+      "BT_BVCLD_MAGDBFDTH_0000",
+      "BT_BVCLD_MAGDBFDES_0000",
+      "BT_BVCLD_MAGDBFSLW_0000",
+      "BT_BVCLD_MAGBUFHST_0000",
+      "BT_BVCLD_MAGBUFREG_0000",
+      "BT_BVCLD_MAGATRCMN_0000",
+      "BT_BVCLD_MAGATRFIR_0000",
+      "BT_BVCLD_MAGATRICE_0000",
+      "BT_BVCLD_MAGATRTND_0000",
+      "BT_BVCLD_MAGATRWND_0000",
+      "BT_BVCLD_MAGADDATK_0000",
+      "BT_BVCLD_AVOID_0000",
+      "BT_BVCLD_GUARD_0000",
+      "BT_BVCLD_GUARD_0010",
+      "BT_BVCLD_GUARD_0011",
+      "BT_BVCLD_PARRY_0000",
+      "BT_BVCLD_DAMAGE_0000",
+      "BT_BVCLD_DAMAGE_0010",
+      "BT_BVCLD_DAMAGE_0020",
+      "BT_BVCLD_DAMAGE_0030",
+      "BT_BVCLD_DEAD_0000",
+      "BT_BVCLD_SLEEP_0000",
+      "BT_BVCLD_SLEEP_0010",
+      "BT_BVCLD_SLEEP_0020",
+      "BT_BVCLD_STUN_0000",
+      "BT_BVCLD_STUN_0010",
+      "BT_BVCLD_STUN_0020",
+      "BT_BVCLD_RECOVER_0000",
+      "BT_BVCLD_RECOVER_0010",
+      "BT_BVCLD_RECOVER_0100",
+      "BT_BVCLD_ITEMCMN_0000",
+      "BT_BVCLD_ITEMENEMY_0000",
+      "BT_BVCLD_ITEMPARTY_0000",
+      "BT_BVCLD_CURE_0000",
+      "BT_BVCLD_CURE_0010",
+      "BT_BVCLD_CLEAR_0000",
+      "BT_BVCLD_CUREPARTY_0000",
+      "BT_BVCLD_RAISE_0000",
+      "BT_BVCLD_BUFF_0000",
+      "BT_BVCLD_PENETRATE_0000",
+      "BT_BVCLD_CHANGENML_0000",
+      "BT_BVCLD_CHANGECRI_0000",
+      "BT_BVCLD_CHANGEBST_0000",
+      "BT_BVCLD_CHANGENML_0010",
+      "BT_BVCLD_CHANGECRI_0010",
+      "BT_BVCLD_CHANGEBST_0010",
+      "BT_BVCLD_CNGCMNDIE_0000",
+      "BT_BVCLD_VICTORY_0000",
+      "BT_BVCLD_VICTORY_0010",
+      "BT_BVCLD_VICTORY_0020",
+      "BT_BVCLD_GAMEOVER",
+      "BT_BVCLD_SUMMONCMN_0000",
+      "BT_BVCLD_SUMMON000_0000",
+      "BT_BVCLD_SUMMON010_0000",
+      "BT_BVCLD_SUMMON020_0000",
+      "BT_BVCLD_SUMMON030_0000",
+      "BT_BVCLD_SUMMON040_0000",
+      "BT_BVCLD_SUMMON050_0000",
+      "BT_BVCLD_SUMMON060_0000",
+      "BT_BVCLD_SUMMON070_0000",
+      "BT_BVCLD_SUMMON080_0000",
+      "BT_BVCLD_SUMMONEND_0000",
+      "BT_BVCLD_ATKCHAINST_0000",
+      "BT_BVCLD_ATKCHAINFN_0000"
+     ],
+     "value": "VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_00_Cloud"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_01_Cloud_Past"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_02_Cloud_Insanity"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "Equipment",
+     "field": "CharaSpecID_Array",
+     "rows": [
+      "W_TSW_9001"
+     ],
+     "value": [
+      "WE0000_00_Cloud_BusterSword"
+     ]
+    },
+    {
+     "table": "Item",
+     "field": "CharaSpecID",
+     "rows": [
+      "W_TSW_9001"
+     ],
+     "value": "WE0000_00_Cloud_BusterSword"
+    },
+    {
+     "table": "Item",
+     "field": "CharaSpecID",
+     "rows": [
+      "key_collection_07"
+     ],
+     "value": "WE1021_00_SephirothIllusion_Masamune"
+    },
+    {
+     "table": "BattleSummonAbilityChoice",
+     "field": "Probability",
+     "rows": [
+      "SU2030_00_AbilityChoice_08",
+      "SU2030_00_AbilityChoice_09",
+      "SU2030_00_AbilityChoice_10"
+     ],
+     "value": 50.0
+    },
+    {
+     "table": "BattleAbility",
+     "field": "Name",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "field": "Explanation",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_help_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "SU2030_00_AtkLaserMissileNew"
+     ],
+     "value": "$SU2030_00_Atk001_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "SU2030_00_AtkGiantbeam"
+     ],
+     "value": "$SU2030_00_Atk002_BIZARRO"
+    },
+    {
+     "table": "BattleCharaSpec",
+     "field": "TextLabel",
+     "rows": [
+      "SU2030_00_Alexander_Standard"
+     ],
+     "value": "$en_Alexander_Standard_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleCharaSpec",
+     "field": "TextLabel",
+     "rows": [
+      "SU2030_00_Alexander_Standard"
+     ],
+     "value": "$en_Alexander_Standard_BIZARRO"
+    },
+    {
+     "table": "Item",
+     "field": "ItemNameLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_BIZARRO"
+    },
+    {
+     "table": "Item",
+     "field": "ItemDetailLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_help_BIZARRO"
+    },
+    {
+     "table": "Materia",
+     "field": "MateriaDetailLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_help_2_BIZARRO"
+    }
+   ]
+  },
+  {
+   "name": "SEPHIROTH",
+   "slot": "Cloud",
+   "player": "pt_Cloud",
+   "note": "Sephiroth (Fully Playable Sephiroth): the game's Sephiroth blueprint and Masamune on his own rows, his forms; Evil Cloud takes Sephiroth's place and Bizarro Sephiroth Alexander's while he is picked",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P",
+    "YoungSephirothVoice_P",
+    "ClassicSephirothVoice_P"
+   ],
+   "charaspecs": {
+    "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_SEPHIROTH",
+    "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_SEPHIROTH",
+    "PC0000_00_Cloud_Standard_Reserve": "PC0000_00_Cloud_Standard_SEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+    "PC0000_04_Cloud_ZackCostume_Reserve": "PC0000_04_Cloud_ZackCostume_SEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve": "PC0000_08_Cloud_SoldierNoHelmet_SEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+    "PC0000_09_Cloud_CostaClothing_Reserve": "PC0000_09_Cloud_CostaClothing_SEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+    "PC0000_10_Cloud_CostaClothing2_Reserve": "PC0000_10_Cloud_CostaClothing2_SEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve": "PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve": "PC0000_18_Cloud_ZackCostumeAge21_SEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SEPHIROTH",
+    "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_SEPHIROTH",
+    "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_SEPHIROTH",
+    "WE0000_11_Cloud_END2Weapon1": "WE0000_11_Cloud_END2Weapon1_SEPHIROTH",
+    "WE0000_12_Cloud_END2Weapon2": "WE0000_12_Cloud_END2Weapon2_SEPHIROTH",
+    "WE0000_13_Cloud_END2Weapon3": "WE0000_13_Cloud_END2Weapon3_SEPHIROTH",
+    "WE0000_14_Cloud_END2Weapon4": "WE0000_14_Cloud_END2Weapon4_SEPHIROTH",
+    "WE0000_15_Cloud_END2Weapon5": "WE0000_15_Cloud_END2Weapon5_SEPHIROTH",
+    "WE0000_16_Cloud_END2Weapon6": "WE0000_16_Cloud_END2Weapon6_SEPHIROTH",
+    "WE0000_17_Cloud_Umbrella": "WE0000_17_Cloud_Umbrella_SEPHIROTH",
+    "PC0010_00_Sephiroth_Standard": "PC0010_00_Sephiroth_Standard_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_NoBattle": "PC0010_00_Sephiroth_Standard_NoBattle_EVILCLOUD",
+    "PC0010_00_Sephiroth_Standard_Reserve": "PC0010_00_Sephiroth_Standard_Reserve_EVILCLOUD",
+    "PC0010_01_Sephiroth_StandardWet": "PC0010_01_Sephiroth_StandardWet_EVILCLOUD",
+    "PC0010_10_Sephiroth_Transform": "PC0010_10_Sephiroth_Transform_EVILCLOUD",
+    "PC0010_20_Sephiroth_VRHard": "PC0010_20_Sephiroth_VRHard_EVILCLOUD",
+    "WE1021_00_SephirothIllusion_Masamune": "WE1021_00_SephirothIllusion_Masamune_EVILCLOUD",
+    "WE1021_01_SephirothIllusion_MasamuneBrood": "WE1021_01_SephirothIllusion_MasamuneBrood_EVILCLOUD",
+    "WE1021_02_SephirothIllusion_MasamuneCut": "WE1021_02_SephirothIllusion_MasamuneCut_EVILCLOUD",
+    "WE1021_10_SephirothIllusion_MasamuneCutScale": "WE1021_10_SephirothIllusion_MasamuneCutScale_EVILCLOUD",
+    "SU2030_00_Alexander_Standard": "SU2030_00_Alexander_Standard_BIZARRO"
+   },
+   "names": {
+    "CharaSpec_PC0000_00_Cloud_StandardOA05": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA05",
+    "CharaSpec_PC0000_00_Cloud_StandardOA14": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA14",
+    "CharaSpec_PC0000_00_Cloud_StandardOA07": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA07",
+    "CharaSpec_PC0000_00_Cloud_StandardOA08": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA08",
+    "CharaSpec_PC0000_00_Cloud_StandardOA04": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA04",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA17": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTHOA17",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA04": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_SEPHIROTHOA04",
+    "CharaSpec_PC0000_00_Cloud_StandardOA19": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA19",
+    "CharaSpec_PC0000_00_Cloud_StandardOA12": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA12",
+    "CharaSpec_PC0000_00_Cloud_StandardOA17": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA17",
+    "CharaSpec_PC0000_00_Cloud_StandardOA16": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA16",
+    "CharaSpec_PC0000_00_Cloud_StandardOA18": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA18",
+    "CharaSpec_PC0000_00_Cloud_StandardOA01": "CharaSpec_PC0000_00_Cloud_Standard_SEPHIROTHOA01",
+    "AnimSet_Hofuku00_PC0000_Cloud": "AnimSet_Hofuku00_PC0010_Sephiroth"
+   },
+   "names_in_add": [
+    {
+     "table": "Item",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "BattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "CharaSpecUseList",
+     "fields": [
+      "UseCharaSpec"
+     ]
+    },
+    {
+     "table": "EnemyBookBattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/BattleCharaSpec",
+     "fields": [
+      "CharaSpecID"
+     ],
+     "optional": true
+    }
+   ],
+   "rows": [
+    {
+     "table": "BattlePlayerParameter",
+     "row": "pt_Cloud",
+     "from": "pt_Cloud_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst02",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst02_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst08",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst08_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst07",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst07_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst09",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst09_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst04",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst04_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst05",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst05_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst06",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst06_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_AtkBurst10",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_AtkBurst10_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit001",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit001_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit002",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit002_SEPHIROTH"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "PC0000_Limit003",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "PC0000_Limit003_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainChange01_01",
+     "from": "PC0010_ChainChange01_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_1_01",
+     "from": "PC0010_NAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_2_01",
+     "from": "PC0010_NAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_3_01",
+     "from": "PC0010_NAtk_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NAtk_4_01",
+     "from": "PC0010_NAtk_4_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_1_01",
+     "from": "PC0010_JAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_2_01",
+     "from": "PC0010_JAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_JAtk_3_01",
+     "from": "PC0010_JAtk_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_PAtk_1_01",
+     "from": "PC0010_PAtk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_PAtk_2_01",
+     "from": "PC0010_PAtk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_1_01",
+     "from": "PC0010_Satk_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_2_01",
+     "from": "PC0010_Satk_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_5_01",
+     "from": "PC0010_SAtk_5_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_01",
+     "from": "PC0010_Satk_6_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_02",
+     "from": "PC0010_Satk_6_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_03",
+     "from": "PC0010_Satk_6_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_04",
+     "from": "PC0010_Satk_6_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_05",
+     "from": "PC0010_Satk_6_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_6_06",
+     "from": "PC0010_Satk_6_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_7_01",
+     "from": "PC0010_SAtk_7_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_7_02",
+     "from": "PC0010_SAtk_7_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_01",
+     "from": "PC0010_Satk_8_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_02",
+     "from": "PC0010_Satk_8_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Satk_8_03",
+     "from": "PC0010_Satk_8_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_01",
+     "from": "PC0010_SAtk_9_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_02",
+     "from": "PC0010_SAtk_9_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_9_03",
+     "from": "PC0010_SAtk_9_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_SAtk_10_01",
+     "from": "PC0010_SAtk_10_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NPAtk_1_02",
+     "from": "PC0010_NPAtk_1_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_NPAtk_1_04",
+     "from": "PC0010_NPAtk_1_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_01",
+     "from": "PC0010_AtkBurst01_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_02",
+     "from": "PC0010_AtkBurst01_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_03",
+     "from": "PC0010_AtkBurst01_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A01",
+     "from": "PC0010_AtkBurst01_A01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A02",
+     "from": "PC0010_AtkBurst01_A02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst01_A03",
+     "from": "PC0010_AtkBurst01_A03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst02_01",
+     "from": "PC0010_AtkBurst02_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_AtkBurst02_02",
+     "from": "PC0010_AtkBurst02_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCounter4_AI_01",
+     "from": "PC0010_ChainCounter4_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCounter5_AI_01",
+     "from": "PC0010_ChainCounter5_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainCharge1_AI_01",
+     "from": "PC0010_ChainCharge1_AI_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_1_01",
+     "from": "PC0010_ChainTatakau1_UC_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_2_01",
+     "from": "PC0010_ChainTatakau1_UC_2_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_2_02",
+     "from": "PC0010_ChainTatakau1_UC_2_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_3_01",
+     "from": "PC0010_ChainTatakau1_UC_3_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_ChainTatakau1_UC_3_02",
+     "from": "PC0010_ChainTatakau1_UC_3_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_01",
+     "from": "PC0010_Limit_1_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_02",
+     "from": "PC0010_Limit_1_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_03",
+     "from": "PC0010_Limit_1_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_04",
+     "from": "PC0010_Limit_1_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_05",
+     "from": "PC0010_Limit_1_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_06",
+     "from": "PC0010_Limit_1_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_07",
+     "from": "PC0010_Limit_1_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_Limit_1_08",
+     "from": "PC0010_Limit_1_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin01_Feeler_03",
+     "from": "PC0010_10_Zanshin01_Feeler_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin01_Feeler_04",
+     "from": "PC0010_10_Zanshin01_Feeler_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_05",
+     "from": "PC0010_10_Zanshin02_Feeler_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_06",
+     "from": "PC0010_10_Zanshin02_Feeler_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_07",
+     "from": "PC0010_10_Zanshin02_Feeler_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Zanshin02_Feeler_08",
+     "from": "PC0010_10_Zanshin02_Feeler_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_03",
+     "from": "PC0010_10_Gokumon02_Feeler_03_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_04",
+     "from": "PC0010_10_Gokumon02_Feeler_04_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_05",
+     "from": "PC0010_10_Gokumon02_Feeler_05_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_06",
+     "from": "PC0010_10_Gokumon02_Feeler_06_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_07",
+     "from": "PC0010_10_Gokumon02_Feeler_07_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_08",
+     "from": "PC0010_10_Gokumon02_Feeler_08_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_09",
+     "from": "PC0010_10_Gokumon02_Feeler_09_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_Gokumon02_Feeler_10",
+     "from": "PC0010_10_Gokumon02_Feeler_10_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GokumonFeelerExp",
+     "from": "PC0010_10_GokumonFeelerExp_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerExp_02",
+     "from": "PC0010_10_GroundFeelerExp_02_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_LastAttack_R01",
+     "from": "PC0010_10_LastAttack_R01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_LastAttack_L01",
+     "from": "PC0010_10_LastAttack_L01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_BindFeeler_01",
+     "from": "PC0010_10_BindFeeler_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerTornado_01",
+     "from": "PC0010_10_FeelerTornado_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerLaser_01",
+     "from": "PC0010_10_FeelerLaser_01_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerBullet",
+     "from": "PC0010_10_GroundFeelerBullet_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_GroundFeelerExp",
+     "from": "PC0010_10_GroundFeelerExp_SEPHIROTH"
+    },
+    {
+     "table": "BattleDamageSource",
+     "row": "PC0010_10_FeelerWingBreak_01",
+     "from": "PC0010_10_FeelerWingBreak_01_SEPHIROTH"
+    },
+    {
+     "table": "BattlePlayerParameter",
+     "row": "pt_Sephiroth",
+     "from": "pt_Sephiroth_EVILCLOUD"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkCleaveL01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkCleaveL01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkCleaveR01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkCleaveR01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkHardStrike01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkHardStrike01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkMagicalShockNew",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkMagicalShockNew_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveL01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveL01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveR01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveR01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkShockWaveB01",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkShockWaveB01_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkLaserMissileNew",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkLaserMissileNew_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "row": "SU2030_00_AtkGiantbeam",
+     "keep": [
+      "UniqueId"
+     ],
+     "from": "SU2030_00_AtkGiantbeam_BIZARRO"
+    }
+   ],
+   "values": [
+    {
+     "table": "PlannerEvent",
+     "field": "VoicePack",
+     "rows": [
+      "BT_BVCLD_STARTBTL_0000",
+      "BT_BVCLD_STARTBTL_0010",
+      "BT_BVCLD_STARTBTL_0100",
+      "BT_BVCLD_STARTBTL_0110",
+      "BT_BVCLD_STARTBTL_0200",
+      "BT_BVCLD_NATKNML_0000",
+      "BT_BVCLD_NATKMOVE_0000",
+      "BT_BVCLD_NATKNML_0010",
+      "BT_BVCLD_NATKNML_0020",
+      "BT_BVCLD_NATKNML_0030",
+      "BT_BVCLD_NATKNML_0040",
+      "BT_BVCLD_AATKNML_0000",
+      "BT_BVCLD_AATKNML_0010",
+      "BT_BVCLD_AATKNML_0020",
+      "BT_BVCLD_ABILITY_0000",
+      "BT_BVCLD_ABILITY_0010",
+      "BT_BVCLD_ABILITY_0020",
+      "BT_BVCLD_ABILITY_0030",
+      "BT_BVCLD_ABILITY_0040",
+      "BT_BVCLD_ABILITY_0050",
+      "BT_BVCLD_ABILITY_0060",
+      "BT_BVCLD_LIMIT_0000",
+      "BT_BVCLD_LIMIT_0010",
+      "BT_BVCLD_LIMIT_0020",
+      "BT_BVCLD_LIMIT_0030",
+      "BT_BVCLD_FILLLIMIT_0000",
+      "BT_BVCLD_HEATENEMY_0000",
+      "BT_BVCLD_ATKFINISH_0000",
+      "BT_BVCLD_BMODE_0000",
+      "BT_BVCLD_BRAVEATK_0000",
+      "BT_BVCLD_BRAVEATK_0010",
+      "BT_BVCLD_BRAVEATK_0020",
+      "BT_BVCLD_UNIQUECNT_0000",
+      "BT_BVCLD_UNIQUECNT_0010",
+      "BT_BVCLD_UNIQUEEND_0000",
+      "BT_BVCLD_UNIQUEEND_0010",
+      "BT_BVCLD_STBURST_0000",
+      "BT_BVCLD_MAGDBFCMN_0000",
+      "BT_BVCLD_MAGDBFSLP_0000",
+      "BT_BVCLD_MAGDBFSIL_0000",
+      "BT_BVCLD_MAGDBFPOI_0000",
+      "BT_BVCLD_MAGDBFBAR_0000",
+      "BT_BVCLD_MAGDBFDTH_0000",
+      "BT_BVCLD_MAGDBFDES_0000",
+      "BT_BVCLD_MAGDBFSLW_0000",
+      "BT_BVCLD_MAGBUFHST_0000",
+      "BT_BVCLD_MAGBUFREG_0000",
+      "BT_BVCLD_MAGATRCMN_0000",
+      "BT_BVCLD_MAGATRFIR_0000",
+      "BT_BVCLD_MAGATRICE_0000",
+      "BT_BVCLD_MAGATRTND_0000",
+      "BT_BVCLD_MAGATRWND_0000",
+      "BT_BVCLD_MAGADDATK_0000",
+      "BT_BVCLD_AVOID_0000",
+      "BT_BVCLD_GUARD_0000",
+      "BT_BVCLD_GUARD_0010",
+      "BT_BVCLD_GUARD_0011",
+      "BT_BVCLD_PARRY_0000",
+      "BT_BVCLD_DAMAGE_0000",
+      "BT_BVCLD_DAMAGE_0010",
+      "BT_BVCLD_DAMAGE_0020",
+      "BT_BVCLD_DAMAGE_0030",
+      "BT_BVCLD_DEAD_0000",
+      "BT_BVCLD_SLEEP_0000",
+      "BT_BVCLD_SLEEP_0010",
+      "BT_BVCLD_SLEEP_0020",
+      "BT_BVCLD_STUN_0000",
+      "BT_BVCLD_STUN_0010",
+      "BT_BVCLD_STUN_0020",
+      "BT_BVCLD_RECOVER_0000",
+      "BT_BVCLD_RECOVER_0010",
+      "BT_BVCLD_RECOVER_0100",
+      "BT_BVCLD_ITEMCMN_0000",
+      "BT_BVCLD_ITEMENEMY_0000",
+      "BT_BVCLD_ITEMPARTY_0000",
+      "BT_BVCLD_CURE_0000",
+      "BT_BVCLD_CURE_0010",
+      "BT_BVCLD_CLEAR_0000",
+      "BT_BVCLD_CUREPARTY_0000",
+      "BT_BVCLD_RAISE_0000",
+      "BT_BVCLD_BUFF_0000",
+      "BT_BVCLD_PENETRATE_0000",
+      "BT_BVCLD_CHANGENML_0000",
+      "BT_BVCLD_CHANGECRI_0000",
+      "BT_BVCLD_CHANGEBST_0000",
+      "BT_BVCLD_CHANGENML_0010",
+      "BT_BVCLD_CHANGECRI_0010",
+      "BT_BVCLD_CHANGEBST_0010",
+      "BT_BVCLD_CNGCMNDIE_0000",
+      "BT_BVCLD_VICTORY_0000",
+      "BT_BVCLD_VICTORY_0010",
+      "BT_BVCLD_VICTORY_0020",
+      "BT_BVCLD_GAMEOVER",
+      "BT_BVCLD_SUMMONCMN_0000",
+      "BT_BVCLD_SUMMON000_0000",
+      "BT_BVCLD_SUMMON010_0000",
+      "BT_BVCLD_SUMMON020_0000",
+      "BT_BVCLD_SUMMON030_0000",
+      "BT_BVCLD_SUMMON040_0000",
+      "BT_BVCLD_SUMMON050_0000",
+      "BT_BVCLD_SUMMON060_0000",
+      "BT_BVCLD_SUMMON070_0000",
+      "BT_BVCLD_SUMMON080_0000",
+      "BT_BVCLD_SUMMONEND_0000",
+      "BT_BVCLD_ATKCHAINST_0000",
+      "BT_BVCLD_ATKCHAINFN_0000"
+     ],
+     "value": "VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_00_Cloud"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_01_Cloud_Past"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "PlannerEventVoiceList",
+     "field": "Value",
+     "rows": [
+      "VO_PC0000_02_Cloud_Insanity"
+     ],
+     "value": "Character/Player/VO_PC0010_00_Sephiroth"
+    },
+    {
+     "table": "Equipment",
+     "field": "CharaSpecID_Array",
+     "rows": [
+      "W_TSW_9001"
+     ],
+     "value": [
+      "WE0000_00_Cloud_BusterSword"
+     ]
+    },
+    {
+     "table": "Item",
+     "field": "CharaSpecID",
+     "rows": [
+      "W_TSW_9001"
+     ],
+     "value": "WE0000_00_Cloud_BusterSword"
+    },
+    {
+     "table": "Item",
+     "field": "CharaSpecID",
+     "rows": [
+      "key_collection_07"
+     ],
+     "value": "WE1021_00_SephirothIllusion_Masamune"
+    },
+    {
+     "table": "BattleSummonAbilityChoice",
+     "field": "Probability",
+     "rows": [
+      "SU2030_00_AbilityChoice_08",
+      "SU2030_00_AbilityChoice_09",
+      "SU2030_00_AbilityChoice_10"
+     ],
+     "value": 50.0
+    },
+    {
+     "table": "BattleAbility",
+     "field": "Name",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_BIZARRO"
+    },
+    {
+     "table": "BattleAbility",
+     "field": "Explanation",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_help_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "M_SMN_103_atk001_01"
+     ],
+     "value": "$M_SMN_103_atk001_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "SU2030_00_AtkLaserMissileNew"
+     ],
+     "value": "$SU2030_00_Atk001_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleAbility",
+     "field": "Name",
+     "rows": [
+      "SU2030_00_AtkGiantbeam"
+     ],
+     "value": "$SU2030_00_Atk002_BIZARRO"
+    },
+    {
+     "table": "BattleCharaSpec",
+     "field": "TextLabel",
+     "rows": [
+      "SU2030_00_Alexander_Standard"
+     ],
+     "value": "$en_Alexander_Standard_BIZARRO"
+    },
+    {
+     "table": "EnemyBookBattleCharaSpec",
+     "field": "TextLabel",
+     "rows": [
+      "SU2030_00_Alexander_Standard"
+     ],
+     "value": "$en_Alexander_Standard_BIZARRO"
+    },
+    {
+     "table": "Item",
+     "field": "ItemNameLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_BIZARRO"
+    },
+    {
+     "table": "Item",
+     "field": "ItemDetailLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_help_BIZARRO"
+    },
+    {
+     "table": "Materia",
+     "field": "MateriaDetailLabel",
+     "rows": [
+      "M_SUM_103"
+     ],
+     "value": "$Item_M_SUM_103_help_2_BIZARRO"
+    }
+   ]
+  },
+  {
+   "name": "VINCENT",
+   "slot": "Cloud",
+   "player": "pt_Cloud",
+   "note": "Vincent (Fully Playable Vincent): his own rows, blueprint, AI, Quicksilver and voice; Dirge moves, Galian Beast and Chaos",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P"
+   ],
+   "charaspecs": {
+    "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_VINCENT",
+    "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_VINCENT",
+    "PC0000_00_Cloud_Standard_Reserve": "PC0000_00_Cloud_Standard_VINCENT",
+    "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_VINCENT",
+    "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_VINCENT",
+    "PC0000_04_Cloud_ZackCostume_Reserve": "PC0000_04_Cloud_ZackCostume_VINCENT",
+    "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_VINCENT",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_VINCENT",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve": "PC0000_08_Cloud_SoldierNoHelmet_VINCENT",
+    "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_VINCENT",
+    "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_VINCENT",
+    "PC0000_09_Cloud_CostaClothing_Reserve": "PC0000_09_Cloud_CostaClothing_VINCENT",
+    "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_VINCENT",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_VINCENT",
+    "PC0000_10_Cloud_CostaClothing2_Reserve": "PC0000_10_Cloud_CostaClothing2_VINCENT",
+    "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_VINCENT",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_VINCENT",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve": "PC0000_12_Cloud_ZackCostumeDirty_VINCENT",
+    "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_VINCENT",
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_VINCENT",
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve": "PC0000_18_Cloud_ZackCostumeAge21_VINCENT",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_VINCENT",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_VINCENT",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve": "PC0000_19_Cloud_ZackCostumeDirtyAge21_VINCENT",
+    "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_VINCENT",
+    "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_VINCENT",
+    "WE0000_11_Cloud_END2Weapon1": "WE0000_11_Cloud_END2Weapon1_VINCENT",
+    "WE0000_12_Cloud_END2Weapon2": "WE0000_12_Cloud_END2Weapon2_VINCENT",
+    "WE0000_13_Cloud_END2Weapon3": "WE0000_13_Cloud_END2Weapon3_VINCENT",
+    "WE0000_14_Cloud_END2Weapon4": "WE0000_14_Cloud_END2Weapon4_VINCENT",
+    "WE0000_15_Cloud_END2Weapon5": "WE0000_15_Cloud_END2Weapon5_VINCENT",
+    "WE0000_16_Cloud_END2Weapon6": "WE0000_16_Cloud_END2Weapon6_VINCENT",
+    "WE0000_17_Cloud_Umbrella": "WE0000_17_Cloud_Umbrella_VINCENT"
+   },
+   "names": {
+    "CharaSpec_PC0000_00_Cloud_StandardOA05": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA05",
+    "CharaSpec_PC0000_00_Cloud_StandardOA14": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA14",
+    "CharaSpec_PC0000_00_Cloud_StandardOA07": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA07",
+    "CharaSpec_PC0000_00_Cloud_StandardOA08": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA08",
+    "CharaSpec_PC0000_00_Cloud_StandardOA04": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA04",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA17": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_VINCENTOA17",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA04": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_VINCENTOA04",
+    "CharaSpec_PC0000_00_Cloud_StandardOA19": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA19",
+    "CharaSpec_PC0000_00_Cloud_StandardOA12": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA12",
+    "CharaSpec_PC0000_00_Cloud_StandardOA17": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA17",
+    "CharaSpec_PC0000_00_Cloud_StandardOA16": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA16",
+    "CharaSpec_PC0000_00_Cloud_StandardOA18": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA18",
+    "CharaSpec_PC0000_00_Cloud_StandardOA01": "CharaSpec_PC0000_00_Cloud_Standard_VINCENTOA01"
+   },
+   "names_in_add": [
+    {
+     "table": "Item",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    }
+   ],
+   "rows": [],
+   "values": [
+    {
+     "table": "PlannerEvent",
+     "field": "VoicePack",
+     "rows": [
+      "BT_BVCLD_STARTBTL_0000",
+      "BT_BVCLD_STARTBTL_0010",
+      "BT_BVCLD_STARTBTL_0100",
+      "BT_BVCLD_STARTBTL_0110",
+      "BT_BVCLD_STARTBTL_0200",
+      "BT_BVCLD_NATKNML_0000",
+      "BT_BVCLD_NATKMOVE_0000",
+      "BT_BVCLD_NATKNML_0010",
+      "BT_BVCLD_NATKNML_0020",
+      "BT_BVCLD_NATKNML_0030",
+      "BT_BVCLD_NATKNML_0040",
+      "BT_BVCLD_AATKNML_0000",
+      "BT_BVCLD_AATKNML_0010",
+      "BT_BVCLD_AATKNML_0020",
+      "BT_BVCLD_ABILITY_0000",
+      "BT_BVCLD_ABILITY_0010",
+      "BT_BVCLD_ABILITY_0020",
+      "BT_BVCLD_ABILITY_0030",
+      "BT_BVCLD_ABILITY_0040",
+      "BT_BVCLD_ABILITY_0050",
+      "BT_BVCLD_ABILITY_0060",
+      "BT_BVCLD_LIMIT_0000",
+      "BT_BVCLD_LIMIT_0010",
+      "BT_BVCLD_LIMIT_0020",
+      "BT_BVCLD_LIMIT_0030",
+      "BT_BVCLD_FILLLIMIT_0000",
+      "BT_BVCLD_HEATENEMY_0000",
+      "BT_BVCLD_ATKFINISH_0000",
+      "BT_BVCLD_BMODE_0000",
+      "BT_BVCLD_BRAVEATK_0000",
+      "BT_BVCLD_BRAVEATK_0010",
+      "BT_BVCLD_BRAVEATK_0020",
+      "BT_BVCLD_UNIQUECNT_0000",
+      "BT_BVCLD_UNIQUECNT_0010",
+      "BT_BVCLD_UNIQUEEND_0000",
+      "BT_BVCLD_UNIQUEEND_0010",
+      "BT_BVCLD_STBURST_0000",
+      "BT_BVCLD_MAGDBFCMN_0000",
+      "BT_BVCLD_MAGDBFSLP_0000",
+      "BT_BVCLD_MAGDBFSIL_0000",
+      "BT_BVCLD_MAGDBFPOI_0000",
+      "BT_BVCLD_MAGDBFBAR_0000",
+      "BT_BVCLD_MAGDBFDTH_0000",
+      "BT_BVCLD_MAGDBFDES_0000",
+      "BT_BVCLD_MAGDBFSLW_0000",
+      "BT_BVCLD_MAGBUFHST_0000",
+      "BT_BVCLD_MAGBUFREG_0000",
+      "BT_BVCLD_MAGATRCMN_0000",
+      "BT_BVCLD_MAGATRFIR_0000",
+      "BT_BVCLD_MAGATRICE_0000",
+      "BT_BVCLD_MAGATRTND_0000",
+      "BT_BVCLD_MAGATRWND_0000",
+      "BT_BVCLD_MAGADDATK_0000",
+      "BT_BVCLD_AVOID_0000",
+      "BT_BVCLD_GUARD_0000",
+      "BT_BVCLD_GUARD_0010",
+      "BT_BVCLD_GUARD_0011",
+      "BT_BVCLD_PARRY_0000",
+      "BT_BVCLD_DAMAGE_0000",
+      "BT_BVCLD_DAMAGE_0010",
+      "BT_BVCLD_DAMAGE_0020",
+      "BT_BVCLD_DAMAGE_0030",
+      "BT_BVCLD_DEAD_0000",
+      "BT_BVCLD_SLEEP_0000",
+      "BT_BVCLD_SLEEP_0010",
+      "BT_BVCLD_SLEEP_0020",
+      "BT_BVCLD_STUN_0000",
+      "BT_BVCLD_STUN_0010",
+      "BT_BVCLD_STUN_0020",
+      "BT_BVCLD_RECOVER_0000",
+      "BT_BVCLD_RECOVER_0010",
+      "BT_BVCLD_RECOVER_0100",
+      "BT_BVCLD_ITEMCMN_0000",
+      "BT_BVCLD_ITEMENEMY_0000",
+      "BT_BVCLD_ITEMPARTY_0000",
+      "BT_BVCLD_CURE_0000",
+      "BT_BVCLD_CURE_0010",
+      "BT_BVCLD_CLEAR_0000",
+      "BT_BVCLD_CUREPARTY_0000",
+      "BT_BVCLD_RAISE_0000",
+      "BT_BVCLD_BUFF_0000",
+      "BT_BVCLD_PENETRATE_0000",
+      "BT_BVCLD_CHANGENML_0000",
+      "BT_BVCLD_CHANGECRI_0000",
+      "BT_BVCLD_CHANGEBST_0000",
+      "BT_BVCLD_CHANGENML_0010",
+      "BT_BVCLD_CHANGECRI_0010",
+      "BT_BVCLD_CHANGEBST_0010",
+      "BT_BVCLD_CNGCMNDIE_0000",
+      "BT_BVCLD_VICTORY_0000",
+      "BT_BVCLD_VICTORY_0010",
+      "BT_BVCLD_VICTORY_0020",
+      "BT_BVCLD_GAMEOVER",
+      "BT_BVCLD_SUMMONCMN_0000",
+      "BT_BVCLD_SUMMON000_0000",
+      "BT_BVCLD_SUMMON010_0000",
+      "BT_BVCLD_SUMMON020_0000",
+      "BT_BVCLD_SUMMON030_0000",
+      "BT_BVCLD_SUMMON040_0000",
+      "BT_BVCLD_SUMMON050_0000",
+      "BT_BVCLD_SUMMON060_0000",
+      "BT_BVCLD_SUMMON070_0000",
+      "BT_BVCLD_SUMMON080_0000",
+      "BT_BVCLD_SUMMONEND_0000",
+      "BT_BVCLD_ATKCHAINST_0000",
+      "BT_BVCLD_ATKCHAINFN_0000"
+     ],
+     "value": "VO_PC0000_00_Cloud_VINCENT"
+    }
+   ]
+  },
+  {
+   "name": "SORA",
+   "slot": "Cloud",
+   "player": "pt_Cloud",
+   "note": "Sora (Fully Playable Sora, KINGDOM HEARTS): his own rows on his own sets, his blueprints, Kingdom Key, voice",
+   "requires_paks": [
+    "FullyPlayableCreateACharacterSystemExperience_P",
+    "SoraAssets_P",
+    "SoraFace_P",
+    "SoraFaceRig_P",
+    "SoraKH3_Materials_P"
+   ],
+   "charaspecs": {
+    "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_SORA",
+    "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_SORA",
+    "PC0000_00_Cloud_Standard_Reserve": "PC0000_00_Cloud_Standard_SORA",
+    "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_SORA",
+    "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_SORA",
+    "PC0000_04_Cloud_ZackCostume_Reserve": "PC0000_04_Cloud_ZackCostume_SORA",
+    "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_SORA",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_SORA",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve": "PC0000_08_Cloud_SoldierNoHelmet_SORA",
+    "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_SORA",
+    "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_SORA",
+    "PC0000_09_Cloud_CostaClothing_Reserve": "PC0000_09_Cloud_CostaClothing_SORA",
+    "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_SORA",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_SORA",
+    "PC0000_10_Cloud_CostaClothing2_Reserve": "PC0000_10_Cloud_CostaClothing2_SORA",
+    "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_SORA",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_SORA",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve": "PC0000_12_Cloud_ZackCostumeDirty_SORA",
+    "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_SORA",
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_SORA",
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve": "PC0000_18_Cloud_ZackCostumeAge21_SORA",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SORA",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SORA",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve": "PC0000_19_Cloud_ZackCostumeDirtyAge21_SORA",
+    "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_SORA",
+    "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_SORA",
+    "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_SORA",
+    "PC0000_06_Cloud_Soldier_Reserve": "PC0000_06_Cloud_Soldier_SORA",
+    "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_SORA",
+    "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_SORA",
+    "PC0000_07_Cloud_SoldierSenior_Reserve": "PC0000_07_Cloud_SoldierSenior_SORA",
+    "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_SORA",
+    "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_SORA",
+    "PC0000_11_Cloud_Loveless_Reserve": "PC0000_11_Cloud_Loveless_SORA",
+    "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_SORA",
+    "WE0000_11_Cloud_END2Weapon1": "WE0000_11_Cloud_END2Weapon1_SORA",
+    "WE0000_12_Cloud_END2Weapon2": "WE0000_12_Cloud_END2Weapon2_SORA",
+    "WE0000_13_Cloud_END2Weapon3": "WE0000_13_Cloud_END2Weapon3_SORA",
+    "WE0000_14_Cloud_END2Weapon4": "WE0000_14_Cloud_END2Weapon4_SORA",
+    "WE0000_15_Cloud_END2Weapon5": "WE0000_15_Cloud_END2Weapon5_SORA",
+    "WE0000_16_Cloud_END2Weapon6": "WE0000_16_Cloud_END2Weapon6_SORA",
+    "WE0000_17_Cloud_Umbrella": "WE0000_17_Cloud_Umbrella_SORA"
+   },
+   "names": {
+    "CharaSpec_PC0000_00_Cloud_StandardOA05": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA05",
+    "CharaSpec_PC0000_00_Cloud_StandardOA14": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA14",
+    "CharaSpec_PC0000_00_Cloud_StandardOA07": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA07",
+    "CharaSpec_PC0000_00_Cloud_StandardOA08": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA08",
+    "CharaSpec_PC0000_00_Cloud_StandardOA04": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA04",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA17": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_SORAOA17",
+    "CharaSpec_PC0000_12_Cloud_ZackCostumeDirtyOA04": "CharaSpec_PC0000_12_Cloud_ZackCostumeDirty_SORAOA04",
+    "CharaSpec_PC0000_00_Cloud_StandardOA19": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA19",
+    "CharaSpec_PC0000_00_Cloud_StandardOA12": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA12",
+    "CharaSpec_PC0000_00_Cloud_StandardOA17": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA17",
+    "CharaSpec_PC0000_00_Cloud_StandardOA16": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA16",
+    "CharaSpec_PC0000_00_Cloud_StandardOA18": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA18",
+    "CharaSpec_PC0000_00_Cloud_StandardOA01": "CharaSpec_PC0000_00_Cloud_Standard_SORAOA01",
+    "AnimSet_Hofuku00_PC0000_Cloud": "AnimSet_Hofuku00_PC0000_00_Sora_KH2"
+   },
+   "names_in_add": [
+    {
+     "table": "Item",
+     "fields": [
+      "CharaSpecID"
+     ]
+    },
+    {
+     "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    },
+    {
+     "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+     "fields": [
+      "LevelList_Array"
+     ],
+     "optional": true
+    }
+   ],
+   "rows": [],
+   "values": [
+    {
+     "table": "PlannerEvent",
+     "field": "VoicePack",
+     "rows": [
+      "BT_BVCLD_STARTBTL_0000",
+      "BT_BVCLD_STARTBTL_0010",
+      "BT_BVCLD_STARTBTL_0100",
+      "BT_BVCLD_STARTBTL_0110",
+      "BT_BVCLD_STARTBTL_0200",
+      "BT_BVCLD_NATKNML_0000",
+      "BT_BVCLD_NATKMOVE_0000",
+      "BT_BVCLD_NATKNML_0010",
+      "BT_BVCLD_NATKNML_0020",
+      "BT_BVCLD_NATKNML_0030",
+      "BT_BVCLD_NATKNML_0040",
+      "BT_BVCLD_AATKNML_0000",
+      "BT_BVCLD_AATKNML_0010",
+      "BT_BVCLD_AATKNML_0020",
+      "BT_BVCLD_ABILITY_0000",
+      "BT_BVCLD_ABILITY_0010",
+      "BT_BVCLD_ABILITY_0020",
+      "BT_BVCLD_ABILITY_0030",
+      "BT_BVCLD_ABILITY_0040",
+      "BT_BVCLD_ABILITY_0050",
+      "BT_BVCLD_ABILITY_0060",
+      "BT_BVCLD_LIMIT_0000",
+      "BT_BVCLD_LIMIT_0010",
+      "BT_BVCLD_LIMIT_0020",
+      "BT_BVCLD_LIMIT_0030",
+      "BT_BVCLD_FILLLIMIT_0000",
+      "BT_BVCLD_HEATENEMY_0000",
+      "BT_BVCLD_ATKFINISH_0000",
+      "BT_BVCLD_BMODE_0000",
+      "BT_BVCLD_BRAVEATK_0000",
+      "BT_BVCLD_BRAVEATK_0010",
+      "BT_BVCLD_BRAVEATK_0020",
+      "BT_BVCLD_UNIQUECNT_0000",
+      "BT_BVCLD_UNIQUECNT_0010",
+      "BT_BVCLD_UNIQUEEND_0000",
+      "BT_BVCLD_UNIQUEEND_0010",
+      "BT_BVCLD_STBURST_0000",
+      "BT_BVCLD_MAGDBFCMN_0000",
+      "BT_BVCLD_MAGDBFSLP_0000",
+      "BT_BVCLD_MAGDBFSIL_0000",
+      "BT_BVCLD_MAGDBFPOI_0000",
+      "BT_BVCLD_MAGDBFBAR_0000",
+      "BT_BVCLD_MAGDBFDTH_0000",
+      "BT_BVCLD_MAGDBFDES_0000",
+      "BT_BVCLD_MAGDBFSLW_0000",
+      "BT_BVCLD_MAGBUFHST_0000",
+      "BT_BVCLD_MAGBUFREG_0000",
+      "BT_BVCLD_MAGATRCMN_0000",
+      "BT_BVCLD_MAGATRFIR_0000",
+      "BT_BVCLD_MAGATRICE_0000",
+      "BT_BVCLD_MAGATRTND_0000",
+      "BT_BVCLD_MAGATRWND_0000",
+      "BT_BVCLD_MAGADDATK_0000",
+      "BT_BVCLD_AVOID_0000",
+      "BT_BVCLD_GUARD_0000",
+      "BT_BVCLD_GUARD_0010",
+      "BT_BVCLD_GUARD_0011",
+      "BT_BVCLD_PARRY_0000",
+      "BT_BVCLD_DAMAGE_0000",
+      "BT_BVCLD_DAMAGE_0010",
+      "BT_BVCLD_DAMAGE_0020",
+      "BT_BVCLD_DAMAGE_0030",
+      "BT_BVCLD_DEAD_0000",
+      "BT_BVCLD_SLEEP_0000",
+      "BT_BVCLD_SLEEP_0010",
+      "BT_BVCLD_SLEEP_0020",
+      "BT_BVCLD_STUN_0000",
+      "BT_BVCLD_STUN_0010",
+      "BT_BVCLD_STUN_0020",
+      "BT_BVCLD_RECOVER_0000",
+      "BT_BVCLD_RECOVER_0010",
+      "BT_BVCLD_RECOVER_0100",
+      "BT_BVCLD_ITEMCMN_0000",
+      "BT_BVCLD_ITEMENEMY_0000",
+      "BT_BVCLD_ITEMPARTY_0000",
+      "BT_BVCLD_CURE_0000",
+      "BT_BVCLD_CURE_0010",
+      "BT_BVCLD_CLEAR_0000",
+      "BT_BVCLD_CUREPARTY_0000",
+      "BT_BVCLD_RAISE_0000",
+      "BT_BVCLD_BUFF_0000",
+      "BT_BVCLD_PENETRATE_0000",
+      "BT_BVCLD_CHANGENML_0000",
+      "BT_BVCLD_CHANGECRI_0000",
+      "BT_BVCLD_CHANGEBST_0000",
+      "BT_BVCLD_CHANGENML_0010",
+      "BT_BVCLD_CHANGECRI_0010",
+      "BT_BVCLD_CHANGEBST_0010",
+      "BT_BVCLD_CNGCMNDIE_0000",
+      "BT_BVCLD_VICTORY_0000",
+      "BT_BVCLD_VICTORY_0010",
+      "BT_BVCLD_VICTORY_0020",
+      "BT_BVCLD_GAMEOVER",
+      "BT_BVCLD_SUMMONCMN_0000",
+      "BT_BVCLD_SUMMON000_0000",
+      "BT_BVCLD_SUMMON010_0000",
+      "BT_BVCLD_SUMMON020_0000",
+      "BT_BVCLD_SUMMON030_0000",
+      "BT_BVCLD_SUMMON040_0000",
+      "BT_BVCLD_SUMMON050_0000",
+      "BT_BVCLD_SUMMON060_0000",
+      "BT_BVCLD_SUMMON070_0000",
+      "BT_BVCLD_SUMMON080_0000",
+      "BT_BVCLD_SUMMONEND_0000",
+      "BT_BVCLD_ATKCHAINST_0000",
+      "BT_BVCLD_ATKCHAINFN_0000"
+     ],
+     "value": "VO_PC0000_00_Cloud_SORA"
+    }
+   ]
+  }
+ ]
+}

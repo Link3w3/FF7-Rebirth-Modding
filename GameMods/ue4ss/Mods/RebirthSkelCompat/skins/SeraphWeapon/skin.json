@@ -1,0 +1,37 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Seraph Sephiroth Weapon",
+ "author": "",
+ "description": "Seraph Sephiroth's Essence Shard: the game's playable (cut-scale) Masamune blueprint holding the Essence Shard (its model, cooked into the Seraph Sephiroth skins). Its package only: the weapon of the Seraph Sephiroth skins.",
+ "characters": [],
+ "model": "",
+ "skeleton": "",
+ "family": "",
+ "proportions": false,
+ "proportion_bones": [],
+ "voice": "",
+ "weapon": "",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "part": true,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/BluePrint/Character/Weapon/WE1021_15_Essence_Shard/WE1021_10_SephirothIllusion_MasamuneCutScale",
+   "file": "Content/BluePrint/Character/Weapon/WE1021_15_Essence_Shard/WE1021_10_SephirothIllusion_MasamuneCutScale.uasset",
+   "size": 2328,
+   "export_count": 6,
+   "export_bundle_count": 1,
+   "load_order": 624747,
+   "imports": [
+    "43ea269859b874d2",
+    "8e2158af5fa11736"
+   ],
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-26T01:22:51Z",
+ "built_with": "make_seraph_weapon.py (the game's package copied to a new path)"
+}

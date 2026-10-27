@@ -1,0 +1,5896 @@
+[
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_0",
+		"class": "AnimSequence",
+		"length": 1.4333332777023315,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 44,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.16085000336170197,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.4333330392837524,
+				"track": 3,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.23318023979663849,
+				"track": 4,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.4333333969116211,
+				"track": 12,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.099206998944282532,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_01"
+				}
+			},
+			{
+				"time": 0.10121700167655945,
+				"duration": 0.36410799622535706,
+				"track": 11,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.16675199568271637,
+				"duration": 0.45303499698638916,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.1965470016002655,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0"
+				}
+			},
+			{
+				"time": 0.23907199501991272,
+				"duration": 0.10083299875259399,
+				"track": 6,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.24581299722194672,
+				"duration": 0,
+				"track": 5,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.33835199475288391,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.3985520601272583,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.62864202260971069,
+				"duration": 0.59240204095840454,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.99947500228881836,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.23907199501991272 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_1",
+		"class": "AnimSequence",
+		"length": 1.7999999523162842,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 55,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.7999999523162842,
+				"track": 12,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "81.714294"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.8000000715255737,
+				"track": 11,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.17905567586421967,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyCharacterBodyMoveMode",
+				"class": "EndAnimNotifyCharacterBodyMoveMode",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"MoveMode": "Fly"
+				}
+			},
+			{
+				"time": 0.63216859102249146,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 1.1672273874282837,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_1_0",
+		"class": "AnimSequence",
+		"length": 0.26666668057441711,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 9,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": true,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.26666668057441711,
+				"track": 4,
+				"name": "EndAnimNotifyStateOverrideCameraParams",
+				"class": "EndAnimNotifyStateOverrideCameraParams",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26666668057441711,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26666668057441711,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26666668057441711,
+				"track": 7,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.0028379999566823244,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_01_Move",
+					"AttachPointName": "C_Head_a"
+				}
+			},
+			{
+				"time": 0.20033100247383118,
+				"duration": 0.05390438437461853,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(Name=\"Maximum_Velocity Strength\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,250,67),CurrentMode=Bytes)))),m_SocketName=\"Trans\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_1_1",
+		"class": "AnimSequence",
+		"length": 0.53333336114883423,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 17,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": true,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(Name=\"Spawn Count\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(1,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"SpawnRate\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,240,65),CurrentMode=Bytes)),(m_Variable=(Name=\"Minimum_Velocity Strength\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,128,63),CurrentMode=Bytes)),(m_Variable=(Name=\"Maximum_Velocity Strength\",TypeDefHandle=(RegisteredTypeIn"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 1,
+				"name": "End PlayCharacterSound(State)[ SE_PC0000_00_Cloud :(se_cloud_far_atk_move) ]",
+				"class": "EndAnimNotifyStatePlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0000_00_Cloud.SE_PC0000_00_Cloud",
+					"SoundName": "se_cloud_far_atk_move",
+					"FadeOutDuration": "5.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 4,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.000000",
+					"BlendOutTime": "0.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 5,
+				"name": "EndAnimNotifyStateOverrideCameraParams",
+				"class": "EndAnimNotifyStateOverrideCameraParams",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.53333336114883423,
+				"track": 7,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_1_2",
+		"class": "AnimSequence",
+		"length": 1.2666666507720947,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 39,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.2666666507720947,
+				"track": 13,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "81.714294"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.19110400974750519,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.047564998269081116,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.2666666507720947,
+				"track": 3,
+				"name": "EndAnimNotifyStateOverrideCameraParams",
+				"class": "EndAnimNotifyStateOverrideCameraParams",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.062227014452219009,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.2666667699813843,
+				"track": 12,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.031062999740242958,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0"
+				}
+			},
+			{
+				"time": 0.057654999196529388,
+				"duration": 0.33439698815345764,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.078722000122070312,
+				"duration": 0.10158100724220276,
+				"track": 7,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.085019998252391815,
+				"duration": 0,
+				"track": 6,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.17229899764060974,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.23724579811096191,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.39925900101661682,
+				"duration": 0.59240198135375977,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.80164200067520142,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.078722000122070312 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack02_0",
+		"class": "AnimSequence",
+		"length": 1.5,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 46,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.047564998269081116,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.5,
+				"track": 4,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-90.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.18586234748363495,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.5000001192092896,
+				"track": 12,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.057654999196529388,
+				"duration": 0.53845298290252686,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.086056031286716461,
+				"duration": 0.34014981985092163,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.11693199723958969,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_02"
+				}
+			},
+			{
+				"time": 0.13242900371551514,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack02_0"
+				}
+			},
+			{
+				"time": 0.19379399716854095,
+				"duration": 0.094499006867408752,
+				"track": 7,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.22446000576019287,
+				"duration": 0,
+				"track": 6,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "18.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.31784400343894958,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.37996000051498413,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.60537397861480713,
+				"duration": 0.59240198135375977,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 1.0803259611129761,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.19379399716854095 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack03_0",
+		"class": "AnimSequence",
+		"length": 1.7000000476837158,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 52,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.55132299661636353,
+				"track": 6,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.7000000476837158,
+				"track": 7,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.58496767282485962,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.7000000476837158,
+				"track": 16,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.23273031413555145,
+				"duration": 0.47132366895675659,
+				"track": 5,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.33335644006729126,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=10),(Number=40),(Number=50),(Number=60),(Number=70),(Number=80),(Number=90),(Number=3))"
+				}
+			},
+			{
+				"time": 0.56007397174835205,
+				"duration": 0.33439695835113525,
+				"track": 6,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.5949370265007019,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack03_0"
+				}
+			},
+			{
+				"time": 0.5949370265007019,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_03"
+				}
+			},
+			{
+				"time": 0.59961599111557007,
+				"duration": 0.12586897611618042,
+				"track": 10,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.66674602031707764,
+				"duration": 0.22984099388122559,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(Name=\"Minimum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,200,66,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"Maximum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,250,67,0,0,0,0,0,0,0,0),CurrentMode=Bytes)))),m_SocketName=\"Trans\",m_LocationOffset=(X=150.000000,Y=50.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000"
+				}
+			},
+			{
+				"time": 0.66674602031707764,
+				"duration": 0.19538259506225586,
+				"track": 4,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01,m_UserParams=((m_Variable=(VarData=(0,0,0,0),Name=\"SpawnRate\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,0,0),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,0,0),Name=\"Spawn Count\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(200,0,0,0),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,0,0,0,0,0,0,0,0,0,0),Name=\"Minimum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,200,66,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),("
+				}
+			},
+			{
+				"time": 0.68177700042724609,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_material_hit_01"
+				}
+			},
+			{
+				"time": 0.68482798337936401,
+				"duration": 0,
+				"track": 9,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.350000"
+				}
+			},
+			{
+				"time": 0.70308899879455566,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.7321932315826416,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.90837001800537109,
+				"duration": 0.65283608436584473,
+				"track": 6,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 1.2365410327911377,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.59961599111557007 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack04_0",
+		"class": "AnimSequence",
+		"length": 1.6000000238418579,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 49,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.26191699504852295,
+				"track": 5,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.6000000238418579,
+				"track": 6,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.37772911787033081,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.6000001430511475,
+				"track": 15,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.045829616487026215,
+				"duration": 0.6029314398765564,
+				"track": 4,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.18017886579036713,
+				"duration": 0.23760314285755157,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01),m_SocketName=\"Attach_Weapon_Left01\",m_LocationOffset=(X=100.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.23362100124359131,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_04"
+				}
+			},
+			{
+				"time": 0.26850599050521851,
+				"duration": 0.41346603631973267,
+				"track": 5,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.33310800790786743,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_material_hit_01"
+				}
+			},
+			{
+				"time": 0.35063999891281128,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack04_0"
+				}
+			},
+			{
+				"time": 0.39904001355171204,
+				"duration": 0.15999600291252136,
+				"track": 10,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.41448599100112915,
+				"duration": 0,
+				"track": 9,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.58270084857940674,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.63996779918670654,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.6935039758682251,
+				"duration": 0.71656501293182373,
+				"track": 5,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 1.1386020183563232,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.39904001355171204 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack05_0",
+		"class": "AnimSequence",
+		"length": 2.1333334445953369,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 65,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.64353597164154053,
+				"track": 8,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 2.1333334445953369,
+				"track": 9,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-102.857140"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.47732415795326233,
+				"track": 10,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 2.1333334445953369,
+				"track": 17,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.10108599811792374,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack03_0",
+					"VolumeMultiplier": "0.700000"
+				}
+			},
+			{
+				"time": 0.14281193912029266,
+				"duration": 0.80115300416946411,
+				"track": 7,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.24299141764640808,
+				"duration": 0.3138335645198822,
+				"track": 5,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01,m_UserParams=((m_Variable=(Name=\"SpawnRate\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,122,68),CurrentMode=Bytes)))),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.24549397826194763,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0",
+					"VolumeMultiplier": "0.500000"
+				}
+			},
+			{
+				"time": 0.46874600648880005,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_05"
+				}
+			},
+			{
+				"time": 0.60032498836517334,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack05_0"
+				}
+			},
+			{
+				"time": 0.6545180082321167,
+				"duration": 0.42389905452728271,
+				"track": 8,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.66935700178146362,
+				"duration": 0.14760202169418335,
+				"track": 12,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.71398097276687622,
+				"duration": 0,
+				"track": 11,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "30.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.400000"
+				}
+			},
+			{
+				"time": 0.73226028680801392,
+				"duration": 0.3589668869972229,
+				"track": 5,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01,m_UserParams=((m_Variable=(Name=\"SpawnRate\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,72,68),CurrentMode=Bytes)))),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.83493399620056152,
+				"duration": 0.22984099388122559,
+				"track": 6,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(VarData=(0,0,0,0,0,0,0,0,0,0,0,0),Name=\"Maximum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,250,67,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,0,0,0,0,0,0,0,0,0,0),Name=\"Minimum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,72,66,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"Uniform Sprite Size Max\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Byte"
+				}
+			},
+			{
+				"time": 0.84785699844360352,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=10),(Number=40),(Number=50),(Number=60),(Number=70),(Number=80),(Number=90),(Number=5),(Number=3))"
+				}
+			},
+			{
+				"time": 0.90562921762466431,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.0883690118789673,
+				"duration": 0.87265348434448242,
+				"track": 8,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 1.362155556678772,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 1.5196110010147095,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_kamaenaoshi",
+					"AttachPointName": "R_Hand_a"
+				}
+			},
+			{
+				"time": 1.6739209890365601,
+				"duration": 0,
+				"track": 16,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.66935700178146362 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack06_0",
+		"class": "AnimSequence",
+		"length": 2.2333333492279053,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 68,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 2.2333333492279053,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleAbilityIDReplace",
+				"class": "EndAnimNotifyStateBattleAbilityIDReplace",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ReplaceID": "?_WAtk"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.38517671823501587,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 2.2333333492279053,
+				"track": 16,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.054961688816547394,
+				"duration": 2.1783716678619385,
+				"track": 18,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "78.285721"
+				}
+			},
+			{
+				"time": 0.09587329626083374,
+				"duration": 0.53028231859207153,
+				"track": 15,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_ChargeAttack_Weapon_01.FX_PC0000_ChargeAttack_Weapon_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.2788962721824646,
+				"duration": 0.60769945383071899,
+				"track": 4,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.36094868183135986,
+				"duration": 0.48724359273910522,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_SAttack_Slash_01.FX_PC0000_SAttack_Slash_01,m_UserParams=((m_Variable=(VarData=(170,170,58,63,47,41,114,63,0,0,128,63,0,0,128,63),Name=\"ParticleEmitColorTop\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(185,114,158,62,0,0,128,63,57,37,44,63,0,0,128,63),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,184,62,100,27,203,62,0,0,128,63,0,0,128,63),Name=\"ParticleEmitColorBottom\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,0,0,0,0,128,63,162,180,11,63,0,0,128,63),CurrentMode="
+				}
+			},
+			{
+				"time": 0.36426201462745667,
+				"duration": 0.31996902823448181,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01,m_UserParams=((m_Variable=(VarData=(0,0,0,0),Name=\"SpawnRate\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,0,0),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,0,0),Name=\"Spawn Count\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(150,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"Maximum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,250,67,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"Minimum_Velocity"
+				}
+			},
+			{
+				"time": 0.36781498789787292,
+				"duration": 0.66133797168731689,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(Name=\"Maximum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,200,67,0,0,0,0,0,0,0,0),CurrentMode=Bytes)),(m_Variable=(Name=\"Minimum_Velocity\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,72,66,0,0,0,0,0,0,0,0),CurrentMode=Bytes)))),m_SocketName=\"Trans\",m_LocationOffset=(X=120.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.00000"
+				}
+			},
+			{
+				"time": 0.39145201444625854,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0"
+				}
+			},
+			{
+				"time": 0.39189499616622925,
+				"duration": 0.1979910135269165,
+				"track": 8,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.40238499641418457,
+				"duration": 0,
+				"track": 7,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.42718017101287842,
+				"duration": 0,
+				"track": 17,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0000_00_Cloud.SE_PC0000_00_Cloud",
+					"SoundName": "SE_PC0000_ChargeAttack_Bullet_01"
+				}
+			},
+			{
+				"time": 0.50842702388763428,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleDamage",
+				"class": "EndAnimNotifyBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_02\")"
+				}
+			},
+			{
+				"time": 0.73524594306945801,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Combo=1))"
+				}
+			},
+			{
+				"time": 0.80000007152557373,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.8505659103393555,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.39189499616622925, 0.50842702388763428 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack07_0",
+		"class": "AnimSequence",
+		"length": 1.6000000238418579,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 49,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.6000001430511475,
+				"track": 0,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.20004099607467651,
+				"track": 10,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.6000000238418579,
+				"track": 11,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "85.714279"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.6000000238418579,
+				"track": 12,
+				"name": "EndAnimNotifyStateBattleAbilityIDReplace",
+				"class": "EndAnimNotifyStateBattleAbilityIDReplace",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ReplaceID": "?_WAtk"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.25364696979522705,
+				"track": 13,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 16,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 19,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.13436399400234222,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Normal_05"
+				}
+			},
+			{
+				"time": 0.14025789499282837,
+				"duration": 0.35937857627868652,
+				"track": 5,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Spark_01.FX_PC0000_Cmn_Spark_01),m_SocketName=\"Attach_Weapon_Right01\",m_LocationOffset=(X=100.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.14426399767398834,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack04_0"
+				}
+			},
+			{
+				"time": 0.14458924531936646,
+				"duration": 0.41158735752105713,
+				"track": 8,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.20329299569129944,
+				"duration": 0.39194998145103455,
+				"track": 10,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.21188700199127197,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_material_hit_01"
+				}
+			},
+			{
+				"time": 0.25488799810409546,
+				"duration": 0,
+				"track": 14,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "40.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.26921200752258301,
+				"duration": 0.19821101427078247,
+				"track": 15,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.30471199750900269,
+				"duration": 0.17725899815559387,
+				"track": 6,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_Cmn_Smoke_01.FX_PC0000_Cmn_Smoke_01,m_UserParams=((m_Variable=(Name=\"Maximum_Velocity Strength\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,22,68),CurrentMode=Bytes)),(m_Variable=(Name=\"Minimum_Velocity Strength\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,200,67),CurrentMode=Bytes)))),m_SocketName=\"Trans\",m_LocationOffset=(X=120.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.32165384292602539,
+				"duration": 0.161670982837677,
+				"track": 7,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_SAttack_Slash_01.FX_PC0000_SAttack_Slash_01,m_UserParams=((m_Variable=(VarData=(1,0,0,0),Name=\"Spawn Count\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,0,0),CurrentMode=Bytes)))),m_SocketName=\"Trans\",m_LocationOffset=(X=50.000000,Y=0.000000,Z=100.000000),m_RotationOffset=(Pitch=-5.000000,Yaw=60.000000,Roll=-78.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.48839199542999268,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack05_0"
+				}
+			},
+			{
+				"time": 0.55595320463180542,
+				"duration": 0.31796294450759888,
+				"track": 6,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_ChargeAttack_Shock_01.FX_PC0000_ChargeAttack_Shock_01),m_SocketName=\"Trans\",m_LocationOffset=(X=50.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.59686899185180664,
+				"duration": 0.6765599250793457,
+				"track": 10,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.62421602010726929,
+				"duration": 0.1151689887046814,
+				"track": 15,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_02\")"
+				}
+			},
+			{
+				"time": 0.65626299381256104,
+				"duration": 0,
+				"track": 14,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "8.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.66666668653488159,
+				"duration": 0,
+				"track": 18,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.73333334922790527,
+				"duration": 0,
+				"track": 20,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.0034359693527222,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.4615839719772339,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "B_AtkCharge01_0_set",
+					"AttachPointName": "R_Hand_a"
+				}
+			}
+		],
+		"hits": [ 0.26921200752258301, 0.62421602010726929 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack07_1",
+		"class": "AnimSequence",
+		"length": 1.7333333492279053,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 53,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.7333333492279053,
+				"track": 10,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "78.285721"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.7333334684371948,
+				"track": 9,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack07_2",
+		"class": "AnimSequence",
+		"length": 1.7333333492279053,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 53,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.7333333492279053,
+				"track": 13,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "78.285721"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.7333334684371948,
+				"track": 12,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack20_0",
+		"class": "AnimSequence",
+		"length": 1.1333333253860474,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 35,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.1081938743591309,
+				"track": 13,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyCharacterFly",
+				"class": "EndAnimNotifyCharacterFly",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Layer": "EEndLayer_Battle"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26666665077209473,
+				"track": 1,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26666665077209473,
+				"track": 2,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "300.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.1333334445953369,
+				"track": 10,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.19965031743049622,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0",
+					"AttachPointName": "L_Hand_a"
+				}
+			},
+			{
+				"time": 0.23275651037693024,
+				"duration": 0.15436290204524994,
+				"track": 5,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.28099149465560913,
+				"duration": 0,
+				"track": 3,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "5.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.36666664481163025,
+				"duration": 0.1666666567325592,
+				"track": 1,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.36666664481163025,
+				"duration": 0.1666666567325592,
+				"track": 2,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "300.000000"
+				}
+			},
+			{
+				"time": 0.47310701012611389,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack05_0",
+					"AttachPointName": "L_Hand_a"
+				}
+			},
+			{
+				"time": 0.52620267868041992,
+				"duration": 0.098071515560150146,
+				"track": 5,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_02\")"
+				}
+			},
+			{
+				"time": 0.55075114965438843,
+				"duration": 0,
+				"track": 4,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "15.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.59999996423721313,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 1.0333333015441895,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.23275651037693024, 0.52620267868041992 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ01_0",
+		"class": "AnimSequence",
+		"length": 0.86666667461395264,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 27,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.30021598935127258,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.000000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.93333297967910767,
+				"track": 4,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.22116099298000336,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.21989850699901581,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.015376048162579536,
+				"duration": 0.34873193502426147,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.13338014483451843,
+				"duration": 0.5007483959197998,
+				"track": 12,
+				"name": "EndWeaponAttachment",
+				"class": "AnimNotify_EndWeaponAttachment",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SocketName": "Attach_Weapon_Left01"
+				}
+			},
+			{
+				"time": 0.1944238692522049,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Air_01"
+				}
+			},
+			{
+				"time": 0.23880793154239655,
+				"duration": 0.092616066336631775,
+				"track": 8,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.26059600710868835,
+				"duration": 0,
+				"track": 7,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.30155014991760254,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.30206900835037231,
+				"duration": 0.17914098501205444,
+				"track": 2,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.63087540864944458,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.23880793154239655 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ02_0",
+		"class": "AnimSequence",
+		"length": 0.93333333730697632,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 29,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.19303099811077118,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.000000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.93333297967910767,
+				"track": 5,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-60.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.27166035771369934,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.26913538575172424,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.93333339691162109,
+				"track": 14,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.19607800245285034,
+				"duration": 0.45514601469039917,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.20348620414733887,
+				"duration": 0.23103463649749756,
+				"track": 4,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.22331100702285767,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Air_02"
+				}
+			},
+			{
+				"time": 0.22756899893283844,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack02_0"
+				}
+			},
+			{
+				"time": 0.26521798968315125,
+				"duration": 0,
+				"track": 8,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "23.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.2707018256187439,
+				"duration": 0.08129650354385376,
+				"track": 9,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.32197529077529907,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.53188198804855347,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.65833598375320435,
+				"duration": 0.17914098501205444,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			}
+		],
+		"hits": [ 0.2707018256187439 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ03_0",
+		"class": "AnimSequence",
+		"length": 1,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 31,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.19303099811077118,
+				"track": 4,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.000000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 6,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.39116162061691284,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.38980898261070251,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 16,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.16290600597858429,
+				"duration": 0.43791800737380981,
+				"track": 5,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.19607800245285034,
+				"duration": 0.45514601469039917,
+				"track": 4,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.22978900372982025,
+				"duration": 0,
+				"track": 1,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Air_03"
+				}
+			},
+			{
+				"time": 0.23574300110340118,
+				"duration": 0,
+				"track": 2,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0000_00_Cloud.SE_PC0000_00_Cloud",
+					"SoundName": "B_Avoid_Common"
+				}
+			},
+			{
+				"time": 0.2845819890499115,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack05_0"
+				}
+			},
+			{
+				"time": 0.40701600909233093,
+				"duration": 0.14688798785209656,
+				"track": 10,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.44258901476860046,
+				"duration": 0,
+				"track": 9,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.350000"
+				}
+			},
+			{
+				"time": 0.53645926713943481,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=10),(Number=40),(Number=50),(Number=60),(Number=70),(Number=80),(Number=90),(Number=5),(Number=3))"
+				}
+			},
+			{
+				"time": 0.65833598375320435,
+				"duration": 0.17914098501205444,
+				"track": 4,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.7666667103767395,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.83333337306976318,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.40701600909233093 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ04_0",
+		"class": "AnimSequence",
+		"length": 1.4666666984558105,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 45,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1.4666666984558105,
+				"track": 16,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "74.857147"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.38517698645591736,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.36666667461395264,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.4666666984558105,
+				"track": 14,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.19303098320960999,
+				"track": 17,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.000000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.091845996677875519,
+				"duration": 0.95505297183990479,
+				"track": 4,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.095872998237609863,
+				"duration": 0.53028202056884766,
+				"track": 3,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_ChargeAttack_Weapon_01.FX_PC0000_ChargeAttack_Weapon_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.20682460069656372,
+				"duration": 0.85369867086410522,
+				"track": 17,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.36094900965690613,
+				"duration": 0.48724403977394104,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0000_Cloud/Particle/FX_PC0000_SAttack_Slash_01.FX_PC0000_SAttack_Slash_01,m_UserParams=((m_Variable=(VarData=(170,170,58,63,47,41,114,63,0,0,128,63,0,0,128,63),Name=\"ParticleEmitColorTop\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(185,114,158,62,0,0,128,63,57,37,44,63,0,0,128,63),CurrentMode=Bytes)),(m_Variable=(VarData=(0,0,184,62,100,27,203,62,0,0,128,63,0,0,128,63),Name=\"ParticleEmitColorBottom\",TypeDefHandle=(RegisteredTypeIndex=-1)),m_Variant=(Bytes=(0,0,0,0,0,0,128,63,162,180,11,63,0,0,128,63),CurrentMode="
+				}
+			},
+			{
+				"time": 0.36408525705337524,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0000_00_Cloud.SE_PC0000_00_Cloud",
+					"SoundName": "SE_PC0000_ChargeAttack_Bullet_01"
+				}
+			},
+			{
+				"time": 0.39145201444625854,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayWeaponSound",
+				"class": "EndAnimNotifyPlayWeaponSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Weapon/SE_WE0000_00_BusterSword.SE_WE0000_00_BusterSword",
+					"SoundName": "se_B_NAttack01_0"
+				}
+			},
+			{
+				"time": 0.39189499616622925,
+				"duration": 0.1979910135269165,
+				"track": 8,
+				"name": "End BattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.40238499641418457,
+				"duration": 0,
+				"track": 7,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.50842702388763428,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleDamage",
+				"class": "EndAnimNotifyBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_02\")"
+				}
+			},
+			{
+				"time": 0.66666668653488159,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.66666668653488159,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.0121946334838867,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.063173770904541,
+				"duration": 0.17914104461669922,
+				"track": 17,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Angry01",
+					"BlendInTime": "0.100000"
+				}
+			}
+		],
+		"hits": [ 0.39189499616622925, 0.50842702388763428 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ05_0",
+		"class": "AnimSequence",
+		"length": 0.23333333432674408,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 8,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.23333333432674408,
+				"track": 2,
+				"name": "EndAnimNotifyStateOverrideCameraParams",
+				"class": "EndAnimNotifyStateOverrideCameraParams",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.23333333432674408,
+				"track": 4,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.23333334922790527,
+				"track": 6,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.066666319966316223,
+				"duration": 0.16666699945926666,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.086095146834850311,
+				"duration": 0.14723819494247437,
+				"track": 7,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0.20000001788139343,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud",
+					"SoundName": "Atk_Move_01",
+					"AttachPointName": "C_Head_a"
+				}
+			},
+			{
+				"time": 0.20000001788139343,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyBattleAbilityLoopMoveStart",
+				"class": "EndAnimNotifyBattleAbilityLoopMoveStart",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ05_1",
+		"class": "AnimSequence",
+		"length": 0.1666666716337204,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+		"frames": 6,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": true,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.1666666567325592,
+				"track": 3,
+				"name": "End Emotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000",
+					"BlendOutTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.1666666716337204,
+				"track": 0,
+				"name": "End PlayCharacterSound(State)[ SE_PC0000_00_Cloud :(se_cloud_far_atk_move) ]",
+				"class": "EndAnimNotifyStatePlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0000_00_Cloud.SE_PC0000_00_Cloud",
+					"SoundName": "se_cloud_far_atk_move",
+					"FadeOutDuration": "5.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.1666666716337204,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Resident/Particle/Common/FX_R_Common_WeaponTrail_01.FX_R_Common_WeaponTrail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.1666666716337204,
+				"track": 2,
+				"name": "EndAnimNotifyStateOverrideCameraParams",
+				"class": "EndAnimNotifyStateOverrideCameraParams",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"OverrideParameters": "(OverrideRotation=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),bOverrideFollowSpeed=True,OverrideFollowSpeed=8.000000)",
+					"BlendOutTime": "0.100000"
+				}
+			}
+		],
+		"hits": []
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0",
+		"class": "AnimSequence",
+		"length": 1.0666667222976685,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 33,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.14893284440040588,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Angle": "30.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.82301616668701172,
+				"track": 8,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.066666841506958,
+				"track": 15,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.58586359024047852,
+				"track": 12,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_2"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.0666667222976685,
+				"track": 14,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.057829491794109344,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.066725321114063263,
+				"duration": 0,
+				"track": 16,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_01"
+				}
+			},
+			{
+				"time": 0.0770760178565979,
+				"duration": 0.44113641977310181,
+				"track": 0,
+				"name": "SQEX_Bonamik_ScaleGroupParams",
+				"class": "SQEX_AnimNotifyState_Bonamik_ScaleGroupParams",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_Groups": "(\"CortC\",\"CortL\",\"CortR\")",
+					"m_InnerConeScale": "0.500000",
+					"m_OuterConeScale": "0.500000",
+					"m_LocalForceScale": "2.000000",
+					"m_GroupMassScale": "0.500000",
+					"m_ChangeActorCentrifugal": "True",
+					"m_GroupActorCentrifugalScale": "-1.000000",
+					"m_GroupActorImpulseScale": "2.000000",
+					"m_ChangeChainRootCentrifugal": "True",
+					"m_GroupChainRootCentrifugalScale": "-1.000000",
+					"m_GroupChainRootImpulseScale": "2.000000",
+					"m_GroupBodyRadiusScale": "2.000000"
+				}
+			},
+			{
+				"time": 0.083108380436897278,
+				"duration": 0.12668570876121521,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.083993829786777496,
+				"duration": 0.10991697758436203,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.084335297346115112,
+				"duration": 0.12490610778331757,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=120.000000),m_RotationOffset=(Pitch=180.000000,Yaw=0.000000,Roll=70.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.11520502716302872,
+				"duration": 0,
+				"track": 3,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.19544266164302826,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=1),(Number=10))"
+				}
+			},
+			{
+				"time": 0.23087449371814728,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.29549026489257812,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.56170719861984253,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.083993829786777496 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0",
+		"class": "AnimSequence",
+		"length": 1.3666666746139526,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 42,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.87682938575744629,
+				"track": 0,
+				"name": "SQEX_Bonamik_ScaleGroupParams",
+				"class": "SQEX_AnimNotifyState_Bonamik_ScaleGroupParams",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_Groups": "(\"CortC\",\"CortL\",\"CortR\")",
+					"m_ChangeInnerCone": "True",
+					"m_InnerConeScale": "0.200000",
+					"m_OuterConeScale": "0.500000",
+					"m_LocalForceScale": "2.000000",
+					"m_ChangeMassScale": "True",
+					"m_GroupMassScale": "0.500000",
+					"m_ChangeActorCentrifugal": "True",
+					"m_GroupActorCentrifugalScale": "-2.000000",
+					"m_GroupActorImpulseScale": "2.000000",
+					"m_ChangeChainRootCentrifugal": "True",
+					"m_GroupChainRootCentrifugalScale": "-2.000000",
+					"m_GroupChainRootImpulseScale": "2.000000",
+					"m_GroupBodyRadiusScale": "2.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.86561703681945801,
+				"track": 11,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_2"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.3666666746139526,
+				"track": 14,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.20665900409221649,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Angle": "30.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.93777376413345337,
+				"track": 9,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.3666667938232422,
+				"track": 13,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.10513406991958618,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.17867961525917053,
+				"duration": 0.12490600347518921,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=120.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=70.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.17910200357437134,
+				"duration": 0.1250702440738678,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.19192963838577271,
+				"duration": 0.089388102293014526,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.20431406795978546,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_02"
+				}
+			},
+			{
+				"time": 0.2275654673576355,
+				"duration": 0,
+				"track": 3,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "20.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.29039043188095093,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=1),(Number=10))"
+				}
+			},
+			{
+				"time": 0.3239561915397644,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.38687577843666077,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.68491595983505249,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.19192963838577271 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0",
+		"class": "AnimSequence",
+		"length": 1.1333333253860474,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 35,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.6600494384765625,
+				"track": 0,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.17459572851657867,
+				"track": 10,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Angle": "30.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.68838286399841309,
+				"track": 12,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_2"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.1333334445953369,
+				"track": 14,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.1333333253860474,
+				"track": 15,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "10.000000"
+				}
+			},
+			{
+				"time": 0.066530473530292511,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.15555907785892487,
+				"duration": 0.10167311131954193,
+				"track": 9,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.15871657431125641,
+				"duration": 0,
+				"track": 3,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.17158982157707214,
+				"duration": 0.086983263492584229,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.17177632451057434,
+				"duration": 0.12490600347518921,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=150.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=210.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.25817781686782837,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=1),(Number=10))"
+				}
+			},
+			{
+				"time": 0.30160060524940491,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.36888176202774048,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0.61329084634780884,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.15555907785892487 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0",
+		"class": "AnimSequence",
+		"length": 2.2666666507720947,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 69,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.54485189914703369,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Angle": "30.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 2.2666666507720947,
+				"track": 16,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.3429239988327026,
+				"track": 9,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1.2369459867477417,
+				"track": 12,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_8"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 2.2666668891906738,
+				"track": 15,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.003262616228312254,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0.073470249772071838,
+				"duration": 0.85782468318939209,
+				"track": 0,
+				"name": "SQEX_Bonamik_ScaleGroupParams",
+				"class": "SQEX_AnimNotifyState_Bonamik_ScaleGroupParams",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_ChangeInnerCone": "True",
+					"m_InnerConeScale": "0.500000",
+					"m_OuterConeScale": "0.500000",
+					"m_LocalForceScale": "2.000000",
+					"m_ChangeMassScale": "True",
+					"m_GroupMassScale": "0.500000",
+					"m_ChangeActorCentrifugal": "True",
+					"m_GroupActorCentrifugalScale": "-1.000000",
+					"m_GroupActorImpulseScale": "2.000000",
+					"m_ChangeChainRootCentrifugal": "True",
+					"m_GroupChainRootCentrifugalScale": "-1.000000",
+					"m_GroupChainRootImpulseScale": "2.000000",
+					"m_GroupBodyRadiusScale": "2.000000"
+				}
+			},
+			{
+				"time": 0.39124831557273865,
+				"duration": 0,
+				"track": 17,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_03"
+				}
+			},
+			{
+				"time": 0.45094257593154907,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL",
+					"AttachPointName": "L_Hand_a"
+				}
+			},
+			{
+				"time": 0.4886055588722229,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "B_NAttack04_0_swish",
+					"AttachPointName": "L_Hand_a"
+				}
+			},
+			{
+				"time": 0.50140106678009033,
+				"duration": 0.14013427495956421,
+				"track": 2,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.50730419158935547,
+				"duration": 0.13870292901992798,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=60.000000,Y=0.000000,Z=100.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=90.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.51639366149902344,
+				"duration": 0.11098015308380127,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.55287951231002808,
+				"duration": 0,
+				"track": 4,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.71802204847335815,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=108),(Number=10),(Number=40))"
+				}
+			},
+			{
+				"time": 0.89429521560668945,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleCancelGuard",
+				"class": "EndAnimNotifyBattleCancelGuard",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 1.1782485246658325,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 1.3223240375518799,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyBattleStateChange",
+				"class": "EndAnimNotifyBattleStateChange",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.51639366149902344 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack20_0",
+		"class": "AnimSequence",
+		"length": 1,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 31,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 0,
+				"name": "EndAnimNotifyCharacterFly",
+				"class": "EndAnimNotifyCharacterFly",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Layer": "EEndLayer_Battle"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.24092644453048706,
+				"track": 1,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.23940655589103699,
+				"track": 2,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "300.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.52834486961364746,
+				"track": 7,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 8,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 10,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.24244634807109833,
+				"duration": 0.13983048498630524,
+				"track": 4,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.274364173412323,
+				"duration": 0,
+				"track": 3,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "15.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.43333336710929871,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.83333301544189453,
+				"duration": 0,
+				"track": 9,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.24244634807109833 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ01_0",
+		"class": "AnimSequence",
+		"length": 0.83333331346511841,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 26,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.83333331346511841,
+				"track": 14,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.42136925458908081,
+				"track": 3,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.83333331346511841,
+				"track": 5,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_9"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.1680632084608078,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.16628308594226837,
+				"track": 9,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.83333337306976318,
+				"track": 13,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.055822495371103287,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.10532218962907791,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_01"
+				}
+			},
+			{
+				"time": 0.10786592215299606,
+				"duration": 0.12490601092576981,
+				"track": 0,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=160.000000),m_RotationOffset=(Pitch=30.000000,Yaw=60.000000,Roll=-90.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.11906421929597855,
+				"duration": 0.072067491710186005,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.12708792090415955,
+				"duration": 0.12894836068153381,
+				"track": 7,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.13198685646057129,
+				"duration": 0,
+				"track": 2,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.25103878974914551,
+				"duration": 0,
+				"track": 6,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.60381513833999634,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.12708792090415955 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ02_0",
+		"class": "AnimSequence",
+		"length": 1,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 31,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 14,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 4,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_9"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.44186210632324219,
+				"track": 7,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.13385231792926788,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.1338377445936203,
+				"track": 9,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 10,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 11,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 1,
+				"track": 13,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.069195926189422607,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.075316861271858215,
+				"duration": 0.13840445876121521,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.086436018347740173,
+				"duration": 0.12490600347518921,
+				"track": 0,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=120.000000),m_RotationOffset=(Pitch=20.000000,Yaw=60.000000,Roll=85.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.10002702474594116,
+				"duration": 0.074944779276847839,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.10932039469480515,
+				"duration": 0,
+				"track": 2,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.300000"
+				}
+			},
+			{
+				"time": 0.1164817288517952,
+				"duration": 0,
+				"track": 15,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_02"
+				}
+			},
+			{
+				"time": 0.21666291356086731,
+				"duration": 0,
+				"track": 5,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "(())"
+				}
+			},
+			{
+				"time": 0.63747811317443848,
+				"duration": 0,
+				"track": 3,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.075316861271858215 ]
+	},
+	{
+		"path": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ03_0",
+		"class": "AnimSequence",
+		"length": 0.86666667461395264,
+		"rate_scale": 1,
+		"skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+		"frames": 27,
+		"root_motion": false,
+		"root_lock": 0,
+		"force_root_lock": false,
+		"additive": false,
+		"notifies": [
+			{
+				"time": 0,
+				"duration": 0.86666667461395264,
+				"track": 16,
+				"name": "End Override Attack Direction",
+				"class": "AnimNotify_EndOverrideAttackDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Yaw": "-70.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.59000134468078613,
+				"track": 3,
+				"name": "EndEmotion",
+				"class": "AnimNotify_EndEmotion",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Emotion": "F_Attack01",
+					"BlendInTime": "0.100000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.78715395927429199,
+				"track": 6,
+				"name": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"class": "EndAnimNotifyStateBattleSetDerivedAbilityID",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"DerivedAbilityID": "PC0010_SAtk_9"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.30000001192092896,
+				"track": 10,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionDirection",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.30000001192092896,
+				"track": 11,
+				"name": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"class": "EndAnimNotifyStateBattleTargetCorrectionHeight",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Speed": "100.000000"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 12,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=20),(Number=30),(Number=60))"
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0,
+				"track": 13,
+				"name": "EndAnimNotifyBattleCancelDodge",
+				"class": "EndAnimNotifyBattleCancelDodge",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			},
+			{
+				"time": 0,
+				"duration": 0.86666673421859741,
+				"track": 15,
+				"name": "End Modify LookAt",
+				"class": "AnimNotify_EndModifyLookAt",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"ModifierType": "AutoDisableLookAt"
+				}
+			},
+			{
+				"time": 0.10748840868473053,
+				"duration": 0,
+				"track": 14,
+				"name": "EndAnimNotifyPlayCharacterSound",
+				"class": "EndAnimNotifyPlayCharacterSound",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/SE/Character/Player/SE_PC0010_00_Sephiroth_Standard.SE_PC0010_00_Sephiroth_Standard",
+					"SoundName": "sword_swishL"
+				}
+			},
+			{
+				"time": 0.2993425726890564,
+				"duration": 0,
+				"track": 17,
+				"name": "EndAnimNotifyPlayVoice",
+				"class": "EndAnimNotifyPlayVoice",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"SoundRef": "/Game/Sound/Voice/JP/Character/Player/VO_PC0010_00_Sephiroth.VO_PC0010_00_Sephiroth",
+					"SoundName": "Atk_Normal_03"
+				}
+			},
+			{
+				"time": 0.3181687593460083,
+				"duration": 0.073025733232498169,
+				"track": 1,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Trail_01.FX_PC0010_Weapon_Trail_01),m_SocketName=\"C_TrailA_b\",m_LocationOffset=(X=0.000000,Y=0.000000,Z=0.000000),m_RotationOffset=(Pitch=0.000000,Yaw=0.000000,Roll=0.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))",
+					"m_AttachType": "Weapon1"
+				}
+			},
+			{
+				"time": 0.32483509182929993,
+				"duration": 0.12490600347518921,
+				"track": 0,
+				"name": "EndTimedNiagaraEffect",
+				"class": "AnimNotifyState_EndTimedNiagaraEffect",
+				"hit": false,
+				"motion": true,
+				"settings":
+				{
+					"m_NiagaraCreateParams": "(m_NiagaraParameterInfo=(m_Template=/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Weapon_Slash_01.FX_PC0010_Weapon_Slash_01),m_SocketName=\"Trans\",m_LocationOffset=(X=40.000000,Y=0.000000,Z=100.000000),m_RotationOffset=(Pitch=0.000000,Yaw=180.000000,Roll=90.000000),m_Scale=(X=0.000000,Y=0.000000,Z=0.000000))"
+				}
+			},
+			{
+				"time": 0.33037850260734558,
+				"duration": 0.078976541757583618,
+				"track": 8,
+				"name": "EndAnimNotifyStateBattleDamage",
+				"class": "EndAnimNotifyStateBattleDamage",
+				"hit": true,
+				"motion": false,
+				"settings":
+				{
+					"DamageSourceIDs": "(\"?_01\")"
+				}
+			},
+			{
+				"time": 0.35475084185600281,
+				"duration": 0,
+				"track": 2,
+				"name": "EndBattleCameraShakeNotify",
+				"class": "EndBattleCameraShakeNotify",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"Cycle": "100.000000",
+					"Power": "25.000000",
+					"BlendOutTime": "1.000000",
+					"Duration": "0.450000"
+				}
+			},
+			{
+				"time": 0.47601035237312317,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=109))"
+				}
+			},
+			{
+				"time": 0.64025336503982544,
+				"duration": 0,
+				"track": 7,
+				"name": "EndAnimNotifyBattleAbilityCancel",
+				"class": "EndAnimNotifyBattleAbilityCancel",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+					"NewProperty": "True",
+					"CancelParameters": "((Number=10))"
+				}
+			},
+			{
+				"time": 0.79036557674407959,
+				"duration": 0,
+				"track": 4,
+				"name": "EndAnimNotifyCharacterFall",
+				"class": "EndAnimNotifyCharacterFall",
+				"hit": false,
+				"motion": false,
+				"settings":
+				{
+				}
+			}
+		],
+		"hits": [ 0.33037850260734558 ]
+	}
+]

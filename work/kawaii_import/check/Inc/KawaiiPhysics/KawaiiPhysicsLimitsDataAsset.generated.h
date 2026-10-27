@@ -1,0 +1,102 @@
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef KAWAIIPHYSICS_KawaiiPhysicsLimitsDataAsset_generated_h
+#error "already included"
+#endif
+#define KAWAIIPHYSICS_KawaiiPhysicsLimitsDataAsset_generated_h
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_16_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FCollisionLimitDataBase_Statics; \
+	static class UScriptStruct* StaticStruct();
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FCollisionLimitDataBase>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_67_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FSphericalLimitData_Statics; \
+	static class UScriptStruct* StaticStruct(); \
+	typedef FCollisionLimitDataBase Super;
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FSphericalLimitData>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_98_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FCapsuleLimitData_Statics; \
+	static class UScriptStruct* StaticStruct(); \
+	typedef FCollisionLimitDataBase Super;
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FCapsuleLimitData>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_127_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FTaperedCapsuleLimitData_Statics; \
+	static class UScriptStruct* StaticStruct(); \
+	typedef FCollisionLimitDataBase Super;
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FTaperedCapsuleLimitData>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_160_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FBoxLimitData_Statics; \
+	static class UScriptStruct* StaticStruct(); \
+	typedef FCollisionLimitDataBase Super;
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FBoxLimitData>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_183_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FPlanarLimitData_Statics; \
+	static class UScriptStruct* StaticStruct(); \
+	typedef FCollisionLimitDataBase Super;
+
+template<> KAWAIIPHYSICS_API UScriptStruct* StaticStruct<struct FPlanarLimitData>();
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_SPARSE_DATA
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_RPC_WRAPPERS \
+
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_RPC_WRAPPERS_NO_PURE_DECLS \
+
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUKawaiiPhysicsLimitsDataAsset(); \
+	friend struct Z_Construct_UClass_UKawaiiPhysicsLimitsDataAsset_Statics; \
+public: \
+	DECLARE_CLASS(UKawaiiPhysicsLimitsDataAsset, UDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICS"), NO_API) \
+	DECLARE_SERIALIZER(UKawaiiPhysicsLimitsDataAsset)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_INCLASS \
+private: \
+	static void StaticRegisterNativesUKawaiiPhysicsLimitsDataAsset(); \
+	friend struct Z_Construct_UClass_UKawaiiPhysicsLimitsDataAsset_Statics; \
+public: \
+	DECLARE_CLASS(UKawaiiPhysicsLimitsDataAsset, UDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/KAWAIIPHYSICS"), NO_API) \
+	DECLARE_SERIALIZER(UKawaiiPhysicsLimitsDataAsset)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_STANDARD_CONSTRUCTORS \
+	NO_API UKawaiiPhysicsLimitsDataAsset(const FObjectInitializer& ObjectInitializer); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UKawaiiPhysicsLimitsDataAsset) \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UKawaiiPhysicsLimitsDataAsset); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UKawaiiPhysicsLimitsDataAsset); \
+private: \
+	NO_API UKawaiiPhysicsLimitsDataAsset(UKawaiiPhysicsLimitsDataAsset&&); \
+	NO_API UKawaiiPhysicsLimitsDataAsset(const UKawaiiPhysicsLimitsDataAsset&); \
+public:
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_ENHANCED_CONSTRUCTORS \
+	NO_API UKawaiiPhysicsLimitsDataAsset(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+private: \
+	NO_API UKawaiiPhysicsLimitsDataAsset(UKawaiiPhysicsLimitsDataAsset&&); \
+	NO_API UKawaiiPhysicsLimitsDataAsset(const UKawaiiPhysicsLimitsDataAsset&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UKawaiiPhysicsLimitsDataAsset); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UKawaiiPhysicsLimitsDataAsset); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UKawaiiPhysicsLimitsDataAsset)
+
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_PRIVATE_PROPERTY_OFFSET
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_208_PROLOG
+#define FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_PRIVATE_PROPERTY_OFFSET \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_SPARSE_DATA \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_RPC_WRAPPERS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_INCLASS_NO_PURE_DECLS \
+	FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h_211_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+template<> KAWAIIPHYSICS_API UClass* StaticClass<class UKawaiiPhysicsLimitsDataAsset>();
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID FF7R2UProj_Plugins_KawaiiPhysics_Source_KawaiiPhysics_Public_KawaiiPhysicsLimitsDataAsset_h
+PRAGMA_ENABLE_DEPRECATION_WARNINGS

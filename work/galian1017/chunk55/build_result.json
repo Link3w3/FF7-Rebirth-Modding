@@ -1,0 +1,58 @@
+{
+ "steps": [
+  "run",
+  "scanned",
+  "chunk",
+  "sources",
+  "data_object",
+  "row",
+  "forms",
+  "built_now",
+  "skeletons",
+  "edits",
+  "effect_parameters",
+  "compression",
+  "failed",
+  "build",
+  "checked",
+  "root_motion",
+  "export_json",
+  "validate",
+  "compat_file",
+  "done"
+ ],
+ "run": "run 1 with the plugin 1.12.4: 0 move(s) built before, 0 left out (they stopped the editor)",
+ "scanned": [
+  "/Game/Motion/Enemy/EB2160_VincentValentine",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat",
+  "/Game/Character/Enemy/EB2160_00_VincentValentine_Standard",
+  "/Game/Animation/CompressionSettings"
+ ],
+ "chunk": "pakchunk55: no other data object builds into it",
+ "sources": "441 of 441 described",
+ "data_object": "created /Game/RebirthSkelCompat/VincentGalian/DO_VincentGalian",
+ "row": "732 moves (385 to build, 347 the beast's own or the built ones as they are)",
+ "forms": [
+  "NORMAL (its own)",
+  "GALIAN (Battle07)",
+  "GALIAN PUNISHER (Battle08)"
+ ],
+ "built_now": "385 move(s) in 56 s",
+ "skeletons": {
+  "/Game/Character/Enemy/EB2160_00_VincentValentine_Standard/Model/EB2160_00_Skeleton.EB2160_00_Skeleton": 385
+ },
+ "edits": "385 move(s): 188 voice line(s) out, 158 effect check(s) off, 0 with problems",
+ "effect_parameters": "4 move(s) with effect parameters left out (the plugin 1.12.4; they play with their own values)",
+ "compression": {
+  "ACL QuatDropW_Variable": 385
+ },
+ "failed": [],
+ "build": "385 of 385 built",
+ "checked": "385 package(s), all load back",
+ "root_motion": "103 move(s) sampled; differs: Battle07/B_WalkB01_1 (320 cm, 160 wanted), Battle07/B_WalkBL01_1 (340 cm, 170 wanted), Battle07/B_WalkBR01_1 (340 cm, 170 wanted), Battle07/B_WalkFL01_1 (351 cm, 176 wanted), Battle07/B_WalkFR01_1 (340 cm, 170 wanted), Battle07/B_WalkL01_1 (340 cm, 170 wanted), Battle07/B_WalkR01_1 (340 cm, 170 wanted)",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: OK",
+ "compat_file": "C:/FF7R2UProj/Saved/RebirthSkelCompat\\DO_VincentGalian.skelcompat.json",
+ "done": true
+}

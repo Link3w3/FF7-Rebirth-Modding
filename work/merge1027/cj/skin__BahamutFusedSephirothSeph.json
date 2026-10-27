@@ -1,0 +1,418 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "name": "Bahamut Fused Sephiroth",
+ "author": "",
+ "description": "Bahamut Fused Sephiroth: FFXV Bahamut's armour, helmet, mantles, blade wings and tail on Rebirth Sephiroth's bones (his own proportions kept), Rebirth Sephiroth's face inside the helmet and PC0010_10's hair coming out of it; KawaiiPhysics for his tail, mantles, blade wings and hair (Sephiroth).",
+ "characters": [
+  "PC0010_00_Sephiroth_Standard",
+  "PC0010_10_Sephiroth_Transform"
+ ],
+ "model": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat.PC0010_17_Compat",
+ "skeleton": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat_Skeleton.PC0010_17_Compat_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "proportions": true,
+ "proportion_bones": [],
+ "voice": "",
+ "weapon": "/Game/BluePrint/Character/Weapon/WE1021_17_Sword_Of_Light/WE1021_10_SephirothIllusion_MasamuneCutScale.WE1021_10_SephirothIllusion_MasamuneCutScale_C",
+ "anim_blueprint": "",
+ "meshes": [],
+ "worn": false,
+ "enabled": true,
+ "preview": "",
+ "packages": [
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat.uasset",
+   "size": 25874291,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 22,
+   "imports": [
+    "91cfafca3324cf28",
+    "49ad6c58ecbdb808",
+    "2cccc75f20ab8c79",
+    "f0ee9e11f0ea5cf4",
+    "27cafccda81972d3",
+    "057fae236f081199",
+    "79cd1006e216278a",
+    "6ff0ed52fc9bdab4",
+    "7054a22580b1f403",
+    "36687d1fdc5aac22",
+    "9bd42f7b764ea904",
+    "ed63ae0ceb18132a"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat_Skeleton",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat_Skeleton.uasset",
+   "size": 99775,
+   "export_count": 51,
+   "export_bundle_count": 1,
+   "load_order": 2,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/BluePrint/Character/Weapon/WE1021_17_Sword_Of_Light/WE1021_10_SephirothIllusion_MasamuneCutScale",
+   "file": "Content/BluePrint/Character/Weapon/WE1021_17_Sword_Of_Light/WE1021_10_SephirothIllusion_MasamuneCutScale.uasset",
+   "size": 2453,
+   "export_count": 6,
+   "export_bundle_count": 1,
+   "load_order": 18,
+   "imports": [
+    "2459dd6c5e157181"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17",
+   "file": "Content/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17.uasset",
+   "size": 374917,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 17,
+   "imports": [
+    "7054a22580b1f403",
+    "149c9d609237c501",
+    "aa63710fc7a0a1e4",
+    "fd14818f2a828a99"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17_Skeleton",
+   "file": "Content/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17_Skeleton.uasset",
+   "size": 5426,
+   "export_count": 14,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17_PhysicsAsset",
+   "file": "Content/Character/Weapon/WE1021_17_Sword_Of_Light/Model/WE1021_17_PhysicsAsset.uasset",
+   "size": 2102,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 6,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_BladeWings_Inst",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_BladeWings_Inst.uasset",
+   "size": 6355,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 16,
+   "imports": [
+    "86b41052bff55069",
+    "648a61bdeed6a1e0",
+    "518072b5fadf5a6d",
+    "38a4ea59f8527357",
+    "f30d8a783dbf0b73",
+    "9067c5e0e3a6149a",
+    "4663c077608fff8e",
+    "397c2394cdbb198b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_n",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_n.uasset",
+   "size": 3013,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 12,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_n.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_mm1",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_mm1.uasset",
+   "size": 2734,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 7,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_mm1.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_b",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_b.uasset",
+   "size": 2006,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_b.ubulk",
+     "type": 3
+    },
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_01_b.uptnl",
+     "type": 4
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_O",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_O.uasset",
+   "size": 4152,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 14,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_O.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mr",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mr.uasset",
+   "size": 2108,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 11,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mg",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mg.uasset",
+   "size": 2108,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 9,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_BladeWings_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_Body_Inst",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_Body_Inst.uasset",
+   "size": 5857,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 21,
+   "imports": [
+    "86b41052bff55069",
+    "625ef32fff60b8cd",
+    "df0ff6814a589d7e",
+    "38a4ea59f8527357",
+    "0e6e4f0198113cd4",
+    "147bc97e38f88b4c",
+    "4c7f1cd8e0783f0b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_Mantle_Inst",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Material/PC0010_17_Mantle_Inst.uasset",
+   "size": 5865,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 15,
+   "imports": [
+    "86b41052bff55069",
+    "e96ba545e9cd9ddb",
+    "7c35e02062c48530",
+    "38a4ea59f8527357",
+    "3fc9027d7353d75f",
+    "d92e27a6436c4d75",
+    "4c7f1cd8e0783f0b",
+    "6eef47e9a1c1c5f4",
+    "440ba196887be5a0",
+    "3846ff49d6bc87ec",
+    "648ebd6804c748ae",
+    "4b9f4d7121bbaf12",
+    "30c2027b8f33a9b6",
+    "667c351e12fb1172",
+    "d25aef51c0d6fd45",
+    "981dded1ecc8182f",
+    "ab41e577fbb6ad6a",
+    "272e75c4d874eae3",
+    "152c05502bb0c203",
+    "aa92f52e121f2c78"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mg",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mg.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 10,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mr",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mr.uasset",
+   "size": 4168,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 4,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Body_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mg",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mg.uasset",
+   "size": 2808,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mg.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mr",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mr.uasset",
+   "size": 2808,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 8,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/PC0010_17_Mantle_Mr.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_b",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_b.uasset",
+   "size": 4002,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 20,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_b.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_n",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_n.uasset",
+   "size": 7005,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 19,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_00_n.ubulk",
+     "type": 3
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_b",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_b.uasset",
+   "size": 2678,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 13,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_b.ubulk",
+     "type": 3
+    },
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_b.uptnl",
+     "type": 4
+    }
+   ]
+  },
+  {
+   "package": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_n",
+   "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_n.uasset",
+   "size": 4357,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 5,
+   "imports": [],
+   "bulk": [
+    {
+     "file": "Content/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Texture/sm04_000_bahamut_02_n.ubulk",
+     "type": 3
+    }
+   ]
+  }
+ ],
+ "built": "2026-10-26T15:01:18Z",
+ "built_with": "Create a Character System editor 1.20.1"
+}

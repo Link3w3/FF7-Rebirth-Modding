@@ -1,0 +1,23 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0011_10_Chaos/Model/VincentChaos.VincentChaos",
+	"_about": "Create a Character System: Chaos's model (PC0011_10, VincentChaos_P) in the Cloud family, so Vincent's CHAOS form wears it with Cloud's AnimBlueprint and Vincent's moves",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0011_10_Chaos/Model/PC0011_10_Skeleton.PC0011_10_Skeleton"
+			],
+			"method": "family",
+			"hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"requires_paks": [
+				"VincentChaos_P"
+			],
+			"fix_hierarchy": true,
+			"repair_live_components": true,
+			"carry_sockets": true,
+			"proportions": true,
+			"enabled": true
+		}
+	]
+}

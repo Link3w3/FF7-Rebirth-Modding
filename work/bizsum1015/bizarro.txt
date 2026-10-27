@@ -1,0 +1,216 @@
+Battle00/B_AtkAngel01_0.B_AtkAngel01_0                         AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkAngel01_1.B_AtkAngel01_1                         AnimSequence  len  1.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkAngel01_2.B_AtkAngel01_2                         AnimSequence  len  3.667 rm False lock 0 hits [0.71] dmg [0.71]
+      {'EndBattleAIMessageNotify': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkBindBall01_0.B_AtkBindBall01_0                   AnimSequence  len  0.833 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyBattleAddSpecialStatusChange': 1}
+Battle00/B_AtkBindBall01_1.B_AtkBindBall01_1                   AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStatePlayCharacterSound': 1}
+Battle00/B_AtkBindBall01_2.B_AtkBindBall01_2                   AnimSequence  len  3.000 rm False lock 0 hits [1.004] dmg [1.004]
+      {'EndBattleAIMessageNotify': 1, 'EndAnimNotifyBattleDamage': 1}
+Battle00/B_AtkBindBall01_3.B_AtkBindBall01_3                   AnimSequence  len  5.167 rm False lock 0 hits [2.328] dmg [2.328]
+      {'EndAnimNotifyBattleDamage': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkBodyExplode01.B_AtkBodyExplode01                 AnimSequence  len  4.833 rm False lock 0 hits [2.122] dmg [2.122]
+      {'AnimNotify_EndAIPlayerStartAbilityGuard': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIPlayerCancelAbilityGuard': 1, 'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkCoreFeeler01_0.B_AtkCoreFeeler01_0               AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkCoreFeeler01_1.B_AtkCoreFeeler01_1               AnimSequence  len  2.000 rm False lock 0 hits [0, 0.168, 0.336, 0.5, 0.668, 0.834, 1.001, 1.168, 1.333, 1.504, 1.665, 1.837] dmg [0, 0.168, 0.336, 0.5, 0.668, 0.834, 1.001, 1.168, 1.333, 1.504, 1.665, 1.837]
+      {'EndAnimNotifyStatePlayCharacterSound': 1, 'EndAnimNotifyBattleDamage': 12, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkCoreFeeler01_2.B_AtkCoreFeeler01_2               AnimSequence  len  3.333 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkEnergyChargeL01_0.B_AtkEnergyChargeL01_0         AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEnergyChargeL01_1.B_AtkEnergyChargeL01_1         AnimSequence  len  4.000 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifyStateBattleAbilityReaction': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEnergyChargeL01_2.B_AtkEnergyChargeL01_2         AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEnergyChargeR01_0.B_AtkEnergyChargeR01_0         AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEnergyChargeR01_1.B_AtkEnergyChargeR01_1         AnimSequence  len  4.000 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifyStateBattleAbilityReaction': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEnergyChargeR01_2.B_AtkEnergyChargeR01_2         AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkEyeMagic01_0.B_AtkEyeMagic01_0                   AnimSequence  len  1.000 rm False lock 0 hits [] dmg []
+      {'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyStateBattleSuperArmor': 1}
+Battle00/B_AtkEyeMagic01_1.B_AtkEyeMagic01_1                   AnimSequence  len  0.333 rm False lock 0 hits [] dmg []
+      {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleSuperArmor': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkEyeMagic01_2.B_AtkEyeMagic01_2                   AnimSequence  len  1.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkFeelerWingSmash01.B_AtkFeelerWingSmash01         AnimSequence  len  8.667 rm False lock 0 hits [4.115, 4.346, 4.527, 4.678, 4.829] dmg [4.115, 4.346, 4.527, 4.678, 4.829]
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 6, 'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifyBattleDamage': 4}
+Battle00/B_AtkGokumon01_0.B_AtkGokumon01_0                     AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'AnimNotify_EndModifyLookAt': 1, 'EndBattleAIMessageNotify': 2}
+Battle00/B_AtkGokumon01_1.B_AtkGokumon01_1                     AnimSequence  len  3.167 rm False lock 0 hits [0.504] dmg [0.504]
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagA01_0.B_AtkMagA01_0                           AnimSequence  len  1.000 rm False lock 0 hits [] dmg []
+Battle00/B_AtkMagA01_1.B_AtkMagA01_1                           AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+Battle00/B_AtkMagA01_2.B_AtkMagA01_2                           AnimSequence  len  0.433 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkMagA01_3.B_AtkMagA01_3                           AnimSequence  len  1.833 rm False lock 0 hits [0, 0.339, 0.669, 1.001, 1.335, 1.673] dmg [0, 0, 0.339, 0.669, 1.001, 1.335, 1.673]
+      {'EndBattleAIMessageNotify': 1, 'EndAnimNotifyBattleDamage': 7}
+Battle00/B_AtkMagA01_4.B_AtkMagA01_4                           AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+Battle00/B_AtkMagA02_2.B_AtkMagA02_2                           AnimSequence  len  0.433 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagA02_3.B_AtkMagA02_3                           AnimSequence  len  1.833 rm False lock 0 hits [0] dmg [0]
+      {'EndBattleAIMessageNotify': 1, 'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagA02_4.B_AtkMagA02_4                           AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB01_0.B_AtkMagB01_0                           AnimSequence  len  0.833 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB01_1.B_AtkMagB01_1                           AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB01_2.B_AtkMagB01_2                           AnimSequence  len  0.467 rm False lock 0 hits [] dmg []
+Battle00/B_AtkMagB01_3.B_AtkMagB01_3                           AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStateBattleAbilityReaction': 1}
+Battle00/B_AtkMagB01_4.B_AtkMagB01_4                           AnimSequence  len  1.500 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkMagB01_add.B_AtkMagB01_add                       AnimSequence  len  0.400 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyBattleDamage': 1}
+Battle00/B_AtkMagB02_2.B_AtkMagB02_2                           AnimSequence  len  0.467 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB02_3.B_AtkMagB02_3                           AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB02_4.B_AtkMagB02_4                           AnimSequence  len  1.500 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkMagB02_add.B_AtkMagB02_add                       AnimSequence  len  0.400 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyBattleDamage': 1}
+Battle00/B_AtkMouthMagic01_0.B_AtkMouthMagic01_0               AnimSequence  len  0.833 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkMouthMagic01_1.B_AtkMouthMagic01_1               AnimSequence  len  0.333 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkMouthMagic01_2.B_AtkMouthMagic01_2               AnimSequence  len  1.000 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkOmniSlash01_0.B_AtkOmniSlash01_0                 AnimSequence  len  1.500 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 2, 'AnimNotify_EndDisableAutoFacial': 1, 'AnimNotify_EndOverrideAdditiveDamage': 1}
+Battle00/B_AtkOmniSlash01_1.B_AtkOmniSlash01_1                 AnimSequence  len  1.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndOverrideAdditiveDamage': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkOmniSlash01_1_Add.B_AtkOmniSlash01_1_Add         AnimSequence  len  0.633 rm False lock 0 hits [] dmg []
+Battle00/B_AtkOmniSlash01_2.B_AtkOmniSlash01_2                 AnimSequence  len  5.567 rm False lock 0 hits [0.815, 1.13, 1.384, 1.522, 1.741, 2.083, 2.355, 3.178] dmg [0.815, 1.13, 1.384, 1.522, 1.741, 2.083, 2.355, 3.178]
+      {'EndBattleAIMessageNotify': 3, 'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyStateBattleDamage': 8}
+Battle00/B_AtkWindBlow01.B_AtkWindBlow01                       AnimSequence  len  5.500 rm False lock 0 hits [0, 1.628] dmg [0, 1.628]
+      {'EndAnimNotifyStateBattleDamage': 2, 'EndBattleAIMessageNotify': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00/B_AtkWingHeal01_0.B_AtkWingHeal01_0                   AnimSequence  len  2.000 rm False lock 0 hits [1.872] dmg [1.872]
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyBattleDamage': 1, 'EndBattleAIMessageNotify': 2}
+Battle00/B_AtkWingHeal01_1.B_AtkWingHeal01_1                   AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStateBattleAbilityReaction': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_AtkWingHeal01_2.B_AtkWingHeal01_2                   AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_AtkWingSmashL01.B_AtkWingSmashL01                   AnimSequence  len 10.000 rm False lock 0 hits [2.621] dmg [2.621]
+      {'EndBattleAIMessageNotify': 4, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00/B_AtkWingSmashR01.B_AtkWingSmashR01                   AnimSequence  len 10.000 rm False lock 0 hits [2.621] dmg [2.621]
+      {'EndBattleAIMessageNotify': 4, 'AnimNotifyState_EndAIBattleDangerObject': 2, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00/B_AtkZanShin01_0.B_AtkZanShin01_0                     AnimSequence  len  5.067 rm False lock 0 hits [1.928, 2.724] dmg [1.928, 2.724]
+      {'EndAnimNotifyStateBattleSuperArmor': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 2, 'EndAnimNotifyBattleDamage': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1, 'AnimNotify_EndModifyLookAt': 1}
+Battle00/B_AtkZanShin01_1.B_AtkZanShin01_1                     AnimSequence  len  3.100 rm False lock 0 hits [1.229] dmg [1.229]
+      {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyBattleDamage': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_Bangs01.B_Bangs01                                   AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle00/B_Die01_0.B_Die01_0                                   AnimComposite len  2.500 rm None  lock None hits [] dmg []
+     seg Battle00/B_DmgBurst01_0.B_DmgBurst01_0 start 0.000 [0.000-2.500] rate 1
+Battle00/B_Dmg01_Add.B_Dmg01_Add                               AnimSequence  len  0.667 rm False lock 0 hits [] dmg []
+Battle00/B_DmgBurst01_0.B_DmgBurst01_0                         AnimSequence  len  2.500 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyBattleSetInterruptAnimNameInBurst': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgBurst01_1.B_DmgBurst01_1                         AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 4, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgBurst01_2.B_DmgBurst01_2                         AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgBurst01_Add.B_DmgBurst01_Add                     AnimSequence  len  0.667 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgDownCore01_0.B_DmgDownCore01_0                   AnimSequence  len  3.500 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_DmgDownFace01_0.B_DmgDownFace01_0                   AnimSequence  len  2.667 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStateBattleSuperArmor': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'AnimNotify_EndAIBattlePhaseChange': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_DmgDownLeftWing01_0.B_DmgDownLeftWing01_0           AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 3}
+Battle00/B_DmgDownRightWing01_0.B_DmgDownRightWing01_0         AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 3}
+Battle00/B_DmgDownTopBody01_0.B_DmgDownTopBody01_0             AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgF01.B_DmgF01                                     AnimSequence  len  1.333 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgF03_0.B_DmgF03_0                                 AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgF03_1.B_DmgF03_1                                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgF03_2.B_DmgF03_2                                 AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgPhase1Down01_0.B_DmgPhase1Down01_0               AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 2}
+Battle00/B_DmgPhase1Down01_1.B_DmgPhase1Down01_1               AnimSequence  len 22.000 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStateBattleSuperArmor': 1, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00/B_DmgPhase1Down01_1_Larm.B_DmgPhase1Down01_1_Larm     AnimSequence  len 22.000 rm False lock 0 hits [] dmg []
+Battle00/B_DmgPhase1Down01_2.B_DmgPhase1Down01_2               AnimSequence  len  2.667 rm False lock 0 hits [] dmg []
+      {'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'EndBattleAIMessageNotify': 1}
+Battle00/B_Floor_Kao01.B_Floor_Kao01                           AnimSequence  len 10.000 rm False lock 0 hits [] dmg []
+      {'SQEX_AnimNotifyState_Bonamik_TemporaryCollision': 1}
+Battle00/B_Idle01_1.B_Idle01_1                                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle00/B_Idle02_1.B_Idle02_1                                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle00/B_P2FASyncAction01.B_P2FASyncAction01                 AnimSequence  len 10.667 rm False lock 0 hits [0] dmg [0]
+      {'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 4}
+Battle00/B_P2FASyncAction02.B_P2FASyncAction02                 AnimSequence  len 13.200 rm False lock 0 hits [0, 11.882] dmg [0, 11.882]
+      {'EndBattleAIMessageNotify': 4, 'EndAnimNotifyBattleDamage': 2, 'AnimNotify_EndDisableAutoFacial': 1}
+Battle00_Comp/B_AtkEyeMagic01_1_Comp_3.B_AtkEyeMagic01_1_Comp_3 AnimComposite len  5.000 rm None  lock None hits [0.021] dmg [0.021]
+     seg Battle00/B_AtkEyeMagic01_1.B_AtkEyeMagic01_1 start 0.000 [0.000-0.333] rate 1
+      {'AnimNotify_MoveActorTimeline': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00_Comp/B_AtkEyeMagic01_1_Comp_4.B_AtkEyeMagic01_1_Comp_4 AnimComposite len  5.000 rm None  lock None hits [0.021] dmg [0.021]
+     seg Battle00/B_AtkEyeMagic01_1.B_AtkEyeMagic01_1 start 0.000 [0.000-0.333] rate 1
+      {'AnimNotify_MoveActorTimeline': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00_Comp/B_AtkGokumonLong.B_AtkGokumonLong                AnimComposite len  6.167 rm None  lock None hits [] dmg []
+     seg Battle00/B_AtkGokumon01_0.B_AtkGokumon01_0 start 0.000 [0.000-3.000] rate 1
+     seg Battle00/B_AtkGokumon01_1.B_AtkGokumon01_1 start 3.000 [0.000-3.167] rate 1
+Battle00_Comp/B_AtkGokumonShort.B_AtkGokumonShort              AnimComposite len  5.472 rm None  lock None hits [] dmg []
+     seg Battle00/B_AtkGokumon01_0.B_AtkGokumon01_0 start 0.000 [0.000-2.305] rate 1
+     seg Battle00/B_AtkGokumon01_1.B_AtkGokumon01_1 start 2.305 [0.000-3.167] rate 1
+Battle00_Comp/B_DmgDownFace01_0_Comp.B_DmgDownFace01_0_Comp    AnimComposite len  2.667 rm None  lock None hits [] dmg []
+     seg Battle00/B_DmgDownFace01_0.B_DmgDownFace01_0 start 0.000 [0.000-2.667] rate 1
+      {'AnimNotify_EndAIBattlePhaseChange': 1, 'EndBattleAIMessageNotify': 1}
+Battle01/B_AtkMagC01_0.B_AtkMagC01_0                           AnimSequence  len  1.167 rm False lock 0 hits [] dmg []
+Battle01/B_AtkMagC01_1.B_AtkMagC01_1                           AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle01/B_AtkMagC01_2.B_AtkMagC01_2                           AnimSequence  len  2.667 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 1}
+Battle01/B_AtkStigma01_0.B_AtkStigma01_0                       AnimSequence  len  3.167 rm False lock 0 hits [] dmg []
+      {'AnimNotifyState_EndAIBattleDangerObject': 2}
+Battle01/B_AtkStigma01_1.B_AtkStigma01_1                       AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+Battle01/B_AtkStigma01_2.B_AtkStigma01_2                       AnimSequence  len  3.167 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingMagic01_0.B_AtkWingMagic01_0                 AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingMagic01_1.B_AtkWingMagic01_1                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingMagic01_2.B_AtkWingMagic01_2                 AnimSequence  len  0.667 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingMagic01_3.B_AtkWingMagic01_3                 AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingMagic01_4.B_AtkWingMagic01_4                 AnimSequence  len  2.333 rm False lock 0 hits [] dmg []
+Battle01/B_AtkWingSwingL01.B_AtkWingSwingL01                   AnimSequence  len  5.333 rm False lock 0 hits [1.923] dmg [1.923]
+      {'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotify_EndAIPlayerStartAbilityGuard': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIPlayerCancelAbilityGuard': 1}
+Battle01/B_AtkWingSwingR01.B_AtkWingSwingR01                   AnimSequence  len  5.333 rm False lock 0 hits [1.923] dmg [1.923]
+      {'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotify_EndAIPlayerStartAbilityGuard': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIPlayerCancelAbilityGuard': 1}
+Battle01/B_Dmg01_Add.B_Dmg01_Add                               AnimSequence  len  0.667 rm False lock 0 hits [] dmg []
+Battle01/B_DmgDownCore01_0.B_DmgDownCore01_0                   AnimSequence  len 10.167 rm False lock 0 hits [] dmg []
+      {'EndBattleAIMessageNotify': 3, 'AnimNotify_EndDisableAutoFacial': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1}
+Battle01/B_DmgDownLeftWing01_0.B_DmgDownLeftWing01_0           AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 1}
+Battle01/B_DmgDownRightWing01_0.B_DmgDownRightWing01_0         AnimSequence  len  3.000 rm False lock 0 hits [] dmg []
+      {'AnimNotify_EndDisableAutoFacial': 1, 'EndBattleAIMessageNotify': 1}
+Battle01/B_DmgF01.B_DmgF01                                     AnimSequence  len  1.333 rm False lock 0 hits [] dmg []
+Battle01/B_DmgF03_0.B_DmgF03_0                                 AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+Battle01/B_DmgF03_1.B_DmgF03_1                                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle01/B_DmgF03_2.B_DmgF03_2                                 AnimSequence  len  2.000 rm False lock 0 hits [] dmg []
+Battle01/B_Idle01_1.B_Idle01_1                                 AnimSequence  len  4.000 rm False lock 0 hits [] dmg []
+Battle01_Comp/B_AtkStigma01_1_Comp.B_AtkStigma01_1_Comp        AnimComposite len  4.000 rm None  lock None hits [0] dmg [0, 0]
+     seg Battle01/B_AtkStigma01_1.B_AtkStigma01_1 start 0.000 [0.000-2.000] rate 1
+     seg Battle01/B_AtkStigma01_1.B_AtkStigma01_1 start 2.000 [0.000-2.000] rate 1
+      {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleDamage': 2, 'AnimNotify_MoveActorTimeline': 1}
+Battle01_Comp/B_AtkWingMagic01_3_Comp1.B_AtkWingMagic01_3_Comp1 AnimComposite len  5.000 rm None  lock None hits [] dmg []
+     seg Battle01/B_AtkWingMagic01_3.B_AtkWingMagic01_3 start 0.000 [0.000-5.000] rate 1
+      {'EndBattleAIMessageNotify': 2}
+Battle01_Comp/B_AtkWingMagic01_3_Comp2.B_AtkWingMagic01_3_Comp2 AnimComposite len  4.000 rm None  lock None hits [] dmg []
+     seg Battle01/B_AtkWingMagic01_3.B_AtkWingMagic01_3 start 0.000 [0.000-4.000] rate 1
+      {'EndBattleAIMessageNotify': 2}
+Battle01_Comp/B_AtkWingMagic01_3_Comp3.B_AtkWingMagic01_3_Comp3 AnimComposite len  8.000 rm None  lock None hits [] dmg []
+     seg Battle01/B_AtkWingMagic01_3.B_AtkWingMagic01_3 start 0.000 [0.000-8.000] rate 1
+      {'EndBattleAIMessageNotify': 1}
+Battle01_Comp/B_AtkWingMagic01_3_Comp4.B_AtkWingMagic01_3_Comp4 AnimComposite len  3.000 rm None  lock None hits [] dmg []
+     seg Battle01/B_AtkWingMagic01_3.B_AtkWingMagic01_3 start 0.000 [0.000-3.000] rate 1
+      {'EndBattleAIMessageNotify': 2}
+Reaction00/PC0000_00_B_P2FASyncAction01.PC0000_00_B_P2FASyncAction01 AnimSequence  len 10.667 rm False lock 0 hits [9.247] dmg [9.247]
+      {'EndAnimNotifyStateBattleInvincible': 1, 'AnimNotify_EndWeaponAttachment': 2, 'AnimNotify_EndModifyLookAt': 1, 'EndAnimNotifyPlayVoice': 5, 'EndAnimNotifyBattleDamage': 1}
+Reaction00/PC0000_00_B_P2FASyncAction02.PC0000_00_B_P2FASyncAction02 AnimSequence  len 13.200 rm False lock 0 hits [5.373, 8.053, 10.139, 11.855] dmg [5.373, 8.053, 10.139, 11.855]
+      {'EndAnimNotifyStateBattleInvincible': 1, 'AnimNotify_EndModifyLookAt': 1, 'EndAnimNotifyPlayVoice': 6, 'EndAnimNotifyStatePlayCharacterSound': 1, 'EndAnimNotifyBattleDamage': 4, 'EndAnimNotifyPlayWeaponSound': 1}

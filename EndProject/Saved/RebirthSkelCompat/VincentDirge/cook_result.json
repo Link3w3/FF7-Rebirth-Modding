@@ -1,0 +1,41 @@
+{
+ "steps": [
+  "run",
+  "scanned",
+  "motions_p000",
+  "motions_p007",
+  "model_54",
+  "labels",
+  "row",
+  "melee",
+  "export_json",
+  "validate",
+  "compat_file",
+  "melee_failed",
+  "done"
+ ],
+ "run": "run 1 with the plugin 1.12.4",
+ "scanned": [
+  "/Game/Motion/Player/PC0011_00_Vincent/Battle00",
+  "/Game/Motion/Player/PC0011_10_Chaos/Battle00",
+  "/Game/Character/Player/PC0011_10_Chaos",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat/Built/Vincent",
+  "/Game/Character/Player/PC0011_00_Vincent_Standard"
+ ],
+ "motions_p000": "253 of 253 motion(s) labeled for chunk 53",
+ "motions_p007": "214 of 214 motion(s) labeled for chunk 54",
+ "model_54": "38 asset(s) of /Game/Character/Player/PC0011_10_Chaos for chunk 54 (MaterialInstanceConstant x8, PhysicsAsset x1, SQEX_BonamikAsset x1, SkeletalMesh x1, Skeleton x1, Texture2D x26)",
+ "labels": [
+  "/Game/Motion/Player/PC0011_00_Vincent/Battle00/PAL_Dirge_Chunk53: chunk 53, 253 asset(s)",
+  "/Game/Motion/Player/PC0011_10_Chaos/Battle00/PAL_Chaos_Chunk54: chunk 54, 214 asset(s)",
+  "/Game/Character/Player/PC0011_10_Chaos/PAL_Chaos_Chunk54: chunk 54, 38 asset(s)"
+ ],
+ "row": "row 0: 14 moves (Battle00/B_NAttack01_0, Battle00/B_NAttack02_0, Battle00/B_NAttack03_0, Battle00/B_NAttack04_0, Battle00/B_NAttack05_0, Battle00/B_NAttack01_1_2, Neutral00/N_Atk01 replaced, Battle00/B_NAttack06_0, Battle00/B_NAttack07_0 added)",
+ "melee": "9 of 9 built",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: OK",
+ "compat_file": "C:/FF7R2UProj/Saved/RebirthSkelCompat\\Vincent_Moves.skelcompat.json",
+ "melee_failed": [],
+ "done": true
+}

@@ -1,0 +1,211 @@
+@echo off
+title Vincent: run and gun - Create a Character System 3.7.3 - installing, please leave this window open
+rem Installs (close the game first; takes a minute or two, most of it the mod's build):
+rem   1. FullyPlayableVincentAssets_P into Paks\~mods\FullyPlayableVincentPaks: his guns' own bullet rows (a player's
+rem      bullets: the rows of Elena's they fired before hurt nothing) and his Dirge of Cerberus walk, run and strafe moves
+rem      (the same as run_dirge_gun_walk_install.cmd's: either can run first),
+rem   2. VincentDirge.json and Vincent_Moves.json into the compat folder: the guns fire the new rows; aiming he stands in
+rem      his Dirge of Cerberus aim stance,
+rem   3. builds the Create a Character System game mod 3.7.3 (main.dll, installed into the game): holding L2 the game sees
+rem      its guard button (R1) held, so he guard-walks the way the game strafes, which his moves make his Dirge of
+rem      Cerberus aim-runs every way he moves while he faces the reticle; running without aiming he runs where he goes
+rem      and his shots go where he aims; the log says whether each gun's bullet row is in the game's tables, whether the
+rem      game makes the bullets and how much HP the first shots take. Then packs CreateACharacterSystem-Setup-3.7.3.exe
+rem      into Tools\Share.
+rem Everything it replaces is copied to Tools\_backup\dirge373 first; every file is checked (md5).
+rem Status: build\install373_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\install373_status.txt"
+set "STAGE=C:\FF7R2UProj\Tools\_stage\dirge373"
+set "GAME=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH"
+set "VPAKS=%GAME%\End\Content\Paks\~mods\FullyPlayableVincentPaks"
+set "COMPAT=%GAME%\End\Binaries\Win64\ue4ss\Mods\RebirthSkelCompat\compat"
+set "SC=C:\FF7R2UProj\Tools\RebirthSkelCompat"
+set "SETUPTOOL=C:\FF7R2UProj\Tools\CreateACharacterSystemSetup"
+set "BACKUP=C:\FF7R2UProj\Tools\_backup\dirge373"
+rem what may be installed now: the prologue install's, the walk install's, the gun install's, or this one's
+set "UTOCS=c73040ee65a4e5e4e8b1ac9bfd7ce1ec af4e5db703ced17174c3d6cb5121620b 9e30808b0db92ea6f94c8f4a188e13da"
+set "DIRGES=bac80681a0e1171fb919573102482ec1 c61d6f3529c45ad9ac53a0aa9524bbd7 9365d20e49513eeb395e1f5a5c2d4495 2464203417b14a9249b08c21bafb7131"
+set "MOVES=58790cb53dfd62419c783b7a337c6c58 6f8a502f12218bd3b6d62734d9f5ca03"
+set "CPPS=cf6b03b4f742de32f8ad94658b3dfdf7 9e63e05f13594f8f3c3788a2954d510f"
+set "HPPS=a69bfa68e4dfa212e08330365640a156 92a31d7304f0ccfc5aa0fdc7848d0503"
+set "READMES=bbeac4a76254da807145e3ec15e87131 c8b435757eb0509fef57942eff0d7211"
+echo Vincent run and gun / Create a Character System 3.7.3 install started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%COMPAT%\Vincent_Moves.json" goto :nocompat
+if not exist "%COMPAT%\VincentDirge.json" goto :nocompat
+if not exist "%VPAKS%\FullyPlayableVincentAssets_P.utoc" goto :novincent
+if not exist "%SC%\build_dll.py" goto :nosource
+call :md5 "%SC%\build_dll.py" e3ff1c3bfce270d88e47239076c1fce2 || goto :oldbuild
+
+echo checking the files to install...>> "%STATUS%"
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || goto :badstage
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.ucas" 9eb542a5af6abbbb240dacc1493e9b6c || goto :badstage
+call :md5 "%STAGE%\paks\FullyPlayableVincentAssets_P.utoc" 9e30808b0db92ea6f94c8f4a188e13da || goto :badstage
+call :md5 "%STAGE%\compat\VincentDirge.json" 2464203417b14a9249b08c21bafb7131 || goto :badstage
+call :md5 "%STAGE%\compat\Vincent_Moves.json" 6f8a502f12218bd3b6d62734d9f5ca03 || goto :badstage
+call :md5 "%STAGE%\src\RebirthSkelCompat.cpp" 9e63e05f13594f8f3c3788a2954d510f || goto :badstage
+call :md5 "%STAGE%\src\SkelCompatCore.hpp" 92a31d7304f0ccfc5aa0fdc7848d0503 || goto :badstage
+call :md5 "%STAGE%\mod\README.txt" c8b435757eb0509fef57942eff0d7211 || goto :badstage
+echo    all 8 as made>> "%STATUS%"
+
+echo checking what is installed now...>> "%STATUS%"
+call :oneof "%VPAKS%\FullyPlayableVincentAssets_P.utoc" %UTOCS% || goto :notbase
+call :oneof "%COMPAT%\VincentDirge.json" %DIRGES% || goto :notbase
+call :oneof "%COMPAT%\Vincent_Moves.json" %MOVES% || goto :notbase
+call :oneof "%SC%\src\RebirthSkelCompat.cpp" %CPPS% || goto :notbase
+call :oneof "%SC%\src\SkelCompatCore.hpp" %HPPS% || goto :notbase
+call :oneof "%SC%\mod\README.txt" %READMES% || goto :notbase
+echo    one this was made for>> "%STATUS%"
+
+echo copying what this replaces to Tools\_backup\dirge373...>> "%STATUS%"
+for %%D in (paks compat src) do if not exist "%BACKUP%\%%D" mkdir "%BACKUP%\%%D"
+for %%F in (pak ucas utoc) do if not exist "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" copy /y "%VPAKS%\FullyPlayableVincentAssets_P.%%F" "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" >nul
+for %%J in (VincentDirge.json Vincent_Moves.json) do if not exist "%BACKUP%\compat\%%J" copy /y "%COMPAT%\%%J" "%BACKUP%\compat\%%J" >nul
+for %%S in (RebirthSkelCompat.cpp SkelCompatCore.hpp) do if not exist "%BACKUP%\src\%%S" copy /y "%SC%\src\%%S" "%BACKUP%\src\%%S" >nul
+if not exist "%BACKUP%\src\README.txt" copy /y "%SC%\mod\README.txt" "%BACKUP%\src\README.txt" >nul
+rem (a backup is one of the installs this was made for; once made it is kept, so a second run keeps the first one's)
+call :oneof "%BACKUP%\paks\FullyPlayableVincentAssets_P.utoc" %UTOCS% || goto :nobackup
+call :oneof "%BACKUP%\compat\VincentDirge.json" %DIRGES% || goto :nobackup
+call :oneof "%BACKUP%\compat\Vincent_Moves.json" %MOVES% || goto :nobackup
+call :oneof "%BACKUP%\src\RebirthSkelCompat.cpp" %CPPS% || goto :nobackup
+call :oneof "%BACKUP%\src\SkelCompatCore.hpp" %HPPS% || goto :nobackup
+call :oneof "%BACKUP%\src\README.txt" %READMES% || goto :nobackup
+for %%F in (pak ucas) do if not exist "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" goto :nobackup
+echo    done>> "%STATUS%"
+
+rem ---- 1. the container
+echo 1/3 FullyPlayableVincentAssets_P ^(his guns' bullets, his walk and run^) into Paks\~mods\FullyPlayableVincentPaks...>> "%STATUS%"
+for %%F in (pak ucas utoc) do copy /y "%STAGE%\paks\FullyPlayableVincentAssets_P.%%F" "%VPAKS%\FullyPlayableVincentAssets_P.%%F" >nul
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.pak" 978275e5395574cf363603d330e50a28 || goto :failed
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.ucas" 9eb542a5af6abbbb240dacc1493e9b6c || goto :failed
+call :md5 "%VPAKS%\FullyPlayableVincentAssets_P.utoc" 9e30808b0db92ea6f94c8f4a188e13da || goto :failed
+echo    installed and checked>> "%STATUS%"
+
+rem ---- 2. the settings
+echo 2/3 VincentDirge.json and Vincent_Moves.json into the compat folder...>> "%STATUS%"
+copy /y "%STAGE%\compat\VincentDirge.json" "%COMPAT%\VincentDirge.json" >nul
+copy /y "%STAGE%\compat\Vincent_Moves.json" "%COMPAT%\Vincent_Moves.json" >nul
+call :md5 "%COMPAT%\VincentDirge.json" 2464203417b14a9249b08c21bafb7131 || goto :failed
+call :md5 "%COMPAT%\Vincent_Moves.json" 6f8a502f12218bd3b6d62734d9f5ca03 || goto :failed
+echo    installed and checked>> "%STATUS%"
+
+rem ---- 3. the game mod 3.7.3
+echo 3/3 building the Create a Character System game mod 3.7.3 ^(main.dll, installed into the game^)...>> "%STATUS%"
+copy /y "%STAGE%\src\RebirthSkelCompat.cpp" "%SC%\src\RebirthSkelCompat.cpp" >nul
+copy /y "%STAGE%\src\SkelCompatCore.hpp" "%SC%\src\SkelCompatCore.hpp" >nul
+copy /y "%STAGE%\mod\README.txt" "%SC%\mod\README.txt" >nul
+call :md5 "%SC%\src\RebirthSkelCompat.cpp" 9e63e05f13594f8f3c3788a2954d510f || goto :badsource
+call :md5 "%SC%\src\SkelCompatCore.hpp" 92a31d7304f0ccfc5aa0fdc7848d0503 || goto :badsource
+call :md5 "%SC%\mod\README.txt" c8b435757eb0509fef57942eff0d7211 || goto :badsource
+call :findpython
+%PY% "%SC%\build_dll.py" --install > "%~dp0build\install373_dll.log" 2>&1
+if errorlevel 1 goto :badbuild
+echo    game mod 3.7.3 built and installed>> "%STATUS%"
+set "LATEST="
+if exist "%SC%\build\latest.txt" set /p LATEST=<"%SC%\build\latest.txt"
+%PY% "%SETUPTOOL%\make_setup.py" --stub "%SETUPTOOL%\Setup.stub.exe" --main-dll "%LATEST%\main.dll" --readme "%SC%\mod\README.txt" --example "%SC%\mod\compat\example.json.txt" --source "%SC%\src\RebirthSkelCompat.cpp" --plugin "C:\FF7R2UProj\Plugins\RebirthSkelCompat" --out-dir "C:\FF7R2UProj\Tools\Share" --version 3.7.3 > "%~dp0build\install373_setup.log" 2>&1
+if errorlevel 1 (
+  echo    the Setup was not packed ^(build\install373_setup.log^); the game mod is installed all the same>> "%STATUS%"
+) else (
+  echo    Setup packed ^(Tools\Share\CreateACharacterSystem-Setup-3.7.3.exe^)>> "%STATUS%"
+)
+echo ALL DONE: start the game. Hold L2 to aim: he strafes in his Dirge of Cerberus aim-runs facing the reticle ^(and guards meanwhile^); R2 fires, and his shots should hurt now. After a fight send Sandalphon ue4ss\Mods\RebirthSkelCompat\RebirthSkelCompat.log>> "%STATUS%"
+goto :done
+
+:nocompat
+echo STOPPED: the Create a Character System's compat folder ^(with VincentDirge.json and Vincent_Moves.json^) is not there; nothing was changed>> "%STATUS%"
+goto :done
+
+:novincent
+echo STOPPED: Paks\~mods\FullyPlayableVincentPaks\FullyPlayableVincentAssets_P is not there; nothing was changed>> "%STATUS%"
+goto :done
+
+:nosource
+echo STOPPED: Tools\RebirthSkelCompat has no build_dll.py; nothing was changed>> "%STATUS%"
+goto :done
+
+:oldbuild
+echo STOPPED: Tools\RebirthSkelCompat\build_dll.py is not the one this was made for; nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:badstage
+echo STOPPED: a staged file in Tools\_stage\dirge373 is not the one made for this ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:notbase
+echo STOPPED: what is installed is not one this was made for ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:nobackup
+echo STOPPED: Tools\_backup\dirge373 does not have a copy of what is installed ^(see above^); nothing was changed: tell Sandalphon>> "%STATUS%"
+goto :done
+
+:failed
+echo FAILED: putting the container and the settings back as they were from Tools\_backup\dirge373...>> "%STATUS%"
+for %%F in (pak ucas utoc) do copy /y "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" "%VPAKS%\FullyPlayableVincentAssets_P.%%F" >nul
+for %%J in (VincentDirge.json Vincent_Moves.json) do copy /y "%BACKUP%\compat\%%J" "%COMPAT%\%%J" >nul
+for %%F in (pak ucas utoc) do fc /b "%BACKUP%\paks\FullyPlayableVincentAssets_P.%%F" "%VPAKS%\FullyPlayableVincentAssets_P.%%F" >nul || goto :stuck
+for %%J in (VincentDirge.json Vincent_Moves.json) do fc /b "%BACKUP%\compat\%%J" "%COMPAT%\%%J" >nul || goto :stuck
+echo    put back and checked: the game is as it was before this; tell Sandalphon>> "%STATUS%"
+goto :done
+
+:stuck
+echo    NOT all of it could be put back: do not start the game; tell Sandalphon>> "%STATUS%"
+goto :done
+
+:badsource
+echo FAILED: the 3.7.3 source did not copy into Tools\RebirthSkelCompat ^(see above^); putting the old source back; the container and settings are installed, the game mod stays 3.7.2: run this again>> "%STATUS%"
+goto :oldsource
+
+:badbuild
+echo FAILED: the game mod did not build ^(build\install373_dll.log^); the container and settings are installed ^(his shots and walk^), the game mod stays 3.7.2 and the old source goes back: tell Sandalphon>> "%STATUS%"
+goto :oldsource
+
+:oldsource
+for %%S in (RebirthSkelCompat.cpp SkelCompatCore.hpp) do copy /y "%BACKUP%\src\%%S" "%SC%\src\%%S" >nul
+copy /y "%BACKUP%\src\README.txt" "%SC%\mod\README.txt" >nul
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:oneof
+rem :oneof <file> <md5> [<md5> ...]: the file is one of them
+set "ONEOF_FILE=%~1"
+shift
+set "ONEOF_FIND="
+:oneof_more
+if "%~1"=="" goto :oneof_check
+set "ONEOF_FIND=%ONEOF_FIND% /c:%~1"
+shift
+goto :oneof_more
+:oneof_check
+certutil -hashfile "%ONEOF_FILE%" MD5 2>nul | findstr /i %ONEOF_FIND% >nul
+if not errorlevel 1 exit /b 0
+for %%N in ("%ONEOF_FILE%") do echo    %%~nxN is not one this was made for>> "%STATUS%"
+exit /b 1
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY set "PY=python"
+exit /b

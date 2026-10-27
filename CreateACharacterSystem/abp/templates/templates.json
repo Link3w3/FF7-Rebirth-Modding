@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "about": "More templates for the AnimBlueprint Maker (Make AnimBlueprint and Make Editable AnimBlueprint), with no new build: each one the game's own AnimBlueprint of a character, its cooked package <package>.uasset and its decoded <package>.template.json next to this file. The Maker lists cloud, sephiroth, vincent and monster, then these.",
+ "templates": [
+  {"key": "barret", "package": "PC0001_00_Barret_Standard_Animation", "label": "Barret's player AnimBlueprint (a gun-arm user)"},
+  {"key": "tifa", "package": "PC0002_00_Tifa_Standard_Animation", "label": "Tifa's player AnimBlueprint (a martial artist)"},
+  {"key": "aerith", "package": "PC0003_00_Aerith_Standard_Animation", "label": "Aerith's player AnimBlueprint (a staff user)"},
+  {"key": "redxiii", "package": "PC0004_00_RedXIII_Standard_Animation", "label": "Red XIII's player AnimBlueprint (on four legs)"},
+  {"key": "yuffie", "package": "PC0005_00_Yuffie_Standard_Animation", "label": "Yuffie's player AnimBlueprint (a shuriken thrower)"},
+  {"key": "caitsith", "package": "PC0007_00_CaitSith_Standard_Animation", "label": "Cait Sith's player AnimBlueprint (small, his own locomotion)"},
+  {"key": "moogle", "package": "PC0008_00_Debumoogle_Standard_Animation", "label": "the big moogle's AnimBlueprint (the one Cait Sith rides)"},
+  {"key": "zack", "package": "PC0009_00_Zack_Standard_Animation", "label": "Zack's player AnimBlueprint"},
+  {"key": "cid", "package": "PC0012_00_Cid_Standard_Animation", "label": "Cid's player AnimBlueprint"}
+ ]
+}

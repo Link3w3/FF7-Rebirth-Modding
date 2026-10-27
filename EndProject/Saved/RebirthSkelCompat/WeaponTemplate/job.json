@@ -1,0 +1,30 @@
+{
+    "jobs":  [
+                 {
+                     "replace":  false,
+                     "template":  "WE1021_10_SephirothIllusion_MasamuneCutScale",
+                     "out":  "C:\\FF7R2UProj\\Tools\\RebirthSkelCompat\\weapon\\out",
+                     "container":  "CACS_WeaponTemplateTest_P",
+                     "mesh":  "/Game/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15",
+                     "package":  "/Game/BluePrint/Character/Weapon/WE1021_15_Essence_Shard/WE1021_10_SephirothIllusion_MasamuneCutScale"
+                 },
+                 {
+                     "template":  "WE0000_00_Cloud_BusterSword",
+                     "replace":  false,
+                     "mesh":  "/Game/Character/Weapon/WE0000_00_Kingdom_Key/Model/WE0000_00",
+                     "package":  "/Game/RebirthSkelCompat/WeaponTemplateTest/WE0000_00_Cloud_BusterSword"
+                 },
+                 {
+                     "template":  "WE1000_00_SecuritySoldier_Gun",
+                     "replace":  false,
+                     "mesh":  "/Game/Character/Weapon/WE0011_00_Vincent_Quiksilver/Model/WE0011_00",
+                     "package":  "/Game/RebirthSkelCompat/WeaponTemplateTest/WE1000_00_SecuritySoldier_Gun"
+                 },
+                 {
+                     "template":  "WE0002_00_Tifa_LeatherGlove",
+                     "replace":  false,
+                     "mesh":  "/Game/Character/Weapon/WE0000_00_Kingdom_Key/Model/WE0000_00",
+                     "package":  "/Game/RebirthSkelCompat/WeaponTemplateTest/WE0002_00_Tifa_LeatherGlove"
+                 }
+             ]
+}

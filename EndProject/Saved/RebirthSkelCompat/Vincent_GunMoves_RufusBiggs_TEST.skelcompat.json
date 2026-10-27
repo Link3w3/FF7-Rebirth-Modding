@@ -1,0 +1,95 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/Vincent_GunMoves_RufusBiggs_TEST.Vincent_GunMoves_RufusBiggs_TEST",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Enemy/EB0016_00_Rufus_Standard/Model/EB0016_00_Skeleton.EB0016_00_Skeleton",
+				"/Game/Character/NonPlayer/NP0000_00_Biggs_Standard/Model/NP0000_00_Skeleton.NP0000_00_Skeleton",
+				"/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton"
+			],
+			"method": "animations",
+			"enabled": true
+		}
+	],
+	"animation_sets": [
+		{
+			"characters": [
+				"PC0000_00_Cloud_Standard"
+			],
+			"battle": [
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"field": [
+				"/Game/Motion/Player/PC0011_Vincent",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"moves": [
+				{
+					"set": "Battle00",
+					"key": "B_NAttack01_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkSpeedShot01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack01_1",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkNearShot01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack01_1_2",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkShotGun01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack02_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkNearShot01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack03_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkLinkPursuit01_Forward"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack04_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkBackflipShot01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttack05_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkForwardflipShot01"
+				},
+				{
+					"set": "Battle00",
+					"key": "B_NAttackJ01_0",
+					"animation": "/Game/Motion/Enemy/EB0016_Rufus/Battle00/B_AtkAerialTwinShot01"
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack01_0",
+					"animation": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkShot01_1"
+				},
+				{
+					"set": "Battle01",
+					"key": "B_SAttack02_0",
+					"animation": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkKick01"
+				},
+				{
+					"set": "Battle01",
+					"key": "B_CounterAttack01",
+					"animation": "/Game/Motion/NonPlayer/NP0000_Biggs/Battle00/B_AtkKick01"
+				}
+			],
+			"field_actions": "PC0000_Cloud",
+			"cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+			"requires_paks": [
+				"FullyPlayableVincentAssets_P"
+			],
+			"enabled": true
+		}
+	]
+}

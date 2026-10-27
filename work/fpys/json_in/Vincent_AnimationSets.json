@@ -1,0 +1,22 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "animation_sets": [
+    {
+      "character": "PC0000_00_Cloud_Standard",
+      "battle": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "moves": {},
+      "field": [
+        "/Game/Motion/Player/PC0011_Vincent",
+        "/Game/Motion/Player/PC0000_Cloud"
+      ],
+      "field_actions": "PC0000_Cloud",
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton",
+      "cutscene": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton",
+      "requires_paks": [ "FullyPlayableVincentAssets_P" ],
+      "enabled": true
+    }
+  ]
+}

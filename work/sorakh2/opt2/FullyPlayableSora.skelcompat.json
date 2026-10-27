@@ -1,0 +1,321 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Sora (Kingdom Hearts III model, KH2 outfit) in Cloud's place (FullyPlayableSoraInRebirth: SoraOverCloud_P puts his mesh in Cloud's blueprint and every outfit's (Zack's clothes, the SOLDIER uniforms, Costa del Sol, Loveless, the cutscene ones) and the Kingdom Key in Cloud's 13 weapon blueprints, SoraAssets_P has his model, skeleton and every set of Cloud's retargeted onto his skeleton, SoraKH3_Materials_P his materials, SoraVoice_P his voice). Sora keeps his own skeleton: Cloud's AnimBlueprint runs on it (3.8 anim_blueprints_from), his packs get his own sets, his field actions and level sets come from his own folders (field_actions), and Cloud's sockets are stand-ins on his bones. His root (kh_sk) rests flat like Cloud's Trans since Flatten Root (editor 1.13.1), and his KH3 helper bone trans is Transform, so the Trans stand-in needs no turn. Cutscenes still play Cloud's animations (a later version switches him to his First Class Sora model for them). KH2 moves (optional SoraKH2Moves_P): in Operator mode (Battle00) his ground combo, air combo and battle stance are his own KH2 animations (played at KH2's 60 fps), each with Cloud's gameplay notifies of the same name lined up on its swing and Cloud's swing sound at the hit.",
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0000_00_Cloud_Standard",
+    "PC0000_00_Cloud_Standard_NoBattle",
+    "PC0000_00_Cloud_Standard_Reserve",
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0000_04_Cloud_ZackCostume_NoBattle",
+    "PC0000_04_Cloud_ZackCostume_Reserve",
+    "PC0000_06_Cloud_Soldier",
+    "PC0000_06_Cloud_Soldier_NoBattle",
+    "PC0000_06_Cloud_Soldier_Reserve",
+    "PC0000_07_Cloud_SoldierSenior",
+    "PC0000_07_Cloud_SoldierSenior_NoBattle",
+    "PC0000_07_Cloud_SoldierSenior_Reserve",
+    "PC0000_08_Cloud_SoldierNoHelmet",
+    "PC0000_08_Cloud_SoldierNoHelmet_NoBattle",
+    "PC0000_08_Cloud_SoldierNoHelmet_Reserve",
+    "PC0000_09_Cloud_CostaClothing",
+    "PC0000_09_Cloud_CostaClothing_NoBattle",
+    "PC0000_09_Cloud_CostaClothing_Reserve",
+    "PC0000_10_Cloud_CostaClothing2",
+    "PC0000_10_Cloud_CostaClothing2_NoBattle",
+    "PC0000_10_Cloud_CostaClothing2_Reserve",
+    "PC0000_11_Cloud_Loveless",
+    "PC0000_11_Cloud_Loveless_NoBattle",
+    "PC0000_11_Cloud_Loveless_Reserve",
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0000_12_Cloud_ZackCostumeDirty_NoBattle",
+    "PC0000_12_Cloud_ZackCostumeDirty_Reserve",
+    "PC0000_13_Cloud_CutBroodCheek",
+    "PC0000_14_Cloud_CutBroodPalm",
+    "PC0000_15_Cloud_CutBroodBackOfHand",
+    "PC0000_16_Cloud_CutTearBothEyes",
+    "PC0000_17_Cloud_LovelessNoMask",
+    "PC0000_17_Cloud_LovelessNoMask_NoBattle",
+    "PC0000_17_Cloud_LovelessNoMask_Reserve",
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0000_18_Cloud_ZackCostumeAge21_NoBattle",
+    "PC0000_18_Cloud_ZackCostumeAge21_Reserve",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21_Reserve",
+    "PC0000_20_Cloud_LovelessHologram",
+    "PC0000_20_Cloud_LovelessHologram_NoBattle",
+    "PC0000_20_Cloud_LovelessHologram_Reserve",
+    "PC0000_21_Cloud_Hologram",
+    "PC0000_22_Cloud_StandardWet",
+    "PC0000_23_Cloud_ZackCostumeWet",
+    "PC0000_24_Cloud_CutTearBothEyes2",
+    "PC0000_25_Cloud_CutBroodCheek2"
+   ],
+   "battle": [
+    "/Game/Motion/Player/PC0000_00_Sora_KH2"
+   ],
+   "field": [
+    "/Game/Motion/Player/PC0000_00_Sora_KH2"
+   ],
+   "sets": [
+    "Mount00",
+    "Mount01",
+    "Mount09",
+    "Mount20",
+    "Mount30",
+    "Mount31",
+    "Mount32",
+    "Mount33"
+   ],
+   "field_actions": "PC0000_00_Sora_KH2",
+   "skeleton": "/Game/Character/Player/PC0000_00_Sora_KH2/Model/PC0000_00_S_Skeleton.PC0000_00_S_Skeleton",
+   "anim_blueprints_from": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+   "sockets": [
+    {
+     "socket": "Attach_Weapon_Right01",
+     "use": "R_wep_skt"
+    },
+    {
+     "socket": "Attach_Weapon_Left01",
+     "use": "L_wep_skt"
+    },
+    {
+     "socket": "Attach_Weapon01",
+     "use": "mune",
+     "hidden": true
+    },
+    {
+     "socket": "R_Hand_a",
+     "use": "R_te",
+     "rotation": [
+      0.33,
+      1.96,
+      0.84
+     ]
+    },
+    {
+     "socket": "L_Hand_a",
+     "use": "L_te",
+     "rotation": [
+      -0.33,
+      1.96,
+      -0.84
+     ]
+    },
+    {
+     "socket": "C_Hip_a",
+     "use": "koshi",
+     "rotation": [
+      0.0,
+      -179.65,
+      180.0
+     ]
+    },
+    {
+     "socket": "R_Foot_a",
+     "use": "R_ashi1",
+     "rotation": [
+      0.0,
+      59.84,
+      180.0
+     ]
+    },
+    {
+     "socket": "L_Foot_a",
+     "use": "L_ashi1",
+     "rotation": [
+      0.0,
+      59.84,
+      -180.0
+     ]
+    },
+    {
+     "socket": "R_Forearm_a",
+     "use": "R_ude2",
+     "rotation": [
+      0.33,
+      -0.95,
+      1.2
+     ]
+    },
+    {
+     "socket": "L_Forearm_a",
+     "use": "L_ude2",
+     "rotation": [
+      -0.33,
+      -0.95,
+      -1.2
+     ]
+    },
+    {
+     "socket": "R_Pinky_a",
+     "use": "R_yubiE1",
+     "rotation": [
+      -1.93,
+      -4.21,
+      4.23
+     ]
+    },
+    {
+     "socket": "L_Pinky_a",
+     "use": "L_yubiE1",
+     "rotation": [
+      1.93,
+      -4.21,
+      -4.23
+     ]
+    },
+    {
+     "socket": "R_Thumb_a",
+     "use": "R_yubiA1",
+     "rotation": [
+      -0.79,
+      -3.86,
+      -5.42
+     ]
+    },
+    {
+     "socket": "R_Toe_a",
+     "use": "R_ashi2",
+     "rotation": [
+      0.0,
+      90.18,
+      -180.0
+     ]
+    },
+    {
+     "socket": "L_Toe_a",
+     "use": "L_ashi2",
+     "rotation": [
+      0.0,
+      90.18,
+      -180.0
+     ]
+    },
+    {
+     "socket": "C_Head_a",
+     "use": "atama",
+     "rotation": [
+      0.0,
+      0.0,
+      180.0
+     ]
+    },
+    {
+     "socket": "R_Weapon_a",
+     "use": "R_wep_skt"
+    },
+    {
+     "socket": "L_Weapon_a",
+     "use": "L_wep_skt"
+    },
+    {
+     "socket": "Trans",
+     "use": "kh_sk"
+    }
+   ],
+   "requires_paks": [
+    "FullyPlayableSoraInRebirth"
+   ],
+   "enabled": true,
+   "moves": [
+    {
+     "set": "Battle00",
+     "key": "B_NAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttack01_0.B_NAttack01_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttack02_0.B_NAttack02_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttack03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttack03_0.B_NAttack03_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttack04_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttack04_0.B_NAttack04_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttack05_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttack05_0.B_NAttack05_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttackJ01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttackJ01_0.B_NAttackJ01_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttackJ02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttackJ02_0.B_NAttackJ02_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttackJ03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttackJ03_0.B_NAttackJ03_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_NAttackJ04_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_NAttackJ04_0.B_NAttackJ04_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_Idle01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SoraKH2v2/Battle00/B_Idle01_1.B_Idle01_1"
+    }
+   ]
+  },
+  {
+   "characters": [
+    "WE0000_00_Cloud_BusterSword",
+    "WE0000_01_Cloud_IronBlade",
+    "WE0000_02_Cloud_HardBreaker",
+    "WE0000_03_Cloud_MythrilSaber",
+    "WE0000_04_Cloud_TwoPair",
+    "WE0000_05_Cloud_NailBat",
+    "WE0000_11_Cloud_END2Weapon1",
+    "WE0000_12_Cloud_END2Weapon2",
+    "WE0000_13_Cloud_END2Weapon3",
+    "WE0000_14_Cloud_END2Weapon4",
+    "WE0000_15_Cloud_END2Weapon5",
+    "WE0000_16_Cloud_END2Weapon6",
+    "WE0000_17_Cloud_Umbrella"
+   ],
+   "skeleton": "/Game/Character/Weapon/WE0000_00_Kingdom_Key/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "sockets": [
+    {
+     "socket": "C_TrailA_a",
+     "use": "vfx_bottom"
+    },
+    {
+     "socket": "C_TrailA_b",
+     "use": "vfx_top"
+    },
+    {
+     "socket": "C_Body_a",
+     "use": "wep"
+    },
+    {
+     "socket": "C_Body_End",
+     "use": "vfx_top"
+    },
+    {
+     "socket": "C_CharaA_a",
+     "use": "kh_sk"
+    }
+   ],
+   "requires_paks": [
+    "FullyPlayableSoraInRebirth"
+   ],
+   "enabled": true
+  }
+ ]
+}

@@ -1,0 +1,208 @@
+{
+ "textures": {
+  "/Game/KH3/Effects/texcom/mat_part/jmi_glw_01sk.jmi_glw_01sk": "/Game/KH3/Effects/texcom/tex/jtx_glw_01a_clamp.jtx_glw_01a_clamp",
+  "/Game/KH3/Effects/trescom/mat_part/tmi_fls_05a.tmi_fls_05a": "/Game/KH3/Effects/trescom/tex/fls/ttx_fls_02a.ttx_fls_02a",
+  "/Game/KH3/Effects/texcom/mat_part/jmi_glt_05k.jmi_glt_05k": "/Game/KH3/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp",
+  "/Game/KH3/Effects/trescom/mat_part/zmi_crs_03csk.zmi_crs_03csk": "/Game/KH3/Effects/texcom/tex/jtx_crs_03a.jtx_crs_03a",
+  "/Game/KH3/Effects/trescom/mat_part/zmi_glw_00sk.zmi_glw_00sk": "/Game/KH3/Effects/texcom/tex/jtx_glt_05a_clamp.jtx_glt_05a_clamp"
+ },
+ "bounds": 500.0,
+ "remake": {
+  "glw_SS": {
+   "kind": "sprite",
+   "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit_Soft.RMI_Particle_Emit_Soft",
+   "bindings": [
+    {
+     "name": "Emissive",
+     "type": "texture",
+     "value": "/Game/Effect/Resident/Texture/FX_R_Glow_03E_T.FX_R_Glow_03E_T",
+     "resident": true
+    },
+    {
+     "name": "EmitterEmitChrome",
+     "type": "bool",
+     "value": [
+      0.0
+     ]
+    },
+    {
+     "name": "EmitterEmitTint",
+     "type": "float",
+     "value": [
+      1.0
+     ]
+    },
+    {
+     "name": "EmitterEmitExposureCondition",
+     "type": "bool",
+     "value": [
+      1.0
+     ]
+    }
+   ],
+   "ip": {
+    "0": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       1.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "1": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.5
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "const",
+       0.25
+      ]
+     ],
+     [
+      [
+       "color",
+       2
+      ]
+     ],
+     [
+      [
+       "color",
+       3
+      ],
+      [
+       "const",
+       6000.0
+      ]
+     ]
+    ],
+    "2": [
+     [
+      [
+       "color",
+       0
+      ],
+      [
+       "const",
+       0.1
+      ]
+     ],
+     [
+      [
+       "color",
+       1
+      ],
+      [
+       "color",
+       2
+      ]
+     ],
+     [
+      [
+       "const",
+       2.0
+      ],
+      [
+       "const",
+       3.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "4": [
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ],
+    "5": [
+     [
+      [
+       "attr",
+       "DynamicMaterialParameter",
+       0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ],
+     [
+      [
+       "const",
+       0.0
+      ]
+     ]
+    ]
+   },
+   "template_from": "/work/remakefx/rbtpl/End/Content/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_NPAttack_Shot_01.uasset",
+   "template_export": 10,
+   "template_of": "FX_PC0010_NPAttack_Shot_01.uasset Fire"
+  }
+ },
+ "material": "/Game/Renderer/MaterialInstance/Particle/RMI_Particle_Emit_Soft.RMI_Particle_Emit_Soft",
+ "sprite_template_from": "/work/nconv/samples/Character__Player__PC0000_Cloud__Particle__FX_PC0000_BurstChain00_01_Hit_01.uasset",
+ "sprite_template_export": 5
+}

@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "1.7.0-cacs3.14",
+	"FriendlyName": "KawaiiPhysics",
+	"Description": "KawaiiPhysics 1.7.0 for UE 4.26 with the newest KawaiiPhysics' features fused in; its preview runs Create a Character System's own simulation (FINAL FANTASY VII REBIRTH), and Export For Game writes an AnimBlueprint's KawaiiPhysics nodes as the game mod's \"kawaii\" entries. Editor only: keep AnimBlueprints with these nodes out of game paks.",
+	"Category": "Animation",
+	"CreatedBy": "pafuhana1213 (KawaiiPhysics); Create a Character System",
+	"CreatedByURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"DocsURL": "https://github.com/pafuhana1213/KawaiiPhysics",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/pafuhana1213/KawaiiPhysics/issues",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "KawaiiPhysics",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		},
+		{
+			"Name": "KawaiiPhysicsEd",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

@@ -1,0 +1,148 @@
+{
+ "made": "2026-10-26 (3.16.1)",
+ "files": {
+  "CreateACharacterCloud_P.utoc": {
+   "size": 65861,
+   "md5": "b3309c00953944aee69b6cf2cbadc9c4"
+  },
+  "CreateACharacterCloud_P.ucas": {
+   "size": 4069904,
+   "md5": "867ecc5e492c9299d5081123f732ee0e"
+  },
+  "CreateACharacterCloud_P.pak": {
+   "size": 347,
+   "md5": "797a546e664c558fd47fb30b4be7bad5"
+  },
+  "CloudMovesetMoves_P.utoc": {
+   "size": 13147,
+   "md5": "7e6b2f3c47cc70340da0d7d3c63722b9"
+  },
+  "CloudMovesetMoves_P.ucas": {
+   "size": 2575008,
+   "md5": "67444d6dd9c5e5f4bf260031c0fdfdc0"
+  },
+  "CloudMovesetMoves_P.pak": {
+   "size": 347,
+   "md5": "797a546e664c558fd47fb30b4be7bad5"
+  },
+  "fpys3160/FullyPlayableYoungSephirothDataAssets_P.utoc": {
+   "size": 152717,
+   "md5": "72533e6420ae98b00a13762a6b7cb6c6"
+  },
+  "fpys3160/FullyPlayableYoungSephirothDataAssets_P.ucas.tail": {
+   "size": 5469760,
+   "md5": "b4928d36feb9a1ef29cc9cbd81045471"
+  },
+  "install_data_rebase.py": {
+   "size": 5310,
+   "md5": "4990623807c628ac8bedb07f6ac20879"
+  },
+  "CloudCharacter.json": {
+   "size": 9525,
+   "md5": "2abcd6456effe983ce29321cc072ecf1"
+  },
+  "moveset/compat/YoungSephirothForms.json": {
+   "size": 586295,
+   "md5": "de29a4b763ed4d5e084a115966b2f8ea"
+  },
+  "moveset/compat/SephirothForms.json": {
+   "size": 523295,
+   "md5": "7a943d9cc35d9bba9a5bbc4cba16798d"
+  },
+  "moveset/skins/RebirthCloud/skin.json": {
+   "size": 1291,
+   "md5": "a445fe445405b40c66a7f61d6d4b921f"
+  },
+  "moveset/skins/RemakeCloud/skin.json": {
+   "size": 2808,
+   "md5": "49925a631004e64410310882a49832e9"
+  }
+ },
+ "containers": [
+  {
+   "name": "CreateACharacterCloud_P",
+   "folder": "CreateACharacterCloud"
+  },
+  {
+   "name": "CloudMovesetMoves_P",
+   "folder": "FullyPlayableSephirothPaks/CloudMoveset"
+  }
+ ],
+ "fpys": {
+  "name": "FullyPlayableYoungSephirothDataAssets_P",
+  "stage": "fpys3160",
+  "base_size": 261569712,
+  "base_md5": "d7d5ec97db303d3fddbaa7aaf96c07d1",
+  "new_utoc_md5": "72533e6420ae98b00a13762a6b7cb6c6",
+  "new_ucas_md5": "70f560cbabd6637b9ce829a756cbc129",
+  "new_ucas_size": 267039472,
+  "accepted_utoc_md5s": [
+   "4d67898e2aeb64750ba0c4e946effb82"
+  ]
+ },
+ "new": [
+  {
+   "file": "CloudCharacter.json",
+   "target": "compat/CloudCharacter.json",
+   "backup": "CloudCharacter"
+  }
+ ],
+ "replace": [
+  {
+   "file": "moveset/compat/YoungSephirothForms.json",
+   "target": "compat/YoungSephirothForms.json",
+   "base": {
+    "size": 533994,
+    "md5": "5fc8e354faabe4468d7c8cf9c22a5189"
+   },
+   "backup": "YoungSephirothForms",
+   "bases": [
+    {
+     "size": 533994,
+     "md5": "5fc8e354faabe4468d7c8cf9c22a5189"
+    },
+    {
+     "size": 586247,
+     "md5": "7de4c02f2389b5c7c2f372308c6da997"
+    }
+   ]
+  },
+  {
+   "file": "moveset/compat/SephirothForms.json",
+   "target": "compat/SephirothForms.json",
+   "base": {
+    "size": 470994,
+    "md5": "a8466ec455428385282dec42d7017c4a"
+   },
+   "backup": "SephirothForms",
+   "bases": [
+    {
+     "size": 470994,
+     "md5": "a8466ec455428385282dec42d7017c4a"
+    },
+    {
+     "size": 523247,
+     "md5": "96a9c7fc5039d782dbb0c54dec52cb54"
+    }
+   ]
+  },
+  {
+   "file": "moveset/skins/RebirthCloud/skin.json",
+   "target": "skins/RebirthCloud/skin.json",
+   "base": {
+    "size": 1248,
+    "md5": "61bf8b602be75f8d040a1df79a8bfad4"
+   },
+   "backup": "skin_RebirthCloud"
+  },
+  {
+   "file": "moveset/skins/RemakeCloud/skin.json",
+   "target": "skins/RemakeCloud/skin.json",
+   "base": {
+    "size": 2765,
+    "md5": "9e4fb6971ae59dc709553a51b67ee995"
+   },
+   "backup": "skin_RemakeCloud"
+  }
+ ]
+}

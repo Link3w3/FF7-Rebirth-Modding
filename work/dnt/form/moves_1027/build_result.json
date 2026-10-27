@@ -1,0 +1,83 @@
+{
+ "steps": [
+  "plugin",
+  "run",
+  "keys",
+  "setup",
+  "built_now",
+  "failed",
+  "adjust",
+  "described",
+  "done"
+ ],
+ "plugin": "1.21.0",
+ "run": "run 1: 0 move(s) built before, 0 left out",
+ "keys": "_DissidiaNT_Sephiroth/DNTRoot/DNT_1001A_1001B: 91 frames at 60 fps (1.50 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600A: 114 frames at 60 fps (1.88 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600B: 105 frames at 60 fps (1.73 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600C: 111 frames at 60 fps (1.83 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_600D: 106 frames at 60 fps (1.75 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_700A: 231 frames at 60 fps (3.83 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_710A: 191 frames at 60 fps (3.17 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_740A_740D: 185 frames at 60 fps (3.07 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950A: 46 frames at 60 fps (0.75 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950B: 91 frames at 60 fps (1.50 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_950C: 41 frames at 60 fps (0.67 s), 59 bone track(s)\n/Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot/DNT_R300: 111 frames at 30 fps (3.67 s), 59 bone track(s)\n\n13 of 13 key animation(s) made in /Game/Motion/Player/PC0010_19_DissidiaNT_Sephiroth/DNTRoot on PC0010_00_Skeleton.\n",
+ "setup": {
+  "data_object": "made /Game/RebirthSkelCompat/DissidiaNTForm/DissidiaNTForm_Data",
+  "moves": 22,
+  "carriers": 7
+ },
+ "built_now": "22 move(s) in 3 s",
+ "failed": {},
+ "adjust": {
+  "Battle12/B_NAttack01_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_NAttack02_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_NAttack03_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_NAttack04_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_NPAttack01": {
+   "matched": 6,
+   "of": 6,
+   "placed": 0,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_SAttack09_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle12/B_AtkLimit01_1": {
+   "matched": 6,
+   "of": 6,
+   "placed": 0,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  }
+ },
+ "described": 22,
+ "done": 22
+}

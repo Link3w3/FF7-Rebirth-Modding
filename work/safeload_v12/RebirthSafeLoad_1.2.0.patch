@@ -1,0 +1,211 @@
+--- orig/RebirthSafeLoad/Source/RebirthSafeLoad/Private/RebirthSafeLoad.cpp	2026-10-12 13:05:11.046430582 -0400
++++ RebirthSafeLoad/Source/RebirthSafeLoad/Private/RebirthSafeLoad.cpp	2026-10-12 13:07:53.528677431 -0400
+@@ -3,6 +3,7 @@
+ #include "CoreGlobals.h"
+ #include "HAL/IConsoleManager.h"
+ #include "Misc/CommandLine.h"
++#include "Misc/ConfigCacheIni.h"
+ #include "Misc/Parse.h"
+ #include "Misc/ScopeLock.h"
+ #include "Misc/SecureHash.h"
+@@ -70,6 +71,73 @@
+ 	TMap<FName, FString> GDamaged;
+ 	TSet<FString> GReported;
+ 
++	// In a cook (-run=Cook) the guard only stands in for packages the cook leaves out, so it never writes an object it
++	// could not read in full: Directories To Never Cook, and what other modules leave out (AddPackagesLeftOutOfCook).
++	bool GCookMode = false;
++	bool GNeverCookRootsRead = false;
++	TArray<FString> GNeverCookRoots;   // "/Game/Motion/"
++	TSet<FName> GLeftOutOfCook;
++
++	bool IsCookCommandlet()
++	{
++		FString Commandlet;
++		return FParse::Value(FCommandLine::Get(), TEXT("-run="), Commandlet) && Commandlet.StartsWith(TEXT("Cook"), ESearchCase::IgnoreCase);
++	}
++
++	/** Project Settings > Packaging > Directories To Never Cook, as package path prefixes (read once, under GLock). */
++	void ReadNeverCookRootsLocked()
++	{
++		if (GNeverCookRootsRead || !GConfig)
++		{
++			return;
++		}
++		GNeverCookRootsRead = true;
++		TArray<FString> Entries;
++		GConfig->GetArray(TEXT("/Script/UnrealEd.ProjectPackagingSettings"), TEXT("DirectoriesToNeverCook"), Entries, GGameIni);
++		for (const FString& Entry : Entries)
++		{
++			FString Root;
++			if (!FParse::Value(*Entry, TEXT("Path="), Root))
++			{
++				continue;
++			}
++			Root = Root.TrimStartAndEnd().Replace(TEXT("\\"), TEXT("/"));
++			if (Root.IsEmpty())
++			{
++				continue;
++			}
++			if (!Root.StartsWith(TEXT("/")))
++			{
++				Root = TEXT("/Game/") + Root;
++			}
++			while (Root.EndsWith(TEXT("/")))
++			{
++				Root.LeftChopInline(1);
++			}
++			GNeverCookRoots.AddUnique(Root + TEXT("/"));
++		}
++	}
++
++	/** The cook leaves this package out (it is never written), so loading it with default values can't ship anything. */
++	bool IsLeftOutOfCook(FName PackageName)
++	{
++		FScopeLock Lock(&GLock);
++		if (GLeftOutOfCook.Contains(PackageName))
++		{
++			return true;
++		}
++		ReadNeverCookRootsLocked();
++		const FString Name = PackageName.ToString() + TEXT("/");
++		for (const FString& Root : GNeverCookRoots)
++		{
++			if (Name.StartsWith(Root, ESearchCase::IgnoreCase))
++			{
++				return true;
++			}
++		}
++		return false;
++	}
++
+ 	class FZeroFillLoader;
+ 	TMap<FLinkerLoad*, FZeroFillLoader*> GZeroFillLoaders;
+ 
+@@ -324,14 +392,18 @@
+ 		return !Out.bUnreadable && !bOverflow;
+ 	}
+ 
+-	void Report(FName PackageName, const UStruct* Struct, UObject* Object, const FHeaderCheck& Check)
++	FString DescribeDamage(FName PackageName, const UStruct* Struct, UObject* Object, const FHeaderCheck& Check)
+ 	{
+ 		const FString ObjectName = Object ? Object->GetPathName() : PackageName.ToString();
+-		const FString Details = Check.bUnreadable
++		return Check.bUnreadable
+ 			? FString::Printf(TEXT("%s: the saved %s properties could not be read (the data does not match this project's class)"),
+ 				*ObjectName, *Struct->GetName())
+ 			: FString::Printf(TEXT("%s: saved with %u %s property slots, but this project's %s has %u"),
+ 				*ObjectName, Check.SavedSlots, *Struct->GetName(), *Struct->GetPathName(), Check.NativeSlots);
++	}
++
++	void Report(FName PackageName, const FString& Details, const UStruct* Struct)
++	{
+ 		bool bFirst = false;
+ 		{
+ 			FScopeLock Lock(&GLock);
+@@ -346,7 +418,12 @@
+ 				bFirst = true;
+ 			}
+ 		}
+-		if (bFirst)
++		if (bFirst && GCookMode)
++		{
++			UE_LOG(LogRebirthSafeLoad, Warning, TEXT("%s. The rest of it loads with default values; this cook leaves the package out, so nothing of it is packaged ")
++				TEXT("(the game uses its own)."), *Details);
++		}
++		else if (bFirst)
+ 		{
+ 			UE_LOG(LogRebirthSafeLoad, Warning, TEXT("%s. The rest of it loads with default values instead of crashing the editor. ")
+ 				TEXT("Don't Make Editable or re-save this package; the End project's class needs the game's properties first."), *Details);
+@@ -378,10 +455,19 @@
+ 			FHeaderCheck Check;
+ 			if (!CheckHeader(Struct, Ar, *Linker, Check))
+ 			{
+-				Slot.EnterRecord();
+ 				UObject* Object = SerializedObjectOf(*Linker);
+ 				const FName PackageName = Linker->LinkerRoot ? Linker->LinkerRoot->GetFName() : FName(TEXT("(unknown package)"));
+-				Report(PackageName, Struct, Object, Check);
++				const FString Details = DescribeDamage(PackageName, Struct, Object, Check);
++				if (GCookMode && !IsLeftOutOfCook(PackageName))
++				{
++					// This cook would write the package: with default values it would ship broken, and read as it is it
++					// crashes. Stop with its name instead.
++					UE_LOG(LogRebirthSafeLoad, Fatal, TEXT("%s. This cook would package it with default values, so the cook stops here. Leave it out of the cook ")
++						TEXT("(Project Settings > Packaging > Directories To Never Cook, or don't reference it from what the mod packages), or give the End project's ")
++						TEXT("class the game's properties."), *Details);
++				}
++				Slot.EnterRecord();
++				Report(PackageName, Details, Struct);
+ 				if (!SkipRestOfObject(*Linker, static_cast<FArchive&>(*Linker).Tell(), Object))
+ 				{
+ 					Ar.SetError();
+@@ -441,14 +527,25 @@
+ 		{
+ 			return;
+ 		}
+-		// A cook must never write an object that could not be read in full: in commandlets the guard stays off unless
+-		// -RebirthSafeLoad is on the command line (for batch tests that only load).
+-		if (IsRunningCommandlet() && !FParse::Param(FCommandLine::Get(), TEXT("RebirthSafeLoad")))
++		if (FParse::Param(FCommandLine::Get(), TEXT("NoRebirthSafeLoad")))
+ 		{
+-			GInactiveReason = TEXT("commandlet (add -RebirthSafeLoad to turn it on)");
++			GInactiveReason = TEXT("-NoRebirthSafeLoad");
+ 			UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is off: %s."), *GInactiveReason);
+ 			return;
+ 		}
++		// A cook must never write an object that could not be read in full: in a cook the guard only stands in for
++		// packages the cook leaves out (IsLeftOutOfCook); in other commandlets it stays off unless -RebirthSafeLoad is on
++		// the command line (for batch tests that only load; it then guards everything, as in the editor).
++		if (IsRunningCommandlet() && !FParse::Param(FCommandLine::Get(), TEXT("RebirthSafeLoad")))
++		{
++			if (!IsCookCommandlet())
++			{
++				GInactiveReason = TEXT("commandlet (add -RebirthSafeLoad to turn it on)");
++				UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is off: %s."), *GInactiveReason);
++				return;
++			}
++			GCookMode = true;
++		}
+ 		FString Reason;
+ 		uint8* Target = FindTarget(Reason);
+ 		if (!Target)
+@@ -485,7 +582,15 @@
+ 		GTarget = Target;
+ 		GActive = true;
+ 		GInactiveReason.Empty();
+-		UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is on: cooked objects whose saved properties don't fit this project's classes load with default values instead of crashing the editor."));
++		if (GCookMode)
++		{
++			UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is on for this cook: game packages it leaves out (Directories To Never Cook, the game's cooked copies) ")
++				TEXT("load with default values when their saved properties don't fit this project's classes; any other such package stops the cook with its name."));
++		}
++		else
++		{
++			UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is on: cooked objects whose saved properties don't fit this project's classes load with default values instead of crashing the editor."));
++		}
+ 	}
+ 
+ 	void Uninstall()
+@@ -522,7 +627,7 @@
+ 	{
+ 		if (GActive)
+ 		{
+-			UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is on."));
++			UE_LOG(LogRebirthSafeLoad, Display, TEXT("Cooked-load guard is on%s."), GCookMode ? TEXT(" (cook: only for packages the cook leaves out)") : TEXT(""));
+ 		}
+ 		else
+ 		{
+@@ -574,6 +679,13 @@
+ 		GDamaged.GetKeys(Names);
+ 		return Names;
+ 	}
++
++	void AddPackagesLeftOutOfCook(const TArray<FName>& PackageNames)
++	{
++		using namespace RebirthSafeLoadPrivate;
++		FScopeLock Lock(&GLock);
++		GLeftOutOfCook.Append(PackageNames);
++	}
+ }
+ 
+ class FRebirthSafeLoadModule : public IModuleInterface

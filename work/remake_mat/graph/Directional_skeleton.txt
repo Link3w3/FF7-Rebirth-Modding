@@ -1,0 +1,123 @@
+Material EndMaterial_Directional
+  MaterialExpressionMaterialFunctionCall_0 (MaterialFunctionCall) {"function": "HermiteLimited"}
+      S                <- MaterialExpressionMaterialFunctionCall_4[0]
+      R                <- MaterialExpressionConstant_15[0]
+  MaterialExpressionMaterialFunctionCall_2 (MaterialFunctionCall) {"function": "DistanceFade"}
+      NearDistance     <- MaterialExpressionScalarParameter_30[0]
+      FarDistance      <- MaterialExpressionScalarParameter_33[0]
+  MaterialExpressionMaterialFunctionCall_3 (MaterialFunctionCall) {"function": "RotateCoordinateRightAngle"}
+      Angle            <- MaterialExpressionScalarParameter_1[0]
+      Coordinate       <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionMaterialFunctionCall_4 (MaterialFunctionCall) {"function": "ExtraSceneDepthFade"}
+      UnitDistance     <- MaterialExpressionConstant_1[0]
+  MaterialExpressionMaterialFunctionCall_6 (MaterialFunctionCall) {"function": "RotateCoordinateRightAngle"}
+      Angle            <- MaterialExpressionScalarParameter_10[0]
+      Coordinate       <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionMaterialFunctionCall_7 (MaterialFunctionCall) {"function": "RotateCoordinateRightAngle"}
+      Angle            <- MaterialExpressionScalarParameter_6[0]
+      Coordinate       <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionMaterialFunctionCall_9 (MaterialFunctionCall) {"function": "RotateCoordinateRightAngle"}
+      Angle            <- MaterialExpressionScalarParameter_4[0]
+      Coordinate       <- MaterialExpressionTextureCoordinate_1[0]
+  MaterialExpressionMaterialFunctionCall_16 (MaterialFunctionCall) {"function": "BlendModifier"}
+      X                <- MaterialExpressionClamp_1[0]
+      Y                <- MaterialExpressionComponentMask_29[0]
+      Blend            <- MaterialExpressionClamp_14[0]
+      Ratio            <- MaterialExpressionClamp_15[0]
+  MaterialExpressionScalarParameter_0 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "0:Coordinate:FlipBook(Boolean)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_1 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "0:Coordinate:Rotation(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_2 (ScalarParameter) {"ParameterName": "L:Directional(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_3 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "1:Coordinate:FlipBook(Boolean)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_4 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "2:Coordinate:Rotation(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_5 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "2:Coordinate:FlipBook(Boolean)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_6 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "1:Coordinate:Rotation(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_9 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "L:Parallax(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_10 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "3:Coordinate:Rotation(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_11 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "3:Coordinate:FlipBook(Boolean)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_12 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "L:Blend(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_13 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "L:Modifier(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_14 (ScalarParameter) {"SliderMin": -10.0, "SliderMax": 10.0, "ParameterName": "L:ToneViewDependency(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_17 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "A:0:Coverage(Float1)", "Group": "System"}
+  MaterialExpressionScalarParameter_22 (ScalarParameter) {"SliderMax": 1.0, "ParameterName": "L:ViewDependency(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_24 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "0:Coordinate:Parallax(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_25 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "2:Cordinate:Parallax(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_27 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "3:Cordinate:Parallax(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_28 (ScalarParameter) {"DefaultValue": 1.0, "SliderMax": 1.0, "ParameterName": "1:Cordinate:Parallax(Float1)", "Group": "Dynamic"}
+  MaterialExpressionScalarParameter_30 (ScalarParameter) {"ParameterName": "L:NearDistance(Float1)", "Group": "System"}
+  MaterialExpressionScalarParameter_33 (ScalarParameter) {"ParameterName": "L:FarDistance(Float1)", "Group": "System"}
+  MaterialExpressionStaticSwitchParameter_0 (StaticSwitchParameter) {"ParameterName": "Visibility", "Group": "Static"}
+      A                <- MaterialExpressionComponentMask_6[0]
+      B                <- MaterialExpressionConstant_0[0]
+  MaterialExpressionStaticSwitchParameter_1 (StaticSwitchParameter) {"ParameterName": "Parallax", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_9[0]
+      B                <- MaterialExpressionConstant2Vector_0[0]
+  MaterialExpressionStaticSwitchParameter_2 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_VELOCITY_TANGENT", "ParameterName": "VelocityTangent", "Group": "Static"}
+      A                <- MaterialExpressionMultiply_1[0]
+      B                <- MaterialExpressionMultiply_1[0]
+  MaterialExpressionStaticSwitchParameter_3 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_VELOCITY_NORMAL", "ParameterName": "VelocityNormal", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_4[0]
+      B                <- MaterialExpressionStaticSwitchParameter_4[0]
+  MaterialExpressionStaticSwitchParameter_4 (StaticSwitchParameter) {"Definition": "STATIC_SWITCH_VELOCITY_BINORMAL", "ParameterName": "VelocityBinormal", "Group": "Static"}
+      A                <- MaterialExpressionStaticSwitchParameter_2[0]
+      B                <- MaterialExpressionStaticSwitchParameter_2[0]
+  MaterialExpressionStaticSwitchParameter_10 (StaticSwitchParameter) {"DefaultValue": true, "Definition": "STATIC_SWITCH_VIEW_DEPENDENT", "ParameterName": "ViewDependent", "Group": "Static"}
+      A                <- MaterialExpressionCustom_2[0]
+      B                <- MaterialExpressionConstant_2[0]
+  MaterialExpressionStaticSwitchParameter_13 (StaticSwitchParameter) {"ParameterName": "Edge", "Group": "Static"}
+      A                <- MaterialExpressionCustom_3[0]
+      B                <- MaterialExpressionConstant_11[0]
+  MaterialExpressionStaticSwitchParameter_19 (StaticSwitchParameter) {"ParameterName": "Modifier", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_16[0]
+      B                <- MaterialExpressionClamp_1[0]
+  MaterialExpressionStaticSwitchParameter_21 (StaticSwitchParameter) {"ParameterName": "Soft", "Group": "Static"}
+      A                <- MaterialExpressionMaterialFunctionCall_0[0]
+      B                <- MaterialExpressionConstant_7[0]
+  MaterialExpressionTextureSampleParameter2D_1 (TextureSampleParameter2D) {"ParameterName": "0:Directional", "Group": "Texture", "MipValueMode": "ETextureMipValueMode::TMVM_MipBias", "ConstMipValue": 0, "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionCustom_4[0]
+      MipValue         <- MaterialExpressionConstant_6[0]
+  MaterialExpressionTextureSampleParameter2D_3 (TextureSampleParameter2D) {"ParameterName": "2:Visibility", "Group": "Texture", "MipValueMode": "ETextureMipValueMode::TMVM_MipBias", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionCustom_6[0]
+      MipValue         <- MaterialExpressionConstant_6[0]
+  MaterialExpressionTextureSampleParameter2D_4 (TextureSampleParameter2D) {"ParameterName": "1:Parallax", "Group": "Texture", "MipValueMode": "ETextureMipValueMode::TMVM_MipBias", "texture": "000000FF_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionCustom_5[0]
+      MipValue         <- MaterialExpressionConstant_6[0]
+  MaterialExpressionTextureSampleParameter2D_5 (TextureSampleParameter2D) {"ParameterName": "3:Modifier", "Group": "Texture", "MipValueMode": "ETextureMipValueMode::TMVM_MipBias", "texture": "FF000000_BC4", "SamplerType": "EMaterialSamplerType::SAMPLERTYPE_Alpha"}
+      Coordinates      <- MaterialExpressionCustom_10[0]
+      MipValue         <- MaterialExpressionConstant_6[0]
+  MaterialExpressionVectorParameter_0 (VectorParameter) {"ParameterName": "0:Coordinate:Offset(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_3 (VectorParameter) {"ParameterName": "A:1:EmitterPosition(Float3)", "Group": "System"}
+  MaterialExpressionVectorParameter_4 (VectorParameter) {"ParameterName": "0:Coordinate:Scale(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_5 (VectorParameter) {"ParameterName": "1:Coordinate:Offset(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_6 (VectorParameter) {"ParameterName": "1:Coordinate:Scale(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_8 (VectorParameter) {"ParameterName": "3:Coordinate:Offset(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_9 (VectorParameter) {"ParameterName": "2:Coordinate:Offset(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_10 (VectorParameter) {"ParameterName": "2:Coordinate:Scale(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_11 (VectorParameter) {"ParameterName": "3:Coordinate:Scale(Float2)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_14 (VectorParameter) {"ParameterName": "A:3:ViewDependentParticle(Float4)", "Group": "System"}
+  MaterialExpressionVectorParameter_15 (VectorParameter) {"ParameterName": "0:Coordinate:Distribution(Float4)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_17 (VectorParameter) {"ParameterName": "1:Coordinate:Distribution(Float4)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_18 (VectorParameter) {"ParameterName": "2:Coordinate:Distribution(Float4)", "Group": "Dynamic"}
+  MaterialExpressionVectorParameter_19 (VectorParameter) {"ParameterName": "3:Coordinate:Distribution(Float4)", "Group": "Dynamic"}
+  stripped expressions referred to: 22
+    MaterialExpressionClamp_1                     <- used by MaterialExpressionMaterialFunctionCall_16.X, MaterialExpressionStaticSwitchParameter_19.B
+    MaterialExpressionClamp_14                    <- used by MaterialExpressionMaterialFunctionCall_16.Blend
+    MaterialExpressionClamp_15                    <- used by MaterialExpressionMaterialFunctionCall_16.Ratio
+    MaterialExpressionComponentMask_29            <- used by MaterialExpressionMaterialFunctionCall_16.Y
+    MaterialExpressionComponentMask_6             <- used by MaterialExpressionStaticSwitchParameter_0.A
+    MaterialExpressionConstant2Vector_0           <- used by MaterialExpressionStaticSwitchParameter_1.B
+    MaterialExpressionConstant_0                  <- used by MaterialExpressionStaticSwitchParameter_0.B
+    MaterialExpressionConstant_1                  <- used by MaterialExpressionMaterialFunctionCall_4.UnitDistance
+    MaterialExpressionConstant_11                 <- used by MaterialExpressionStaticSwitchParameter_13.B
+    MaterialExpressionConstant_15                 <- used by MaterialExpressionMaterialFunctionCall_0.R
+    MaterialExpressionConstant_2                  <- used by MaterialExpressionStaticSwitchParameter_10.B
+    MaterialExpressionConstant_6                  <- used by MaterialExpressionTextureSampleParameter2D_1.MipValue, MaterialExpressionTextureSampleParameter2D_3.MipValue, MaterialExpressionTextureSampleParameter2D_4.MipValue, MaterialExpressionTextureSampleParameter2D_5.MipValue
+    MaterialExpressionConstant_7                  <- used by MaterialExpressionStaticSwitchParameter_21.B
+    MaterialExpressionCustom_10                   <- used by MaterialExpressionTextureSampleParameter2D_5.Coordinates
+    MaterialExpressionCustom_2                    <- used by MaterialExpressionStaticSwitchParameter_10.A
+    MaterialExpressionCustom_3                    <- used by MaterialExpressionStaticSwitchParameter_13.A
+    MaterialExpressionCustom_4                    <- used by MaterialExpressionTextureSampleParameter2D_1.Coordinates
+    MaterialExpressionCustom_5                    <- used by MaterialExpressionTextureSampleParameter2D_4.Coordinates
+    MaterialExpressionCustom_6                    <- used by MaterialExpressionTextureSampleParameter2D_3.Coordinates
+    MaterialExpressionMultiply_1                  <- used by MaterialExpressionStaticSwitchParameter_2.A, MaterialExpressionStaticSwitchParameter_2.B
+    MaterialExpressionMultiply_9                  <- used by MaterialExpressionStaticSwitchParameter_1.A
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionMaterialFunctionCall_3.Coordinate, MaterialExpressionMaterialFunctionCall_6.Coordinate, MaterialExpressionMaterialFunctionCall_7.Coordinate, MaterialExpressionMaterialFunctionCall_9.Coordinate

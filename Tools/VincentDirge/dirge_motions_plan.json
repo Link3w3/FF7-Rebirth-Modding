@@ -1,0 +1,34 @@
+{
+  "plan": "Vincent: Dirge of Cerberus shooter, step 1b (the motions made cookable)",
+  "clip_sets": [
+    {
+      "name": "Vincent",
+      "folder": "/Game/Motion/Player/PC0011_00_Vincent/Battle00",
+      "prefix": "p000_",
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+      "data_object": "/Game/RebirthSkelCompat/Dirge/Vincent_DirgeMotions",
+      "build_folder": "/Game/RebirthSkelCompat/Dirge/Vincent",
+      "chunk": 53
+    },
+    {
+      "name": "Chaos",
+      "folder": "/Game/Motion/Player/PC0011_10_Chaos/Battle00",
+      "prefix": "p007_",
+      "skeleton": "/Game/Character/Player/PC0011_10_Chaos/Model/PC0011_10_Skeleton.PC0011_10_Skeleton",
+      "data_object": "/Game/RebirthSkelCompat/Dirge/Chaos_DirgeMotions",
+      "build_folder": "/Game/RebirthSkelCompat/Dirge/Chaos",
+      "chunk": 54
+    }
+  ],
+  "model_label": {
+    "folder": "/Game/Character/Player/PC0011_10_Chaos",
+    "label": "PAL_ChaosModel_Chunk54",
+    "chunk": 54,
+    "leave_out_classes": ["EndSkeletonCompatDataObject", "PrimaryAssetLabel"]
+  },
+  "old_labels": [
+    "/Game/Motion/Player/PC0011_00_Vincent/Battle00/PAL_Dirge_Chunk53",
+    "/Game/Motion/Player/PC0011_10_Chaos/Battle00/PAL_Chaos_Chunk54",
+    "/Game/Character/Player/PC0011_10_Chaos/PAL_Chaos_Chunk54"
+  ]
+}

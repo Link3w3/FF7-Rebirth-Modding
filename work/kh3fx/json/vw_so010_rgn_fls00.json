@@ -1,0 +1,7233 @@
+{
+ "name": "vw_so010_rgn_fls00",
+ "exports": {
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_0.DistributionCameraOffset": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 10.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_1.DistributionCameraOffset": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 30.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_2.DistributionCameraOffset": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 80.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_4.DistributionCameraOffset": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 30.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_8.DistributionCameraOffset": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 30.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_1.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.5,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_13.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_2.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_3.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_5.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_6.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_8.DistributionStartAlpha": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.6000000238418579,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0.DistributionFloatConstant_0": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12.DistributionAlphaScaleOverLife": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4.DistributionFloatConstant_0": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_0.DistributionLifetime": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.4000000059604645,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_2.DistributionLifetime": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.23999999463558197,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_4.DistributionLifetime": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.4000000059604645,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_6.DistributionLifetime": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.23999999463558197,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_8.DistributionLifetime": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.3499999940395355,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionBrightnessOverLife": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 20.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionLightExponent": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 4.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionRadiusScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 10.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatConstant_0": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionParam4": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_0.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_1.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_2.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_20.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_22.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_28.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_6.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_1.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_1.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_16.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_16.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_2.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_2.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_2.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_23.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_23.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_23.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_27.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_27.DistributionFloatConstant_0": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_27.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_4.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_4.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_4.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_6.BurstScaleDistribution": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_6.RequiredDistributionSpawnRate": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_6.RequiredDistributionSpawnRateScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionAlphaIntensity": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorIntensity": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorScaleTimeScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionIntensity": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 50.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionPositionScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.009999999776482582,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeIntensity": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeScaleTimeScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionTimeScale": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionTransfromGravity": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionDeviation": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 0.4000000059604645,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionDirectionAngle": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 180.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionFloatConstant_4": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionRangeRadius": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "Constant": 5.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionSubMeshsSetIndex": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionSubMeshsSetIndex": {
+   "cls": "DistributionFloatConstant",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13.DistributionFloatConstantCurve_0": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 2.214392900466919,
+       "LeaveTangent": 2.214392900466919,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": 0.699999988079071,
+       "ArriveTangent": 0.02310900017619133,
+       "LeaveTangent": 0.02310900017619133,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.5726056098937988,
+       "OutVal": 0.47192251682281494,
+       "ArriveTangent": -1.873033046722412,
+       "LeaveTangent": -1.873033046722412,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15.DistributionFloatConstantCurve_0": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 19.23452377319336,
+       "LeaveTangent": 19.23452377319336,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.10000000149011612,
+       "OutVal": 0.699999988079071,
+       "ArriveTangent": 0.05191424861550331,
+       "LeaveTangent": 0.05191424861550331,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5.DistributionFloatConstantCurve_0": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 23.825923919677734,
+       "LeaveTangent": 23.825923919677734,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.10000000149011612,
+       "OutVal": 1.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": -0.09900620579719543,
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.20094813406467438,
+       "OutVal": 0.4279651343822479,
+       "ArriveTangent": -3.9239351749420166,
+       "LeaveTangent": -3.9239351749420166,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.5,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6.DistributionConstantCurveAlphaScaleOverLife": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": 1.0,
+       "ArriveTangent": -0.10466416925191879,
+       "LeaveTangent": -2.475433588027954,
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_0": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": 3.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.5,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_16.DistributionFloatConstantCurve_1": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": 130.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.15027223527431488,
+       "OutVal": 30.0,
+       "ArriveTangent": -225.33189392089844,
+       "LeaveTangent": -155.7125244140625,
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointFloat"
+      },
+      {
+       "InVal": 0.800000011920929,
+       "OutVal": 0.0,
+       "ArriveTangent": 0.0,
+       "LeaveTangent": 0.0,
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointFloat"
+      }
+     ],
+     "__struct": "InterpCurveFloat"
+    },
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionSubMeshsIndexCurve": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionSubMeshsIndexCurve": {
+   "cls": "DistributionFloatConstantCurve",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleAccelerationDrag_3.DistributionFloatUniform_0": {
+   "cls": "DistributionFloatUniform",
+   "props": {
+    "Min": 3.0,
+    "Max": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_5.DistributionFloatUniform_1": {
+   "cls": "DistributionFloatUniform",
+   "props": {
+    "Min": 0.30000001192092896,
+    "Max": 0.5,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatUniform_3": {
+   "cls": "DistributionFloatUniform",
+   "props": {
+    "Max": 1.0,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleVelocity_0.DistributionStartVelocityRadial": {
+   "cls": "DistributionFloatUniform",
+   "props": {
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_1.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_13.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_2.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     10.0,
+     9.0,
+     3.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_3.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_5.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_6.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_8.DistributionStartColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     2.0,
+     2.5999999046325684,
+     3.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     2.0,
+     2.0,
+     2.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6.DistributionTailColor": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_0.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     350.0,
+     20.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_14.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1900.0,
+     30.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_17.DistributionVectorConstantStartSize": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_2.DistributionVectorConstantStartSize": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1400.0,
+     100.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_5.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     5.0,
+     0.0,
+     0.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_8.DistributionVectorConstantMeshStartSize": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     9.0,
+     1.0,
+     1.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_0.DistributionVectorConstant_0": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorScaleNoiseScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionCurlNoiseScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionCurlNoiseTimeScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeScaleNoiseScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionLocalAddPosition": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionLocalAddScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionTransfromVelocity": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionVectorConstant_2": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionParticleRotation": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionParticleRotationScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionParticleRotation": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     90.0,
+     0.0,
+     0.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionParticleRotationScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionRangeScale": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "Constant": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionRollPitchYaw": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionRollPitchYaw": {
+   "cls": "DistributionVectorConstant",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        2.5,
+        5.0,
+        4.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.10000000149011612,
+       "OutVal": [
+        3.0,
+        3.0,
+        2.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        -3.5,
+        -4.5
+       ],
+       "LeaveTangent": [
+        0.0,
+        -3.5,
+        -4.5
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        2.0,
+        1.600000023841858,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        -3.5,
+        -4.5
+       ],
+       "LeaveTangent": [
+        0.0,
+        -3.5,
+        -4.5
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.30000001192092896,
+        0.5,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": [
+        0.5,
+        0.20000000298023224,
+        0.20000000298023224
+       ],
+       "ArriveTangent": [
+        0.0,
+        -0.3314564526081085,
+        -0.38359177112579346
+       ],
+       "LeaveTangent": [
+        0.0,
+        -0.3314564526081085,
+        -0.38359177112579346
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.20000000298023224,
+        1.0,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": [
+        1.0,
+        0.6000000238418579,
+        0.5
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.800000011920929,
+        0.30000001192092896,
+        0.30000001192092896
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        1.0,
+        20.0,
+        20.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": [
+        20.0,
+        15.0,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        15.0,
+        8.0,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        2.0,
+        1.7999999523162842,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.10000000149011612,
+       "OutVal": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionVectorConstantCurve_2": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        1.0,
+        0.8999999761581421,
+        0.30000001192092896
+       ],
+       "ArriveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.20000000298023224,
+       "OutVal": [
+        0.30000001192092896,
+        0.8999999761581421,
+        1.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.30000001192092896,
+        0.699999988079071,
+        0.800000011920929
+       ],
+       "ArriveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_1.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        10.615379333496094,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        10.615379333496094,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.029999999329447746,
+       "OutVal": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "ArriveTangent": [
+        -0.06366299837827682,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -0.06483910977840424,
+        -0.22435910999774933,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.22445142269134521,
+       "OutVal": [
+        0.9352310299873352,
+        0.8348923921585083,
+        0.9063462018966675
+       ],
+       "ArriveTangent": [
+        -2.60770320892334e-07,
+        -0.9392507672309875,
+        0.0
+       ],
+       "LeaveTangent": [
+        -2.60770320892334e-07,
+        -0.9392507672309875,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.9352309703826904,
+        0.0,
+        0.9063462018966675
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_5.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.10000000149011612,
+       "OutVal": [
+        1.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -3.126983642578125,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_6.DistributionVectorConstantCurve_2": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        11.130435943603516,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        11.130435943603516,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.09644970297813416,
+       "OutVal": [
+        0.6566373109817505,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        5.414046764373779,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        5.414046764373779,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.15662725269794464,
+       "OutVal": [
+        0.8990280628204346,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        1.3118456602096558,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        1.3118456602096558,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.5040898323059082,
+       "OutVal": [
+        1.1913982629776,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        -0.026791103184223175,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -0.026791103184223175,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_Linear",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_7.DistributionVectorConstantCurve_0": {
+   "cls": "DistributionVectorConstantCurve",
+   "props": {
+    "ConstantCurve": {
+     "Points": [
+      {
+       "InVal": 0.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        10.615379333496094,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        10.615379333496094,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.029999999329447746,
+       "OutVal": [
+        1.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        -0.06366314738988876,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -0.0680161640048027,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveBreak",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.2488037794828415,
+       "OutVal": [
+        0.8507981300354004,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        -2.190049648284912,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -2.190049648284912,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 0.8043062090873718,
+       "OutVal": [
+        0.025707125663757324,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        -0.2222120761871338,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        -0.2222120761871338,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveAutoClamped",
+       "__struct": "InterpCurvePointVector"
+      },
+      {
+       "InVal": 1.0,
+       "OutVal": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "ArriveTangent": [
+        0.0064172386191785336,
+        0.0,
+        0.0
+       ],
+       "LeaveTangent": [
+        0.0064172386191785336,
+        0.0,
+        0.0
+       ],
+       "InterpMode": "CIM_CurveUser",
+       "__struct": "InterpCurvePointVector"
+      }
+     ],
+     "__struct": "InterpCurveVector"
+    },
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_21.DistributionVectorUniform_1": {
+   "cls": "DistributionVectorUniform",
+   "props": {
+    "Max": [
+     4.0,
+     0.0,
+     0.0
+    ],
+    "Min": [
+     1.5,
+     0.0,
+     0.0
+    ],
+    "LockedAxes": "EDVLF_XYZ",
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionUniformParticleRotation": {
+   "cls": "DistributionVectorUniform",
+   "props": {
+    "Max": [
+     360.0,
+     0.0,
+     0.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionStartParticleRotation": {
+   "cls": "DistributionVectorUniform",
+   "props": {
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleVelocity_0.DistributionStartVelocity": {
+   "cls": "DistributionVectorUniform",
+   "props": {
+    "Max": [
+     10.0,
+     10.0,
+     40.0
+    ],
+    "Min": [
+     -10.0,
+     -10.0,
+     16.0
+    ],
+    "bIsDirty": false,
+    "bBakedDataSuccesfully": true
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_1.ParticleLODLevel_0": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_28",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_2",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_14",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_13",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15",
+     "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_4",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_AttachParticle_7",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0"
+    ],
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_27",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_3.ParticleLODLevel_0": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_22",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_4",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_17",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6",
+     "export:vw_so010_rgn_fls00.ParticleModuleLight_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_2",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0"
+    ],
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_23",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_4.ParticleLODLevel_0": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_0",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_7",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_6",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_1"
+    ],
+    "TypeDataModule": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2",
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_4",
+    "PeakActiveParticles": 5
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_5.ParticleLODLevel_1": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_1",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_6",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_1",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_3",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4",
+     "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_8",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0"
+    ],
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_1",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_6.ParticleLODLevel_2": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_2",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_8",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_2",
+     "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_1",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_AttachParticle_2",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0"
+    ],
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_2",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_8.ParticleLODLevel_2": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_6",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_8",
+     "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_6",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_8",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3",
+     "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_2"
+    ],
+    "TypeDataModule": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4",
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_6",
+    "PeakActiveParticles": 3
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_9.ParticleLODLevel_5": {
+   "cls": "ParticleLODLevel",
+   "props": {
+    "RequiredModule": "export:vw_so010_rgn_fls00.ParticleModuleRequired_20",
+    "Modules": [
+     "export:vw_so010_rgn_fls00.ParticleModuleLifetime_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleSize_21",
+     "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_5",
+     "export:vw_so010_rgn_fls00.ParticleModuleColor_2",
+     "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1",
+     "export:vw_so010_rgn_fls00.ParticleModuleAccelerationDrag_3",
+     "export:vw_so010_rgn_fls00.ParticleModuleVelocity_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0",
+     "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3"
+    ],
+    "SpawnModule": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_16",
+    "PeakActiveParticles": 13
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleAccelerationDrag_3": {
+   "cls": "ParticleModuleAccelerationDrag",
+   "props": {
+    "DragCoefficientRaw": {
+     "MinValue": 3.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleAccelerationDrag_3.DistributionFloatUniform_0",
+     "Table": {
+      "Op": 2,
+      "EntryCount": 1,
+      "EntryStride": 2,
+      "SubEntryStride": 1,
+      "Values": [
+       3.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bAlwaysInWorldSpace": true,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_0": {
+   "cls": "ParticleModuleCameraOffset",
+   "props": {
+    "CameraOffset": {
+     "MinValue": 10.0,
+     "MaxValue": 10.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_0.DistributionCameraOffset",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       10.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_1": {
+   "cls": "ParticleModuleCameraOffset",
+   "props": {
+    "CameraOffset": {
+     "MinValue": 30.0,
+     "MaxValue": 30.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_1.DistributionCameraOffset",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       30.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_2": {
+   "cls": "ParticleModuleCameraOffset",
+   "props": {
+    "CameraOffset": {
+     "MinValue": 80.0,
+     "MaxValue": 80.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_2.DistributionCameraOffset",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       80.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_4": {
+   "cls": "ParticleModuleCameraOffset",
+   "props": {
+    "CameraOffset": {
+     "MinValue": 30.0,
+     "MaxValue": 30.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_4.DistributionCameraOffset",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       30.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleCameraOffset_8": {
+   "cls": "ParticleModuleCameraOffset",
+   "props": {
+    "CameraOffset": {
+     "MinValue": 30.0,
+     "MaxValue": 30.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleCameraOffset_8.DistributionCameraOffset",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       30.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_1": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_1.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 0.5,
+     "MaxValue": 0.5,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_1.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.5
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_13": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_13.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_13.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_2": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 3.0,
+     "MaxValue": 10.0,
+     "MinValueVec": [
+      10.0,
+      9.0,
+      3.0
+     ],
+     "MaxValueVec": [
+      10.0,
+      9.0,
+      3.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_2.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       10.0,
+       9.0,
+       3.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_2.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_3": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_3.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_3.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_5": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_5.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_5.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_6": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_6.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_6.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColor_8": {
+   "cls": "ParticleModuleColor",
+   "props": {
+    "StartColor": {
+     "MinValue": 2.0,
+     "MaxValue": 3.0,
+     "MinValueVec": [
+      2.0,
+      2.5999999046325684,
+      3.0
+     ],
+     "MaxValueVec": [
+      2.0,
+      2.5999999046325684,
+      3.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_8.DistributionStartColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       2.0,
+       2.5999999046325684,
+       3.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartAlpha": {
+     "MinValue": 0.6000000238418579,
+     "MaxValue": 0.6000000238418579,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColor_8.DistributionStartAlpha",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.6000000238418579
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 5.0,
+     "MinValueVec": [
+      2.0,
+      1.600000023841858,
+      1.0
+     ],
+     "MaxValueVec": [
+      3.0,
+      5.0,
+      4.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 64,
+      "EntryStride": 3,
+      "TimeScale": 62.999996185302734,
+      "Values": [
+       2.5,
+       5.0,
+       4.0,
+       2.5338852405548096,
+       4.871891975402832,
+       3.874016046524048,
+       2.6192679405212402,
+       4.54700231552124,
+       3.553880214691162,
+       2.732156276702881,
+       4.1128973960876465,
+       3.124760866165161,
+       2.848559856414795,
+       3.6571450233459473,
+       2.6718263626098633,
+       2.9444870948791504,
+       3.26731276512146,
+       2.280244827270508,
+       2.9960262775421143,
+       3.0306849479675293,
+       2.034914970397949,
+       2.9995245933532715,
+       2.9619433879852295,
+       1.9514503479003906,
+       2.997333288192749,
+       2.9102225303649902,
+       1.886704921722412,
+       2.9933876991271973,
+       2.8615710735321045,
+       1.8273097276687622,
+       2.9877543449401855,
+       2.8158743381500244,
+       1.7730637788772583,
+       2.9804983139038086,
+       2.773016929626465,
+       1.7237662076950073,
+       2.9716856479644775,
+       2.732883930206299,
+       1.6792165040969849,
+       2.9613819122314453,
+       2.695359468460083,
+       1.6392138004302979,
+       2.949653148651123,
+       2.6603286266326904,
+       1.6035573482513428,
+       2.936565637588501,
+       2.6276769638061523,
+       1.5720465183258057,
+       2.9221842288970947,
+       2.5972886085510254,
+       1.5444802045822144,
+       2.9065756797790527,
+       2.5690481662750244,
+       1.520658254623413,
+       2.8898050785064697,
+       2.5428407192230225,
+       1.5003794431686401,
+       2.871938943862915,
+       2.5185511112213135,
+       1.483443260192871,
+       2.8530426025390625,
+       2.4960644245147705,
+       1.469648838043213,
+       2.833181858062744,
+       2.4752650260925293,
+       1.458795428276062,
+       2.812422513961792,
+       2.456037998199463,
+       1.450682282447815,
+       2.7908308506011963,
+       2.4382681846618652,
+       1.4451085329055786,
+       2.768472194671631,
+       2.421840190887451,
+       1.4418737888336182,
+       2.745412588119507,
+       2.4066388607025146,
+       1.440777063369751,
+       2.7217178344726562,
+       2.3925492763519287,
+       1.4416176080703735,
+       2.697453737258911,
+       2.379456043243408,
+       1.4441946744918823,
+       2.6726861000061035,
+       2.367244005203247,
+       1.4483075141906738,
+       2.6474807262420654,
+       2.35579776763916,
+       1.453755497932434,
+       2.62190318107605,
+       2.3450024127960205,
+       1.4603378772735596,
+       2.596019744873047,
+       2.334742784500122,
+       1.4678534269332886,
+       2.5698962211608887,
+       2.324903726577759,
+       1.4761022329330444,
+       2.543598175048828,
+       2.3153698444366455,
+       1.4848827123641968,
+       2.5171914100646973,
+       2.3060262203216553,
+       1.4939947128295898,
+       2.4907419681549072,
+       2.296757459640503,
+       1.5032373666763306,
+       2.464315176010132,
+       2.2874481678009033,
+       1.5124096870422363,
+       2.4379775524139404,
+       2.2779836654663086,
+       1.5213111639022827,
+       2.411794662475586,
+       2.2682483196258545,
+       1.529740810394287,
+       2.385831832885742,
+       2.258127212524414,
+       1.537498116493225,
+       2.3601555824279785,
+       2.2475054264068604,
+       1.5443823337554932,
+       2.334831476211548,
+       2.23626708984375,
+       1.5501925945281982,
+       2.309925079345703,
+       2.2242977619171143,
+       1.5547281503677368,
+       2.2855026721954346,
+       2.2114813327789307,
+       1.5577881336212158,
+       2.261629581451416,
+       2.1977035999298096,
+       1.5591719150543213,
+       2.2383720874786377,
+       2.1828486919403076,
+       1.5586791038513184,
+       2.2157957553863525,
+       2.166801929473877,
+       1.5561085939407349,
+       2.1939663887023926,
+       2.1494476795196533,
+       1.5512595176696777,
+       2.17294979095459,
+       2.1306710243225098,
+       1.5439313650131226,
+       2.1528120040893555,
+       2.110356569290161,
+       1.5339231491088867,
+       2.1336185932159424,
+       2.0883893966674805,
+       1.5210343599319458,
+       2.1154356002807617,
+       2.064654588699341,
+       1.5050644874572754,
+       2.0983283519744873,
+       2.0390355587005615,
+       1.4858115911483765,
+       2.0823636054992676,
+       2.0114192962646484,
+       1.4630767107009888,
+       2.067605972290039,
+       1.9816884994506836,
+       1.4366573095321655,
+       2.0541226863861084,
+       1.949729561805725,
+       1.406354308128357,
+       2.041978120803833,
+       1.91542649269104,
+       1.3719656467437744,
+       2.0312392711639404,
+       1.8786646127700806,
+       1.3332916498184204,
+       2.0219712257385254,
+       1.8393278121948242,
+       1.2901302576065063,
+       2.014240026473999,
+       1.7973023653030396,
+       1.242282509803772,
+       2.0081112384796143,
+       1.7524713277816772,
+       1.1895455121994019,
+       2.0036511421203613,
+       1.7047208547592163,
+       1.1317200660705566,
+       2.0009257793426514,
+       1.6539353132247925,
+       1.0686049461364746,
+       2.0,
+       1.600000023841858,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_0.DistributionFloatConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 2.0,
+     "MaxValue": 2.0,
+     "MinValueVec": [
+      2.0,
+      2.0,
+      2.0
+     ],
+     "MaxValueVec": [
+      2.0,
+      2.0,
+      2.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       2.0,
+       2.0,
+       2.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_12.DistributionAlphaScaleOverLife",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 0.09999578446149826,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      0.30000001192092896,
+      0.10000000149011612,
+      0.09999578446149826
+     ],
+     "MaxValueVec": [
+      0.5,
+      0.5,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 16,
+      "EntryStride": 3,
+      "TimeScale": 14.999999046325684,
+      "Values": [
+       0.30000001192092896,
+       0.5,
+       1.0,
+       0.35192862153053284,
+       0.427017480134964,
+       0.797968327999115,
+       0.44813019037246704,
+       0.2876194715499878,
+       0.4188377857208252,
+       0.4999116361141205,
+       0.20011615753173828,
+       0.20033511519432068,
+       0.5,
+       0.1794670969247818,
+       0.17654737830162048,
+       0.5,
+       0.161906436085701,
+       0.15708044171333313,
+       0.5,
+       0.14708895981311798,
+       0.14122454822063446,
+       0.5,
+       0.1347934603691101,
+       0.12861526012420654,
+       0.5,
+       0.12479132413864136,
+       0.11887843161821365,
+       0.5,
+       0.1168564036488533,
+       0.11164319515228271,
+       0.5,
+       0.11076414585113525,
+       0.10654044896364212,
+       0.5,
+       0.10628516972064972,
+       0.1031956672668457,
+       0.5,
+       0.10319733619689941,
+       0.10124202072620392,
+       0.5,
+       0.10126972198486328,
+       0.10030412673950195,
+       0.5,
+       0.10028085112571716,
+       0.1000145971775055,
+       0.5,
+       0.10000000149011612,
+       0.10000000149011612
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MaxValue": 0.7005951404571533,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_13.DistributionFloatConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 16,
+      "EntryStride": 1,
+      "TimeScale": 14.999999046325684,
+      "Values": [
+       0.0,
+       0.24684898555278778,
+       0.5505757331848145,
+       0.6997566223144531,
+       0.7000851035118103,
+       0.6919184923171997,
+       0.667517900466919,
+       0.6188380718231201,
+       0.537889838218689,
+       0.42142242193222046,
+       0.3062659204006195,
+       0.2047133892774582,
+       0.12007273733615875,
+       0.05553661286830902,
+       0.014471780508756638,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 0.20000000298023224,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      0.20000000298023224,
+      0.30000001192092896,
+      0.30000001192092896
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 32,
+      "EntryStride": 3,
+      "TimeScale": 31.0,
+      "Values": [
+       0.20000000298023224,
+       1.0,
+       1.0,
+       0.2559348940849304,
+       0.9720325469970703,
+       0.9650406837463379,
+       0.3962290585041046,
+       0.901885449886322,
+       0.8773568272590637,
+       0.5806681513786316,
+       0.8096659183502197,
+       0.7620823979377747,
+       0.7690379619598389,
+       0.7154810428619385,
+       0.6443513035774231,
+       0.9211242198944092,
+       0.6394379734992981,
+       0.5492973327636719,
+       0.9967127442359924,
+       0.6016436815261841,
+       0.5020545125007629,
+       0.9935483932495117,
+       0.5903226137161255,
+       0.4935483932495117,
+       0.9854838848114014,
+       0.5782257914543152,
+       0.48548388481140137,
+       0.9774193167686462,
+       0.5661290287971497,
+       0.47741934657096863,
+       0.9693548083305359,
+       0.5540322661399841,
+       0.4693548381328583,
+       0.9612902998924255,
+       0.5419355034828186,
+       0.4612903296947479,
+       0.9532257914543152,
+       0.5298387408256531,
+       0.4532258212566376,
+       0.9451612830162048,
+       0.5177419781684875,
+       0.44516128301620483,
+       0.9370967745780945,
+       0.505645215511322,
+       0.4370967745780945,
+       0.9290322661399841,
+       0.4935483932495117,
+       0.42903226613998413,
+       0.9209677577018738,
+       0.4814516305923462,
+       0.4209677577018738,
+       0.9129032492637634,
+       0.46935486793518066,
+       0.4129032492637634,
+       0.9048387408256531,
+       0.45725804567337036,
+       0.4048387110233307,
+       0.8967742323875427,
+       0.44516128301620483,
+       0.39677420258522034,
+       0.8887097239494324,
+       0.4330645501613617,
+       0.3887097239494324,
+       0.880645215511322,
+       0.42096778750419617,
+       0.380645215511322,
+       0.8725806474685669,
+       0.40887099504470825,
+       0.3725806176662445,
+       0.8645160794258118,
+       0.39677420258522034,
+       0.36451610922813416,
+       0.8564516305923462,
+       0.3846774697303772,
+       0.3564516007900238,
+       0.8483871221542358,
+       0.37258070707321167,
+       0.34838709235191345,
+       0.8403225541114807,
+       0.360483855009079,
+       0.3403225839138031,
+       0.8322580456733704,
+       0.34838709235191345,
+       0.33225804567337036,
+       0.82419353723526,
+       0.3362903594970703,
+       0.3241935670375824,
+       0.8161290287971497,
+       0.3241935968399048,
+       0.31612905859947205,
+       0.8080645203590393,
+       0.31209680438041687,
+       0.3080645203590393,
+       0.800000011920929,
+       0.30000001192092896,
+       0.30000001192092896
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MaxValue": 0.7002505660057068,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_15.DistributionFloatConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 32,
+      "EntryStride": 1,
+      "TimeScale": 31.0,
+      "Values": [
+       0.0,
+       0.4552394151687622,
+       0.652936577796936,
+       0.6994070410728455,
+       0.6992360353469849,
+       0.6934300065040588,
+       0.6827504634857178,
+       0.6675965189933777,
+       0.6483670473098755,
+       0.625461220741272,
+       0.5992780327796936,
+       0.570206880569458,
+       0.5386554598808289,
+       0.505028247833252,
+       0.4697243571281433,
+       0.43314266204833984,
+       0.39568230509757996,
+       0.3577423691749573,
+       0.31972166895866394,
+       0.2820194363594055,
+       0.24503479897975922,
+       0.20916946232318878,
+       0.1748284101486206,
+       0.14240635931491852,
+       0.11230253428220749,
+       0.08491574227809906,
+       0.06064504384994507,
+       0.03988953307271004,
+       0.023048359900712967,
+       0.010520312003791332,
+       0.002704451559111476,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 20.0,
+     "MinValueVec": [
+      1.0,
+      8.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      20.0,
+      20.0,
+      20.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 128,
+      "EntryStride": 3,
+      "TimeScale": 127.0,
+      "Values": [
+       1.0,
+       20.0,
+       20.0,
+       1.086031198501587,
+       19.977359771728516,
+       19.913969039916992,
+       1.33484947681427,
+       19.911880493164062,
+       19.665149688720703,
+       1.7325412034988403,
+       19.807226181030273,
+       19.267459869384766,
+       2.265192985534668,
+       19.66705322265625,
+       18.734806060791016,
+       2.918891429901123,
+       19.495027542114258,
+       18.08110809326172,
+       3.6797232627868652,
+       19.294811248779297,
+       17.32027816772461,
+       4.533775329589844,
+       19.070056915283203,
+       16.466222763061523,
+       5.467133522033691,
+       18.824438095092773,
+       15.532866477966309,
+       6.465884208679199,
+       18.561609268188477,
+       14.534114837646484,
+       7.516115188598633,
+       18.285232543945312,
+       13.483884811401367,
+       8.603913307189941,
+       17.99897003173828,
+       12.396085739135742,
+       9.715361595153809,
+       17.706483840942383,
+       11.284638404846191,
+       10.836552619934082,
+       17.411434173583984,
+       10.163447380065918,
+       11.953566551208496,
+       17.117481231689453,
+       9.046433448791504,
+       13.052494049072266,
+       16.828290939331055,
+       7.947504997253418,
+       14.11942195892334,
+       16.547521591186523,
+       6.880578994750977,
+       15.140434265136719,
+       16.278833389282227,
+       5.859565734863281,
+       16.10161781311035,
+       16.025890350341797,
+       4.89838171005249,
+       16.989063262939453,
+       15.792351722717285,
+       4.010937690734863,
+       17.78885269165039,
+       15.581880569458008,
+       3.211148262023926,
+       18.487071990966797,
+       15.398138999938965,
+       2.512927293777466,
+       19.06981658935547,
+       15.24478530883789,
+       1.930185079574585,
+       19.52315902709961,
+       15.125484466552734,
+       1.4768409729003906,
+       19.83319664001465,
+       15.043895721435547,
+       1.1668041944503784,
+       19.986011505126953,
+       15.003681182861328,
+       1.0139884948730469,
+       19.999481201171875,
+       14.99927043914795,
+       1.0,
+       19.996320724487305,
+       14.994847297668457,
+       1.0,
+       19.990345001220703,
+       14.986481666564941,
+       1.0,
+       19.981611251831055,
+       14.97425651550293,
+       1.0,
+       19.970178604125977,
+       14.958251953125,
+       1.0,
+       19.956104278564453,
+       14.938547134399414,
+       1.0,
+       19.939443588256836,
+       14.915221214294434,
+       1.0,
+       19.920251846313477,
+       14.88835334777832,
+       1.0,
+       19.898591995239258,
+       14.858027458190918,
+       1.0,
+       19.8745174407959,
+       14.824322700500488,
+       1.0,
+       19.84808349609375,
+       14.78731632232666,
+       1.0,
+       19.819351196289062,
+       14.747090339660645,
+       1.0,
+       19.788373947143555,
+       14.70372486114502,
+       1.0,
+       19.75521469116211,
+       14.657299041748047,
+       1.0,
+       19.719924926757812,
+       14.607895851135254,
+       1.0,
+       19.682565689086914,
+       14.55559253692627,
+       1.0,
+       19.643192291259766,
+       14.500469207763672,
+       1.0,
+       19.60186004638672,
+       14.442605972290039,
+       1.0,
+       19.558631896972656,
+       14.382084846496582,
+       1.0,
+       19.513561248779297,
+       14.318984985351562,
+       1.0,
+       19.466703414916992,
+       14.253384590148926,
+       1.0,
+       19.418121337890625,
+       14.1853666305542,
+       1.0,
+       19.36786460876465,
+       14.115009307861328,
+       1.0,
+       19.315994262695312,
+       14.042394638061523,
+       1.0,
+       19.262571334838867,
+       13.967599868774414,
+       1.0,
+       19.2076473236084,
+       13.890707015991211,
+       1.0,
+       19.151283264160156,
+       13.811797142028809,
+       1.0,
+       19.09353256225586,
+       13.730947494506836,
+       1.0,
+       19.03445816040039,
+       13.648240089416504,
+       1.0,
+       18.974111557006836,
+       13.56375503540039,
+       1.0,
+       18.912551879882812,
+       13.477571487426758,
+       1.0,
+       18.849836349487305,
+       13.3897705078125,
+       1.0,
+       18.786022186279297,
+       13.300431251525879,
+       1.0,
+       18.721168518066406,
+       13.209634780883789,
+       1.0,
+       18.65532684326172,
+       13.11745834350586,
+       1.0,
+       18.58856201171875,
+       13.02398681640625,
+       1.0,
+       18.52092742919922,
+       12.92929744720459,
+       1.0,
+       18.45248031616211,
+       12.833471298217773,
+       1.0,
+       18.383275985717773,
+       12.736587524414062,
+       1.0,
+       18.31337547302246,
+       12.638726234436035,
+       1.0,
+       18.242834091186523,
+       12.539968490600586,
+       1.0,
+       18.171709060668945,
+       12.44039249420166,
+       1.0,
+       18.10005760192871,
+       12.340081214904785,
+       1.0,
+       18.027936935424805,
+       12.239112854003906,
+       1.0,
+       17.955406188964844,
+       12.137567520141602,
+       1.0,
+       17.882518768310547,
+       12.035524368286133,
+       1.0,
+       17.80933380126953,
+       11.933066368103027,
+       1.0,
+       17.73590850830078,
+       11.830270767211914,
+       1.0,
+       17.66230010986328,
+       11.727219581604004,
+       1.0,
+       17.588565826416016,
+       11.623992919921875,
+       1.0,
+       17.51476287841797,
+       11.520668983459473,
+       1.0,
+       17.440950393676758,
+       11.417329788208008,
+       1.0,
+       17.3671817779541,
+       11.314054489135742,
+       1.0,
+       17.293516159057617,
+       11.210923194885254,
+       1.0,
+       17.22001075744629,
+       11.108016014099121,
+       1.0,
+       17.146724700927734,
+       11.005413055419922,
+       1.0,
+       17.073711395263672,
+       10.90319538116455,
+       1.0,
+       17.00102996826172,
+       10.801441192626953,
+       1.0,
+       16.92873764038086,
+       10.700233459472656,
+       1.0,
+       16.856891632080078,
+       10.599649429321289,
+       1.0,
+       16.78554916381836,
+       10.49976921081543,
+       1.0,
+       16.714767456054688,
+       10.400673866271973,
+       1.0,
+       16.644601821899414,
+       10.302443504333496,
+       1.0,
+       16.57511329650879,
+       10.205160140991211,
+       1.0,
+       16.506357192993164,
+       10.10890007019043,
+       1.0,
+       16.438390731811523,
+       10.01374626159668,
+       1.0,
+       16.37126922607422,
+       9.919778823852539,
+       1.0,
+       16.3050537109375,
+       9.827075004577637,
+       1.0,
+       16.23979949951172,
+       9.7357177734375,
+       1.0,
+       16.175561904907227,
+       9.64578628540039,
+       1.0,
+       16.11240005493164,
+       9.55735969543457,
+       1.0,
+       16.050371170043945,
+       9.47052001953125,
+       1.0,
+       15.989532470703125,
+       9.385345458984375,
+       1.0,
+       15.929941177368164,
+       9.30191707611084,
+       1.0,
+       15.87165355682373,
+       9.220314025878906,
+       1.0,
+       15.814727783203125,
+       9.140619277954102,
+       1.0,
+       15.759221076965332,
+       9.062910079956055,
+       1.0,
+       15.705190658569336,
+       8.987266540527344,
+       1.0,
+       15.652692794799805,
+       8.913769721984863,
+       1.0,
+       15.601785659790039,
+       8.842498779296875,
+       1.0,
+       15.552525520324707,
+       8.773536682128906,
+       1.0,
+       15.50497055053711,
+       8.70695972442627,
+       1.0,
+       15.459178924560547,
+       8.642849922180176,
+       1.0,
+       15.415205001831055,
+       8.581286430358887,
+       1.0,
+       15.373109817504883,
+       8.52235221862793,
+       1.0,
+       15.332944869995117,
+       8.4661226272583,
+       1.0,
+       15.29477310180664,
+       8.412683486938477,
+       1.0,
+       15.258649826049805,
+       8.36210823059082,
+       1.0,
+       15.224630355834961,
+       8.314482688903809,
+       1.0,
+       15.192773818969727,
+       8.269882202148438,
+       1.0,
+       15.163137435913086,
+       8.2283935546875,
+       1.0,
+       15.135778427124023,
+       8.190088272094727,
+       1.0,
+       15.11075210571289,
+       8.155054092407227,
+       1.0,
+       15.088118553161621,
+       8.12336540222168,
+       1.0,
+       15.067934036254883,
+       8.09510612487793,
+       1.0,
+       15.050252914428711,
+       8.070354461669922,
+       1.0,
+       15.035137176513672,
+       8.049190521240234,
+       1.0,
+       15.022640228271484,
+       8.031695365905762,
+       1.0,
+       15.012821197509766,
+       8.017948150634766,
+       1.0,
+       15.005735397338867,
+       8.00802993774414,
+       1.0,
+       15.001443862915039,
+       8.002020835876465,
+       1.0,
+       15.0,
+       8.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_4.DistributionFloatConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 2.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      2.0,
+      1.7999999523162842,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 2,
+      "EntryStride": 3,
+      "TimeScale": 10.0,
+      "Values": [
+       2.0,
+       1.7999999523162842,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_5.DistributionFloatConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 16,
+      "EntryStride": 1,
+      "TimeScale": 29.999998092651367,
+      "Values": [
+       0.0,
+       0.6117029786109924,
+       0.9171314239501953,
+       0.9995326995849609,
+       0.8814209699630737,
+       0.6390332579612732,
+       0.43197864294052124,
+       0.31298336386680603,
+       0.21808549761772156,
+       0.14439527690410614,
+       0.08929181098937988,
+       0.050105977803468704,
+       0.024238940328359604,
+       0.009009422734379768,
+       0.0018211432034149766,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bEmitterTime": true,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6": {
+   "cls": "ParticleModuleColorScaleOverLife",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6.DistributionTailColor",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "AlphaScaleOverLife": {
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleColorScaleOverLife_6.DistributionConstantCurveAlphaScaleOverLife",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 4,
+      "EntryStride": 1,
+      "TimeScale": 3.749999761581421,
+      "TimeBias": 0.20000000298023224,
+      "Values": [
+       1.0,
+       0.44736945629119873,
+       0.11258062720298767,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_0": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.4000000059604645,
+     "MaxValue": 0.4000000059604645,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_0.DistributionLifetime",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.4000000059604645
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_2": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.23999999463558197,
+     "MaxValue": 0.23999999463558197,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_2.DistributionLifetime",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.23999999463558197
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_4": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.4000000059604645,
+     "MaxValue": 0.4000000059604645,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_4.DistributionLifetime",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.4000000059604645
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_5": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.30000001192092896,
+     "MaxValue": 0.5,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_5.DistributionFloatUniform_1",
+     "Table": {
+      "Op": 2,
+      "EntryCount": 1,
+      "EntryStride": 2,
+      "SubEntryStride": 1,
+      "Values": [
+       0.30000001192092896,
+       0.5
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_6": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.23999999463558197,
+     "MaxValue": 0.23999999463558197,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_6.DistributionLifetime",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.23999999463558197
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLifetime_8": {
+   "cls": "ParticleModuleLifetime",
+   "props": {
+    "Lifetime": {
+     "MinValue": 0.3499999940395355,
+     "MaxValue": 0.3499999940395355,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLifetime_8.DistributionLifetime",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.3499999940395355
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleLight_0": {
+   "cls": "ParticleModuleLight",
+   "props": {
+    "ColorScaleOverLife": {
+     "MinValue": 0.30000001192092896,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      0.30000001192092896,
+      0.699999988079071,
+      0.30000001192092896
+     ],
+     "MaxValueVec": [
+      1.0,
+      0.9057734608650208,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionVectorConstantCurve_2",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 32,
+      "EntryStride": 3,
+      "TimeScale": 31.0,
+      "Values": [
+       1.0,
+       0.8999999761581421,
+       0.30000001192092896,
+       0.951056957244873,
+       0.8945176601409912,
+       0.3489430546760559,
+       0.8282995820045471,
+       0.8953623175621033,
+       0.47170042991638184,
+       0.6669153571128845,
+       0.899517834186554,
+       0.6330845952033997,
+       0.5020918250083923,
+       0.9039681553840637,
+       0.7979082465171814,
+       0.3690163493156433,
+       0.9056971669197083,
+       0.9309836626052856,
+       0.30287638306617737,
+       0.9016888737678528,
+       0.997123658657074,
+       0.30000001192092896,
+       0.8923825621604919,
+       0.9993771314620972,
+       0.30000001192092896,
+       0.8831839561462402,
+       0.9969834089279175,
+       0.30000001192092896,
+       0.8743187189102173,
+       0.992922306060791,
+       0.30000001192092896,
+       0.8657556176185608,
+       0.9873508810997009,
+       0.30000001192092896,
+       0.857464075088501,
+       0.9804214835166931,
+       0.30000001192092896,
+       0.8494119048118591,
+       0.9722951650619507,
+       0.30000001192092896,
+       0.8415672183036804,
+       0.9631314873695374,
+       0.30000001192092896,
+       0.8338986039161682,
+       0.9530877470970154,
+       0.30000001192092896,
+       0.8263745903968811,
+       0.9423206448554993,
+       0.30000001192092896,
+       0.8189637660980225,
+       0.9309876561164856,
+       0.30000001192092896,
+       0.8116347193717957,
+       0.919245719909668,
+       0.30000001192092896,
+       0.8043560981750488,
+       0.9072518348693848,
+       0.30000001192092896,
+       0.7970964312553406,
+       0.8951631784439087,
+       0.30000001192092896,
+       0.7898242473602295,
+       0.8831368684768677,
+       0.30000001192092896,
+       0.7825080752372742,
+       0.8713306784629822,
+       0.30000001192092896,
+       0.7751160860061646,
+       0.8599035143852234,
+       0.30000001192092896,
+       0.7676169872283936,
+       0.8490117788314819,
+       0.30000001192092896,
+       0.7599794864654541,
+       0.8388124108314514,
+       0.30000001192092896,
+       0.7521719932556152,
+       0.8294625282287598,
+       0.30000001192092896,
+       0.7441632747650146,
+       0.8211192488670349,
+       0.30000001192092896,
+       0.7359216809272766,
+       0.8139396905899048,
+       0.30000001192092896,
+       0.7274160981178284,
+       0.8080809116363525,
+       0.30000001192092896,
+       0.7186148762702942,
+       0.8036999702453613,
+       0.30000001192092896,
+       0.7094866037368774,
+       0.8009539842605591,
+       0.30000001192092896,
+       0.699999988079071,
+       0.800000011920929
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "BrightnessOverLife": {
+     "MinValue": 20.0,
+     "MaxValue": 20.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionBrightnessOverLife",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       20.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RadiusScale": {
+     "MinValue": 10.0,
+     "MaxValue": 10.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionRadiusScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       10.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LightExponent": {
+     "MinValue": 4.0,
+     "MaxValue": 4.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleLight_0.DistributionLightExponent",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       4.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3": {
+   "cls": "ParticleModuleParameterDynamic",
+   "props": {
+    "DynamicParams": [
+     {
+      "ParamName": "None",
+      "bUseEmitterTime": false,
+      "bSpawnTimeOnly": false,
+      "ValueMethod": "EDPV_UserSet",
+      "bScaleVelocityByParamValue": false,
+      "ParamValue": {
+       "MinValue": 0.0,
+       "MaxValue": 0.0,
+       "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatConstant_0",
+       "Table": {
+        "Op": 1,
+        "EntryCount": 1,
+        "EntryStride": 1,
+        "SubEntryStride": 0,
+        "TimeScale": 0.0,
+        "TimeBias": 0.0,
+        "Values": [
+         0.0
+        ],
+        "LockFlag": 0,
+        "__struct": "DistributionLookupTable"
+       },
+       "__struct": "RawDistributionFloat"
+      },
+      "bUseEmitterInstanceSaveParam": false,
+      "bUseAddParameter": false,
+      "__struct": "EmitterDynamicParameter"
+     },
+     {
+      "ParamName": "None",
+      "bUseEmitterTime": false,
+      "bSpawnTimeOnly": true,
+      "ValueMethod": "EDPV_UserSet",
+      "bScaleVelocityByParamValue": false,
+      "ParamValue": {
+       "MinValue": 0.0,
+       "MaxValue": 3.0,
+       "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_0",
+       "Table": {
+        "Op": 1,
+        "EntryCount": 8,
+        "EntryStride": 1,
+        "SubEntryStride": 0,
+        "TimeScale": 13.999999046325684,
+        "TimeBias": 0.0,
+        "Values": [
+         3.0,
+         2.833770751953125,
+         2.4051992893218994,
+         1.8192222118377686,
+         1.1807773113250732,
+         0.5948006510734558,
+         0.1662292629480362,
+         0.0
+        ],
+        "LockFlag": 0,
+        "__struct": "DistributionLookupTable"
+       },
+       "__struct": "RawDistributionFloat"
+      },
+      "bUseEmitterInstanceSaveParam": false,
+      "bUseAddParameter": false,
+      "__struct": "EmitterDynamicParameter"
+     },
+     {
+      "ParamName": "None",
+      "bUseEmitterTime": false,
+      "bSpawnTimeOnly": true,
+      "ValueMethod": "EDPV_UserSet",
+      "bScaleVelocityByParamValue": false,
+      "ParamValue": {
+       "MinValue": 0.0,
+       "MaxValue": 1.0,
+       "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionFloatUniform_3",
+       "Table": {
+        "Op": 2,
+        "EntryCount": 1,
+        "EntryStride": 2,
+        "SubEntryStride": 1,
+        "TimeScale": 0.0,
+        "TimeBias": 0.0,
+        "Values": [
+         0.0,
+         1.0
+        ],
+        "LockFlag": 0,
+        "__struct": "DistributionLookupTable"
+       },
+       "__struct": "RawDistributionFloat"
+      },
+      "bUseEmitterInstanceSaveParam": false,
+      "bUseAddParameter": false,
+      "__struct": "EmitterDynamicParameter"
+     },
+     {
+      "ParamName": "None",
+      "bUseEmitterTime": false,
+      "bSpawnTimeOnly": false,
+      "ValueMethod": "EDPV_UserSet",
+      "bScaleVelocityByParamValue": false,
+      "ParamValue": {
+       "MinValue": 0.0,
+       "MaxValue": 0.0,
+       "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleParameterDynamic_3.DistributionParam4",
+       "Table": {
+        "Op": 1,
+        "EntryCount": 1,
+        "EntryStride": 1,
+        "SubEntryStride": 0,
+        "TimeScale": 0.0,
+        "TimeBias": 0.0,
+        "Values": [
+         0.0
+        ],
+        "LockFlag": 0,
+        "__struct": "DistributionLookupTable"
+       },
+       "__struct": "RawDistributionFloat"
+      },
+      "bUseEmitterInstanceSaveParam": false,
+      "bUseAddParameter": false,
+      "__struct": "EmitterDynamicParameter"
+     }
+    ],
+    "UpdateFlags": 9,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_0": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/texcom/mat_part/jmi_fls_04sk.jmi_fls_04sk",
+    "EmitterBlendType": "BLEND_Additive",
+    "bLeavePlaceInWorld": true,
+    "bKillOnCompleted": true,
+    "EmitterLoopTime": -0.0,
+    "EmitterLoopDuration": 0.0,
+    "EmitterDurationTime": 0.10000000149011612,
+    "LoopTime": 0.0,
+    "LoopDuration": 0.0,
+    "bUseLegacyEmitterTime": false,
+    "EmitterDuration": 0.10000000149011612,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_0.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "bEnabled": false,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_1": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/texcom/mat_part/jmi_fls_06k.jmi_fls_06k",
+    "EmitterBlendType": "BLEND_Additive",
+    "ScreenAlignment": "PSA_TypeSpecific",
+    "bKillOnCompleted": true,
+    "EmitterLoopDuration": 0.6000000238418579,
+    "bUseLegacyEmitterTime": false,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_1.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_2": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/texcom/mat_part/jmi_glw_01sa.jmi_glw_01sa",
+    "EmitterBlendType": "BLEND_Translucent",
+    "bLeavePlaceInWorld": true,
+    "ScreenAlignment": "PSA_TypeSpecific",
+    "bUseLocalSpace": true,
+    "bUseEmitterLocalSpace": true,
+    "bKillOnCompleted": true,
+    "EmitterLoopDuration": 0.6000000238418579,
+    "bUseLegacyEmitterTime": false,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_2.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_20": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/texcom/mat_part/jmi_glt_05k_cfg8.jmi_glt_05k_cfg8",
+    "EmitterBlendType": "BLEND_Additive",
+    "ScreenAlignment": "PSA_Rectangle",
+    "EmitterStartTime": 0.10000000149011612,
+    "EmitterLoopTime": -0.0,
+    "EmitterLoopDuration": 0.10000000149011612,
+    "EmitterDurationTime": 0.15000000596046448,
+    "LoopTime": 0.0,
+    "LoopDuration": 1.0,
+    "bUseLegacyEmitterTime": false,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_20.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_22": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "EmitterBlendType": "BLEND_Translucent",
+    "bLeavePlaceInWorld": true,
+    "EmitterOrigin": [
+     -20.0,
+     0.0,
+     0.0
+    ],
+    "bKillOnCompleted": true,
+    "EmitterStartTime": 0.0028409091755747795,
+    "EmitterLoopTime": -0.0,
+    "EmitterLoopDuration": 0.0,
+    "EmitterDurationTime": 0.10000000149011612,
+    "LoopTime": 0.4000000059604645,
+    "LoopDuration": 0.5,
+    "bUseLegacyEmitterTime": false,
+    "EmitterDuration": 1.2000000476837158,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_22.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "EmitterDelay": 0.0028409091755747795,
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_28": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/trescom/mat_part/tmi_fls_00sk.tmi_fls_00sk",
+    "EmitterBlendType": "BLEND_Additive",
+    "bLeavePlaceInWorld": true,
+    "ScreenAlignment": "PSA_TypeSpecific",
+    "bKillOnCompleted": true,
+    "EmitterLoopTime": 0.4000000059604645,
+    "EmitterLoopDuration": 0.5,
+    "EmitterDurationTime": 0.800000011920929,
+    "LoopTime": 0.4000000059604645,
+    "LoopDuration": 0.5,
+    "bUseLegacyEmitterTime": false,
+    "EmitterDuration": 0.800000011920929,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_28.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleRequired_6": {
+   "cls": "ParticleModuleRequired",
+   "props": {
+    "Material": "import:MaterialInstanceConstant:/Game/Effects/trescom/mat_mdl/zmi_sho_00fsla.zmi_sho_00fsla",
+    "EmitterBlendType": "BLEND_Translucent",
+    "bLeavePlaceInWorld": true,
+    "TexU_Scale": 3.0,
+    "TexV_Scale": 2.0,
+    "bKillOnCompleted": true,
+    "EmitterStartTime": 0.07000000029802322,
+    "EmitterLoopTime": 0.10000000149011612,
+    "EmitterLoopDuration": 0.15000000596046448,
+    "EmitterDurationTime": 0.5,
+    "LoopTime": 0.10000000149011612,
+    "LoopDuration": 0.15000000596046448,
+    "bUseLegacyEmitterTime": false,
+    "EmitterDuration": 0.5,
+    "EmitterLoops": 1,
+    "SpawnRate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleRequired_6.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RandomImageTime": 1.0,
+    "LODValidity": 1
+   },
+   "tail": 12
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_0": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 1.0,
+     "MaxValue": 350.0,
+     "MinValueVec": [
+      350.0,
+      20.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      350.0,
+      20.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_0.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       350.0,
+       20.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_14": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 1.0,
+     "MaxValue": 1900.0,
+     "MinValueVec": [
+      1900.0,
+      30.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1900.0,
+      30.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_14.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1900.0,
+       30.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_17": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 100.0,
+     "MaxValue": 100.0,
+     "MinValueVec": [
+      100.0,
+      100.0,
+      100.0
+     ],
+     "MaxValueVec": [
+      100.0,
+      100.0,
+      100.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_17.DistributionVectorConstantStartSize",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_2": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 1.0,
+     "MaxValue": 1400.0,
+     "MinValueVec": [
+      1400.0,
+      100.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1400.0,
+      100.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_2.DistributionVectorConstantStartSize",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1400.0,
+       100.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_21": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 1.5,
+     "MaxValue": 4.0,
+     "MinValueVec": [
+      1.5,
+      0.0,
+      0.0
+     ],
+     "MaxValueVec": [
+      4.0,
+      0.0,
+      0.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_21.DistributionVectorUniform_1",
+     "Table": {
+      "Op": 2,
+      "EntryCount": 1,
+      "EntryStride": 6,
+      "SubEntryStride": 3,
+      "Values": [
+       1.5,
+       1.5,
+       1.5,
+       4.0,
+       4.0,
+       4.0
+      ],
+      "LockFlag": 4,
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_5": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 5.0,
+     "MaxValue": 5.0,
+     "MinValueVec": [
+      5.0,
+      0.0,
+      0.0
+     ],
+     "MaxValueVec": [
+      5.0,
+      0.0,
+      0.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_5.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       5.0,
+       5.0,
+       5.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSize_8": {
+   "cls": "ParticleModuleSize",
+   "props": {
+    "StartSize": {
+     "MinValue": 9.0,
+     "MaxValue": 9.0,
+     "MinValueVec": [
+      9.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      9.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSize_8.DistributionVectorConstantMeshStartSize",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       9.0,
+       9.0,
+       9.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_0": {
+   "cls": "ParticleModuleSizeScale",
+   "props": {
+    "SizeScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_0.DistributionVectorConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_1": {
+   "cls": "ParticleModuleSizeScale",
+   "props": {
+    "SizeScale": {
+     "MaxValue": 1.0000003576278687,
+     "MaxValueVec": [
+      1.0000003576278687,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_1.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 128,
+      "EntryStride": 3,
+      "TimeScale": 127.0,
+      "Values": [
+       0.0,
+       0.0,
+       0.0,
+       0.21606872975826263,
+       0.1705048829317093,
+       0.1705048829317093,
+       0.5753490924835205,
+       0.5373706221580505,
+       0.5373706221580505,
+       0.8952093720436096,
+       0.8836238980293274,
+       0.8836238980293274,
+       0.9998930096626282,
+       0.9996510744094849,
+       0.9999834299087524,
+       0.9990129470825195,
+       0.9973859190940857,
+       0.9993685483932495,
+       0.9976336359977722,
+       0.9944307208061218,
+       0.9979210495948792,
+       0.9958019256591797,
+       0.9908270239830017,
+       0.9957155585289001,
+       0.993564248085022,
+       0.9866161346435547,
+       0.9928267598152161,
+       0.990967333316803,
+       0.9818395376205444,
+       0.9893292188644409,
+       0.9880574941635132,
+       0.9765384197235107,
+       0.9852975606918335,
+       0.9848816394805908,
+       0.9707544445991516,
+       0.9808064103126526,
+       0.9814861416816711,
+       0.9645289778709412,
+       0.9759303331375122,
+       0.9779176712036133,
+       0.957903265953064,
+       0.9707440733909607,
+       0.974222719669342,
+       0.9509190320968628,
+       0.9653221964836121,
+       0.9704478979110718,
+       0.9436172842979431,
+       0.9597392082214355,
+       0.9666398763656616,
+       0.936039924621582,
+       0.954069972038269,
+       0.9628452062606812,
+       0.9282279014587402,
+       0.9483888745307922,
+       0.9591103792190552,
+       0.920222818851471,
+       0.9427706599235535,
+       0.9554821252822876,
+       0.9120661020278931,
+       0.9372898936271667,
+       0.9520069360733032,
+       0.9037991762161255,
+       0.9320212602615356,
+       0.9487313628196716,
+       0.8954634666442871,
+       0.927039384841919,
+       0.9457020163536072,
+       0.887100338935852,
+       0.9224187731742859,
+       0.942965567111969,
+       0.8787511587142944,
+       0.9182341694831848,
+       0.9405685067176819,
+       0.8704574108123779,
+       0.9145601391792297,
+       0.9385574460029602,
+       0.8622605204582214,
+       0.9114713072776794,
+       0.9369789958000183,
+       0.8542019128799438,
+       0.9090422987937927,
+       0.935879647731781,
+       0.8463228940963745,
+       0.9073477387428284,
+       0.9353060722351074,
+       0.8386649489402771,
+       0.9064622521400452,
+       0.9352310299873352,
+       0.8312076926231384,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.8236002922058105,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.8157857656478882,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.8077699542045593,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7995587587356567,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7911580801010132,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7825739979743958,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7738122344017029,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7648786306381226,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7557793855667114,
+       0.9063462615013123,
+       0.9352310299873352,
+       0.7465201616287231,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.73710697889328,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7275456786155701,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7178422808647156,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.7080026268959045,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6980326175689697,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6879381537437439,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6777252554893494,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6673997044563293,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6569674611091614,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.6464344263076782,
+       0.9063461422920227,
+       0.9352310299873352,
+       0.6358065605163574,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6250897645950317,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6142898201942444,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.6034127473831177,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.5924645066261292,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.581450879573822,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.5703778862953186,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.5592514276504517,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.548077404499054,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.5368616580963135,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.5256101489067078,
+       0.9063462615013123,
+       0.9352309703826904,
+       0.5143287777900696,
+       0.9063462018966675,
+       0.9352309107780457,
+       0.5030235052108765,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.491700142621994,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.48036476969718933,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.46902310848236084,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.45768117904663086,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.44634485244750977,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.4350201189517975,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.4237127900123596,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.4124287962913513,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.40117406845092773,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.38995450735092163,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.3787759244441986,
+       0.9063462018966675,
+       0.9352310299873352,
+       0.36764442920684814,
+       0.9063462018966675,
+       0.93523108959198,
+       0.3565658926963806,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.34554606676101685,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.3345910906791687,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.3237066864967346,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.31289881467819214,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.3021734058856964,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.2915363907814026,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.28099367022514343,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.2705511748790741,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.26021474599838257,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.24999022483825684,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.23988379538059235,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.22990110516548157,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.22004809975624084,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.21033088862895966,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.20075514912605286,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.19132697582244873,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.18205219507217407,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.17293667793273926,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.16398635506629944,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.15520726144313812,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.14660517871379852,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.13818594813346863,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.12995557487010956,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.12192006409168243,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.11408517509698868,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.10645687580108643,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.09904111921787262,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.09184377640485764,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.08487069606781006,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0781279131770134,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.07162125408649445,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.06535662710666656,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.05934000015258789,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.053577203303575516,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.048074282705783844,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.042837075889110565,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0378713421523571,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.03318320959806442,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.02877863310277462,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.024663306772708893,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.020843207836151123,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.01732444018125534,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.014112555421888828,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.011213740333914757,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.008633632212877274,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.00637863390147686,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.004454180598258972,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0028664765413850546,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0016213005874305964,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0007246127352118492,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.00018204961088486016,
+       0.9063462018966675,
+       0.9352309703826904,
+       0.0,
+       0.9063462018966675
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_5": {
+   "cls": "ParticleModuleSizeScale",
+   "props": {
+    "SizeScale": {
+     "MinValue": -1.1920928955078125e-07,
+     "MaxValue": 1.0007895231246948,
+     "MinValueVec": [
+      -1.1920928955078125e-07,
+      -1.1920928955078125e-07,
+      -1.1920928955078125e-07
+     ],
+     "MaxValueVec": [
+      1.0007895231246948,
+      1.0007895231246948,
+      1.0007895231246948
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_5.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 64,
+      "EntryStride": 3,
+      "TimeScale": 62.999996185302734,
+      "Values": [
+       0.0,
+       0.0,
+       0.0,
+       0.06989479064941406,
+       0.06989479064941406,
+       0.06989479064941406,
+       0.24541404843330383,
+       0.24541404843330383,
+       0.24541404843330383,
+       0.47617655992507935,
+       0.47617655992507935,
+       0.47617655992507935,
+       0.7118011116981506,
+       0.7118011116981506,
+       0.7118011116981506,
+       0.9019065499305725,
+       0.9019065499305725,
+       0.9019065499305725,
+       0.9958074688911438,
+       0.9958074688911438,
+       0.9958074688911438,
+       0.9656744599342346,
+       0.9656744599342346,
+       0.9656744599342346,
+       0.9179836511611938,
+       0.9179836511611938,
+       0.9179836511611938,
+       0.871882438659668,
+       0.871882438659668,
+       0.871882438659668,
+       0.8273438811302185,
+       0.8273438811302185,
+       0.8273438811302185,
+       0.7843412756919861,
+       0.7843412756919861,
+       0.7843412756919861,
+       0.742847740650177,
+       0.742847740650177,
+       0.742847740650177,
+       0.7028366327285767,
+       0.7028366327285767,
+       0.7028366327285767,
+       0.6642809510231018,
+       0.6642809510231018,
+       0.6642809510231018,
+       0.6271538734436035,
+       0.6271538734436035,
+       0.6271538734436035,
+       0.5914289355278015,
+       0.5914289355278015,
+       0.5914289355278015,
+       0.5570790767669678,
+       0.5570790767669678,
+       0.5570790767669678,
+       0.5240774750709534,
+       0.5240774750709534,
+       0.5240774750709534,
+       0.4923974275588989,
+       0.4923974275588989,
+       0.4923974275588989,
+       0.4620121121406555,
+       0.4620121121406555,
+       0.4620121121406555,
+       0.432894766330719,
+       0.432894766330719,
+       0.432894766330719,
+       0.40501850843429565,
+       0.40501850843429565,
+       0.40501850843429565,
+       0.37835660576820374,
+       0.37835660576820374,
+       0.37835660576820374,
+       0.3528822064399719,
+       0.3528822064399719,
+       0.3528822064399719,
+       0.32856863737106323,
+       0.32856863737106323,
+       0.32856863737106323,
+       0.3053889274597168,
+       0.3053889274597168,
+       0.3053889274597168,
+       0.28331640362739563,
+       0.28331640362739563,
+       0.28331640362739563,
+       0.2623242437839508,
+       0.2623242437839508,
+       0.2623242437839508,
+       0.2423856258392334,
+       0.2423856258392334,
+       0.2423856258392334,
+       0.22347375750541687,
+       0.22347375750541687,
+       0.22347375750541687,
+       0.2055618315935135,
+       0.2055618315935135,
+       0.2055618315935135,
+       0.1886231005191803,
+       0.1886231005191803,
+       0.1886231005191803,
+       0.17263071238994598,
+       0.17263071238994598,
+       0.17263071238994598,
+       0.157557874917984,
+       0.157557874917984,
+       0.157557874917984,
+       0.14337791502475739,
+       0.14337791502475739,
+       0.14337791502475739,
+       0.1300637423992157,
+       0.1300637423992157,
+       0.1300637423992157,
+       0.11758887767791748,
+       0.11758887767791748,
+       0.11758887767791748,
+       0.10592624545097351,
+       0.10592624545097351,
+       0.10592624545097351,
+       0.09504926204681396,
+       0.09504926204681396,
+       0.09504926204681396,
+       0.0849311500787735,
+       0.0849311500787735,
+       0.0849311500787735,
+       0.07554492354393005,
+       0.07554492354393005,
+       0.07554492354393005,
+       0.06686392426490784,
+       0.06686392426490784,
+       0.06686392426490784,
+       0.05886116996407509,
+       0.05886116996407509,
+       0.05886116996407509,
+       0.051510054618120193,
+       0.051510054618120193,
+       0.051510054618120193,
+       0.04478384181857109,
+       0.04478384181857109,
+       0.04478384181857109,
+       0.0386556051671505,
+       0.0386556051671505,
+       0.0386556051671505,
+       0.03309844434261322,
+       0.03309844434261322,
+       0.03309844434261322,
+       0.02808576636016369,
+       0.02808576636016369,
+       0.02808576636016369,
+       0.023590657860040665,
+       0.023590657860040665,
+       0.023590657860040665,
+       0.019586313515901566,
+       0.019586313515901566,
+       0.019586313515901566,
+       0.01604613848030567,
+       0.01604613848030567,
+       0.01604613848030567,
+       0.012942785397171974,
+       0.012942785397171974,
+       0.012942785397171974,
+       0.010250265710055828,
+       0.010250265710055828,
+       0.010250265710055828,
+       0.007940971292555332,
+       0.007940971292555332,
+       0.007940971292555332,
+       0.0059887259267270565,
+       0.0059887259267270565,
+       0.0059887259267270565,
+       0.004366511479020119,
+       0.004366511479020119,
+       0.004366511479020119,
+       0.003047559643164277,
+       0.003047559643164277,
+       0.003047559643164277,
+       0.002004783134907484,
+       0.002004783134907484,
+       0.002004783134907484,
+       0.0012119581224396825,
+       0.0012119581224396825,
+       0.0012119581224396825,
+       0.0006416284013539553,
+       0.0006416284013539553,
+       0.0006416284013539553,
+       0.0002674025308806449,
+       0.0002674025308806449,
+       0.0002674025308806449,
+       6.246605335036293e-05,
+       6.246605335036293e-05,
+       6.246605335036293e-05,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_6": {
+   "cls": "ParticleModuleSizeScale",
+   "props": {
+    "SizeScale": {
+     "MaxValue": 1.1914476156234741,
+     "MaxValueVec": [
+      1.1914476156234741,
+      1.1914476156234741,
+      1.1914476156234741
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_6.DistributionVectorConstantCurve_2",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 16,
+      "EntryStride": 3,
+      "TimeScale": 29.756601333618164,
+      "Values": [
+       0.0,
+       0.0,
+       0.0,
+       0.3009258508682251,
+       0.3009258508682251,
+       0.3009258508682251,
+       0.504061222076416,
+       0.504061222076416,
+       0.504061222076416,
+       0.6802160143852234,
+       0.6802160143852234,
+       0.6802160143852234,
+       0.8406988382339478,
+       0.8406988382339478,
+       0.8406988382339478,
+       0.9139534831047058,
+       0.9139534831047058,
+       0.9139534831047058,
+       0.9573472738265991,
+       0.9573472738265991,
+       0.9573472738265991,
+       0.9992634654045105,
+       0.9992634654045105,
+       0.9992634654045105,
+       1.0389530658721924,
+       1.0389530658721924,
+       1.0389530658721924,
+       1.0756659507751465,
+       1.0756659507751465,
+       1.0756659507751465,
+       1.1086481809616089,
+       1.1086481809616089,
+       1.1086481809616089,
+       1.1371575593948364,
+       1.1371575593948364,
+       1.1371575593948364,
+       1.1604299545288086,
+       1.1604299545288086,
+       1.1604299545288086,
+       1.1777360439300537,
+       1.1777360439300537,
+       1.1777360439300537,
+       1.188295602798462,
+       1.188295602798462,
+       1.188295602798462,
+       1.1913982629776,
+       1.1913982629776,
+       1.1913982629776
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "bUseEmitterTime": true,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSizeScale_7": {
+   "cls": "ParticleModuleSizeScale",
+   "props": {
+    "SizeScale": {
+     "MinValue": -1.0954026038234588e-05,
+     "MaxValue": 1.0000003576278687,
+     "MinValueVec": [
+      -1.0954026038234588e-05,
+      -1.0954026038234588e-05,
+      -1.0954026038234588e-05
+     ],
+     "MaxValueVec": [
+      1.0000003576278687,
+      1.0000003576278687,
+      1.0000003576278687
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSizeScale_7.DistributionVectorConstantCurve_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 128,
+      "EntryStride": 3,
+      "TimeScale": 127.0,
+      "Values": [
+       0.0,
+       0.0,
+       0.0,
+       0.21606872975826263,
+       0.21606872975826263,
+       0.21606872975826263,
+       0.5753490924835205,
+       0.5753490924835205,
+       0.5753490924835205,
+       0.8952093720436096,
+       0.8952093720436096,
+       0.8952093720436096,
+       0.9999010562896729,
+       0.9999010562896729,
+       0.9999010562896729,
+       0.9994598627090454,
+       0.9994598627090454,
+       0.9994598627090454,
+       0.9991123676300049,
+       0.9991123676300049,
+       0.9991123676300049,
+       0.9988040328025818,
+       0.9988040328025818,
+       0.9988040328025818,
+       0.9984800219535828,
+       0.9984800219535828,
+       0.9984800219535828,
+       0.998085618019104,
+       0.998085618019104,
+       0.998085618019104,
+       0.9975663423538208,
+       0.9975663423538208,
+       0.9975663423538208,
+       0.9968671798706055,
+       0.9968671798706055,
+       0.9968671798706055,
+       0.995933473110199,
+       0.995933473110199,
+       0.995933473110199,
+       0.9947105646133423,
+       0.9947105646133423,
+       0.9947105646133423,
+       0.9931437373161316,
+       0.9931437373161316,
+       0.9931437373161316,
+       0.9911783337593079,
+       0.9911783337593079,
+       0.9911783337593079,
+       0.9887595176696777,
+       0.9887595176696777,
+       0.9887595176696777,
+       0.9858326315879822,
+       0.9858326315879822,
+       0.9858326315879822,
+       0.9823430776596069,
+       0.9823430776596069,
+       0.9823430776596069,
+       0.9782358407974243,
+       0.9782358407974243,
+       0.9782358407974243,
+       0.973456621170044,
+       0.973456621170044,
+       0.973456621170044,
+       0.9679502844810486,
+       0.9679502844810486,
+       0.9679502844810486,
+       0.9616624116897583,
+       0.9616624116897583,
+       0.9616624116897583,
+       0.9545382261276245,
+       0.9545382261276245,
+       0.9545382261276245,
+       0.9465229511260986,
+       0.9465229511260986,
+       0.9465229511260986,
+       0.9375618696212769,
+       0.9375618696212769,
+       0.9375618696212769,
+       0.9276003241539001,
+       0.9276003241539001,
+       0.9276003241539001,
+       0.9165835380554199,
+       0.9165835380554199,
+       0.9165835380554199,
+       0.9044568538665771,
+       0.9044568538665771,
+       0.9044568538665771,
+       0.891165554523468,
+       0.891165554523468,
+       0.891165554523468,
+       0.8766549229621887,
+       0.8766549229621887,
+       0.8766549229621887,
+       0.8608701825141907,
+       0.8608701825141907,
+       0.8608701825141907,
+       0.8438699841499329,
+       0.8438699841499329,
+       0.8438699841499329,
+       0.8266572952270508,
+       0.8266572952270508,
+       0.8266572952270508,
+       0.8094848394393921,
+       0.8094848394393921,
+       0.8094848394393921,
+       0.7923576235771179,
+       0.7923576235771179,
+       0.7923576235771179,
+       0.7752813100814819,
+       0.7752813100814819,
+       0.7752813100814819,
+       0.7582607865333557,
+       0.7582607865333557,
+       0.7582607865333557,
+       0.7413017153739929,
+       0.7413017153739929,
+       0.7413017153739929,
+       0.7244092226028442,
+       0.7244092226028442,
+       0.7244092226028442,
+       0.7075887322425842,
+       0.7075887322425842,
+       0.7075887322425842,
+       0.6908453702926636,
+       0.6908453702926636,
+       0.6908453702926636,
+       0.6741845011711121,
+       0.6741845011711121,
+       0.6741845011711121,
+       0.6576113700866699,
+       0.6576113700866699,
+       0.6576113700866699,
+       0.6411314010620117,
+       0.6411314010620117,
+       0.6411314010620117,
+       0.6247498393058777,
+       0.6247498393058777,
+       0.6247498393058777,
+       0.6084719896316528,
+       0.6084719896316528,
+       0.6084719896316528,
+       0.5923032760620117,
+       0.5923032760620117,
+       0.5923032760620117,
+       0.5762487649917603,
+       0.5762487649917603,
+       0.5762487649917603,
+       0.560313880443573,
+       0.560313880443573,
+       0.560313880443573,
+       0.5445038676261902,
+       0.5445038676261902,
+       0.5445038676261902,
+       0.5288241505622864,
+       0.5288241505622864,
+       0.5288241505622864,
+       0.5132797956466675,
+       0.5132797956466675,
+       0.5132797956466675,
+       0.4978763461112976,
+       0.4978763461112976,
+       0.4978763461112976,
+       0.48261892795562744,
+       0.48261892795562744,
+       0.48261892795562744,
+       0.4675130248069763,
+       0.4675130248069763,
+       0.4675130248069763,
+       0.4525637924671173,
+       0.4525637924671173,
+       0.4525637924671173,
+       0.4377765357494354,
+       0.4377765357494354,
+       0.4377765357494354,
+       0.42315658926963806,
+       0.42315658926963806,
+       0.42315658926963806,
+       0.408709317445755,
+       0.408709317445755,
+       0.408709317445755,
+       0.3944398760795593,
+       0.3944398760795593,
+       0.3944398760795593,
+       0.3803536295890808,
+       0.3803536295890808,
+       0.3803536295890808,
+       0.36645591259002686,
+       0.36645591259002686,
+       0.36645591259002686,
+       0.35275208950042725,
+       0.35275208950042725,
+       0.35275208950042725,
+       0.33924734592437744,
+       0.33924734592437744,
+       0.33924734592437744,
+       0.3259468972682953,
+       0.3259468972682953,
+       0.3259468972682953,
+       0.3128562867641449,
+       0.3128562867641449,
+       0.3128562867641449,
+       0.29998064041137695,
+       0.29998064041137695,
+       0.29998064041137695,
+       0.28732529282569885,
+       0.28732529282569885,
+       0.28732529282569885,
+       0.274895578622818,
+       0.274895578622818,
+       0.274895578622818,
+       0.2626967430114746,
+       0.2626967430114746,
+       0.2626967430114746,
+       0.2507340908050537,
+       0.2507340908050537,
+       0.2507340908050537,
+       0.2390129715204239,
+       0.2390129715204239,
+       0.2390129715204239,
+       0.2275385707616806,
+       0.2275385707616806,
+       0.2275385707616806,
+       0.21631646156311035,
+       0.21631646156311035,
+       0.21631646156311035,
+       0.20535168051719666,
+       0.20535168051719666,
+       0.20535168051719666,
+       0.19464951753616333,
+       0.19464951753616333,
+       0.19464951753616333,
+       0.18421541154384613,
+       0.18421541154384613,
+       0.18421541154384613,
+       0.17405471205711365,
+       0.17405471205711365,
+       0.17405471205711365,
+       0.16417253017425537,
+       0.16417253017425537,
+       0.16417253017425537,
+       0.15457426011562347,
+       0.15457426011562347,
+       0.15457426011562347,
+       0.14526532590389252,
+       0.14526532590389252,
+       0.14526532590389252,
+       0.13625074923038483,
+       0.13625074923038483,
+       0.13625074923038483,
+       0.12753596901893616,
+       0.12753596901893616,
+       0.12753596901893616,
+       0.1191263198852539,
+       0.1191263198852539,
+       0.1191263198852539,
+       0.11102712154388428,
+       0.11102712154388428,
+       0.11102712154388428,
+       0.10324364900588989,
+       0.10324364900588989,
+       0.10324364900588989,
+       0.09578116983175278,
+       0.09578116983175278,
+       0.09578116983175278,
+       0.08864488452672958,
+       0.08864488452672958,
+       0.08864488452672958,
+       0.08184026926755905,
+       0.08184026926755905,
+       0.08184026926755905,
+       0.07537265866994858,
+       0.07537265866994858,
+       0.07537265866994858,
+       0.06924720853567123,
+       0.06924720853567123,
+       0.06924720853567123,
+       0.06346917897462845,
+       0.06346917897462845,
+       0.06346917897462845,
+       0.05804402753710747,
+       0.05804402753710747,
+       0.05804402753710747,
+       0.05297693610191345,
+       0.05297693610191345,
+       0.05297693610191345,
+       0.04827333986759186,
+       0.04827333986759186,
+       0.04827333986759186,
+       0.043938394635915756,
+       0.043938394635915756,
+       0.043938394635915756,
+       0.0399775505065918,
+       0.0399775505065918,
+       0.0399775505065918,
+       0.036395929753780365,
+       0.036395929753780365,
+       0.036395929753780365,
+       0.03319885954260826,
+       0.03319885954260826,
+       0.03319885954260826,
+       0.030391769483685493,
+       0.030391769483685493,
+       0.030391769483685493,
+       0.0279800184071064,
+       0.0279800184071064,
+       0.0279800184071064,
+       0.02596847340464592,
+       0.02596847340464592,
+       0.02596847340464592,
+       0.024224938824772835,
+       0.024224938824772835,
+       0.024224938824772835,
+       0.022516325116157532,
+       0.022516325116157532,
+       0.022516325116157532,
+       0.020842181518673897,
+       0.020842181518673897,
+       0.020842181518673897,
+       0.01920611411333084,
+       0.01920611411333084,
+       0.01920611411333084,
+       0.017611708492040634,
+       0.017611708492040634,
+       0.017611708492040634,
+       0.016062546521425247,
+       0.016062546521425247,
+       0.016062546521425247,
+       0.014562224969267845,
+       0.014562224969267845,
+       0.014562224969267845,
+       0.013114330358803272,
+       0.013114330358803272,
+       0.013114330358803272,
+       0.011722452007234097,
+       0.011722452007234097,
+       0.011722452007234097,
+       0.010390183888375759,
+       0.010390183888375759,
+       0.010390183888375759,
+       0.00912110973149538,
+       0.00912110973149538,
+       0.00912110973149538,
+       0.007918823510408401,
+       0.007918823510408401,
+       0.007918823510408401,
+       0.006786912214010954,
+       0.006786912214010954,
+       0.006786912214010954,
+       0.005728967487812042,
+       0.005728967487812042,
+       0.005728967487812042,
+       0.004748575389385223,
+       0.004748575389385223,
+       0.004748575389385223,
+       0.003849333617836237,
+       0.003849333617836237,
+       0.003849333617836237,
+       0.003034825436770916,
+       0.003034825436770916,
+       0.003034825436770916,
+       0.0023086380679160357,
+       0.0023086380679160357,
+       0.0023086380679160357,
+       0.0016743711894378066,
+       0.0016743711894378066,
+       0.0016743711894378066,
+       0.0011356058530509472,
+       0.0011356058530509472,
+       0.0011356058530509472,
+       0.0006959401071071625,
+       0.0006959401071071625,
+       0.0006959401071071625,
+       0.00035895250039175153,
+       0.00035895250039175153,
+       0.00035895250039175153,
+       0.0001282396406168118,
+       0.0001282396406168118,
+       0.0001282396406168118,
+       7.3943083407357335e-06,
+       7.3943083407357335e-06,
+       7.3943083407357335e-06,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_1": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_1.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 1,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_1.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bApplyGlobalSpawnRateScale": false,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_16": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "MinValue": -0.12183332443237305,
+     "MaxValue": 130.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_16.DistributionFloatConstantCurve_1",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 128,
+      "EntryStride": 1,
+      "TimeScale": 158.75,
+      "Values": [
+       130.0,
+       129.54458618164062,
+       128.22727966308594,
+       126.12154388427734,
+       123.3007583618164,
+       119.83837890625,
+       115.80780792236328,
+       111.2824935913086,
+       106.33585357666016,
+       101.04130554199219,
+       95.4722671508789,
+       89.70218658447266,
+       83.80448150634766,
+       77.85256958007812,
+       71.91988372802734,
+       66.079833984375,
+       60.40586853027344,
+       54.97139358520508,
+       49.84984588623047,
+       45.114646911621094,
+       40.839202880859375,
+       37.09698486328125,
+       33.96138381958008,
+       31.505826950073242,
+       29.85869789123535,
+       28.891380310058594,
+       27.944929122924805,
+       27.01911163330078,
+       26.113704681396484,
+       25.228487014770508,
+       24.36322784423828,
+       23.5177059173584,
+       22.691694259643555,
+       21.88496971130371,
+       21.097305297851562,
+       20.32847785949707,
+       19.578258514404297,
+       18.846426010131836,
+       18.132755279541016,
+       17.4370174407959,
+       16.758989334106445,
+       16.098447799682617,
+       15.455166816711426,
+       14.82891845703125,
+       14.219483375549316,
+       13.626629829406738,
+       13.050134658813477,
+       12.489774703979492,
+       11.94532585144043,
+       11.416561126708984,
+       10.903254508972168,
+       10.405179023742676,
+       9.922115325927734,
+       9.45383358001709,
+       9.00011157989502,
+       8.560721397399902,
+       8.135443687438965,
+       7.7240447998046875,
+       7.3263044357299805,
+       6.941998481750488,
+       6.57089900970459,
+       6.212785720825195,
+       5.867424964904785,
+       5.534599304199219,
+       5.214081764221191,
+       4.905646324157715,
+       4.609066009521484,
+       4.324119567871094,
+       4.0505781173706055,
+       3.788219451904297,
+       3.5368165969848633,
+       3.2961502075195312,
+       3.065983772277832,
+       2.8460988998413086,
+       2.6362714767456055,
+       2.436277389526367,
+       2.245889663696289,
+       2.06488037109375,
+       1.8930273056030273,
+       1.7301034927368164,
+       1.575887680053711,
+       1.4301519393920898,
+       1.2926712036132812,
+       1.163222312927246,
+       1.0415735244750977,
+       0.9275112152099609,
+       0.8208017349243164,
+       0.721217155456543,
+       0.6285409927368164,
+       0.5425443649291992,
+       0.4630002975463867,
+       0.38968944549560547,
+       0.3223762512207031,
+       0.26084280014038086,
+       0.20486688613891602,
+       0.1542210578918457,
+       0.10867500305175781,
+       0.06801128387451172,
+       0.031996726989746094,
+       0.00041484832763671875,
+       -0.026968955993652344,
+       -0.05036354064941406,
+       -0.07002019882202148,
+       -0.08614015579223633,
+       -0.09896278381347656,
+       -0.10869789123535156,
+       -0.11558866500854492,
+       -0.11984634399414062,
+       -0.12170958518981934,
+       -0.12139320373535156,
+       -0.11911916732788086,
+       -0.11512088775634766,
+       -0.10962486267089844,
+       -0.10284972190856934,
+       -0.09502255916595459,
+       -0.08636903762817383,
+       -0.07711493968963623,
+       -0.06748247146606445,
+       -0.057704389095306396,
+       -0.0479886531829834,
+       -0.03857773542404175,
+       -0.02969139814376831,
+       -0.02156256139278412,
+       -0.014401331543922424,
+       -0.008438408374786377,
+       -0.003900662064552307,
+       -0.0010114144533872604,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_16.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_16.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_2": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_2.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_2.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 1,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_2.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bApplyGlobalSpawnRateScale": false,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_23": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_23.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_23.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 1,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_23.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bApplyGlobalSpawnRateScale": false,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_27": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_27.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_27.DistributionFloatConstant_0",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 1,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_27.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bApplyGlobalSpawnRateScale": false,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_4": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_4.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_4.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 3,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_4.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSpawn_6": {
+   "cls": "ParticleModuleSpawn",
+   "props": {
+    "Rate": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_6.RequiredDistributionSpawnRate",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RateScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_6.RequiredDistributionSpawnRateScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "BurstList": [
+     {
+      "Count": 1,
+      "CountLow": -1,
+      "Time": 0.0,
+      "__struct": "ParticleBurst"
+     }
+    ],
+    "BurstScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSpawn_6.BurstScaleDistribution",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_AttachParticle_2": {
+   "cls": "ParticleModuleSQEX_AttachParticle",
+   "props": {
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_AttachParticle_7": {
+   "cls": "ParticleModuleSQEX_AttachParticle",
+   "props": {
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ComponentCutoff_0": {
+   "cls": "ParticleModuleSQEX_ComponentCutoff",
+   "props": {
+    "ComponentRotationTakeoverType": "SQEX_TAKEOVER_TYPE_NONE",
+    "ComponentScaleTakeoverType": "SQEX_TAKEOVER_TYPE_NONE",
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0": {
+   "cls": "ParticleModuleSQEX_CurlNoise",
+   "props": {
+    "Intensity": {
+     "MinValue": 50.0,
+     "MaxValue": 50.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionIntensity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       50.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "PositionScale": {
+     "MinValue": 0.009999999776482582,
+     "MaxValue": 0.009999999776482582,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionPositionScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.009999999776482582
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "TimeScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionTimeScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "CurlNoiseScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionCurlNoiseScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "CurlNoiseTimeScale": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionCurlNoiseTimeScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "ColorIntensity": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorIntensity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "AlphaIntensity": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionAlphaIntensity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "ColorScaleTimeScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorScaleTimeScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "ColorScaleNoiseScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionColorScaleNoiseScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "SizeIntensity": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeIntensity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "SizeScaleTimeScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeScaleTimeScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "SizeScaleNoiseScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_CurlNoise_0.DistributionSizeScaleNoiseScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_0": {
+   "cls": "ParticleModuleSQEX_EmitterTakeover",
+   "props": {
+    "ParentPositionTakeoverType": "SQEX_TAKEOVER_TYPE_SPAWN_TIME_ONLY",
+    "ParentRotationTakeoverType": "SQEX_TAKEOVER_TYPE_SPAWN_TIME_ONLY",
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_2": {
+   "cls": "ParticleModuleSQEX_EmitterTakeover",
+   "props": {
+    "ComponentRotationTakeoverType": "SQEX_TAKEOVER_TYPE_NONE",
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTakeover_5": {
+   "cls": "ParticleModuleSQEX_EmitterTakeover",
+   "props": {
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3": {
+   "cls": "ParticleModuleSQEX_EmitterTransforms",
+   "props": {
+    "LocalAddPosition": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionLocalAddPosition",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LocalAddRotation": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionVectorConstant_2",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LocalAddScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionLocalAddScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "Velocity": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionTransfromVelocity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "Gravity": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_EmitterTransforms_3.DistributionTransfromGravity",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0": {
+   "cls": "ParticleModuleSQEX_ParticleRotation",
+   "props": {
+    "StartParticleRotation": {
+     "MaxValue": 360.0,
+     "MaxValueVec": [
+      360.0,
+      0.0,
+      0.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionUniformParticleRotation",
+     "Table": {
+      "Op": 2,
+      "EntryCount": 1,
+      "EntryStride": 6,
+      "SubEntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0,
+       360.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "ParticleRotation": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionParticleRotation",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "ParticleRotationScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_0.DistributionParticleRotationScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1": {
+   "cls": "ParticleModuleSQEX_ParticleRotation",
+   "props": {
+    "StartParticleRotation": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionStartParticleRotation",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "ParticleRotation": {
+     "MaxValue": 90.0,
+     "MinValueVec": [
+      90.0,
+      0.0,
+      0.0
+     ],
+     "MaxValueVec": [
+      90.0,
+      0.0,
+      0.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionParticleRotation",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       90.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "ParticleRotationScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_ParticleRotation_1.DistributionParticleRotationScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "bCurveParameterDirectRotation": true,
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3": {
+   "cls": "ParticleModuleSQEX_Range",
+   "props": {
+    "RangeRadius": {
+     "MinValue": 5.0,
+     "MaxValue": 5.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionRangeRadius",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       5.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "RangeScale": {
+     "MinValue": 1.0,
+     "MaxValue": 1.0,
+     "MinValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "MaxValueVec": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionRangeScale",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "Deviation": {
+     "MinValue": 0.4000000059604645,
+     "MaxValue": 0.4000000059604645,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionDeviation",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.4000000059604645
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "DirectionAngle": {
+     "MinValue": 180.0,
+     "MaxValue": 180.0,
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionDirectionAngle",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       180.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "Direction": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirectionType": "EPARTICLE_DIR_TYPE_VERTEX_NORMAL",
+    "Speed": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleSQEX_Range_3.DistributionFloatConstant_4",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2": {
+   "cls": "ParticleModuleTypeDataMesh",
+   "props": {
+    "Mesh": "import:StaticMesh:/Game/Effects/texcom/mdl/jmd_fls_01x.jmd_fls_01x",
+    "SQEXBillboardType": "ESQEX_MESH_PAR_BILLBORAD_TYPE_SCREEN_BILLBOARD",
+    "SubMeshsIndex": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionSubMeshsIndexCurve",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "SubMeshsSetIndex": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionSubMeshsSetIndex",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bOverrideMaterial": true,
+    "RollPitchYawRange": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_2.DistributionRollPitchYaw",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4": {
+   "cls": "ParticleModuleTypeDataMesh",
+   "props": {
+    "Mesh": "import:StaticMesh:/Game/Effects/texcom/mdl/jmd_rng_128x2_00.jmd_rng_128x2_00",
+    "SQEXBillboardType": "ESQEX_MESH_PAR_BILLBORAD_TYPE_SCREEN_BILLBOARD",
+    "SubMeshsIndex": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionSubMeshsIndexCurve",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "SubMeshsSetIndex": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionSubMeshsSetIndex",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "bOverrideMaterial": true,
+    "RollPitchYawRange": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleTypeDataMesh_4.DistributionRollPitchYaw",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 3,
+      "Values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleModuleVelocity_0": {
+   "cls": "ParticleModuleVelocity",
+   "props": {
+    "StartVelocity": {
+     "MinValue": -10.0,
+     "MaxValue": 40.0,
+     "MinValueVec": [
+      -10.0,
+      -10.0,
+      16.0
+     ],
+     "MaxValueVec": [
+      10.0,
+      10.0,
+      40.0
+     ],
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleVelocity_0.DistributionStartVelocity",
+     "Table": {
+      "Op": 2,
+      "EntryCount": 1,
+      "EntryStride": 6,
+      "SubEntryStride": 3,
+      "Values": [
+       -10.0,
+       -10.0,
+       16.0,
+       10.0,
+       10.0,
+       40.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionVector"
+    },
+    "StartVelocityRadial": {
+     "Distribution": "export:vw_so010_rgn_fls00.ParticleModuleVelocity_0.DistributionStartVelocityRadial",
+     "Table": {
+      "Op": 1,
+      "EntryCount": 1,
+      "EntryStride": 1,
+      "Values": [
+       0.0
+      ],
+      "__struct": "DistributionLookupTable"
+     },
+     "__struct": "RawDistributionFloat"
+    },
+    "LODValidity": 1
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_1": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "flash_yoko",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_1.ParticleLODLevel_0"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_3": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "Light",
+    "EmitterRenderMode": "ERM_LightsOnly",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_3.ParticleLODLevel_0"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_4": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "fls",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_4.ParticleLODLevel_0"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_5": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "flash_yoko1",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_5.ParticleLODLevel_1"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_6": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "glow_yoko",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_6.ParticleLODLevel_2"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_8": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "sho",
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_8.ParticleLODLevel_2"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00.ParticleSpriteEmitter_9": {
+   "cls": "ParticleSpriteEmitter",
+   "props": {
+    "EmitterName": "dot_tir",
+    "NoUseSpawnRateScaleToCameraDistance": true,
+    "LODLevels": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_9.ParticleLODLevel_5"
+    ]
+   },
+   "tail": 4
+  },
+  "vw_so010_rgn_fls00": {
+   "cls": "ParticleSystem",
+   "props": {
+    "SqExParticleFlag": 4096,
+    "Emitters": [
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_3",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_6",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_1",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_5",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_4",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_9",
+     "export:vw_so010_rgn_fls00.ParticleSpriteEmitter_8"
+    ],
+    "ParticleSeAssets": [
+     "import:SQEX_EffectSeAttachDataAsset:/Game/Sound/SE/_Data/SeAttach/weapon/w_so010/vw_so010_rgn_fls00.vw_so010_rgn_fls00"
+    ],
+    "CurveEdSetup": null,
+    "LODDistances": [
+     0.0
+    ],
+    "LODSettings": [
+     {
+      "__struct": "ParticleSystemLOD"
+     }
+    ],
+    "FixedRelativeBoundingBox": [
+     -1000.0,
+     -1000.0,
+     -1000.0,
+     1000.0,
+     1000.0,
+     1000.0,
+     1
+    ],
+    "bShouldResetPeakCounts": true,
+    "CustomOcclusionBounds": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1
+    ]
+   },
+   "tail": 4
+  }
+ },
+ "problems": []
+}

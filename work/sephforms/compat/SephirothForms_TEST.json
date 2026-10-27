@@ -1,0 +1,69 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "TEST of Sephiroth's forms: your playable Sephiroth (Cloud's rows) gets two more battle animation packs. Battle02 (winged) = the transformed Sephiroth's Battle00; Battle03 (flying) = his Battle01 wing moves, then his Battle00. The SephirothForms UE4SS mod switches to them after his limits (F6/F7 for testing; F11 tests the same switch with Battle00_Comp, a pack his row already lists, which gets the transformed idle, run, walk and Square combo). Goes with FullyPlayableSephirothDataAssets_P",
+	"animation_sets": [
+		{
+			"characters": [
+				"PC0000_00_Cloud_Standard",
+				"PC0000_08_Cloud_SoldierNoHelmet",
+				"PC0000_09_Cloud_CostaClothing",
+				"PC0000_10_Cloud_CostaClothing2"
+			],
+			"battle": [
+				{
+					"from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00.Battle00",
+					"as": "Battle02"
+				},
+				{
+					"from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01.Battle01",
+					"as": "Battle03"
+				},
+				{
+					"from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00.Battle00",
+					"as": "Battle03"
+				}
+			],
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true,
+			"moves": [
+				{
+					"set": "Battle00_Comp",
+					"key": "B_Idle01_1",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Idle01_1.B_Idle01_1"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_Run01_1",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_1.B_Run01_1"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_Walk01_1",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_1.B_Walk01_1"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_NAttack01_0",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack01_0.B_NAttack01_0"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_NAttack02_0",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack02_0.B_NAttack02_0"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_NAttack03_0",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack03_0.B_NAttack03_0"
+				},
+				{
+					"set": "Battle00_Comp",
+					"key": "B_NAttack04_0",
+					"animation": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack04_0.B_NAttack04_0"
+				}
+			]
+		}
+	]
+}

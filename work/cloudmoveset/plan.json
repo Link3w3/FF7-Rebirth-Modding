@@ -1,0 +1,1433 @@
+{
+ "set": "Battle11",
+ "moves": [
+  {
+   "set": "Battle11",
+   "name": "B_Abnormal01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Abnormal01_0.B_Abnormal01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Abnormal01_0.B_Abnormal01_0",
+   "source": "B_Abnormal01_0",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Abnormal01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Abnormal01_1.B_Abnormal01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Abnormal01_1.B_Abnormal01_1",
+   "source": "B_Abnormal01_1",
+   "notes": "the same move",
+   "length": 2.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Abnormal01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Abnormal01_2.B_Abnormal01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Abnormal01_2.B_Abnormal01_2",
+   "source": "B_Abnormal01_2",
+   "notes": "the same move",
+   "length": 1.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Avoid01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Avoid01.B_Avoid01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_0.B_Avoid01_0",
+   "source": "B_Avoid01",
+   "notes": "dodge: the roll's start",
+   "clip": [
+    0.0,
+    0.1667
+   ],
+   "length": 0.1667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Avoid01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Avoid01.B_Avoid01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_1.B_Avoid01_1",
+   "source": "B_Avoid01",
+   "notes": "dodge: the roll (as long as the warp)",
+   "clip": [
+    0.1667,
+    0.5
+   ],
+   "speed": 0.6667,
+   "length": 0.4999
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Avoid01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Avoid01.B_Avoid01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_2.B_Avoid01_2",
+   "source": "B_Avoid01",
+   "notes": "dodge: the roll's recovery",
+   "clip": [
+    0.5,
+    0.0
+   ],
+   "length": 0.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Avoid02_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_AvoidJ01.B_AvoidJ01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid02_2.B_Avoid02_2",
+   "source": "B_AvoidJ01",
+   "notes": "air dodge",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Die01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Die01_0.B_Die01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Die01_0.B_Die01_0",
+   "source": "B_Die01_0",
+   "notes": "the same move",
+   "length": 1.1667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Die01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Die01_1.B_Die01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Die01_1.B_Die01_1",
+   "source": "B_Die01_1",
+   "notes": "the same move",
+   "length": 2.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Die01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Die01_2.B_Die01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Die01_2.B_Die01_2",
+   "source": "B_Die01_2",
+   "notes": "the same move",
+   "length": 1.6333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgB01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgB01.B_DmgB01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB01.B_DmgB01",
+   "source": "B_DmgB01",
+   "notes": "the same move",
+   "length": 0.7667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgB02",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgB02.B_DmgB02",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB02.B_DmgB02",
+   "source": "B_DmgB02",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgB03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgB03_0.B_DmgB03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_0.B_DmgB03_0",
+   "source": "B_DmgB03_0",
+   "notes": "the same move",
+   "length": 1.0333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgB03_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgB03_1.B_DmgB03_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_1.B_DmgB03_1",
+   "source": "B_DmgB03_1",
+   "notes": "the same move",
+   "length": 2.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgB03_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgB03_2.B_DmgB03_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_2.B_DmgB03_2",
+   "source": "B_DmgB03_2",
+   "notes": "the same move",
+   "length": 1.2
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgBlowB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0",
+   "source": "B_DmgBlowB01_0",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgBlowB01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1",
+   "source": "B_DmgBlowB01_1",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgBlowF01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0",
+   "source": "B_DmgBlowF01_0",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgBlowF01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1",
+   "source": "B_DmgBlowF01_1",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB01_0.B_DmgDownB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB01_0.B_DmgDownB01_0",
+   "source": "B_DmgDownB01_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownB01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB01_2.B_DmgDownB01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB01_2.B_DmgDownB01_2",
+   "source": "B_DmgDownB01_2",
+   "notes": "the same move",
+   "length": 1.5667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownB02_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB02_0.B_DmgDownB02_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB02_0.B_DmgDownB02_0",
+   "source": "B_DmgDownB02_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownB02_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB02_2.B_DmgDownB02_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB02_2.B_DmgDownB02_2",
+   "source": "B_DmgDownB02_2",
+   "notes": "the same move",
+   "length": 1.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownB03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB03_0.B_DmgDownB03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB03_0.B_DmgDownB03_0",
+   "source": "B_DmgDownB03_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownF01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF01_0.B_DmgDownF01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF01_0.B_DmgDownF01_0",
+   "source": "B_DmgDownF01_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownF01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF01_2.B_DmgDownF01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF01_2.B_DmgDownF01_2",
+   "source": "B_DmgDownF01_2",
+   "notes": "the same move",
+   "length": 1.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownF02_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF02_0.B_DmgDownF02_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF02_0.B_DmgDownF02_0",
+   "source": "B_DmgDownF02_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownF02_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF02_2.B_DmgDownF02_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF02_2.B_DmgDownF02_2",
+   "source": "B_DmgDownF02_2",
+   "notes": "the same move",
+   "length": 1.5667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgDownF03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF03_0.B_DmgDownF03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF03_0.B_DmgDownF03_0",
+   "source": "B_DmgDownF03_0",
+   "notes": "the same move",
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgF01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF01.B_DmgF01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF01.B_DmgF01",
+   "source": "B_DmgF01",
+   "notes": "the same move",
+   "length": 0.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgF02",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF02.B_DmgF02",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF02.B_DmgF02",
+   "source": "B_DmgF02",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgF03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF03_0.B_DmgF03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_0.B_DmgF03_0",
+   "source": "B_DmgF03_0",
+   "notes": "the same move",
+   "length": 1.0333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgF03_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF03_1.B_DmgF03_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_1.B_DmgF03_1",
+   "source": "B_DmgF03_1",
+   "notes": "the same move",
+   "length": 2.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgF03_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF03_2.B_DmgF03_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_2.B_DmgF03_2",
+   "source": "B_DmgF03_2",
+   "notes": "the same move",
+   "length": 1.2
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgGuard02",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgGuard02.B_DmgGuard02",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgGuard02.B_DmgGuard02",
+   "source": "B_DmgGuard02",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgL01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgL01.B_DmgL01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgL01.B_DmgL01",
+   "source": "B_DmgL01",
+   "notes": "the same move",
+   "length": 0.7667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgR01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgR01.B_DmgR01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgR01.B_DmgR01",
+   "source": "B_DmgR01",
+   "notes": "the same move",
+   "length": 0.7667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgRecoverB01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgRecoverB01.B_DmgRecoverB01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgRecoverB01.B_DmgRecoverB01",
+   "source": "B_DmgRecoverB01",
+   "notes": "the same move",
+   "length": 1.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgRecoverF01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgRecoverF01.B_DmgRecoverF01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgRecoverF01.B_DmgRecoverF01",
+   "source": "B_DmgRecoverF01",
+   "notes": "the same move",
+   "length": 1.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgReflect01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgReflect01.B_DmgReflect01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgReflect01.B_DmgReflect01",
+   "source": "B_DmgReflect01",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgStrikeB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeB01_0.B_DmgStrikeB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeB01_0.B_DmgStrikeB01_0",
+   "source": "B_DmgStrikeB01_0",
+   "notes": "the same move",
+   "length": 0.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgStrikeB01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeB01_1.B_DmgStrikeB01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeB01_1.B_DmgStrikeB01_1",
+   "source": "B_DmgStrikeB01_1",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgStrikeF01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeF01_0.B_DmgStrikeF01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeF01_0.B_DmgStrikeF01_0",
+   "source": "B_DmgStrikeF01_0",
+   "notes": "the same move",
+   "length": 0.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgStrikeF01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeF01_1.B_DmgStrikeF01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeF01_1.B_DmgStrikeF01_1",
+   "source": "B_DmgStrikeF01_1",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgUpperB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgUpperB01_0.B_DmgUpperB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperB01_0.B_DmgUpperB01_0",
+   "source": "B_DmgUpperB01_0",
+   "notes": "the same move",
+   "length": 2.2
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgUpperB01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgUpperB01_1.B_DmgUpperB01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperB01_1.B_DmgUpperB01_1",
+   "source": "B_DmgUpperB01_1",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgUpperF01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgUpperF01_0.B_DmgUpperF01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperF01_0.B_DmgUpperF01_0",
+   "source": "B_DmgUpperF01_0",
+   "notes": "the same move",
+   "length": 2.2
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DmgUpperF01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgUpperF01_1.B_DmgUpperF01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperF01_1.B_DmgUpperF01_1",
+   "source": "B_DmgUpperF01_1",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DownAbnormalB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DownAbnormalB01_0.B_DownAbnormalB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownAbnormalB01_0.B_DownAbnormalB01_0",
+   "source": "B_DownAbnormalB01_0",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DownAbnormalF01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DownAbnormalF01_0.B_DownAbnormalF01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownAbnormalF01_0.B_DownAbnormalF01_0",
+   "source": "B_DownAbnormalF01_0",
+   "notes": "the same move",
+   "length": 1.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DownDieB01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DownDieB01.B_DownDieB01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownDieB01.B_DownDieB01",
+   "source": "B_DownDieB01",
+   "notes": "the same move",
+   "length": 3.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_DownDieF01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_DownDieF01.B_DownDieF01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownDieF01.B_DownDieF01",
+   "source": "B_DownDieF01",
+   "notes": "the same move",
+   "length": 3.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Fall01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Fall01_1.B_Fall01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1",
+   "source": "B_Fall01_1",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Fall01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Fall01_2.B_Fall01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2",
+   "source": "B_Fall01_2",
+   "notes": "the same move",
+   "length": 1.0333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Guard01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_0.B_Guard01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_0.B_Guard01_0",
+   "source": "B_Guard01_0",
+   "notes": "the same move",
+   "length": 0.1667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Guard01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_1.B_Guard01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_1.B_Guard01_1",
+   "source": "B_Guard01_1",
+   "notes": "the same move",
+   "length": 2.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Guard01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_2.B_Guard01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_2.B_Guard01_2",
+   "source": "B_Guard01_2",
+   "notes": "the same move",
+   "length": 0.6
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace01_0.B_GuardFace01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace01_0.B_GuardFace01_0",
+   "source": "B_GuardFace01_0",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace01_1.B_GuardFace01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace01_1.B_GuardFace01_1",
+   "source": "B_GuardFace01_1",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace01_2.B_GuardFace01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace01_2.B_GuardFace01_2",
+   "source": "B_GuardFace01_2",
+   "notes": "the same move",
+   "length": 0.8
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace02_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace02_0.B_GuardFace02_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace02_0.B_GuardFace02_0",
+   "source": "B_GuardFace02_0",
+   "notes": "the same move",
+   "length": 0.2333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace02_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace02_1.B_GuardFace02_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace02_1.B_GuardFace02_1",
+   "source": "B_GuardFace02_1",
+   "notes": "the same move",
+   "length": 0.4333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardFace02_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_GuardFace02_2.B_GuardFace02_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardFace02_2.B_GuardFace02_2",
+   "source": "B_GuardFace02_2",
+   "notes": "the same move",
+   "length": 0.3333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardTurn01_L180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_1.B_Guard01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardTurn01_L180.B_GuardTurn01_L180",
+   "source": "B_Guard01_1",
+   "notes": "turning while guarding: the guard hold",
+   "clip_like_notifies_from": true,
+   "length": 2.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardTurn01_L90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_1.B_Guard01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardTurn01_L90.B_GuardTurn01_L90",
+   "source": "B_Guard01_1",
+   "notes": "turning while guarding: the guard hold",
+   "clip_like_notifies_from": true,
+   "length": 2.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardTurn01_R180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_1.B_Guard01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardTurn01_R180.B_GuardTurn01_R180",
+   "source": "B_Guard01_1",
+   "notes": "turning while guarding: the guard hold",
+   "clip_like_notifies_from": true,
+   "length": 2.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_GuardTurn01_R90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Guard01_1.B_Guard01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_GuardTurn01_R90.B_GuardTurn01_R90",
+   "source": "B_Guard01_1",
+   "notes": "turning while guarding: the guard hold",
+   "clip_like_notifies_from": true,
+   "length": 2.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Idle01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Idle01_0.B_Idle01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0",
+   "source": "B_Idle01_0",
+   "notes": "the same move",
+   "length": 1.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Idle01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Idle01_1.B_Idle01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1",
+   "source": "B_Idle01_1",
+   "notes": "the same move",
+   "length": 1.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Idle01_1_EnemyBook",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Idle01_1.B_Idle01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1_EnemyBook.B_Idle01_1_EnemyBook",
+   "source": "B_Idle01_1",
+   "notes": "the enemy book's idle",
+   "length": 1.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Idle01_2",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Idle01_2.B_Idle01_2",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_2.B_Idle01_2",
+   "source": "B_Idle01_2",
+   "notes": "the same move",
+   "length": 1.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttack01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack01_0.B_NAttack01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0.B_NAttack01_0",
+   "source": "B_NAttack01_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.2391
+    }
+   ],
+   "length": 1.4333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttack02_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack02_0.B_NAttack02_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0.B_NAttack02_0",
+   "source": "B_NAttack02_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.1938
+    }
+   ],
+   "length": 1.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttack03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack03_0.B_NAttack03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0.B_NAttack03_0",
+   "source": "B_NAttack03_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.5996
+    }
+   ],
+   "length": 1.7
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttack04_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack04_0.B_NAttack04_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0.B_NAttack04_0",
+   "source": "B_NAttack04_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.399
+    }
+   ],
+   "length": 1.6
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttack20_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttack20_0.B_NAttack20_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack20_0.B_NAttack20_0",
+   "source": "B_NAttack20_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.2328
+    },
+    {
+     "time": 0.5262
+    }
+   ],
+   "length": 1.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttackJ01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ01_0.B_NAttackJ01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ01_0.B_NAttackJ01_0",
+   "source": "B_NAttackJ01_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.2388
+    }
+   ],
+   "length": 0.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttackJ02_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ02_0.B_NAttackJ02_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ02_0.B_NAttackJ02_0",
+   "source": "B_NAttackJ02_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.2707
+    }
+   ],
+   "length": 0.9333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_NAttackJ03_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_NAttackJ03_0.B_NAttackJ03_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ03_0.B_NAttackJ03_0",
+   "source": "B_NAttackJ03_0",
+   "notes": "the same move",
+   "hits": [
+    {
+     "time": 0.407
+    }
+   ],
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_0_L0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+   "source": "B_Run01_0_L0",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_0_L180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+   "source": "B_Run01_0_L180",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_0_L90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+   "source": "B_Run01_0_L90",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_0_R180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+   "source": "B_Run01_0_R180",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_0_R90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90.B_Run01_0_R90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+   "source": "B_Run01_0_R90",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1.B_Run01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1",
+   "source": "B_Run01_1",
+   "notes": "the same move",
+   "length": 0.5333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_1_L180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_L180.B_Run01_1_L180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_L180.B_Run01_1_L180",
+   "source": "B_Run01_1_L180",
+   "notes": "the same move",
+   "length": 0.5667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_1_R180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1_R180.B_Run01_1_R180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_R180.B_Run01_1_R180",
+   "source": "B_Run01_1_R180",
+   "notes": "the same move",
+   "length": 0.5667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_2l",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l.B_Run01_2l",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2l.B_Run01_2l",
+   "source": "B_Run01_2l",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_2r",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2r.B_Run01_2r",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2r.B_Run01_2r",
+   "source": "B_Run01_2r",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Run01_UP",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_Up.B_Run01_Up",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_Up.B_Run01_UP",
+   "source": "B_Run01_Up",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_StepAB01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_AvoidJ01.B_AvoidJ01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_StepAB01.B_StepAB01",
+   "source": "B_AvoidJ01",
+   "notes": "back step in the air",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_StepB01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_AvoidStpB01.B_AvoidStpB01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_StepB01.B_StepB01",
+   "source": "B_AvoidStpB01",
+   "notes": "back step",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_L0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L0.B_Turn01_L0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L0.B_Turn01_L0",
+   "source": "B_Turn01_L0",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_L180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L180.B_Turn01_L180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L180.B_Turn01_L180",
+   "source": "B_Turn01_L180",
+   "notes": "the same move",
+   "length": 0.8
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_L90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L90.B_Turn01_L90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L90.B_Turn01_L90",
+   "source": "B_Turn01_L90",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_R0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R0.B_Turn01_R0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R0.B_Turn01_R0",
+   "source": "B_Turn01_R0",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_R180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R180.B_Turn01_R180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R180.B_Turn01_R180",
+   "source": "B_Turn01_R180",
+   "notes": "the same move",
+   "length": 0.8
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Turn01_R90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R90.B_Turn01_R90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R90.B_Turn01_R90",
+   "source": "B_Turn01_R90",
+   "notes": "the same move",
+   "length": 0.6667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_0_L0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+   "source": "B_Walk01_0_L0",
+   "notes": "the same move",
+   "length": 0.4667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_0_L180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+   "source": "B_Walk01_0_L180",
+   "notes": "the same move",
+   "length": 1.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_0_L90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+   "source": "B_Walk01_0_L90",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_0_R180",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+   "source": "B_Walk01_0_R180",
+   "notes": "the same move",
+   "length": 1.1333
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_0_R90",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+   "source": "B_Walk01_0_R90",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1.B_Walk01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1",
+   "source": "B_Walk01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_2l",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l.B_Walk01_2l",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2l.B_Walk01_2l",
+   "source": "B_Walk01_2l",
+   "notes": "the same move",
+   "length": 0.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Walk01_2r",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r.B_Walk01_2r",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2r.B_Walk01_2r",
+   "source": "B_Walk01_2r",
+   "notes": "the same move",
+   "length": 0.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkB01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0.B_WalkB01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_0.B_WalkB01_0",
+   "source": "B_WalkB01_0",
+   "notes": "the same move",
+   "length": 0.3667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkB01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1.B_WalkB01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1",
+   "source": "B_WalkB01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkB01_2l",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+   "source": "B_WalkB01_2l",
+   "notes": "the same move",
+   "length": 0.7667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkB01_2r",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+   "source": "B_WalkB01_2r",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkBL01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1",
+   "source": "B_WalkBL01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkBR01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1",
+   "source": "B_WalkBR01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkFL01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1",
+   "source": "B_WalkFL01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkFR01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1",
+   "source": "B_WalkFR01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkL01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0.B_WalkL01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_0.B_WalkL01_0",
+   "source": "B_WalkL01_0",
+   "notes": "the same move",
+   "length": 0.4
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkL01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1.B_WalkL01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1",
+   "source": "B_WalkL01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkL01_2l",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+   "source": "B_WalkL01_2l",
+   "notes": "the same move",
+   "length": 0.8667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkL01_2r",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+   "source": "B_WalkL01_2r",
+   "notes": "the same move",
+   "length": 1.0
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkR01_0",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0.B_WalkR01_0",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_0.B_WalkR01_0",
+   "source": "B_WalkR01_0",
+   "notes": "the same move",
+   "length": 0.5
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkR01_1",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1.B_WalkR01_1",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1",
+   "source": "B_WalkR01_1",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkR01_2l",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+   "source": "B_WalkR01_2l",
+   "notes": "the same move",
+   "length": 1.0667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_WalkR01_2r",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+   "source": "B_WalkR01_2r",
+   "notes": "the same move",
+   "length": 0.5667
+  },
+  {
+   "set": "Battle11",
+   "name": "B_Win01",
+   "animation": "/Game/Motion/Player/PC0000_Cloud/Battle00/B_Win01.B_Win01",
+   "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Win01.B_Win01",
+   "source": "B_Win01",
+   "notes": "the same move",
+   "length": 6.4667
+  }
+ ],
+ "keys": {
+  "Battle11": {
+   "B_Abnormal01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Abnormal01_0.B_Abnormal01_0",
+   "B_Abnormal01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Abnormal01_1.B_Abnormal01_1",
+   "B_Abnormal01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Abnormal01_2.B_Abnormal01_2",
+   "B_Avoid01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Avoid01_0.B_Avoid01_0",
+   "B_Avoid01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Avoid01_1.B_Avoid01_1",
+   "B_Avoid01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Avoid01_2.B_Avoid01_2",
+   "B_Avoid02_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Avoid02_2.B_Avoid02_2",
+   "B_Die01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Die01_0.B_Die01_0",
+   "B_Die01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Die01_1.B_Die01_1",
+   "B_Die01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Die01_2.B_Die01_2",
+   "B_DmgB01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgB01.B_DmgB01",
+   "B_DmgB02": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgB02.B_DmgB02",
+   "B_DmgB03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgB03_0.B_DmgB03_0",
+   "B_DmgB03_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgB03_1.B_DmgB03_1",
+   "B_DmgB03_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgB03_2.B_DmgB03_2",
+   "B_DmgBlowB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgBlowB01_0.B_DmgBlowB01_0",
+   "B_DmgBlowB01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgBlowB01_1.B_DmgBlowB01_1",
+   "B_DmgBlowF01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgBlowF01_0.B_DmgBlowF01_0",
+   "B_DmgBlowF01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgBlowF01_1.B_DmgBlowF01_1",
+   "B_DmgDownB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownB01_0.B_DmgDownB01_0",
+   "B_DmgDownB01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownB01_2.B_DmgDownB01_2",
+   "B_DmgDownB02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownB02_0.B_DmgDownB02_0",
+   "B_DmgDownB02_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownB02_2.B_DmgDownB02_2",
+   "B_DmgDownB03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownB03_0.B_DmgDownB03_0",
+   "B_DmgDownF01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownF01_0.B_DmgDownF01_0",
+   "B_DmgDownF01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownF01_2.B_DmgDownF01_2",
+   "B_DmgDownF02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownF02_0.B_DmgDownF02_0",
+   "B_DmgDownF02_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownF02_2.B_DmgDownF02_2",
+   "B_DmgDownF03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgDownF03_0.B_DmgDownF03_0",
+   "B_DmgF01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgF01.B_DmgF01",
+   "B_DmgF02": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgF02.B_DmgF02",
+   "B_DmgF03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgF03_0.B_DmgF03_0",
+   "B_DmgF03_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgF03_1.B_DmgF03_1",
+   "B_DmgF03_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgF03_2.B_DmgF03_2",
+   "B_DmgGuard02": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgGuard02.B_DmgGuard02",
+   "B_DmgL01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgL01.B_DmgL01",
+   "B_DmgR01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgR01.B_DmgR01",
+   "B_DmgRecoverB01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgRecoverB01.B_DmgRecoverB01",
+   "B_DmgRecoverF01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgRecoverF01.B_DmgRecoverF01",
+   "B_DmgReflect01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgReflect01.B_DmgReflect01",
+   "B_DmgStrikeB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgStrikeB01_0.B_DmgStrikeB01_0",
+   "B_DmgStrikeB01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgStrikeB01_1.B_DmgStrikeB01_1",
+   "B_DmgStrikeF01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgStrikeF01_0.B_DmgStrikeF01_0",
+   "B_DmgStrikeF01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgStrikeF01_1.B_DmgStrikeF01_1",
+   "B_DmgUpperB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgUpperB01_0.B_DmgUpperB01_0",
+   "B_DmgUpperB01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgUpperB01_1.B_DmgUpperB01_1",
+   "B_DmgUpperF01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgUpperF01_0.B_DmgUpperF01_0",
+   "B_DmgUpperF01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DmgUpperF01_1.B_DmgUpperF01_1",
+   "B_DownAbnormalB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DownAbnormalB01_0.B_DownAbnormalB01_0",
+   "B_DownAbnormalF01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DownAbnormalF01_0.B_DownAbnormalF01_0",
+   "B_DownDieB01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DownDieB01.B_DownDieB01",
+   "B_DownDieF01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_DownDieF01.B_DownDieF01",
+   "B_Fall01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Fall01_1.B_Fall01_1",
+   "B_Fall01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Fall01_2.B_Fall01_2",
+   "B_Guard01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Guard01_0.B_Guard01_0",
+   "B_Guard01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Guard01_1.B_Guard01_1",
+   "B_Guard01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Guard01_2.B_Guard01_2",
+   "B_GuardFace01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace01_0.B_GuardFace01_0",
+   "B_GuardFace01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace01_1.B_GuardFace01_1",
+   "B_GuardFace01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace01_2.B_GuardFace01_2",
+   "B_GuardFace02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace02_0.B_GuardFace02_0",
+   "B_GuardFace02_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace02_1.B_GuardFace02_1",
+   "B_GuardFace02_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardFace02_2.B_GuardFace02_2",
+   "B_GuardTurn01_L180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardTurn01_L180.B_GuardTurn01_L180",
+   "B_GuardTurn01_L90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardTurn01_L90.B_GuardTurn01_L90",
+   "B_GuardTurn01_R180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardTurn01_R180.B_GuardTurn01_R180",
+   "B_GuardTurn01_R90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_GuardTurn01_R90.B_GuardTurn01_R90",
+   "B_Idle01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Idle01_0.B_Idle01_0",
+   "B_Idle01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Idle01_1.B_Idle01_1",
+   "B_Idle01_1_EnemyBook": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Idle01_1_EnemyBook.B_Idle01_1_EnemyBook",
+   "B_Idle01_2": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Idle01_2.B_Idle01_2",
+   "B_NAttack01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttack01_0.B_NAttack01_0",
+   "B_NAttack02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttack02_0.B_NAttack02_0",
+   "B_NAttack03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttack03_0.B_NAttack03_0",
+   "B_NAttack04_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttack04_0.B_NAttack04_0",
+   "B_NAttack20_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttack20_0.B_NAttack20_0",
+   "B_NAttackJ01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttackJ01_0.B_NAttackJ01_0",
+   "B_NAttackJ02_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttackJ02_0.B_NAttackJ02_0",
+   "B_NAttackJ03_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_NAttackJ03_0.B_NAttackJ03_0",
+   "B_Run01_0_L0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_0_L0.B_Run01_0_L0",
+   "B_Run01_0_L180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_0_L180.B_Run01_0_L180",
+   "B_Run01_0_L90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_0_L90.B_Run01_0_L90",
+   "B_Run01_0_R180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_0_R180.B_Run01_0_R180",
+   "B_Run01_0_R90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_0_R90.B_Run01_0_R90",
+   "B_Run01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_1.B_Run01_1",
+   "B_Run01_1_L180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_1_L180.B_Run01_1_L180",
+   "B_Run01_1_R180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_1_R180.B_Run01_1_R180",
+   "B_Run01_2l": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_2l.B_Run01_2l",
+   "B_Run01_2r": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_2r.B_Run01_2r",
+   "B_Run01_UP": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Run01_UP.B_Run01_UP",
+   "B_StepAB01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_StepAB01.B_StepAB01",
+   "B_StepB01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_StepB01.B_StepB01",
+   "B_Turn01_L0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_L0.B_Turn01_L0",
+   "B_Turn01_L180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_L180.B_Turn01_L180",
+   "B_Turn01_L90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_L90.B_Turn01_L90",
+   "B_Turn01_R0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_R0.B_Turn01_R0",
+   "B_Turn01_R180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_R180.B_Turn01_R180",
+   "B_Turn01_R90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Turn01_R90.B_Turn01_R90",
+   "B_Walk01_0_L0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_0_L0.B_Walk01_0_L0",
+   "B_Walk01_0_L180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_0_L180.B_Walk01_0_L180",
+   "B_Walk01_0_L90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_0_L90.B_Walk01_0_L90",
+   "B_Walk01_0_R180": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_0_R180.B_Walk01_0_R180",
+   "B_Walk01_0_R90": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_0_R90.B_Walk01_0_R90",
+   "B_Walk01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_1.B_Walk01_1",
+   "B_Walk01_2l": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_2l.B_Walk01_2l",
+   "B_Walk01_2r": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Walk01_2r.B_Walk01_2r",
+   "B_WalkB01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkB01_0.B_WalkB01_0",
+   "B_WalkB01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkB01_1.B_WalkB01_1",
+   "B_WalkB01_2l": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkB01_2l.B_WalkB01_2l",
+   "B_WalkB01_2r": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkB01_2r.B_WalkB01_2r",
+   "B_WalkBL01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkBL01_1.B_WalkBL01_1",
+   "B_WalkBR01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkBR01_1.B_WalkBR01_1",
+   "B_WalkFL01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkFL01_1.B_WalkFL01_1",
+   "B_WalkFR01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkFR01_1.B_WalkFR01_1",
+   "B_WalkL01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkL01_0.B_WalkL01_0",
+   "B_WalkL01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkL01_1.B_WalkL01_1",
+   "B_WalkL01_2l": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkL01_2l.B_WalkL01_2l",
+   "B_WalkL01_2r": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkL01_2r.B_WalkL01_2r",
+   "B_WalkR01_0": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkR01_0.B_WalkR01_0",
+   "B_WalkR01_1": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkR01_1.B_WalkR01_1",
+   "B_WalkR01_2l": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkR01_2l.B_WalkR01_2l",
+   "B_WalkR01_2r": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_WalkR01_2r.B_WalkR01_2r",
+   "B_Win01": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle11/B_Win01.B_Win01"
+  }
+ },
+ "kept_sephiroths": [
+  [
+   "B_Dmg01_Add",
+   "additive (Build Moves makes moves of whole-body animations)"
+  ],
+  [
+   "B_DmgBlowB01_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgBlowF01_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgBurst01_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgBurst01_1",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgBurst01_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgBurst01_Add",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgUpperB01_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_DmgUpperF01_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_NPAttack01",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_NPAttackJ01",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackL01",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackL02",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackL03",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackL04",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackR01",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackR02",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackR03",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_ParryAttackR04",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack01_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack02_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack05_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack06_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack07_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack08_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack08_1",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack08_2",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack09_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_SAttack10_0",
+   "Cloud has no motion for it"
+  ],
+  [
+   "B_StrafingWalk01_0",
+   "a BlendSpace (the mod makes it play the set's own moves)"
+  ],
+  [
+   "B_StrafingWalk01_1",
+   "a BlendSpace (the mod makes it play the set's own moves)"
+  ],
+  [
+   "B_StrafingWalk01_2l",
+   "a BlendSpace (the mod makes it play the set's own moves)"
+  ],
+  [
+   "B_Turn01",
+   "a BlendSpace (the mod makes it play the set's own moves)"
+  ]
+ ]
+}

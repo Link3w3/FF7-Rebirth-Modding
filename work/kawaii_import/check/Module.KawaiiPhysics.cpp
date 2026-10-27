@@ -1,0 +1,6 @@
+#pragma clang diagnostic warning "-Wshadow"
+#include "/work/kawaii_import/v112/Source/KawaiiPhysics/Private/KawaiiPhysics.cpp"
+#pragma clang diagnostic warning "-Wshadow"
+#include "/work/kawaii_import/v112/Source/KawaiiPhysics/Private/KawaiiPhysicsLimitsDataAsset.cpp"
+#pragma clang diagnostic warning "-Wshadow"
+#include "/work/kawaii_import/v112/Source/KawaiiPhysics/Private/AnimNode_KawaiiPhysics.cpp"

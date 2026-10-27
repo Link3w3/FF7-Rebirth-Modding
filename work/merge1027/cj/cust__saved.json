@@ -1,0 +1,19 @@
+{
+  "looks": [
+    {"mesh": "/Game/Character/Player/PC0004_08_RedXIII_Dirty/Model/PC0004_08.PC0004_08", "materials": {}, "model": "/Game/Character/Player/PC0004_04_RedXIII_Once2/Model/PC0004_04.PC0004_04", "parts": []},
+    {"mesh": "/Game/Character/Player/PC0010_18_Bahumunt_Fused_Sephiroth_Whisper/Model/PC0010_18.PC0010_18", "materials": {"6": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "7": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "8": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "9": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "10": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "11": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "12": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "13": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "14": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "15": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "16": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "17": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst"}, "model": "", "parts": []}
+  ],
+  "skins": {"PC0000_00_Cloud_Standard": "BahamutFusedSephirothWhisper"},
+  "voices": {"PC0000_00_Cloud_Standard": "-", "PC0000_00_Cloud_Standard_CACS": "/Game/Sound/Voice/JP/Character/Player/VO_PC0000_00_Cloud.VO_PC0000_00_Cloud"},
+  "weapons": {"PC0000_00_Cloud_Standard": "/Game/BluePrint/Character/Weapon/WE0011_00_Vincent_Quiksilver.WE0011_00_Vincent_Quiksilver_C"},
+  "movesets": {"PC0000_00_Cloud_Standard": {"NORMAL": "CHAOS"}},
+  "effects": {
+    "PC0000_00_Cloud_Standard": [{"on": "weapon", "effect": "/Game/Effect/Character/Enemy/EB0016_Rufus/Particle/FX_EB0016_FireBreak_GunAura_01.FX_EB0016_FireBreak_GunAura_01"}]
+  },
+  "characters": {"Cloud": "-"},
+  "form_skins": {},
+  "presets": [
+    {"name": "Preset 1", "for": "/Game/Character/Player/PC0010_17_Bahumunt_Fused_Sephiroth/Model/PC0010_17_Compat.PC0010_17_Compat", "model": "", "parts": [], "materials": {}},
+    {"name": "Preset 1", "for": "/Game/Character/Player/PC0010_18_Bahumunt_Fused_Sephiroth_Whisper/Model/PC0010_18.PC0010_18", "model": "", "parts": [], "materials": {"6": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "7": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "8": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "9": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "10": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "11": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "12": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "13": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "14": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "15": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "16": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst", "17": "/Game/Shader/KadeMats/Material_Instances/Taken_Inst.Taken_Inst"}}
+  ]
+}

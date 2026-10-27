@@ -1,0 +1,70 @@
+{
+ "package": "/Game/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Particle/FX_EB0021_WeaponSlash_01",
+ "entry": {
+  "id": 16117134440367238479,
+  "size": 23122,
+  "export_count": 7,
+  "export_bundle_count": 1,
+  "imports": [
+   4049947595189176558,
+   4336428614409209904,
+   4663901380805633184,
+   8965583271759099610,
+   10172530360236156292
+  ],
+  "load_order": 0
+ },
+ "report": {
+  "emitters": [
+   {
+    "name": "Ring_Core",
+    "enabled": true,
+    "renderers": [
+     "mesh RMI_Particle_Emit_Visibility"
+    ],
+    "scripts": [
+     {
+      "usage": "ParticleSpawnScriptInterpolated",
+      "instructions": 87,
+      "external_functions": 2,
+      "parameters": 22,
+      "external_size": 128,
+      "literals": 68,
+      "data_interfaces": 2
+     },
+     {
+      "usage": "ParticleUpdateScript",
+      "instructions": 98,
+      "external_functions": 2,
+      "parameters": 11,
+      "external_size": 60,
+      "literals": 56,
+      "data_interfaces": 2
+     }
+    ],
+    "material_parameters": "remake recipe (0, 1, 2, 4, 5)"
+   }
+  ],
+  "system_scripts": [
+   {
+    "usage": "SystemSpawnScript",
+    "instructions": 22,
+    "external_functions": 0,
+    "parameters": 1,
+    "external_size": 4,
+    "literals": 24,
+    "data_interfaces": 0
+   },
+   {
+    "usage": "SystemUpdateScript",
+    "instructions": 120,
+    "external_functions": 0,
+    "parameters": 7,
+    "external_size": 28,
+    "literals": 44,
+    "data_interfaces": 0
+   }
+  ],
+  "khcv": 4208
+ }
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "pairs": [
+    {
+      "receiving_skeleton": "/KH2SephirothDressCode/Model/PC0010_10KH2_Skeleton.PC0010_10KH2_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton"
+      ],
+      "method": "mesh",
+      "fix_hierarchy": true,
+      "requires_paks": [ "KH2SephirothDressCode" ],
+      "enabled": true
+    }
+  ]
+}

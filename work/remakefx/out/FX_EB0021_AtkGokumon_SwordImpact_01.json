@@ -1,0 +1,1112 @@
+{
+ "emitters": {
+  "Smk_02": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Lit_Average_Opacity_Soft.EMI_Particle_Lit_Average_Opacity_Soft",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleSubUV",
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleVelocity",
+    "ParticleModuleRotation",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleAccelerationDrag"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:A:Diffuse(RGBA)": {
+      "const": [
+       0.2,
+       0.2,
+       0.2,
+       1.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:1:Opacity(Float1)": {
+      "const": 1.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:I:ToneOpacity(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 1.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:2:0:Opacity": "/Game/GameContents/Effect/Resident/Texture/FX_R_Smk_06A_T.FX_R_Smk_06A_T"
+    },
+    "ParticleFadeDistancePreset": "Far"
+   }
+  },
+  "GPU_Ground_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleSizeScaleBySpeed",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleAccelerationDrag"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 2000.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_02_T.FX_R_Debris_02_T"
+    },
+    "ParticleFadeDistancePreset": "Far"
+   }
+  },
+  "Stone_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity.EMI_Particle_Lit_Rough_Diffuse_Normal_Opacity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColor",
+    "ParticleModuleVelocity",
+    "ParticleModuleRotation",
+    "ParticleModuleLocationPrimitiveCylinder",
+    "ParticleModuleSubUV",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleAccelerationDrag"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:A:Diffuse(RGBA)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:1:Opacity(Float1)": {
+      "const": 1.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:I:ToneOpacity(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 1.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:2:0:Opacity": "/Game/GameContents/Effect/Resident/Texture/FX_R_Rock_01A_T.FX_R_Rock_01A_T",
+     "0:3:0:Diffuse": "/Game/GameContents/Effect/Resident/Texture/FX_R_Rock_01COL_T.FX_R_Rock_01COL_T",
+     "0:4:0:Normal": "/Game/GameContents/Effect/Resident/Texture/FX_R_Rock_01N_T.FX_R_Rock_01N_T"
+    }
+   }
+  },
+  "Spark_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleVelocity",
+    "ParticleModuleLocationPrimitiveCylinder",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleAcceleration",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleVectorFieldRotation",
+    "ParticleModuleVectorFieldRotationRate"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 600.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Spark_02_T.FX_R_Spark_02_T"
+    }
+   }
+  },
+  "Spark_02": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": "EndParticleModuleTypeDataGpu",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleSizeScaleBySpeed",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleVelocity",
+    "ParticleModuleLocationPrimitiveSphere",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleAccelerationConstant",
+    "ParticleModuleVectorFieldLocal",
+    "ParticleModuleVectorFieldRotationRate",
+    "ParticleModuleVectorFieldRotation",
+    "ParticleModuleVectorFieldScaleOverLife"
+   ],
+   "local_space": false,
+   "was_gpu": true,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 400.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Spark_02_T.FX_R_Spark_02_T"
+    }
+   }
+  },
+  "LineGlow_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Grade_Modifier_Soft.EMI_Particle_Emit_Gray_Grade_Modifier_Soft",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleOrientationAxisLock",
+    "ParticleModulePivotOffset",
+    "ParticleModuleVelocity",
+    "ParticleModuleAccelerationDrag",
+    "ParticleModuleCameraOffset"
+   ],
+   "local_space": true,
+   "params": {
+    "vectors": {
+     "L:7:Tone:0:FirstColor(RGBA)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "L:7:Tone:2:SecondColor(RGBA)": {
+      "const": [
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "3:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "3:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       3.0,
+       0.0,
+       0.0
+      ]
+     },
+     "3:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       1.0,
+       0.0,
+       1.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 9000.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:5:ToneColor(Float1)": {
+      "const": 0.0
+     },
+     "L:6:ToneLuminance(Float1)": {
+      "curve": [
+       -1.0,
+       -1.0,
+       -0.90741,
+       -0.72222,
+       -0.53704,
+       -0.35185,
+       -0.16667,
+       0.01852,
+       0.2037,
+       0.38889,
+       0.57407,
+       0.75926,
+       0.94444,
+       1.12963,
+       1.31481,
+       1.5
+      ],
+      "times": [
+       0.0,
+       0.06666666666666667,
+       0.13333333333333333,
+       0.2,
+       0.26666666666666666,
+       0.3333333333333333,
+       0.4,
+       0.4666666666666667,
+       0.5333333333333333,
+       0.6,
+       0.6666666666666666,
+       0.7333333333333333,
+       0.8,
+       0.8666666666666667,
+       0.9333333333333333,
+       1.0
+      ],
+      "since_creation": false
+     },
+     "L:7:Tone:1:FirstLuminance(Float1)": {
+      "const": 0.0
+     },
+     "L:7:Tone:3:SecondLuminance(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:9:Hermite(Float1)": {
+      "const": 1.0
+     },
+     "L:B:Blend(Float1)": {
+      "const": 0.0
+     },
+     "L:C:Modifier(Float1)": {
+      "const": 1.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.25
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     },
+     "3:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "3:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "3:0:Cordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Lens_03_T.FX_R_Lens_03_T",
+     "3:0:0:Modifier": "/Game/GameContents/Effect/Resident/Texture/FX_R_Smk_UV_03_T.FX_R_Smk_UV_03_T"
+    }
+   },
+   "dynamic": [
+    {
+     "param": "L:6:ToneLuminance(Float1)",
+     "kind": "scalar",
+     "slot": 0
+    }
+   ]
+  },
+  "Flash_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity_Soft.EMI_Particle_Emit_Gray_Identity_Soft",
+   "typedata": "ParticleModuleTypeDataMesh",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleMeshRotation",
+    "ParticleModuleCameraOffset"
+   ],
+   "local_space": true,
+   "mesh": "/Game/GameContents/Effect/Resident/Model/FX_R_Flash_02_M.FX_R_Flash_02_M",
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 15.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Flash_01_T.FX_R_Flash_01_T"
+    },
+    "CullMode": "Double",
+    "OverrideCullMode": true
+   }
+  },
+  "Flash_02": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity_Soft.EMI_Particle_Emit_Gray_Identity_Soft",
+   "typedata": "ParticleModuleTypeDataMesh",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleMeshRotation",
+    "ParticleModuleCameraOffset",
+    "ParticleModuleMeshRotation",
+    "ParticleModuleMeshRotationRate"
+   ],
+   "local_space": true,
+   "mesh": "/Game/GameContents/Effect/Resident/Model/FX_R_Flash_01_M.FX_R_Flash_01_M",
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 15.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Flash_01_T.FX_R_Flash_01_T"
+    },
+    "CullMode": "Double",
+    "OverrideCullMode": true
+   }
+  },
+  "ImpactGlow_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Identity.EMI_Particle_Emit_Gray_Identity",
+   "typedata": null,
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleColor",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleRotation",
+    "ParticleModuleLocation",
+    "ParticleModuleCameraOffset"
+   ],
+   "local_space": false,
+   "params": {
+    "vectors": {
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 20000.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 0.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Debris_02_T.FX_R_Debris_02_T"
+    }
+   }
+  },
+  "Blur_01": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Directional_Modifier_Soft.EMI_Directional_Modifier_Soft",
+   "typedata": "ParticleModuleTypeDataMesh",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleSize",
+    "ParticleModuleSizeMultiplyLife",
+    "ParticleModuleColorOverLife"
+   ],
+   "local_space": false,
+   "mesh": "/Game/GameContents/Effect/Resident/Model/FX_R_Ring_13_M.FX_R_Ring_13_M",
+   "params": {
+    "vectors": {
+     "0:Coordinate:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:Coordinate:Scale(Float2)": {
+      "const": [
+       2.0,
+       2.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:Coordinate:Distribution(Float4)": {
+      "const": [
+       0.0,
+       1.0,
+       0.0,
+       1.0
+      ]
+     },
+     "3:Coordinate:Offset(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "3:Coordinate:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "3:Coordinate:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:Directional(Float1)": {
+      "curve": [
+       30.0,
+       28.0,
+       26.0,
+       24.0,
+       22.0,
+       20.0,
+       18.0,
+       16.0,
+       14.0,
+       12.0,
+       10.0,
+       8.0,
+       6.0,
+       4.0,
+       2.0,
+       0.0
+      ],
+      "times": [
+       0.0,
+       0.06666666666666667,
+       0.13333333333333333,
+       0.2,
+       0.26666666666666666,
+       0.3333333333333333,
+       0.4,
+       0.4666666666666667,
+       0.5333333333333333,
+       0.6,
+       0.6666666666666666,
+       0.7333333333333333,
+       0.8,
+       0.8666666666666667,
+       0.9333333333333333,
+       1.0
+      ],
+      "since_creation": false
+     },
+     "L:FarDistance(Float1)": {
+      "const": 0.0
+     },
+     "L:NearDistance(Float1)": {
+      "const": 0.0
+     },
+     "L:ViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:Blend(Float1)": {
+      "const": 0.0
+     },
+     "L:Modifier(Float1)": {
+      "const": 1.0
+     },
+     "L:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "0:Coordinate:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:Coordinate:Rotation(Float1)": {
+      "const": 0.0
+     },
+     "0:Coordinate:Parallax(Float1)": {
+      "const": 1.0
+     },
+     "3:Coordinate:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "3:Coordinate:Rotation(Float1)": {
+      "const": 0.25
+     },
+     "3:Cordinate:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:Directional": "/Game/GameContents/Effect/Resident/Texture/FX_R_Sonic_UV_01_T.FX_R_Sonic_UV_01_T",
+     "3:Modifier": "/Game/GameContents/Effect/Resident/Texture/FX_R_Grd_04_T.FX_R_Grd_04_T"
+    },
+    "ParticleFadeDistancePreset": "Far"
+   },
+   "dynamic": [
+    {
+     "param": "L:Directional(Float1)",
+     "kind": "scalar",
+     "slot": 0
+    }
+   ]
+  }
+ },
+ "dropped": [
+  {
+   "emitter": "Light_01",
+   "why": "no material (a helper emitter: EndParticleModuleLight)",
+   "light": {
+    "color": [
+     0.4000000059604645,
+     0.4000000059604645,
+     1.0
+    ],
+    "intensity": [
+     100.0,
+     49.063011508517796,
+     12.259925651550297,
+     9.128085171092641,
+     7.963874241800019,
+     6.825601543392147,
+     5.8260983802176805,
+     4.826595217043215,
+     3.8270920538687494,
+     2.827588890694284,
+     2.106116441579966,
+     1.4597122852618885,
+     0.8133081289438098,
+     0.46388163912123515,
+     0.23194081956061763,
+     0.0
+    ],
+    "radius": 800.0
+   }
+  },
+  {
+   "emitter": "CameraShake_01",
+   "why": "no material (a helper emitter: EndParticleModuleCameraShake)",
+   "camera_shake": {
+    "ShakeScale": 100.0,
+    "Duration": 0.5,
+    "BlendOutTime": 0.25,
+    "LocationRange": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 100.0
+    },
+    "RotationRange": {
+     "X": 0.10000000149011612,
+     "Y": 0.10000000149011612,
+     "Z": 0.10000000149011612
+    },
+    "LocationAmplitude": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 10.0
+    },
+    "RotationAmplitude": {
+     "X": 0.10000000149011612,
+     "Y": 0.10000000149011612,
+     "Z": 0.10000000149011612
+    },
+    "InnerRadius": 700.0,
+    "OuterRadius": 4000.0
+   }
+  }
+ ],
+ "notes": [
+  "Stone_01: its Rotation moves or is random; its first value is kept",
+  "Spark_01: its Rotation moves or is random; its first value is kept",
+  "Spark_02: its Rotation moves or is random; its first value is kept"
+ ],
+ "source": "rm/End/Content/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Particle/FX_EB0021_AtkGokumon_SwordImpact_01",
+ "package": "/Game/RemakeFx/Cascade/FX_EB0021_AtkGokumon_SwordImpact_01",
+ "socket": null,
+ "bind_time": null,
+ "exposure": "ON",
+ "bounds": {
+  "Min": {
+   "X": -900.0,
+   "Y": -900.0,
+   "Z": -200.0
+  },
+  "Max": {
+   "X": 900.0,
+   "Y": 900.0,
+   "Z": 900.0
+  },
+  "IsValid": 1
+ },
+ "exports": 265
+}

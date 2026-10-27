@@ -1,0 +1,18 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Seraph Sephiroth's Essence Shard (skins\\SeraphWeapon: its mesh WE001021_15 is on a skeleton of its own, WE001021_15_Skeleton) joins the weapon family of Sephiroth's swords, so its mesh is rebound to the hub WE0000_00_Skeleton and the Masamune's AnimBlueprint (moved there) runs on it as it does on the game's Masamune",
+ "pairs": [
+  {
+   "receiving_skeleton": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "animation_skeletons": [
+    "/Game/Character/Weapon/WE1021_15_Essence_Shard/Model/WE001021_15_Skeleton.WE001021_15_Skeleton"
+   ],
+   "method": "family",
+   "hub": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+   "requires_paks": [
+    "CreateACharacterSkins_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

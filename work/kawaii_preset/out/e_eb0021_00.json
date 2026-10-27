@@ -1,0 +1,11416 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "note": "KawaiiPhysics from the Rebirth preset (Create a Character System): Remake Sephiroth (EB0021_00): hair, coat, belts, collar",
+ "kawaii": [
+  {
+   "name": "Remake Sephiroth (EB0021_00): hair, coat, belts, collar",
+   "models": [
+    "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00.EB0021_00"
+   ],
+   "disable_bonamik": true,
+   "disable_kinedriver": true,
+   "preset": "rebirth",
+   "nodes": [
+    {
+     "name": "front hair C_HairA",
+     "root_bone": "C_HairA_a_Phy",
+     "damping": 0.278,
+     "stiffness": 0.3076,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.9495,
+     "radius": 2.36,
+     "limit_angle": 24.54,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -151.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.27
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.852
+      ],
+      [
+       0.2,
+       0.819
+      ],
+      [
+       0.4,
+       1.0
+      ],
+      [
+       0.6,
+       0.387
+      ],
+      [
+       0.8,
+       0.339
+      ]
+     ]
+    },
+    {
+     "name": "front hair C_HairB",
+     "root_bone": "C_HairB_a_Phy",
+     "damping": 0.4121,
+     "stiffness": 0.211,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.8778,
+     "radius": 1.83,
+     "limit_angle": 26.71,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -197.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.76
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 11.9,
+       "radius1": 11.9
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.2,
+       0.93
+      ],
+      [
+       0.4,
+       0.843
+      ],
+      [
+       0.6,
+       0.827
+      ],
+      [
+       0.8,
+       0.458
+      ]
+     ]
+    },
+    {
+     "name": "front hair C_HairC",
+     "root_bone": "C_HairC_a_Phy",
+     "damping": 0.4255,
+     "stiffness": 0.3305,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.97,
+     "radius": 1.55,
+     "limit_angle": 25.47,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -183.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.816
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.5,
+       0.529
+      ],
+      [
+       0.75,
+       0.517
+      ]
+     ]
+    },
+    {
+     "name": "front hair C_HairD",
+     "root_bone": "C_HairD_a_Phy",
+     "damping": 0.3819,
+     "stiffness": 0.2542,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.9371,
+     "radius": 3.0,
+     "limit_angle": 24.7,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -235.6
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.08
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 5.73
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 11.07,
+       "radius1": 10.61
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 11.86,
+       "radius1": 11.37
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 10.8,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.417
+      ],
+      [
+       0.2,
+       0.585
+      ],
+      [
+       0.4,
+       0.483
+      ],
+      [
+       0.6,
+       0.546
+      ],
+      [
+       0.8,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairE",
+     "root_bone": "C_HairE_a_Phy",
+     "damping": 0.2935,
+     "stiffness": 0.1757,
+     "world_damping_location": 0.8541,
+     "world_damping_rotation": 0.7856,
+     "radius": 1.49,
+     "limit_angle": 39.09,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -147.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.73
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.669
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.5,
+       0.646
+      ],
+      [
+       0.75,
+       0.443
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairF",
+     "root_bone": "C_HairF_a_Phy",
+     "damping": 0.2476,
+     "stiffness": 0.2286,
+     "world_damping_location": 0.924,
+     "world_damping_rotation": 0.8758,
+     "radius": 2.07,
+     "limit_angle": 30.0,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -165.1
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.73
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.333,
+       0.898
+      ],
+      [
+       0.667,
+       0.421
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairG",
+     "root_bone": "C_HairG_a_Phy",
+     "damping": 0.204,
+     "stiffness": 0.1851,
+     "world_damping_location": 0.7824,
+     "world_damping_rotation": 0.8649,
+     "radius": 1.24,
+     "limit_angle": 36.06,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -145.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       0.994
+      ]
+     ]
+    },
+    {
+     "name": "front hair C_HairH",
+     "root_bone": "C_HairH_a_Phy",
+     "damping": 0.3878,
+     "stiffness": 0.3749,
+     "world_damping_location": 0.9068,
+     "world_damping_rotation": 0.96,
+     "radius": 0.8,
+     "limit_angle": 27.59,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -192.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 10.8,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairI",
+     "root_bone": "C_HairI_a_Phy",
+     "damping": 0.3051,
+     "stiffness": 0.235,
+     "world_damping_location": 0.77,
+     "world_damping_rotation": 0.8343,
+     "radius": 0.63,
+     "limit_angle": 30.34,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -142.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.949
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.667,
+       0.949
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairJ",
+     "root_bone": "C_HairJ_a_Phy",
+     "damping": 0.2647,
+     "stiffness": 0.1892,
+     "world_damping_location": 0.8353,
+     "world_damping_rotation": 0.8027,
+     "radius": 0.6,
+     "limit_angle": 36.55,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -133.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "hair C_HairK",
+     "root_bone": "C_HairK_a_Phy",
+     "damping": 0.229,
+     "stiffness": 0.2207,
+     "world_damping_location": 0.8979,
+     "world_damping_rotation": 0.8781,
+     "radius": 1.37,
+     "limit_angle": 32.51,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -158.6
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.12
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.774
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "front hair L_HairA",
+     "root_bone": "L_HairA_a_Phy",
+     "damping": 0.39,
+     "stiffness": 0.3542,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.97,
+     "radius": 2.38,
+     "limit_angle": 27.58,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -223.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 6.46
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 5.88
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 9.79,
+       "radius1": 10.26
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 10.35,
+       "radius1": 9.45
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 10.35,
+       "radius1": 10.35
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 10.8,
+       "radius1": 10.35
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 10.8,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 7.2,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.167,
+       0.829
+      ],
+      [
+       0.333,
+       0.715
+      ],
+      [
+       0.5,
+       0.568
+      ],
+      [
+       0.667,
+       0.473
+      ],
+      [
+       0.833,
+       0.371
+      ]
+     ]
+    },
+    {
+     "name": "hair L_HairF",
+     "root_bone": "L_HairF_a_Phy",
+     "damping": 0.2321,
+     "stiffness": 0.145,
+     "world_damping_location": 0.9286,
+     "world_damping_rotation": 0.9064,
+     "radius": 3.0,
+     "limit_angle": 29.85,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -173.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.11
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 10.11
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 7.2,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.77,
+       "radius1": 5.4
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 8.33,
+       "radius1": 7.2
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.996
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "front hair R_HairA",
+     "root_bone": "R_HairA_a_Phy",
+     "damping": 0.3152,
+     "stiffness": 0.2442,
+     "world_damping_location": 0.97,
+     "world_damping_rotation": 0.9072,
+     "radius": 2.43,
+     "limit_angle": 26.51,
+     "stiffness_curve": [
+      [
+       0,
+       1.4
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -248.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 6.37
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 5.8
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 9.82,
+       "radius1": 10.29
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 10.35,
+       "radius1": 9.45
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 10.35,
+       "radius1": 10.35
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 10.8,
+       "radius1": 10.35
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 10.8,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 7.2,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.3,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.167,
+       0.848
+      ],
+      [
+       0.333,
+       0.715
+      ],
+      [
+       0.5,
+       0.457
+      ],
+      [
+       0.667,
+       0.387
+      ],
+      [
+       0.833,
+       0.351
+      ]
+     ]
+    },
+    {
+     "name": "hair R_HairF",
+     "root_bone": "R_HairF_a_Phy",
+     "damping": 0.2568,
+     "stiffness": 0.2064,
+     "world_damping_location": 0.8905,
+     "world_damping_rotation": 0.8826,
+     "radius": 3.0,
+     "limit_angle": 36.82,
+     "stiffness_curve": [
+      [
+       0,
+       1.6
+      ],
+      [
+       1,
+       0.8
+      ]
+     ],
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -184.8
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.11
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 10.11
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 7.2,
+       "radius1": 10.8
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.77,
+       "radius1": 5.4
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        -0.51
+       ],
+       "rotation": [
+        95.69,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 9.25,
+       "radius1": 8.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        92.03,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        -0.45
+       ],
+       "rotation": [
+        88.13,
+        -180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        0.15
+       ],
+       "rotation": [
+        87.91,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        10.617,
+        0.102,
+        0.51
+       ],
+       "rotation": [
+        84.31,
+        -178.86,
+        0.0
+       ],
+       "length": 10.29,
+       "radius0": 8.33,
+       "radius1": 7.2
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        14.683,
+        0.0,
+        0.45
+       ],
+       "rotation": [
+        87.97,
+        -180.0,
+        0.0
+       ],
+       "length": 25.38,
+       "radius0": 6.0,
+       "radius1": 9.25
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        0.45
+       ],
+       "rotation": [
+        91.87,
+        180.0,
+        0.0
+       ],
+       "length": 27.58,
+       "radius0": 4.5,
+       "radius1": 6.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        4.1,
+        0.2,
+        -0.15
+       ],
+       "rotation": [
+        92.09,
+        -177.21,
+        0.0
+       ],
+       "length": 8.22,
+       "radius0": 4.0,
+       "radius1": 4.5
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "long hair C_HairL",
+     "root_bone": "C_HairL_a_Phy",
+     "damping": 0.3025,
+     "stiffness": 0.0857,
+     "world_damping_location": 0.944,
+     "world_damping_rotation": 0.8041,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 55.09,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -324.1
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.67,
+       "radius1": 5.87
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair C_HairM",
+     "root_bone": "C_HairM_a_Phy",
+     "damping": 0.2172,
+     "stiffness": 0.0803,
+     "world_damping_location": 0.9385,
+     "world_damping_rotation": 0.8149,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 50.53,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -256.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairC",
+     "root_bone": "L_HairC_a_Phy",
+     "damping": 0.3222,
+     "stiffness": 0.0846,
+     "world_damping_location": 0.8821,
+     "world_damping_rotation": 0.8625,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ]
+     ],
+     "limit_angle": 53.29,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -322.3
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 7.86
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairD",
+     "root_bone": "L_HairD_a_Phy",
+     "damping": 0.2806,
+     "stiffness": 0.0805,
+     "world_damping_location": 0.8614,
+     "world_damping_rotation": 0.8808,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 61.86,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -250.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair L_HairE",
+     "root_bone": "L_HairE_a_Phy",
+     "damping": 0.2566,
+     "stiffness": 0.0762,
+     "world_damping_location": 0.9517,
+     "world_damping_rotation": 0.8313,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 58.97,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -363.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.6
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairC",
+     "root_bone": "R_HairC_a_Phy",
+     "damping": 0.2184,
+     "stiffness": 0.0816,
+     "world_damping_location": 0.8696,
+     "world_damping_rotation": 0.9081,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ]
+     ],
+     "limit_angle": 58.62,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -328.9
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 7.86
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairD",
+     "root_bone": "R_HairD_a_Phy",
+     "damping": 0.2374,
+     "stiffness": 0.0763,
+     "world_damping_location": 0.8088,
+     "world_damping_rotation": 0.807,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.125,
+       1.0
+      ],
+      [
+       0.25,
+       1.0
+      ],
+      [
+       0.375,
+       1.0
+      ],
+      [
+       0.5,
+       1.0
+      ],
+      [
+       0.625,
+       1.0
+      ],
+      [
+       0.75,
+       1.0
+      ],
+      [
+       0.875,
+       1.0
+      ]
+     ],
+     "limit_angle": 46.84,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -395.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "long hair R_HairE",
+     "root_bone": "R_HairE_a_Phy",
+     "damping": 0.2235,
+     "stiffness": 0.0751,
+     "world_damping_location": 0.8915,
+     "world_damping_rotation": 0.9229,
+     "radius": 3.0,
+     "radius_curve": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       0.111,
+       1.0
+      ],
+      [
+       0.222,
+       1.0
+      ],
+      [
+       0.333,
+       1.0
+      ],
+      [
+       0.444,
+       1.0
+      ],
+      [
+       0.556,
+       1.0
+      ],
+      [
+       0.667,
+       1.0
+      ],
+      [
+       0.778,
+       1.0
+      ],
+      [
+       0.889,
+       1.0
+      ]
+     ],
+     "limit_angle": 56.38,
+     "stiffness_curve": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       0.6
+      ]
+     ],
+     "dummy_bone_length": 6,
+     "gravity": [
+      0,
+      0,
+      -268.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.6
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 14.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        3.95
+       ],
+       "rotation": [
+        82.7,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_a",
+       "offset": [
+        5.064,
+        0.349,
+        -3.95
+       ],
+       "rotation": [
+        97.3,
+        -176.06,
+        0.0
+       ],
+       "length": 10.24,
+       "radius0": 10.5,
+       "radius1": 11.0
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        3.9
+       ],
+       "rotation": [
+        99.33,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_b",
+       "offset": [
+        4.259,
+        0.747,
+        -3.9
+       ],
+       "rotation": [
+        80.67,
+        -179.37,
+        0.0
+       ],
+       "length": 8.63,
+       "radius0": 11.5,
+       "radius1": 10.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        -0.0,
+        0.8,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 6.4,
+       "radius0": 11.5,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        5.8
+       ],
+       "rotation": [
+        69.6,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        6.992,
+        0.881,
+        -5.8
+       ],
+       "rotation": [
+        110.4,
+        -179.34,
+        0.0
+       ],
+       "length": 14.92,
+       "radius0": 12.0,
+       "radius1": 11.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        5.5,
+        1.4,
+        0.0
+       ],
+       "rotation": [
+        180.0,
+        0.0,
+        0.0
+       ],
+       "length": 16.8,
+       "radius0": 12.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        9.333
+       ],
+       "rotation": [
+        75.76,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        9.019,
+        0.332,
+        -9.333
+       ],
+       "rotation": [
+        104.24,
+        163.12,
+        0.0
+       ],
+       "length": 7.59,
+       "radius0": 8.0,
+       "radius1": 12.0
+      },
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 5.8,
+       "radius1": 6.0
+      },
+      {
+       "bone": "L_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        -0.5
+       ],
+       "rotation": [
+        83.68,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "L_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "L_Forearm_a",
+       "offset": [
+        13.781,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_Hand_a",
+       "offset": [
+        7.5,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Shoulder_a",
+       "offset": [
+        9.513,
+        -0.0,
+        0.5
+       ],
+       "rotation": [
+        96.32,
+        180.0,
+        0.0
+       ],
+       "length": 9.08,
+       "radius0": 8.5,
+       "radius1": 10.0
+      },
+      {
+       "bone": "R_UpperArm_a",
+       "offset": [
+        13.683,
+        0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 27.37,
+       "radius0": 7.0,
+       "radius1": 8.5
+      },
+      {
+       "bone": "R_Forearm_a",
+       "offset": [
+        13.781,
+        -0.0,
+        -0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 27.56,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "R_Hand_a",
+       "offset": [
+        7.5,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 15.0,
+       "radius0": 7.0,
+       "radius1": 7.0
+      },
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      }
+     ]
+    },
+    {
+     "name": "collar L_CollarA",
+     "root_bone": "L_CollarA_a_Phy",
+     "damping": 0.3528,
+     "stiffness": 0.3528,
+     "world_damping_location": 0.9381,
+     "world_damping_rotation": 0.9541,
+     "radius": 2.76,
+     "limit_angle": 20.54,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 10.42
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.3
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 10.47
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 8.66,
+       "radius1": 5.98
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.979
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar L_CollarB",
+     "root_bone": "L_CollarB_a_Phy",
+     "damping": 0.3114,
+     "stiffness": 0.398,
+     "world_damping_location": 0.9671,
+     "world_damping_rotation": 0.9172,
+     "radius": 2.76,
+     "limit_angle": 17.71,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.02
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 8.81
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 7.12
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.94,
+       "radius1": 3.41
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.837
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar L_CollarC",
+     "root_bone": "L_CollarC_a_Phy",
+     "damping": 0.3153,
+     "stiffness": 0.3749,
+     "world_damping_location": 0.896,
+     "world_damping_rotation": 0.9689,
+     "radius": 2.6,
+     "limit_angle": 20.5,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.81
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 7.46
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.82,
+       "radius1": 3.33
+      }
+     ],
+     "radius_curve": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar L_EriA",
+     "root_bone": "L_EriA_a_Phy",
+     "damping": 0.3528,
+     "stiffness": 0.2565,
+     "world_damping_location": 0.8891,
+     "world_damping_rotation": 0.8767,
+     "radius": 4.0,
+     "limit_angle": 18.01,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 15.52
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 8.81
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 9.1,
+       "radius1": 6.29
+      }
+     ],
+     "radius_curve": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar R_CollarA",
+     "root_bone": "R_CollarA_a_Phy",
+     "damping": 0.2992,
+     "stiffness": 0.4219,
+     "world_damping_location": 0.8616,
+     "world_damping_rotation": 0.9128,
+     "radius": 2.76,
+     "limit_angle": 20.69,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 10.42
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.3
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 10.47
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 8.66,
+       "radius1": 5.98
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.979
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar R_CollarB",
+     "root_bone": "R_CollarB_a_Phy",
+     "damping": 0.3276,
+     "stiffness": 0.3808,
+     "world_damping_location": 0.9264,
+     "world_damping_rotation": 0.935,
+     "radius": 2.76,
+     "limit_angle": 22.92,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.02
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 8.81
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 7.12
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.94,
+       "radius1": 3.41
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.837
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar R_CollarC",
+     "root_bone": "R_CollarC_a_Phy",
+     "damping": 0.3498,
+     "stiffness": 0.4535,
+     "world_damping_location": 0.9619,
+     "world_damping_rotation": 0.9256,
+     "radius": 2.6,
+     "limit_angle": 18.66,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 6.81
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 18.5
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 7.46
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 4.82,
+       "radius1": 3.33
+      }
+     ],
+     "radius_curve": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "collar R_EriA",
+     "root_bone": "R_EriA_a_Phy",
+     "damping": 0.3538,
+     "stiffness": 0.4274,
+     "world_damping_location": 0.8781,
+     "world_damping_rotation": 0.9133,
+     "radius": 4.0,
+     "limit_angle": 22.87,
+     "dummy_bone_length": 4,
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "spheres": [
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        7.785,
+        0.18,
+        -0.0
+       ],
+       "radius": 8.71
+      },
+      {
+       "bone": "C_Head_a",
+       "offset": [
+        1.892,
+        2.18,
+        -0.0
+       ],
+       "radius": 7.14
+      },
+      {
+       "bone": "L_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        3.433
+       ],
+       "radius": 11.58
+      },
+      {
+       "bone": "R_ShoulderpadA_a",
+       "offset": [
+        -1.364,
+        0.382,
+        -3.433
+       ],
+       "radius": 11.58
+      }
+     ],
+     "capsules": [
+      {
+       "bone": "C_Spine_c",
+       "offset": [
+        4.196,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 8.39,
+       "radius": 15.52
+      },
+      {
+       "bone": "C_Spine_d",
+       "offset": [
+        10.17,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 20.34,
+       "radius": 8.81
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "C_Neck_a",
+       "offset": [
+        5.091,
+        -0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        180.0,
+        0.0
+       ],
+       "length": 10.18,
+       "radius0": 9.1,
+       "radius1": 6.29
+      }
+     ],
+     "radius_curve": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "coat R_SkirtD+RE+LD+LE+CA",
+     "root_bone": "R_SkirtD_a_Phy",
+     "damping": 0.219,
+     "stiffness": 0.0627,
+     "world_damping_location": 0.9883,
+     "world_damping_rotation": 0.9555,
+     "radius": 2.2,
+     "radius_curve": [
+      [
+       0,
+       0.45
+      ],
+      [
+       1,
+       1.0
+      ]
+     ],
+     "limit_angle": 74.4,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -981.4
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "bone_subdivision_count": 2,
+     "bone_subdivision_collision_only": true,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ],
+     "additional_root_bones": [
+      "R_SkirtE_a_Phy",
+      "L_SkirtD_a_Phy",
+      "L_SkirtE_a_Phy",
+      "C_SkirtA_a_Phy"
+     ],
+     "bone_constraints": [
+      [
+       "L_SkirtD_b_Phy",
+       "L_SkirtE_b_Phy"
+      ],
+      [
+       "L_SkirtD_c_Phy",
+       "L_SkirtE_c_Phy"
+      ],
+      [
+       "L_SkirtD_d_Phy",
+       "L_SkirtE_d_Phy"
+      ],
+      [
+       "L_SkirtD_e_Phy",
+       "L_SkirtE_e_Phy"
+      ],
+      [
+       "L_SkirtD_f_Phy",
+       "L_SkirtE_f_Phy"
+      ],
+      [
+       "L_SkirtD_g_Phy",
+       "L_SkirtE_g_Phy"
+      ],
+      [
+       "L_SkirtD_h_Phy",
+       "L_SkirtE_h_Phy"
+      ],
+      [
+       "R_SkirtD_b_Phy",
+       "R_SkirtE_b_Phy"
+      ],
+      [
+       "R_SkirtD_c_Phy",
+       "R_SkirtE_c_Phy"
+      ],
+      [
+       "R_SkirtD_d_Phy",
+       "R_SkirtE_d_Phy"
+      ],
+      [
+       "R_SkirtD_e_Phy",
+       "R_SkirtE_e_Phy"
+      ],
+      [
+       "R_SkirtD_f_Phy",
+       "R_SkirtE_f_Phy"
+      ],
+      [
+       "R_SkirtD_g_Phy",
+       "R_SkirtE_g_Phy"
+      ],
+      [
+       "R_SkirtD_h_Phy",
+       "R_SkirtE_h_Phy"
+      ],
+      [
+       "L_SkirtE_b_Phy",
+       "C_SkirtA_b_Phy"
+      ],
+      [
+       "L_SkirtE_c_Phy",
+       "C_SkirtA_c_Phy"
+      ],
+      [
+       "L_SkirtE_d_Phy",
+       "C_SkirtA_d_Phy"
+      ],
+      [
+       "L_SkirtE_e_Phy",
+       "C_SkirtA_e_Phy"
+      ],
+      [
+       "L_SkirtE_f_Phy",
+       "C_SkirtA_f_Phy"
+      ],
+      [
+       "L_SkirtE_g_Phy",
+       "C_SkirtA_g_Phy"
+      ],
+      [
+       "L_SkirtE_h_Phy",
+       "C_SkirtA_h_Phy"
+      ],
+      [
+       "C_SkirtA_b_Phy",
+       "R_SkirtE_b_Phy"
+      ],
+      [
+       "C_SkirtA_c_Phy",
+       "R_SkirtE_c_Phy"
+      ],
+      [
+       "C_SkirtA_d_Phy",
+       "R_SkirtE_d_Phy"
+      ],
+      [
+       "C_SkirtA_e_Phy",
+       "R_SkirtE_e_Phy"
+      ],
+      [
+       "C_SkirtA_f_Phy",
+       "R_SkirtE_f_Phy"
+      ],
+      [
+       "C_SkirtA_g_Phy",
+       "R_SkirtE_g_Phy"
+      ],
+      [
+       "C_SkirtA_h_Phy",
+       "R_SkirtE_h_Phy"
+      ]
+     ],
+     "bone_constraint_subdivision_count": 3,
+     "bone_constraint_subdivision_feedback_scale": 1.0
+    },
+    {
+     "name": "coat L_SkirtA+LB",
+     "root_bone": "L_SkirtA_a_Phy",
+     "damping": 0.1765,
+     "stiffness": 0.0637,
+     "world_damping_location": 0.9763,
+     "world_damping_rotation": 0.9432,
+     "radius": 2.2,
+     "radius_curve": [
+      [
+       0,
+       0.45
+      ],
+      [
+       1,
+       1.0
+      ]
+     ],
+     "limit_angle": 85.4,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -1148.5
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "bone_subdivision_count": 2,
+     "bone_subdivision_collision_only": true,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ],
+     "additional_root_bones": [
+      "L_SkirtB_a_Phy"
+     ],
+     "bone_constraints": [
+      [
+       "L_SkirtA_b_Phy",
+       "L_SkirtB_b_Phy"
+      ],
+      [
+       "L_SkirtA_c_Phy",
+       "L_SkirtB_c_Phy"
+      ],
+      [
+       "L_SkirtA_d_Phy",
+       "L_SkirtB_d_Phy"
+      ],
+      [
+       "L_SkirtA_e_Phy",
+       "L_SkirtB_e_Phy"
+      ],
+      [
+       "L_SkirtA_f_Phy",
+       "L_SkirtB_f_Phy"
+      ],
+      [
+       "L_SkirtA_g_Phy",
+       "L_SkirtB_g_Phy"
+      ],
+      [
+       "L_SkirtA_h_Phy",
+       "L_SkirtB_h_Phy"
+      ]
+     ],
+     "bone_constraint_subdivision_count": 3,
+     "bone_constraint_subdivision_feedback_scale": 1.0
+    },
+    {
+     "name": "coat L_SkirtC",
+     "root_bone": "L_SkirtC_a_Phy",
+     "damping": 0.2059,
+     "stiffness": 0.0361,
+     "world_damping_location": 0.99,
+     "world_damping_rotation": 0.945,
+     "radius": 2.2,
+     "radius_curve": [
+      [
+       0,
+       0.45
+      ],
+      [
+       1,
+       1.0
+      ]
+     ],
+     "limit_angle": 89.77,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -793.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "bone_subdivision_count": 2,
+     "bone_subdivision_collision_only": true,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ]
+    },
+    {
+     "name": "coat R_SkirtA+RB",
+     "root_bone": "R_SkirtA_a_Phy",
+     "damping": 0.2369,
+     "stiffness": 0.0582,
+     "world_damping_location": 0.9802,
+     "world_damping_rotation": 0.9562,
+     "radius": 2.2,
+     "radius_curve": [
+      [
+       0,
+       0.45
+      ],
+      [
+       1,
+       1.0
+      ]
+     ],
+     "limit_angle": 92.85,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -906.0
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "bone_subdivision_count": 2,
+     "bone_subdivision_collision_only": true,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ],
+     "additional_root_bones": [
+      "R_SkirtB_a_Phy"
+     ],
+     "bone_constraints": [
+      [
+       "R_SkirtA_b_Phy",
+       "R_SkirtB_b_Phy"
+      ],
+      [
+       "R_SkirtA_c_Phy",
+       "R_SkirtB_c_Phy"
+      ],
+      [
+       "R_SkirtA_d_Phy",
+       "R_SkirtB_d_Phy"
+      ],
+      [
+       "R_SkirtA_e_Phy",
+       "R_SkirtB_e_Phy"
+      ],
+      [
+       "R_SkirtA_f_Phy",
+       "R_SkirtB_f_Phy"
+      ],
+      [
+       "R_SkirtA_g_Phy",
+       "R_SkirtB_g_Phy"
+      ],
+      [
+       "R_SkirtA_h_Phy",
+       "R_SkirtB_h_Phy"
+      ]
+     ],
+     "bone_constraint_subdivision_count": 3,
+     "bone_constraint_subdivision_feedback_scale": 1.0
+    },
+    {
+     "name": "coat R_SkirtC",
+     "root_bone": "R_SkirtC_a_Phy",
+     "damping": 0.2128,
+     "stiffness": 0.0512,
+     "world_damping_location": 0.9769,
+     "world_damping_rotation": 0.9586,
+     "radius": 2.2,
+     "radius_curve": [
+      [
+       0,
+       0.45
+      ],
+      [
+       1,
+       1.0
+      ]
+     ],
+     "limit_angle": 91.83,
+     "stiffness_curve": [
+      [
+       0,
+       1.8
+      ],
+      [
+       1,
+       0.7
+      ]
+     ],
+     "dummy_bone_length": 10,
+     "gravity": [
+      0,
+      0,
+      -863.2
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "bone_subdivision_count": 2,
+     "bone_subdivision_collision_only": true,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ]
+    },
+    {
+     "name": "belt C_BeltA",
+     "root_bone": "C_BeltA_a_Phy",
+     "damping": 0.2943,
+     "stiffness": 0.1856,
+     "world_damping_location": 0.8437,
+     "world_damping_rotation": 0.947,
+     "radius": 1.86,
+     "limit_angle": 48.63,
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -308.6
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.538
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    },
+    {
+     "name": "belt C_BeltB",
+     "root_bone": "C_BeltB_a_Phy",
+     "damping": 0.323,
+     "stiffness": 0.1553,
+     "world_damping_location": 0.8293,
+     "world_damping_rotation": 0.8385,
+     "radius": 1.88,
+     "limit_angle": 43.35,
+     "dummy_bone_length": 4,
+     "gravity": [
+      0,
+      0,
+      -351.7
+     ],
+     "teleport_rotation_threshold": 30,
+     "use_fixed_substepping": false,
+     "capsules": [
+      {
+       "bone": "C_Hip_a",
+       "offset": [
+        4.932,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 9.86,
+       "radius": 11.0
+      }
+     ],
+     "tapered_capsules": [
+      {
+       "bone": "L_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "L_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      },
+      {
+       "bone": "R_UpperLeg_a",
+       "offset": [
+        30.632,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 45.26,
+       "radius0": 11.48,
+       "radius1": 14.74
+      },
+      {
+       "bone": "R_Foreleg_a",
+       "offset": [
+        25.101,
+        0.0,
+        0.0
+       ],
+       "rotation": [
+        90.0,
+        -180.0,
+        0.0
+       ],
+       "length": 50.2,
+       "radius0": 10.49,
+       "radius1": 12.66
+      }
+     ],
+     "radius_curve": [
+      [
+       0.0,
+       0.532
+      ],
+      [
+       0.5,
+       1.0
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

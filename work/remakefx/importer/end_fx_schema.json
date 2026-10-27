@@ -1,0 +1,14622 @@
+{
+"enums": {
+"Beam2SourceTargetMethod": [
+"PEB2STM_Default",
+"PEB2STM_UserSet",
+"PEB2STM_Emitter",
+"PEB2STM_Particle",
+"PEB2STM_Actor",
+"PEB2STM_EndPoint",
+"PEB2STM_MAX"
+],
+"Beam2SourceTargetTangentMethod": [
+"PEB2STTM_Direct",
+"PEB2STTM_UserSet",
+"PEB2STTM_Distribution",
+"PEB2STTM_Emitter",
+"PEB2STTM_MAX"
+],
+"BeamModifierType": [
+"PEB2MT_Source",
+"PEB2MT_Target",
+"PEB2MT_MAX"
+],
+"CylinderHeightAxis": [
+"PMLPC_HEIGHTAXIS_X",
+"PMLPC_HEIGHTAXIS_Y",
+"PMLPC_HEIGHTAXIS_Z",
+"PMLPC_HEIGHTAXIS_MAX"
+],
+"DistributionParamMode": [
+"DPM_Normal",
+"DPM_Abs",
+"DPM_Direct",
+"DPM_MAX"
+],
+"EActorUpdateOverlapsMethod": [
+"UseConfigDefault",
+"AlwaysUpdate",
+"OnlyUpdateMovable",
+"NeverUpdate",
+"EActorUpdateOverlapsMethod_MAX"
+],
+"EAttachmentRule": [
+"KeepRelative",
+"KeepWorld",
+"SnapToTarget",
+"EAttachmentRule_MAX"
+],
+"EAttractorParticleSelectionMethod": [
+"EAPSM_Random",
+"EAPSM_Sequential",
+"EAPSM_MAX"
+],
+"EAutoReceiveInput": [
+"Disabled",
+"Player0",
+"Player1",
+"Player2",
+"Player3",
+"Player4",
+"Player5",
+"Player6",
+"Player7",
+"EAutoReceiveInput_MAX"
+],
+"EBeam2Method": [
+"PEB2M_Distance",
+"PEB2M_Target",
+"PEB2M_Branch",
+"PEB2M_MAX"
+],
+"EBeamTaperMethod": [
+"PEBTM_None",
+"PEBTM_Full",
+"PEBTM_Partial",
+"PEBTM_MAX"
+],
+"ECanBeCharacterBase": [
+"ECB_No",
+"ECB_Yes",
+"ECB_Owner",
+"ECB_MAX"
+],
+"ECollisionChannel": [
+"ECC_WorldStatic",
+"ECC_WorldDynamic",
+"ECC_Pawn",
+"ECC_Visibility",
+"ECC_Camera",
+"ECC_PhysicsBody",
+"ECC_Vehicle",
+"ECC_Destructible",
+"ECC_EngineTraceChannel1",
+"ECC_EngineTraceChannel2",
+"ECC_EngineTraceChannel3",
+"ECC_EngineTraceChannel4",
+"ECC_EngineTraceChannel5",
+"ECC_EngineTraceChannel6",
+"ECC_GameTraceChannel1",
+"ECC_GameTraceChannel2",
+"ECC_GameTraceChannel3",
+"ECC_GameTraceChannel4",
+"ECC_GameTraceChannel5",
+"ECC_GameTraceChannel6",
+"ECC_GameTraceChannel7",
+"ECC_GameTraceChannel8",
+"ECC_GameTraceChannel9",
+"ECC_GameTraceChannel10",
+"ECC_GameTraceChannel11",
+"ECC_GameTraceChannel12",
+"ECC_GameTraceChannel13",
+"ECC_GameTraceChannel14",
+"ECC_GameTraceChannel15",
+"ECC_GameTraceChannel16",
+"ECC_GameTraceChannel17",
+"ECC_GameTraceChannel18",
+"ECC_OverlapAll_Deprecated",
+"ECC_MAX"
+],
+"ECollisionEnabled": [
+"NoCollision",
+"QueryOnly",
+"PhysicsOnly",
+"QueryAndPhysics",
+"ECollisionEnabled_MAX"
+],
+"ECollisionResponse": [
+"ECR_Ignore",
+"ECR_Overlap",
+"ECR_Block",
+"ECR_MAX"
+],
+"EComponentCreationMethod": [
+"Native",
+"SimpleConstructionScript",
+"UserConstructionScript",
+"Instance",
+"EComponentCreationMethod_MAX"
+],
+"EComponentMobility": [
+"Static",
+"Stationary",
+"Movable",
+"EComponentMobility_MAX"
+],
+"EDOFMode": [
+"Default",
+"SixDOF",
+"YZPlane",
+"XZPlane",
+"XYPlane",
+"CustomPlane",
+"None",
+"EDOFMode_MAX"
+],
+"EDetailMode": [
+"DM_Low",
+"DM_Medium",
+"DM_High",
+"DM_MAX"
+],
+"EDistributionVectorLockFlags": [
+"EDVLF_None",
+"EDVLF_XY",
+"EDVLF_XZ",
+"EDVLF_YZ",
+"EDVLF_XYZ",
+"EDVLF_MAX"
+],
+"EDistributionVectorMirrorFlags": [
+"EDVMF_Same",
+"EDVMF_Different",
+"EDVMF_Mirror",
+"EDVMF_MAX"
+],
+"EEmitterDynamicParameterValue": [
+"EDPV_UserSet",
+"EDPV_AutoSet",
+"EDPV_VelocityX",
+"EDPV_VelocityY",
+"EDPV_VelocityZ",
+"EDPV_VelocityMag",
+"EDPV_MAX"
+],
+"EEmitterNormalsMode": [
+"ENM_CameraFacing",
+"ENM_Spherical",
+"ENM_Cylindrical",
+"ENM_MAX"
+],
+"EEmitterRenderMode": [
+"ERM_Normal",
+"ERM_Point",
+"ERM_Cross",
+"ERM_LightsOnly",
+"ERM_None",
+"ERM_MAX"
+],
+"EEndEffectCategory": [
+"None",
+"Field",
+"Battle",
+"Event",
+"FieldLaser",
+"Level",
+"Resident",
+"AnimNotify",
+"Blueprint",
+"Menu",
+"ParticleSystemComponent",
+"Debug",
+"Max"
+],
+"EEndEffectEventKind": [
+"EE_EK_Begin",
+"EE_EK_End",
+"EE_EK_LoopOff",
+"EE_EK_MAX"
+],
+"EEndEffectInterpolateKind": [
+"Linear",
+"EaseInOut",
+"EEndEffectInterpolateKind_MAX"
+],
+"EEndEffectLocationKind": [
+"EELK_Self",
+"EELK_Caster",
+"EELK_Target",
+"EELK_CasterLocation",
+"EELK_TargetLocation",
+"EELK_CasterLocationActorOffset",
+"EELK_TargetLocationActorOffset",
+"EELK_BeamTarget",
+"EELK_RayCast",
+"EELK_MAX"
+],
+"EEndEffectSkeletalMeshKind": [
+"Chara",
+"Weapon",
+"Max",
+"None",
+"Blueprint"
+],
+"EEndEffectSocketName": [
+"Direct",
+"Attach_Weapon_Right01",
+"Attach_Weapon_Left01",
+"Attach_Weapon01",
+"Attach_Weapon_Right02",
+"Attach_Weapon_Left02",
+"Attach_Weapon02",
+"Attach_Weapon_Right03",
+"Attach_Weapon_Left03",
+"Attach_Weapon03",
+"Damage_Body01",
+"Max"
+],
+"EEndEffectStaticMeshSelectKind": [
+"Random",
+"Order",
+"UserSet",
+"RandomUserSet",
+"Surface_Random",
+"Surface_Order",
+"EEndEffectStaticMeshSelectKind_MAX"
+],
+"EEndForceFeedbackEffect": [
+"FFB_Effect0",
+"FFB_Effect1",
+"FFB_Effect2",
+"FFB_Effect3",
+"FFB_Effect4",
+"FFB_Effect5",
+"FFB_Effect6",
+"FFB_Effect7",
+"FFB_Effect8",
+"FFB_Effect9",
+"FFB_Noise1",
+"FFB_FACT0",
+"FFB_FACT1",
+"FFB_FACT2",
+"FFB_FACT3",
+"FFB_FACT4",
+"FFB_FACT5",
+"FFB_FACT6",
+"FFB_FACT7",
+"FFB_FACT8",
+"FFB_FACT9",
+"FFB_Bike0",
+"FFB_Bike1",
+"FFB_Bike2",
+"FFB_FACT10",
+"FFB_FACT11",
+"FFB_Minigame0",
+"FFB_Minigame1",
+"FFB_Minigame2",
+"FFB_Minigame3",
+"FFB_Minigame4",
+"FFB_Minigame5",
+"FFB_Minigame6",
+"FFB_Minigame7",
+"FFB_Minigame8",
+"FFB_Minigame9",
+"FFB_Minigame10",
+"FFB_Minigame11",
+"FFB_CutScene00",
+"FFB_CutScene01",
+"FFB_CutScene02",
+"FFB_CutScene03",
+"FFB_CutScene04",
+"FFB_CutScene05",
+"FFB_CutScene06",
+"FFB_CutScene07",
+"FFB_CutScene08",
+"FFB_CutScene09",
+"FFB_CutScene10",
+"FFB_CutScene11",
+"FFB_CutScene12",
+"FFB_CutScene13",
+"FFB_CutScene14",
+"FFB_CutScene15",
+"FFB_CutScene16",
+"FFB_CutScene17",
+"FFB_CutScene18",
+"FFB_CutScene19",
+"FFB_MAX"
+],
+"EEndForceFeedbackTrack": [
+"FFB_Track0",
+"FFB_Track1",
+"FFB_Track2",
+"FFB_Track3",
+"FFB_Track4",
+"FFB_Track5",
+"FFB_Track6",
+"FFB_Track7",
+"FFB_Track8",
+"FFB_Track9",
+"FFB_Track10",
+"FFB_Track11",
+"FFB_Track12",
+"FFB_Track13",
+"FFB_Track14",
+"FFB_Track15",
+"FFB_MAX",
+"FFB_AllTracks"
+],
+"EHasCustomNavigableGeometry": [
+"No",
+"Yes",
+"EvenIfNotCollidable",
+"DontExport",
+"EHasCustomNavigableGeometry_MAX"
+],
+"EIndirectLightingCacheQuality": [
+"ILCQ_Off",
+"ILCQ_Point",
+"ILCQ_Volume",
+"ILCQ_MAX"
+],
+"EInterpCurveMode": [
+"CIM_Linear",
+"CIM_CurveAuto",
+"CIM_Constant",
+"CIM_CurveUser",
+"CIM_CurveBreak",
+"CIM_CurveAutoClamped",
+"CIM_MAX"
+],
+"ELightmapType": [
+"Default",
+"ForceSurface",
+"ForceVolumetric",
+"ELightmapType_MAX"
+],
+"ELocationBoneSocketSelectionMethod": [
+"BONESOCKETSEL_Sequential",
+"BONESOCKETSEL_Random",
+"BONESOCKETSEL_MAX"
+],
+"ELocationBoneSocketSource": [
+"BONESOCKETSOURCE_Bones",
+"BONESOCKETSOURCE_Sockets",
+"BONESOCKETSOURCE_MAX"
+],
+"ELocationEmitterSelectionMethod": [
+"ELESM_Random",
+"ELESM_Sequential",
+"ELESM_MAX"
+],
+"ELocationSkelVertSurfaceSource": [
+"VERTSURFACESOURCE_Vert",
+"VERTSURFACESOURCE_Surface",
+"VERTSURFACESOURCE_MAX"
+],
+"EMaterialParameterKind": [
+"UnKnown",
+"Float1",
+"Float2",
+"Float3",
+"RGBA",
+"Texture",
+"A0Coverage",
+"EmitterPosition",
+"ObjectScale",
+"ViewDependentParticle",
+"Float4",
+"ExposureCondition",
+"NearDistance",
+"FarDistance",
+"Max"
+],
+"EMeshCameraFacingOptions": [
+"XAxisFacing_NoUp",
+"XAxisFacing_ZUp",
+"XAxisFacing_NegativeZUp",
+"XAxisFacing_YUp",
+"XAxisFacing_NegativeYUp",
+"LockedAxis_ZAxisFacing",
+"LockedAxis_NegativeZAxisFacing",
+"LockedAxis_YAxisFacing",
+"LockedAxis_NegativeYAxisFacing",
+"VelocityAligned_ZAxisFacing",
+"VelocityAligned_NegativeZAxisFacing",
+"VelocityAligned_YAxisFacing",
+"VelocityAligned_NegativeYAxisFacing",
+"EMeshCameraFacingOptions_MAX"
+],
+"EMeshCameraFacingUpAxis": [
+"CameraFacing_NoneUP",
+"CameraFacing_ZUp",
+"CameraFacing_NegativeZUp",
+"CameraFacing_YUp",
+"CameraFacing_NegativeYUp",
+"CameraFacing_MAX"
+],
+"EMeshScreenAlignment": [
+"PSMA_MeshFaceCameraWithRoll",
+"PSMA_MeshFaceCameraWithSpin",
+"PSMA_MeshFaceCameraWithLockedAxis",
+"PSMA_MAX"
+],
+"ENetDormancy": [
+"DORM_Never",
+"DORM_Awake",
+"DORM_DormantAll",
+"DORM_DormantPartial",
+"DORM_Initial",
+"DORM_MAX"
+],
+"ENetRole": [
+"ROLE_None",
+"ROLE_SimulatedProxy",
+"ROLE_AutonomousProxy",
+"ROLE_Authority",
+"ROLE_MAX"
+],
+"EObjectTypeQuery": [
+"ObjectTypeQuery1",
+"ObjectTypeQuery2",
+"ObjectTypeQuery3",
+"ObjectTypeQuery4",
+"ObjectTypeQuery5",
+"ObjectTypeQuery6",
+"ObjectTypeQuery7",
+"ObjectTypeQuery8",
+"ObjectTypeQuery9",
+"ObjectTypeQuery10",
+"ObjectTypeQuery11",
+"ObjectTypeQuery12",
+"ObjectTypeQuery13",
+"ObjectTypeQuery14",
+"ObjectTypeQuery15",
+"ObjectTypeQuery16",
+"ObjectTypeQuery17",
+"ObjectTypeQuery18",
+"ObjectTypeQuery19",
+"ObjectTypeQuery20",
+"ObjectTypeQuery21",
+"ObjectTypeQuery22",
+"ObjectTypeQuery23",
+"ObjectTypeQuery24",
+"ObjectTypeQuery25",
+"ObjectTypeQuery26",
+"ObjectTypeQuery27",
+"ObjectTypeQuery28",
+"ObjectTypeQuery29",
+"ObjectTypeQuery30",
+"ObjectTypeQuery31",
+"ObjectTypeQuery32",
+"ObjectTypeQuery_MAX",
+"EObjectTypeQuery_MAX"
+],
+"EOpacitySourceMode": [
+"OSM_Alpha",
+"OSM_ColorBrightness",
+"OSM_RedChannel",
+"OSM_GreenChannel",
+"OSM_BlueChannel",
+"OSM_MAX"
+],
+"EOrbitChainMode": [
+"EOChainMode_Add",
+"EOChainMode_Scale",
+"EOChainMode_Link",
+"EOChainMode_MAX"
+],
+"EParticleAxisLock": [
+"EPAL_NONE",
+"EPAL_X",
+"EPAL_Y",
+"EPAL_Z",
+"EPAL_NEGATIVE_X",
+"EPAL_NEGATIVE_Y",
+"EPAL_NEGATIVE_Z",
+"EPAL_ROTATE_X",
+"EPAL_ROTATE_Y",
+"EPAL_ROTATE_Z",
+"EPAL_MAX"
+],
+"EParticleBurstMethod": [
+"EPBM_Instant",
+"EPBM_Interpolated",
+"EPBM_MAX"
+],
+"EParticleCameraOffsetUpdateMethod": [
+"EPCOUM_DirectSet",
+"EPCOUM_Additive",
+"EPCOUM_Scalar",
+"EPCOUM_MAX"
+],
+"EParticleCollisionComplete": [
+"EPCC_Kill",
+"EPCC_Freeze",
+"EPCC_HaltCollisions",
+"EPCC_FreezeTranslation",
+"EPCC_FreezeRotation",
+"EPCC_FreezeMovement",
+"EPCC_MAX"
+],
+"EParticleCollisionMode": [
+"SceneDepth",
+"DistanceField",
+"EParticleCollisionMode_MAX"
+],
+"EParticleCollisionResponse": [
+"Bounce",
+"Stop",
+"Kill",
+"EParticleCollisionResponse_MAX"
+],
+"EParticleEventType": [
+"EPET_Any",
+"EPET_Spawn",
+"EPET_Death",
+"EPET_Collision",
+"EPET_Burst",
+"EPET_Blueprint",
+"EPET_MAX"
+],
+"EParticleScreenAlignment": [
+"PSA_FacingCameraPosition",
+"PSA_Square",
+"PSA_Rectangle",
+"PSA_Velocity",
+"PSA_AwayFromCenter",
+"PSA_TypeSpecific",
+"PSA_FacingCameraDistanceBlend",
+"PSA_VfxBeamTarget",
+"PSA_MAX"
+],
+"EParticleSignificanceLevel": [
+"Low",
+"Medium",
+"High",
+"Critical",
+"Num",
+"EParticleSignificanceLevel_MAX"
+],
+"EParticleSortMode": [
+"PSORTMODE_None",
+"PSORTMODE_ViewProjDepth",
+"PSORTMODE_DistanceToView",
+"PSORTMODE_Age_OldestFirst",
+"PSORTMODE_Age_NewestFirst",
+"PSORTMODE_MAX"
+],
+"EParticleSourceSelectionMethod": [
+"EPSSM_Random",
+"EPSSM_Sequential",
+"EPSSM_MAX"
+],
+"EParticleSubUVInterpMethod": [
+"PSUVIM_None",
+"PSUVIM_Linear",
+"PSUVIM_Linear_Blend",
+"PSUVIM_Random",
+"PSUVIM_Random_Blend",
+"PSUVIM_MAX"
+],
+"EParticleSysParamType": [
+"PSPT_None",
+"PSPT_Scalar",
+"PSPT_ScalarRand",
+"PSPT_Vector",
+"PSPT_VectorRand",
+"PSPT_Color",
+"PSPT_Actor",
+"PSPT_Material",
+"PSPT_VectorUnitRand",
+"PSPT_MAX"
+],
+"EParticleSystemInsignificanceReaction": [
+"Auto",
+"Complete",
+"DisableTick",
+"DisableTickAndKill",
+"Num",
+"EParticleSystemInsignificanceReaction_MAX"
+],
+"EParticleSystemOcclusionBoundsMethod": [
+"EPSOBM_None",
+"EPSOBM_ParticleBounds",
+"EPSOBM_CustomBounds",
+"EPSOBM_MAX"
+],
+"EParticleSystemUpdateMode": [
+"EPSUM_RealTime",
+"EPSUM_FixedTime",
+"EPSUM_MAX"
+],
+"EParticleUVFlipMode": [
+"None",
+"FlipUV",
+"FlipUOnly",
+"FlipVOnly",
+"RandomFlipUV",
+"RandomFlipUOnly",
+"RandomFlipVOnly",
+"RandomFlipUVIndependent",
+"EParticleUVFlipMode_MAX"
+],
+"ERendererStencilMask": [
+"ERSM_Default",
+"ERSM_255",
+"ERSM_1",
+"ERSM_2",
+"ERSM_4",
+"ERSM_8",
+"ERSM_16",
+"ERSM_32",
+"ERSM_64",
+"ERSM_128",
+"ERSM_MAX"
+],
+"ERotatorQuantization": [
+"ByteComponents",
+"ShortComponents",
+"ERotatorQuantization_MAX"
+],
+"ERuntimeVirtualTextureMainPassType": [
+"Never",
+"Exclusive",
+"Always",
+"ERuntimeVirtualTextureMainPassType_MAX"
+],
+"ESceneDepthPriorityGroup": [
+"SDPG_World",
+"SDPG_Foreground",
+"SDPG_MAX"
+],
+"ESleepFamily": [
+"Normal",
+"Sensitive",
+"Custom",
+"ESleepFamily_MAX"
+],
+"ESpawnActorCollisionHandlingMethod": [
+"Undefined",
+"AlwaysSpawn",
+"AdjustIfPossibleButAlwaysSpawn",
+"AdjustIfPossibleButDontSpawnIfColliding",
+"DontSpawnIfColliding",
+"ESpawnActorCollisionHandlingMethod_MAX"
+],
+"ESubUVBoundingVertexCount": [
+"BVC_FourVertices",
+"BVC_EightVertices",
+"BVC_MAX"
+],
+"ETickingGroup": [
+"TG_AiControl",
+"TG_Animation",
+"TG_PrePhysics",
+"TG_StartPhysics",
+"TG_DuringPhysics",
+"TG_EndPhysics",
+"TG_PostPhysics",
+"TG_PostUpdateWork",
+"TG_LastDemotable",
+"TG_NewlySpawned",
+"TG_MAX"
+],
+"ETrail2SourceMethod": [
+"PET2SRCM_Default",
+"PET2SRCM_Particle",
+"PET2SRCM_Actor",
+"PET2SRCM_MAX"
+],
+"ETrailsRenderAxisOption": [
+"Trails_CameraUp",
+"Trails_SourceUp",
+"Trails_WorldUp",
+"Trails_VfxSourceForwardUp",
+"Trails_VfxSourceRightUp",
+"Trails_MAX"
+],
+"EVectorQuantization": [
+"RoundWholeNumber",
+"RoundOneDecimal",
+"RoundTwoDecimals",
+"EVectorQuantization_MAX"
+],
+"EVfxAxisLock": [
+"EVAL_X",
+"EVAL_Y",
+"EVAL_Z",
+"EVAL_NegativeX",
+"EVAL_NegativeY",
+"EVAL_NegativeZ",
+"EVAL_MAX"
+],
+"EVfxBillBoardKind": [
+"None",
+"CameraFacing",
+"FaceCameraWithLockedAxis",
+"EVfxBillBoardKind_MAX"
+],
+"EVfxCullModeKind": [
+"Front",
+"Back",
+"Double",
+"EVfxCullModeKind_MAX"
+],
+"EVfxEffectLightKind": [
+"Ambiguous",
+"Punctual",
+"Max",
+"Unpunctual"
+],
+"EVfxExposureCondition": [
+"None",
+"ON",
+"EVfxExposureCondition_MAX"
+],
+"EVfxMatrixOrder": [
+"Scale_Rotation_Translation",
+"Scale_Translation_Rotation",
+"Rotation_Scale_Translation",
+"Rotation_Translation_Scale",
+"Translation_Rotation_Scale",
+"Translation_Scale_Rotation",
+"EVfxMatrixOrder_MAX"
+],
+"EVfxNonUniformKind": [
+"None",
+"Linear",
+"Multiply",
+"MultiplyAverage",
+"ArcSin",
+"EVfxNonUniformKind_MAX"
+],
+"EVfxParticleEventTriggerType": [
+"EVPETT_None",
+"EVPETT_Actor_DithreFade_Done",
+"EVPETT_Play_Next_Effect",
+"EVPETT_Play_SE",
+"EVPETT_Play_Effect_Init",
+"EVPETT_Play_Effect_InitSystem",
+"EVPETT_Play_Effect_Begin",
+"EVPETT_Deactivate_Effect",
+"EVPETT_Play_Effect_Done",
+"EVPETT_Particle_Drain_Move_Done",
+"EVPETT_Play_SE_Delay",
+"EVPETT_MAX"
+],
+"EVfxParticleFadeDistancePreset": [
+"Off",
+"Far",
+"Middle",
+"Near",
+"Max"
+],
+"EVfxRenderTarget": [
+"Scene",
+"Menu",
+"Note",
+"CompositeBackground",
+"CompositeForeground",
+"PreBasePassTarget_0",
+"PreBasePassTarget_1",
+"PreBasePassTarget_2",
+"PreBasePassTarget_3",
+"PreBasePassTarget_4",
+"PreBasePassTarget_5",
+"PreBasePassTarget_6",
+"PreBasePassTarget_7",
+"EVfxRenderTarget_MAX"
+],
+"EVfxRotationMatrixOrder": [
+"Default",
+"X_Y_Z",
+"X_Z_Y",
+"Y_X_Z",
+"Y_Z_X",
+"Z_X_Y",
+"Z_Y_X",
+"EVfxRotationMatrixOrder_MAX"
+],
+"EVfxTrajectoryRenderAxisOption": [
+"EVTRAO_RightVector",
+"EVTRAO_UpVector",
+"EVTRAO_BillBoard",
+"EVTRAO_MAX"
+],
+"EVfxTranslucencyRenderLayer": [
+"TRL_None",
+"TRL_1",
+"TRL_2",
+"TRL_3",
+"TRL_Default",
+"TRL_MAX"
+],
+"EVfxTranslucencySortPriority": [
+"EVTSP_BackGround_10",
+"EVTSP_BackGround_9",
+"EVTSP_BackGround_8",
+"EVTSP_BackGround_7",
+"EVTSP_BackGround_6",
+"EVTSP_BackGround_5",
+"EVTSP_BackGround_4",
+"EVTSP_BackGround_3",
+"EVTSP_BackGround_2",
+"EVTSP_BackGround_1",
+"EVTSP_Default",
+"EVTSP_ForeGround_1",
+"EVTSP_ForeGround_2",
+"EVTSP_ForeGround_3",
+"EVTSP_ForeGround_4",
+"EVTSP_ForeGround_5",
+"EVTSP_ForeGround_6",
+"EVTSP_ForeGround_7",
+"EVTSP_ForeGround_8",
+"EVTSP_ForeGround_9",
+"EVTSP_ForeGround_10",
+"EVTSP_MAX"
+],
+"EWalkableSlopeBehavior": [
+"WalkableSlope_Default",
+"WalkableSlope_Increase",
+"WalkableSlope_Decrease",
+"WalkableSlope_Unwalkable",
+"WalkableSlope_Max"
+],
+"ParticleSystemLODMethod": [
+"PARTICLESYSTEMLODMETHOD_Automatic",
+"PARTICLESYSTEMLODMETHOD_DirectSet",
+"PARTICLESYSTEMLODMETHOD_ActivateAutomatic",
+"PARTICLESYSTEMLODMETHOD_MAX"
+]
+},
+"structs": {
+"Actor": {
+"props": [
+[
+"PrimaryActorTick",
+1,
+{
+"s": "ActorTickFunction",
+"t": "Struct"
+}
+],
+[
+"bNetTemporary",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNetStartup",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOnlyRelevantToOwner",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAlwaysRelevant",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReplicateMovement",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHidden",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTearOff",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bExchangedRoles",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNetLoadOnClient",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNetUseOwnerRelevancy",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRelevantForNetworkReplays",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRelevantForLevelBounds",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReplayRewindable",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowTickBeforeBeginPlay",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoDestroyWhenFinished",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCanBeDamaged",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bBlockInput",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCollideWhenPlacing",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bFindCameraComponentWhenViewTarget",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bGenerateOverlapEventsDuringLevelStreaming",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoresOriginShifting",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnableAutoLODGeneration",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsEditorOnlyActor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bActorSeamlessTraveled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShowImmediatelyRegardlessOfFrameLimit",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReplicates",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCanBeInCluster",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowReceiveTickEventOnDedicatedServer",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bActorEnableCollision",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bActorIsBeingDestroyed",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"UpdateOverlapsMethodDuringLevelStreaming",
+1,
+{
+"e": "EActorUpdateOverlapsMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"DefaultUpdateOverlapsMethodDuringLevelStreaming",
+1,
+{
+"e": "EActorUpdateOverlapsMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"RemoteRole",
+1,
+{
+"e": "ENetRole",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"ReplicatedMovement",
+1,
+{
+"s": "RepMovement",
+"t": "Struct"
+}
+],
+[
+"InitialLifeSpan",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CustomTimeDilation",
+1,
+{
+"t": "Float"
+}
+],
+[
+"InputPriority",
+1,
+{
+"t": "Int"
+}
+],
+[
+"AttachmentReplication",
+1,
+{
+"s": "RepAttachment",
+"t": "Struct"
+}
+],
+[
+"Owner",
+1,
+{
+"t": "Object"
+}
+],
+[
+"NetDriverName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Role",
+1,
+{
+"e": "ENetRole",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"NetDormancy",
+1,
+{
+"e": "ENetDormancy",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SpawnCollisionHandlingMethod",
+1,
+{
+"e": "ESpawnActorCollisionHandlingMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"AutoReceiveInput",
+1,
+{
+"e": "EAutoReceiveInput",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"InputComponent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"NetCullDistanceSquared",
+1,
+{
+"t": "Float"
+}
+],
+[
+"NetTag",
+1,
+{
+"t": "Int"
+}
+],
+[
+"NetUpdateFrequency",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MinNetUpdateFrequency",
+1,
+{
+"t": "Float"
+}
+],
+[
+"NetPriority",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Instigator",
+1,
+{
+"t": "Object"
+}
+],
+[
+"Children",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"RootComponent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"ControllingMatineeActors",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"layers",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+],
+[
+"ParentComponent",
+1,
+{
+"t": "WeakObject"
+}
+],
+[
+"Tags",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+],
+[
+"OnTakeAnyDamage",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnTakePointDamage",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnTakeRadialDamage",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnActorBeginOverlap",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnActorEndOverlap",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnBeginCursorOver",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnEndCursorOver",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnClicked",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnReleased",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchBegin",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchEnd",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchEnter",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchLeave",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnActorHit",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnDestroyed",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnEndPlay",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"InstanceComponents",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"BlueprintCreatedComponents",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+]
+],
+"super": "Object"
+},
+"ActorComponent": {
+"props": [
+[
+"PrimaryComponentTick",
+1,
+{
+"s": "ActorComponentTickFunction",
+"t": "Struct"
+}
+],
+[
+"ComponentTags",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+],
+[
+"AssetUserData",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"UCSSerializationIndex",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bNetAddressable",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReplicates",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoActivate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsActive",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEditableWhenInherited",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCanEverAffectNavigation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsEditorOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CreationMethod",
+1,
+{
+"e": "EComponentCreationMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"OnComponentActivated",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnComponentDeactivated",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"UCSModifiedProperties",
+1,
+{
+"i": {
+"s": "SimpleMemberReference",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": "Object"
+},
+"ActorComponentTickFunction": {
+"props": [],
+"super": "TickFunction"
+},
+"ActorTickFunction": {
+"props": [],
+"super": "TickFunction"
+},
+"BeamModifierOptions": {
+"props": [
+[
+"bModify",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLock",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"BodyInstance": {
+"props": [
+[
+"ObjectType",
+1,
+{
+"e": "ECollisionChannel",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"CollisionEnabled",
+1,
+{
+"e": "ECollisionEnabled",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SleepFamily",
+1,
+{
+"e": "ESleepFamily",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"DOFMode",
+1,
+{
+"e": "EDOFMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseCCD",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreAnalyticCollisions",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNotifyRigidBodyCollision",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockTranslation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockXTranslation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockYTranslation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockZTranslation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockXRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockYRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockZRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideMaxAngularVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideMaxDepenetrationVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideWalkableSlopeOnInstance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInterpolateWhenSubStepping",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CollisionProfileName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"PositionSolverIterationCount",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"VelocitySolverIterationCount",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"CollisionResponses",
+1,
+{
+"s": "CollisionResponse",
+"t": "Struct"
+}
+],
+[
+"MaxDepenetrationVelocity",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MassInKgOverride",
+1,
+{
+"t": "Float"
+}
+],
+[
+"LinearDamping",
+1,
+{
+"t": "Float"
+}
+],
+[
+"AngularDamping",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CustomDOFPlaneNormal",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"COMNudge",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MassScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"InertiaTensorScale",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"WalkableSlopeOverride",
+1,
+{
+"s": "WalkableSlopeOverride",
+"t": "Struct"
+}
+],
+[
+"PhysMaterialOverride",
+1,
+{
+"t": "Object"
+}
+],
+[
+"MaxAngularVelocity",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CustomSleepThresholdMultiplier",
+1,
+{
+"t": "Float"
+}
+],
+[
+"StabilizationThresholdMultiplier",
+1,
+{
+"t": "Float"
+}
+],
+[
+"PhysicsBlendWeight",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "BodyInstanceCore"
+},
+"BodyInstanceCore": {
+"props": [
+[
+"bSimulatePhysics",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideMass",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnableGravity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoWeld",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bStartAwake",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bGenerateWakeEvents",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUpdateMassWhenScaleChanges",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"Box": {
+"props": [
+[
+"Min",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Max",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"IsValid",
+1,
+{
+"t": "Byte"
+}
+]
+],
+"super": null
+},
+"CollisionResponse": {
+"props": [
+[
+"ResponseToChannels",
+1,
+{
+"s": "CollisionResponseContainer",
+"t": "Struct"
+}
+],
+[
+"ResponseArray",
+1,
+{
+"i": {
+"s": "ResponseChannel",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"CollisionResponseContainer": {
+"props": [
+[
+"WorldStatic",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"WorldDynamic",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Pawn",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Visibility",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Camera",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"PhysicsBody",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Vehicle",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Destructible",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel1",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel2",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel3",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel4",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel5",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EngineTraceChannel6",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel1",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel2",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel3",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel4",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel5",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel6",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel7",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel8",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel9",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel10",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel11",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel12",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel13",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel14",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel15",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel16",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel17",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"GameTraceChannel18",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"Color": {
+"props": [
+[
+"B",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"G",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"R",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"A",
+1,
+{
+"t": "Byte"
+}
+]
+],
+"super": null
+},
+"CurveEdEntry": {
+"props": [
+[
+"CurveObject",
+1,
+{
+"t": "Object"
+}
+],
+[
+"CurveColor",
+1,
+{
+"s": "Color",
+"t": "Struct"
+}
+],
+[
+"CurveName",
+1,
+{
+"t": "Str"
+}
+],
+[
+"bHideCurve",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bColorCurve",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bFloatingPointColorCurve",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bClamp",
+1,
+{
+"t": "Int"
+}
+],
+[
+"ClampLow",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ClampHigh",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"CurveEdTab": {
+"props": [
+[
+"TabName",
+1,
+{
+"t": "Str"
+}
+],
+[
+"Curves",
+1,
+{
+"i": {
+"s": "CurveEdEntry",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"ViewStartInput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ViewEndInput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ViewStartOutput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ViewEndOutput",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"CustomPrimitiveData": {
+"props": [
+[
+"Data",
+1,
+{
+"i": {
+"t": "Float"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"Distribution": {
+"props": [],
+"super": "Object"
+},
+"DistributionFloat": {
+"props": [
+[
+"bCanBeBaked",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bBakedDataSuccesfully",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "Distribution"
+},
+"DistributionFloatConstant": {
+"props": [
+[
+"Constant",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "DistributionFloat"
+},
+"DistributionFloatConstantCurve": {
+"props": [
+[
+"ConstantCurve",
+1,
+{
+"s": "InterpCurveFloat",
+"t": "Struct"
+}
+]
+],
+"super": "DistributionFloat"
+},
+"DistributionFloatParameterBase": {
+"props": [
+[
+"ParameterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"MinInput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxInput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MinOutput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxOutput",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ParamMode",
+1,
+{
+"e": "DistributionParamMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "DistributionFloatConstant"
+},
+"DistributionFloatParticleParameter": {
+"props": [],
+"super": "DistributionFloatParameterBase"
+},
+"DistributionFloatUniform": {
+"props": [
+[
+"Min",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Max",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "DistributionFloat"
+},
+"DistributionFloatUniformCurve": {
+"props": [
+[
+"ConstantCurve",
+1,
+{
+"s": "InterpCurveVector2D",
+"t": "Struct"
+}
+]
+],
+"super": "DistributionFloat"
+},
+"DistributionLookupTable": {
+"props": [
+[
+"TimeScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"TimeBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Values",
+1,
+{
+"i": {
+"t": "Float"
+},
+"t": "Array"
+}
+],
+[
+"Op",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"EntryCount",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"EntryStride",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"SubEntryStride",
+1,
+{
+"t": "Byte"
+}
+],
+[
+"LockFlag",
+1,
+{
+"t": "Byte"
+}
+]
+],
+"super": null
+},
+"DistributionVector": {
+"props": [
+[
+"bCanBeBaked",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsDirty",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bBakedDataSuccesfully",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "Distribution"
+},
+"DistributionVectorConstant": {
+"props": [
+[
+"Constant",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"bLockAxes",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LockedAxes",
+1,
+{
+"e": "EDistributionVectorLockFlags",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "DistributionVector"
+},
+"DistributionVectorConstantCurve": {
+"props": [
+[
+"ConstantCurve",
+1,
+{
+"s": "InterpCurveVector",
+"t": "Struct"
+}
+],
+[
+"bLockAxes",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LockedAxes",
+1,
+{
+"e": "EDistributionVectorLockFlags",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "DistributionVector"
+},
+"DistributionVectorParameterBase": {
+"props": [
+[
+"ParameterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"MinInput",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MaxInput",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MinOutput",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MaxOutput",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"ParamModes",
+3,
+{
+"e": "DistributionParamMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "DistributionVectorConstant"
+},
+"DistributionVectorParticleParameter": {
+"props": [],
+"super": "DistributionVectorParameterBase"
+},
+"DistributionVectorUniform": {
+"props": [
+[
+"Max",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Min",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"bLockAxes",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LockedAxes",
+1,
+{
+"e": "EDistributionVectorLockFlags",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"MirrorFlags",
+3,
+{
+"e": "EDistributionVectorMirrorFlags",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseExtremes",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "DistributionVector"
+},
+"DistributionVectorUniformCurve": {
+"props": [
+[
+"ConstantCurve",
+1,
+{
+"s": "InterpCurveTwoVectors",
+"t": "Struct"
+}
+],
+[
+"bLockAxes1",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockAxes2",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LockedAxes",
+2,
+{
+"e": "EDistributionVectorLockFlags",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"MirrorFlags",
+3,
+{
+"e": "EDistributionVectorMirrorFlags",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseExtremes",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "DistributionVector"
+},
+"DynamicSubsystem": {
+"props": [],
+"super": "Subsystem"
+},
+"EmitterDynamicParameter": {
+"props": [
+[
+"ParamName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"bUseEmitterTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSpawnTimeOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ValueMethod",
+1,
+{
+"e": "EEmitterDynamicParameterValue",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bScaleVelocityByParamValue",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ParamValue",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"EndCameraShakeParam": {
+"props": [
+[
+"ShakeScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Duration",
+1,
+{
+"t": "Float"
+}
+],
+[
+"BlendInTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"BlendOutTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"LocationRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"RotationRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"LocationAmplitude",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"RotationAmplitude",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"InnerRadius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OuterRadius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Falloff",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"EndEffectAPI": {
+"props": [],
+"super": "Object"
+},
+"EndEffectAttachInfo": {
+"props": [
+[
+"m_LocationRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_RotationRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_ScaleRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_bInWeldSimulatedBodies",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndEffectComponent": {
+"props": [
+[
+"m_Category",
+1,
+{
+"e": "EEndEffectCategory",
+"t": "Enum",
+"u": "Int16"
+}
+],
+[
+"m_Color",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"m_Luminance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Opacity",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ActorComponent"
+},
+"EndEffectDebugBindData": {
+"props": [
+[
+"m_ComponentLocation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_ComponentRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_ComponentScale",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_EmitterAttachTo",
+1,
+{
+"e": "EEndEffectSkeletalMeshKind",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_CharaLocation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_CharaRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_CharaScale",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_BackGroundLocation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_BackGroundRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_BackGroundScale",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_SkeletalMeshChara",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_AnimationAssetChara",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_PhysicsAssetChara",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_SkeletalMeshWeapon",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_AnimationAssetWeapon",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_BlueprintChara",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_BackGroundMesh",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_WorldLevels",
+1,
+{
+"i": {
+"s": "SoftObjectPath",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_WeaponAttachTo",
+1,
+{
+"s": "EndEffectSocketName",
+"t": "Struct"
+}
+],
+[
+"m_RepeatAnimation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_UseLowLOD",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndEffectExtraData": {
+"props": [
+[
+"m_TranslucencyRenderLayer",
+1,
+{
+"e": "EVfxTranslucencyRenderLayer",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_TranslucencySortPriority",
+1,
+{
+"e": "EVfxTranslucencySortPriority",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_UseTranslucencySortOffset",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_TranslucencySortOffset",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_BindComponentName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_BindSocketName",
+1,
+{
+"s": "EndEffectSocketName",
+"t": "Struct"
+}
+],
+[
+"m_CharaScaleMin",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_CharaScaleMax",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_IgnoreBindScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_IgnoreBindRot",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_BindTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_RenderTarget",
+1,
+{
+"e": "EVfxRenderTarget",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_DisableCullingTick",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DisableCullingDraw",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_IgnoreDynamicCoverage",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteRotationActor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_RotationBeamTarget",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AttachCamera",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_EnableDirectionRot",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DirectionRotVectorBaseAxis",
+1,
+{
+"e": "EVfxAxisLock",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_DirectionRotUpVectorLock",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DirectionRotHitNormal",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DirectionRotVectorIgnoreZ",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DirectionVectorReflectHitNormal",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bUseRayCast",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bUseOrthoGraphic",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bIgnoreTickPauseFarLevelEffect",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bIsLooping",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bIsLoopingFromData",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bInitSetBeamTarget",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bInitFieldGridFlow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_vRayVectorStartOffset",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_vRayVector",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_fHitNormalOffsetScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fBlendBeamTarget",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_ExposureCondition",
+1,
+{
+"e": "EVfxExposureCondition",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_Debug_SerializeTest",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndEffectHandle": {
+"props": [],
+"super": null
+},
+"EndEffectLinearFloat": {
+"props": [],
+"super": "DistributionFloatConstantCurve"
+},
+"EndEffectLinearVector": {
+"props": [
+[
+"m_EnableLinearX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_EnableLinearY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_EnableLinearZ",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "DistributionVectorConstantCurve"
+},
+"EndEffectManagerSubsystem": {
+"props": [
+[
+"m_EffectToSoundElementMap",
+1,
+{
+"k": {
+"s": "EndEffectHandle",
+"t": "Struct"
+},
+"t": "Map",
+"v": {
+"s": "VFXSoundElement",
+"t": "Struct"
+}
+}
+]
+],
+"super": "EngineSubsystem"
+},
+"EndEffectMaterialParameter": {
+"props": [
+[
+"m_VectorParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialVectorParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_ScalarParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialScalarParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_TexutreParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialTextureParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_RenderSortPriority",
+1,
+{
+"t": "Int8"
+}
+],
+[
+"m_ParticleFadeDistancePreset",
+1,
+{
+"e": "EVfxParticleFadeDistancePreset",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_CullMode",
+1,
+{
+"e": "EVfxCullModeKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_OverrideCullMode",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_PreDepth",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_Masked",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SystemVectorParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialVectorParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_SystemScalarParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialScalarParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"m_SystemTexutreParams",
+1,
+{
+"i": {
+"s": "EndEffectMaterialTextureParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"EndEffectMaterialParameterBase": {
+"props": [
+[
+"m_GroupName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_ParamName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_ParameterKind",
+1,
+{
+"e": "EMaterialParameterKind",
+"t": "Enum",
+"u": "UInt16"
+}
+],
+[
+"m_ParameterId",
+1,
+{
+"s": "Guid",
+"t": "Struct"
+}
+],
+[
+"m_UseSinceCreationTime",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndEffectMaterialScalarParameter": {
+"props": [
+[
+"m_Value",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "EndEffectMaterialParameterBase"
+},
+"EndEffectMaterialTextureParameter": {
+"props": [
+[
+"m_Value",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": "EndEffectMaterialParameterBase"
+},
+"EndEffectMaterialVectorParameter": {
+"props": [
+[
+"m_ValueXYZ",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_ValueW",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "EndEffectMaterialParameterBase"
+},
+"EndEffectNoiseFloat": {
+"props": [
+[
+"m_InterpolateKind",
+1,
+{
+"e": "EEndEffectInterpolateKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_CycleTime",
+1,
+{
+"s": "InterpCurveFloat",
+"t": "Struct"
+}
+],
+[
+"m_RandomCurve",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RandomSeed",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "DistributionFloatConstantCurve"
+},
+"EndEffectNoiseVector": {
+"props": [
+[
+"m_InterpolateKind",
+1,
+{
+"e": "EEndEffectInterpolateKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_CycleTime",
+1,
+{
+"s": "InterpCurveFloat",
+"t": "Struct"
+}
+],
+[
+"m_RandomCurve",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_RandomSeed",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "DistributionVectorConstantCurve"
+},
+"EndEffectSinCosFloat": {
+"props": [
+[
+"m_ValueScale",
+1,
+{
+"s": "InterpCurveFloat",
+"t": "Struct"
+}
+],
+[
+"m_CycleTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_UseCos",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_Absolute",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "DistributionFloatConstantCurve"
+},
+"EndEffectSinCosVector": {
+"props": [
+[
+"m_ValueScale",
+1,
+{
+"s": "InterpCurveVector",
+"t": "Struct"
+}
+],
+[
+"m_CycleTime",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_UseCosX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_UseCosY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_UseCosZ",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AbsoluteZ",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "DistributionVectorConstantCurve"
+},
+"EndEffectSocketName": {
+"props": [
+[
+"m_SocketName",
+1,
+{
+"e": "EEndEffectSocketName",
+"t": "Enum",
+"u": "Int16"
+}
+],
+[
+"m_DirectName",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": null
+},
+"EndEmitterDuration": {
+"props": [
+[
+"m_bEnableLoop",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_fBeginLoop",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fEndLoop",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_DelayRandomSeed",
+1,
+{
+"t": "Int16"
+}
+],
+[
+"m_DurationRandomSeed",
+1,
+{
+"t": "Int16"
+}
+],
+[
+"m_bIgnoreSuppressSpawning",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndParticleEmitter": {
+"props": [
+[
+"m_ParentEmitterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_sParentIndex",
+1,
+{
+"t": "Int16"
+}
+],
+[
+"m_DebugSortValue",
+1,
+{
+"t": "Int16"
+}
+],
+[
+"m_DebugParentPath",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": null
+},
+"EndParticleModuleBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"EndParticleModuleCameraLocation": {
+"props": [],
+"super": "ParticleModuleCameraBase"
+},
+"EndParticleModuleCameraShake": {
+"props": [
+[
+"m_EndCameraShakeParam",
+1,
+{
+"s": "EndCameraShakeParam",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleCameraBase"
+},
+"EndParticleModuleCircleLocation": {
+"props": [
+[
+"m_Radius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RadiusRandom",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BeginAngle",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BeginAngleRandom",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_StepAngle",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_StepAngleRandom",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Velocity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_VelocityRandom",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bReverseAngle",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"EndParticleModuleCollision": {
+"props": [
+[
+"m_HitOffsetNormalScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_FreezeTranslationVelocityLength",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleCollision"
+},
+"EndParticleModuleEventSpawnEffect": {
+"props": [
+[
+"m_CreateEffectPath",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_EventKind",
+1,
+{
+"e": "EEndEffectEventKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_RefPointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_bAttachment",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AttachInfo",
+1,
+{
+"s": "EndEffectAttachInfo",
+"t": "Struct"
+}
+],
+[
+"m_AttachActorKind",
+1,
+{
+"e": "EEndEffectLocationKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_AttachSocketName",
+1,
+{
+"s": "EndEffectSocketName",
+"t": "Struct"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleFitGround": {
+"props": [
+[
+"m_RayCastUp",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_RayCastDown",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Timer",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_GroundOffset",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_FitNormal",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleFootStep": {
+"props": [
+[
+"m_BurstCount",
+1,
+{
+"t": "UInt32"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleKillSphere": {
+"props": [
+[
+"m_RefPointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_EnableIfHitRayCastPoint",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_Radius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_KillOutSize",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_ParticleLoopOff",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SendTrigger",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SendTriggerParticleCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_EffectLoopOff",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleKillBase"
+},
+"EndParticleModuleLight": {
+"props": [
+[
+"m_LightKind",
+1,
+{
+"e": "EVfxEffectLightKind",
+"t": "Enum",
+"u": "Int"
+}
+],
+[
+"m_Color",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_Intensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_SourceRadius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_AttenuationRadius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_SourceLength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_SourceLengthOffsetRate",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bIsBeamLight",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bRenderVolumetricFogOnly",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleLightBase"
+},
+"EndParticleModuleLoopTime": {
+"props": [
+[
+"m_fBeginLoop",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fEndLoop",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_PerParticleLoop",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleNoiseVelocity": {
+"props": [
+[
+"m_FrequencyModulationX",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_FrequencyModulationY",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_FrequencyModulationZ",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_CycleTime",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_Amplitude",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModulePoint": {
+"props": [
+[
+"m_PointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_Kind",
+1,
+{
+"e": "EEndEffectLocationKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_Location",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_Rotation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_RotationMatrixOrder",
+1,
+{
+"e": "EVfxRotationMatrixOrder",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_SocketName",
+1,
+{
+"s": "EndEffectSocketName",
+"t": "Struct"
+}
+],
+[
+"m_BlendTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BlendExp",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bIsWorldRayCast",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_RayCastFrom",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_RayCastTo",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_RayCastExtent",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_CollisionTypes",
+1,
+{
+"i": {
+"e": "EObjectTypeQuery",
+"t": "Enum",
+"u": "Byte"
+},
+"t": "Array"
+}
+],
+[
+"m_bUseHitNormal",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_fRayCastSpawnParticleScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fHitRayCastSpawnParticleScale",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleRequired": {
+"props": [
+[
+"m_Location",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_UseSinceCreationTimeLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_RefPointNameLocation",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_Rotation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_UseSinceCreationTimeRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_Scale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_UseSinceCreationTimeScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_MatrixOrder",
+1,
+{
+"e": "EVfxMatrixOrder",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_RotationMatrixOrder",
+1,
+{
+"e": "EVfxRotationMatrixOrder",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_BillBoardKind",
+1,
+{
+"e": "EVfxBillBoardKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_BillBoardLockedAxis",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_bApplyMatrixParticleLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bApplyMatrixParticleLocationWithAnim",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bApplyMatrixParticleRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bApplyMatrixParticleSize",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bEndMeshRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bBillBoardParticleLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bUnChangedParticleSize",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"EndParticleModuleStaticMesh": {
+"props": [
+[
+"m_StaticMesh",
+1,
+{
+"t": "Object"
+}
+],
+[
+"m_SelectKind",
+1,
+{
+"e": "EEndEffectStaticMeshSelectKind",
+"t": "Enum",
+"u": "Int8"
+}
+],
+[
+"m_OrderOffset",
+1,
+{
+"t": "UInt32"
+}
+],
+[
+"m_OrderReverse",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bMultiplySurfaceArea",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_UserSetVertexIndexArray",
+1,
+{
+"i": {
+"t": "UInt16"
+},
+"t": "Array"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"EndParticleModuleTypeDataBeam": {
+"props": [
+[
+"m_RandomUV",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_RandomUVSpeed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleTypeDataBeam2"
+},
+"EndParticleModuleTypeDataEffect": {
+"props": [
+[
+"m_CreateEffectPath",
+1,
+{
+"s": "SoftObjectPath",
+"t": "Struct"
+}
+],
+[
+"m_bAttachment",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_AttachInfo",
+1,
+{
+"s": "EndEffectAttachInfo",
+"t": "Struct"
+}
+],
+[
+"m_bSyncParticle",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bApplyRotation",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"EndParticleModuleTypeDataEmitter": {
+"props": [
+[
+"m_SourceEmitterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_DisableSourceEmitterInstance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SpawnWorldSpace",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bSyncParticle",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"EndParticleModuleTypeDataGpu": {
+"props": [],
+"super": "ParticleModuleTypeDataGpu"
+},
+"EndParticleModuleTypeDataRibbon": {
+"props": [
+[
+"m_VfxMode",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bFitRootLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_LocationBufferCount",
+1,
+{
+"t": "UInt32"
+}
+],
+[
+"m_fMaxTrailLength",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Injection",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RandomUV",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_RandomUVSpeed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleTypeDataRibbon"
+},
+"EndParticleModuleTypeDataTrail": {
+"props": [
+[
+"m_PointA",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_PointB",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_TrailWidth",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_MaxParticle",
+1,
+{
+"t": "UInt16"
+}
+],
+[
+"m_EnableFlipV",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SocketNameA",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_SocketNameB",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_RefPointNameA",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_RefPointNameB",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": "ParticleModuleTypeDataAnimTrail"
+},
+"EndParticleModuleVelocityWind": {
+"props": [
+[
+"m_WindScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndParticleModuleWeaponUpgrade": {
+"props": [
+[
+"m_DebugMainCoreResource",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugSubCoreResource",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugSkillResource",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugSubCoreCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugMainSkillCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugSubSkillCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugUpgradeCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_DebugPlayStageEffects",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DebugPlayStageEffectsActive",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DebugTravelCore",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DebugTravelTimer",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_CircleCore",
+1,
+{
+"s": "EndWeaponUpgradeCircle",
+"t": "Struct"
+}
+],
+[
+"m_CircleSkill",
+1,
+{
+"s": "EndWeaponUpgradeCircle",
+"t": "Struct"
+}
+],
+[
+"m_CircleUpgrade",
+1,
+{
+"s": "EndWeaponUpgradeCircle",
+"t": "Struct"
+}
+],
+[
+"m_UpgradeScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_WaitCameraMoveTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_WaitStageEffectsTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_WaitCoreStageEffectsTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_CoreStageEffectsFirstDelayTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_CoreStageEffectsDelayTime",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"EndSoundHandle": {
+"props": [],
+"super": null
+},
+"EndWeaponUpgradeCircle": {
+"props": [
+[
+"m_Radius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RadiusStep",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RadiusScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_Angle",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_AngleStep",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_AngleSpeed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"EngineSubsystem": {
+"props": [],
+"super": "DynamicSubsystem"
+},
+"FXSystemAsset": {
+"props": [
+[
+"MaxPoolSize",
+1,
+{
+"t": "UInt32"
+}
+],
+[
+"PoolPrimeSize",
+1,
+{
+"t": "UInt32"
+}
+],
+[
+"m_EndEffectExtraData",
+1,
+{
+"s": "EndEffectExtraData",
+"t": "Struct"
+}
+]
+],
+"super": "Object"
+},
+"FXSystemComponent": {
+"props": [
+[
+"m_EndEmitterMaterialMap",
+1,
+{
+"k": {
+"t": "UInt64"
+},
+"t": "Map",
+"v": {
+"t": "Object"
+}
+}
+],
+[
+"m_VfxCategory",
+1,
+{
+"e": "EEndEffectCategory",
+"t": "Enum",
+"u": "Int16"
+}
+]
+],
+"super": "PrimitiveComponent"
+},
+"FilePath": {
+"props": [
+[
+"FilePath",
+1,
+{
+"t": "Str"
+}
+]
+],
+"super": null
+},
+"FloatDistribution": {
+"props": [
+[
+"Table",
+1,
+{
+"s": "DistributionLookupTable",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"GPUSpriteEmitterInfo": {
+"props": [
+[
+"RequiredModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SpawnModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SpawnPerUnitModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SpawnModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"LocalVectorField",
+1,
+{
+"s": "GPUSpriteLocalVectorFieldInfo",
+"t": "Struct"
+}
+],
+[
+"VectorFieldScale",
+1,
+{
+"s": "FloatDistribution",
+"t": "Struct"
+}
+],
+[
+"DragCoefficient",
+1,
+{
+"s": "FloatDistribution",
+"t": "Struct"
+}
+],
+[
+"PointAttractorStrength",
+1,
+{
+"s": "FloatDistribution",
+"t": "Struct"
+}
+],
+[
+"Resilience",
+1,
+{
+"s": "FloatDistribution",
+"t": "Struct"
+}
+],
+[
+"ConstantAcceleration",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"PointAttractorPosition",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"PointAttractorRadiusSq",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OrbitOffsetBase",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitOffsetRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"InvMaxSize",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"InvRotationRateScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxLifetime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxParticleCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"ScreenAlignment",
+1,
+{
+"e": "EParticleScreenAlignment",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LockAxisFlag",
+1,
+{
+"e": "EParticleAxisLock",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bEnableCollision",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CollisionMode",
+1,
+{
+"e": "EParticleCollisionMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bRemoveHMDRoll",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MinFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DynamicColor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"DynamicAlpha",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"DynamicColorScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"DynamicAlphaScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"GPUSpriteLocalVectorFieldInfo": {
+"props": [
+[
+"Field",
+1,
+{
+"t": "Object"
+}
+],
+[
+"Transform",
+1,
+{
+"s": "Transform",
+"t": "Struct"
+}
+],
+[
+"MinInitialRotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"MaxInitialRotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"RotationRate",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"Intensity",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Tightness",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bIgnoreComponentTransform",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileZ",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseFixDT",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"GPUSpriteResourceData": {
+"props": [
+[
+"QuantizedColorSamples",
+1,
+{
+"i": {
+"s": "Color",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"QuantizedMiscSamples",
+1,
+{
+"i": {
+"s": "Color",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"QuantizedSimulationAttrSamples",
+1,
+{
+"i": {
+"s": "Color",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"ColorScale",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"ColorBias",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"MiscScale",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"MiscBias",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"SimulationAttrCurveScale",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"SimulationAttrCurveBias",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"SubImageSize",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"SizeBySpeed",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"ConstantAcceleration",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitOffsetBase",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitOffsetRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitFrequencyBase",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitFrequencyRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitPhaseBase",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"OrbitPhaseRange",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"GlobalVectorFieldScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"GlobalVectorFieldTightness",
+1,
+{
+"t": "Float"
+}
+],
+[
+"PerParticleVectorFieldScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"PerParticleVectorFieldBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DragCoefficientScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DragCoefficientBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ResilienceScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ResilienceBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CollisionRadiusScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CollisionRadiusBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CollisionTimeBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CollisionRandomSpread",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CollisionRandomDistribution",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OneMinusFriction",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RotationRateScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CameraMotionBlurAmount",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ScreenAlignment",
+1,
+{
+"e": "EParticleScreenAlignment",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LockAxisFlag",
+1,
+{
+"e": "EParticleAxisLock",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"PivotOffset",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"bRemoveHMDRoll",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MinFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_VfxFrequencyModulationX",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_VfxFrequencyModulationY",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_VfxFrequencyModulationZ",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+],
+[
+"m_VfxSubUVRandomParam",
+1,
+{
+"s": "Vector4",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"Guid": {
+"props": [
+[
+"A",
+1,
+{
+"t": "Int"
+}
+],
+[
+"B",
+1,
+{
+"t": "Int"
+}
+],
+[
+"C",
+1,
+{
+"t": "Int"
+}
+],
+[
+"D",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": null
+},
+"InterpCurveEdSetup": {
+"props": [
+[
+"Tabs",
+1,
+{
+"i": {
+"s": "CurveEdTab",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"ActiveTab",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "Object"
+},
+"InterpCurveFloat": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointFloat",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"InterpCurveLinearColor": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointLinearColor",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointFloat": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"t": "Float"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"t": "Float"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointLinearColor": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointQuat": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"s": "Quat",
+"t": "Struct"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"s": "Quat",
+"t": "Struct"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"s": "Quat",
+"t": "Struct"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointTwoVectors": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"s": "TwoVectors",
+"t": "Struct"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"s": "TwoVectors",
+"t": "Struct"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"s": "TwoVectors",
+"t": "Struct"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointVector": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurvePointVector2D": {
+"props": [
+[
+"InVal",
+1,
+{
+"t": "Float"
+}
+],
+[
+"OutVal",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"ArriveTangent",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"LeaveTangent",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"InterpMode",
+1,
+{
+"e": "EInterpCurveMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"InterpCurveQuat": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointQuat",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"InterpCurveTwoVectors": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointTwoVectors",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"InterpCurveVector": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointVector",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"InterpCurveVector2D": {
+"props": [
+[
+"Points",
+1,
+{
+"i": {
+"s": "InterpCurvePointVector2D",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"bIsLooped",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LoopKeyOffset",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"LODSoloTrack": {
+"props": [
+[
+"SoloEnableSetting",
+1,
+{
+"i": {
+"t": "Byte"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"LightingChannels": {
+"props": [
+[
+"bChannel0",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bChannel1",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bChannel2",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"LinearColor": {
+"props": [
+[
+"R",
+1,
+{
+"t": "Float"
+}
+],
+[
+"G",
+1,
+{
+"t": "Float"
+}
+],
+[
+"B",
+1,
+{
+"t": "Float"
+}
+],
+[
+"A",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"LocationBoneSocketInfo": {
+"props": [
+[
+"BoneSocketName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Offset",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"MassiveEnvironmentImportSettings": {
+"props": [
+[
+"bUseForMassiveEnvironment",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseAsSimpleInstance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Guid",
+1,
+{
+"s": "Guid",
+"t": "Struct"
+}
+],
+[
+"Hash",
+1,
+{
+"t": "UInt32"
+}
+]
+],
+"super": null
+},
+"NamedEmitterMaterial": {
+"props": [
+[
+"Name",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Material",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": null
+},
+"Object": {
+"props": [],
+"super": null
+},
+"OrbitOptions": {
+"props": [
+[
+"bProcessDuringSpawn",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bProcessDuringUpdate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseEmitterTime",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"ParticleBurst": {
+"props": [
+[
+"Count",
+1,
+{
+"t": "Int"
+}
+],
+[
+"CountLow",
+1,
+{
+"t": "Int"
+}
+],
+[
+"Time",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"ParticleCurvePair": {
+"props": [
+[
+"CurveName",
+1,
+{
+"t": "Str"
+}
+],
+[
+"CurveObject",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": null
+},
+"ParticleEditorPromotionSettings": {
+"props": [
+[
+"DefaultParticleAsset",
+1,
+{
+"s": "FilePath",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"ParticleEmitter": {
+"props": [
+[
+"EmitterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_EndParticleEmitter",
+1,
+{
+"s": "EndParticleEmitter",
+"t": "Struct"
+}
+],
+[
+"SubUVDataOffset",
+1,
+{
+"t": "Int"
+}
+],
+[
+"EmitterRenderMode",
+1,
+{
+"e": "EEmitterRenderMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SignificanceLevel",
+1,
+{
+"e": "EParticleSignificanceLevel",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseLegacySpawningBehavior",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ConvertedModules",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsSoloing",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCookedOut",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bDisabledLODsKeepEmitterAlive",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bDisableWhenInsignficant",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LODLevels",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"PeakActiveParticles",
+1,
+{
+"t": "Int"
+}
+],
+[
+"InitialAllocationCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"QualityLevelSpawnRateScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DetailModeBitmask",
+1,
+{
+"t": "UInt32"
+}
+]
+],
+"super": "Object"
+},
+"ParticleEmitterReplayFrame": {
+"props": [],
+"super": null
+},
+"ParticleEventManager": {
+"props": [],
+"super": "Actor"
+},
+"ParticleEvent_GenerateInfo": {
+"props": [
+[
+"Type",
+1,
+{
+"e": "EParticleEventType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Frequency",
+1,
+{
+"t": "Int"
+}
+],
+[
+"ParticleFrequency",
+1,
+{
+"t": "Int"
+}
+],
+[
+"FirstTimeOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LastTimeOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"UseReflectedImpactVector",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseOrbitOffset",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CustomName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"ParticleModuleEventsToSendToGame",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"ParticleLODLevel": {
+"props": [
+[
+"Level",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bEnabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RequiredModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"Modules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"TypeDataModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SpawnModule",
+1,
+{
+"t": "Object"
+}
+],
+[
+"EventGenerator",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SpawningModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"SpawnModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"UpdateModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"OrbitModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"EventReceiverModules",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"ConvertedModules",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"PeakActiveParticles",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "Object"
+},
+"ParticleModule": {
+"props": [
+[
+"bSpawnModule",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUpdateModule",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bFinalUpdateModule",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUpdateForGPUEmitter",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCurvesAsColor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"b3DDrawMode",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSupported3DDrawMode",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEditable",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LODDuplicate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSupportsRandomSeed",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRequiresLoopingNotification",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LODValidity",
+1,
+{
+"t": "Byte"
+}
+]
+],
+"super": "Object"
+},
+"ParticleModuleAcceleration": {
+"props": [
+[
+"Acceleration",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bApplyOwnerScale",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleAccelerationBase"
+},
+"ParticleModuleAccelerationBase": {
+"props": [
+[
+"bAlwaysInWorldSpace",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleAccelerationConstant": {
+"props": [
+[
+"Acceleration",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAccelerationBase"
+},
+"ParticleModuleAccelerationDrag": {
+"props": [
+[
+"DragCoefficient",
+1,
+{
+"t": "Object"
+}
+],
+[
+"DragCoefficientRaw",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAccelerationBase"
+},
+"ParticleModuleAccelerationDragScaleOverLife": {
+"props": [
+[
+"DragScale",
+1,
+{
+"t": "Object"
+}
+],
+[
+"DragScaleRaw",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAccelerationBase"
+},
+"ParticleModuleAccelerationOverLifetime": {
+"props": [
+[
+"AccelOverLife",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAccelerationBase"
+},
+"ParticleModuleAttractorBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleAttractorLine": {
+"props": [
+[
+"EndPoint0",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"EndPoint1",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Range",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Strength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAttractorBase"
+},
+"ParticleModuleAttractorParticle": {
+"props": [
+[
+"EmitterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Range",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bStrengthByDistance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Strength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bAffectBaseVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SelectionMethod",
+1,
+{
+"e": "EAttractorParticleSelectionMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bRenewSource",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInheritSourceVel",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LastSelIndex",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "ParticleModuleAttractorBase"
+},
+"ParticleModuleAttractorPoint": {
+"props": [
+[
+"Position",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"Range",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Strength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"StrengthByDistance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAffectBaseVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseWorldSpacePosition",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Positive_X",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Positive_Y",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Positive_Z",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_X",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_Y",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_Z",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_EndRefPointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_EndInfinityRange",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleAttractorBase"
+},
+"ParticleModuleAttractorPointGravity": {
+"props": [
+[
+"Position",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Radius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Strength",
+1,
+{
+"t": "Object"
+}
+],
+[
+"StrengthRaw",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleAttractorBase"
+},
+"ParticleModuleBeamBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleBeamModifier": {
+"props": [
+[
+"ModifierType",
+1,
+{
+"e": "BeamModifierType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"PositionOptions",
+1,
+{
+"s": "BeamModifierOptions",
+"t": "Struct"
+}
+],
+[
+"Position",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"TangentOptions",
+1,
+{
+"s": "BeamModifierOptions",
+"t": "Struct"
+}
+],
+[
+"Tangent",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bAbsoluteTangent",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"StrengthOptions",
+1,
+{
+"s": "BeamModifierOptions",
+"t": "Struct"
+}
+],
+[
+"Strength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleBeamBase"
+},
+"ParticleModuleBeamNoise": {
+"props": [
+[
+"bLowFreq_Enabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Frequency",
+1,
+{
+"t": "Int"
+}
+],
+[
+"Frequency_LowRange",
+1,
+{
+"t": "Int"
+}
+],
+[
+"NoiseRange",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"NoiseRangeScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bNRScaleEmitterTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NoiseSpeed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bSmooth",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NoiseLockRadius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bNoiseLock",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOscillate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NoiseLockTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"NoiseTension",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bUseNoiseTangents",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NoiseTangentStrength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"NoiseTessellation",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bTargetNoise",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"FrequencyDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bApplyNoiseScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NoiseScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleBeamBase"
+},
+"ParticleModuleBeamSource": {
+"props": [
+[
+"SourceMethod",
+1,
+{
+"e": "Beam2SourceTargetMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SourceName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"bSourceAbsolute",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Source",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bLockSource",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SourceTangentMethod",
+1,
+{
+"e": "Beam2SourceTargetTangentMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SourceTangent",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bLockSourceTangent",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SourceStrength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bLockSourceStength",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleBeamBase"
+},
+"ParticleModuleBeamTarget": {
+"props": [
+[
+"TargetMethod",
+1,
+{
+"e": "Beam2SourceTargetMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"TargetName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Target",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bTargetAbsolute",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLockTarget",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TargetTangentMethod",
+1,
+{
+"e": "Beam2SourceTargetTangentMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"TargetTangent",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bLockTargetTangent",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TargetStrength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bLockTargetStength",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LockRadius",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleBeamBase"
+},
+"ParticleModuleCameraBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleCameraOffset": {
+"props": [
+[
+"CameraOffset",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bSpawnTimeOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"UpdateMethod",
+1,
+{
+"e": "EParticleCameraOffsetUpdateMethod",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "ParticleModuleCameraBase"
+},
+"ParticleModuleCollision": {
+"props": [
+[
+"DampingFactor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"DampingFactorRotation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"MaxCollisions",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"CollisionCompletionOption",
+1,
+{
+"e": "EParticleCollisionComplete",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"CollisionTypes",
+1,
+{
+"i": {
+"e": "EObjectTypeQuery",
+"t": "Enum",
+"u": "Byte"
+},
+"t": "Array"
+}
+],
+[
+"bApplyPhysics",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreTriggerVolumes",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ParticleMass",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"DirScalar",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bPawnsDoNotDecrementCount",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOnlyVerticalNormalsDecrementCount",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"VerticalFudgeFactor",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DelayAmount",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bDropDetail",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCollideOnlyIfVisible",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreSourceActor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MaxCollisionDistance",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleCollisionBase"
+},
+"ParticleModuleCollisionBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleCollisionGPU": {
+"props": [
+[
+"Resilience",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"ResilienceScaleOverLife",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Friction",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RandomSpread",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RandomDistribution",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RadiusScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RadiusBias",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Response",
+1,
+{
+"e": "EParticleCollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"CollisionMode",
+1,
+{
+"e": "EParticleCollisionMode",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "ParticleModuleCollisionBase"
+},
+"ParticleModuleColor": {
+"props": [
+[
+"StartColor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"StartAlpha",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bClampAlpha",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleColorBase"
+},
+"ParticleModuleColorBase": {
+"props": [
+[
+"m_VfxColorParam",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleColorOverLife": {
+"props": [
+[
+"ColorOverLife",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"AlphaOverLife",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bClampAlpha",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleColorBase"
+},
+"ParticleModuleColorScaleOverLife": {
+"props": [
+[
+"ColorScaleOverLife",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"AlphaScaleOverLife",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bEmitterTime",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleColorBase"
+},
+"ParticleModuleColor_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleColor"
+},
+"ParticleModuleEventBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleEventGenerator": {
+"props": [
+[
+"Events",
+1,
+{
+"i": {
+"s": "ParticleEvent_GenerateInfo",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": "ParticleModuleEventBase"
+},
+"ParticleModuleEventReceiverBase": {
+"props": [
+[
+"EventGeneratorType",
+1,
+{
+"e": "EParticleEventType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EventName",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": "ParticleModuleEventBase"
+},
+"ParticleModuleEventReceiverKillParticles": {
+"props": [
+[
+"bStopSpawning",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleEventReceiverBase"
+},
+"ParticleModuleEventReceiverSpawn": {
+"props": [
+[
+"SpawnCount",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bUseParticleTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUsePSysLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInheritVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritVelocityScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"PhysicalMaterials",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"bBanPhysicalMaterials",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleEventReceiverBase"
+},
+"ParticleModuleEventSendToGame": {
+"props": [],
+"super": "Object"
+},
+"ParticleModuleKillBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleKillBox": {
+"props": [
+[
+"LowerLeftCorner",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"UpperRightCorner",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bAbsolute",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bKillInside",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAxisAlignedAndFixedSize",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleKillBase"
+},
+"ParticleModuleKillHeight": {
+"props": [
+[
+"Height",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bAbsolute",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bFloor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bApplyPSysScale",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleKillBase"
+},
+"ParticleModuleLifetime": {
+"props": [
+[
+"LifeTime",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLifetimeBase"
+},
+"ParticleModuleLifetimeBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleLifetime_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLifetime"
+},
+"ParticleModuleLight": {
+"props": [
+[
+"bUseInverseSquaredFalloff",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAffectsTranslucency",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bPreviewLightRadius",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SpawnFraction",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ColorScaleOverLife",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"BrightnessOverLife",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"RadiusScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"LightExponent",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"LightingChannels",
+1,
+{
+"s": "LightingChannels",
+"t": "Struct"
+}
+],
+[
+"VolumetricScatteringIntensity",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bHighQualityLights",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShadowCastingLights",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleLightBase"
+},
+"ParticleModuleLightBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleLight_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLight"
+},
+"ParticleModuleLocation": {
+"props": [
+[
+"StartLocation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"DistributeOverNPoints",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DistributeThreshold",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleLocationBoneSocket": {
+"props": [
+[
+"SourceType",
+1,
+{
+"e": "ELocationBoneSocketSource",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"UniversalOffset",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"SourceLocations",
+1,
+{
+"i": {
+"s": "LocationBoneSocketInfo",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"SelectionMethod",
+1,
+{
+"e": "ELocationBoneSocketSelectionMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUpdatePositionEachFrame",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOrientMeshEmitters",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInheritBoneVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritVelocityScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"SkelMeshActorParamName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"NumPreSelectedIndices",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_VfxEnableSocketMatrixVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_VfxSocketMatrixVelocityVector",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationDirect": {
+"props": [
+[
+"Location",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"LocationOffset",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"ScaleFactor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"Direction",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationEmitter": {
+"props": [
+[
+"EmitterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"SelectionMethod",
+1,
+{
+"e": "ELocationEmitterSelectionMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"InheritSourceVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritSourceVelocityScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bInheritSourceRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritSourceRotationScale",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationEmitterDirect": {
+"props": [
+[
+"EmitterName",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationPrimitiveBase": {
+"props": [
+[
+"Positive_X",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Positive_Y",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Positive_Z",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_X",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_Y",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Negative_Z",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SurfaceOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Velocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"VelocityScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"StartLocation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationPrimitiveCylinder": {
+"props": [
+[
+"RadialVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"StartRadius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"StartHeight",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"HeightAxis",
+1,
+{
+"e": "CylinderHeightAxis",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "ParticleModuleLocationPrimitiveBase"
+},
+"ParticleModuleLocationPrimitiveCylinder_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationPrimitiveCylinder"
+},
+"ParticleModuleLocationPrimitiveSphere": {
+"props": [
+[
+"StartRadius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationPrimitiveBase"
+},
+"ParticleModuleLocationPrimitiveSphere_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationPrimitiveSphere"
+},
+"ParticleModuleLocationPrimitiveTriangle": {
+"props": [
+[
+"StartOffset",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"Height",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Angle",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Thickness",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationSkelVertSurface": {
+"props": [
+[
+"SourceType",
+1,
+{
+"e": "ELocationSkelVertSurfaceSource",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"UniversalOffset",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"bUpdatePositionEachFrame",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOrientMeshEmitters",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInheritBoneVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritVelocityScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"SkelMeshActorParamName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_bMultiplySurfaceArea",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SpawnRangeRefPointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_bAttachRangeRefPoint",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_SpawnRangeRadius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_SpawnRangeEaseInOutExp",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ValidAssociatedBones",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+],
+[
+"bEnforceNormalCheck",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NormalToCompare",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"NormalCheckToleranceDegrees",
+1,
+{
+"t": "Float"
+}
+],
+[
+"NormalCheckTolerance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ValidMaterialIndices",
+1,
+{
+"i": {
+"t": "Int"
+},
+"t": "Array"
+}
+],
+[
+"bInheritVertexColor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInheritUV",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InheritUVChannel",
+1,
+{
+"t": "UInt32"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleLocationWorldOffset": {
+"props": [],
+"super": "ParticleModuleLocation"
+},
+"ParticleModuleLocationWorldOffset_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationWorldOffset"
+},
+"ParticleModuleLocation_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocation"
+},
+"ParticleModuleMaterialBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleMeshMaterial": {
+"props": [
+[
+"MeshMaterials",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+]
+],
+"super": "ParticleModuleMaterialBase"
+},
+"ParticleModuleMeshRotation": {
+"props": [
+[
+"StartRotation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bInheritParent",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleRotationBase"
+},
+"ParticleModuleMeshRotationRate": {
+"props": [
+[
+"StartRotationRate",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationRateBase"
+},
+"ParticleModuleMeshRotationRateMultiplyLife": {
+"props": [
+[
+"LifeMultiplier",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationRateBase"
+},
+"ParticleModuleMeshRotationRateOverLife": {
+"props": [
+[
+"RotRate",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"bScaleRotRate",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleRotationRateBase"
+},
+"ParticleModuleMeshRotationRate_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleMeshRotationRate"
+},
+"ParticleModuleMeshRotation_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleMeshRotation"
+},
+"ParticleModuleOrbit": {
+"props": [
+[
+"ChainMode",
+1,
+{
+"e": "EOrbitChainMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"OffsetAmount",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"OffsetOptions",
+1,
+{
+"s": "OrbitOptions",
+"t": "Struct"
+}
+],
+[
+"RotationAmount",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"RotationOptions",
+1,
+{
+"s": "OrbitOptions",
+"t": "Struct"
+}
+],
+[
+"RotationRateAmount",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"RotationRateOptions",
+1,
+{
+"s": "OrbitOptions",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleOrbitBase"
+},
+"ParticleModuleOrbitBase": {
+"props": [
+[
+"bUseEmitterTime",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleOrientationAxisLock": {
+"props": [
+[
+"LockAxisFlags",
+1,
+{
+"e": "EParticleAxisLock",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "ParticleModuleOrientationBase"
+},
+"ParticleModuleOrientationBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleParameterBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleParameterDynamic": {
+"props": [
+[
+"DynamicParams",
+1,
+{
+"i": {
+"s": "EmitterDynamicParameter",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"UpdateFlags",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bUsesVelocity",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleParameterBase"
+},
+"ParticleModuleParameterDynamic_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleParameterDynamic"
+},
+"ParticleModulePivotOffset": {
+"props": [
+[
+"PivotOffset",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleRequired": {
+"props": [
+[
+"m_EndParticleModuleRequired",
+1,
+{
+"s": "EndParticleModuleRequired",
+"t": "Struct"
+}
+],
+[
+"m_EndEmitterDuration",
+1,
+{
+"s": "EndEmitterDuration",
+"t": "Struct"
+}
+],
+[
+"m_EndMaterialParam",
+1,
+{
+"s": "EndEffectMaterialParameter",
+"t": "Struct"
+}
+],
+[
+"Material",
+1,
+{
+"t": "Object"
+}
+],
+[
+"MinFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxFacingCameraBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"EmitterOrigin",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"EmitterRotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"ScreenAlignment",
+1,
+{
+"e": "EParticleScreenAlignment",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseLocalSpace",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bKillOnDeactivate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bKillOnCompleted",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SortMode",
+1,
+{
+"e": "EParticleSortMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseLegacyEmitterTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRemoveHMDRoll",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEmitterDurationUseRange",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"EmitterDuration",
+1,
+{
+"t": "Float"
+}
+],
+[
+"BurstList",
+1,
+{
+"i": {
+"s": "ParticleBurst",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"EmitterDelay",
+1,
+{
+"t": "Float"
+}
+],
+[
+"EmitterDelayLow",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bDelayFirstLoopOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"InterpolationMethod",
+1,
+{
+"e": "EParticleSubUVInterpMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bScaleUV",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEmitterDelayUseRange",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ParticleBurstMethod",
+1,
+{
+"e": "EParticleBurstMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bOverrideSystemMacroUV",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseMaxDrawCount",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"OpacitySourceMode",
+1,
+{
+"e": "EOpacitySourceMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EmitterNormalsMode",
+1,
+{
+"e": "EEmitterNormalsMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bOrbitModuleAffectsVelocityAlignment",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SubImages_Horizontal",
+1,
+{
+"t": "Int"
+}
+],
+[
+"SubImages_Vertical",
+1,
+{
+"t": "Int"
+}
+],
+[
+"RandomImageTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"RandomImageChanges",
+1,
+{
+"t": "Int"
+}
+],
+[
+"MacroUVPosition",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MacroUVRadius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"UVFlippingMode",
+1,
+{
+"e": "EParticleUVFlipMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"BoundingMode",
+1,
+{
+"e": "ESubUVBoundingVertexCount",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bDurationRecalcEachLoop",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"NormalsSphereCenter",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"AlphaThreshold",
+1,
+{
+"t": "Float"
+}
+],
+[
+"EmitterLoops",
+1,
+{
+"t": "Int"
+}
+],
+[
+"CutoutTexture",
+1,
+{
+"t": "Object"
+}
+],
+[
+"MaxDrawCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"EmitterDurationLow",
+1,
+{
+"t": "Float"
+}
+],
+[
+"NormalsCylinderDirection",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"NamedMaterialOverrides",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleRotation": {
+"props": [
+[
+"StartRotation",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationBase"
+},
+"ParticleModuleRotationBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleRotationOverLifetime": {
+"props": [
+[
+"RotationOverLife",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Scale",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleRotationBase"
+},
+"ParticleModuleRotationRate": {
+"props": [
+[
+"StartRotationRate",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationRateBase"
+},
+"ParticleModuleRotationRateBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleRotationRateMultiplyLife": {
+"props": [
+[
+"LifeMultiplier",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationRateBase"
+},
+"ParticleModuleRotationRate_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotationRate"
+},
+"ParticleModuleRotation_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleRotation"
+},
+"ParticleModuleSize": {
+"props": [
+[
+"StartSize",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleSizeBase"
+},
+"ParticleModuleSizeBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleSizeMultiplyLife": {
+"props": [
+[
+"LifeMultiplier",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"MultiplyX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MultiplyY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MultiplyZ",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleSizeBase"
+},
+"ParticleModuleSizeScale": {
+"props": [
+[
+"SizeScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"EnableX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"EnableY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"EnableZ",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleSizeBase"
+},
+"ParticleModuleSizeScaleBySpeed": {
+"props": [
+[
+"SpeedScale",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"MaxScale",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleSizeBase"
+},
+"ParticleModuleSize_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleSize"
+},
+"ParticleModuleSourceMovement": {
+"props": [
+[
+"SourceMovementScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"ParticleModuleSpawn": {
+"props": [
+[
+"Rate",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"RateScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"ParticleBurstMethod",
+1,
+{
+"e": "EParticleBurstMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"BurstList",
+1,
+{
+"i": {
+"s": "ParticleBurst",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"BurstScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bApplyGlobalSpawnRateScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_VfxSpawnCancelRate",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_VfxBurstCancelRate",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleSpawnBase"
+},
+"ParticleModuleSpawnBase": {
+"props": [
+[
+"bProcessSpawnRate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bProcessBurstList",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleSpawnPerUnit": {
+"props": [
+[
+"UnitScalar",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MovementTolerance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"SpawnPerUnit",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"MaxFrameDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bIgnoreSpawnRateWhenMoving",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreMovementAlongX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreMovementAlongY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreMovementAlongZ",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleSpawnBase"
+},
+"ParticleModuleSubUV": {
+"props": [
+[
+"Animation",
+1,
+{
+"t": "Object"
+}
+],
+[
+"SubImageIndex",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bUseRealTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_VfxRealTimeSpeed",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bVfxMultiplyTotalSubImage",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleSubUVBase"
+},
+"ParticleModuleSubUVBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleSubUVMovie": {
+"props": [
+[
+"bUseEmitterTime",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"FrameRate",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"StartingFrame",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "ParticleModuleSubUV"
+},
+"ParticleModuleTrailBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleTrailSource": {
+"props": [
+[
+"SourceMethod",
+1,
+{
+"e": "ETrail2SourceMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"SourceName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"SourceStrength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"bLockSourceStength",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SourceOffsetCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"SourceOffsetDefaults",
+1,
+{
+"i": {
+"s": "Vector",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"SelectionMethod",
+1,
+{
+"e": "EParticleSourceSelectionMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bInheritRotation",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTrailBase"
+},
+"ParticleModuleTypeDataAnimTrail": {
+"props": [
+[
+"bDeadTrailsOnDeactivate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnablePreviousTangentRecalculation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTangentRecalculationEveryFrame",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TilingDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DistanceTessellationStepSize",
+1,
+{
+"t": "Float"
+}
+],
+[
+"TangentTessellationStepSize",
+1,
+{
+"t": "Float"
+}
+],
+[
+"WidthTessellationStepSize",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"ParticleModuleTypeDataBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleTypeDataBeam2": {
+"props": [
+[
+"BeamMethod",
+1,
+{
+"e": "EBeam2Method",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"TextureTile",
+1,
+{
+"t": "Int"
+}
+],
+[
+"TextureTileDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Sheets",
+1,
+{
+"t": "Int"
+}
+],
+[
+"MaxBeamCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"Speed",
+1,
+{
+"t": "Float"
+}
+],
+[
+"InterpolationPoints",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bAlwaysOn",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bVfxTextureTileTotalDistance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"UpVectorStepSize",
+1,
+{
+"t": "Int"
+}
+],
+[
+"BranchParentName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Distance",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"TaperMethod",
+1,
+{
+"e": "EBeamTaperMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"TaperFactor",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"TaperScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"RenderGeometry",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RenderDirectLine",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RenderLines",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RenderTessellation",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"ParticleModuleTypeDataGpu": {
+"props": [
+[
+"EmitterInfo",
+1,
+{
+"s": "GPUSpriteEmitterInfo",
+"t": "Struct"
+}
+],
+[
+"ResourceData",
+1,
+{
+"s": "GPUSpriteResourceData",
+"t": "Struct"
+}
+],
+[
+"CameraMotionBlurAmount",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bClearExistingParticlesOnInit",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"ParticleModuleTypeDataMesh": {
+"props": [
+[
+"Mesh",
+1,
+{
+"t": "Object"
+}
+],
+[
+"LODSizeScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bUseStaticMeshLODs",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CastShadows",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"DoCollisions",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"MeshAlignment",
+1,
+{
+"e": "EMeshScreenAlignment",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bOverrideMaterial",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideDefaultMotionBlurSettings",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnableMotionBlur",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_VfxPivotCenterScale",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_VfxPivotCenterRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_VfxRotationMatrixOrder",
+1,
+{
+"e": "EVfxRotationMatrixOrder",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"RollPitchYawRange",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"AxisLockOption",
+1,
+{
+"e": "EParticleAxisLock",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bCameraFacing",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CameraFacingUpAxisOption",
+1,
+{
+"e": "EMeshCameraFacingUpAxis",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"CameraFacingOption",
+1,
+{
+"e": "EMeshCameraFacingOptions",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bApplyParticleRotationAsSpin",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bFaceCameraDirectionRatherThanPosition",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCollisionsConsiderPartilceSize",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"ParticleModuleTypeDataRibbon": {
+"props": [
+[
+"MaxTessellationBetweenParticles",
+1,
+{
+"t": "Int"
+}
+],
+[
+"SheetsPerTrail",
+1,
+{
+"t": "Int"
+}
+],
+[
+"MaxTrailCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"MaxParticleInTrailCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"bDeadTrailsOnDeactivate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bDeadTrailsOnSourceLoss",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bClipSourceSegement",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bEnablePreviousTangentRecalculation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTangentRecalculationEveryFrame",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSpawnInitialParticle",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RenderAxis",
+1,
+{
+"e": "ETrailsRenderAxisOption",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"TangentSpawningScalar",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bRenderGeometry",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderSpawnPoints",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderTangents",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderTessellation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TilingDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DistanceTessellationStepSize",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bEnableTangentDiffInterpScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TangentTessellationScalar",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"ParticleModuleVectorFieldBase": {
+"props": [],
+"super": "ParticleModule"
+},
+"ParticleModuleVectorFieldGlobal": {
+"props": [
+[
+"bOverrideGlobalVectorFieldTightness",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"GlobalVectorFieldScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"GlobalVectorFieldTightness",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVectorFieldLocal": {
+"props": [
+[
+"VectorField",
+1,
+{
+"t": "Object"
+}
+],
+[
+"RelativeTranslation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"RelativeRotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"RelativeScale3D",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Intensity",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Tightness",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bIgnoreComponentTransform",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileX",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileY",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTileZ",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseFixDT",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVectorFieldRotation": {
+"props": [
+[
+"MinInitialRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MaxInitialRotation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVectorFieldRotationRate": {
+"props": [
+[
+"RotationRate",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVectorFieldScale": {
+"props": [
+[
+"VectorFieldScale",
+1,
+{
+"t": "Object"
+}
+],
+[
+"VectorFieldScaleRaw",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVectorFieldScaleOverLife": {
+"props": [
+[
+"VectorFieldScaleOverLife",
+1,
+{
+"t": "Object"
+}
+],
+[
+"VectorFieldScaleOverLifeRaw",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVectorFieldBase"
+},
+"ParticleModuleVelocity": {
+"props": [
+[
+"StartVelocity",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"StartVelocityRadial",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVelocityBase"
+},
+"ParticleModuleVelocityBase": {
+"props": [
+[
+"bInWorldSpace",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bApplyOwnerScale",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModule"
+},
+"ParticleModuleVelocityCone": {
+"props": [
+[
+"Angle",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Velocity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"Direction",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVelocityBase"
+},
+"ParticleModuleVelocityInheritParent": {
+"props": [
+[
+"Scale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVelocityBase"
+},
+"ParticleModuleVelocityOverLifetime": {
+"props": [
+[
+"VelOverLife",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"Absolute",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleVelocityBase"
+},
+"ParticleModuleVelocity_Seeded": {
+"props": [
+[
+"RandomSeedInfo",
+1,
+{
+"s": "ParticleRandomSeedInfo",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleVelocity"
+},
+"ParticleRandomSeedInfo": {
+"props": [
+[
+"ParameterName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"bGetSeedFromInstance",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bInstanceSeedIsIndex",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bResetSeedOnEmitterLooping",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRandomlySelectSeedArray",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bEndGetSeedFromComponent",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"RandomSeeds",
+1,
+{
+"i": {
+"t": "Int"
+},
+"t": "Array"
+}
+]
+],
+"super": null
+},
+"ParticleReplayTrackKey": {
+"props": [
+[
+"Time",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Duration",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ClipIDNumber",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": null
+},
+"ParticleSpriteEmitter": {
+"props": [],
+"super": "ParticleEmitter"
+},
+"ParticleSysParam": {
+"props": [
+[
+"Name",
+1,
+{
+"t": "Name"
+}
+],
+[
+"ParamType",
+1,
+{
+"e": "EParticleSysParamType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"Scalar",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Scalar_Low",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Vector",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Vector_Low",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Color",
+1,
+{
+"s": "Color",
+"t": "Struct"
+}
+],
+[
+"Actor",
+1,
+{
+"t": "Object"
+}
+],
+[
+"Material",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": null
+},
+"ParticleSystem": {
+"props": [
+[
+"UpdateTime_FPS",
+1,
+{
+"t": "Float"
+}
+],
+[
+"UpdateTime_Delta",
+1,
+{
+"t": "Float"
+}
+],
+[
+"WarmupTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"WarmupTickRate",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Emitters",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"PreviewComponent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"CurveEdSetup",
+1,
+{
+"t": "Object"
+}
+],
+[
+"LODDistanceCheckTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MacroUVRadius",
+1,
+{
+"t": "Float"
+}
+],
+[
+"LODDistances",
+1,
+{
+"i": {
+"t": "Float"
+},
+"t": "Array"
+}
+],
+[
+"LODSettings",
+1,
+{
+"i": {
+"s": "ParticleSystemLOD",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"FixedRelativeBoundingBox",
+1,
+{
+"s": "Box",
+"t": "Struct"
+}
+],
+[
+"SecondsBeforeInactive",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Delay",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DelayLow",
+1,
+{
+"t": "Float"
+}
+],
+[
+"bOrientZAxisTowardCamera",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseFixedRelativeBoundingBox",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShouldResetPeakCounts",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHasPhysics",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseRealtimeThumbnail",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"ThumbnailImageOutOfDate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseDelayRange",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowManagedTicking",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoDeactivate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRegenerateLODDuplicate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"SystemUpdateMode",
+1,
+{
+"e": "EParticleSystemUpdateMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LODMethod",
+1,
+{
+"e": "ParticleSystemLODMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"InsignificantReaction",
+1,
+{
+"e": "EParticleSystemInsignificanceReaction",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"OcclusionBoundsMethod",
+1,
+{
+"e": "EParticleSystemOcclusionBoundsMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"MaxSignificanceLevel",
+1,
+{
+"e": "EParticleSignificanceLevel",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"MinTimeBetweenTicks",
+1,
+{
+"t": "UInt32"
+}
+],
+[
+"InsignificanceDelay",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MacroUVPosition",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"CustomOcclusionBounds",
+1,
+{
+"s": "Box",
+"t": "Struct"
+}
+],
+[
+"SoloTracking",
+1,
+{
+"i": {
+"s": "LODSoloTrack",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"NamedMaterialSlots",
+1,
+{
+"i": {
+"s": "NamedEmitterMaterial",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": "FXSystemAsset"
+},
+"ParticleSystemComponent": {
+"props": [
+[
+"Template",
+1,
+{
+"t": "Object"
+}
+],
+[
+"EmitterMaterials",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"SkelMeshComponents",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"bResetOnDetach",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUpdateOnDedicatedServer",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowRecycling",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoManageAttachment",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAutoAttachWeldSimulatedBodies",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bWarmingUp",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverrideLODMethod",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSkipUpdateDynamicDataDuringTick",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LODMethod",
+1,
+{
+"e": "ParticleSystemLODMethod",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"RequiredSignificance",
+1,
+{
+"e": "EParticleSignificanceLevel",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"InstanceParameters",
+1,
+{
+"i": {
+"s": "ParticleSysParam",
+"t": "Struct"
+},
+"t": "Array"
+}
+],
+[
+"OnParticleSpawn",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnParticleBurst",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnParticleDeath",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnParticleCollide",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"bOldPositionValid",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"OldPosition",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"PartSysVelocity",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"WarmupTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"WarmupTickRate",
+1,
+{
+"t": "Float"
+}
+],
+[
+"SecondsBeforeInactive",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxTimeBeforeForceUpdateTransform",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ReplayClips",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"CustomTimeDilation",
+1,
+{
+"t": "Float"
+}
+],
+[
+"AutoAttachParent",
+1,
+{
+"t": "WeakObject"
+}
+],
+[
+"AutoAttachSocketName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"AutoAttachLocationRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"AutoAttachRotationRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"AutoAttachScaleRule",
+1,
+{
+"e": "EAttachmentRule",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"OnSystemFinished",
+1,
+{
+"t": "MulticastDelegate"
+}
+]
+],
+"super": "FXSystemComponent"
+},
+"ParticleSystemLOD": {
+"props": [],
+"super": null
+},
+"ParticleSystemReplay": {
+"props": [
+[
+"ClipIDNumber",
+1,
+{
+"t": "Int"
+}
+]
+],
+"super": "Object"
+},
+"ParticleSystemReplayFrame": {
+"props": [],
+"super": null
+},
+"ParticleSystemWorldManagerTickFunction": {
+"props": [],
+"super": "TickFunction"
+},
+"PrimitiveComponent": {
+"props": [
+[
+"MassiveEnvironmentImportSettings",
+1,
+{
+"s": "MassiveEnvironmentImportSettings",
+"t": "Struct"
+}
+],
+[
+"MinDrawDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"LDMaxDrawDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"CachedMaxDrawDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"DepthPriorityGroup",
+1,
+{
+"e": "ESceneDepthPriorityGroup",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"ViewOwnerDepthPriorityGroup",
+1,
+{
+"e": "ESceneDepthPriorityGroup",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"IndirectLightingCacheQuality",
+1,
+{
+"e": "EIndirectLightingCacheQuality",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LightmapType",
+1,
+{
+"e": "ELightmapType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseMaxLODAsImposter",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bBatchImpostersAsInstances",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNeverDistanceCull",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAlwaysCreatePhysicsState",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bGenerateOverlapEvents",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bMultiBodyOverlap",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTraceComplexOnMove",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReturnMaterialOnMove",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseViewOwnerDepthPriorityGroup",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowCullDistanceVolume",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHasMotionBlurVelocityMeshes",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bVisibleInReflectionCaptures",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bVisibleInRealTimeSkyCaptures",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bVisibleInRayTracing",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderInMainPass",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderInDepthPass",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReceivesDecals",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOwnerNoSee",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOnlyOwnerSee",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bTreatAsBackgroundForOcclusion",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseAsOccluder",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSelectable",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bForceMipStreaming",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHasPerInstanceHitProxies",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"CastShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAffectDynamicIndirectLighting",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAffectDistanceFieldLighting",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastDynamicShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastStaticShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastVolumetricTranslucentShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastContactShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSelfShadowOnly",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastFarShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastInsetShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastCinematicShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastHiddenShadow",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCastShadowAsTwoSided",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLightAsIfStatic",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bLightAttachmentsAsGroup",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bExcludeFromLightAttachmentGroup",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReceiveMobileCSMShadows",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bSingleSampleShadowFromStationaryLights",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreRadialImpulse",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIgnoreRadialForce",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bApplyImpulseOnDamage",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bReplicatePhysicsToAutonomousProxy",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bNeedPhysXName",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bFillCollisionUnderneathForNavmesh",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"AlwaysLoadOnClient",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"AlwaysLoadOnServer",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseEditorCompositing",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRenderCustomDepth",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsEnvironmentLightModulationEnabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bIsDirectionalLightModulationEnabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHasCustomNavigableGeometry",
+1,
+{
+"e": "EHasCustomNavigableGeometry",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"CanCharacterStepUpOn",
+1,
+{
+"e": "ECanBeCharacterBase",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LightingChannels",
+1,
+{
+"s": "LightingChannels",
+"t": "Struct"
+}
+],
+[
+"CustomDepthStencilWriteMask",
+1,
+{
+"e": "ERendererStencilMask",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bUseTranslucencySortOffset",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TranslucencySortOffset",
+1,
+{
+"t": "Int"
+}
+],
+[
+"CustomDepthStencilValue",
+1,
+{
+"t": "Int"
+}
+],
+[
+"CustomPrimitiveData",
+1,
+{
+"s": "CustomPrimitiveData",
+"t": "Struct"
+}
+],
+[
+"CustomPrimitiveDataInternal",
+1,
+{
+"s": "CustomPrimitiveData",
+"t": "Struct"
+}
+],
+[
+"TranslucencySortPriority",
+1,
+{
+"t": "Int"
+}
+],
+[
+"VisibilityId",
+1,
+{
+"t": "Int"
+}
+],
+[
+"RuntimeVirtualTextures",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"VirtualTextureLodBias",
+1,
+{
+"t": "Int8"
+}
+],
+[
+"VirtualTextureCullMips",
+1,
+{
+"t": "Int8"
+}
+],
+[
+"VirtualTextureMinCoverage",
+1,
+{
+"t": "Int8"
+}
+],
+[
+"VirtualTextureRenderPassType",
+1,
+{
+"e": "ERuntimeVirtualTextureMainPassType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"LpvBiasMultiplier",
+1,
+{
+"t": "Float"
+}
+],
+[
+"BoundsScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MoveIgnoreActors",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"MoveIgnoreComponents",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"BodyInstance",
+1,
+{
+"s": "BodyInstance",
+"t": "Struct"
+}
+],
+[
+"OnComponentHit",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnComponentBeginOverlap",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnComponentEndOverlap",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnComponentWake",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnComponentSleep",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnBeginCursorOver",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnEndCursorOver",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnClicked",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnReleased",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchBegin",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchEnd",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchEnter",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"OnInputTouchLeave",
+1,
+{
+"t": "MulticastDelegate"
+}
+],
+[
+"LODParentPrimitive",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": "SceneComponent"
+},
+"Quat": {
+"props": [
+[
+"X",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Y",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Z",
+1,
+{
+"t": "Float"
+}
+],
+[
+"W",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"RawDistribution": {
+"props": [
+[
+"Table",
+1,
+{
+"s": "DistributionLookupTable",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"RawDistributionFloat": {
+"props": [
+[
+"MinValue",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxValue",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Distribution",
+1,
+{
+"t": "Object"
+}
+],
+[
+"m_VfxValue",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "RawDistribution"
+},
+"RawDistributionVector": {
+"props": [
+[
+"MinValue",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MaxValue",
+1,
+{
+"t": "Float"
+}
+],
+[
+"MinValueVec",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"MaxValueVec",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Distribution",
+1,
+{
+"t": "Object"
+}
+],
+[
+"m_VfxValue",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_VfxLockedAxes",
+1,
+{
+"e": "EDistributionVectorLockFlags",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": "RawDistribution"
+},
+"RepAttachment": {
+"props": [
+[
+"AttachParent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"LocationOffset",
+1,
+{
+"s": "Vector_NetQuantize100",
+"t": "Struct"
+}
+],
+[
+"RelativeScale3D",
+1,
+{
+"s": "Vector_NetQuantize100",
+"t": "Struct"
+}
+],
+[
+"RotationOffset",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"AttachSocket",
+1,
+{
+"t": "Name"
+}
+],
+[
+"AttachComponent",
+1,
+{
+"t": "Object"
+}
+]
+],
+"super": null
+},
+"RepMovement": {
+"props": [
+[
+"LinearVelocity",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"AngularVelocity",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Location",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Rotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"bSimulatedPhysicSleep",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bRepPhysics",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"LocationQuantizationLevel",
+1,
+{
+"e": "EVectorQuantization",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"VelocityQuantizationLevel",
+1,
+{
+"e": "EVectorQuantization",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"RotationQuantizationLevel",
+1,
+{
+"e": "ERotatorQuantization",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"ResponseChannel": {
+"props": [
+[
+"Channel",
+1,
+{
+"t": "Name"
+}
+],
+[
+"Response",
+1,
+{
+"e": "ECollisionResponse",
+"t": "Enum",
+"u": "Byte"
+}
+]
+],
+"super": null
+},
+"Rotator": {
+"props": [
+[
+"Pitch",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Yaw",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Roll",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"SceneComponent": {
+"props": [
+[
+"PhysicsVolume",
+1,
+{
+"t": "WeakObject"
+}
+],
+[
+"AttachParent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"AttachSocketName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"AttachChildren",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"ClientAttachedChildren",
+1,
+{
+"i": {
+"t": "Object"
+},
+"t": "Array"
+}
+],
+[
+"RelativeLocation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"RelativeRotation",
+1,
+{
+"s": "Rotator",
+"t": "Struct"
+}
+],
+[
+"RelativeScale3D",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"ComponentVelocity",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"bComponentToWorldUpdated",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAbsoluteLocation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAbsoluteRotation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAbsoluteScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bVisible",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShouldBeAttached",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShouldSnapLocationWhenAttached",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShouldSnapRotationWhenAttached",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bShouldUpdatePhysicsVolume",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bHiddenInGame",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bBoundsChangeTriggersStreamingDataRebuild",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bUseAttachParentBound",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"Mobility",
+1,
+{
+"e": "EComponentMobility",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"DetailMode",
+1,
+{
+"e": "EDetailMode",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"PhysicsVolumeChangedDelegate",
+1,
+{
+"t": "MulticastDelegate"
+}
+]
+],
+"super": "ActorComponent"
+},
+"SimpleMemberReference": {
+"props": [
+[
+"MemberParent",
+1,
+{
+"t": "Object"
+}
+],
+[
+"MemberName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"MemberGuid",
+1,
+{
+"s": "Guid",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"SoftObjectPath": {
+"props": [
+[
+"AssetPathName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"SubPathString",
+1,
+{
+"t": "Str"
+}
+]
+],
+"super": null
+},
+"Subsystem": {
+"props": [],
+"super": "Object"
+},
+"TickFunction": {
+"props": [
+[
+"TickGroup",
+1,
+{
+"e": "ETickingGroup",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"EndTickGroup",
+1,
+{
+"e": "ETickingGroup",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"bTickEvenWhenPaused",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bCanEverTick",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bStartWithTickEnabled",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bAllowTickOnDedicatedServer",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"TickInterval",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"Transform": {
+"props": [
+[
+"Rotation",
+1,
+{
+"s": "Quat",
+"t": "Struct"
+}
+],
+[
+"Translation",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"Scale3D",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"TwoVectors": {
+"props": [
+[
+"v1",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"v2",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"VFXSoundElement": {
+"props": [
+[
+"m_SoundHandles",
+3,
+{
+"s": "EndSoundHandle",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"Vector": {
+"props": [
+[
+"X",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Y",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Z",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"Vector2D": {
+"props": [
+[
+"X",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Y",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"Vector4": {
+"props": [
+[
+"X",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Y",
+1,
+{
+"t": "Float"
+}
+],
+[
+"Z",
+1,
+{
+"t": "Float"
+}
+],
+[
+"W",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+},
+"Vector_NetQuantize100": {
+"props": [],
+"super": "Vector"
+},
+"VfxDistributionFloatNonUniform": {
+"props": [
+[
+"m_NonUniformRandom",
+1,
+{
+"s": "VfxNonUniformRandom",
+"t": "Struct"
+}
+]
+],
+"super": "DistributionFloatUniform"
+},
+"VfxDistributionVectorNonUniform": {
+"props": [
+[
+"m_NonUniformRandomX",
+1,
+{
+"s": "VfxNonUniformRandom",
+"t": "Struct"
+}
+],
+[
+"m_NonUniformRandomY",
+1,
+{
+"s": "VfxNonUniformRandom",
+"t": "Struct"
+}
+],
+[
+"m_NonUniformRandomZ",
+1,
+{
+"s": "VfxNonUniformRandom",
+"t": "Struct"
+}
+]
+],
+"super": "DistributionVectorUniform"
+},
+"VfxLensFlareObjectData": {
+"props": [
+[
+"ResourceParameter",
+1,
+{
+"t": "Int"
+}
+],
+[
+"iDrawCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"fContinuationStartPosRatio",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fContinuationEndPosRatio",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fContinuationRandPosRatio",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fFitAngleRatio",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fContinuationRotationZ",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fScaleCenter",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fScaleOuter",
+1,
+{
+"t": "Float"
+}
+],
+[
+"fScaleRand",
+1,
+{
+"t": "Float"
+}
+],
+[
+"ColorCenter",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"ColorOuter",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+],
+[
+"ColorRand",
+1,
+{
+"s": "LinearColor",
+"t": "Struct"
+}
+]
+],
+"super": null
+},
+"VfxNonUniformRandom": {
+"props": [
+[
+"m_Kind",
+1,
+{
+"e": "EVfxNonUniformKind",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_Param",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bReverse",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": null
+},
+"VfxParticleModuleActorDithreFade": {
+"props": [
+[
+"m_BlendScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_BlendAdd",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_MaterialSlotNames",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"VfxParticleModuleBeamLocation": {
+"props": [
+[
+"m_SpawnBaseLength",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_SpawnStartRatio",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_SpawnEndRatio",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_Radius",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_Velocity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RefPointNameA",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_RefPointNameB",
+1,
+{
+"t": "Name"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"VfxParticleModuleCameraControl": {
+"props": [
+[
+"m_DebugSetPreviewCamera",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_RefPointName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_Fov",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_Distance",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_Rotation",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_BlendTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BlendExp",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_EnableGamePad",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_LocationOffset",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"m_RotationOffset",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"m_DampingScale",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Rstick_RotationSpeed",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Rstick_ZoomSpeed",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Rstick_ZoomMin",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_Rstick_ZoomMax",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleCameraBase"
+},
+"VfxParticleModuleCameraDistance": {
+"props": [
+[
+"m_fBeginDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fBlendDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_bIgnoreHeight",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_Scale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_ColorScale",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_AlphaScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_bLuminanceScale",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_LuminanceScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleCameraBase"
+},
+"VfxParticleModuleEventTrigger": {
+"props": [
+[
+"m_TriggerType",
+1,
+{
+"e": "EVfxParticleEventTriggerType",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_TriggerTime",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_TriggerParam",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_bRepeatTrigger",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleEventBase"
+},
+"VfxParticleModuleFadeByEmitterAngle": {
+"props": [
+[
+"m_LimitAngle",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BlendAngle",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_VisibleDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BlendDistance",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": "ParticleModuleColorBase"
+},
+"VfxParticleModuleForceFeedback": {
+"props": [
+[
+"m_PriorityTrack",
+1,
+{
+"e": "EEndForceFeedbackTrack",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_Effect",
+1,
+{
+"e": "EEndForceFeedbackEffect",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_bWithPriorityControl",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"VfxParticleModuleLensFlareLocation": {
+"props": [
+[
+"m_vCenterOffset",
+1,
+{
+"s": "Vector2D",
+"t": "Struct"
+}
+],
+[
+"m_fCentralMagnificationArea",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fCentralMagnificationCurvedStartDirection",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_fCentralMagnificationCurvedEndDirection",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_ObjectDataList",
+1,
+{
+"i": {
+"s": "VfxLensFlareObjectData",
+"t": "Struct"
+},
+"t": "Array"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"VfxParticleModulePostProcessBase": {
+"props": [],
+"super": "EndParticleModuleBase"
+},
+"VfxParticleModulePostProcessDirectionalBlur": {
+"props": [
+[
+"bOverride_DirectionalBlurDistortionIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_DirectionalBlurDistortionGradient",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_DirectionalBlurDistortionField",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_DirectionalBlurDistortionFrequency",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_DirectionalBlurDistortionPosition",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_DirectionalBlurDistortionIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_DirectionalBlurDistortionGradient",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_DirectionalBlurDistortionField",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_DirectionalBlurDistortionFrequency",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_DirectionalBlurDistortionPosition",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "VfxParticleModulePostProcessBase"
+},
+"VfxParticleModulePostProcessImageEffects": {
+"props": [
+[
+"bOverride_VignetteIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_GrainIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_GrainPosition",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_ChromaticAberrationIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_ChromaticSaturation",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_NormalizedTintIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_NormalizedTintColor",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_NormalizedTintGradient",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_NormalizedTintField",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_NormalizedTintGain",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_ContrastIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"bOverride_CompositeSDRIntensity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_VignetteIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_GrainIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_GrainPosition",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_ChromaticAberrationIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_ChromaticSaturation",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_NormalizedTintIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_NormalizedTintColor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_NormalizedTintGradient",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_NormalizedTintField",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_NormalizedTintGain",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_ContrastIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_CompositeSDRIntensity",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "VfxParticleModulePostProcessBase"
+},
+"VfxParticleModuleRandomUV": {
+"props": [
+[
+"m_Init",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_Speed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_ScaleInit",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_ScaleSpeed",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+]
+],
+"super": "EndParticleModuleBase"
+},
+"VfxParticleModuleSocketLocation": {
+"props": [
+[
+"m_WildcardSocketName",
+1,
+{
+"t": "Name"
+}
+],
+[
+"m_SocketNameArray",
+1,
+{
+"i": {
+"t": "Name"
+},
+"t": "Array"
+}
+],
+[
+"m_VelocityDir",
+1,
+{
+"s": "Vector",
+"t": "Struct"
+}
+],
+[
+"m_VelocityScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+]
+],
+"super": "ParticleModuleLocationBase"
+},
+"VfxParticleModuleTypeDataActor": {
+"props": [],
+"super": "ParticleModuleTypeDataBase"
+},
+"VfxParticleModuleTypeDataTrajectory": {
+"props": [
+[
+"m_MaxTrailCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_MaxTrailLength",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_TrailFadeAlpha",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_BaseVelocity",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_BaseAcceleration",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_SrcVelocityScale",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_RenderAxisOption",
+1,
+{
+"e": "EVfxTrajectoryRenderAxisOption",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"m_TrailWidth",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_TrailColor",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_TrailAlpha",
+1,
+{
+"s": "RawDistributionFloat",
+"t": "Struct"
+}
+],
+[
+"m_fTextureTileDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_TrailRandomUv",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_TrailRandomUvScroll",
+1,
+{
+"s": "RawDistributionVector",
+"t": "Struct"
+}
+],
+[
+"m_bRenderGeometry",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bApplyMatrixScaleVelocity",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bIgnoreLimitTrailLength",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_fTrailDivDistance",
+1,
+{
+"t": "Float"
+}
+],
+[
+"m_BufferCount",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_UpdateBufferFPS",
+1,
+{
+"t": "Int"
+}
+],
+[
+"m_bDebugDrawBufferPoint",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bDebugDrawPointCoordinate",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bDebugDrawPolygonLine",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bDebugDrawInterpPoint",
+1,
+{
+"t": "Bool"
+}
+],
+[
+"m_bDebugDrawTangent",
+1,
+{
+"t": "Bool"
+}
+]
+],
+"super": "ParticleModuleTypeDataBase"
+},
+"WalkableSlopeOverride": {
+"props": [
+[
+"WalkableSlopeBehavior",
+1,
+{
+"e": "EWalkableSlopeBehavior",
+"t": "Enum",
+"u": "Byte"
+}
+],
+[
+"WalkableSlopeAngle",
+1,
+{
+"t": "Float"
+}
+]
+],
+"super": null
+}
+}
+}

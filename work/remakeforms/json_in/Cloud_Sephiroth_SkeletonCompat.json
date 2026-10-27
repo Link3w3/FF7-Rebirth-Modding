@@ -1,0 +1,20 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/Cloud_Sephiroth_SkeletonCompat.Cloud_Sephiroth_SkeletonCompat",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton"
+			],
+			"method": "animations",
+			"requires_paks": [ "SephirothOverCloud_P" ],
+			"receiving_meshes": [
+				"/Game/Character/Player/PC0010_10_Sephiroth_Transform/Model/PC0010_10.PC0010_10",
+				"/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00.PC0010_00"
+			],
+			"repair_live_components": true,
+			"enabled": true
+		}
+	]
+}

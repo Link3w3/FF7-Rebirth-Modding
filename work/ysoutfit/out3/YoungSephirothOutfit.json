@@ -1,0 +1,19 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "Young Sephiroth, an optional outfit for the playable Sephiroth (Create a Character System 3.6): PC0010_10_Young_Sephiroth_Outfit_Transformed (Young Sephiroth's clothes and hair, with the transformed Sephiroth's wing) on its own skeleton PC0010_10_Skeleton, which is Sephiroth's PC0010_00_Skeleton (every bone, the same parents) with Young Sephiroth's 103 physics bones for his coat, hair, collar and shoulder pads (his Bonamik PC0010_10_YS_BNM moves them). The skeleton joins Sephiroth's skeleton family, so the outfit plays all of his animations and every form's, on every Cloud row the Fully Playable Sephiroth takes over. The wing is the material slot PC0010_10_Wing, the forms' part: hidden in NORMAL, shown in WINGED, FLYING and KH2; BIZARRO and SAFER put on their own models and come back to the outfit. Goes with YoungSephirothOutfit_P (the outfit and his blueprint wearing it), FullyPlayableSephirothDataAssets_P and SephirothForms.json; without YoungSephirothOutfit_P this file does nothing and he wears his own model. One outfit pak at a time: AvalancheSephirothOutfit_P puts its own outfit on the same blueprint.",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0010_10_Young_Sephiroth_Outfit_Transformed/Model/PC0010_10_Skeleton.PC0010_10_Skeleton"
+			],
+			"method": "family",
+			"hub": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"requires_paks": [
+				"YoungSephirothOutfit_P"
+			],
+			"repair_live_components": true,
+			"enabled": true
+		}
+	]
+}

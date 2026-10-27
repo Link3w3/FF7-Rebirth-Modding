@@ -1,0 +1,14 @@
+LIBRARY "UE4Editor-Engine.dll"
+EXPORTS
+    ?AreCompatible@RebirthSkeletonCompatibility@@YA_NPEBVUSkeleton@@0@Z
+    ?ClearRegistry@RebirthSkeletonCompatibility@@YAXXZ
+    ?FindMapping@RebirthSkeletonCompatibility@@YA?AV?$TSharedPtr@$$CBUFMapping@RebirthSkeletonCompatibility@@$00@@PEBVUSkeleton@@0@Z
+    ?GetCompatibleSkeletonPaths@RebirthSkeletonCompatibility@@YAXPEBVUSkeleton@@AEAV?$TArray@VFString@@V?$TSizedDefaultAllocator@$0CA@@@@@_N@Z
+    ?GetCompatibleSkeletons@RebirthSkeletonCompatibility@@YAXPEBVUSkeleton@@AEAV?$TArray@PEAVUSkeleton@@V?$TSizedDefaultAllocator@$0CA@@@@@_N@Z
+    ?GetDiagnostics@RebirthSkeletonCompatibility@@YA?AVFString@@XZ
+    ?InvalidateSkeleton@RebirthSkeletonCompatibility@@YAXPEBVUSkeleton@@@Z
+    ?OnChanged@RebirthSkeletonCompatibility@@YAAEAV?$TMulticastDelegate@$$A6AX_K@ZUFDefaultDelegateUserPolicy@@@@XZ
+    ?RecordRefusal@RebirthSkeletonCompatibility@@YAXW4ERefusal@1@@Z
+    ?RegisterPair@RebirthSkeletonCompatibility@@YA_NPEAVUSkeleton@@0AEAVFString@@@Z
+    ?UnregisterPair@RebirthSkeletonCompatibility@@YA_NPEBVUSkeleton@@0@Z
+    ?ValidatePair@RebirthSkeletonCompatibility@@YA_NPEAVUSkeleton@@0AEAVFString@@@Z

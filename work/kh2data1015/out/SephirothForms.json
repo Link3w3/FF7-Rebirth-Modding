@@ -1,0 +1,2973 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Sephiroth's forms on Cloud's ability IDs (Create a Character System 3.4): your playable Sephiroth (Cloud's rows, including the prologue's Cloud in Zack's SOLDIER outfit) has three forms, normal (Battle00), winged (Battle02 = the transformed Sephiroth's Battle00) and flying (Battle03 = his Battle01 wing moves, then his Battle00); the SephirothForms UE4SS mod switches them (hold Triangle in battle). His limits are Cloud's (level 1 Octaslash, 2 Heartless Angel, 3 Meteor: they unlock like Cloud's), the abilities Cloud's weapons give are his moves and switch with the form (weapon_abilities), and each form has its own 5 ATB commands. His rows load the transformed Sephiroth's effects (pack_assets) and the Fire/Blizzard/Thunder/Aero ability resources (preload). Goes with FullyPlayableSephirothDataAssets_P (his abilities, limits and rows) and SephirothForms_P (the built moves). KH2 form (Battle04): his Kingdom Hearts II moves; Meteor is cast with the KH2 sword raise in every form. Flying form (Battle03): his idle, walks, runs and turns from his flight in the final cutscenes.",
+ "pairs": [],
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0000_00_Cloud_Standard",
+    "PC0000_08_Cloud_SoldierNoHelmet",
+    "PC0000_09_Cloud_CostaClothing",
+    "PC0000_10_Cloud_CostaClothing2",
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0000_23_Cloud_ZackCostumeWet"
+   ],
+   "player": "pt_Cloud",
+   "abilities": [
+    {
+     "pack": "Battle00",
+     "commands": [
+      "PC0010_AtkBurst01",
+      "PC0010_AtkBurst02",
+      "PC0010_T_Meteor"
+     ]
+    },
+    {
+     "pack": "Battle02",
+     "commands": [
+      "PC0010_T_ShadowFlare",
+      "PC0010_T_GroundFeeler",
+      "PC0010_T_BindFeeler",
+      "PC0010_T_HardCombo",
+      "PC0010_T_Firaga",
+      "PC0010_T_Meteor"
+     ],
+     "weapon_abilities": {
+      "PC0000_AtkBurst02": "PC0010_T_Blizzaga",
+      "PC0000_AtkBurst08": "PC0010_W2_ZanshinRising",
+      "PC0000_AtkBurst07": "PC0010_T_BindAttackNear",
+      "PC0000_AtkBurst09": "PC0010_T_Thundaga",
+      "PC0000_AtkBurst04": "PC0010_AtkBurst02",
+      "PC0000_AtkBurst05": "PC0010_T_Aeroga",
+      "PC0000_AtkBurst06": "PC0010_AtkBurst01"
+     }
+    },
+    {
+     "pack": "Battle03",
+     "commands": [
+      "PC0010_T_OctaslashPrime",
+      "PC0010_T_FeelerTornado",
+      "PC0010_T_WarpStab",
+      "PC0010_T_FeelerLaser",
+      "PC0010_T_LastAttack",
+      "PC0010_T_Meteor"
+     ],
+     "weapon_abilities": {
+      "PC0000_AtkBurst02": "PC0010_W3_DoubleBlizzaga",
+      "PC0000_AtkBurst08": "PC0010_W3_DoubleFiraga",
+      "PC0000_AtkBurst07": "PC0010_T_BindAttackFar",
+      "PC0000_AtkBurst09": "PC0010_W3_DoubleThundaga",
+      "PC0000_AtkBurst04": "PC0010_W3_InfernalGate",
+      "PC0000_AtkBurst05": "PC0010_W3_DoubleAeroga",
+      "PC0000_AtkBurst06": "PC0010_W3_SwordDance"
+     }
+    }
+   ],
+   "preload": [
+    "/Game/DataAsset/Game/CharaSpec/CharaSpec_FA0260_01_SephirothMeteor_Battle.CharaSpec_FA0260_01_SephirothMeteor_Battle",
+    "/Game/Effect/Character/Player/PC0010_10_Sephiroth_Transform/Particle/FX_PC0010_10_SetFeeler_Wing_01.FX_PC0010_10_SetFeeler_Wing_01",
+    "/Game/Effect/Character/Player/PC0010_10_Sephiroth_Transform/Particle/FX_PC0010_10_Tenshi_Charge_01.FX_PC0010_10_Tenshi_Charge_01",
+    "/Game/Effect/Character/Player/PC0010_10_Sephiroth_Transform/Particle/FX_PC0010_10_Tenshi_Area_01.FX_PC0010_10_Tenshi_Area_01",
+    "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Limit01_BodyAura_01.FX_PC0010_Limit01_BodyAura_01",
+    "/Game/Effect/Character/Player/PC0010_Sephiroth/Particle/FX_PC0010_Aura_Body_01.FX_PC0010_Aura_Body_01",
+    "/Game/Effect/Cut/8800-FOREE/EV_FOREE_7250/Particle/FX_EV_FOREE_7250_BlackFeather_01.FX_EV_FOREE_7250_BlackFeather_01",
+    "/Game/Effect/Cut/8800-FOREE/EV_FOREE_7250/Particle/FX_EV_FOREE_7250_BlackFeather_Aura_01.FX_EV_FOREE_7250_BlackFeather_Aura_01",
+    "/Game/Effect/Cut/8800-FOREE/EV_FOREE_8312/Particle/FX_EV_FOREE_8312_BlackFeather_01.FX_EV_FOREE_8312_BlackFeather_01",
+    "/Game/Effect/Cut/8800-FOREE/EV_FOREE_8312/Particle/FX_EV_FOREE_8312_BlackFeather_FadeOut_01.FX_EV_FOREE_8312_BlackFeather_FadeOut_01",
+    "/Game/Effect/Cut/8800-FOREE/EV_FOREE_8510/Particle/FX_EV_FOREE_8510_BlackFeather_01.FX_EV_FOREE_8510_BlackFeather_01",
+    "/Game/Effect/Character/Enemy/EB2210_BizarroSephiroth/Particle/FX_EB2210_Angel_Area_01.FX_EB2210_Angel_Area_01",
+    "/Game/DataAsset/Game/BattleAbilityResource/BattleAbilityResource_Fire01.BattleAbilityResource_Fire01",
+    "/Game/DataAsset/Game/BattleAbilityResource/BattleAbilityResource_Blizzard01.BattleAbilityResource_Blizzard01",
+    "/Game/DataAsset/Game/BattleAbilityResource/BattleAbilityResource_Thunder01.BattleAbilityResource_Thunder01",
+    "/Game/DataAsset/Game/BattleAbilityResource/BattleAbilityResource_Aero01.BattleAbilityResource_Aero01",
+    "/Game/BluePrint/Character/Property/FA0260_01_SephirothMeteor_Battle.FA0260_01_SephirothMeteor_Battle_C",
+    "/Game/Effect/Character/Property/FA0260_01_SephirothMeteor_Battle/Particle/FX_FA0260_01_Meteor_01.FX_FA0260_01_Meteor_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Particle/FX_SU2000_WeightBomb_Exp_01.FX_SU2000_WeightBomb_Exp_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Particle/FX_SU2000_Stamp_Shock_01.FX_SU2000_Stamp_Shock_01",
+    "/Game/Effect/Character/Summon/SU2050_NeoBahamut/Particle/FX_SU2050_BombBullet_Exp_01.FX_SU2050_BombBullet_Exp_01",
+    "/Game/Effect/Character/Summon/SU2050_NeoBahamut/Particle/FX_SU2050_Cmn_GroundHit_01.FX_SU2050_Cmn_GroundHit_01",
+    "/Game/Effect/Character/Summon/SU0000_Ifrit/Particle/FX_SU0000_Drop_Exp_01.FX_SU0000_Drop_Exp_01",
+    "/Game/Effect/Ability/Fire01/Particle/FX_Fire03_Hit_01.FX_Fire03_Hit_01",
+    "/Game/Environment/Building/Material/M_Decal_B_GroundCrack_01A.M_Decal_B_GroundCrack_01A",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Model/FX_SU2000_Rock_01.FX_SU2000_Rock_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Model/FX_SU2000_Rock_Red_01.FX_SU2000_Rock_Red_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Model/FX_SU2000_Rock_Red_02.FX_SU2000_Rock_Red_02",
+    "/Game/Environment/Building/Model/Decal_B_GroundCrack_01A.Decal_B_GroundCrack_01A",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Particle/FX_SU2000_RockThrow_Storm_01.FX_SU2000_RockThrow_Storm_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Particle/FX_SU2000_JumpPunch_Shock_01.FX_SU2000_JumpPunch_Shock_01",
+    "/Game/Effect/Character/Summon/SU2000_Titan/Particle/FX_SU2000_Common_Smoke_01.FX_SU2000_Common_Smoke_01",
+    "/Game/Menu/Resident/Texture/U_Command_Base_11.U_Command_Base_11",
+    "/Game/Menu/Resident/Texture/U_Command_BtnBase_06.U_Command_BtnBase_06",
+    "/Game/Menu/Resident/Texture/U_Command_Base_03.U_Command_Base_03",
+    "/Game/Menu/Resident/Texture/U_Command_Header_02.U_Command_Header_02",
+    "/Game/Menu/Resident/Texture/U_Command_Arrow_01.U_Command_Arrow_01",
+    "/Game/Menu/Resident/Texture/U_TargetCursor_Arrow_00.U_TargetCursor_Arrow_00",
+    "/Game/Menu/Resident/Texture/U_Command_BtnBase_08.U_Command_BtnBase_08"
+   ],
+   "pack_assets": [
+    "/Game/Effect/Character/Player/PC0010_10_Sephiroth_Transform/Build/PC0010_10_Sephiroth_Transform_Effect__Pack.PC0010_10_Sephiroth_Transform_Effect__Pack"
+   ],
+   "battle": [
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00.Battle00",
+     "as": "Battle02"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth/Battle01.Battle01",
+     "as": "Battle03"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01.Battle01",
+     "as": "Battle03"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00.Battle00",
+     "as": "Battle03"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00_Comp.Battle00_Comp",
+     "as": "Battle02"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00_Comp.Battle00_Comp",
+     "as": "Battle03"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00.Battle00",
+     "as": "Battle04"
+    },
+    {
+     "from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00_Comp.Battle00_Comp",
+     "as": "Battle04"
+    }
+   ],
+   "moves": [
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurst01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurst01_0.B_AtkBurst01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst01_0.B_AtkBurst01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst01_0.B_AtkBurst01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurst01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurst01_1.B_AtkBurst01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst01_1.B_AtkBurst01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst01_1.B_AtkBurst01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurst02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurst02_0.B_AtkBurst02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst02_0.B_AtkBurst02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst02_0.B_AtkBurst02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurst02_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurst02_1.B_AtkBurst02_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst02_1.B_AtkBurst02_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst02_1.B_AtkBurst02_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurstA01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurstA01_0.B_AtkBurstA01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst01_0.B_AtkBurst01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurstA01_0.B_AtkBurstA01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkBurstA01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkBurstA01_1.B_AtkBurstA01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkBurst01_1.B_AtkBurst01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurstA01_1.B_AtkBurstA01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkLimit01_0",
+     "animation": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkLimit01_0.B_AtkLimit01_0"
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkLimit01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkLimit01_1.B_AtkLimit01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkLimit01_5.B_AtkLimit01_5",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkLimit01_1.B_AtkLimit01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Avoid01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_0.B_Avoid01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid01_0.B_Avoid01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_0.B_Avoid01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Avoid01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_1.B_Avoid01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid01_1.B_Avoid01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_1.B_Avoid01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Avoid01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_2.B_Avoid01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid01_2.B_Avoid01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_2.B_Avoid01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Avoid02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid02_2.B_Avoid02_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid02_2.B_Avoid02_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid02_2.B_Avoid02_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ChainTatakau_A01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_0.B_ChainTatakau_A01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid01_0.B_Avoid01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ChainTatakau_A01_0.B_ChainTatakau_A01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ChainTatakau_A01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_1.B_ChainTatakau_A01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Avoid01_1.B_Avoid01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ChainTatakau_A01_1.B_ChainTatakau_A01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ChainTatakau_A01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_2.B_ChainTatakau_A01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_ChainTatakau_A01_2.B_ChainTatakau_A01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ChainTatakau_A01_2.B_ChainTatakau_A01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ChainTatakau_A02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A02_0.B_ChainTatakau_A02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_ChainTatakau_A02_0.B_ChainTatakau_A02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ChainTatakau_A02_0.B_ChainTatakau_A02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ChainTatakau_A03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A03_0.B_ChainTatakau_A03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_ChainTatakau_A03_0.B_ChainTatakau_A03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ChainTatakau_A03_0.B_ChainTatakau_A03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Die01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Die01_0.B_Die01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Die01_0.B_Die01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Die01_0.B_Die01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Die01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Die01_1.B_Die01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Die01_1.B_Die01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Die01_1.B_Die01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB01.B_DmgB01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgB01.B_DmgB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB01.B_DmgB01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgB02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB02.B_DmgB02",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgB01.B_DmgB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB02.B_DmgB02"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgB03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_0.B_DmgB03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgB03_0.B_DmgB03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_0.B_DmgB03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgB03_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_1.B_DmgB03_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgB03_1.B_DmgB03_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_1.B_DmgB03_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgB03_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_2.B_DmgB03_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgB03_2.B_DmgB03_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB03_2.B_DmgB03_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBlowB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowB01_0.B_DmgBlowB01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBlowB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowB01_1.B_DmgBlowB01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBlowF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowF01_0.B_DmgBlowF01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBlowF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowF01_1.B_DmgBlowF01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBurst01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_0.B_DmgBurst01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBurst01_0.B_DmgBurst01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBurst01_0.B_DmgBurst01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBurst01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_1.B_DmgBurst01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBurst01_1.B_DmgBurst01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBurst01_1.B_DmgBurst01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgBurst01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_2.B_DmgBurst01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgBurst01_2.B_DmgBurst01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBurst01_2.B_DmgBurst01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB01_0.B_DmgDownB01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownB01_0.B_DmgDownB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB01_0.B_DmgDownB01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownB01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB01_2.B_DmgDownB01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownB01_2.B_DmgDownB01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB01_2.B_DmgDownB01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownB02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB02_0.B_DmgDownB02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownB02_0.B_DmgDownB02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB02_0.B_DmgDownB02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownB02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB02_2.B_DmgDownB02_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownB02_2.B_DmgDownB02_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB02_2.B_DmgDownB02_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownB03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB03_0.B_DmgDownB03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownB03_0.B_DmgDownB03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownB03_0.B_DmgDownB03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF01_0.B_DmgDownF01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownF01_0.B_DmgDownF01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF01_0.B_DmgDownF01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownF01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF01_2.B_DmgDownF01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownF01_2.B_DmgDownF01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF01_2.B_DmgDownF01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownF02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF02_0.B_DmgDownF02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownF02_0.B_DmgDownF02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF02_0.B_DmgDownF02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownF02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF02_2.B_DmgDownF02_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownF02_2.B_DmgDownF02_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF02_2.B_DmgDownF02_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgDownF03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF03_0.B_DmgDownF03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgDownF03_0.B_DmgDownF03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgDownF03_0.B_DmgDownF03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF01.B_DmgF01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgF01.B_DmgF01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF01.B_DmgF01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgF02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF02.B_DmgF02",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgF01.B_DmgF01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF02.B_DmgF02"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgF03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF03_0.B_DmgF03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgF03_0.B_DmgF03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_0.B_DmgF03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgF03_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF03_1.B_DmgF03_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgF03_1.B_DmgF03_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_1.B_DmgF03_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgF03_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF03_2.B_DmgF03_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgF03_2.B_DmgF03_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF03_2.B_DmgF03_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgL01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgL01.B_DmgL01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgL01.B_DmgL01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgL01.B_DmgL01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgR01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgR01.B_DmgR01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgR01.B_DmgR01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgR01.B_DmgR01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgRecoverB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgRecoverB01.B_DmgRecoverB01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgRecoverB01.B_DmgRecoverB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgRecoverB01.B_DmgRecoverB01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgRecoverF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgRecoverF01.B_DmgRecoverF01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgRecoverF01.B_DmgRecoverF01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgRecoverF01.B_DmgRecoverF01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgReflect01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgReflect01.B_DmgReflect01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgReflect01.B_DmgReflect01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgReflect01.B_DmgReflect01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgStrikeB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeB01_0.B_DmgStrikeB01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgStrikeB01_0.B_DmgStrikeB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeB01_0.B_DmgStrikeB01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgStrikeB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeB01_1.B_DmgStrikeB01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgStrikeB01_1.B_DmgStrikeB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeB01_1.B_DmgStrikeB01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgStrikeF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeF01_0.B_DmgStrikeF01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgStrikeF01_0.B_DmgStrikeF01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeF01_0.B_DmgStrikeF01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgStrikeF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeF01_1.B_DmgStrikeF01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgStrikeF01_1.B_DmgStrikeF01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgStrikeF01_1.B_DmgStrikeF01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgUpperB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperB01_0.B_DmgUpperB01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgUpperB01_0.B_DmgUpperB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperB01_0.B_DmgUpperB01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgUpperB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperB01_1.B_DmgUpperB01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgUpperB01_1.B_DmgUpperB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperB01_1.B_DmgUpperB01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgUpperF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperF01_0.B_DmgUpperF01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgUpperF01_0.B_DmgUpperF01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperF01_0.B_DmgUpperF01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DmgUpperF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperF01_1.B_DmgUpperF01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DmgUpperF01_1.B_DmgUpperF01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgUpperF01_1.B_DmgUpperF01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DownDieB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DownDieB01.B_DownDieB01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DownDieB01.B_DownDieB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownDieB01.B_DownDieB01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_DownDieF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DownDieF01.B_DownDieF01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_DownDieF01.B_DownDieF01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DownDieF01.B_DownDieF01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Fall01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Fall01_1.B_Fall01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Fall01_1.B_Fall01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Fall01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Fall01_2.B_Fall01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Fall01_2.B_Fall01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Idle01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Idle01_0.B_Idle01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Idle01_1.B_Idle01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Idle01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Idle01_1.B_Idle01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Idle01_1.B_Idle01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Idle01_1_EnemyBook",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Idle01_1.B_Idle01_1"
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Idle01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Idle01_2.B_Idle01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Idle01_1.B_Idle01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_2.B_Idle01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_0.B_MagAttack01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_0.B_AtkMag01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_0.B_MagAttack01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagAttack01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_1.B_MagAttack01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_1.B_AtkMag01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_1.B_MagAttack01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagAttack01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_2.B_MagAttack01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_2.B_AtkMag01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_2.B_MagAttack01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagCure01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_0.B_MagCure01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_0.B_AtkMag01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagCure01_0.B_MagCure01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagCure01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_1.B_MagCure01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_1.B_AtkMag01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagCure01_1.B_MagCure01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_MagCure01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_2.B_MagCure01_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_AtkMag01_2.B_AtkMag01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagCure01_2.B_MagCure01_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttack01_0.B_NAttack01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack01_0.B_NAttack01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0.B_NAttack01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttack02_0.B_NAttack02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack02_0.B_NAttack02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0.B_NAttack02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttack03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttack03_0.B_NAttack03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack03_0.B_NAttack03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0.B_NAttack03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttack04_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttack04_0.B_NAttack04_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack04_0.B_NAttack04_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0.B_NAttack04_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttackJ01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ01_0.B_NAttackJ01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttackJ01_0.B_NAttackJ01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ01_0.B_NAttackJ01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttackJ02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ02_0.B_NAttackJ02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttackJ02_0.B_NAttackJ02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ02_0.B_NAttackJ02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NAttackJ03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ03_0.B_NAttackJ03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttackJ03_0.B_NAttackJ03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ03_0.B_NAttackJ03_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NPAttack01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NPAttack01.B_NPAttack01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NPAttack01.B_NPAttack01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttack01.B_NPAttack01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_NPAttackJ01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NPAttackJ01.B_NPAttackJ01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NPAttack01.B_NPAttack01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttackJ01.B_NPAttackJ01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackL01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL01.B_ParryAttackL01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack01_0.B_NAttack01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackL01.B_ParryAttackL01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackL02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL02.B_ParryAttackL02",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack02_0.B_NAttack02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackL02.B_ParryAttackL02"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackL03",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL03.B_ParryAttackL03",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack03_0.B_NAttack03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackL03.B_ParryAttackL03"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackL04",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL04.B_ParryAttackL04",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack04_0.B_NAttack04_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackL04.B_ParryAttackL04"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackR01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR01.B_ParryAttackR01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack01_0.B_NAttack01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackR01.B_ParryAttackR01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackR02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR02.B_ParryAttackR02",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack02_0.B_NAttack02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackR02.B_ParryAttackR02"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackR03",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR03.B_ParryAttackR03",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack03_0.B_NAttack03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackR03.B_ParryAttackR03"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_ParryAttackR04",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR04.B_ParryAttackR04",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_NAttack04_0.B_NAttack04_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ParryAttackR04.B_ParryAttackR04"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_0_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_0_L0.B_Run01_0_L0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_L0.B_Run01_0_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_0_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_0_L180.B_Run01_0_L180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_0_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_0_L90.B_Run01_0_L90",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_L90.B_Run01_0_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_0_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_0_R180.B_Run01_0_R180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_1.B_Run01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_1.B_Run01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_1_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_1_L180.B_Run01_1_L180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_L180.B_Run01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_L180.B_Run01_1_L180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_1_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_1_R180.B_Run01_1_R180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_0_R180.B_Run01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_R180.B_Run01_1_R180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_2l.B_Run01_2l",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_2l.B_Run01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2l.B_Run01_2l"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Run01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Run01_2r.B_Run01_2r",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Run01_2l.B_Run01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2r.B_Run01_2r"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack01_0.B_SAttack01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack01_0.B_SAttack01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack01_0.B_SAttack01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack02_0.B_SAttack02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack02_0.B_SAttack02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack02_0.B_SAttack02_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack05_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack05_0.B_SAttack05_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack05_0.B_SAttack05_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack05_0.B_SAttack05_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack06_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack06_0.B_SAttack06_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack06_0.B_SAttack06_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack06_0.B_SAttack06_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack07_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack07_0.B_SAttack07_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack06_0.B_SAttack06_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack07_0.B_SAttack07_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack08_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_0.B_SAttack08_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack08_0.B_SAttack08_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack08_0.B_SAttack08_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack08_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_1.B_SAttack08_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack08_1.B_SAttack08_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack08_1.B_SAttack08_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack08_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_2.B_SAttack08_2",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack08_2.B_SAttack08_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack08_2.B_SAttack08_2"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack09_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack09_0.B_SAttack09_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack10_0.B_SAttack10_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack09_0.B_SAttack09_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_SAttack10_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack10_0.B_SAttack10_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_SAttack10_0.B_SAttack10_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack10_0.B_SAttack10_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_StepAB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_StepAB01.B_StepAB01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_StepB01.B_StepB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_StepAB01.B_StepAB01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_StepB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_StepB01.B_StepB01",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_StepB01.B_StepB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_StepB01.B_StepB01"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_L0.B_Turn01_L0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_L0.B_Turn01_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L0.B_Turn01_L0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_L180.B_Turn01_L180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_L180.B_Turn01_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L180.B_Turn01_L180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_L90.B_Turn01_L90",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_L90.B_Turn01_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L90.B_Turn01_L90"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_R0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_R0.B_Turn01_R0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_R0.B_Turn01_R0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R0.B_Turn01_R0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_R180.B_Turn01_R180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_R180.B_Turn01_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R180.B_Turn01_R180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Turn01_R90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Turn01_R90.B_Turn01_R90",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Turn01_R90.B_Turn01_R90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R90.B_Turn01_R90"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_0_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_0_L0.B_Walk01_0_L0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_0_L0.B_Walk01_0_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L0.B_Walk01_0_L0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_0_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_0_L180.B_Walk01_0_L180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_0_L180.B_Walk01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L180.B_Walk01_0_L180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_0_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_0_L90.B_Walk01_0_L90",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_0_L90.B_Walk01_0_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L90.B_Walk01_0_L90"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_0_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_0_R180.B_Walk01_0_R180",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_0_R180.B_Walk01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R180.B_Walk01_0_R180"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_0_R90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_0_R90.B_Walk01_0_R90",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_0_R90.B_Walk01_0_R90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R90.B_Walk01_0_R90"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_1.B_Walk01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_1.B_Walk01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_2l.B_Walk01_2l",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_2l.B_Walk01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2l.B_Walk01_2l"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_Walk01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Walk01_2r.B_Walk01_2r",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_2r.B_Walk01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2r.B_Walk01_2r"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkB01_0.B_WalkB01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_0.B_WalkB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_0.B_WalkB01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkB01_1.B_WalkB01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_1.B_WalkB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkB01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkB01_2l.B_WalkB01_2l",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_2l.B_WalkB01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2l.B_WalkB01_2l"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkB01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkB01_2r.B_WalkB01_2r",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_2r.B_WalkB01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2r.B_WalkB01_2r"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkBL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkBL01_1.B_WalkBL01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_1.B_WalkB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkBR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkBR01_1.B_WalkBR01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkB01_1.B_WalkB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkFL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkFL01_1.B_WalkFL01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_1.B_Walk01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkFR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkFR01_1.B_WalkFR01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_Walk01_1.B_Walk01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkL01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkL01_0.B_WalkL01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkL01_0.B_WalkL01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_0.B_WalkL01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkL01_1.B_WalkL01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkL01_1.B_WalkL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkL01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkL01_2l.B_WalkL01_2l",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkL01_2l.B_WalkL01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2l.B_WalkL01_2l"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkL01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkL01_2r.B_WalkL01_2r",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkL01_2r.B_WalkL01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2r.B_WalkL01_2r"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkR01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkR01_0.B_WalkR01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkR01_0.B_WalkR01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_0.B_WalkR01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkR01_1.B_WalkR01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkR01_1.B_WalkR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkR01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkR01_2l.B_WalkR01_2l",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkR01_2l.B_WalkR01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2l.B_WalkR01_2l"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_WalkR01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_WalkR01_2r.B_WalkR01_2r",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle00/B_WalkR01_2r.B_WalkR01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2r.B_WalkR01_2r"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkTenshi01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_0.B_AtkTenshi01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkTenshi01_0.B_AtkTenshi01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle01/B_AtkTenshi01_0.B_AtkTenshi01_0"
+     }
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkTenshi01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_1.B_AtkTenshi01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkTenshi01_1.B_AtkTenshi01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle01/B_AtkTenshi01_1.B_AtkTenshi01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkLimit01_0",
+     "animation": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkLimit01_0.B_AtkLimit01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkLimit01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkLimit01_1.B_AtkLimit01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Avoid01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_0.B_Avoid01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Avoid01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_1.B_Avoid01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Avoid01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid01_2.B_Avoid01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Avoid02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Avoid02_2.B_Avoid02_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ChainTatakau_A01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_0.B_ChainTatakau_A01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ChainTatakau_A01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_1.B_ChainTatakau_A01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ChainTatakau_A01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A01_2.B_ChainTatakau_A01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ChainTatakau_A02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A02_0.B_ChainTatakau_A02_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ChainTatakau_A03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ChainTatakau_A03_0.B_ChainTatakau_A03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Die01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Die01_0.B_Die01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Die01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Die01_1.B_Die01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB01.B_DmgB01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgB02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB02.B_DmgB02"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgB03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_0.B_DmgB03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgB03_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_1.B_DmgB03_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgB03_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgB03_2.B_DmgB03_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBlowB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowB01_0.B_DmgBlowB01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBlowB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowB01_1.B_DmgBlowB01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBlowF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowF01_0.B_DmgBlowF01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBlowF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBlowF01_1.B_DmgBlowF01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBurst01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_0.B_DmgBurst01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBurst01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_1.B_DmgBurst01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgBurst01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgBurst01_2.B_DmgBurst01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB01_0.B_DmgDownB01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownB01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB01_2.B_DmgDownB01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownB02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB02_0.B_DmgDownB02_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownB02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB02_2.B_DmgDownB02_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownB03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownB03_0.B_DmgDownB03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF01_0.B_DmgDownF01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownF01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF01_2.B_DmgDownF01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownF02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF02_0.B_DmgDownF02_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownF02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF02_2.B_DmgDownF02_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgDownF03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgDownF03_0.B_DmgDownF03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF01.B_DmgF01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgF02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgF02.B_DmgF02"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgL01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgL01.B_DmgL01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgR01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgR01.B_DmgR01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgRecoverB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgRecoverB01.B_DmgRecoverB01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgRecoverF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgRecoverF01.B_DmgRecoverF01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgReflect01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgReflect01.B_DmgReflect01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgStrikeB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeB01_0.B_DmgStrikeB01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgStrikeB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeB01_1.B_DmgStrikeB01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgStrikeF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeF01_0.B_DmgStrikeF01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgStrikeF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgStrikeF01_1.B_DmgStrikeF01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgUpperB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperB01_0.B_DmgUpperB01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgUpperB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperB01_1.B_DmgUpperB01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgUpperF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperF01_0.B_DmgUpperF01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DmgUpperF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DmgUpperF01_1.B_DmgUpperF01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DownDieB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DownDieB01.B_DownDieB01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_DownDieF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_DownDieF01.B_DownDieF01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Idle01_1_EnemyBook",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_Idle01_1.B_Idle01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_0.B_MagAttack01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagAttack01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_1.B_MagAttack01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagAttack01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagAttack01_2.B_MagAttack01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagCure01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_0.B_MagCure01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagCure01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_1.B_MagCure01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_MagCure01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_MagCure01_2.B_MagCure01_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttackJ01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ01_0.B_NAttackJ01_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttackJ02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ02_0.B_NAttackJ02_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttackJ03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NAttackJ03_0.B_NAttackJ03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NPAttack01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NPAttack01.B_NPAttack01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NPAttackJ01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_NPAttackJ01.B_NPAttackJ01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackL01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL01.B_ParryAttackL01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackL02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL02.B_ParryAttackL02"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackL03",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL03.B_ParryAttackL03"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackL04",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackL04.B_ParryAttackL04"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackR01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR01.B_ParryAttackR01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackR02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR02.B_ParryAttackR02"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackR03",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR03.B_ParryAttackR03"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_ParryAttackR04",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_ParryAttackR04.B_ParryAttackR04"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack05_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack05_0.B_SAttack05_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack06_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack06_0.B_SAttack06_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack07_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack07_0.B_SAttack07_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack08_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_0.B_SAttack08_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack08_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_1.B_SAttack08_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack08_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack08_2.B_SAttack08_2"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack09_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack09_0.B_SAttack09_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack10_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_SAttack10_0.B_SAttack10_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_StepAB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_StepAB01.B_StepAB01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_StepB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_StepB01.B_StepB01"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_NAttack01_0.B_NAttack01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_NAttackWing02_0.B_NAttackWing02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0.B_NAttack01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_NAttack02_0.B_NAttack02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_NAttackWing04_0.B_NAttackWing04_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0.B_NAttack02_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttack03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_NAttack03_0.B_NAttack03_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_SAttackWing02_0.B_SAttackWing02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0.B_NAttack03_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_NAttack04_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_NAttack04_0.B_NAttack04_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_SAttackWing06_0.B_SAttackWing06_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0.B_NAttack04_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_SAttack01_0.B_SAttack01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_SAttackWing02_0.B_SAttackWing02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack01_0.B_SAttack01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_SAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_SAttack02_0.B_SAttack02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_SAttackWing06_0.B_SAttackWing06_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_SAttack02_0.B_SAttack02_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurst01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurst01_0.B_AtkBurst01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkStab01.B_AtkStab01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst01_0.B_AtkBurst01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurst01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurst01_1.B_AtkBurst01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkStab02.B_AtkStab02",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst01_1.B_AtkBurst01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurstA01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurstA01_0.B_AtkBurstA01_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkStab01.B_AtkStab01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurstA01_0.B_AtkBurstA01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurstA01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurstA01_1.B_AtkBurstA01_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkStab02.B_AtkStab02",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurstA01_1.B_AtkBurstA01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurst02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurst02_0.B_AtkBurst02_0",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkTenshi01_1.B_AtkTenshi01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst02_0.B_AtkBurst02_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkBurst02_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_AtkBurst02_1.B_AtkBurst02_1",
+     "build": {
+      "from": "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkFeelerTornado01_0.B_AtkFeelerTornado01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_AtkBurst02_1.B_AtkBurst02_1"
+     }
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkLimit02_0",
+     "animation": [
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_0.B_AtkLimit02_0",
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_1.B_AtkLimit02_1"
+     ]
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkLimit03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0"
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkLimit02_0",
+     "animation": [
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_0.B_AtkLimit02_0",
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_1.B_AtkLimit02_1"
+     ]
+    },
+    {
+     "set": "Battle02",
+     "key": "B_AtkLimit03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkLimit02_0",
+     "animation": [
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_0.B_AtkLimit02_0",
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_1.B_AtkLimit02_1"
+     ]
+    },
+    {
+     "set": "Battle03",
+     "key": "B_AtkLimit03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkTenshi01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_0.B_AtkTenshi01_0"
+    },
+    {
+     "set": "Battle00",
+     "key": "B_AtkTenshi01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_1.B_AtkTenshi01_1"
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Idle01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Idle01_1.B_Idle01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Idle01_1.KH2_B_Idle01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Idle01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Idle01_0.B_Idle01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Idle01_0.KH2_B_Idle01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_1.B_Run01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_1.KH2_B_Run01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_0_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_0_L0.B_Run01_0_L0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L0.KH2_B_Run01_0_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_0_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_0_L90.B_Run01_0_L90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L90.KH2_B_Run01_0_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_0_R90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_0_R90.B_Run01_0_R90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_R90.KH2_B_Run01_0_R90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_0_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_0_L180.B_Run01_0_L180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_L180.KH2_B_Run01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Run01_0_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Run01_0_R180.B_Run01_0_R180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Run01_0_R180.KH2_B_Run01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Walk01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Walk01_1.B_Walk01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Walk01_1.KH2_B_Walk01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkFL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkFL01_1.B_WalkFL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkFL01_1.KH2_B_WalkFL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkFR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkFR01_1.B_WalkFR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkFR01_1.KH2_B_WalkFR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkL01_1.B_WalkL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkL01_1.KH2_B_WalkL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkR01_1.B_WalkR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkR01_1.KH2_B_WalkR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkB01_1.B_WalkB01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkB01_1.KH2_B_WalkB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkBL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkBL01_1.B_WalkBL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkBL01_1.KH2_B_WalkBL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_WalkBR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_WalkBR01_1.B_WalkBR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_WalkBR01_1.KH2_B_WalkBR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Fall01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Fall01_1.B_Fall01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Fall01_1.KH2_B_Fall01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Fall01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Fall01_2.B_Fall01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Fall01_2.KH2_B_Fall01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Guard01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Guard01_0.B_Guard01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_0.KH2_B_Guard01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_0.B_Guard01_0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Guard01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Guard01_1.B_Guard01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_1.KH2_B_Guard01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_1.B_Guard01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Guard01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Guard01_2.B_Guard01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Guard01_2.KH2_B_Guard01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Guard01_2.B_Guard01_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgGuard02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgGuard02.B_DmgGuard02",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgGuard02.KH2_B_DmgGuard02",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgGuard02.B_DmgGuard02"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Avoid01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Avoid01_0.B_Avoid01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_0.KH2_B_Avoid01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_0.B_Avoid01_0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Avoid01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Avoid01_1.B_Avoid01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_1.KH2_B_Avoid01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_1.B_Avoid01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Avoid01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Avoid01_2.B_Avoid01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid01_2.KH2_B_Avoid01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid01_2.B_Avoid01_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Avoid02_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Avoid02_2.B_Avoid02_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Avoid02_2.KH2_B_Avoid02_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Avoid02_2.B_Avoid02_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgF01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgF01.B_DmgF01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgF01.KH2_B_DmgF01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF01.B_DmgF01"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgB01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgB01.B_DmgB01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgB01.KH2_B_DmgB01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB01.B_DmgB01"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgL01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgL01.B_DmgL01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgL01.KH2_B_DmgL01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgL01.B_DmgL01"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgR01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgR01.B_DmgR01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgR01.KH2_B_DmgR01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgR01.B_DmgR01"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgF02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgF02.B_DmgF02",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgF02.KH2_B_DmgF02",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgF02.B_DmgF02"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgB02",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgB02.B_DmgB02",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgB02.KH2_B_DmgB02",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgB02.B_DmgB02"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowF01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowF01_0.B_DmgBlowF01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_0.KH2_B_DmgBlowF01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowF01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowF01_1.B_DmgBlowF01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_1.KH2_B_DmgBlowF01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowF01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowF01_2.B_DmgBlowF01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowF01_2.KH2_B_DmgBlowF01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowF01_2.B_DmgBlowF01_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowB01_0.B_DmgBlowB01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_0.KH2_B_DmgBlowB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowB01_1.B_DmgBlowB01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_1.KH2_B_DmgBlowB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_DmgBlowB01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_DmgBlowB01_2.B_DmgBlowB01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_DmgBlowB01_2.KH2_B_DmgBlowB01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_DmgBlowB01_2.B_DmgBlowB01_2"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Item01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Item01.B_Item01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Item01.KH2_B_Item01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Item01.B_Item01",
+      "hits": [
+       {
+        "time": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_ItemCure01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_ItemCure01.B_ItemCure01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_ItemCure01.KH2_B_ItemCure01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_ItemCure01.B_ItemCure01",
+      "hits": [
+       {
+        "time": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_AtkLimit03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_AtkLimit03_0.B_AtkLimit03_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_AtkLimit03_0.KH2_B_AtkLimit03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_MagAttack01_2.B_MagAttack01_2",
+      "hits": [
+       {
+        "time": 1
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_Win01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_Win01.B_Win01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_Win01.KH2_B_Win01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Win01.B_Win01"
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttack01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttack01_0.B_NAttack01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack01_0.KH2_B_NAttack01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack01_0.B_NAttack01_0",
+      "hits": [
+       {
+        "time": 0.1
+       },
+       {
+        "time": 0.47000000000000003
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttack02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttack02_0.B_NAttack02_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack02_0.KH2_B_NAttack02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack02_0.B_NAttack02_0",
+      "hits": [
+       {
+        "time": 0.1
+       },
+       {
+        "time": 0.38
+       },
+       {
+        "time": 0.5700000000000001
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttack03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttack03_0.B_NAttack03_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack03_0.KH2_B_NAttack03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack03_0.B_NAttack03_0",
+      "hits": [
+       {
+        "time": 0.14
+       },
+       {
+        "time": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttack04_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttack04_0.B_NAttack04_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttack04_0.KH2_B_NAttack04_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttack04_0.B_NAttack04_0",
+      "hits": [
+       {
+        "time": 0.23
+       },
+       {
+        "time": 0.51
+       },
+       {
+        "time": 0.76
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NPAttack01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NPAttack01.B_NPAttack01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NPAttack01.KH2_B_NPAttack01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttack01.B_NPAttack01",
+      "hits": [
+       {
+        "time": 0.44
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttackJ01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttackJ01_0.B_NAttackJ01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ01_0.KH2_B_NAttackJ01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ01_0.B_NAttackJ01_0",
+      "hits": [
+       {
+        "time": 0.1
+       },
+       {
+        "time": 0.46
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttackJ02_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttackJ02_0.B_NAttackJ02_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ02_0.KH2_B_NAttackJ02_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ02_0.B_NAttackJ02_0",
+      "hits": [
+       {
+        "time": 0.1
+       },
+       {
+        "time": 0.38
+       },
+       {
+        "time": 0.56
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NAttackJ03_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NAttackJ03_0.B_NAttackJ03_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NAttackJ03_0.KH2_B_NAttackJ03_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NAttackJ03_0.B_NAttackJ03_0",
+      "hits": [
+       {
+        "time": 0.23
+       },
+       {
+        "time": 0.51
+       },
+       {
+        "time": 0.68
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_NPAttackJ01",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle04/B_NPAttackJ01.B_NPAttackJ01",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/KH2Sephiroth/KH2_B_NPAttackJ01.KH2_B_NPAttackJ01",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_NPAttackJ01.B_NPAttackJ01",
+      "hits": [
+       {
+        "time": 0.17
+       },
+       {
+        "time": 0.47000000000000003
+       }
+      ]
+     }
+    },
+    {
+     "set": "Battle04",
+     "key": "B_AtkLimit02_0",
+     "animation": [
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_0.B_AtkLimit02_0",
+      "/Game/Motion/Player/PC0010_Sephiroth_Transform/Battle01/B_AtkLimit02_1.B_AtkLimit02_1"
+     ]
+    },
+    {
+     "set": "Battle04",
+     "key": "B_AtkTenshi01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_0.B_AtkTenshi01_0"
+    },
+    {
+     "set": "Battle04",
+     "key": "B_AtkTenshi01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle02/B_AtkTenshi01_1.B_AtkTenshi01_1"
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Idle01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Idle01_0.B_Idle01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_0.FLY_B_Idle01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_0.B_Idle01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Idle01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Idle01_1.B_Idle01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_1.FLY_B_Idle01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_1.B_Idle01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Idle01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Idle01_2.B_Idle01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Idle01_2.FLY_B_Idle01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Idle01_2.B_Idle01_2"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Fall01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Fall01_1.B_Fall01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Fall01_1.FLY_B_Fall01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_1.B_Fall01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Fall01_2",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Fall01_2.B_Fall01_2",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Fall01_2.FLY_B_Fall01_2",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Fall01_2.B_Fall01_2"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_1.B_Run01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1.FLY_B_Run01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1.B_Run01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_1_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_1_L180.B_Run01_1_L180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1_L180.FLY_B_Run01_1_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_L180.B_Run01_1_L180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_1_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_1_R180.B_Run01_1_R180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_1_R180.FLY_B_Run01_1_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_1_R180.B_Run01_1_R180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_0_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_0_L0.B_Run01_0_L0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L0.FLY_B_Run01_0_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L0.B_Run01_0_L0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_0_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_0_L90.B_Run01_0_L90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L90.FLY_B_Run01_0_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L90.B_Run01_0_L90"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_0_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_0_L180.B_Run01_0_L180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_L180.FLY_B_Run01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_L180.B_Run01_0_L180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_0_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_0_R180.B_Run01_0_R180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_0_R180.FLY_B_Run01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_0_R180.B_Run01_0_R180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_2l.B_Run01_2l",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_2l.FLY_B_Run01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2l.B_Run01_2l"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Run01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Run01_2r.B_Run01_2r",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Run01_2r.FLY_B_Run01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Run01_2r.B_Run01_2r"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_L0.B_Turn01_L0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L0.FLY_B_Turn01_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L0.B_Turn01_L0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_R0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_R0.B_Turn01_R0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R0.FLY_B_Turn01_R0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R0.B_Turn01_R0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_L90.B_Turn01_L90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L90.FLY_B_Turn01_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L90.B_Turn01_L90"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_R90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_R90.B_Turn01_R90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R90.FLY_B_Turn01_R90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R90.B_Turn01_R90"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_L180.B_Turn01_L180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_L180.FLY_B_Turn01_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_L180.B_Turn01_L180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Turn01_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Turn01_R180.B_Turn01_R180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Turn01_R180.FLY_B_Turn01_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Turn01_R180.B_Turn01_R180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_0_L0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_0_L0.B_Walk01_0_L0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L0.FLY_B_Walk01_0_L0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L0.B_Walk01_0_L0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_0_L90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_0_L90.B_Walk01_0_L90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L90.FLY_B_Walk01_0_L90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L90.B_Walk01_0_L90"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_0_R90",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_0_R90.B_Walk01_0_R90",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_R90.FLY_B_Walk01_0_R90",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R90.B_Walk01_0_R90"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_0_L180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_0_L180.B_Walk01_0_L180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_L180.FLY_B_Walk01_0_L180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_L180.B_Walk01_0_L180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_0_R180",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_0_R180.B_Walk01_0_R180",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_0_R180.FLY_B_Walk01_0_R180",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_0_R180.B_Walk01_0_R180"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_1.B_Walk01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_1.FLY_B_Walk01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_1.B_Walk01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_2l.B_Walk01_2l",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_2l.FLY_B_Walk01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2l.B_Walk01_2l"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_Walk01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_Walk01_2r.B_Walk01_2r",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_Walk01_2r.FLY_B_Walk01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_Walk01_2r.B_Walk01_2r"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkB01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkB01_0.B_WalkB01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_0.FLY_B_WalkB01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_0.B_WalkB01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkB01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkB01_1.B_WalkB01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_1.FLY_B_WalkB01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_1.B_WalkB01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkB01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkB01_2l.B_WalkB01_2l",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_2l.FLY_B_WalkB01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2l.B_WalkB01_2l"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkB01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkB01_2r.B_WalkB01_2r",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkB01_2r.FLY_B_WalkB01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkB01_2r.B_WalkB01_2r"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkL01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkL01_0.B_WalkL01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_0.FLY_B_WalkL01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_0.B_WalkL01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkL01_1.B_WalkL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_1.FLY_B_WalkL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_1.B_WalkL01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkL01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkL01_2l.B_WalkL01_2l",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_2l.FLY_B_WalkL01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2l.B_WalkL01_2l"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkL01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkL01_2r.B_WalkL01_2r",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkL01_2r.FLY_B_WalkL01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkL01_2r.B_WalkL01_2r"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkR01_0",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkR01_0.B_WalkR01_0",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_0.FLY_B_WalkR01_0",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_0.B_WalkR01_0"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkR01_1.B_WalkR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_1.FLY_B_WalkR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_1.B_WalkR01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkR01_2l",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkR01_2l.B_WalkR01_2l",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_2l.FLY_B_WalkR01_2l",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2l.B_WalkR01_2l"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkR01_2r",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkR01_2r.B_WalkR01_2r",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkR01_2r.FLY_B_WalkR01_2r",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkR01_2r.B_WalkR01_2r"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkFL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkFL01_1.B_WalkFL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkFL01_1.FLY_B_WalkFL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFL01_1.B_WalkFL01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkFR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkFR01_1.B_WalkFR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkFR01_1.FLY_B_WalkFR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkFR01_1.B_WalkFR01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkBL01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkBL01_1.B_WalkBL01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkBL01_1.FLY_B_WalkBL01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBL01_1.B_WalkBL01_1"
+     }
+    },
+    {
+     "set": "Battle03",
+     "key": "B_WalkBR01_1",
+     "animation": "/Game/RebirthSkelCompat/Built/SephirothForms/Battle03/B_WalkBR01_1.B_WalkBR01_1",
+     "build": {
+      "from": "/Game/RebirthSkelCompat/Imported/SephirothFlight/FLY_B_WalkBR01_1.FLY_B_WalkBR01_1",
+      "notifies_from": "/Game/Motion/Player/PC0010_Sephiroth/Battle00/B_WalkBR01_1.B_WalkBR01_1"
+     }
+    }
+   ],
+   "skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+   "build_folder": "/Game/RebirthSkelCompat/Built/SephirothForms",
+   "requires_paks": [
+    "FullyPlayableSephirothDataAssets_P",
+    "SephirothForms_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

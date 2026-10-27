@@ -1,0 +1,323 @@
+Validate: OK
+
+Animation set row 0: PC0010_10_Sephiroth_Transform, PC0010_20_Sephiroth_VRHard
+    CharaSpec PC0010_10_Sephiroth_Transform: model PC0000_00_Cloud_Standard, sets Battle00, Battle01, Battle00_Comp, Battle01_Comp, field-action folder PC0010_Sephiroth_Transform
+    CharaSpec PC0010_20_Sephiroth_VRHard: model PC0000_00_Cloud_Standard, sets Battle00, Battle01, Battle00_Comp, Battle01_Comp, field-action folder PC0010_Sephiroth_Transform
+    Battle00: PC0010_Sephiroth_Transform/Battle00
+    Battle00_Comp: PC0010_Sephiroth_Transform/Battle00_Comp
+    Battle01: PC0010_Sephiroth_Transform/Battle01
+    Battle01_Comp: PC0010_Sephiroth_Transform/Battle01_Comp
+    move Battle00/B_AtkBurst01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkBurst01_0.B_AtkBurst01_0
+    move Battle00/B_AtkBurst01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkBurst01_1.B_AtkBurst01_1
+    move Battle00/B_AtkBurst02_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkBurst02_0.B_AtkBurst02_0
+    move Battle00/B_AtkBurst02_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkBurst02_1.B_AtkBurst02_1
+    move Battle01/B_AtkFeelerLaser01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerLaser01_0.B_AtkFeelerLaser01_0
+    move Battle01/B_AtkFeelerLaser01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerLaser01_2.B_AtkFeelerLaser01_2
+    move Battle01/B_AtkFeelerLaserL01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerLaserL01_1.B_AtkFeelerLaserL01_1
+    move Battle01/B_AtkFeelerLaserR01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerLaserR01_1.B_AtkFeelerLaserR01_1
+    move Battle01/B_AtkFeelerTornado01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerTornado01_0.B_AtkFeelerTornado01_0
+    move Battle01/B_AtkFeelerTornado01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerTornado01_1.B_AtkFeelerTornado01_1
+    move Battle01/B_AtkFeelerTornado01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFeelerTornado01_2.B_AtkFeelerTornado01_2
+    move Battle01/B_AtkFinalAttack01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFinalAttack01_0.B_AtkFinalAttack01_0
+    move Battle01/B_AtkFinalAttack01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFinalAttack01_1.B_AtkFinalAttack01_1
+    move Battle01/B_AtkFinalAttack01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkFinalAttack01_2.B_AtkFinalAttack01_2
+    move Battle00/B_AtkLimit01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_0.B_AtkLimit01_0
+    move Battle00/B_AtkLimit01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_1.B_AtkLimit01_1
+    move Battle00_Comp/B_AtkLimit01_1_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkLimit01_1_Comp.B_AtkLimit01_1_Comp
+    move Battle00_Comp/B_AtkLimit01_1_Comp2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkLimit01_1_Comp2.B_AtkLimit01_1_Comp2
+    move Battle00/B_AtkLimit01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_2.B_AtkLimit01_2
+    move Battle00/B_AtkLimit01_3 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_3.B_AtkLimit01_3
+    move Battle00_Comp/B_AtkLimit01_3_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkLimit01_3_Comp.B_AtkLimit01_3_Comp
+    move Battle00/B_AtkLimit01_4 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_4.B_AtkLimit01_4
+    move Battle00/B_AtkLimit01_5 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_5.B_AtkLimit01_5
+    move Battle00_Comp/B_AtkLimit01_5_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkLimit01_5_Comp.B_AtkLimit01_5_Comp
+    move Battle00/B_AtkLimit01_6 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkLimit01_6.B_AtkLimit01_6
+    move Battle00/B_AtkMag01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_0.B_AtkMag01_0
+    move Battle00_Comp/B_AtkMag01_0_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_0_Comp.B_AtkMag01_0_Comp
+    move Battle00/B_AtkMag01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_1.B_AtkMag01_1
+    move Battle00_Comp/B_AtkMag01_1_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_1_Comp.B_AtkMag01_1_Comp
+    move Battle00/B_AtkMag01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_2.B_AtkMag01_2
+    move Battle00_Comp/B_AtkMag01_2_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_2_Comp.B_AtkMag01_2_Comp
+    move Battle00_Comp/B_AtkMag01_2_Comp1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_2_Comp1.B_AtkMag01_2_Comp1
+    move Battle00_Comp/B_AtkMag01_2_CompMagic -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_2_CompMagic.B_AtkMag01_2_CompMagic
+    move Battle00/B_AtkMag01_3 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_3.B_AtkMag01_3
+    move Battle00/B_AtkMag01_4 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_4.B_AtkMag01_4
+    move Battle00_Comp/B_AtkMag01_4_Fire_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_4_Fire_Comp.B_AtkMag01_4_Fire_Comp
+    move Battle00_Comp/B_AtkMag01_4_Ice_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_4_Ice_Comp.B_AtkMag01_4_Ice_Comp
+    move Battle00_Comp/B_AtkMag01_4_Lightning_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_4_Lightning_Comp.B_AtkMag01_4_Lightning_Comp
+    move Battle00_Comp/B_AtkMag01_4_Wind_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkMag01_4_Wind_Comp.B_AtkMag01_4_Wind_Comp
+    move Battle00/B_AtkMag01_5 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkMag01_5.B_AtkMag01_5
+    move Battle01/B_AtkStab01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkStab01.B_AtkStab01
+    move Battle01/B_AtkTenshi01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkTenshi01_0.B_AtkTenshi01_0
+    move Battle01/B_AtkTenshi01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_AtkTenshi01_1.B_AtkTenshi01_1
+    move Battle00/B_AtkZekkuu01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkZekkuu01_0.B_AtkZekkuu01_0
+    move Battle00_Comp/B_AtkZekkuu01_0_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_AtkZekkuu01_0_Comp.B_AtkZekkuu01_0_Comp
+    move Battle00/B_AtkZekkuu01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkZekkuu01_1.B_AtkZekkuu01_1
+    move Battle00/B_AtkZekkuu01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_AtkZekkuu01_2.B_AtkZekkuu01_2
+    move Battle00/B_Avoid01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Avoid01_0.B_Avoid01_0
+    move Battle00/B_Avoid01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Avoid01_1.B_Avoid01_1
+    move Battle00/B_Avoid01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Avoid01_2.B_Avoid01_2
+    move Battle00/B_Avoid02_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Avoid02_2.B_Avoid02_2
+    move Battle00/B_ChainTatakau_A01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_ChainTatakau_A01_0.B_ChainTatakau_A01_0
+    move Battle00/B_ChainTatakau_A01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_ChainTatakau_A01_1.B_ChainTatakau_A01_1
+    move Battle00/B_ChainTatakau_A01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_ChainTatakau_A01_2.B_ChainTatakau_A01_2
+    move Battle00/B_ChainTatakau_A02_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_ChainTatakau_A02_0.B_ChainTatakau_A02_0
+    move Battle00/B_ChainTatakau_A03_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_ChainTatakau_A03_0.B_ChainTatakau_A03_0
+    move Battle00/B_Die01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Die01_0.B_Die01_0
+    move Battle00/B_Die01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Die01_1.B_Die01_1
+    move Battle00/B_Dmg01_Add -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Dmg01_Add.B_Dmg01_Add
+    move Battle00/B_DmgB01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgB01.B_DmgB01
+    move Battle00/B_DmgB03_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgB03_0.B_DmgB03_0
+    move Battle00/B_DmgB03_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgB03_1.B_DmgB03_1
+    move Battle00/B_DmgB03_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgB03_2.B_DmgB03_2
+    move Battle00/B_DmgBlowB01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgBlowB01_0.B_DmgBlowB01_0
+    move Battle00/B_DmgBlowB01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowB01_1.B_DmgBlowB01_1
+    move Battle00/B_DmgBlowF01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgBlowF01_0.B_DmgBlowF01_0
+    move Battle00/B_DmgBlowF01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgBlowF01_1.B_DmgBlowF01_1
+    move Battle00/B_DmgBurst01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgBurst01_0.B_DmgBurst01_0
+    move Battle00/B_DmgBurst01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgBurst01_1.B_DmgBurst01_1
+    move Battle00/B_DmgBurst01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgBurst01_2.B_DmgBurst01_2
+    move Battle01/B_DmgBurstA01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgBurstA01_0.B_DmgBurstA01_0
+    move Battle01/B_DmgBurstA01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgBurstA01_1.B_DmgBurstA01_1
+    move Battle01/B_DmgBurstA01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgBurstA01_2.B_DmgBurstA01_2
+    move Battle01/B_DmgDown01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgDown01_1.B_DmgDown01_1
+    move Battle01/B_DmgDown01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgDown01_2.B_DmgDown01_2
+    move Battle00/B_DmgDownB01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB01_0.B_DmgDownB01_0
+    move Battle00/B_DmgDownB01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgDownB01_1.B_DmgDownB01_1
+    move Battle00/B_DmgDownB01_2 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB01_2.B_DmgDownB01_2
+    move Battle00/B_DmgDownB02_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB02_0.B_DmgDownB02_0
+    move Battle00/B_DmgDownB02_2 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB02_2.B_DmgDownB02_2
+    move Battle00/B_DmgDownB03_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownB03_0.B_DmgDownB03_0
+    move Battle00/B_DmgDownF01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF01_0.B_DmgDownF01_0
+    move Battle00/B_DmgDownF01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgDownF01_1.B_DmgDownF01_1
+    move Battle00/B_DmgDownF01_2 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF01_2.B_DmgDownF01_2
+    move Battle00/B_DmgDownF02_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF02_0.B_DmgDownF02_0
+    move Battle00/B_DmgDownF02_2 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF02_2.B_DmgDownF02_2
+    move Battle00/B_DmgDownF03_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgDownF03_0.B_DmgDownF03_0
+    move Battle01/B_DmgDownSword01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgDownSword01_0.B_DmgDownSword01_0
+    move Battle01/B_DmgDownWing01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgDownWing01_0.B_DmgDownWing01_0
+    move Battle00/B_DmgF01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgF01.B_DmgF01
+    move Battle00/B_DmgF03_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgF03_0.B_DmgF03_0
+    move Battle00/B_DmgF03_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF03_1.B_DmgF03_1
+    move Battle00/B_DmgF03_2 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgF03_2.B_DmgF03_2
+    move Battle01/B_DmgFall01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgFall01_0.B_DmgFall01_0
+    move Battle01/B_DmgFall01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgFall01_1.B_DmgFall01_1
+    move Battle01/B_DmgFall01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgFall01_2.B_DmgFall01_2
+    move Battle01/B_DmgFallDownWing01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_DmgFallDownWing01_0.B_DmgFallDownWing01_0
+    move Battle00/B_DmgL01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgL01.B_DmgL01
+    move Battle00/B_DmgR01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgR01.B_DmgR01
+    move Battle00/B_DmgRecoverB01 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgRecoverB01.B_DmgRecoverB01
+    move Battle00/B_DmgRecoverF01 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgRecoverF01.B_DmgRecoverF01
+    move Battle00/B_DmgReflect01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgReflect01.B_DmgReflect01
+    move Battle00/B_DmgStrikeB01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgStrikeB01_0.B_DmgStrikeB01_0
+    move Battle00/B_DmgStrikeB01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeB01_1.B_DmgStrikeB01_1
+    move Battle00/B_DmgStrikeF01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeF01_0.B_DmgStrikeF01_0
+    move Battle00/B_DmgStrikeF01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DmgStrikeF01_1.B_DmgStrikeF01_1
+    move Battle00/B_DmgUpperB01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgUpperB01_0.B_DmgUpperB01_0
+    move Battle00/B_DmgUpperB01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgUpperB01_1.B_DmgUpperB01_1
+    move Battle00/B_DmgUpperF01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgUpperF01_0.B_DmgUpperF01_0
+    move Battle00/B_DmgUpperF01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DmgUpperF01_1.B_DmgUpperF01_1
+    move Battle00/B_DownBurstB01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DownBurstB01_0.B_DownBurstB01_0
+    move Battle00/B_DownBurstF01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_DownBurstF01_0.B_DownBurstF01_0
+    move Battle00/B_DownDieB01 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DownDieB01.B_DownDieB01
+    move Battle00/B_DownDieF01 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_DownDieF01.B_DownDieF01
+    move Battle00/B_Fall01_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Fall01_1.B_Fall01_1
+    move Battle00/B_Fall01_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Fall01_2.B_Fall01_2
+    move Battle00/B_Idle01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Idle01_1.B_Idle01_1
+    move Battle00_Comp/B_Idle01_1_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_Idle01_1_Comp.B_Idle01_1_Comp
+    move Battle00/B_NAttack01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttack01_0.B_NAttack01_0
+    move Battle00/B_NAttack02_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttack02_0.B_NAttack02_0
+    move Battle00/B_NAttack03_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttack03_0.B_NAttack03_0
+    move Battle00/B_NAttack04_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttack04_0.B_NAttack04_0
+    move Battle00/B_NAttackJ01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttackJ01_0.B_NAttackJ01_0
+    move Battle00/B_NAttackJ02_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttackJ02_0.B_NAttackJ02_0
+    move Battle00/B_NAttackJ03_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_NAttackJ03_0.B_NAttackJ03_0
+    move Battle00/B_Run01_0_L0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L0.B_Run01_0_L0
+    move Battle00/B_Run01_0_L180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L180.B_Run01_0_L180
+    move Battle00/B_Run01_0_L90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_L90.B_Run01_0_L90
+    move Battle00/B_Run01_0_R180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R180.B_Run01_0_R180
+    move Battle00/B_Run01_0_R90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_0_R90.B_Run01_0_R90
+    move Battle00/B_Run01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_1.B_Run01_1
+    move Battle00/B_Run01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Run01_2l.B_Run01_2l
+    move Battle00/B_SAttack01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack01_0.B_SAttack01_0
+    move Battle00/B_SAttack02_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack02_0.B_SAttack02_0
+    move Battle00/B_SAttack05_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack05_0.B_SAttack05_0
+    move Battle00_Comp/B_SAttack05_0_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_SAttack05_0_Comp.B_SAttack05_0_Comp
+    move Battle00/B_SAttack06_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack06_0.B_SAttack06_0
+    move Battle00/B_SAttack08_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack08_0.B_SAttack08_0
+    move Battle00/B_SAttack08_1 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack08_1.B_SAttack08_1
+    move Battle00/B_SAttack08_2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack08_2.B_SAttack08_2
+    move Battle00/B_SAttack10_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_SAttack10_0.B_SAttack10_0
+    move Battle01/B_SetFeeler01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle01/B_SetFeeler01.B_SetFeeler01
+    move Battle00/B_StepB01 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_StepB01.B_StepB01
+    move Battle00_Comp/B_StepB01_Comp -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_StepB01_Comp.B_StepB01_Comp
+    move Battle00_Comp/B_StepB01_Comp2 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_StepB01_Comp2.B_StepB01_Comp2
+    move Battle00_Comp/B_StepB01_CompMagic -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00_Comp/B_StepB01_CompMagic.B_StepB01_CompMagic
+    move Battle00/B_StrafingWalk01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_StrafingWalk01_0.B_StrafingWalk01_0
+    move Battle00/B_StrafingWalk01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_StrafingWalk01_2l.B_StrafingWalk01_2l
+    move Battle00/B_Turn01 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01.B_Turn01
+    move Battle00/B_Turn01_L0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L0.B_Turn01_L0
+    move Battle00/B_Turn01_L180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L180.B_Turn01_L180
+    move Battle00/B_Turn01_L90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_L90.B_Turn01_L90
+    move Battle00/B_Turn01_R0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R0.B_Turn01_R0
+    move Battle00/B_Turn01_R180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R180.B_Turn01_R180
+    move Battle00/B_Turn01_R90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Turn01_R90.B_Turn01_R90
+    move Battle00/B_Walk01_0_L0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L0.B_Walk01_0_L0
+    move Battle00/B_Walk01_0_L180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L180.B_Walk01_0_L180
+    move Battle00/B_Walk01_0_L90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_L90.B_Walk01_0_L90
+    move Battle00/B_Walk01_0_R180 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R180.B_Walk01_0_R180
+    move Battle00/B_Walk01_0_R90 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_0_R90.B_Walk01_0_R90
+    move Battle00/B_Walk01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_1.B_Walk01_1
+    move Battle00/B_Walk01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2l.B_Walk01_2l
+    move Battle00/B_Walk01_2r -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_Walk01_2r.B_Walk01_2r
+    move Battle00/B_WalkB01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_0.B_WalkB01_0
+    move Battle00/B_WalkB01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_1.B_WalkB01_1
+    move Battle00/B_WalkB01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2l.B_WalkB01_2l
+    move Battle00/B_WalkB01_2r -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkB01_2r.B_WalkB01_2r
+    move Battle00/B_WalkL01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_0.B_WalkL01_0
+    move Battle00/B_WalkL01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_1.B_WalkL01_1
+    move Battle00/B_WalkL01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2l.B_WalkL01_2l
+    move Battle00/B_WalkL01_2r -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkL01_2r.B_WalkL01_2r
+    move Battle00/B_WalkR01_0 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_0.B_WalkR01_0
+    move Battle00/B_WalkR01_1 -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_1.B_WalkR01_1
+    move Battle00/B_WalkR01_2l -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2l.B_WalkR01_2l
+    move Battle00/B_WalkR01_2r -> /Game/Motion/Player/PC0000_Cloud/Battle00/B_WalkR01_2r.B_WalkR01_2r
+    move Battle00/B_Warp01_0 -> /Game/RebirthSkelCompat/Built/EvilCloudBoss/Battle00/B_Warp01_0.B_Warp01_0
+    build Battle00/B_AtkBurst01_0: built from Battle00/B_AtkBurst07_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkBurst01_0, 2 hit(s); hits at 0.19, 0.53 s
+    build Battle00/B_AtkBurst01_1: built from Battle00/B_EleBurst01_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkBurst01_1, 1 hit(s); hits at 0.53 s
+    build Battle00/B_AtkBurst02_0: built from Battle00/B_AtkBurst02_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkBurst02_0, 1 hit(s); hits at 0.97 s
+    build Battle00/B_AtkBurst02_1: built from Battle01/B_Change_03_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkBurst02_1, 1 hit(s); hits at 0.27 s
+    build Battle01/B_AtkFeelerLaser01_0: built from Battle00/B_MagSummon01_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerLaser01_0, 0 hit(s)
+    build Battle01/B_AtkFeelerLaser01_2: built from Battle00/B_MagSummon01_2, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerLaser01_2, 0 hit(s)
+    build Battle01/B_AtkFeelerLaserL01_1: built from Battle00/B_MagSummon01_1, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerLaserL01_1, 1 hit(s); hits at 0.00 s
+    build Battle01/B_AtkFeelerLaserR01_1: built from Battle00/B_MagSummon01_1, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerLaserR01_1, 1 hit(s); hits at 0.00 s
+    build Battle01/B_AtkFeelerTornado01_0: built from Battle00/B_AtkLimit03_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerTornado01_0, 1 hit(s); hits at 2.33 s
+    build Battle01/B_AtkFeelerTornado01_1: built from Battle00/B_AtkBurst06_1, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerTornado01_1, 0 hit(s)
+    build Battle01/B_AtkFeelerTornado01_2: built from Battle00/B_AtkLimit03_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkFeelerTornado01_2, 0 hit(s)
+    build Battle01/B_AtkFinalAttack01_0: built from Battle00/B_MagSummon01_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkFinalAttack01_0, 0 hit(s)
+    build Battle01/B_AtkFinalAttack01_1: built from Battle00/B_MagSummon01_1, sampled from the game animation; gameplay notifies from Battle01/B_AtkFinalAttack01_1, 2 hit(s); hits at 0.00, 0.10 s
+    build Battle01/B_AtkFinalAttack01_2: built from Battle00/B_MagSummon01_2, sampled from the game animation; gameplay notifies from Battle01/B_AtkFinalAttack01_2, 0 hit(s)
+    build Battle00/B_AtkLimit01_0: built from Battle00/B_AtkBurst06_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_0, 0 hit(s)
+    build Battle00/B_AtkLimit01_1: built from Battle00/B_AtkBurst06_1, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_1, 0 hit(s)
+    build Battle00_Comp/B_AtkLimit01_1_Comp: built from Battle00/B_AtkBurst06_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkLimit01_1_Comp, 0 hit(s)
+    build Battle00_Comp/B_AtkLimit01_1_Comp2: built from Battle00/B_AtkBurst06_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkLimit01_1_Comp2, 0 hit(s)
+    build Battle00/B_AtkLimit01_2: built from Battle00/B_NAttack01_1_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_2, 0 hit(s)
+    build Battle00/B_AtkLimit01_3: built from Battle00/B_NAttack01_1_1, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_3, 0 hit(s)
+    build Battle00_Comp/B_AtkLimit01_3_Comp: built from Battle00/B_AtkLimit02_0, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkLimit01_3_Comp, 7 hit(s); hits at 0.56, 0.88, 1.26, 1.54, 1.97, 2.77, 3.52 s
+    build Battle00/B_AtkLimit01_4: built from Battle00/B_AtkLimit01_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_4, 8 hit(s); hits at 0.50, 0.60, 0.70, 0.99, 1.09, 1.19, 1.86, 1.96 s
+    build Battle00/B_AtkLimit01_5: built from Battle00/B_AtkBurst04_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_5, 1 hit(s); hits at 1.26 s
+    build Battle00_Comp/B_AtkLimit01_5_Comp: built from Battle00/B_AtkBurst04_0, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkLimit01_5_Comp, 1 hit(s); hits at 1.26 s
+    build Battle00/B_AtkLimit01_6: built from Battle00/B_Win01, sampled from the game animation; gameplay notifies from Battle00/B_AtkLimit01_6, 0 hit(s)
+    build Battle00/B_AtkMag01_0: built from Battle00/B_MagAttack02_0, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_0, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_0_Comp: built from Battle00/B_MagAttack02_0, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_0_Comp, 0 hit(s)
+    build Battle00/B_AtkMag01_1: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_1, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_1_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_1_Comp, 0 hit(s)
+    build Battle00/B_AtkMag01_2: built from Battle00/B_MagAttack02_2, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_2, 1 hit(s); hits at 0.30 s
+    build Battle00_Comp/B_AtkMag01_2_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_2_Comp, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_2_Comp1: built from Battle00/B_MagAttack02_2, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_2_Comp1, 1 hit(s); hits at 0.30 s
+    build Battle00_Comp/B_AtkMag01_2_CompMagic: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_2_CompMagic, 2 hit(s); hits at 0.30, 1.65 s
+    build Battle00/B_AtkMag01_3: built from Battle00/B_MagAttack02_2, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_3, 0 hit(s)
+    build Battle00/B_AtkMag01_4: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_4, 3 hit(s); hits at 0.00, 0.34, 0.67 s
+    build Battle00_Comp/B_AtkMag01_4_Fire_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_4_Fire_Comp, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_4_Ice_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_4_Ice_Comp, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_4_Lightning_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_4_Lightning_Comp, 0 hit(s)
+    build Battle00_Comp/B_AtkMag01_4_Wind_Comp: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkMag01_4_Wind_Comp, 1 hit(s); hits at 0.03 s
+    build Battle00/B_AtkMag01_5: built from Battle00/B_MagAttack02_2, sampled from the game animation; gameplay notifies from Battle00/B_AtkMag01_5, 0 hit(s)
+    build Battle01/B_AtkStab01: built from Battle00/B_AtkBurst01_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkStab01, 1 hit(s); hits at 1.34 s
+    build Battle01/B_AtkTenshi01_0: built from Battle00/B_AtkLimit02_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkTenshi01_0, 0 hit(s)
+    build Battle01/B_AtkTenshi01_1: built from Battle00/B_AtkLimit02_0, sampled from the game animation; gameplay notifies from Battle01/B_AtkTenshi01_1, 1 hit(s); hits at 2.00 s
+    build Battle00/B_AtkZekkuu01_0: built from Battle00/B_ChainCounter_A01_2, sampled from the game animation; gameplay notifies from Battle00/B_AtkZekkuu01_0, 2 hit(s); hits at 0.00, 0.58 s
+    build Battle00_Comp/B_AtkZekkuu01_0_Comp: built from Battle00/B_ChainCounter_A01_2, sampled from the game animation; gameplay notifies from Battle00_Comp/B_AtkZekkuu01_0_Comp, 2 hit(s); hits at 0.00, 0.58 s
+    build Battle00/B_AtkZekkuu01_1: built from Battle00/B_AtkBurst06_1, sampled from the game animation; gameplay notifies from Battle00/B_AtkZekkuu01_1, 0 hit(s)
+    build Battle00/B_AtkZekkuu01_2: built from Battle00/B_AtkBurst06_3, sampled from the game animation; gameplay notifies from Battle00/B_AtkZekkuu01_2, 0 hit(s)
+    build Battle00/B_Avoid01_0: built from Battle00/B_NAttackJ05_0, sampled from the game animation; gameplay notifies from Battle00/B_Avoid01_0, 0 hit(s)
+    build Battle00/B_Avoid01_1: built from Battle00/B_NAttackJ05_1, sampled from the game animation; gameplay notifies from Battle00/B_Avoid01_1, 0 hit(s)
+    build Battle00/B_Avoid01_2: built from Battle00/B_AvoidJ10_2, sampled from the game animation; gameplay notifies from Battle00/B_Avoid01_2, 0 hit(s)
+    build Battle00/B_Avoid02_2: built from Battle00/B_Avoid02, sampled from the game animation; gameplay notifies from Battle00/B_Avoid02_2, 1 hit(s); hits at 0.00 s
+    build Battle00/B_ChainTatakau_A01_0: built from Battle00/B_NAttack01_1_0, sampled from the game animation; gameplay notifies from Battle00/B_ChainTatakau_A01_0, 0 hit(s)
+    build Battle00/B_ChainTatakau_A01_1: built from Battle00/B_NAttack01_1_1, sampled from the game animation; gameplay notifies from Battle00/B_ChainTatakau_A01_1, 0 hit(s)
+    build Battle00/B_ChainTatakau_A01_2: built from Battle00/B_NAttack01_1_2, sampled from the game animation; gameplay notifies from Battle00/B_ChainTatakau_A01_2, 1 hit(s); hits at 0.04 s
+    build Battle00/B_ChainTatakau_A02_0: built from Battle00/B_NAttack07_0, sampled from the game animation; gameplay notifies from Battle00/B_ChainTatakau_A02_0, 2 hit(s); hits at 0.08, 0.35 s
+    build Battle00/B_ChainTatakau_A03_0: built from Battle00/B_ChainTatakau_B01_0, sampled from the game animation; gameplay notifies from Battle00/B_ChainTatakau_A03_0, 2 hit(s); hits at 0.15, 0.87 s
+    build Battle00/B_DmgB01: built from Battle00/B_DmgB01, sampled from the game animation; gameplay notifies from Battle00/B_DmgB01, 0 hit(s)
+    build Battle00/B_DmgB03_0: built from Battle00/B_DmgB03_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgB03_0, 0 hit(s)
+    build Battle00/B_DmgB03_1: built from Battle00/B_DmgB03_1, sampled from the game animation; gameplay notifies from Battle00/B_DmgB03_1, 0 hit(s)
+    build Battle00/B_DmgB03_2: built from Battle00/B_DmgB03_2, sampled from the game animation; gameplay notifies from Battle00/B_DmgB03_2, 0 hit(s)
+    build Battle00/B_DmgBlowB01_0: built from Battle00/B_DmgBlowB01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgBlowB01_0, 0 hit(s)
+    build Battle00/B_DmgBlowF01_0: built from Battle00/B_DmgBlowF01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgBlowF01_0, 0 hit(s)
+    build Battle00/B_DmgBurst01_0: built from Battle00/B_Abnormal01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgBurst01_0, 0 hit(s)
+    build Battle00/B_DmgBurst01_1: built from Battle00/B_Abnormal01_1, sampled from the game animation; gameplay notifies from Battle00/B_DmgBurst01_1, 0 hit(s)
+    build Battle00/B_DmgBurst01_2: built from Battle00/B_Abnormal01_2, sampled from the game animation; gameplay notifies from Battle00/B_DmgBurst01_2, 0 hit(s)
+    build Battle01/B_DmgBurstA01_0: built from Battle00/B_Abnormal01_0, sampled from the game animation; gameplay notifies from Battle01/B_DmgBurstA01_0, 0 hit(s)
+    build Battle01/B_DmgBurstA01_1: built from Battle00/B_Abnormal01_1, sampled from the game animation; gameplay notifies from Battle01/B_DmgBurstA01_1, 0 hit(s)
+    build Battle01/B_DmgBurstA01_2: built from Battle00/B_Abnormal01_2, sampled from the game animation; gameplay notifies from Battle01/B_DmgBurstA01_2, 0 hit(s)
+    build Battle01/B_DmgDown01_1: built from Battle00/B_DmgDownB01_0, sampled from the game animation; gameplay notifies from Battle01/B_DmgDown01_1, 0 hit(s)
+    build Battle01/B_DmgDown01_2: built from Battle00/B_DmgDownB01_2, sampled from the game animation; gameplay notifies from Battle01/B_DmgDown01_2, 0 hit(s)
+    build Battle00/B_DmgDownB01_1: built from Battle00/B_DmgDownB01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgDownB01_1, 0 hit(s)
+    build Battle00/B_DmgDownF01_1: built from Battle00/B_DmgDownF01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgDownF01_1, 0 hit(s)
+    build Battle01/B_DmgDownSword01_0: built from Battle00/B_DmgRecoverF01, sampled from the game animation; gameplay notifies from Battle01/B_DmgDownSword01_0, 0 hit(s)
+    build Battle01/B_DmgDownWing01_0: built from Battle00/B_DmgRecoverB01, sampled from the game animation; gameplay notifies from Battle01/B_DmgDownWing01_0, 0 hit(s)
+    build Battle00/B_DmgF01: built from Battle00/B_DmgF01, sampled from the game animation; gameplay notifies from Battle00/B_DmgF01, 0 hit(s)
+    build Battle00/B_DmgF03_0: built from Battle00/B_DmgF03_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgF03_0, 0 hit(s)
+    build Battle01/B_DmgFall01_0: built from Battle00/B_Fall01_1, sampled from the game animation; gameplay notifies from Battle01/B_DmgFall01_0, 0 hit(s)
+    build Battle01/B_DmgFall01_1: built from Battle00/B_Fall01_1, sampled from the game animation; gameplay notifies from Battle01/B_DmgFall01_1, 0 hit(s)
+    build Battle01/B_DmgFall01_2: built from Battle00/B_Fall01_2, sampled from the game animation; gameplay notifies from Battle01/B_DmgFall01_2, 0 hit(s)
+    build Battle01/B_DmgFallDownWing01_0: built from Battle00/B_DmgRecoverB01, sampled from the game animation; gameplay notifies from Battle01/B_DmgFallDownWing01_0, 0 hit(s)
+    build Battle00/B_DmgL01: built from Battle00/B_DmgL01, sampled from the game animation; gameplay notifies from Battle00/B_DmgL01, 0 hit(s)
+    build Battle00/B_DmgR01: built from Battle00/B_DmgR01, sampled from the game animation; gameplay notifies from Battle00/B_DmgR01, 0 hit(s)
+    build Battle00/B_DmgReflect01: built from Battle00/B_DmgReflect01, sampled from the game animation; gameplay notifies from Battle00/B_DmgReflect01, 0 hit(s)
+    build Battle00/B_DmgStrikeB01_0: built from Battle00/B_DmgStrikeB01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgStrikeB01_0, 0 hit(s)
+    build Battle00/B_DmgUpperB01_0: built from Battle00/B_DmgUpperB01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgUpperB01_0, 0 hit(s)
+    build Battle00/B_DmgUpperB01_1: built from Battle00/B_DmgUpperB01_1, sampled from the game animation; gameplay notifies from Battle00/B_DmgUpperB01_1, 0 hit(s)
+    build Battle00/B_DmgUpperF01_0: built from Battle00/B_DmgUpperF01_0, sampled from the game animation; gameplay notifies from Battle00/B_DmgUpperF01_0, 0 hit(s)
+    build Battle00/B_DmgUpperF01_1: built from Battle00/B_DmgUpperF01_1, sampled from the game animation; gameplay notifies from Battle00/B_DmgUpperF01_1, 0 hit(s)
+    build Battle00/B_DownBurstB01_0: built from Battle00/B_DmgDownB01_0, sampled from the game animation; gameplay notifies from Battle00/B_DownBurstB01_0, 0 hit(s)
+    build Battle00/B_DownBurstF01_0: built from Battle00/B_DmgDownF01_0, sampled from the game animation; gameplay notifies from Battle00/B_DownBurstF01_0, 0 hit(s)
+    build Battle00/B_Fall01_1: built from Battle00/B_Fall01_1, sampled from the game animation; gameplay notifies from Battle00/B_Fall01_1, 0 hit(s)
+    build Battle00/B_Fall01_2: built from Battle00/B_Fall01_2, sampled from the game animation; gameplay notifies from Battle00/B_Fall01_2, 0 hit(s)
+    build Battle00_Comp/B_Idle01_1_Comp: built from Battle00/B_Idle01_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_Idle01_1_Comp, 0 hit(s)
+    build Battle00/B_NAttack01_0: built from Battle00/B_NAttack01_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttack01_0, 1 hit(s); hits at 0.08 s
+    build Battle00/B_NAttack02_0: built from Battle00/B_NAttack02_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttack02_0, 1 hit(s); hits at 0.19 s
+    build Battle00/B_NAttack03_0: built from Battle00/B_NAttack03_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttack03_0, 1 hit(s); hits at 0.17 s
+    build Battle00/B_NAttack04_0: built from Battle00/B_NAttack05_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttack04_0, 1 hit(s); hits at 0.51 s
+    build Battle00/B_NAttackJ01_0: built from Battle00/B_NAttackJ01_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttackJ01_0, 1 hit(s); hits at 0.13 s
+    build Battle00/B_NAttackJ02_0: built from Battle00/B_NAttackJ02_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttackJ02_0, 1 hit(s); hits at 0.08 s
+    build Battle00/B_NAttackJ03_0: built from Battle00/B_NAttackJ03_0, sampled from the game animation; gameplay notifies from Battle00/B_NAttackJ03_0, 1 hit(s); hits at 0.33 s
+    build Battle00/B_SAttack01_0: built from Battle01/B_SAttack01_1, sampled from the game animation; gameplay notifies from Battle00/B_SAttack01_0, 1 hit(s); hits at 1.04 s
+    build Battle00/B_SAttack02_0: built from Battle00/B_WAttack01_0, sampled from the game animation; gameplay notifies from Battle00/B_SAttack02_0, 1 hit(s); hits at 0.18 s
+    build Battle00/B_SAttack05_0: built from Battle01/B_SAttack06_2, sampled from the game animation; gameplay notifies from Battle00/B_SAttack05_0, 2 hit(s); hits at 0.00, 1.10 s
+    build Battle00_Comp/B_SAttack05_0_Comp: built from Battle01/B_SAttack06_2, sampled from the game animation; gameplay notifies from Battle00_Comp/B_SAttack05_0_Comp, 2 hit(s); hits at 0.00, 1.10 s
+    build Battle00/B_SAttack06_0: built from Battle00/B_AtkBurst06_2, sampled from the game animation; gameplay notifies from Battle00/B_SAttack06_0, 2 hit(s); hits at 0.15, 0.41 s
+    build Battle00/B_SAttack08_0: built from Battle01/B_SAttackJ01_0, sampled from the game animation; gameplay notifies from Battle00/B_SAttack08_0, 2 hit(s); hits at 0.10, 0.43 s
+    build Battle00/B_SAttack08_1: built from Battle01/B_SAttackJ01_1, sampled from the game animation; gameplay notifies from Battle00/B_SAttack08_1, 1 hit(s); hits at 0.00 s
+    build Battle00/B_SAttack08_2: built from Battle01/B_SAttackJ01_2, sampled from the game animation; gameplay notifies from Battle00/B_SAttack08_2, 1 hit(s); hits at 0.00 s
+    build Battle00/B_SAttack10_0: built from Battle00/B_WAttack02_0, sampled from the game animation; gameplay notifies from Battle00/B_SAttack10_0, 3 hit(s); hits at 0.18, 0.44, 0.51 s
+    build Battle01/B_SetFeeler01: built from Battle00/B_AtkBurst09_0, sampled from the game animation; gameplay notifies from Battle01/B_SetFeeler01, 0 hit(s)
+    build Battle00/B_StepB01: built from Battle00/B_Avoid02, sampled from the game animation; gameplay notifies from Battle00/B_StepB01, 0 hit(s)
+    build Battle00_Comp/B_StepB01_Comp: built from Battle00/B_Avoid02, sampled from the game animation; gameplay notifies from Battle00_Comp/B_StepB01_Comp, 0 hit(s)
+    build Battle00_Comp/B_StepB01_Comp2: built from Battle00/B_Avoid02, sampled from the game animation; gameplay notifies from Battle00_Comp/B_StepB01_Comp2, 0 hit(s)
+    build Battle00_Comp/B_StepB01_CompMagic: built from Battle00/B_MagAttack02_1, sampled from the game animation; gameplay notifies from Battle00_Comp/B_StepB01_CompMagic, 1 hit(s); hits at 2.07 s
+    build Battle00/B_Warp01_0: built from Battle00/B_Avoid02, sampled from the game animation; gameplay notifies from Battle00/B_Warp01_0, 0 hit(s)
+    WARNING: cutscenes need both Cutscene (the skeleton whose cutscenes it plays) and Character Skeleton (its own)
+CharaSpec packs of this project that disagree with their rows (Apply To CharaSpec gives a row the model of the blueprint its pack spawns; swaps fix the rest):
+    CharaSpec_PC0000_00_Cloud_Standard: ContentSoundVoice_Array lists VO_PC0010_00_Sephiroth, the pack loads VO_PC0000_00_Cloud
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsEffect_Array lists PC0010_Sephiroth_Effect__Pack, the pack loads PC0000_Cloud_Effect__Pack
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsSoundSE_Array lists SE_PC0010_00_Sephiroth_Standard, the pack loads SE_PC0000_00_Cloud
+    CharaSpec_PC0000_00_Cloud_Standard: ContentsSoundAutoSE_Array lists AS_PC0010_00_Sephiroth_Standard, the pack loads AS_PC0000_00_Cloud_Standard
+    CharaSpec_PC0000_00_Cloud_Standard: End2AIList_Array lists PC0010_00_Sephiroth_Standard_AIBP, the pack loads PC0000_00_Cloud_Standard_AIBP
+    CharaSpec_PC0010_00_Sephiroth_Standard: ContentSoundVoice_Array lists VO_PC0000_02_Cloud_Insanity, the pack loads VO_PC0010_00_Sephiroth
+    CharaSpec_PC0010_10_Sephiroth_Transform: ContentSoundVoice_Array lists VO_PC0000_02_Cloud_Insanity, the pack loads VO_EB0021_00_Sephiroth_Standard
+    CharaSpec_WE0000_05_Cloud_NailBat: ContentsEffect_Array lists WE0000_00_Cloud_BusterSword_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_05_Cloud_NailBat: ContentsSoundSE_Array lists SE_WE0000_00_BusterSword, the pack loads (none)
+    CharaSpec_WE0000_11_Cloud_END2Weapon1: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_12_Cloud_END2Weapon2: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_13_Cloud_END2Weapon3: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_14_Cloud_END2Weapon4: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_15_Cloud_END2Weapon5: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_16_Cloud_END2Weapon6: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+    CharaSpec_WE0000_17_Cloud_Umbrella: ContentsEffect_Array lists WE1021_00_SephirothIllusion_Masamune_Effect__Pack, the pack loads (none)
+
+In game (game folder not found: this data object alone, Requires Paks counted as installed):
+  none of this data object's pairs is on
+  sets of CharaSpec_PC0010_10_Sephiroth_Transform (DO_EvilCloudBoss.json): battle from PC0010_Sephiroth_Transform/Battle00, PC0010_Sephiroth_Transform/Battle00_Comp, PC0010_Sephiroth_Transform/Battle01, PC0010_Sephiroth_Transform/Battle01_Comp; field from (none); 176 move(s)
+  sets of CharaSpec_PC0010_20_Sephiroth_VRHard (DO_EvilCloudBoss.json): battle from PC0010_Sephiroth_Transform/Battle00, PC0010_Sephiroth_Transform/Battle00_Comp, PC0010_Sephiroth_Transform/Battle01, PC0010_Sephiroth_Transform/Battle01_Comp; field from (none); 176 move(s)

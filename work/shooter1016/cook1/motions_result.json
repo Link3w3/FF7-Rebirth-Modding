@@ -1,0 +1,27 @@
+{
+ "steps": [
+  "run",
+  "scanned",
+  "old_labels",
+  "model_label",
+  "motions_Vincent",
+  "motions_Chaos",
+  "done"
+ ],
+ "run": "run 1 with the plugin 1.12.4",
+ "scanned": [
+  "/Game/Motion/Player/PC0011_00_Vincent/Battle00",
+  "/Game/Motion/Player/PC0011_10_Chaos/Battle00",
+  "/Game/Character/Player/PC0011_10_Chaos",
+  "/Game/RebirthSkelCompat"
+ ],
+ "old_labels": [
+  "/Game/Motion/Player/PC0011_00_Vincent/Battle00/PAL_Dirge_Chunk53: chunk -1, 0 asset(s)",
+  "/Game/Motion/Player/PC0011_10_Chaos/Battle00/PAL_Chaos_Chunk54: chunk -1, 0 asset(s)",
+  "/Game/Character/Player/PC0011_10_Chaos/PAL_Chaos_Chunk54: chunk -1, 0 asset(s)"
+ ],
+ "model_label": "/Game/Character/Player/PC0011_10_Chaos/PAL_ChaosModel_Chunk54: chunk 54, 38 asset(s) (MaterialInstanceConstant x8, PhysicsAsset x1, SQEX_BonamikAsset x1, SkeletalMesh x1, Skeleton x1, Texture2D x26)",
+ "motions_Vincent": "253 of 253 made in /Game/RebirthSkelCompat/Dirge/Vincent for chunk 53 (29 s)",
+ "motions_Chaos": "214 of 214 made in /Game/RebirthSkelCompat/Dirge/Chaos for chunk 54 (28 s)",
+ "done": true
+}

@@ -1,0 +1,79 @@
+@echo off
+title Evil Cloud boss fights - building his moves, please leave this window open
+rem Evil Cloud's boss fights, step 2 (close the End editor and the game first; the packaging at the end is the long part):
+rem   1. builds the Create a Character System editor plugin 1.12.4 (an effect of Cloud's whose Niagara parameters the
+rem      editor cannot write is copied without them: in 1.12.3 one stopped the editor while it built Hell's Gate),
+rem   2. packs CreateACharacterSystem-Setup into Tools\Share again, with it,
+rem   3. builds Evil Cloud's 115 moves for the boss Sephiroth fights (the final battle and the VR battle): each of the
+rem      boss's animations made of one of Cloud's, with the boss's own damage, AI, timing and phases
+rem      (evilcloud_boss_moves.json; Saved\RebirthSkelCompat\EvilCloudBoss\ says how it went), one at a time: a move
+rem      that stops the editor is left out and the editor goes on with the others,
+rem   4. packages the project (E:\FVIIREBIRTH\Pakage): the moves in pakchunk52.
+rem Status: build\boss_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\boss_status.txt"
+echo Evil Cloud boss moves, started %DATE% %TIME%> "%STATUS%"
+for %%P in (UE4Editor.exe UE4Editor-Cmd.exe ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the End editor or the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+for %%F in (evilcloud_boss_moves.json build_evilcloud_boss.py run_evilcloud_boss.ps1) do (
+  if not exist "%~dp0%%F" (
+    echo FAILED: %%F is missing>> "%STATUS%"
+    goto :done
+  )
+)
+findstr /L /C:"1.12.4" "C:\FF7R2UProj\Plugins\RebirthSkelCompat\RebirthSkelCompat.uplugin" >nul
+if errorlevel 1 (
+  echo FAILED: the plugin in C:\FF7R2UProj\Plugins\RebirthSkelCompat is not 1.12.4 ^(tell Sandalphon^)>> "%STATUS%"
+  goto :done
+)
+call :findpython
+echo 1/4 building the Create a Character System editor plugin 1.12.4...>> "%STATUS%"
+%PY% "C:\FF7R2UProj\Tools\EndEditorPlugins\build_editor_plugins.py" RebirthSkelCompatEditor > "%~dp0build\boss_plugin.log" 2>&1
+if errorlevel 1 (
+  echo FAILED: the plugin did not build ^(build\boss_plugin.log, Tools\EndEditorPlugins\build\latest.json^)>> "%STATUS%"
+  goto :done
+)
+echo    plugin built>> "%STATUS%"
+echo 2/4 packing the Create a Character System Setup into Tools\Share...>> "%STATUS%"
+set "SC=C:\FF7R2UProj\Tools\RebirthSkelCompat"
+set "LATEST="
+if exist "%SC%\build\latest.txt" set /p LATEST=<"%SC%\build\latest.txt"
+%PY% "C:\FF7R2UProj\Tools\CreateACharacterSystemSetup\make_setup.py" --stub "C:\FF7R2UProj\Tools\CreateACharacterSystemSetup\Setup.stub.exe" --main-dll "%LATEST%\main.dll" --readme "%SC%\mod\README.txt" --example "%SC%\mod\compat\example.json.txt" --source "%SC%\src\RebirthSkelCompat.cpp" --plugin "C:\FF7R2UProj\Plugins\RebirthSkelCompat" --out-dir "C:\FF7R2UProj\Tools\Share" > "%~dp0build\boss_setup.log" 2>&1
+if errorlevel 1 (
+  echo    the Setup was not packed ^(build\boss_setup.log^); going on>> "%STATUS%"
+) else (
+  echo    Setup packed ^(Tools\Share^)>> "%STATUS%"
+)
+echo 3/4 building Evil Cloud's moves in the editor ^(a while^)...>> "%STATUS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run_evilcloud_boss.ps1"
+if errorlevel 1 (
+  echo FAILED: the editor step ^(build\boss_editor.log, Saved\RebirthSkelCompat\EvilCloudBoss\build_result.json, progress.json and build_moves.txt^)>> "%STATUS%"
+  goto :done
+)
+echo 4/4 packaging the project ^(this is the long part^)...>> "%STATUS%"
+call "C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Build\BatchFiles\RunUAT.bat" -ScriptsForProject=C:/FF7R2UProj/End.uproject BuildCookRun -nocompileeditor -installed -nop4 -project=C:/FF7R2UProj/End.uproject -cook -stage -archive -archivedirectory=E:/FVIIREBIRTH/Pakage -package -ue4exe=C:\RebirthEngine\RebirthEngineV5\Windows\Engine\Binaries\Win64\UE4Editor-Cmd.exe -compressed -ddc=InstalledDerivedDataBackendGraph -iostore -pak -iostore -prereqs -manifests -targetplatform=Win64 -build -target=End -clientconfig=Shipping -utf8output > "%~dp0build\boss_package.log" 2>&1
+>> "%STATUS%" echo    package exit=%ERRORLEVEL%
+if exist "E:\FVIIREBIRTH\Pakage\WindowsNoEditor\End\Content\Paks\pakchunk52-WindowsNoEditor.utoc" (
+  echo    pakchunk52 is there: tell Sandalphon, who puts the moves into the mod>> "%STATUS%"
+) else (
+  echo    pakchunk52 is NOT there ^(build\boss_package.log^)>> "%STATUS%"
+)
+:done
+echo BOSS MOVES COMPLETE %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:findpython
+set "PY="
+where py >nul 2>nul && set "PY=py -3"
+if not defined PY if exist "%LOCALAPPDATA%\Programs\Python\Python399\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python399\python.exe"
+if not defined PY set "PY=python"
+exit /b

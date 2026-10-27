@@ -1,0 +1,6 @@
+Material EndMaterial_Menu
+  PIN EmissiveColor          <- MaterialExpressionTextureSampleParameter2D_6[0].RGB
+  MaterialExpressionTextureSampleParameter2D_6 (TextureSampleParameter2D) {"ParameterName": "0:Color", "Group": "Texture", "texture": "767676FF_sRGB"}
+      Coordinates      <- MaterialExpressionTextureCoordinate_1[0]
+  stripped expressions referred to: 1
+    MaterialExpressionTextureCoordinate_1         <- used by MaterialExpressionTextureSampleParameter2D_6.Coordinates

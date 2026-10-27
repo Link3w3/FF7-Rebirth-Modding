@@ -1,0 +1,2928 @@
+{
+ "version": 1,
+ "name": "PC0004_00_RedXIII_Standard_Animation",
+ "source": "/Game/BluePrint/Animation/Player/PC0004_00_RedXIII_Standard_Animation",
+ "source_class": "PC0004_00_RedXIII_Standard_Animation_C",
+ "parent": "/Script/EndGame.EndCharacterAnimInstance",
+ "source_skeleton": "/Game/Character/Player/PC0004_00_RedXIII_Standard/Model/PC0004_00_Skeleton.PC0004_00_Skeleton",
+ "anim_graph": {
+  "nodes": [
+   {
+    "id": "AnimGraphNode_ComponentToLocalSpace",
+    "cls": "AnimGraphNode_ComponentToLocalSpace",
+    "struct": "AnimNode_ConvertComponentToLocalSpace",
+    "values": {},
+    "links": {
+     "ComponentPose": "AnimGraphNode_ModifyBone"
+    },
+    "bindings": [],
+    "pos": [
+     -320,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_ModifyBone",
+    "cls": "AnimGraphNode_ModifyBone",
+    "struct": "AnimNode_ModifyBone",
+    "values": {
+     "BoneToModify": "(BoneName=\"C_FireA_a\")",
+     "Translation": "(X=0,Y=0,Z=0)",
+     "Rotation": "(Pitch=90.0,Yaw=0.0,Roll=0.0)",
+     "Scale": "(X=1.0,Y=1.0,Z=1.0)",
+     "TranslationMode": "BMM_Ignore",
+     "RotationMode": "BMM_Replace",
+     "ScaleMode": "BMM_Ignore",
+     "TranslationSpace": "BCS_ComponentSpace",
+     "RotationSpace": "BCS_WorldSpace",
+     "ScaleSpace": "BCS_ComponentSpace",
+     "LODThreshold": "-1",
+     "AlphaInputType": "Float",
+     "bAlphaBoolEnabled": "True",
+     "Alpha": "1.0",
+     "AlphaScaleBias": "(Scale=1.0,Bias=0.0)",
+     "AlphaBoolBlend": "(BlendInTime=0.0,BlendOutTime=0.0,BlendOption=Linear,CustomCurve=None)",
+     "AlphaCurveName": "None",
+     "AlphaScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)"
+    },
+    "links": {
+     "ComponentPose": "AnimGraphNode_EndCharacterMovementExpression"
+    },
+    "bindings": [],
+    "pos": [
+     -640,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_EndCharacterMovementExpression",
+    "cls": "AnimGraphNode_EndCharacterMovementExpression",
+    "struct": "AnimNode_EndCharacterMovementExpression",
+    "values": {
+     "LODThreshold": "-1",
+     "AlphaInputType": "Float",
+     "bAlphaBoolEnabled": "True",
+     "Alpha": "1.0",
+     "AlphaScaleBias": "(Scale=1.0,Bias=0.0)",
+     "AlphaBoolBlend": "(BlendInTime=0.0,BlendOutTime=0.0,BlendOption=Linear,CustomCurve=None)",
+     "AlphaCurveName": "None",
+     "AlphaScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)"
+    },
+    "links": {
+     "ComponentPose": "AnimGraphNode_LocalToComponentSpace"
+    },
+    "bindings": [],
+    "pos": [
+     -960,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_LocalToComponentSpace",
+    "cls": "AnimGraphNode_LocalToComponentSpace",
+    "struct": "AnimNode_ConvertLocalToComponentSpace",
+    "values": {},
+    "links": {
+     "LocalPose": "AnimGraphNode_EndFacialSecondary"
+    },
+    "bindings": [],
+    "pos": [
+     -1280,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_EndFacialSecondary",
+    "cls": "AnimGraphNode_EndFacialSecondary",
+    "struct": "AnimNode_EndFacialSecondary",
+    "values": {
+     "LipMaps": "((\"Default\", /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Default.RedXIII_Default),(\"Loud\", /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Loud.RedXIII_Loud),(\"Smile\", /Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Smile.RedXIII_Smile))",
+     "Input": "(Pack=None,KeyName=None,MappingName=\"Default\",EvaluateTime=0.0)",
+     "DummyShape": "(Attributes=(),AudioMin=0.0,AudioMax=0.0,AudioPower=0.0,bBlend=False,BlendIn=0.0,BlendOut=0.0,bRandomize=False,bRandomizePerChannel=False,RandomMin=0.0,RandomMax=0.0,bForceShape=False)"
+    },
+    "links": {
+     "Source": "AnimGraphNode_EndInertialization"
+    },
+    "bindings": [],
+    "pos": [
+     -1600,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_EndInertialization",
+    "cls": "AnimGraphNode_EndInertialization",
+    "struct": "AnimNode_EndInertialization",
+    "values": {},
+    "links": {
+     "Source": "AnimGraphNode_EndFacialPrimary"
+    },
+    "bindings": [],
+    "pos": [
+     -1920,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_EndFacialPrimary",
+    "cls": "AnimGraphNode_EndFacialPrimary",
+    "struct": "AnimNode_EndFacialPrimary",
+    "values": {
+     "SlotName": "FacialSlot",
+     "bAlwaysUpdateSourcePose": "True"
+    },
+    "links": {
+     "Source": "AnimGraphNode_EndBehaviorAction"
+    },
+    "bindings": [],
+    "pos": [
+     -2240,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_EndBehaviorAction",
+    "cls": "AnimGraphNode_EndBehaviorAction",
+    "struct": "AnimNode_EndBehaviorAction",
+    "values": {},
+    "links": {
+     "Source": "AnimGraphNode_Slot"
+    },
+    "bindings": [],
+    "pos": [
+     -2560,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_Slot",
+    "cls": "AnimGraphNode_Slot",
+    "struct": "AnimNode_Slot",
+    "values": {
+     "SlotName": "DefaultSlot",
+     "bAlwaysUpdateSourcePose": "False"
+    },
+    "links": {
+     "Source": "AnimGraphNode_StateMachine"
+    },
+    "bindings": [],
+    "pos": [
+     -2880,
+     0
+    ]
+   },
+   {
+    "id": "AnimGraphNode_StateMachine",
+    "cls": "AnimGraphNode_StateMachine",
+    "struct": "AnimNode_StateMachine",
+    "values": {
+     "MaxTransitionsPerFrame": "3",
+     "bSkipFirstUpdateTransition": "True",
+     "bReinitializeOnBecomingRelevant": "True"
+    },
+    "links": {},
+    "bindings": [],
+    "pos": [
+     -3200,
+     0
+    ]
+   }
+  ],
+  "result": "AnimGraphNode_ComponentToLocalSpace"
+ },
+ "machines": [
+  {
+   "node": "AnimGraphNode_StateMachine",
+   "name": "Locomotion",
+   "initial": "Entry",
+   "states": [
+    {
+     "name": "Entry",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_LocalRefPose",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_LocalRefPose",
+       "cls": "AnimGraphNode_LocalRefPose",
+       "struct": "AnimNode_RefPose",
+       "values": {
+        "RefPoseType": "EIT_LocalSpace"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      200,
+      0
+     ]
+    },
+    {
+     "name": "Idle",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": "SetStateIdle",
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "Idle",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "True",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      620,
+      0
+     ]
+    },
+    {
+     "name": "Walk Start",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_1",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_1",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "WalkStart",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkStart,RotationRate=180.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=WalkStart,RotationRate=180.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      0
+     ]
+    },
+    {
+     "name": "Run Start",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_2",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_2",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "RunStart",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=RunStart,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=RunStart,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      0
+     ]
+    },
+    {
+     "name": "Dash Start",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_3",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_3",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "DashStart",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=DashStart,RotationRate=120.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      180
+     ]
+    },
+    {
+     "name": "Walk End",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_4",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_4",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "WalkEnd",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      180
+     ]
+    },
+    {
+     "name": "Dash End",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_5",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_5",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "DashEnd",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      360
+     ]
+    },
+    {
+     "name": "Run End",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_6",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_6",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "RunEnd",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      540
+     ]
+    },
+    {
+     "name": "Allow Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1040,
+      360
+     ]
+    },
+    {
+     "name": "Allow Turn",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1040,
+      540
+     ]
+    },
+    {
+     "name": "Turn",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_7",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_7",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "Turn",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      720
+     ]
+    },
+    {
+     "name": "Strafing Walk Start",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_8",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_8",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "StrafingWalkStart",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=StrafingWalkStart,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=StrafingWalkStart,RotationRate=480.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      900
+     ]
+    },
+    {
+     "name": "Strafing Walk Loop",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_9",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_9",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "StrafingWalkLoop",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=StrafingWalkLoop,RotationRate=120.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=StrafingWalkLoop,RotationRate=120.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "True",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      620,
+      180
+     ]
+    },
+    {
+     "name": "Strafing Walk End",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_10",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_10",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "StrafingWalkEnd",
+        "RotationRateSettings": "",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      720
+     ]
+    },
+    {
+     "name": "Walk Turn",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_11",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_11",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "WalkTurn",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkTurn,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=WalkTurn,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      1080
+     ]
+    },
+    {
+     "name": "Run Turn",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_12",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_12",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "RunTurn",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=RunTurn,RotationRate=360.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=RunTurn,RotationRate=420.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "False",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1460,
+      1260
+     ]
+    },
+    {
+     "name": "Walk Loop",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_13",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_13",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "WalkLoop",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=WalkLoop,RotationRate=180.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=WalkLoop,RotationRate=180.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "True",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      900
+     ]
+    },
+    {
+     "name": "Run Loop",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_14",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_14",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "RunLoop",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=RunLoop,RotationRate=300.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None),(BehaviorMode=Battle,LocomotionState=RunLoop,RotationRate=300.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "True",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      1080
+     ]
+    },
+    {
+     "name": "Run Start to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1460,
+      1440
+     ]
+    },
+    {
+     "name": "Walk Start to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1880,
+      0
+     ]
+    },
+    {
+     "name": "Dash Start to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1460,
+      1620
+     ]
+    },
+    {
+     "name": "Run Entry to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      620,
+      360
+     ]
+    },
+    {
+     "name": "Walk Entry to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      620,
+      540
+     ]
+    },
+    {
+     "name": "Dash Entry to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      620,
+      720
+     ]
+    },
+    {
+     "name": "Run Turn to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1880,
+      180
+     ]
+    },
+    {
+     "name": "Walk Turn to Accel",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1880,
+      360
+     ]
+    },
+    {
+     "name": "Dash Loop",
+     "conduit": false,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "result": "AnimGraphNode_EndLocomotionSequencePlayer_15",
+     "nodes": [
+      {
+       "id": "AnimGraphNode_EndLocomotionSequencePlayer_15",
+       "cls": "AnimGraphNode_EndLocomotionSequencePlayer",
+       "struct": "AnimNode_EndLocomotionSequencePlayer",
+       "values": {
+        "LocomotionState": "DashLoop",
+        "RotationRateSettings": "((BehaviorMode=Neutral,LocomotionState=DashLoop,RotationRate=240.0,ApplyTimeRatioRange=(X=0.0,Y=1.0),ApplyAnimationSet=None))",
+        "Sequence": "None",
+        "PlayRateBasis": "1.0",
+        "PlayRate": "1.0",
+        "PlayRateScaleBiasClamp": "(bMapRange=False,bClampResult=False,bInterpResult=False,InRange=(Min=0.0,Max=1.0),OutRange=(Min=0.0,Max=1.0),Scale=1.0,Bias=0.0,ClampMin=0.0,ClampMax=1.0,InterpSpeedIncreasing=10.0,InterpSpeedDecreasing=10.0)",
+        "StartPosition": "0.0",
+        "bLoopAnimation": "True",
+        "GroupName": "None",
+        "GroupRole": "CanBeLeader",
+        "GroupScope": "Local",
+        "bIgnoreForRelevancyTest": "False"
+       },
+       "links": {},
+       "bindings": [],
+       "pos": [
+        -320,
+        0
+       ]
+      }
+     ],
+     "pos": [
+      1040,
+      1260
+     ]
+    },
+    {
+     "name": "Accel Cancel Turn",
+     "conduit": true,
+     "reset_on_entry": false,
+     "entered": null,
+     "left": null,
+     "fully_blended": null,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "pos": [
+      1460,
+      1800
+     ]
+    }
+   ],
+   "transitions": [
+    {
+     "source": "Entry",
+     "target": "Run Entry to Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 7
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Entry",
+     "target": "Walk Entry to Accel",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 3
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Entry",
+     "target": "Dash Entry to Accel",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Entry",
+     "target": "Strafing Walk Loop",
+     "priority": 3,
+     "crossfade": 0,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 14
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Entry",
+     "target": "Idle",
+     "priority": 4,
+     "crossfade": 0,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Idle",
+     "target": "Allow Turn",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Idle",
+     "target": "Allow Accel",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start",
+     "target": "Dash Start",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start",
+     "target": "Walk End",
+     "priority": 1,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "BooleanAND",
+      "args": [
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 4
+         }
+        ]
+       },
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemainingFraction",
+          "state": "Walk Start"
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.5
+         }
+        ]
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start",
+     "target": "Walk Start to Accel",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Walk Start"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start",
+     "target": "Accel Cancel Turn",
+     "priority": 3,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start",
+     "target": "Run Start",
+     "priority": 4,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 7
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Start",
+     "target": "Run Start to Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Run Start"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Start",
+     "target": "Accel Cancel Turn",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Start",
+     "target": "Run End",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "BooleanAND",
+      "args": [
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 8
+         }
+        ]
+       },
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "Less_FloatFloat",
+        "args": [
+         {
+          "op": "time",
+          "func": "GetRelevantAnimTimeRemainingFraction",
+          "state": "Run Start"
+         },
+         {
+          "op": "const",
+          "type": "float",
+          "value": 0.699999988079071
+         }
+        ]
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Start",
+     "target": "Dash Start",
+     "priority": 3,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Start",
+     "target": "Dash Start to Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Dash Start"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk End",
+     "target": "Allow Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.10000000149011612
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk End",
+     "target": "Allow Turn",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.699999988079071
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk End",
+     "target": "Idle",
+     "priority": 2,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash End",
+     "target": "Allow Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Dash End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.10000000149011612
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash End",
+     "target": "Allow Turn",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Dash End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.699999988079071
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash End",
+     "target": "Idle",
+     "priority": 2,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Dash End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run End",
+     "target": "Allow Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Run End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.10000000149011612
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run End",
+     "target": "Allow Turn",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Run End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.699999988079071
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run End",
+     "target": "Idle",
+     "priority": 2,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Run End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Allow Accel",
+     "target": "Run Start",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 6
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Allow Accel",
+     "target": "Dash Start",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 10
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Allow Accel",
+     "target": "Strafing Walk Start",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 13
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Allow Accel",
+     "target": "Walk Start",
+     "priority": 3,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 2
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Allow Turn",
+     "target": "Turn",
+     "priority": 0,
+     "crossfade": 0.4000000059604645,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 1
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Turn",
+     "target": "Allow Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Turn",
+     "target": "Idle",
+     "priority": 1,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Turn"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Start",
+     "target": "Dash Start",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Start",
+     "target": "Strafing Walk Loop",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Strafing Walk Start"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Start",
+     "target": "Run Start",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 7
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Loop",
+     "target": "Dash Start",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Loop",
+     "target": "Strafing Walk End",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 15
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk Loop",
+     "target": "Run Start",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 7
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk End",
+     "target": "Idle",
+     "priority": 0,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Strafing Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk End",
+     "target": "Allow Turn",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Greater_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeFraction",
+        "state": "Strafing Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.30000001192092896
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Strafing Walk End",
+     "target": "Allow Accel",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Strafing Walk End"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.30000001192092896
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Turn",
+     "target": "Walk Turn to Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Walk Turn"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Turn",
+     "target": "Run Turn to Accel",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "Less_FloatFloat",
+      "args": [
+       {
+        "op": "time",
+        "func": "GetRelevantAnimTimeRemaining",
+        "state": "Run Turn"
+       },
+       {
+        "op": "const",
+        "type": "float",
+        "value": 0.05000000074505806
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Loop",
+     "target": "Walk End",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "BooleanOR",
+      "args": [
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 4
+         }
+        ]
+       },
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 7
+         }
+        ]
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Loop",
+     "target": "Dash Start",
+     "priority": 1,
+     "crossfade": 0.15000000596046448,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Loop",
+     "target": "Walk Turn",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 5
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Loop",
+     "target": "Run End",
+     "priority": 0,
+     "crossfade": 0.15000000596046448,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "BooleanOR",
+      "args": [
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 8
+         }
+        ]
+       },
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 3
+         }
+        ]
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Loop",
+     "target": "Dash Loop",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 11
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Loop",
+     "target": "Run Turn",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 9
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Start to Accel",
+     "target": "Run Loop",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Start to Accel",
+     "target": "Walk Loop",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Start to Accel",
+     "target": "Dash Loop",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Entry to Accel",
+     "target": "Run Loop",
+     "priority": 0,
+     "crossfade": 0,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Entry to Accel",
+     "target": "Walk Loop",
+     "priority": 0,
+     "crossfade": 0,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Entry to Accel",
+     "target": "Dash Loop",
+     "priority": 0,
+     "crossfade": 0,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Run Turn to Accel",
+     "target": "Run Loop",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Walk Turn to Accel",
+     "target": "Walk Loop",
+     "priority": 0,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "const",
+      "type": "bool",
+      "value": true
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Loop",
+     "target": "Dash End",
+     "priority": 0,
+     "crossfade": 0.15000000596046448,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "BooleanOR",
+      "args": [
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 12
+         }
+        ]
+       },
+       {
+        "op": "call",
+        "cls": "KismetMathLibrary",
+        "func": "EqualEqual_ByteByte",
+        "args": [
+         {
+          "op": "var",
+          "name": "RequestedLocomotionState"
+         },
+         {
+          "op": "const",
+          "type": "byte",
+          "value": 3
+         }
+        ]
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Loop",
+     "target": "Run Loop",
+     "priority": 1,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 7
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Dash Loop",
+     "target": "Run Turn",
+     "priority": 2,
+     "crossfade": 0.20000000298023224,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 9
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    },
+    {
+     "source": "Accel Cancel Turn",
+     "target": "Turn",
+     "priority": 0,
+     "crossfade": 0.30000001192092896,
+     "blend_mode": "HermiteCubic",
+     "logic": "TLT_Inertialization",
+     "custom_curve": null,
+     "blend_profile": null,
+     "automatic": false,
+     "rule": {
+      "op": "call",
+      "cls": "KismetMathLibrary",
+      "func": "EqualEqual_ByteByte",
+      "args": [
+       {
+        "op": "var",
+        "name": "RequestedLocomotionState"
+       },
+       {
+        "op": "const",
+        "type": "byte",
+        "value": 1
+       }
+      ]
+     },
+     "start": null,
+     "end": null,
+     "interrupt": null
+    }
+   ]
+  }
+ ],
+ "defaults": {
+  "BoneBlendRateGroups": "((\"Guard\", (BoneBlendRates=((BoneName=\"C_Tail_a\",BlendRate=0.3),(BoneName=\"C_Tail_b\",BlendRate=0.7),(BoneName=\"C_Tail_c\",BlendRate=1.0)))),(\"FaceGuard\", (BoneBlendRates=((BoneName=\"C_Neck_a\",BlendRate=1.0)))))",
+  "GuardBlendBoneFilter": "Guard",
+  "bGuardOverrideIdle": "False",
+  "FaceGuardBlendBoneFilter": "FaceGuard",
+  "IdleActionTable": "((\"N_Idle02_1\", 1.0),(\"N_Idle03_1\", 1.0),(\"N_Idle04_1\", 1.0),(\"N_Idle05_1\", 1.0))",
+  "bEnabledJogState": "True",
+  "StrafingWalkLoopRevaluation": "(bDisableDirectChangeDirection=True)",
+  "StrafingWalkLoopRevaluationOnNeutral": "(bDisableDirectChangeDirection=True)",
+  "WeaponSettingsOnNeutral": "((Slot=EWeaponSlot_1,AttachSocketName=\"Attach_Weapon01\",bVisibility=True))",
+  "WeaponSettingsOnBattle": "((Slot=EWeaponSlot_1,AttachSocketName=\"Attach_Weapon01\",bVisibility=True))",
+  "PoseMatchingType": "Foot",
+  "LipMapDefault": "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Default.RedXIII_Default",
+  "LipMapLoud": "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Loud.RedXIII_Loud",
+  "LipMapSmile": "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Smile.RedXIII_Smile"
+ },
+ "refs": [
+  "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Default.RedXIII_Default",
+  "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Loud.RedXIII_Loud",
+  "/Game/LipSync/LipMap/Player/PC0004_RedXIII/RedXIII_Smile.RedXIII_Smile"
+ ],
+ "variables": [],
+ "notes": [
+  "AnimGraphNode_ControlRig (AnimNode_ControlRig) is left out: its input goes straight on"
+ ],
+ "problems": []
+}

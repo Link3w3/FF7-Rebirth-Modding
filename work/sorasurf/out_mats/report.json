@@ -1,0 +1,1349 @@
+{
+ "carriers": {
+  "/Game/RebirthCustom/Sora/p_ex011_F_mat0_Inst_Skin": {
+   "from_": "RMI_Surface_Skin_Wide_Detail",
+   "replaced": [
+    20,
+    202
+   ],
+   "size": 7489635,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_mat04Inst_Skin": {
+   "from_": "RMI_Surface_Skin_Wide_Detail",
+   "replaced": [
+    20,
+    202
+   ],
+   "size": 7488519,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_mat01inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7490753,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_mat02inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7497837,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_mat03inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7490769,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_mat05inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7490753,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_EYE_Inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7485335,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex001_M_mat0_Inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7489661,
+   "shaders": 420
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_Eyelens_Inst_Coverage": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26,
+    30,
+    197,
+    277
+   ],
+   "size": 5625012,
+   "shaders": 296
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Coverage": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26,
+    30,
+    197,
+    277
+   ],
+   "size": 5640832,
+   "shaders": 296
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Inst_Coverage": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26,
+    30,
+    197,
+    277
+   ],
+   "size": 5641036,
+   "shaders": 296
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_E_mat3_Inst_Coverage": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26,
+    30,
+    197,
+    277
+   ],
+   "size": 5624416,
+   "shaders": 296
+  },
+  "/Game/RebirthCustom/Sora/p_ex011_E_mat2_Inst_Coverage": {
+   "from_": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "replaced": [
+    26,
+    30,
+    197,
+    277
+   ],
+   "size": 5627208,
+   "shaders": 296
+  },
+  "/Game/RebirthCustom/Sora/w_so010_mat0_Inst_Standard": {
+   "from_": "RMI_Surface_Standard_Wide_Detail",
+   "replaced": [
+    318,
+    353
+   ],
+   "size": 7491705,
+   "shaders": 420
+  }
+ },
+ "mis": {
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_mat0_Inst": {
+   "source": "PC0010_00_Skin",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_F_mat0_Inst_Skin.p_ex011_F_mat0_Inst_Skin",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Occlusion": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00",
+    "Detail": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00",
+    "Detail: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Normal: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Occlusion: /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00 (new override)",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5678
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat04Inst": {
+   "source": "PC0010_00_Skin",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_mat04Inst_Skin.p_ex011_mat04Inst_Skin",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Occlusion": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Detail: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "Normal: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Occlusion: /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask (new override)",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5662
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat01inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_mat01inst_Standard.p_ex011_mat01inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01",
+    "Detail: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5455
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat02inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_mat02inst_Standard.p_ex011_mat02inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00",
+    "Roughness": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Detail": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "DetailNormal": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Detail: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "DetailNormal: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00",
+    "Roughness: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "WideOcclusion: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00"
+   ],
+   "size": 5547
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat03inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_mat03inst_Standard.p_ex011_mat03inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02",
+    "Detail: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5455
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat05inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_mat05inst_Standard.p_ex011_mat05inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Detail: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5455
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_EYE_Inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_EYE_Inst_Standard.p_ex011_EYE_Inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 4867
+  },
+  "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_M_mat0_Inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/p_ex001_M_mat0_Inst_Standard.p_ex001_M_mat0_Inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00",
+    "Detail": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+   },
+   "edits": [
+    "imports /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00",
+    "imports /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Color: texture -> /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00",
+    "Detail: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00",
+    "Roughness: texture -> /Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00",
+    "WideOcclusion: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+   ],
+   "size": 5463
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_Eyelens_Inst": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_Eyelens_Inst_Coverage.p_ex011_Eyelens_Inst_Coverage",
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask",
+    "Roughness": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex",
+    "imports /Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex",
+    "Coverage: texture -> /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask",
+    "Roughness: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5279
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_hair_Inst": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Coverage.p_ex011_hair_Inst_Coverage",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "Occlusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Diffusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Coverage: texture -> /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "Detail: /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00 (new override)",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Diffusion: /Game/KH3/Shader/KHS_set/RGBTable.RGBTable (new override)",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Occlusion: /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask (new override)",
+    "Roughness: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "WideOcclusion: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2"
+   ],
+   "size": 5825
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_hair_Inst_Inst": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Inst_Coverage.p_ex011_hair_Inst_Inst_Coverage",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "Occlusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Diffusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "imports /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Coverage: texture -> /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "Detail: /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00 (new override)",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Diffusion: /Game/KH3/Shader/KHS_set/RGBTable.RGBTable (new override)",
+    "Normal: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Occlusion: /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask (new override)",
+    "Roughness: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "WideOcclusion: texture -> /Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2"
+   ],
+   "size": 5849
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_mat3_Inst": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_E_mat3_Inst_Coverage.p_ex011_E_mat3_Inst_Coverage",
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01",
+    "imports /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01",
+    "Color: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01",
+    "Coverage: texture -> /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)",
+    "Normal: texture -> /Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01"
+   ],
+   "size": 5147
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_mat2_Inst": {
+   "source": "PC0010_00_Hair",
+   "parent": "/Game/RebirthCustom/Sora/p_ex011_E_mat2_Inst_Coverage.p_ex011_E_mat2_Inst_Coverage",
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "edits": [
+    "imports /Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex",
+    "Color: texture -> /Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex",
+    "Coverage: texture -> /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage: /Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4 (new override)"
+   ],
+   "size": 5031
+  },
+  "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_mat0_Inst": {
+   "source": "PC0010_00_BodyA",
+   "parent": "/Game/RebirthCustom/Sora/w_so010_mat0_Inst_Standard.w_so010_mat0_Inst_Standard",
+   "textures": {
+    "Color": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "edits": [
+    "imports /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00",
+    "imports /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "imports /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00",
+    "imports /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "imports /Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Color: texture -> /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00",
+    "Detail: texture -> /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00",
+    "Metallic: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal: texture -> /Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00",
+    "Roughness: texture -> /Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion: texture -> /Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   ],
+   "size": 5439
+  }
+ },
+ "jobs": {
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_mat0_Inst": {
+   "export": "p_ex011_F_mat0_Inst",
+   "carrier": "RMI_Surface_Skin_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_F_mat0_Inst_Skin",
+   "solid": true,
+   "template": "PC0010_00_Skin",
+   "two_sided": false,
+   "passes": {
+    "20": "base",
+    "202": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01"
+    },
+    "Texture2D_2": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_4": {
+     "parameter": "Occlusion",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_6": {
+     "parameter": "Occlusion",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00"
+    },
+    "Texture2D_7": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Occlusion": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00",
+    "Detail": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "20": {
+     "kind": "base",
+     "size": 26595,
+     "sha1": "ebf51fa9fe3b2b82b0364fb17cf26089c24e5f8b"
+    },
+    "202": {
+     "kind": "base",
+     "size": 26720,
+     "sha1": "3efc1d9e6f99e65bcbf2850b391f84cf329bcf71"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat04Inst": {
+   "export": "p_ex011_mat04Inst",
+   "carrier": "RMI_Surface_Skin_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_mat04Inst_Skin",
+   "solid": true,
+   "template": "PC0010_00_Skin",
+   "two_sided": false,
+   "passes": {
+    "20": "base",
+    "202": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01"
+    },
+    "Texture2D_2": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_5": {
+     "parameter": "Occlusion",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_6": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00"
+    },
+    "Texture2D_7": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Occlusion": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "20": {
+     "kind": "base",
+     "size": 26041,
+     "sha1": "e0f99591b422499cadd7e8decdae1aa55a79fcbf"
+    },
+    "202": {
+     "kind": "base",
+     "size": 26166,
+     "sha1": "7a68b34f26328e8d04f5d2b75c0ce97bd2d83197"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat01inst": {
+   "export": "p_ex011_mat01inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_mat01inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex"
+    },
+    "Texture2D_4": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02"
+    },
+    "Texture2D_6": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 26174,
+     "sha1": "32c9bab20f749fa029d4cbd92d8aeb3fbcdea098"
+    },
+    "353": {
+     "kind": "base",
+     "size": 26050,
+     "sha1": "5125a38d5eb95fcdd556512ac87d8e67b2aec385"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat02inst": {
+   "export": "p_ex011_mat02inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_mat02inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00"
+    },
+    "Texture2D_3": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00"
+    },
+    "Texture2D_4": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_6": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00"
+    },
+    "Texture2D_8": {
+     "parameter": "DetailNormal",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00",
+    "Roughness": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Detail": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "WideOcclusion": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "DetailNormal": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 29718,
+     "sha1": "c53b7881634178838a81b20bbb8b85910a55c462"
+    },
+    "353": {
+     "kind": "base",
+     "size": 29590,
+     "sha1": "8a2b678760dc57df5c7a06370f9ceca0d28f53ab"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat03inst": {
+   "export": "p_ex011_mat03inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_mat03inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex"
+    },
+    "Texture2D_4": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02"
+    },
+    "Texture2D_6": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 26182,
+     "sha1": "97214c9b07d9e6c9662d1e53075f5477dc1db972"
+    },
+    "353": {
+     "kind": "base",
+     "size": 26058,
+     "sha1": "09fdf70ffcbccb1a20c1c0760e17e05d3870808a"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_mat05inst": {
+   "export": "p_ex011_mat05inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_mat05inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex"
+    },
+    "Texture2D_4": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00"
+    },
+    "Texture2D_6": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 26174,
+     "sha1": "cba05f334b5fe33b76cfd4bfcf6c213b4d4c8944"
+    },
+    "353": {
+     "kind": "base",
+     "size": 26050,
+     "sha1": "a5b9597060117425138e75d27b5832f9727387d7"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_EYE_Inst": {
+   "export": "p_ex011_EYE_Inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_EYE_Inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_2": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 23469,
+     "sha1": "29bad067199f89e47d8eca00f5034e5c8ff6a620"
+    },
+    "353": {
+     "kind": "base",
+     "size": 23337,
+     "sha1": "566820d0eaf52ecfeaf8c9fff134160af2c94e94"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex001/mdl/mat0/p_ex001_M_mat0_Inst": {
+   "export": "p_ex001_M_mat0_Inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex001_M_mat0_Inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00"
+    },
+    "Texture2D_3": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00"
+    },
+    "Texture2D_4": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    },
+    "Texture2D_5": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00",
+    "Detail": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 25624,
+     "sha1": "2374ec1d79edfa4053a00b325c9aa4c3df04ed1f"
+    },
+    "353": {
+     "kind": "base",
+     "size": 25500,
+     "sha1": "3151575feac8b1a5fcfc52724c635803f469ef04"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_Eyelens_Inst": {
+   "export": "p_ex011_Eyelens_Inst",
+   "carrier": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_Eyelens_Inst_Coverage",
+   "solid": false,
+   "template": "PC0010_00_Hair",
+   "two_sided": false,
+   "passes": {
+    "26": "base",
+    "30": "shadow",
+    "197": "depth",
+    "277": "shadow_pc"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex"
+    },
+    "Texture2D_1": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask"
+    },
+    "Texture2D_2": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask",
+    "Roughness": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "shaders": {
+    "26": {
+     "kind": "base",
+     "size": 27807,
+     "sha1": "2cc1ffb93c1f9f1dbfdc7dd0d0b916cf4644e137"
+    },
+    "30": {
+     "kind": "shadow",
+     "size": 19435,
+     "sha1": "e80afdc3e59552713cc825a0449ff4d2cb773427"
+    },
+    "197": {
+     "kind": "depth",
+     "size": 20196,
+     "sha1": "b349f1c690402a94cd18a45bba80d62a7efe9e38"
+    },
+    "277": {
+     "kind": "shadow_pc",
+     "size": 20012,
+     "sha1": "8b3de06e89f8c24ccbbcfafbc712db4064a6c106"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_hair_Inst": {
+   "export": "p_ex011_hair_Inst",
+   "carrier": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Coverage",
+   "solid": false,
+   "template": "PC0010_00_Hair",
+   "two_sided": true,
+   "passes": {
+    "26": "base",
+    "30": "shadow",
+    "197": "depth",
+    "277": "shadow_pc"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline"
+    },
+    "Texture2D_2": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N"
+    },
+    "Texture2D_3": {
+     "parameter": "Occlusion",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00"
+    },
+    "Texture2D_6": {
+     "parameter": "Diffusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    },
+    "Texture2D_9": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "Occlusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Diffusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "shaders": {
+    "26": {
+     "kind": "base",
+     "size": 32832,
+     "sha1": "a8888b92317293aa08def0229f93af705030e504"
+    },
+    "30": {
+     "kind": "shadow",
+     "size": 22936,
+     "sha1": "9c43c836ad356541f65cd452210fcad144b51308"
+    },
+    "197": {
+     "kind": "depth",
+     "size": 24001,
+     "sha1": "46092466a6ed357b88ebea8bfb91ab93010bf041"
+    },
+    "277": {
+     "kind": "shadow_pc",
+     "size": 23509,
+     "sha1": "671f8a03c6c74f3b65e593efe28f268e3cea9300"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_hair_Inst_Inst": {
+   "export": "p_ex011_hair_Inst_Inst",
+   "carrier": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_hair_Inst_Inst_Coverage",
+   "solid": false,
+   "template": "PC0010_00_Hair",
+   "two_sided": true,
+   "passes": {
+    "26": "base",
+    "30": "shadow",
+    "197": "depth",
+    "277": "shadow_pc"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline"
+    },
+    "Texture2D_2": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N"
+    },
+    "Texture2D_3": {
+     "parameter": "Occlusion",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00"
+    },
+    "Texture2D_6": {
+     "parameter": "Diffusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    },
+    "Texture2D_9": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+    "Normal": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+    "Roughness": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+    "Occlusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+    "Detail": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+    "Diffusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+    "WideOcclusion": "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "shaders": {
+    "26": {
+     "kind": "base",
+     "size": 32913,
+     "sha1": "fd9012a0572fe54e44e31c6a4efab9b801461ddd"
+    },
+    "30": {
+     "kind": "shadow",
+     "size": 22973,
+     "sha1": "e4652c95a0d58a6a3c7c4cca5a56a5905b7ec261"
+    },
+    "197": {
+     "kind": "depth",
+     "size": 24034,
+     "sha1": "e8b5536d7640a6414d9b1428d010514ce910092c"
+    },
+    "277": {
+     "kind": "shadow_pc",
+     "size": 23546,
+     "sha1": "ab493a108d712b78f3ea505d97e6cb8920ffde3d"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_mat3_Inst": {
+   "export": "p_ex011_E_mat3_Inst_masked",
+   "carrier": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_E_mat3_Inst_Coverage",
+   "solid": false,
+   "template": "PC0010_00_Hair",
+   "two_sided": true,
+   "passes": {
+    "26": "base",
+    "30": "shadow",
+    "197": "depth",
+    "277": "shadow_pc"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01"
+    },
+    "Texture2D_5": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01",
+    "Normal": "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "shaders": {
+    "26": {
+     "kind": "base",
+     "size": 24002,
+     "sha1": "6fc2cea1be46b3f79f91a43abd159b8e5e4b266f"
+    },
+    "30": {
+     "kind": "shadow",
+     "size": 20586,
+     "sha1": "43b121ad98395ba65ad37cf0b28df8ad79dde3bd"
+    },
+    "197": {
+     "kind": "depth",
+     "size": 21095,
+     "sha1": "b9d595d1b39321d813de6ff6bb14824189cb9485"
+    },
+    "277": {
+     "kind": "shadow_pc",
+     "size": 21171,
+     "sha1": "b9ac45520569127a00ec78c1b6dc77356c9a0d2d"
+    }
+   }
+  },
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_mat2_Inst": {
+   "export": "p_ex011_E_mat2_Inst_masked",
+   "carrier": "RMI_Surface_Fabric_Coverage_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/p_ex011_E_mat2_Inst_Coverage",
+   "solid": false,
+   "template": "PC0010_00_Hair",
+   "two_sided": false,
+   "passes": {
+    "26": "base",
+    "30": "shadow",
+    "197": "depth",
+    "277": "shadow_pc"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex",
+    "Coverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4",
+    "DetailCoverage": "/Game/Renderer/Texture/FFFFFFFF_BC4.FFFFFFFF_BC4"
+   },
+   "shaders": {
+    "26": {
+     "kind": "base",
+     "size": 24662,
+     "sha1": "57dc5b28ce9c875c51464484b695fb9eabcb40f0"
+    },
+    "30": {
+     "kind": "shadow",
+     "size": 21222,
+     "sha1": "f80306b46454943acd0daf27063be6ddcce6487d"
+    },
+    "197": {
+     "kind": "depth",
+     "size": 21955,
+     "sha1": "ff587d81029b6ce6258f9f185e2fc004f8ac2afa"
+    },
+    "277": {
+     "kind": "shadow_pc",
+     "size": 21807,
+     "sha1": "bbdd8b2890423ac848b33454df498ab26e1b2b13"
+    }
+   }
+  },
+  "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_mat0_Inst": {
+   "export": "w_so010_mat0_Inst",
+   "carrier": "RMI_Surface_Standard_Wide_Detail",
+   "carrier_copy": "/Game/RebirthCustom/Sora/w_so010_mat0_Inst_Standard",
+   "solid": true,
+   "template": "PC0010_00_BodyA",
+   "two_sided": false,
+   "passes": {
+    "318": "base",
+    "353": "base"
+   },
+   "plan": {
+    "Texture2D_0": {
+     "parameter": "Color",
+     "texture": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00"
+    },
+    "Texture2D_1": {
+     "parameter": "Metallic",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal"
+    },
+    "Texture2D_2": {
+     "parameter": "Normal",
+     "texture": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00"
+    },
+    "Texture2D_4": {
+     "parameter": "Roughness",
+     "texture": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask"
+    },
+    "Texture2D_5": {
+     "parameter": "Detail",
+     "texture": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00"
+    },
+    "Texture2D_6": {
+     "parameter": "WideOcclusion",
+     "texture": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+    }
+   },
+   "textures": {
+    "Color": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00",
+    "Metallic": "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+    "Normal": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00",
+    "Roughness": "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+    "Detail": "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00",
+    "WideOcclusion": "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable"
+   },
+   "shaders": {
+    "318": {
+     "kind": "base",
+     "size": 26702,
+     "sha1": "ae66b16945f8aec5240240c2c861a4254d55e7ca"
+    },
+    "353": {
+     "kind": "base",
+     "size": 26474,
+     "sha1": "b5aa73c4a157da768999ddcbe8aa7af2dbbff1b6"
+    }
+   }
+  }
+ },
+ "textures": [
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d00.p_ex011_0d00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0d02.p_ex011_0d02",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0m00.p_ex011_0m00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n00.p_ex011_0n00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n01.p_ex011_0n01",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0n02.p_ex011_0n02",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o00.p_ex011_0o00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_0o01.p_ex011_0o01",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0d01.p_ex011_E_0d01",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_E_0n01.p_ex011_E_0n01",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0d00.p_ex011_F_0d00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_F_0n00.p_ex011_F_0n00",
+  "/Game/KH3/Character/pc/p_ex011/mdl/mat0/p_ex011_H_0n00.p_ex011_H_0n00",
+  "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0d00.w_so010_0d00",
+  "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0m00.w_so010_0m00",
+  "/Game/KH3/Character/wep/w_so010/mdl/mat0/w_so010_0n00.w_so010_0n00",
+  "/Game/KH3/Shader/KHS_set/RGBTable.RGBTable",
+  "/Game/KH3/Shader/MF_set/LibraryTiling16a_Mask.LibraryTiling16a_Mask",
+  "/Game/KH3/Shader/MF_set/LibraryTiling16a_normal.LibraryTiling16a_normal",
+  "/Game/KH3/Shader/Material_set/LibTextures/waterNormaltex.waterNormaltex",
+  "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseFlatNormalTex.BaseFlatNormalTex",
+  "/Game/KH3/Shader/Material_set/SQEX_BaseMaterialSet/BaseTextures/BaseMaskTex.BaseMaskTex",
+  "/Game/KH3/Shader/Material_set/SQEX_EyeMaterialTex/EyeG_ColorMask.EyeG_ColorMask",
+  "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairline.hairline",
+  "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlineendmask2.hairlineendmask2",
+  "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/hairlinemask.hairlinemask",
+  "/Game/KH3/Shader/Material_set/SQEX_HairMaterialTex/nami_N.nami_N",
+  "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0d00.Mouth_M_0d00",
+  "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0m00.Mouth_M_0m00",
+  "/Game/KH3/Shader/Material_set/SQEX_MouthTexSet/Mouth_M_0n00.Mouth_M_0n00"
+ ],
+ "missing_exports": []
+}

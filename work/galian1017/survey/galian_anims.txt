@@ -1,0 +1,324 @@
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Battle00.Battle00 77
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Battle00_Comp.Battle00_Comp 13
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Battle01.Battle01 47
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Battle02.Battle02 22
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Facial00.Facial00 26
+== SET /Game/Motion/Enemy/EB2160_VincentValentine/Reaction00.Reaction00 1
+Motion       EV_NIBLE_8310_EB2160_00_C0280      AnimSequence   len  9.000    lock 0 hits 
+        {'AnimNotifyState_EndTimedNiagaraEffect': 2}
+Motion       EV_NIBLE_8310_PC0011_00_C0020      AnimSequence   len  4.933    lock 0 hits 
+        {'SQEX_KineDriver_AnimNotifyState_EnableBone': 1, 'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0080      AnimSequence   len  3.733    lock 0 hits 
+        {'SQEX_AnimNotifyState_Bonamik_TemporaryCollision': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0090      AnimSequence   len  6.900    lock 0 hits 
+        {'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0110      AnimSequence   len  6.100    lock 0 hits 
+        {'SQEX_KineDriver_AnimNotifyState_EnableBone': 1, 'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0120      AnimSequence   len  0.400    lock 0 hits 
+        {'SQEX_AnimNotifyState_Bonamik_TemporaryCollision': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0160      AnimSequence   len  2.800    lock 0 hits 
+        {'SQEX_KineDriver_AnimNotifyState_EnableBone': 1, 'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0170      AnimSequence   len  2.533    lock 0 hits 
+        {'SQEX_KineDriver_AnimNotifyState_EnableBone': 1, 'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0220      AnimSequence   len  1.767    lock 0 hits 
+        {'SQEX_KineDriver_AnimNotifyState_EnableBone': 1, 'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Motion       EV_NIBLE_8310_PC0011_00_C0230      AnimSequence   len  3.033    lock 0 hits 
+        {'SQEX_AnimNotifyState_Bonamik_Weight': 1}
+Battle00     B_Abnormal01_0                     AnimSequence   len  2.267    lock 0 hits 
+Battle00     B_Abnormal01_1                     AnimSequence   len  2.000    lock 0 hits 
+Battle00     B_Abnormal01_2                     AnimSequence   len  1.767    lock 0 hits 
+Battle00     B_AtkBeastFlare01                  AnimSequence   len  4.333    lock 0 hits 1.10
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkBerserkDance01                AnimSequence   len  3.667    lock 0 hits 1.63
+        {'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_AtkBerserkDance02_0              AnimSequence   len  0.433    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2}
+Battle00     B_AtkBerserkDance02_1              AnimSequence   len  6.000    lock 0 hits 2.98
+        {'EndAnimNotifyStateBattleSuperArmor': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1}
+Battle00     B_AtkBerserkDance02_2              AnimSequence   len  5.500    lock 0 hits 0.69,1.22,1.64,2.17,2.45,3.09,3.36,4.23,4.83
+        {'EndBattleAIMessageNotifyState': 2, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 12, 'AnimNotifyState_EndTimedNiagaraEffect': 20, 'EndAnimNotifyStateBattleDamage': 9, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 3, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 3, 'EndBattleAIMessageNotify': 1}
+Battle00     B_AtkBerserkDance02_3              AnimSequence   len  3.000    lock 0 hits 0.48
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'AnimNotifyState_EndTimedNiagaraEffect': 5, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_AtkClawRaise01                   AnimSequence   len  2.500    lock 0 hits 0.73
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotify': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkClawRaise02_0                 AnimSequence   len  2.233    lock 0 hits 0.33
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 4}
+Battle00     B_AtkClawRaise02_1                 AnimSequence   len  1.267    lock 0 hits 0.37
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_AtkClawRaiseTest01_0             AnimSequence   len  0.467    lock 0 hits 0.37
+        {'EndBattleAIMessageNotifyState': 1, 'AnimNotify_EndModifyPlayRate': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotify': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_AtkClawRaiseTest01_1             AnimSequence   len  0.167    lock 0 hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotifyState': 1}
+Battle00     B_AtkClawRaiseTest01_2             AnimSequence   len  0.867    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndBattleAIMessageNotify': 1}
+Battle00     B_AtkCleaveKick01                  AnimSequence   len  2.767    lock 0 hits 1.07
+        {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkCleaveKick02_0                AnimSequence   len  2.167    lock 0 hits 0.58,0.58
+        {'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 5, 'EndAnimNotifyStateBattleDamage': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkGilgameshTest01               AnimSequence   len  2.500    lock 0 hits 0.70
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyBattleDamage': 1}
+Battle00     B_AtkJumpStump01                   AnimSequence   len  2.667    lock 0 hits 1.16
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkJumpStump02_0                 AnimSequence   len  3.200    lock 0 hits 0.62,1.02,1.21,1.49
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 4, 'AnimNotifyState_EndTimedNiagaraEffect': 7, 'EndAnimNotifyStateBattleDamage': 4, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkJumpStump02_1                 AnimSequence   len  1.667    lock 0 hits 0.39
+        {'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_AtkKickObj01                     AnimSequence   len  2.133    lock 0 hits 
+        {'EndAnimNotifyStateBattleSetSpecialStatusChangeState': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 5, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1}
+Battle00     B_AtkRoar01                        AnimSequence   len  3.833    lock 0 hits 1.60
+        {'AnimNotifyState_EndAIBattleDangerObject': 2, 'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkSummerSalt01                  AnimSequence   len  3.333    lock 0 hits 0.90
+        {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotify': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_AtkSummerSalt02_0                AnimSequence   len  1.833    lock 0 hits 0.69,0.69
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 2}
+Battle00     B_Counter_ClawRaise01              AnimSequence   len  2.500    lock 0 hits 0.70
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 2, 'EndAnimNotifyStateBattleSuperArmor': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndBattleAIMessageNotify': 1, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle00     B_Die01_0                          AnimComposite  len  2.000    lock None hits 
+Battle00     B_Dmg01_Add                        AnimSequence   len  0.267    lock 0 hits 
+Battle00     B_DmgB01                           AnimSequence   len  0.667    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle00     B_DmgB03_0                         AnimSequence   len  1.000    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotify_EndAIBattlePhaseChange': 1}
+Battle00     B_DmgB03_1                         AnimSequence   len  2.833    lock 0 hits 
+Battle00     B_DmgB03_2                         AnimSequence   len  1.000    lock 0 hits 
+Battle00     B_DmgBurst01_0                     AnimSequence   len  2.000    lock 0 hits 
+Battle00     B_DmgBurst01_1                     AnimSequence   len  2.333    lock 0 hits 
+Battle00     B_DmgBurst01_2                     AnimSequence   len  2.000    lock 0 hits 
+Battle00     B_DmgBurst01_Add                   AnimSequence   len  1.400    lock 0 hits 
+Battle00     B_DmgF01                           AnimSequence   len  0.667    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle00     B_DmgF03_0                         AnimSequence   len  1.000    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotify_EndAIBattlePhaseChange': 1}
+Battle00     B_DmgF03_1                         AnimSequence   len  2.833    lock 0 hits 
+Battle00     B_DmgF03_2                         AnimSequence   len  1.000    lock 0 hits 
+Battle00     B_DmgL01                           AnimSequence   len  0.667    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle00     B_DmgR01                           AnimSequence   len  0.667    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle00     B_FastMove01_0                     AnimSequence   len  0.267    lock 0 hits 
+        {'AnimNotifyState_EndAIFastDashUpdateGoalLocation': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1}
+Battle00     B_FastMove01_1                     AnimSequence   len  0.333    lock 0 hits 
+Battle00     B_FastMove01_2                     AnimSequence   len  0.767    lock 0 hits 
+        {'AnimNotifyState_EndTimedNiagaraEffect': 1, 'AnimNotify_EndAIEnemyCancel': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1}
+Battle00     B_FastMove02_0                     AnimComposite  len  0.972    lock None hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2}
+Battle00     B_FastMove02_1                     AnimSequence   len  0.333    lock 0 hits 0.00
+        {'AnimNotify_EndModifyRootMotionScale': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle00     B_FastMove02_2                     AnimComposite  len  1.278    lock None hits 
+        {'AnimNotify_EndModifyRootMotionScale': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1, 'EndAnimNotifyBattleHideAbilityName': 1}
+Battle00     B_Guard01_0                        AnimSequence   len  0.133    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndBattleAbilityRotateState': 1, 'EndAnimNotifyStateBattleSuperArmor': 1}
+Battle00     B_Guard01_1                        AnimSequence   len  1.667    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyStateBattleSuperArmor': 1}
+Battle00     B_Guard01_2                        AnimSequence   len  0.600    lock 0 hits 
+Battle00     B_Idle01_1                         AnimSequence   len  5.000    lock 0 hits 
+        {'EndAnimNotifyCharacterBodyMoveMode': 1}
+Battle00     B_Idle02_1                         AnimSequence   len  5.000    lock 0 hits 
+        {'AnimNotifyState_EndTimedNiagaraEffect': 3}
+Battle00     B_JumpB01_0                        AnimSequence   len  1.000    lock 0 hits 
+        {'EndBattleAbilityRotateState': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyCharacterJump': 1}
+Battle00     B_JumpB01_1                        AnimSequence   len  0.333    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetCharacterPushResponse': 1}
+Battle00     B_JumpB01_2                        AnimSequence   len  0.533    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_0                          AnimSequence   len  0.700    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_0_L180                     AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_0_L90                      AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_0_R180                     AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_0_R90                      AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 1}
+Battle00     B_Run01_1                          AnimSequence   len  0.667    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 2}
+Battle00     B_Run01_2r                         AnimSequence   len  1.133    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 2}
+Battle00     B_StepB01                          AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'AnimNotify_EndStepTurn': 2, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle00     B_StepL01                          AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'AnimNotify_EndStepTurn': 2, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle00     B_StepR01                          AnimSequence   len  1.000    lock 0 hits 
+        {'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'AnimNotify_EndStepTurn': 2, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle00     B_Turn01_L180                      AnimSequence   len  1.133    lock 0 hits 
+Battle00     B_Turn01_L90                       AnimSequence   len  1.133    lock 0 hits 
+Battle00     B_Turn01_R180                      AnimSequence   len  1.133    lock 0 hits 
+Battle00     B_Turn01_R90                       AnimSequence   len  1.133    lock 0 hits 
+Battle00     B_Walk01_0                         AnimSequence   len  1.500    lock 0 hits 
+Battle00     B_Walk01_0_L180                    AnimSequence   len  1.667    lock 0 hits 
+Battle00     B_Walk01_0_L90                     AnimSequence   len  1.500    lock 0 hits 
+Battle00     B_Walk01_0_R180                    AnimSequence   len  1.667    lock 0 hits 
+Battle00     B_Walk01_0_R90                     AnimSequence   len  1.500    lock 0 hits 
+Battle00     B_Walk01_1                         AnimSequence   len  1.667    lock 0 hits 
+Battle00     B_Walk01_2r                        AnimSequence   len  1.500    lock 0 hits 
+Battle00_Com B_AtkClawRaise02_0-1               AnimComposite  len  2.267    lock None hits 
+        {'EndAnimNotifyPlayCharacterSound': 2, 'AnimNotify_EndModifyPlayRate': 1}
+Battle00_Com B_AtkCrossMove01_0                 AnimComposite  len  0.240    lock None hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1}
+Battle00_Com B_AtkCrossMove01_1                 AnimComposite  len  0.333    lock None hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'EndBattleAIMessageNotifyState': 1}
+Battle00_Com B_AtkCrossMove01_2                 AnimComposite  len  0.767    lock None hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle00_Com B_AtkCrossMove02_1                 AnimComposite  len  0.333    lock None hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle00_Com B_AtkCrossMove03_1                 AnimComposite  len  0.333    lock None hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle00_Com B_AtkCrossMove04_1                 AnimComposite  len  0.333    lock None hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle00_Com B_AtkJumpStump01_Comp              AnimComposite  len  1.497    lock None hits 
+        {'EndAnimNotifyBattleHideAbilityName': 1}
+Battle00_Com B_AtkKickObj01_UnableGuard         AnimComposite  len  2.133    lock None hits 
+        {'AnimNotifyState_EndAIBattleDangerObject': 2}
+Battle00_Com B_CounterWalk01_0                  AnimComposite  len  1.500    lock None hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyPlayCharacterSound': 1}
+Battle00_Com B_CounterWalk01_1                  AnimComposite  len  1.667    lock None hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1}
+Battle00_Com B_CounterWalk01_2r                 AnimComposite  len  1.500    lock None hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'EndBattleAIMessageNotify': 1}
+Battle00_Com B_Counter_ClawRaise01              AnimComposite  len  2.800    lock None hits 
+        {'EndBattleAIMessageNotifyState': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyStateBattleSuperArmor': 1, 'EndBattleAIMessageNotify': 1, 'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkBeastFlare01                  AnimComposite  len  4.333    lock None hits 
+        {'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkBerserkDance01                AnimComposite  len  3.667    lock None hits 
+        {'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkBerserkDance02_0              AnimComposite  len  0.433    lock None hits 
+        {'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkBerserkDance02_1              AnimComposite  len  6.000    lock None hits 
+        {'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkBerserkDance02_2              AnimComposite  len  5.500    lock None hits 
+Battle01     B_AtkBerserkDance02_4              AnimSequence   len  0.767    lock 0 hits 0.50
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'EndBattleAIMessageNotify': 2, 'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleDamage': 1}
+Battle01     B_AtkBerserkDance02_5              AnimSequence   len  0.867    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyCharacterBodyMoveMode': 2, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle01     B_AtkBerserkDance02_6              AnimSequence   len  0.267    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyState_FreezeCameraLockLocation': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle01     B_AtkBerserkDance02_7              AnimSequence   len  3.267    lock 0 hits 0.00,0.04
+        {'EndAnimNotifyStateBattleDamage': 2, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndBattleAIMessageNotify': 1}
+Battle01     B_AtkChaosGlaive01                 AnimSequence   len  5.667    lock 0 hits 2.64
+        {'AnimNotifyState_EndTimedNiagaraEffect': 2, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotifyState_EndAIEnemyBattleAbilityCancel': 1}
+Battle01     B_AtkChaosGlaive02                 AnimSequence   len  3.933    lock 0 hits 1.06
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyPlayCharacterSound': 3, 'EndAnimNotifyStateBattleDamage': 1}
+Battle01     B_AtkClawRaise01                   AnimComposite  len  2.500    lock None hits 
+        {'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3}
+Battle01     B_AtkClawRaise02_1                 AnimSequence   len  0.700    lock 0 hits 0.60
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'EndBattleAIMessageNotify': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndAnimNotifyStateBattleDamage': 1}
+Battle01     B_AtkClawRaise02_2                 AnimSequence   len  0.167    lock 0 hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle01     B_AtkClawRaise02_3                 AnimSequence   len  0.867    lock 0 hits 
+        {'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndBattleAIMessageNotify': 1}
+Battle01     B_AtkCleaveKick01                  AnimComposite  len  2.333    lock None hits 
+        {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3}
+Battle01     B_AtkCleaveKick02_0                AnimComposite  len  2.200    lock None hits 
+        {'EndBattleAIMessageNotifyState': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle01     B_AtkCleaveKick02_1                AnimSequence   len  3.833    lock 0 hits 1.50
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 1}
+Battle01     B_AtkJumpStump01                   AnimComposite  len  2.667    lock None hits 
+        {'EndBattleAIMessageNotifyState': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 3}
+Battle01     B_AtkJumpStump02_0                 AnimSequence   len  3.100    lock 0 hits 0.94
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle01     B_AtkJumpStump02_1                 AnimSequence   len  3.233    lock 0 hits 1.43
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1, 'AnimNotify_EndModifyPlayRate': 1}
+Battle01     B_AtkPillarCleave01                AnimSequence   len  7.900    lock 0 hits 3.13,5.82,6.07,6.10,6.11,6.16,6.21
+        {'EndAnimNotifySetEnvBlockResponse': 1, 'EndBattleAIMessageNotifyState': 3, 'EndAnimNotifyCharacterBodyMoveMode': 2, 'EndAnimNotifyPlayCharacterSound': 10, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStatePlayCharacterSound': 1, 'EndAnimNotifyStateBattleDamage': 7, 'AnimNotify_EndModifyPlayRate': 1, 'EndBattleAIMessageNotify': 1}
+Battle01     B_AtkRoar02                        AnimSequence   len  3.500    lock 0 hits 1.34
+        {'AnimNotifyState_EndAIBattleDangerObject': 2, 'EndBattleAIMessageNotifyState': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyStateBattleDamage': 1}
+Battle01     B_AtkSummerSalt01                  AnimComposite  len  3.333    lock None hits 
+        {'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2}
+Battle01     B_AtkSummerSalt02_1                AnimSequence   len  2.367    lock 0 hits 1.09,1.10
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifyPlayCharacterSound': 3, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDistance': 1, 'EndAnimNotifyStateBattleDamage': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 5}
+Battle01     B_Counter_ClawRaise01              AnimComposite  len  2.500    lock None hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle01     B_FlashMove01_0                    AnimComposite  len  0.240    lock None hits 
+        {'AnimNotifyState_EndTimedNiagaraEffect': 1}
+Battle01     B_FlashMove01_1                    AnimComposite  len  0.333    lock None hits 
+Battle01     B_FlashMove01_2                    AnimComposite  len  0.767    lock None hits 
+Battle01     B_FlashMove01_3                    AnimSequence   len  0.667    lock 0 hits 
+        {'EndAnimNotifyCharacterBodyMoveMode': 1, 'AnimNotify_EndAIBattleTrans': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndBattleAIMessageNotify': 1, 'EndAnimNotifyPlayCharacterSound': 1}
+Battle01     B_Idle02_1                         AnimSequence   len  9.600    lock 0 hits 6.67
+        {'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndBattleAIMessageNotifyState': 2, 'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotify': 1}
+Battle01     B_JumpF01_0                        AnimSequence   len  0.567    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndBattleAbilityRotateState': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifySetCharacterPushResponse': 1, 'EndAnimNotifyCharacterJump': 1}
+Battle01     B_JumpF01_1                        AnimSequence   len  0.333    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndAnimNotifySetCharacterPushResponse': 1}
+Battle01     B_StepB01                          AnimSequence   len  0.833    lock 0 hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndStepTurn': 2, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle01     B_StepL01                          AnimSequence   len  0.833    lock 0 hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndStepTurn': 2, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle01     B_StepR01                          AnimSequence   len  0.833    lock 0 hits 
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndStepTurn': 2, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'AnimNotify_EndAIActionCancelStep': 1}
+Battle01     B_Turn01_L180                      AnimSequence   len  0.933    lock 0 hits 
+Battle01     B_Turn01_L90                       AnimSequence   len  0.933    lock 0 hits 
+Battle01     B_Turn01_R180                      AnimSequence   len  0.933    lock 0 hits 
+Battle01     B_Turn01_R90                       AnimSequence   len  0.933    lock 0 hits 
+Battle01     B_Walk01_0                         AnimSequence   len  1.500    lock 0 hits 
+Battle01     B_Walk01_0_L180                    AnimSequence   len  1.667    lock 0 hits 
+Battle01     B_Walk01_0_L90                     AnimSequence   len  1.500    lock 0 hits 
+Battle01     B_Walk01_0_R180                    AnimSequence   len  1.667    lock 0 hits 
+Battle01     B_Walk01_0_R90                     AnimSequence   len  1.500    lock 0 hits 
+Battle01     B_Walk01_1                         AnimSequence   len  1.667    lock 0 hits 
+Battle01     B_Walk01_2r                        AnimSequence   len  1.500    lock 0 hits 
+Battle02     B_AtkBeastFlare01                  AnimSequence   len  3.667    lock 0 hits 1.70
+        {'EndAnimNotifySetEnvBlockResponse': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndAnimNotifyBattleDamage': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle02     B_AtkChaosFlare01                  AnimSequence   len  5.000    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 2, 'EndBattleAIMessageNotify': 1, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle02     B_AtkChaosFlare02_0                AnimSequence   len  0.500    lock 0 hits 
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndBattleAbilityRotateState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndAnimNotifyCharacterJump': 1}
+Battle02     B_AtkChaosFlare02_1                AnimSequence   len  0.267    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle02     B_AtkChaosFlare02_2                AnimSequence   len  0.333    lock 0 hits 
+        {'AnimNotify_EndAIEnemyBattleAbilityCancel': 1, 'EndBattleAIMessageNotifyState': 1}
+Battle02     B_AtkChaosFlare03_0                AnimSequence   len  0.467    lock 0 hits 
+        {'EndAnimNotifyCharacterBodyMoveMode': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotifyState': 1, 'EndBattleAIMessageNotify': 2, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle02     B_AtkChaosFlare03_1                AnimSequence   len  0.267    lock 0 hits 
+        {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndBattleAIMessageNotifyState': 1}
+Battle02     B_AtkChaosFlare03_2                AnimSequence   len  4.600    lock 0 hits 0.04
+        {'EndBattleAIMessageNotify': 2, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyBattleDamage': 1}
+Battle02     B_AtkWallDive01_0                  AnimSequence   len  0.800    lock 0 hits 
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotify': 1, 'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'EndAnimNotifyCharacterJump': 1}
+Battle02     B_AtkWallDive01_1                  AnimSequence   len  0.267    lock 0 hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1}
+Battle02     B_AtkWallDive01_2                  AnimSequence   len  2.233    lock 0 hits 0.00
+        {'EndAnimNotifyStateBattleDamage': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotify_EndAIBattleTrans': 1, 'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyPlayCharacterSound': 2, 'EndAnimNotifyCharacterBodyMoveMode': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndBattleAIMessageNotify': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancel': 1}
+Battle02     B_AtkWallDive02                    AnimSequence   len  2.900    lock 0 hits 0.86
+        {'AnimNotifyState_EndAIBattleDangerObject': 1, 'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndBattleAIMessageNotifyState': 2, 'EndBattleAIMessageNotify': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'EndAnimNotifyStateBattleDamage': 1}
+Battle02     B_DmgBurstA01_0                    AnimSequence   len  1.067    lock 0 hits 
+        {'EndAnimNotifySetEnvBlockResponse': 1}
+Battle02     B_DmgBurstA01_1                    AnimSequence   len  0.267    lock 0 hits 
+        {'EndBattleAbilityRotateState': 1}
+Battle02     B_DmgBurstA01_2                    AnimSequence   len  0.867    lock 0 hits 
+        {'EndBattleAIMessageNotify': 1, 'EndAnimNotifyCharacterBodyMoveMode': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1}
+Battle02     B_DmgFall01_0                      AnimSequence   len  1.167    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1}
+Battle02     B_DmgFall01_1                      AnimSequence   len  0.267    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1}
+Battle02     B_DmgFall01_2                      AnimSequence   len  3.167    lock 0 hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifyCharacterBodyMoveMode': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndBattleAIMessageNotify': 1}
+Battle02     B_FlashMove02_0                    AnimSequence   len  0.533    lock 0 hits 
+        {'AnimNotify_EndAIEnemyBattleAbilityCancelStart': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndBattleAIMessageNotifyState': 1, 'AnimNotifyState_EndTimedNiagaraEffect': 1, 'EndBattleAbilityRotateState': 1, 'EndAnimNotifyCharacterJump': 1, 'EndAnimNotifySetCharacterPushResponse': 1}
+Battle02     B_FlashMove02_1                    AnimComposite  len  0.333    lock None hits 
+        {'EndBattleAIMessageNotifyState': 1, 'EndAnimNotifySetEnvBlockResponse': 1, 'EndAnimNotifySetCharacterPushResponse': 1}
+Battle02     B_FlashMove02_2                    AnimComposite  len  0.667    lock None hits 
+Battle02     B_Idle01_1                         AnimSequence   len  8.000    lock 0 hits 
+        {'EndAnimNotifySetEnvBlockResponse': 1}
+Facial00     F_Angry01                          AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Attack01                         AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Attack02                         AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Brow                             BlendSpace     len -1.000    lock None hits 
+Facial00     F_Brow_down01                      AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Brow_up01                        AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Dmg01                            AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Dmg02                            AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Emotion01                        BlendSpace     len -1.000    lock None hits 
+Facial00     F_Eyelid_move01                    BlendSpace     len -1.000    lock None hits 
+Facial00     F_Eyelid_right01                   AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Glad01                           AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Idle01                           AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Sad01                            AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Serious01                        AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Smile01                          AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Sneer01                          AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Surprise01                       AnimSequence   len  0.033    lock 0 hits 
+Facial00     F_Tired01                          AnimSequence   len  0.033    lock 0 hits 
+Reaction00   PC0000_00_B_CounterAttack01        AnimSequence   len  2.933    lock 0 hits 0.07,0.54
+        {'EndAnimNotifyStateBattleTargetCorrectionDirection': 2, 'AnimNotifyState_EndTimedNiagaraEffect': 3, 'AnimNotify_EndOverrideAttackDirection': 1, 'EndAnimNotifyStateBattleInvincible': 1, 'EndAnimNotifyBattleAbilityCancel': 2, 'EndAnimNotifyBattleCancelDodge': 1, 'EndAnimNotifyPlayCharacterSound': 1, 'EndAnimNotifyBattleDamage': 1, 'EndAnimNotifyBattleCancelGuardPressed': 1, 'EndAnimNotifyPlayVoice': 1, 'EndAnimNotifyPlayWeaponSound': 1, 'EndAnimNotifyStateBattleDamage': 1, 'EndBattleCameraShakeNotify': 1, 'EndAnimNotifyBattleDamageAttributeAssist': 1, 'EndAnimNotifyBattleCancelGuard': 1, 'EndAnimNotifyBattleStateChange': 1}

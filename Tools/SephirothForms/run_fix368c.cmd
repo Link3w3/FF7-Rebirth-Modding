@@ -1,0 +1,72 @@
+@echo off
+title Fully Playable Sephiroth data pak (every level animation set on his CharaSpec rows) - running, please leave this window open
+rem Installs the new Fully Playable Sephiroth data pak into ~mods (close the game first; takes a few seconds):
+rem   every level animation set (the burning Nibelheim walk, the damaged walk, the photo poses, the piano, the chocobo race,
+rem   the moogle capture, ... 34 in all) is listed on Sephiroth's own CharaSpec rows (PC0010_00_Sephiroth_Standard,
+rem   PC0010_01_Sephiroth_StandardWet, PC0010_00_Sephiroth_Standard_Reserve, PC0010_00_Sephiroth_Standard_NoBattle) and on
+rem   the Cloud rows he plays from in Cloud's slot. The sets themselves are the ones the last pak put in his folder.
+rem The pak it replaces is copied to Tools\_backup\fix368c\mods first; the new one is checked (md5).
+rem Status: build\fix368c_status.txt
+setlocal
+cd /d "%~dp0"
+if not exist build mkdir build
+set "STATUS=%~dp0build\fix368c_status.txt"
+set "STAGE=C:\FF7R2UProj\Tools\_stage\fix368c"
+set "GAME=C:\Program Files (x86)\Steam\steamapps\common\FINAL FANTASY VII REBIRTH"
+set "MODS=%GAME%\End\Content\Paks\~mods"
+set "BACKUP=C:\FF7R2UProj\Tools\_backup\fix368c"
+set "PAK=FullyPlayableSephirothDataAssets_P"
+echo Fully Playable Sephiroth data pak (level sets) started %DATE% %TIME%> "%STATUS%"
+for %%P in (ff7rebirth_.exe ff7rebirth.exe) do (
+  tasklist /FI "IMAGENAME eq %%P" 2>nul | find /I "%%P" >nul
+  if not errorlevel 1 (
+    echo REFUSED: close %%P first ^(the game^), then run this again>> "%STATUS%"
+    goto :done
+  )
+)
+if not exist "%MODS%\%PAK%.utoc" goto :nomods
+echo checking the files to install...>> "%STATUS%"
+call :md5 "%STAGE%\%PAK%.ucas" 603ffddb1232c88ceaa320286243452a || goto :badstage
+call :md5 "%STAGE%\%PAK%.utoc" 544202624ead7c7bb86413d9d05f9307 || goto :badstage
+call :md5 "%STAGE%\%PAK%.pak" 797a546e664c558fd47fb30b4be7bad5 || goto :badstage
+echo    all three as made>> "%STATUS%"
+
+echo installing the data pak into ~mods ^(the old one copied to Tools\_backup\fix368c\mods^)...>> "%STATUS%"
+if not exist "%BACKUP%\mods" mkdir "%BACKUP%\mods"
+for %%E in (ucas utoc pak) do (
+  if not exist "%BACKUP%\mods\%PAK%.%%E" copy /y "%MODS%\%PAK%.%%E" "%BACKUP%\mods\%PAK%.%%E" >nul
+)
+copy /y "%STAGE%\%PAK%.ucas" "%MODS%\%PAK%.ucas" >nul
+copy /y "%STAGE%\%PAK%.utoc" "%MODS%\%PAK%.utoc" >nul
+copy /y "%STAGE%\%PAK%.pak" "%MODS%\%PAK%.pak" >nul
+call :md5 "%MODS%\%PAK%.ucas" 603ffddb1232c88ceaa320286243452a || goto :badpak
+call :md5 "%MODS%\%PAK%.utoc" 544202624ead7c7bb86413d9d05f9307 || goto :badpak
+call :md5 "%MODS%\%PAK%.pak" 797a546e664c558fd47fb30b4be7bad5 || goto :badpak
+echo    data pak installed and checked>> "%STATUS%"
+echo ALL DONE: start the game and play chapter 1's burning Nibelheim>> "%STATUS%"
+goto :done
+
+:nomods
+echo STOPPED: the game's ~mods folder has no %PAK%; nothing was changed>> "%STATUS%"
+goto :done
+
+:badstage
+echo STOPPED: a staged file in Tools\_stage\fix368c is not the one made for this ^(see above^); nothing was changed>> "%STATUS%"
+goto :done
+
+:badpak
+echo FAILED: the data pak in ~mods did not check out; putting the old one back from Tools\_backup\fix368c\mods>> "%STATUS%"
+for %%E in (ucas utoc pak) do copy /y "%BACKUP%\mods\%PAK%.%%E" "%MODS%\%PAK%.%%E" >nul
+goto :done
+
+:done
+echo FINISHED %DATE% %TIME%>> "%STATUS%"
+type "%STATUS%"
+pause
+exit /b
+
+:md5
+certutil -hashfile "%~1" MD5 2>nul | findstr /i /c:"%~2" >nul
+if not errorlevel 1 exit /b 0
+echo    %~nx1 is not the expected file ^(md5 should be %~2^)>> "%STATUS%"
+exit /b 1

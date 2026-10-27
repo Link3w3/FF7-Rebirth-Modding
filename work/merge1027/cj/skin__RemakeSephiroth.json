@@ -1,0 +1,118 @@
+{
+ "schema": "CreateACharacterSkin/1",
+ "characters": [
+  "PC0000_00_Cloud_Standard",
+  "PC0000_08_Cloud_SoldierNoHelmet",
+  "PC0000_09_Cloud_CostaClothing",
+  "PC0000_10_Cloud_CostaClothing2",
+  "PC0000_04_Cloud_ZackCostume",
+  "PC0000_12_Cloud_ZackCostumeDirty",
+  "PC0000_18_Cloud_ZackCostumeAge21",
+  "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+  "PC0000_23_Cloud_ZackCostumeWet"
+ ],
+ "worn": false,
+ "enabled": true,
+ "name": "Remake Sephiroth",
+ "description": "FINAL FANTASY VII REMAKE's Sephiroth (EB0021_00) on his Remake skeleton, in Sephiroth's skeleton family, speaking with adult Sephiroth's voice, with Remake's Masamune (WE1021_00, on Remake's own material).",
+ "model": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00.EB0021_00",
+ "skeleton": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton.EB0021_00_Skeleton",
+ "family": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+ "voice": "own",
+ "weapon": "/Game/GameContents/BluePrint/Character/Weapon/WE1021_00_SephirothIllusion_Masamune.WE1021_00_SephirothIllusion_Masamune_C",
+ "packages": [
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00.uasset",
+   "size": 13298434,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 17,
+   "imports": [
+    "e556949435d46fb8",
+    "eea4bbf556113638",
+    "6ff0ed52fc9bdab4",
+    "4c3231f50d86c3a2",
+    "425d2a89888f43e8",
+    "cd6d09fd853405ad",
+    "f09795d21e88954b",
+    "46828692e1223a77",
+    "23624a61367726bf",
+    "9e9c7eaf8e976210",
+    "6fbb8b73506c23aa",
+    "605ca9e27d01bcda",
+    "1c712f88dc98f12c",
+    "f7cc0e63f241c18c",
+    "b6ec69f28125254f",
+    "38bff7754672dbca"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_Skeleton.uasset",
+   "size": 79040,
+   "export_count": 53,
+   "export_bundle_count": 1,
+   "load_order": 3,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_BNM",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_BNM.uasset",
+   "size": 136500,
+   "export_count": 2,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_vfx",
+   "file": "Content/GameContents/Character/Enemy/EB0021_00_Sephiroth_Standard/Model/EB0021_00_vfx.uasset",
+   "size": 116950,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 16,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00",
+   "file": "Content/GameContents/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00.uasset",
+   "size": 244417,
+   "export_count": 1,
+   "export_bundle_count": 1,
+   "load_order": 1,
+   "imports": [
+    "105ed296ec281ef1",
+    "cec71d134ba80375"
+   ],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00_Skeleton",
+   "file": "Content/GameContents/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00_Skeleton.uasset",
+   "size": 3642,
+   "export_count": 14,
+   "export_bundle_count": 1,
+   "load_order": 0,
+   "imports": [],
+   "bulk": []
+  },
+  {
+   "package": "/Game/GameContents/BluePrint/Character/Weapon/WE1021_00_SephirothIllusion_Masamune",
+   "size": 2164,
+   "export_count": 6,
+   "export_bundle_count": 1,
+   "load_order": 588672,
+   "imports": [
+    "e419f7a3293ef469"
+   ],
+   "file": "Content/GameContents/BluePrint/Character/Weapon/WE1021_00_SephirothIllusion_Masamune.uasset",
+   "bulk": []
+  }
+ ],
+ "built": "2026-10-23T07:29:21Z"
+}

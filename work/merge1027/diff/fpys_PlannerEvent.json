@@ -1,0 +1,672 @@
+{
+ "fields": [
+  "ListenerList_Array",
+  "ListenerTargetPointList_Array",
+  "CommandArgumentList_Array",
+  "CameraArgument_Array",
+  "CommandTypeList_Array",
+  "CommandArgumentInteger_Array",
+  "ListenerCmdList_Array",
+  "WaitTimeList_Array",
+  "VoicePack",
+  "Talker",
+  "TalkerTargetPoint",
+  "TalkerOverwriteID",
+  "SoundID",
+  "NextPE",
+  "TextID",
+  "MinSubtitleTime",
+  "TimeAfterVoice",
+  "Time",
+  "CanSkip",
+  "NoLipSync",
+  "HideSubtitle",
+  "VoiceType",
+  "VoicePackCategory",
+  "CameraType",
+  "TalkerCmd",
+  "AttenuationOverride",
+  "DisallowTalkIDOverwrite",
+  "OutputType"
+ ],
+ "added": [],
+ "removed": [],
+ "changed": {
+  "BT_BVCLD_STARTBTL_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STARTBTL_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STARTBTL_0100": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STARTBTL_0110": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STARTBTL_0200": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKNML_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKMOVE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKNML_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKNML_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKNML_0030": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_NATKNML_0040": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_AATKNML_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_AATKNML_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_AATKNML_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0030": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0040": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0050": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ABILITY_0060": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_LIMIT_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_LIMIT_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_LIMIT_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_LIMIT_0030": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_FILLLIMIT_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_HEATENEMY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ATKFINISH_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_BMODE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_BRAVEATK_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_BRAVEATK_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_BRAVEATK_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_UNIQUECNT_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_UNIQUECNT_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_UNIQUEEND_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_UNIQUEEND_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STBURST_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFCMN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFSLP_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFSIL_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFPOI_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFBAR_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFDTH_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFDES_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGDBFSLW_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGBUFHST_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGBUFREG_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGATRCMN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGATRFIR_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGATRICE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGATRTND_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGATRWND_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_MAGADDATK_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_AVOID_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_GUARD_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_GUARD_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_GUARD_0011": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_PARRY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_DAMAGE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_DAMAGE_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_DAMAGE_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_DAMAGE_0030": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_DEAD_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SLEEP_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SLEEP_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SLEEP_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STUN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STUN_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_STUN_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_RECOVER_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_RECOVER_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_RECOVER_0100": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ITEMCMN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ITEMENEMY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ITEMPARTY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CURE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CURE_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CLEAR_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CUREPARTY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_RAISE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_BUFF_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_PENETRATE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGENML_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGECRI_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGEBST_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGENML_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGECRI_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CHANGEBST_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_CNGCMNDIE_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_VICTORY_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_VICTORY_0010": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_VICTORY_0020": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_GAMEOVER": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMONCMN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON000_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON010_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON020_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON030_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON040_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON050_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON060_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON070_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMON080_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_SUMMONEND_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ATKCHAINST_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  },
+  "BT_BVCLD_ATKCHAINFN_0000": {
+   "VoicePack": [
+    "VO_PC0000_00_Cloud",
+    "VO_PC0010_00_Sephiroth"
+   ]
+  }
+ }
+}

@@ -1,0 +1,297 @@
+{
+ "emitters": {
+  "Ring_Core": {
+   "class": "ParticleSpriteEmitter",
+   "material": "/Game/GameContents/Renderer/MaterialInstance/EMI_Particle_Emit_Gray_Grade_Opacity.EMI_Particle_Emit_Gray_Grade_Opacity",
+   "typedata": "ParticleModuleTypeDataMesh",
+   "modules": [
+    "ParticleModuleLifetime",
+    "ParticleModuleColorOverLife",
+    "ParticleModuleSize"
+   ],
+   "local_space": true,
+   "mesh": "/Game/GameContents/Effect/Resident/Model/FX_R_Ring_07_M.FX_R_Ring_07_M",
+   "params": {
+    "vectors": {
+     "L:7:Tone:0:FirstColor(RGBA)": {
+      "const": [
+       0.5,
+       0.66672,
+       1.0,
+       1.0
+      ]
+     },
+     "L:7:Tone:2:SecondColor(RGBA)": {
+      "const": [
+       0.5,
+       0.5,
+       1.0,
+       1.0
+      ]
+     },
+     "L:G:LuminanceDistribution(Float2)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:2:Offset(Float2)": {
+      "curve": [
+       [
+        -0.21611,
+        0.0,
+        0.36398,
+        0.0
+       ],
+       [
+        -0.13504,
+        0.0,
+        0.38597,
+        0.0
+       ],
+       [
+        -0.05397,
+        0.0,
+        0.40796,
+        0.0
+       ],
+       [
+        0.02711,
+        0.0,
+        0.42995,
+        0.0
+       ],
+       [
+        0.10818,
+        0.0,
+        0.45194,
+        0.0
+       ],
+       [
+        0.18926,
+        0.0,
+        0.47393,
+        0.0
+       ],
+       [
+        0.27033,
+        0.0,
+        0.49592,
+        0.0
+       ],
+       [
+        0.35141,
+        0.0,
+        0.51791,
+        0.0
+       ],
+       [
+        0.43248,
+        0.0,
+        0.53991,
+        0.0
+       ],
+       [
+        0.51355,
+        0.0,
+        0.5619,
+        0.0
+       ],
+       [
+        0.59463,
+        0.0,
+        0.58389,
+        0.0
+       ],
+       [
+        0.6757,
+        0.0,
+        0.60588,
+        0.0
+       ],
+       [
+        0.75678,
+        0.0,
+        0.62787,
+        0.0
+       ],
+       [
+        0.83785,
+        0.0,
+        0.64986,
+        0.0
+       ],
+       [
+        0.91893,
+        0.0,
+        0.67185,
+        0.0
+       ],
+       [
+        1.0,
+        0.0,
+        0.69384,
+        0.0
+       ]
+      ],
+      "times": [
+       0.0,
+       0.06666666666666667,
+       0.13333333333333333,
+       0.2,
+       0.26666666666666666,
+       0.3333333333333333,
+       0.4,
+       0.4666666666666667,
+       0.5333333333333333,
+       0.6,
+       0.6666666666666666,
+       0.7333333333333333,
+       0.8,
+       0.8666666666666667,
+       0.9333333333333333,
+       1.0
+      ],
+      "since_creation": false
+     },
+     "0:0:Coordinate:3:Scale(Float2)": {
+      "const": [
+       1.0,
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     "0:0:Coordinate:5:Distribution(Float4)": {
+      "const": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "scalars": {
+     "L:0:Luminance(Float1)": {
+      "const": 1.0
+     },
+     "L:1:Opacity(Float1)": {
+      "const": 1.0
+     },
+     "L:3:Visibility(Float1)": {
+      "const": 1.0
+     },
+     "L:5:ToneColor(Float1)": {
+      "const": -2.0
+     },
+     "L:6:ToneLuminance(Float1)": {
+      "const": 2.0
+     },
+     "L:7:Tone:1:FirstLuminance(Float1)": {
+      "const": 0.0
+     },
+     "L:7:Tone:3:SecondLuminance(Float1)": {
+      "const": 6000.0
+     },
+     "L:8:ViewDependency(Float1)": {
+      "const": 1.0
+     },
+     "L:9:Hermite(Float1)": {
+      "const": 1.0
+     },
+     "L:H:ToneViewDependency(Float1)": {
+      "const": 0.0
+     },
+     "L:I:ToneOpacity(Float1)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:0:FlipBook(Boolean)": {
+      "const": 0.0
+     },
+     "0:0:Coordinate:1:Rotation(Float1)": {
+      "const": 0.25
+     },
+     "0:0:Coordinate:4:Parallax(Float1)": {
+      "const": 1.0
+     }
+    },
+    "textures": {
+     "0:1:0:Gray": "/Game/GameContents/Effect/Resident/Texture/FX_R_Lens_03_T.FX_R_Lens_03_T",
+     "0:2:0:Opacity": "/Game/GameContents/Effect/Resident/Texture/FX_R_Glow_03_T.FX_R_Glow_03_T"
+    },
+    "CullMode": "Double",
+    "OverrideCullMode": true
+   },
+   "dynamic": [
+    {
+     "param": "0:0:Coordinate:2:Offset(Float2)",
+     "kind": "offset",
+     "slot": 0,
+     "layer": "0",
+     "dir": [
+      1.0,
+      0.0
+     ]
+    }
+   ]
+  }
+ },
+ "dropped": [
+  {
+   "emitter": "Light",
+   "why": "its spawn module is off"
+  },
+  {
+   "emitter": "CameraShake",
+   "why": "no material (a helper emitter: EndParticleModuleCameraShake)",
+   "camera_shake": {
+    "ShakeScale": 100.0,
+    "Duration": 0.25,
+    "LocationRange": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 100.0
+    },
+    "RotationRange": {
+     "X": 0.10000000149011612,
+     "Y": 0.10000000149011612,
+     "Z": 0.10000000149011612
+    },
+    "LocationAmplitude": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 4.0
+    },
+    "RotationAmplitude": {
+     "X": 0.10000000149011612,
+     "Y": 0.10000000149011612,
+     "Z": 0.10000000149011612
+    },
+    "InnerRadius": 700.0,
+    "OuterRadius": 4000.0
+   }
+  }
+ ],
+ "notes": [],
+ "source": "rm/End/Content/GameContents/Effect/Character/Enemy/EB0021_Sephiroth/Particle/FX_EB0021_WeaponSlash_01",
+ "package": "/Game/RemakeFx/Cascade/FX_EB0021_WeaponSlash_01",
+ "socket": "Trans",
+ "bind_time": 0.10000000149011612,
+ "exposure": "ON",
+ "bounds": {
+  "Min": {
+   "X": -100.0,
+   "Y": -300.0,
+   "Z": -300.0
+  },
+  "Max": {
+   "X": 100.0,
+   "Y": 300.0,
+   "Z": 300.0
+  },
+  "IsValid": 1
+ },
+ "exports": 22
+}

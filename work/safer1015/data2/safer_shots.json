@@ -1,0 +1,65 @@
+{
+ "shots": {
+  "PC0010_SF_NAtk_1_01": "OrbR",
+  "PC0010_SF_NAtk_2_01": "Orb",
+  "PC0010_SF_NAtk_3_01": "Orb",
+  "PC0010_SF_NAtk_4_01": "Beam",
+  "PC0010_SF_JAtk_1_01": "OrbR",
+  "PC0010_SF_JAtk_2_01": "Orb",
+  "PC0010_SF_JAtk_3_01": "Orb",
+  "PC0010_SF_ChainChange01_01": "OrbR",
+  "PC0010_SF_NPAtk_1_01": "Beam",
+  "PC0010_SF_Satk_1_01": "Beam",
+  "PC0010_SF_Satk_2_01": "OrbR",
+  "PC0010_SF_Satk_6_01": "GreatBeam",
+  "PC0010_SF_Satk_8_01": "Orb",
+  "PC0010_SF_Satk_8_02": "Orb",
+  "PC0010_SF_Satk_8_03": "Orb",
+  "PC0010_SF_SAtk_9_01": "Beam",
+  "PC0010_SF_SAtk_9_02": "Beam",
+  "PC0010_SF_SAtk_9_03": "Orb",
+  "PC0010_SF_PAtk_1_01": "Orb",
+  "PC0010_SF_PAtk_2_01": "OrbR",
+  "PC0010_SF_Limit_1_01": "GreatBeam",
+  "PC0010_SF_Limit_1_02": "GreatBeam",
+  "PC0010_SF_Limit_1_03": "GreatBeam",
+  "PC0010_SF_Limit_1_04": "GreatBeam",
+  "PC0010_SF_Limit_1_05": "GreatBeam",
+  "PC0010_SF_Limit_1_06": "GreatBeam",
+  "PC0010_SF_Limit_1_07": "GreatBeam",
+  "PC0010_SF_Limit_1_08": "GreatBeam"
+ },
+ "kinds": {
+  "Orb": {
+   "row": "EB2210_00_ShadowFlare_01",
+   "hand": "L_Hand_a",
+   "homing": 4000.0,
+   "life": 3.0
+  },
+  "OrbR": {
+   "row": "EB2210_00_ShadowFlare_01",
+   "hand": "R_Hand_a",
+   "homing": 4000.0,
+   "life": 3.0
+  },
+  "Beam": {
+   "row": "EB2210_00_EyeMagic_01",
+   "hand": "L_Hand_a",
+   "beam": [
+    6000.0,
+    4000.0
+   ],
+   "life": 0.5
+  },
+  "GreatBeam": {
+   "row": "EB2210_00_Stigma_01",
+   "hand": "L_Hand_a",
+   "beam": [
+    10000.0,
+    6000.0
+   ],
+   "life": 0.4,
+   "radius": 250.0
+  }
+ }
+}

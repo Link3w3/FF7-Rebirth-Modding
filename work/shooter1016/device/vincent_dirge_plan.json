@@ -1,0 +1,87 @@
+{
+  "plan": "Vincent: Dirge of Cerberus shooter, step 1 (the editor's part)",
+  "motion_labels": [
+    {
+      "folder": "/Game/Motion/Player/PC0011_00_Vincent/Battle00",
+      "prefix": "p000_",
+      "label": "PAL_Dirge_Chunk53",
+      "chunk": 53,
+      "skeleton": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton"
+    },
+    {
+      "folder": "/Game/Motion/Player/PC0011_10_Chaos/Battle00",
+      "prefix": "p007_",
+      "label": "PAL_Chaos_Chunk54",
+      "chunk": 54,
+      "skeleton": "/Game/Character/Player/PC0011_10_Chaos/Model/PC0011_10_Skeleton.PC0011_10_Skeleton"
+    }
+  ],
+  "model_labels": [
+    {
+      "folder": "/Game/Character/Player/PC0011_10_Chaos",
+      "label": "PAL_Chaos_Chunk54",
+      "chunk": 54,
+      "leave_out_classes": [
+        "EndSkeletonCompatDataObject"
+      ]
+    }
+  ],
+  "data_object": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/Vincent_Moves",
+  "row_character": "PC0000_00_Cloud_Standard",
+  "melee": [
+    {
+      "set": "Battle00",
+      "name": "B_NAttack01_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+      "hit_at": 0.07
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack02_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_1_remap",
+      "hit_at": 0.07
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack03_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_2_remap",
+      "hit_at": 0.12
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack04_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_3_remap",
+      "hit_at": 0.17
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack05_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_4_remap",
+      "hit_at": 0.07
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack06_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_21_remap",
+      "hit_at": 0.0
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack07_0",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_11_remap",
+      "hit_at": 0.0
+    },
+    {
+      "set": "Battle00",
+      "name": "B_NAttack01_1_2",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_01_remap",
+      "hit_at": 0.0
+    },
+    {
+      "set": "Neutral00",
+      "name": "N_Atk01",
+      "animation": "/Game/Motion/Player/PC0011_00_Vincent/Battle00/p000_m000_c_atk_0_remap",
+      "hit_at": 0.07
+    }
+  ]
+}

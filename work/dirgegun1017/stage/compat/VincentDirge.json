@@ -1,0 +1,90 @@
+{
+ "schema": "RebirthSkelCompat/1",
+ "source": "Vincent fights as he does in Dirge of Cerberus (the Create a Character System 3.7 shooter): an over-the-shoulder camera, Dirge of Cerberus' reticle and bullet counter, Cerberus, Hydra and Griffon in his right hand firing his own bullets (PC0011_Dirge_* in FullyPlayableVincentAssets_P's damage table: a player's bullets, as Barret's are; Elena's, which the guns fired before, hit only the party) from its muzzle with his own gunshot (from the cutscene EV_FOREE_0630), a clip that reloads (the ammo never runs out), his Dirge of Cerberus stance (his battle idle: \"moves\"), and his Dirge of Cerberus walk, run and strafes (Vincent_Moves.json: moves built over them with the root motion of the game's walks and runs, which is what moves a character in battle; the motions alone stand in place, so as \"moves\" they left him walking on the spot), DualSense adaptive triggers. Square stays his Dirge of Cerberus melee combo (Vincent_Moves.json). Cloud in his SOLDIER uniform (the prologue) is Vincent too.",
+ "animation_sets": [
+  {
+   "characters": [
+    "PC0000_00_Cloud_Standard",
+    "PC0000_04_Cloud_ZackCostume",
+    "PC0000_12_Cloud_ZackCostumeDirty",
+    "PC0000_18_Cloud_ZackCostumeAge21",
+    "PC0000_19_Cloud_ZackCostumeDirtyAge21",
+    "PC0000_23_Cloud_ZackCostumeWet"
+   ],
+   "moves": {
+    "Battle00/B_Idle01_0": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap",
+    "Battle00/B_Idle01_1": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap",
+    "Battle00/B_Idle01_2": "/Game/RebirthSkelCompat/Dirge/Vincent/p000_m001_h_st_remap"
+   },
+   "shooter": {
+    "controls": "triggers",
+    "triggers": true,
+    "assist": 2.5,
+    "camera": {
+     "distance": 250,
+     "side": 55,
+     "height": 20,
+     "aim_distance": 130,
+     "aim_side": 50,
+     "aim_height": 12,
+     "pivot": 60,
+     "aim_fov": 55,
+     "zoom_fov": 25,
+     "blend": 0.2,
+     "aim_scale": 0.55,
+     "zoom_scale": 0.3,
+     "pitch_min": -70,
+     "pitch_max": 75,
+     "camera_abilities": [
+      "*NAtk*",
+      "*Avoid*",
+      "*Dodge*",
+      "*Guard*"
+     ]
+    },
+    "reticle": {
+     "ui_folder": "dirge_ui",
+     "scale": 0.55,
+     "hud_scale": 1.0,
+     "ammo": true
+    },
+    "motions": {
+     "folder": "/Game/RebirthSkelCompat/Dirge/Vincent",
+     "slot": "DefaultSlot",
+     "turn_actor": true,
+     "stand": false,
+     "walking": false,
+     "running": false
+    },
+    "weapons": [
+     {
+      "name": "CERBERUS",
+      "clip": 6,
+      "interval": 0.22,
+      "reload": 1.3,
+      "damage_source": "PC0011_Dirge_Cerberus"
+     },
+     {
+      "name": "HYDRA",
+      "clip": 30,
+      "interval": 0.1,
+      "automatic": true,
+      "reload": 1.8,
+      "damage_source": "PC0011_Dirge_Hydra"
+     },
+     {
+      "name": "GRIFFON",
+      "clip": 5,
+      "interval": 0.9,
+      "reload": 2.0,
+      "damage_source": "PC0011_Dirge_Griffon"
+     }
+    ]
+   },
+   "requires_paks": [
+    "FullyPlayableVincentAssets_P"
+   ],
+   "enabled": true
+  }
+ ]
+}

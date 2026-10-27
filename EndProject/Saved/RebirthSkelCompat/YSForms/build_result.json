@@ -1,0 +1,1134 @@
+{
+ "steps": [
+  "plugin",
+  "run",
+  "setup",
+  "built_now",
+  "failed",
+  "adjust",
+  "post",
+  "described",
+  "done"
+ ],
+ "plugin": "1.16.2",
+ "run": "run 1: 0 move(s) built before, 0 left out",
+ "setup": {
+  "data_object": "made /Game/RebirthSkelCompat/YSForms/YSForms_Data",
+  "moves": 121,
+  "carriers": 47
+ },
+ "built_now": "121 move(s) in 37 s",
+ "failed": {},
+ "adjust": {
+  "Battle07/B_NAttack01_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttack02_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttack03_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttack04_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 1,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttackJ01_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttackJ02_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NAttackJ03_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_NPAttack01": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack01_0": {
+   "matched": 5,
+   "of": 5,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack02_0": {
+   "matched": 7,
+   "of": 7,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack05_0": {
+   "matched": 10,
+   "of": 10,
+   "placed": 2,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack05_0_Comp": {
+   "matched": 10,
+   "of": 10,
+   "placed": 2,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack06_0": {
+   "matched": 9,
+   "of": 9,
+   "placed": 2,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack07_0": {
+   "matched": 7,
+   "of": 7,
+   "placed": 2,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack08_0": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack08_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack08_2": {
+   "matched": 2,
+   "of": 2,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack09_0": {
+   "matched": 6,
+   "of": 6,
+   "placed": 1,
+   "attached": 4,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_SAttack10_0": {
+   "matched": 10,
+   "of": 10,
+   "placed": 3,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurst01_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 2,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurstA01_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 2,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurst01_1": {
+   "matched": 9,
+   "of": 9,
+   "placed": 1,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurstA01_1": {
+   "matched": 4,
+   "of": 4,
+   "placed": 1,
+   "attached": 2,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurst02_0": {
+   "matched": 8,
+   "of": 8,
+   "placed": 1,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkBurst02_1": {
+   "matched": 5,
+   "of": 5,
+   "placed": 1,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkLimit01_0": {
+   "matched": 20,
+   "of": 20,
+   "placed": 8,
+   "attached": 6,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkLimit01_1": {
+   "matched": 13,
+   "of": 13,
+   "placed": 2,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkLimit02_0": {
+   "matched": 10,
+   "of": 10,
+   "placed": 8,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_YSLimit02_1": {
+   "matched": 4,
+   "of": 4,
+   "placed": 2,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkTenshi01_0": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_AtkTenshi01_1": {
+   "matched": 5,
+   "of": 5,
+   "placed": 0,
+   "attached": 5,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ChainTatakau_A01_2": {
+   "matched": 4,
+   "of": 4,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ChainTatakau_A02_0": {
+   "matched": 13,
+   "of": 13,
+   "placed": 2,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ChainTatakau_A03_0": {
+   "matched": 9,
+   "of": 9,
+   "placed": 4,
+   "attached": 3,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ChainCounter_B02_0": {
+   "matched": 4,
+   "of": 4,
+   "placed": 0,
+   "attached": 4,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_BurstChain_00_10_01_0": {
+   "matched": 29,
+   "of": 29,
+   "placed": 7,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_Avoid01_2": {
+   "matched": 3,
+   "of": 3,
+   "placed": 0,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_Avoid02_2": {
+   "matched": 2,
+   "of": 2,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagAttack01_0": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagAttack01_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagCure01_0": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagCure01_1": {
+   "matched": 1,
+   "of": 1,
+   "placed": 0,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagSummon01_0": {
+   "matched": 3,
+   "of": 3,
+   "placed": 2,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagSummon01_1": {
+   "matched": 2,
+   "of": 2,
+   "placed": 1,
+   "attached": 0,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_MagSummon01_2": {
+   "matched": 5,
+   "of": 5,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ParryAttackL01": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  },
+  "Battle07/B_ParryAttackR01": {
+   "matched": 3,
+   "of": 3,
+   "placed": 1,
+   "attached": 1,
+   "unmatched": [],
+   "missing": []
+  }
+ },
+ "post": {
+  "Battle02/B_NAttack01_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.0839938297867775
+    ]
+   }
+  },
+  "Battle02/B_NAttack02_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.19192960858345032
+    ]
+   }
+  },
+  "Battle02/B_NAttack03_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.15555907785892487
+    ]
+   }
+  },
+  "Battle02/B_NAttack04_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.5163936614990234
+    ]
+   }
+  },
+  "Battle02/B_NAttackJ01_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.12708792090415955
+    ]
+   }
+  },
+  "Battle02/B_NAttackJ02_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.07531686127185822
+    ]
+   }
+  },
+  "Battle02/B_NAttackJ03_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.3303785026073456
+    ]
+   }
+  },
+  "Battle02/B_SAttack01_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     1.017703652381897
+    ]
+   }
+  },
+  "Battle02/B_SAttack02_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.179576113820076
+    ]
+   }
+  },
+  "Battle02/B_SAttack06_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler",
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.30906426906585693,
+     0.6399581432342529
+    ]
+   }
+  },
+  "Battle02/B_SAttack07_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler",
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.26753419637680054,
+     0.6613799929618835
+    ]
+   }
+  },
+  "Battle02/B_SAttack09_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler",
+    "*_Feeler",
+    "!*_Feeler",
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.5972815155982971
+    ]
+   }
+  },
+  "Battle02/B_SAttack10_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler",
+    "*_Feeler",
+    "!*_Feeler",
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.17988507449626923,
+     0.39338868856430054,
+     0.7115525603294373
+    ]
+   }
+  },
+  "Battle02/B_AtkBurst01_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler",
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "feelers": [
+    "0.192 s PC0010_10_Zanshin01_Feeler_03, PC0010_10_Zanshin01_Feeler_04",
+    "0.531 s PC0010_10_Zanshin01_Feeler_03, PC0010_10_Zanshin01_Feeler_04"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [
+     "0.192 (\"PC0010_10_Zanshin01_Feeler_03\",\"PC0010_10_Zanshin01_Feeler_04\")",
+     "0.531 (\"PC0010_10_Zanshin01_Feeler_03\",\"PC0010_10_Zanshin01_Feeler_04\")"
+    ],
+    "hits": [
+     0.19225573539733887,
+     0.5312769412994385
+    ]
+   }
+  },
+  "Battle02/B_AtkBurst01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "feelers": [
+    "0.534 s PC0010_10_Zanshin02_Feeler_05, PC0010_10_Zanshin02_Feeler_06, PC0010_10_Zanshin02_Feeler_07, PC0010_10_Zanshin02_Feeler_08"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [
+     "0.534 (\"PC0010_10_Zanshin02_Feeler_05\",\"PC0010_10_Zanshin02_Feeler_06\",\"PC0010_10_Zanshin02_Feeler_07\",\"PC0010_10_Zanshin02_Feeler_08\")"
+    ],
+    "hits": [
+     0.5336598753929138
+    ]
+   }
+  },
+  "Battle02/B_AtkBurstA01_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler",
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "feelers": [
+    "0.192 s PC0010_10_Zanshin01_Feeler_03, PC0010_10_Zanshin01_Feeler_04",
+    "0.531 s PC0010_10_Zanshin01_Feeler_03, PC0010_10_Zanshin01_Feeler_04"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER",
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [
+     "0.192 (\"PC0010_10_Zanshin01_Feeler_03\",\"PC0010_10_Zanshin01_Feeler_04\")",
+     "0.531 (\"PC0010_10_Zanshin01_Feeler_03\",\"PC0010_10_Zanshin01_Feeler_04\")"
+    ],
+    "hits": [
+     0.1923000067472458,
+     0.5313000082969666
+    ]
+   }
+  },
+  "Battle02/B_AtkBurstA01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "feelers": [
+    "0.534 s PC0010_10_Zanshin02_Feeler_05, PC0010_10_Zanshin02_Feeler_06, PC0010_10_Zanshin02_Feeler_07, PC0010_10_Zanshin02_Feeler_08"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [
+     "0.534 (\"PC0010_10_Zanshin02_Feeler_05\",\"PC0010_10_Zanshin02_Feeler_06\",\"PC0010_10_Zanshin02_Feeler_07\",\"PC0010_10_Zanshin02_Feeler_08\")"
+    ],
+    "hits": [
+     0.5108628273010254
+    ]
+   }
+  },
+  "Battle02/B_AtkBurst02_0": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0.9720013737678528
+    ]
+   }
+  },
+  "Battle02/B_AtkBurst02_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "feelers": [
+    "0.271 s PC0010_10_Gokumon02_Feeler_03, PC0010_10_Gokumon02_Feeler_04, PC0010_10_Gokumon02_Feeler_05, PC0010_10_Gokumon02_Feeler_06, PC0010_10_Gokumon02_Feeler_07, PC0010_10_Gokumon02_Feeler_08, PC0010_10_Gokumon02_Feeler_09, PC0010_10_Gokumon02_Feeler_10"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [
+     "0.271 (\"PC0010_10_Gokumon02_Feeler_03\",\"PC0010_10_Gokumon02_Feeler_04\",\"PC0010_10_Gokumon02_Feeler_05\",\"PC0010_10_Gokumon02_Feeler_06\",\"PC0010_10_Gokumon02_Feeler_07\",\"PC0010_10_Gokumon02_Feeler_08\",\"PC0010_10_Gokumon02_Feeler_09\",\"PC0010_10_Gokumon02_Feeler_10\")"
+    ],
+    "hits": [
+     0.27129998803138733
+    ]
+   }
+  },
+  "Battle02/B_AtkLimit01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Hattou02_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Hattou02_Feeler: always"
+   ],
+   "seen": [
+    "PC0010_10_Hattou02_Feeler",
+    "PC0010_10_Hattou02_Feeler"
+   ],
+   "check": {
+    "branches_left": [],
+    "feeler_damage": [],
+    "hits": [
+     1.2566806077957153
+    ]
+   }
+  },
+  "Battle02/B_MagAttack01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Fire3: always"
+   ],
+   "seen": [
+    "*Feeler",
+    "PC0010_10_Wind3",
+    "PC0010_10_Thunder3",
+    "PC0010_10_Blizzard3",
+    "PC0010_10_ShadowFlare",
+    "PC0010_10_Fire3"
+   ],
+   "check": {
+    "branches_left": [
+     "*Feeler",
+     "PC0010_10_Wind3",
+     "PC0010_10_Thunder3",
+     "PC0010_10_Blizzard3",
+     "PC0010_10_ShadowFlare"
+    ],
+    "feeler_damage": [],
+    "hits": []
+   }
+  },
+  "Battle02/B_MagCure01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Fire3: always"
+   ],
+   "seen": [
+    "*Feeler",
+    "PC0010_10_Wind3",
+    "PC0010_10_Thunder3",
+    "PC0010_10_Blizzard3",
+    "PC0010_10_ShadowFlare",
+    "PC0010_10_Fire3"
+   ],
+   "check": {
+    "branches_left": [
+     "*Feeler",
+     "PC0010_10_Wind3",
+     "PC0010_10_Thunder3",
+     "PC0010_10_Blizzard3",
+     "PC0010_10_ShadowFlare"
+    ],
+    "feeler_damage": [],
+    "hits": []
+   }
+  },
+  "Battle02/B_ParryAttackL01": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackL02": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackL03": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackL04": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackR01": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackR02": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never",
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always"
+   ],
+   "seen": [
+    "!*_Feeler",
+    "*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackR03": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_ParryAttackR04": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect *_Feeler: always",
+    "AnimNotifyState_EndTimedNiagaraEffect !*_Feeler: never"
+   ],
+   "seen": [
+    "*_Feeler",
+    "!*_Feeler"
+   ],
+   "check": {
+    "branches_left": [
+     "CACS_NEVER"
+    ],
+    "feeler_damage": [],
+    "hits": [
+     0
+    ]
+   }
+  },
+  "Battle02/B_AtkMag01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Wind3: PC0010_*Aero*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Thunder3: PC0010_*Thund*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Blizzard3: PC0010_*Blizz*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_ShadowFlare: PC0010_*ShadowFlare",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Fire3: PC0010_*Fira*"
+   ],
+   "seen": [
+    "*Feeler",
+    "PC0010_10_Wind3",
+    "PC0010_10_Thunder3",
+    "PC0010_10_Blizzard3",
+    "PC0010_10_ShadowFlare",
+    "PC0010_10_Fire3"
+   ],
+   "check": {
+    "branches_left": [
+     "*Feeler",
+     "PC0010_*Aero*",
+     "PC0010_*Thund*",
+     "PC0010_*Blizz*",
+     "PC0010_*ShadowFlare",
+     "PC0010_*Fira*"
+    ],
+    "feeler_damage": [],
+    "hits": []
+   }
+  },
+  "Battle02/B_AtkMag01_3": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_GroundFeeler: PC0010_*GroundFeeler"
+   ],
+   "seen": [
+    "*Feeler",
+    "PC0010_10_FeelerWall",
+    "PC0010_10_GroundFeeler"
+   ],
+   "check": {
+    "branches_left": [
+     "*Feeler",
+     "PC0010_10_FeelerWall",
+     "PC0010_*GroundFeeler"
+    ],
+    "feeler_damage": [],
+    "hits": []
+   }
+  },
+  "Battle00/B_AtkMag01_1": {
+   "branches": [
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Wind3: PC0010_*Aero*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Thunder3: PC0010_*Thund*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Blizzard3: PC0010_*Blizz*",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_ShadowFlare: PC0010_*ShadowFlare",
+    "AnimNotifyState_EndTimedNiagaraEffect PC0010_10_Fire3: PC0010_*Fira*"
+   ],
+   "seen": [
+    "*Feeler",
+    "PC0010_10_Wind3",
+    "PC0010_10_Thunder3",
+    "PC0010_10_Blizzard3",
+    "PC0010_10_ShadowFlare",
+    "PC0010_10_Fire3"
+   ],
+   "check": {
+    "branches_left": [
+     "*Feeler",
+     "PC0010_*Aero*",
+     "PC0010_*Thund*",
+     "PC0010_*Blizz*",
+     "PC0010_*ShadowFlare",
+     "PC0010_*Fira*"
+    ],
+    "feeler_damage": [],
+    "hits": []
+   }
+  }
+ },
+ "described": 121,
+ "done": 121
+}

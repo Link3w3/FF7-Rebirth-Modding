@@ -1,0 +1,205 @@
+PC0000_NAtk_101                    | Attack                       | ds PC0000_NLAtk_1               | cmd 0 atb 0.0 | B_NAttack01_1_0 B_NAttack01_1_1 B_NAttack01_1_2
+PC0000_NAtk_1                      | Attack                       | ds PC0000_NAtk_1                | cmd 0 atb 0.0 | B_NAttack01_0
+PC0000_NAtk_2                      | Attack                       | ds PC0000_NAtk_2                | cmd 0 atb 0.0 | B_NAttack02_0
+PC0000_NAtk_3                      | Attack                       | ds PC0000_NAtk_3                | cmd 0 atb 0.0 | B_NAttack03_0
+PC0000_NAtk_4                      | Attack                       | ds PC0000_NAtk_4                | cmd 0 atb 0.0 | B_NAttack04_0
+PC0000_NAtk_5                      | Attack                       | ds PC0000_NAtk_5                | cmd 0 atb 0.0 | B_NAttack05_0
+PC0000_NPAtk_1                     | Attack                       | ds PC0000_NPAtk_1               | cmd 0 atb 0.0 | B_NAttack07_0
+PC0000_NPAtk_WAtk_1                | Attack                       | ds PC0000_JNPAtk_1              | cmd 0 atb 0.0 | B_NAttackJ05_0 B_NAttackJ05_1 B_NAttackJ05_2
+PC0000_SPAtk_WAtk_1                | Attack                       | ds PC0000_JNPAtk_1              | cmd 0 atb 0.0 | B_NAttackJ05_0 B_NAttackJ05_1 B_NAttackJ05_2
+PC0000_AAASPAtk_WAtk_1             | Attack                       | ds PC0000_JNPAtk_1              | cmd 0 atb 0.0 | B_NAttackJ05_0 B_NAttackJ05_1 B_NAttackJ05_2
+PC0000_NDAtk_1                     | Attack                       | ds PC0000_NDAtk_1               | cmd 0 atb 0.0 | B_WAttack01_0
+PC0000_NDAtk_2                     | Attack                       | ds PC0000_NDAtk_2               | cmd 0 atb 0.0 | B_WAttack02_0
+PC0000_NDAtk_3                     | Attack                       | ds PC0000_NDAtk_3               | cmd 0 atb 0.0 | B_NAttack06_0
+PC0000_SAtk_1                      | Strong Attack                | ds PC0000_SAtk_1                | cmd 0 atb 0.0 | B_SAttack01_0
+PC0000_SAtk_2                      | Strong Attack                | ds PC0000_SAtk_2                | cmd 0 atb 0.0 | B_SAttack02_0 B_SAttack02_1 B_SAttack02_2_0
+PC0000_AAASAtk_1                   | Strong Attack                | ds PC0000_AAASAtk_1             | cmd 0 atb 0.0 | B_SAttack05_0
+PC0000_AAASAtk_2                   | Strong Attack                | ds PC0000_SAtk_2                | cmd 0 atb 0.0 | B_SAttack02_0 B_SAttack02_1 B_Change_03_0
+PC0000_SPAtk_1                     | Strong Attack                | ds PC0000_SPAtk_1               | cmd 0 atb 0.0 | B_SAttack04_0
+PC0000_AAASPAtk_1                  | Strong Attack                | ds PC0000_AAASPAtk_1            | cmd 0 atb 0.0 | B_SAttack06_0
+PC0000_AAASPAtk_2                  | Strong Attack                | ds PC0000_AAASPAtk_2            | cmd 0 atb 0.0 | B_SAttack06_1
+PC0000_AAASPAtk_3                  | Strong Attack                | ds PC0000_AAASPAtk_3            | cmd 0 atb 0.0 | B_SAttack06_2
+PC0000_Change_ON                   | Punisher Mode                | ds PC0000_Change_ON             | cmd 0 atb 0.0 | B_Change_01_0
+PC0000_JChange_ON                  | Punisher Mode                | ds PC0000_JChange_ON            | cmd 0 atb 0.0 | B_SAttackJ01_0 B_SAttackJ01_1 B_SAttackJ01_2
+PC0000_Change_OFF                  | Operator Mode                | ds PC0000_Change_OFF            | cmd 0 atb 0.0 | B_Change_02_0
+PC0000_Change_OFF_Change_OFFSP     | Operator Mode                | ds PC0000_Change_OFF_Change_OFFSP | cmd 0 atb 0.0 | B_Change_03_0
+PC0000_AAAChange_OFF               | Operator Mode                | ds PC0000_AAAChange_OFF         | cmd 0 atb 0.0 | B_Change_F04_0 B_Change_B04_0 B_Change_L04_0 B_Change_R04_0
+PC0000_AAAChange_OFF_Change_OFFSP  | Operator Mode                | ds PC0000_AAAChange_OFF         | cmd 0 atb 0.0 | B_Change_F04_0 B_Change_B04_0 B_Change_L04_0 B_Change_R04_0
+PC0000_AAAChange_OFF_Change_OFFSPS | Operator Mode                | ds PC0000_Change_OFF            | cmd 0 atb 0.0 | B_Change_02_0
+PC0000_CounterAtk_1                | Strong Attack                | ds PC0000_CounterAtk_1          | cmd 0 atb 0.0 | B_CounterAttack01
+PC0000_JAtk_1                      | Attack                       | ds PC0000_JAtk_1                | cmd 0 atb 0.0 | B_NAttackJ01_0
+PC0000_JAtk_2                      | Attack                       | ds PC0000_JAtk_2                | cmd 0 atb 0.0 | B_NAttackJ02_0
+PC0000_JAtk_3                      | Attack                       | ds PC0000_JAtk_3                | cmd 0 atb 0.0 | B_NAttackJ03_0
+PC0000_JNPAtk_1                    | Attack                       | ds PC0000_JNPAtk_1              | cmd 0 atb 0.0 | B_NAttackJ05_0 B_NAttackJ05_1 B_NAttackJ05_2
+PC0000_JNDAtk_1                    | Attack                       | ds PC0000_NDAtk_3               | cmd 0 atb 0.0 | B_NAttackJ04_0
+PC0000_AvoidJN                     |                              | ds PC0000_AvoidJN               | cmd 0 atb 0.0 | B_AvoidJ10_0 B_AvoidJ10_1 B_AvoidJ10_2
+PC0000_AtkBurst01                  | Braver                       | ds PC0000_AtkBurst01            | cmd 1 atb 1.0 | B_AtkBurst01_0 B_AtkBurstJ01_0 B_AtkBurstJ01_1 B_AtkBurstJ01_2
+PC0000_AtkBurst02                  | Focused Thrust               | ds PC0000_AtkBurst02            | cmd 1 atb 1.0 | B_AtkBurst02_0
+PC0000_AtkBurst03                  | Triple Slash                 | ds PC0000_AtkBurst03            | cmd 1 atb 1.0 | B_AtkBurst03_0 B_AtkBurst03_1 B_AtkBurst03_2
+PC0000_AtkBurst08                  | Firebolt Blade               | ds PC0000_AtkBurst08            | cmd 1 atb 1.0 | B_AtkBurst08_0 B_AtkBurst08_1 B_AtkBurst08_2
+PC0000_AtkBurst07                  | Disorder                     | ds PC0000_AtkBurst07            | cmd 1 atb 1.0 | B_AtkBurst07_0 B_AtkBurstJ07_1
+PC0000_AtkBurst07_Brave            | Disorder                     | ds PC0000_AtkBurst07_Brave      | cmd 1 atb 1.0 | B_AtkBurst07_1 B_AtkBurstJ07_1
+PC0000_AtkBurst09                  | Prime Mode                   | ds PC0000_AtkBurst09            | cmd 1 atb 1.0 | B_AtkBurst09_0
+PC0000_AtkBurst04                  | Infinity's End               | ds PC0000_AtkBurst04            | cmd 1 atb 2.0 | B_AtkBurst04_0
+PC0000_AtkBurst05                  | Blade Burst                  | ds PC0000_AtkBurst05            | cmd 1 atb 1.0 | B_AtkBurst05_0
+PC0000_AtkBurst06                  | Counterstance                | ds PC0000_AtkBurst06            | cmd 1 atb 1.0 | B_AtkBurst06_0 B_AtkBurst06_1 B_AtkBurst06_3 B_AtkBurst06_2 AbilityCounter_Guard_01 AbilityCounter_JGuard_01 B_AtkBurstJ06_0 B_AtkBurstJ06_1 B_AtkBurstJ06_3 B_A
+PC0000_AtkBurst10                  | Aerial Onslaught             | ds PC0000_AtkBurst10            | cmd 1 atb 1.0 | B_AtkBurst10_0 B_AtkBurst10_1 B_AtkBurst10_2
+PC0000_Limit001                    | Cross-Slash                  | ds PC0000_Limit001              | cmd 3 atb 0.0 | B_AtkLimit01_0
+PC0000_Limit002                    | Ascension                    | ds PC0000_Limit002              | cmd 3 atb 0.0 | B_AtkLimit02_0
+PC0000_Limit003                    | Finishing Touch              | ds PC0000_Limit003              | cmd 3 atb 0.0 | B_AtkLimit03_0
+PC0000_EleBurst01                  | Wildfire                     | ds PC0000_EleBurst01            | cmd 1 atb 1.0 | B_EleBurst01_0 B_EleBurstJ01_0
+PC0000_EleBurst02                  | Snow Flurry                  | ds PC0000_EleBurst02            | cmd 1 atb 1.0 | B_EleBurst01_0 B_EleBurstJ01_0
+PC0000_EleBurst03                  | Static Shock                 | ds PC0000_EleBurst03            | cmd 1 atb 1.0 | B_EleBurst01_0 B_EleBurstJ01_0
+PC0000_EleBurst04                  | Wind Current                 | ds PC0000_EleBurst04            | cmd 1 atb 1.0 | B_EleBurst01_0 B_EleBurstJ01_0
+PC0000_ChainChange01               | Attack                       | ds PC0000_ChainChange01         | cmd 0 atb 0.0 | B_NAttack20_0
+PC0000_ChainRangeAtk1_UC_1         | Bullet Batter                | ds PC0000_ChainRangeAtk1_UC_1   | cmd 0 atb 0.0 | B_ChainRangeAtk_A01_0 B_ChainRangeAtk_A01_2 B_ChainRangeAtkJ_A01_0 B_ChainRangeAtkJ_A01_2
+PC0000_ChainRangeAtk1_UC_2         | Bullet Batter                | ds PC0000_ChainRangeAtk1_UC_2   | cmd 0 atb 0.0 | B_ChainRangeAtk_A02_0 B_ChainRangeAtk_A02_2 B_ChainRangeAtkJ_A02_0 B_ChainRangeAtkJ_A02_2
+PC0000_ChainRangeAtk1_UC_3         | Bullet Batter                | ds PC0000_ChainRangeAtk1_UC_3   | cmd 0 atb 0.0 | B_ChainRangeAtk_A03_0 B_ChainRangeAtk_A03_2 B_ChainRangeAtkJ_A03_0 B_ChainRangeAtkJ_A03_2
+PC0000_ChainRangeAtk1_Change_ON    | Bullet Batter                | ds PC0000_ChainRangeAtk1_Change_ON | cmd 0 atb 0.0 | B_ChainRangeAtk_A04_0 B_ChainRangeAtk_A04_2
+PC0000_ChainRangeAtk1_Change_OFF   | Bullet Batter                | ds PC0000_ChainRangeAtk1_Change_OFF | cmd 0 atb 0.0 | B_ChainRangeAtk_A05_0 B_ChainRangeAtk_A05_2
+PC0000_ChainRangeAtk1_UC_S_1       | Bullet Batter                | ds PC0000_ChainRangeAtk1_UC_S_1 | cmd 0 atb 0.0 | B_ChainRangeAtk_A06_0 B_ChainRangeAtk_A06_2
+PC0000_ChainRangeAtk2_UC_1         | Howling Smash                | ds PC0000_ChainRangeAtk2_UC_1   | cmd 0 atb 0.0 | B_ChainRangeAtk_A01_0 B_ChainRangeAtk_A01_2 B_ChainRangeAtkJ_A01_0 B_ChainRangeAtkJ_A01_2
+PC0000_ChainRangeAtk2_UC_2         | Howling Smash                | ds PC0000_ChainRangeAtk2_UC_2   | cmd 0 atb 0.0 | B_ChainRangeAtk_A02_0 B_ChainRangeAtk_A02_2 B_ChainRangeAtkJ_A02_0 B_ChainRangeAtkJ_A02_2
+PC0000_ChainRangeAtk2_UC_3         | Howling Smash                | ds PC0000_ChainRangeAtk2_UC_3   | cmd 0 atb 0.0 | B_ChainRangeAtk_A03_0 B_ChainRangeAtk_A03_2 B_ChainRangeAtkJ_A03_0 B_ChainRangeAtkJ_A03_2
+PC0000_ChainRangeAtk2_Change_ON    | Howling Smash                | ds PC0000_ChainRangeAtk2_Change_ON | cmd 0 atb 0.0 | B_ChainRangeAtk_A04_0 B_ChainRangeAtk_A04_2
+PC0000_ChainRangeAtk2_Change_OFF   | Howling Smash                | ds PC0000_ChainRangeAtk2_Change_OFF | cmd 0 atb 0.0 | B_ChainRangeAtk_A05_0 B_ChainRangeAtk_A05_2
+PC0000_ChainRangeAtk2_UC_S_1       | Howling Smash                | ds PC0000_ChainRangeAtk2_UC_S_1 | cmd 0 atb 0.0 | B_ChainRangeAtk_A06_0 B_ChainRangeAtk_A06_2
+PC0000_ChainCounter1_UC            | Combo Counter                | ds PC0000_ChainCounter1_UC      | cmd 0 atb 0.0 | B_ChainCounter_A01_0 B_ChainCounter_A01_1 B_ChainCounter_A01_3 B_ChainCounter_A01_2 ChainCounter_Guard_01
+PC0000_ChainCounter2_UC            | Counterfire                  | ds PC0000_ChainCounter2_UC      | cmd 0 atb 0.0 | B_ChainCounter_A01_0 B_ChainCounter_A01_1 B_ChainCounter_A01_3 B_ChainCounter_A02_2 ChainCounter_Guard_01
+PC0000_ChainCounter3_UC            | Counterfire                  | ds PC0000_ChainCounter3_UC      | cmd 0 atb 0.0 | B_ChainCounter_A01_0 B_ChainCounter_A01_1 B_ChainCounter_A01_3 B_ChainCounter_A02_2 ChainCounter_Guard_01
+PC0000_ChainCharge1_UC             | Power Cleave                 | ds PC0000_ChainCharge1_UC       | cmd 0 atb 0.0 | B_ChainCharge_A01_0 B_ChainCharge_A01_1 B_ChainCharge_A01_2 B_ChainCharge_A02_0 B_ChainCharge_A02_1 B_ChainCharge_A02_2
+PC0000_ChainCharge2_UC             | Spell Blade                  | ds PC0000_ChainCharge2_UC       | cmd 0 atb 0.0 | B_ChainCharge_A01_0 B_ChainCharge_A01_1 B_ChainCharge_A01_2 B_ChainCharge_A02_0 B_ChainCharge_A02_1 B_ChainCharge_A02_2
+PC0000_ChainCharge3_UC             | Voidshatter                  | ds PC0000_ChainCharge3_UC       | cmd 0 atb 0.0 | B_ChainCharge_A01_0 B_ChainCharge_A01_1 B_ChainCharge_A01_2 B_ChainCharge_A02_0 B_ChainCharge_A02_1 B_ChainCharge_A02_2
+PC0000_ChainTatakau1_AI_1          |                              | ds PC0000_ChainTatakau1_AI_1    | cmd 0 atb 0.0 | B_ChainTatakau_B01_0 B_ChainTatakauJ_B01_0
+PC0000_ChainDodgeAtk1_AI_A         |                              | ds PC0000_ChainDodgeAtk1_AI_A   | cmd 0 atb 0.0 | B_ChainDodge_B01_0
+PC0000_ChainJump1_AI_S             |                              | ds PC0000_ChainJump1_AI_S       | cmd 0 atb 0.0 | B_ChainJump_B01_0
+PC0000_ChainGuard1_AI              |                              | ds PC0000_ChainGuard1_AI        | cmd 0 atb 0.0 | B_ChainGuard_B01_0 B_ChainGuard_B01_1 B_ChainGuard_B01_2
+PC0000_ChainSupport_cover1_AI      |                              | ds PC0000_ChainSupport_cover1_AI | cmd 0 atb 0.0 | B_ChainSupport_B02_0
+PC0000_ChainSPGuard1_AI            |                              | ds PC0000_ChainSPGuard1_AI      | cmd 0 atb 0.0 | B_ChainSPGuard_B01_0 B_ChainSPGuard_B01_1 B_ChainSPGuard_B01_2 B_ChainSPGuard_B01_3 ChainSPGuard_01
+PC0000_PC0001_BurstChain01         | Partners in Pain             | ds PC0000_PC0001_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0001_BurstChain01_C       | Partners in Pain             | ds PC0000_PC0001_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_01_01_0
+PC0000_PC0001_BurstChain01_B       | Partners in Pain             | ds PC0000_PC0001_BurstChain01_B | cmd 5 atb 3.0 | B_BurstChain_00_01_01_0
+PC0000_PC0001_BurstChain02         | United Refocus               | ds PC0000_PC0001_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0001_BurstChain02_C       | United Refocus               | ds BurstChainVision_Main        | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0001_BurstChain02_B       | United Refocus               | ds BurstChainVision_Sub         | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0002_BurstChain01         | Relentless Rush              | ds PC0000_PC0002_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0002_BurstChain01_C       | Relentless Rush              | ds PC0000_PC0002_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_02_01_0
+PC0000_PC0002_BurstChain01_T       | Relentless Rush              | ds PC0000_PC0002_BurstChain01_T | cmd 5 atb 3.0 | B_BurstChain_00_02_01_0
+PC0000_PC0002_BurstChain02         | Synchro Cyclone              | ds PC0000_PC0002_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0002_BurstChain02_C       | Synchro Cyclone              | ds PC0000_PC0002_BurstChain02_C | cmd 5 atb 3.0 | B_BurstChain_00_02_02_0
+PC0000_PC0002_BurstChain02_T       | Synchro Cyclone              | ds PC0000_PC0002_BurstChain02_T | cmd 5 atb 3.0 | B_BurstChain_00_02_02_0
+PC0000_PC0003_BurstChain01         | Firework Blade               | ds PC0000_PC0003_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0003_BurstChain01_C       | Firework Blade               | ds PC0000_PC0003_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_03_01_0
+PC0000_PC0003_BurstChain01_A       | Firework Blade               | ds PC0000_PC0003_BurstChain01_A | cmd 5 atb 3.0 | B_BurstChain_00_03_01_0
+PC0000_PC0003_BurstChain02         | United Refocus               | ds PC0000_PC0003_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0003_BurstChain02_C       | United Refocus               | ds BurstChainVision_Sub         | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0003_BurstChain02_A       | United Refocus               | ds BurstChainVision_Main        | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0004_BurstChain01         | United Refocus               | ds PC0000_PC0004_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0004_BurstChain01_C       | United Refocus               | ds BurstChainVision_Sub         | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0004_BurstChain01_R       | United Refocus               | ds BurstChainVision_Main        | cmd 5 atb 4.0 | B_BurstChain_Vision01
+PC0000_PC0004_BurstChain02         | Savage Assault               | ds PC0000_PC0004_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0004_BurstChain02_C       | Savage Assault               | ds PC0000_PC0004_BurstChain02_C | cmd 5 atb 3.0 | B_BurstChain_00_04_02_0
+PC0000_PC0004_BurstChain02_R       | Savage Assault               | ds PC0000_PC0004_BurstChain02_R | cmd 5 atb 3.0 | B_BurstChain_00_04_02_0
+PC0000_PC0005_BurstChain01         | Maelstrom Strike             | ds PC0000_PC0005_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0005_BurstChain01_C       | Maelstrom Strike             | ds PC0000_PC0005_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_05_01_0
+PC0000_PC0005_BurstChain01_Y       | Maelstrom Strike             | ds PC0000_PC0005_BurstChain01_Y | cmd 5 atb 3.0 | B_BurstChain_00_05_01_0
+PC0000_PC0005_BurstChain02         | Halcyon Descent              | ds PC0000_PC0005_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0005_BurstChain02_C       | Halcyon Descent              | ds PC0000_PC0005_BurstChain02_C | cmd 5 atb 3.0 | B_BurstChain_00_05_02_0
+PC0000_PC0005_BurstChain02_Y       | Halcyon Descent              | ds PC0000_PC0005_BurstChain02_Y | cmd 5 atb 3.0 | B_BurstChain_00_05_02_0
+PC0000_PC0007_BurstChain01         | Curiosity's End              | ds PC0000_PC0007_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0007_BurstChain01_C       | Curiosity's End              | ds PC0000_PC0007_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_07_01_0
+PC0000_PC0007_BurstChain01_Ca      | Curiosity's End              | ds PC0000_PC0007_BurstChain01_Ca | cmd 5 atb 3.0 | B_BurstChain_00_07_01_0
+PC0000_PC0007_BurstChain01_M       |                              | ds PC0000_PC0007_BurstChain01_M | cmd 5 atb 0.0 | B_BurstChain_00_07_01_0
+PC0000_PC0007_BurstChain02         | SOLDIER Moogle Class         | ds PC0000_PC0007_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0007_BurstChain02_C       | SOLDIER Moogle Class         | ds PC0000_PC0007_BurstChain02_C | cmd 5 atb 3.0 | B_BurstChain_00_07_02_0
+PC0000_PC0007_BurstChain02_Ca      | SOLDIER Moogle Class         | ds PC0000_PC0007_BurstChain02_Ca | cmd 5 atb 3.0 | B_BurstChain_00_07_02_0
+PC0000_PC0007_BurstChain02_M       |                              | ds PC0000_PC0007_BurstChain02_M | cmd 5 atb 0.0 | B_BurstChain_00_07_02_0
+PC0000_PC0009_BurstChain01         | SOLDIER's Honor              | ds PC0000_PC0009_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0009_BurstChain01_C       | SOLDIER's Honor              | ds PC0000_PC0009_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_09_01_0
+PC0000_PC0009_BurstChain01_Z       | SOLDIER's Honor              | ds PC0000_PC0009_BurstChain01_Z | cmd 5 atb 3.0 | B_BurstChain_00_09_01_0
+PC0000_PC0009_BurstChain02         | Together as One              | ds PC0000_PC0009_BurstChain02   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0009_BurstChain02_C       | Together as One              | ds PC0000_PC0009_BurstChain02_C | cmd 5 atb 3.0 | B_BurstChain_00_09_02_0
+PC0000_PC0009_BurstChain02_Z       | Together as One              | ds PC0000_PC0009_BurstChain02_Z | cmd 5 atb 3.0 | B_BurstChain_00_09_02_0
+PC0000_PC0010_BurstChain01         | Double Helix                 | ds PC0000_PC0010_BurstChain01   | cmd 5 atb 0.0 | B_ChainWait01_0 B_ChainWait01_1 B_ChainWait01_2
+PC0000_PC0010_BurstChain01_C       | Double Helix                 | ds PC0000_PC0010_BurstChain01_C | cmd 5 atb 3.0 | B_BurstChain_00_10_01_0
+PC0000_PC0010_BurstChain01_S       | Double Helix                 | ds PC0000_PC0010_BurstChain01_S | cmd 5 atb 3.0 | B_BurstChain_00_10_01_0
+PC0010_10_NAtk_1                   |                              | ds PC0010_10_NAtk_1             | cmd 0 atb 0.0 | B_NAttack01_0
+PC0010_10_NAtk_2                   |                              | ds PC0010_10_NAtk_2             | cmd 0 atb 0.0 | B_NAttack02_0
+PC0010_10_NAtk_3                   |                              | ds PC0010_10_NAtk_3             | cmd 0 atb 0.0 | B_NAttack03_0
+PC0010_10_NAtk_4                   |                              | ds PC0010_10_NAtk_4             | cmd 0 atb 0.0 | B_NAttack04_0
+PC0010_10_JAtk_1                   |                              | ds PC0010_10_JAtk_1             | cmd 0 atb 0.0 | B_Avoid01_0 B_Avoid01_1 B_NAttackJ01_0
+PC0010_10_JAtk_2                   |                              | ds PC0010_10_JAtk_2             | cmd 0 atb 0.0 | B_NAttackJ02_0
+PC0010_10_JAtk_3                   |                              | ds PC0010_10_JAtk_3             | cmd 0 atb 0.0 | B_NAttackJ03_0
+PC0010_10_SAtk_1                   |                              | ds PC0010_10_SAtk_1             | cmd 0 atb 0.0 | B_SAttack01_0
+PC0010_10_SAtk_2                   |                              | ds PC0010_10_SAtk_2             | cmd 0 atb 0.0 | B_SAttack02_0
+PC0010_10_SAtk_6                   |                              | ds PC0010_10_SAtk_6             | cmd 0 atb 0.0 | B_SAttack06_0
+PC0010_10_SAtk_8                   |                              | ds PC0010_10_SAtk_8             | cmd 0 atb 0.0 | B_SAttack08_0 B_SAttack08_1 B_SAttack08_2 B_SAttack08_0 B_SAttack08_1 B_SAttack08_2
+PC0010_10_SAtk_10                  |                              | ds PC0010_10_SAtk_10            | cmd 0 atb 0.0 | B_SAttack10_0
+PC0010_10_ShadowFlare              |                              | ds PC0010_10_ShadowFlare        | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_Zanshin01                |                              | ds PC0010_10_Zanshin01          | cmd 0 atb 1.0 | B_AtkBurst01_0
+PC0010_10_Zanshin02                |                              | ds PC0010_10_Zanshin02          | cmd 0 atb 0.0 | B_AtkBurst01_1
+PC0010_10_Gokumon01                |                              | ds PC0010_10_Gokumon01          | cmd 0 atb 1.0 | B_AtkBurst02_0
+PC0010_10_Gokumon02                |                              | ds PC0010_10_Gokumon02          | cmd 0 atb 0.0 | B_AtkBurst02_1
+PC0010_10_HattouReady              |                              | ds PC0010_10_Hattou01           | cmd 0 atb 0.0 | B_AtkLimit01_0 B_AtkLimit01_1 B_AtkLimit01_1_Comp
+PC0010_10_Hattou01                 |                              | ds PC0010_10_Hattou01           | cmd 0 atb 0.0 | B_AtkLimit01_2 B_AtkLimit01_3 B_AtkLimit01_4
+PC0010_10_Hattou02                 | Octaslash Prime              | ds PC0010_10_Hattou02           | cmd 0 atb 0.0 | B_AtkLimit01_5
+PC0010_10_Stab                     | Skewer                       | ds PC0010_10_Stab               | cmd 0 atb 0.0 | B_AtkStab01
+PC0010_10_HeatAttack_1             | Blade Dance                  | ds PC0010_10_HeatAttack_1       | cmd 0 atb 0.0 | B_ChainTatakau_A01_0 B_ChainTatakau_A01_1 B_ChainTatakau_A01_2
+PC0010_10_HeatAttack_2             | Blade Dance                  | ds PC0010_10_HeatAttack_2       | cmd 0 atb 0.0 | B_ChainTatakau_A02_0
+PC0010_10_HeatAttack_3             | Blade Dance                  | ds PC0010_10_HeatAttack_3       | cmd 0 atb 0.0 | B_ChainTatakau_A03_0
+PC0010_10_NAtk_1_Feeler            |                              | ds PC0010_10_NAtk_1_Feeler      | cmd 0 atb 0.0 | B_NAttack01_0
+PC0010_10_NAtk_2_Feeler            |                              | ds PC0010_10_NAtk_2_Feeler      | cmd 0 atb 0.0 | B_NAttack02_0
+PC0010_10_NAtk_3_Feeler            |                              | ds PC0010_10_NAtk_3_Feeler      | cmd 0 atb 0.0 | B_NAttack03_0
+PC0010_10_NAtk_4_Feeler            |                              | ds PC0010_10_NAtk_4_Feeler      | cmd 0 atb 0.0 | B_NAttack04_0
+PC0010_10_JAtk_1_Feeler            |                              | ds PC0010_10_JAtk_1_Feeler      | cmd 0 atb 0.0 | B_Avoid01_0 B_Avoid01_1 B_NAttackJ01_0
+PC0010_10_JAtk_2_Feeler            |                              | ds PC0010_10_JAtk_2_Feeler      | cmd 0 atb 0.0 | B_NAttackJ02_0
+PC0010_10_JAtk_3_Feeler            |                              | ds PC0010_10_JAtk_3_Feeler      | cmd 0 atb 0.0 | B_NAttackJ03_0
+PC0010_10_SAtk_1_Feeler            |                              | ds PC0010_10_SAtk_1_Feeler      | cmd 0 atb 0.0 | B_SAttack01_0
+PC0010_10_SAtk_2_Feeler            |                              | ds PC0010_10_SAtk_2_Feeler      | cmd 0 atb 0.0 | B_SAttack02_0
+PC0010_10_SAtk_6_Feeler            |                              | ds PC0010_10_SAtk_6_Feeler      | cmd 0 atb 0.0 | B_SAttack06_0
+PC0010_10_SAtk_8_Feeler            |                              | ds PC0010_10_SAtk_8_Feeler      | cmd 0 atb 0.0 | B_SAttack08_0 B_SAttack08_1 B_SAttack08_2 B_SAttack08_0 B_SAttack08_1 B_SAttack08_2
+PC0010_10_SAtk_10_Feeler           |                              | ds PC0010_10_SAtk_10_Feeler     | cmd 0 atb 0.0 | B_SAttack10_0
+PC0010_10_Zanshin01_Feeler         |                              | ds PC0010_10_Zanshin01_Feeler   | cmd 0 atb 1.0 | B_AtkBurst01_0
+PC0010_10_Zanshin02_Feeler         |                              | ds PC0010_10_Zanshin02_Feeler   | cmd 0 atb 0.0 | B_AtkBurst01_1
+PC0010_10_Gokumon01_Feeler         |                              | ds PC0010_10_Gokumon01_Feeler   | cmd 0 atb 1.0 | B_AtkBurst02_0
+PC0010_10_Gokumon02_Feeler         |                              | ds PC0010_10_Gokumon02_Feeler   | cmd 0 atb 0.0 | B_AtkBurst02_1
+PC0010_10_HattouReady_Feeler       |                              | ds PC0010_10_Hattou01           | cmd 0 atb 0.0 | B_AtkLimit01_0 B_AtkLimit01_1 B_AtkLimit01_1_Comp
+PC0010_10_Hattou01_Feeler          |                              | ds PC0010_10_Hattou01_Feeler    | cmd 0 atb 0.0 | B_AtkLimit01_2 B_AtkLimit01_3 B_AtkLimit01_4
+PC0010_10_Hattou02_Feeler          | Octaslash Prime              | ds PC0010_10_Hattou02_Feeler    | cmd 0 atb 0.0 | B_AtkLimit01_5
+PC0010_10_Stab_Feeler              | Skewer                       | ds PC0010_10_Stab_Feeler        | cmd 0 atb 0.0 | B_AtkStab01
+PC0010_10_FeelerTornado            | Whisper Whirlwind            | ds PC0010_10_FeelerTornado      | cmd 0 atb 0.0 | B_AtkFeelerTornado01_0 B_AtkFeelerTornado01_1 B_AtkFeelerTornado01_2
+PC0010_10_FeelerLaserStart         |                              | ds PC0010_10_FeelerLaser        | cmd 0 atb 0.0 | B_AtkFeelerLaser01_0
+PC0010_10_FeelerLaserLoopL         |                              | ds PC0010_10_FeelerLaser        | cmd 0 atb 0.0 | B_AtkFeelerLaserL01_1 B_AtkFeelerLaser01_2
+PC0010_10_FeelerLaserLoopR         |                              | ds PC0010_10_FeelerLaser        | cmd 0 atb 0.0 | B_AtkFeelerLaserR01_1 B_AtkFeelerLaser01_2
+PC0010_10_SetFeeler                | Wicked Augment               | ds PC0010_10_SetFeeler          | cmd 0 atb 0.0 | B_SetFeeler01
+PC0010_10_WarpCenter               |                              | ds None                         | cmd 0 atb 0.0 | B_Warp01_0 B_Idle01_1_Comp
+PC0010_10_Tenshi                   | Heartless Angel              | ds PC0010_10_Tenshi             | cmd 0 atb 0.0 | B_AtkTenshi01_0 B_AtkTenshi01_1
+PC0010_10_BindFeeler               | Grip of Fate                 | ds PC0010_10_BindFeeler         | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_GroundFeeler             | Errant Whisper               | ds PC0010_10_GroundFeeler       | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_3 B_AtkMag01_4 B_AtkMag01_5
+PC0010_10_HeatAttack_1_Feeler      | Blade Dance                  | ds PC0010_10_HeatAttack_1_Feeler | cmd 0 atb 0.0 | B_ChainTatakau_A01_0 B_ChainTatakau_A01_1 B_ChainTatakau_A01_2
+PC0010_10_HeatAttack_2_Feeler      | Blade Dance                  | ds PC0010_10_HeatAttack_2_Feeler | cmd 0 atb 0.0 | B_ChainTatakau_A02_0
+PC0010_10_HeatAttack_3_Feeler      | Blade Dance                  | ds PC0010_10_HeatAttack_3_Feeler | cmd 0 atb 0.0 | B_ChainTatakau_A03_0
+PC0010_10_HattouReady_Last         |                              | ds PC0010_10_HattouReady_Last   | cmd 0 atb 0.0 | B_AtkLimit01_0 B_AtkLimit01_1 B_AtkLimit01_1_Comp
+PC0010_10_Hattou03                 |                              | ds PC0010_10_Hattou03           | cmd 0 atb 0.0 | B_AtkLimit01_3_Comp
+PC0010_10_Hattou04                 | Octaslash Prime              | ds PC0010_10_Hattou04           | cmd 0 atb 0.0 | B_AtkLimit01_5_Comp B_AtkLimit01_6
+PC0010_10_FeelerWall               | The End Is Nigh              | ds PC0010_10_FeelerWall         | cmd 0 atb 0.0 | B_AtkMag01_0_Comp B_AtkMag01_1_Comp B_AtkMag01_3 B_AtkMag01_4 B_AtkMag01_5
+PC0010_10_LastAttack               | Tempus Finis                 | ds PC0010_10_LastAttack         | cmd 0 atb 0.0 | B_AtkFinalAttack01_0 B_AtkFinalAttack01_1 B_AtkFinalAttack01_2
+PC0010_10_BindAttack01             | Shadowy Chains               | ds PC0010_10_BindAttack01       | cmd 0 atb 0.0 | B_SAttack05_0_Comp
+PC0010_10_BindAttack01B            | Shadowy Chains               | ds PC0010_10_BindAttack01       | cmd 0 atb 0.0 | B_SAttack05_0
+PC0010_10_BindAttack02             | Shadowy Chains               | ds PC0010_10_BindAttack02       | cmd 0 atb 0.0 | B_AtkZekkuu01_0_Comp B_AtkZekkuu01_1 B_AtkZekkuu01_2
+PC0010_10_BindAttack02B            | Shadowy Chains               | ds PC0010_10_BindAttack02       | cmd 0 atb 0.0 | B_AtkZekkuu01_0 B_AtkZekkuu01_1 B_AtkZekkuu01_2
+PC0010_10_ElementMag_Fire          | Infernal Flare               | ds None                         | cmd 0 atb 0.0 | B_AtkMag01_0_Comp B_AtkMag01_3 B_AtkMag01_4_Fire_Comp B_AtkMag01_5
+PC0010_10_ElementMag_Ice           | Great Tribulation            | ds None                         | cmd 0 atb 0.0 | B_AtkMag01_0_Comp B_AtkMag01_3 B_AtkMag01_4_Ice_Comp B_AtkMag01_5
+PC0010_10_ElementMag_Lightning     | Keraunos                     | ds None                         | cmd 0 atb 0.0 | B_AtkMag01_0_Comp B_AtkMag01_3 B_AtkMag01_4_Lightning_Comp B_AtkMag01_5
+PC0010_10_ElementMag_Wind          | Rapture                      | ds None                         | cmd 0 atb 0.0 | B_AtkMag01_0_Comp B_AtkMag01_3 B_AtkMag01_4_Wind_Comp B_AtkMag01_5
+PC0010_10_Fire3                    | Firaga                       | ds PC0010_10_Fire3              | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_Blizzard3                | Blizzaga                     | ds PC0010_10_Blizzard3          | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_Thunder3                 | Thundaga                     | ds PC0010_10_Thunder3           | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_Wind3                    | Aeroga                       | ds PC0010_10_Wind3              | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2
+PC0010_10_ElementChange            |                              | ds PC0010_10_ElementChange      | cmd 0 atb 0.0 | B_SetFeeler01
+PC0010_10_HattouReadyPull          |                              | ds PC0010_10_Hattou01           | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_2_Comp1 B_AtkMag01_2_Comp
+PC0010_10_HattouReadyShort         |                              | ds PC0010_10_Hattou01           | cmd 0 atb 0.0 | B_AtkLimit01_0 B_AtkLimit01_1_Comp2 B_AtkLimit01_1_Comp
+PC0010_10_DoubleFire3              | Merciless Firaga             | ds PC0010_10_Fire3              | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2_CompMagic
+PC0010_10_DoubleBlizzard3          | Merciless Blizzaga           | ds PC0010_10_Blizzard3          | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2_CompMagic
+PC0010_10_DoubleThunder3           | Merciless Thundaga           | ds PC0010_10_Thunder3           | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2_CompMagic
+PC0010_10_DoubleWind3              | Merciless Aeroga             | ds PC0010_10_Wind3              | cmd 0 atb 0.0 | B_AtkMag01_0 B_AtkMag01_1 B_AtkMag01_2_CompMagic

@@ -1,0 +1,15 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00ToPC0000_00SkelCompat1.PC0011_00ToPC0000_00SkelCompat1",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0011_00_Vincent_Standard/Model/PC0011_00_Skeleton.PC0011_00_Skeleton",
+				"/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton"
+			],
+			"method": "animations",
+			"enabled": true
+		}
+	]
+}

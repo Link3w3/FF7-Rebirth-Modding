@@ -1,0 +1,105 @@
+{
+	"schema": "RebirthSkelCompat/1",
+	"source": "Sephiroth and Cloud swapped (Sephiroth with the Masamune in Cloud's place, Cloud with the Buster Sword in Sephiroth's place); Cloud keeps Sephiroth's moveset (Cloud's sets only fill names Sephiroth's lack); goes with FullyPlayableSephirothDataAssets_P",
+	"pairs": [
+		{
+			"receiving_skeleton": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton"
+			],
+			"method": "family",
+			"hub": "/Game/Character/Player/PC0010_00_Sephiroth_Standard/Model/PC0010_00_Skeleton.PC0010_00_Skeleton",
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true
+		},
+		{
+			"receiving_skeleton": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+			"animation_skeletons": [
+				"/Game/Character/Weapon/WE1021_00_SephirothIllusion_Masamune/Model/WE1021_00_Skeleton.WE1021_00_Skeleton"
+			],
+			"method": "family",
+			"hub": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true
+		}
+	],
+	"animation_sets": [
+		{
+			"characters": [
+				"PC0010_00_Sephiroth_Standard",
+				"PC0010_00_Sephiroth_Standard_NoBattle",
+				"PC0010_00_Sephiroth_Standard_Reserve",
+				"PC0010_01_Sephiroth_StandardWet"
+			],
+			"battle": [
+				"/Game/Motion/Player/PC0010_Sephiroth",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"field": [
+				"/Game/Motion/Player/PC0010_Sephiroth",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true
+		},
+		{
+			"characters": [
+				"PC0010_10_Sephiroth_Transform",
+				"PC0010_20_Sephiroth_VRHard"
+			],
+			"battle": [
+				"/Game/Motion/Player/PC0010_Sephiroth_Transform",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"field": [
+				"/Game/Motion/Player/PC0010_Sephiroth",
+				"/Game/Motion/Player/PC0000_Cloud"
+			],
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true
+		},
+		{
+			"characters": [
+				"WE1021_00_SephirothIllusion_Masamune",
+				"WE1021_01_SephirothIllusion_MasamuneBrood",
+				"WE1021_02_SephirothIllusion_MasamuneCut",
+				"WE1021_10_SephirothIllusion_MasamuneCutScale"
+			],
+			"skeleton": "/Game/Character/Weapon/WE0000_00_Cloud_BusterSword/Model/WE0000_00_Skeleton.WE0000_00_Skeleton",
+			"sockets": [
+				{
+					"socket": "NAttack1",
+					"use": "C_TrailA_a"
+				},
+				{
+					"socket": "NAttack2",
+					"use": "C_TrailA_b"
+				},
+				{
+					"socket": "NAttack3",
+					"use": "SAttack_Zack"
+				},
+				{
+					"socket": "NAttack4",
+					"use": "ChainCharge_Sephiroth"
+				},
+				{
+					"socket": "NAttackBoss",
+					"use": "C_TrailA_b"
+				}
+			],
+			"requires_paks": [
+				"FullyPlayableSephirothDataAssets_P"
+			],
+			"enabled": true
+		}
+	]
+}

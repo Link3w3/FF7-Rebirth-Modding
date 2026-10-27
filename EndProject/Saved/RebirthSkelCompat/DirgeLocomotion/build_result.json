@@ -1,0 +1,41 @@
+{
+ "steps": [
+  "run",
+  "scanned",
+  "sources",
+  "row",
+  "built_now",
+  "compression",
+  "failed",
+  "build",
+  "checked",
+  "root_motion",
+  "export_json",
+  "validate",
+  "compat_file",
+  "done"
+ ],
+ "run": "run 1 with the plugin 1.12.4: 0 move(s) built before, 0 left out (they stopped the editor)",
+ "scanned": [
+  "/Game/Motion/Player/PC0011_00_Vincent",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/RebirthSkelCompat/Built/Vincent",
+  "/Game/Character/Player/PC0011_00_Vincent_Standard",
+  "/Game/Character/Player/PC0000_00_Cloud_Standard",
+  "/Game/Animation/CompressionSettings"
+ ],
+ "sources": "49 motion(s) and animation(s), all load",
+ "row": "row 0: 57 moves (0 replaced, 43 added), characters 6 (PC0000_04_Cloud_ZackCostume, PC0000_12_Cloud_ZackCostumeDirty, PC0000_18_Cloud_ZackCostumeAge21, PC0000_19_Cloud_ZackCostumeDirtyAge21, PC0000_23_Cloud_ZackCostumeWet added)",
+ "built_now": "43 move(s) in 3 s",
+ "compression": {
+  "ACL QuatDropW_Variable": 43
+ },
+ "failed": [],
+ "build": "43 of 43 built",
+ "checked": "43 package(s), all load back",
+ "root_motion": "43 move(s) sampled; NOT MOVING: B_Run01_0 (root motion off), B_Run01_0_L0 (root motion off), B_Run01_0_L90 (root motion off), B_Run01_0_L180 (root motion off), B_Run01_0_R90 (root motion off), B_Run01_0_R180 (root motion off), B_Run01_1 (root motion off), B_Run01_1_L180 (root motion off), B_Run01_1_R180 (root motion off), B_Run01_2 (root motion off), B_Run01_2r (root motion off), B_Walk01_0 (root motion off), B_Walk01_0_L0 (root motion off), B_Walk01_0_L90 (root motion off), B_Walk01_0_L180 (root motion off), B_Walk01_0_R90 (root motion off), B_Walk01_0_R180 (root motion off), B_Walk01_1 (root motion off), B_Walk01_2l (root motion off), B_Walk01_2r (root motion off), B_WalkF01_0 (root motion off), B_WalkF01_1 (root motion off), B_WalkF01_2l (root motion off), B_WalkF01_2r (root motion off), B_WalkB01_0 (root motion off), B_WalkB01_1 (root motion off), B_WalkB01_2l (root motion off), B_WalkB01_2r (root motion off), B_WalkBL01_1 (root motion off), B_WalkBR01_1 (root motion off), B_WalkL01_0 (root motion off), B_WalkL01_0l (root motion off), B_WalkL01_1 (root motion off), B_WalkL01_2l (root motion off), B_WalkL01_2r (root motion off), B_WalkFL01_1 (root motion off), B_WalkR01_0 (root motion off), B_WalkR01_1 (root motion off), B_WalkR01_2l (root motion off), B_WalkR01_2r (root motion off), B_WalkFR01_1 (root motion off)",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: OK",
+ "compat_file": "C:/FF7R2UProj/Saved/RebirthSkelCompat\\Vincent_Moves.skelcompat.json",
+ "done": true
+}

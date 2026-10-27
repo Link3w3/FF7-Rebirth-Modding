@@ -1,0 +1,58 @@
+{
+ "steps": [
+  "scanned",
+  "row",
+  "forms",
+  "failed",
+  "build",
+  "checked",
+  "export_json",
+  "validate",
+  "done"
+ ],
+ "scanned": [
+  "/Game/Motion/Player/PC0010_Sephiroth",
+  "/Game/Motion/Player/PC0010_Sephiroth_Transform",
+  "/Game/Motion/Player/PC0000_Cloud",
+  "/Game/Motion/Enemy/EB2210_BizarroSephiroth",
+  "/Game/Character/Enemy/EB2210_00_BizarroSephiroth_Standard",
+  "/Game/RebirthSkelCompat",
+  "/Game/Animation/CompressionSettings",
+  "/Game/Character/Player/PC0010_00_Sephiroth_Standard",
+  "/Game/DataAsset/Game/CharaSpec"
+ ],
+ "row": "552 moves, 187 of them the Bizarro form's (Battle05)",
+ "forms": [
+  "NORMAL",
+  "WINGED",
+  "FLYING",
+  "KH2",
+  "BIZARRO"
+ ],
+ "failed": [
+  "B_SAttack08_0",
+  "B_Avoid01_0",
+  "B_Avoid01_1",
+  "B_Avoid02_2",
+  "B_DmgBlowB01_1",
+  "B_DmgBlowF01_1",
+  "B_DmgStrikeB01_0",
+  "B_DmgStrikeF01_0",
+  "B_Guard01_0",
+  "B_Guard01_2",
+  "B_GuardFace01_0",
+  "B_GuardFace02_0",
+  "B_GuardFace02_1",
+  "B_GuardFace02_2",
+  "B_GuardTurn01_L90",
+  "B_GuardTurn01_R90",
+  "B_Run01_0_L0",
+  "B_Run01_0_L90",
+  "B_Run01_0_R180"
+ ],
+ "build": "149 of 168 built, not built: B_SAttack08_0, B_Avoid01_0, B_Avoid01_1, B_Avoid02_2, B_DmgBlowB01_1, B_DmgBlowF01_1, B_DmgStrikeB01_0, B_DmgStrikeF01_0, B_Guard01_0, B_Guard01_2, B_GuardFace01_0, B_GuardFace02_0, B_GuardFace02_1, B_GuardFace02_2, B_GuardTurn01_L90, B_GuardTurn01_R90, B_Run01_0_L0, B_Run01_0_L90, B_Run01_0_R180",
+ "checked": "168 package(s), all load back",
+ "export_json": "Export Json: OK",
+ "validate": "Validate: PROBLEMS",
+ "done": true
+}
