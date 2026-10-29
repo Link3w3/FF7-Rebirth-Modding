@@ -1,0 +1,19 @@
+{
+  "schema": "RebirthSkelCompat/1",
+  "source": "Zack's native player skeleton joins Cloud's skeleton family for the CACS Zack character entry. Enabled only when the CACS merged content pak is installed.",
+  "pairs": [
+    {
+      "receiving_skeleton": "/Game/Character/Player/PC0009_00_Zack_Standard/Model/PC0009_00_Skeleton.PC0009_00_Skeleton",
+      "animation_skeletons": [
+        "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton"
+      ],
+      "method": "family",
+      "hub": "/Game/Character/Player/PC0000_00_Cloud_Standard/Model/PC0000_00_Skeleton.PC0000_00_Skeleton",
+      "proportions": true,
+      "requires_paks": [
+        "FullyPlayableCreateACharacterSystemExperience_P"
+      ],
+      "enabled": true
+    }
+  ]
+}
