@@ -1,0 +1,1948 @@
+{
+  "table": "/Game/DataObject/Resident/CharaSpec",
+  "source_character": "Cloud",
+  "party": [
+    {
+      "token": "BARRET",
+      "label": "Barret",
+      "player_row": "pt_Barret",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_BARRET",
+          "model": "PC0001_09_Barret_StandardWet"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_BARRET",
+          "model": "PC0001_00_Barret_Standard"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_BARRET",
+          "model": "PC0001_04_Barret_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_BARRET",
+          "model": "PC0001_04_Barret_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_BARRET",
+          "model": "PC0001_04_Barret_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_BARRET",
+          "model": "PC0001_04_Barret_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_BARRET",
+          "model": "PC0001_09_Barret_StandardWet"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_BARRET",
+          "model": "WE0001_00_Barret_GatlingGun"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_BARRET",
+          "model": "WE0001_01_Barret_AssaultGun"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_BARRET",
+          "model": "WE0001_02_Barret_AtomicScissors"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_BARRET",
+          "model": "WE0001_03_Barret_LargeMouth"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_BARRET",
+          "model": "WE0001_04_Barret_HeartBeat"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_BARRET",
+          "model": "WE0001_05_Barret_CannonBall"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_BARRET",
+          "model": "WE0001_11_Barret_END2Weapon1"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_BARRET",
+          "model": "WE0001_12_Barret_END2Weapon2"
+        }
+      ],
+      "config": {
+        "name": "BARRET",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Barret: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Barret's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_BARRET",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_BARRET",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_BARRET",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_BARRET",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_BARRET",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_BARRET",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_BARRET",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_BARRET",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_BARRET",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_BARRET",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_BARRET",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_BARRET",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_BARRET",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_BARRET",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_BARRET",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_BARRET",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_BARRET",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_BARRET",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_BARRET",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_BARRET",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_BARRET",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_BARRET",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_BARRET",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_BARRET",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_BARRET",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_BARRET",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_BARRET",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_BARRET"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_Barret"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "TIFA",
+      "label": "Tifa",
+      "player_row": "pt_Tifa",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_TIFA",
+          "model": "PC0002_06_Tifa_SoldierNoHelmet"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_TIFA",
+          "model": "PC0002_06_Tifa_SoldierNoHelmet"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_TIFA",
+          "model": "PC0002_08_Tifa_CostaClothing"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_TIFA",
+          "model": "PC0002_08_Tifa_CostaClothing"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_TIFA",
+          "model": "PC0002_09_Tifa_CostaClothing2"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_TIFA",
+          "model": "PC0002_09_Tifa_CostaClothing2"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_TIFA",
+          "model": "PC0002_13_Tifa_StandardWet"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_TIFA",
+          "model": "PC0002_00_Tifa_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_TIFA",
+          "model": "PC0002_05_Tifa_Soldier"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_TIFA",
+          "model": "PC0002_05_Tifa_Soldier"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_TIFA",
+          "model": "PC0002_10_Tifa_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_TIFA",
+          "model": "PC0002_10_Tifa_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_TIFA",
+          "model": "PC0002_10_Tifa_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_TIFA",
+          "model": "PC0002_10_Tifa_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_TIFA",
+          "model": "PC0002_13_Tifa_StandardWet"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_TIFA",
+          "model": "WE0002_00_Tifa_LeatherGlove"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_TIFA",
+          "model": "WE0002_01_Tifa_MetalKnuckle"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_TIFA",
+          "model": "WE0002_02_Tifa_FeatherGrab"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_TIFA",
+          "model": "WE0002_03_Tifa_MythrilClaw"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_TIFA",
+          "model": "WE0002_04_Tifa_GrandGrab"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_TIFA",
+          "model": "WE0002_05_Tifa_SonicFist"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_TIFA",
+          "model": "WE0002_11_Tifa_END2Weapon1"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_TIFA",
+          "model": "WE0002_12_Tifa_END2Weapon2"
+        }
+      ],
+      "config": {
+        "name": "TIFA",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Tifa: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Tifa's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_TIFA",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_TIFA",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_TIFA",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_TIFA",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_TIFA",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_TIFA",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_TIFA",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_TIFA",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_TIFA",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_TIFA",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_TIFA",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_TIFA",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_TIFA",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_TIFA",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_TIFA",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_TIFA",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_TIFA",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_TIFA",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_TIFA",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_TIFA",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_TIFA",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_TIFA",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_TIFA",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_TIFA",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_TIFA",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_TIFA",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_TIFA",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_TIFA"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_Tifa"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "AERITH",
+      "label": "Aerith",
+      "player_row": "pt_Aerith",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_AERITH",
+          "model": "PC0003_06_Aerith_SoldierNoHelmet"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_AERITH",
+          "model": "PC0003_06_Aerith_SoldierNoHelmet"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_AERITH",
+          "model": "PC0003_07_Aerith_CostaClothing"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_AERITH",
+          "model": "PC0003_07_Aerith_CostaClothing"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_AERITH",
+          "model": "PC0003_08_Aerith_CostaClothing2"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_AERITH",
+          "model": "PC0003_08_Aerith_CostaClothing2"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_AERITH",
+          "model": "PC0003_04_Aerith_Dirty"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_AERITH",
+          "model": "PC0003_04_Aerith_Dirty"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_AERITH",
+          "model": "PC0003_04_Aerith_Dirty"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_AERITH",
+          "model": "PC0003_04_Aerith_Dirty"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_AERITH",
+          "model": "PC0003_05_Aerith_Soldier"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_AERITH",
+          "model": "PC0003_05_Aerith_Soldier"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_AERITH",
+          "model": "PC0003_09_Aerith_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_AERITH",
+          "model": "PC0003_09_Aerith_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_AERITH",
+          "model": "PC0003_09_Aerith_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_AERITH",
+          "model": "PC0003_09_Aerith_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_AERITH",
+          "model": "PC0003_00_Aerith_Standard"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_AERITH",
+          "model": "WE0003_00_Aerith_GuardRod"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_AERITH",
+          "model": "WE0003_01_Aerith_SilverRod"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_AERITH",
+          "model": "WE0003_02_Aerith_StrikeRod"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_AERITH",
+          "model": "WE0003_03_Aerith_MythrilRod"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_AERITH",
+          "model": "WE0003_04_Aerith_FullmetalRod"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_AERITH",
+          "model": "WE0003_05_Aerith_MagicalRod"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_AERITH",
+          "model": "WE0003_11_Aerith_END2Weapon1"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_AERITH",
+          "model": "WE0003_12_Aerith_END2Weapon2"
+        }
+      ],
+      "config": {
+        "name": "AERITH",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Aerith: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Aerith's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_AERITH",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_AERITH",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_AERITH",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_AERITH",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_AERITH",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_AERITH",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_AERITH",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_AERITH",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_AERITH",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_AERITH",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_AERITH",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_AERITH",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_AERITH",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_AERITH",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_AERITH",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_AERITH",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_AERITH",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_AERITH",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_AERITH",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_AERITH",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_AERITH",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_AERITH",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_AERITH",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_AERITH",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_AERITH",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_AERITH",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_AERITH",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_AERITH"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_Aerith"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "REDXIII",
+      "label": "Red XIII",
+      "player_row": "pt_RedXIII",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_REDXIII",
+          "model": "PC0004_05_RedXIII_Soldier"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_REDXIII",
+          "model": "PC0004_05_RedXIII_Soldier"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_REDXIII",
+          "model": "PC0004_08_RedXIII_Dirty"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_REDXIII",
+          "model": "PC0004_08_RedXIII_Dirty"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_REDXIII",
+          "model": "PC0004_08_RedXIII_Dirty"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_REDXIII",
+          "model": "PC0004_08_RedXIII_Dirty"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_REDXIII",
+          "model": "PC0004_05_RedXIII_Soldier"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_REDXIII",
+          "model": "PC0004_05_RedXIII_Soldier"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_REDXIII",
+          "model": "PC0004_02_RedXIII_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_REDXIII",
+          "model": "PC0004_02_RedXIII_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_REDXIII",
+          "model": "PC0004_02_RedXIII_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_REDXIII",
+          "model": "PC0004_02_RedXIII_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_REDXIII",
+          "model": "PC0004_00_RedXIII_Standard"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "model": "WE0004_00_RedXIII_MythrilColor"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_REDXIII",
+          "model": "WE0004_11_RedXIII_END2Weapon1"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_REDXIII",
+          "model": "WE0004_12_RedXIII_END2Weapon2"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_REDXIII",
+          "model": "WE0004_13_RedXIII_END2Weapon3"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_REDXIII",
+          "model": "WE0004_14_RedXIII_END2Weapon4"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_REDXIII",
+          "model": "WE0004_15_RedXIII_END2Weapon5"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_REDXIII",
+          "model": "WE0004_16_RedXIII_END2Weapon6"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_REDXIII",
+          "model": "WE0004_16_RedXIII_END2Weapon6"
+        }
+      ],
+      "config": {
+        "name": "RED XIII",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Red XIII: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Red XIII's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_REDXIII",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_REDXIII",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_REDXIII",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_REDXIII",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_REDXIII",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_REDXIII",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_REDXIII",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_REDXIII",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_REDXIII",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_REDXIII",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_REDXIII",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_REDXIII",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_REDXIII",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_REDXIII",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_REDXIII",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_REDXIII",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_REDXIII",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_REDXIII",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_REDXIII",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_REDXIII",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_REDXIII",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_REDXIII",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_REDXIII",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_REDXIII",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_REDXIII",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_REDXIII",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_REDXIII",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_REDXIII"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_RedXIII"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "YUFFIE",
+      "label": "Yuffie",
+      "player_row": "pt_Yuffie",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_YUFFIE",
+          "model": "PC0005_03_Yuffie_CostaClothing"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_YUFFIE",
+          "model": "PC0005_03_Yuffie_CostaClothing"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_YUFFIE",
+          "model": "PC0005_03_Yuffie_CostaClothing"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_YUFFIE",
+          "model": "PC0005_03_Yuffie_CostaClothing"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_YUFFIE",
+          "model": "PC0005_09_Yuffie_StandardWet"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_YUFFIE",
+          "model": "PC0005_00_Yuffie_Standard"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_YUFFIE",
+          "model": "PC0005_08_Yuffie_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_YUFFIE",
+          "model": "PC0005_08_Yuffie_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_YUFFIE",
+          "model": "PC0005_08_Yuffie_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_YUFFIE",
+          "model": "PC0005_08_Yuffie_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_YUFFIE",
+          "model": "PC0005_09_Yuffie_StandardWet"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "model": "WE0005_00_Yuffie_Shuriken"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_YUFFIE",
+          "model": "WE0005_01_Yuffie_Boomerang"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_YUFFIE",
+          "model": "WE0005_02_Yuffie_PhysicalShuriken"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_YUFFIE",
+          "model": "WE0005_03_Yuffie_CactuarShuriken"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_YUFFIE",
+          "model": "WE0005_11_Yuffie_END2Weapon1"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_YUFFIE",
+          "model": "WE0005_12_Yuffie_END2Weapon2"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_YUFFIE",
+          "model": "WE0005_13_Yuffie_END2Weapon3"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_YUFFIE",
+          "model": "WE0005_14_Yuffie_END2Weapon4"
+        }
+      ],
+      "config": {
+        "name": "YUFFIE",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Yuffie: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Yuffie's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_YUFFIE",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_YUFFIE",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_YUFFIE",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_YUFFIE",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_YUFFIE",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_YUFFIE",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_YUFFIE",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_YUFFIE",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_YUFFIE",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_YUFFIE",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_YUFFIE",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_YUFFIE",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_YUFFIE",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_YUFFIE",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_YUFFIE",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_YUFFIE",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_YUFFIE",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_YUFFIE",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_YUFFIE",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_YUFFIE",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_YUFFIE",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_YUFFIE",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_YUFFIE",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_YUFFIE",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_YUFFIE",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_YUFFIE",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_YUFFIE",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_YUFFIE"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_Yuffie"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "CAITSITH",
+      "label": "Cait Sith",
+      "player_row": "pt_CaitSith",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_CAITSITH",
+          "model": "PC0007_01_CaitSith_Loveless"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_CAITSITH",
+          "model": "PC0007_01_CaitSith_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_CAITSITH",
+          "model": "PC0007_01_CaitSith_Loveless"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_CAITSITH",
+          "model": "PC0007_01_CaitSith_Loveless"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_CAITSITH",
+          "model": "PC0007_00_CaitSith_Standard"
+        }
+      },
+      "weapons": [
+        {
+          "source": "WE0000_00_Cloud_BusterSword",
+          "target": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "model": "WE0007_00_CaitSith_Megaphone"
+        },
+        {
+          "source": "WE0000_11_Cloud_END2Weapon1",
+          "target": "WE0000_11_Cloud_END2Weapon1_CAITSITH",
+          "model": "WE0007_11_CaitSith_END2Weapon1"
+        },
+        {
+          "source": "WE0000_12_Cloud_END2Weapon2",
+          "target": "WE0000_12_Cloud_END2Weapon2_CAITSITH",
+          "model": "WE0007_12_CaitSith_END2Weapon2"
+        },
+        {
+          "source": "WE0000_13_Cloud_END2Weapon3",
+          "target": "WE0000_13_Cloud_END2Weapon3_CAITSITH",
+          "model": "WE0007_13_CaitSith_END2Weapon3"
+        },
+        {
+          "source": "WE0000_14_Cloud_END2Weapon4",
+          "target": "WE0000_14_Cloud_END2Weapon4_CAITSITH",
+          "model": "WE0007_14_CaitSith_END2Weapon4"
+        },
+        {
+          "source": "WE0000_15_Cloud_END2Weapon5",
+          "target": "WE0000_15_Cloud_END2Weapon5_CAITSITH",
+          "model": "WE0007_15_CaitSith_END2Weapon5"
+        },
+        {
+          "source": "WE0000_16_Cloud_END2Weapon6",
+          "target": "WE0000_16_Cloud_END2Weapon6_CAITSITH",
+          "model": "WE0007_16_CaitSith_END2Weapon6"
+        },
+        {
+          "source": "WE0000_17_Cloud_Umbrella",
+          "target": "WE0000_17_Cloud_Umbrella_CAITSITH",
+          "model": "WE0007_16_CaitSith_END2Weapon6"
+        }
+      ],
+      "config": {
+        "name": "CAIT SITH",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Cait Sith: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Cait Sith's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_CAITSITH",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_CAITSITH",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_CAITSITH",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_CAITSITH",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_CAITSITH",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_CAITSITH",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_CAITSITH",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_CAITSITH",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_CAITSITH",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_CAITSITH",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_CAITSITH",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_CAITSITH",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_CAITSITH",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_CAITSITH",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_CAITSITH",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_CAITSITH",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_CAITSITH",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_CAITSITH",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_CAITSITH",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_CAITSITH",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_CAITSITH",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_CAITSITH",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_CAITSITH",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_CAITSITH",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_CAITSITH",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_CAITSITH",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_CAITSITH",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_CAITSITH"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_CaitSith"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    },
+    {
+      "token": "CID",
+      "label": "Cid",
+      "player_row": "pt_Cloud",
+      "costumes": {
+        "PC0000_00_Cloud_Standard": {
+          "target": "PC0000_00_Cloud_Standard_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_00_Cloud_Standard_NoBattle": {
+          "target": "PC0000_00_Cloud_Standard_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume": {
+          "target": "PC0000_04_Cloud_ZackCostume_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_04_Cloud_ZackCostume_NoBattle": {
+          "target": "PC0000_04_Cloud_ZackCostume_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": {
+          "target": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing": {
+          "target": "PC0000_09_Cloud_CostaClothing_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_09_Cloud_CostaClothing_NoBattle": {
+          "target": "PC0000_09_Cloud_CostaClothing_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2": {
+          "target": "PC0000_10_Cloud_CostaClothing2_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_10_Cloud_CostaClothing2_NoBattle": {
+          "target": "PC0000_10_Cloud_CostaClothing2_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": {
+          "target": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": {
+          "target": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": {
+          "target": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_23_Cloud_ZackCostumeWet": {
+          "target": "PC0000_23_Cloud_ZackCostumeWet_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_06_Cloud_Soldier": {
+          "target": "PC0000_06_Cloud_Soldier_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_06_Cloud_Soldier_NoBattle": {
+          "target": "PC0000_06_Cloud_Soldier_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior": {
+          "target": "PC0000_07_Cloud_SoldierSenior_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_07_Cloud_SoldierSenior_NoBattle": {
+          "target": "PC0000_07_Cloud_SoldierSenior_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_11_Cloud_Loveless": {
+          "target": "PC0000_11_Cloud_Loveless_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_11_Cloud_Loveless_NoBattle": {
+          "target": "PC0000_11_Cloud_Loveless_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_17_Cloud_LovelessNoMask": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_17_Cloud_LovelessNoMask_NoBattle": {
+          "target": "PC0000_17_Cloud_LovelessNoMask_NoBattle_CID",
+          "model": "PC0012_00_Cid_Standard"
+        },
+        "PC0000_22_Cloud_StandardWet": {
+          "target": "PC0000_22_Cloud_StandardWet_CID",
+          "model": "PC0012_00_Cid_Standard"
+        }
+      },
+      "weapons": [],
+      "config": {
+        "name": "CID",
+        "slot": "Cloud",
+        "player": "pt_Cloud",
+        "note": "Cid: Cloud-slot playable clone. Resident rows are duplicated from the matching Cloud rows, preserving Cloud CharaID and row data; ContentsModel points to Cid's native models where a matching outfit exists, otherwise their standard model. All Cloud weapon selections use the Buster Sword for this pass.",
+        "requires_paks": [
+          "FullyPlayableCreateACharacterSystemExperience_P"
+        ],
+        "charaspecs": {
+          "PC0000_00_Cloud_Standard": "PC0000_00_Cloud_Standard_CID",
+          "PC0000_00_Cloud_Standard_NoBattle": "PC0000_00_Cloud_Standard_NoBattle_CID",
+          "PC0000_04_Cloud_ZackCostume": "PC0000_04_Cloud_ZackCostume_CID",
+          "PC0000_04_Cloud_ZackCostume_NoBattle": "PC0000_04_Cloud_ZackCostume_NoBattle_CID",
+          "PC0000_08_Cloud_SoldierNoHelmet": "PC0000_08_Cloud_SoldierNoHelmet_CID",
+          "PC0000_08_Cloud_SoldierNoHelmet_NoBattle": "PC0000_08_Cloud_SoldierNoHelmet_NoBattle_CID",
+          "PC0000_09_Cloud_CostaClothing": "PC0000_09_Cloud_CostaClothing_CID",
+          "PC0000_09_Cloud_CostaClothing_NoBattle": "PC0000_09_Cloud_CostaClothing_NoBattle_CID",
+          "PC0000_10_Cloud_CostaClothing2": "PC0000_10_Cloud_CostaClothing2_CID",
+          "PC0000_10_Cloud_CostaClothing2_NoBattle": "PC0000_10_Cloud_CostaClothing2_NoBattle_CID",
+          "PC0000_12_Cloud_ZackCostumeDirty": "PC0000_12_Cloud_ZackCostumeDirty_CID",
+          "PC0000_12_Cloud_ZackCostumeDirty_NoBattle": "PC0000_12_Cloud_ZackCostumeDirty_NoBattle_CID",
+          "PC0000_18_Cloud_ZackCostumeAge21": "PC0000_18_Cloud_ZackCostumeAge21_CID",
+          "PC0000_18_Cloud_ZackCostumeAge21_NoBattle": "PC0000_18_Cloud_ZackCostumeAge21_NoBattle_CID",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21": "PC0000_19_Cloud_ZackCostumeDirtyAge21_CID",
+          "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle": "PC0000_19_Cloud_ZackCostumeDirtyAge21_NoBattle_CID",
+          "PC0000_23_Cloud_ZackCostumeWet": "PC0000_23_Cloud_ZackCostumeWet_CID",
+          "PC0000_06_Cloud_Soldier": "PC0000_06_Cloud_Soldier_CID",
+          "PC0000_06_Cloud_Soldier_NoBattle": "PC0000_06_Cloud_Soldier_NoBattle_CID",
+          "PC0000_07_Cloud_SoldierSenior": "PC0000_07_Cloud_SoldierSenior_CID",
+          "PC0000_07_Cloud_SoldierSenior_NoBattle": "PC0000_07_Cloud_SoldierSenior_NoBattle_CID",
+          "PC0000_11_Cloud_Loveless": "PC0000_11_Cloud_Loveless_CID",
+          "PC0000_11_Cloud_Loveless_NoBattle": "PC0000_11_Cloud_Loveless_NoBattle_CID",
+          "PC0000_17_Cloud_LovelessNoMask": "PC0000_17_Cloud_LovelessNoMask_CID",
+          "PC0000_17_Cloud_LovelessNoMask_NoBattle": "PC0000_17_Cloud_LovelessNoMask_NoBattle_CID",
+          "PC0000_22_Cloud_StandardWet": "PC0000_22_Cloud_StandardWet_CID",
+          "WE0000_11_Cloud_END2Weapon1": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_12_Cloud_END2Weapon2": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_13_Cloud_END2Weapon3": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_14_Cloud_END2Weapon4": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_15_Cloud_END2Weapon5": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_16_Cloud_END2Weapon6": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_17_Cloud_Umbrella": "WE0000_00_Cloud_BusterSword_CID",
+          "WE0000_00_Cloud_BusterSword": "WE0000_00_Cloud_BusterSword_CID"
+        },
+        "names_in_add": [
+          {
+            "table": "Item",
+            "fields": [
+              "CharaSpecID"
+            ]
+          },
+          {
+            "table": "/Game/DataObject/Field/1100-MIDGA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1110-KALMT/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1300-JUNOA/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/1310-JNONV/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2420-GONGM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/2660-NIBLM/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3110-TEMPL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/3120-CAPTL/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          },
+          {
+            "table": "/Game/DataObject/Field/4000-MIDGR/PlannerLevelSet",
+            "fields": [
+              "LevelList_Array"
+            ],
+            "optional": true
+          }
+        ],
+        "rows": [
+          {
+            "table": "BattlePlayerParameter",
+            "row": "pt_Cloud",
+            "from": "pt_Cloud"
+          }
+        ],
+        "title": {
+          "tint": [
+            0.28,
+            0.72,
+            0.72
+          ]
+        }
+      }
+    }
+  ],
+  "config_source": "C:\\Users\\Kade\\Documents\\Codex\\2026-10-29\\ca\\work\\FF7-Rebirth-Modding\\GameMods\\ue4ss\\Mods\\RebirthSkelCompat\\compat\\FullyPlayableCreateACharacterSystemExperience.json",
+  "note": "Model selections resolved against editor survey; party parameter row verified in BattlePlayerParameter."
+}
